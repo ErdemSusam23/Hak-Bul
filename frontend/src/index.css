@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-950 text-slate-100 font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-navy-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-500;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #d4a853 0%, #f0c96a 50%, #b8892e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .navy-gradient-bg {
+    background: linear-gradient(135deg, #0a1628 0%, #0f1f38 50%, #162840 100%);
+  }
+
+  .send-btn {
+    @apply bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold
+           rounded-xl px-5 py-3 transition-all duration-200
+           hover:shadow-lg hover:shadow-gold-400/20 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gold-400 disabled:active:scale-100;
+  }
+
+  .input-field {
+    @apply bg-navy-800/80 border border-white/10 rounded-xl px-4 py-3
+           text-slate-100 placeholder-slate-500 focus:outline-none
+           focus:border-gold-400/60 focus:ring-1 focus:ring-gold-400/30
+           transition-all duration-200 resize-none;
+  }
+
+  .source-card {
+    @apply glass-card p-3 cursor-pointer transition-all duration-200
+           hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  .badge {
+    @apply text-xs font-medium px-2 py-0.5 rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

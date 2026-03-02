@@ -83,13 +83,13 @@ Uygulama ayağa kalktığında:
 
 ## 🧪 MOCK_MODE
 
-Groq API key ve Qdrant bağlantısı olmadan geliştirme yapabilmek için `.env` dosyasında `MOCK_MODE=true` bırak. Bu modda:
+Groq API key ve Qdrant bağlantısı olmadan geliştirme yapabilmek için `.env` dosyasında `MOCK_...=true` bırak. Bu modda:
 
 - Query rewriting adımı mock yanıt döner
 - Qdrant yerine sabit bir örnek chunk kullanılır
 - LLM çağrısı yapılmaz
 
-Gerçek API'ye geçmek için `.env`'de `MOCK_MODE=false` yap ve key'leri doldur.
+Gerçek API'ye geçmek için `.env`'de `MOCK_...=false` yap ve key'leri doldur.
 
 ---
 

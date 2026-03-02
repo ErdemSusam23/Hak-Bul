@@ -1,4 +1,4 @@
-# 🏛️ Türk Hukuk Asistanı
+# 🏛️ HakBul
 **Technical Specification**
 `v0.3 — Bitirme Projesi`
 

@@ -61,7 +61,8 @@ QDRANT_URL=https://your-cluster.qdrant.io
 QDRANT_API_KEY=your_key_here
 QDRANT_COLLECTION=hukuk_chunks
 SCORE_THRESHOLD=0.65
-MOCK_MODE=true        # Groq/Qdrant olmadan geliştirmek için true bırak
+MOCK_RETRIEVAL=true    # Qdrant 
+MOCK_LLM=false         # Groq 
 ```
 
 > Groq API key almak için → https://console.groq.com  

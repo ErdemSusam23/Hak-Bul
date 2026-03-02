@@ -1,4 +1,4 @@
-from config import GROQ_API_KEY, MOCK_MODE
+from config import GROQ_API_KEY, MOCK_LLM
 
 SYSTEM_PROMPT = """
 Sen bir Türk hukuku uzmanısın. Kullanıcının günlük Türkçe ile sorduğu soruyu,
@@ -7,7 +7,7 @@ yeniden yaz. Sadece yeniden yazılmış sorguyu döndür, açıklama yapma.
 """
 
 def rewrite_query(soru: str) -> str:
-    if MOCK_MODE:
+    if MOCK_LLM:
         return f"[MOCK] {soru}"
 
     from groq import Groq

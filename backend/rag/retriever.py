@@ -1,6 +1,6 @@
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
-from config import QDRANT_URL, QDRANT_API_KEY, QDRANT_COLLECTION, SCORE_THRESHOLD, MOCK_MODE
+from config import QDRANT_URL, QDRANT_API_KEY, QDRANT_COLLECTION, SCORE_THRESHOLD, MOCK_RETRIEVAL
 
 client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 embedder = SentenceTransformer("sentence-transformers/paraphrase-multilingual-mpnet-base-v2")
@@ -22,7 +22,7 @@ MOCK_CHUNKS = [
 
 
 def retrieve_chunks(query: str, top_n: int = 5) -> list[dict]:
-    if MOCK_MODE:
+    if MOCK_RETRIEVAL:  # Normalde MOCK_MODE, Groq API test için geçici olarak böyle yapıldı
         return MOCK_CHUNKS
 
     embedding = embedder.encode(query)

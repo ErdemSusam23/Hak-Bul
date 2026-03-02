@@ -1,4 +1,4 @@
-from config import GROQ_API_KEY, MOCK_MODE
+from config import GROQ_API_KEY, MOCK_LLM
 
 SYSTEM_PROMPT = """
 Sen bir Türk hukuku bilgi sistemisin. Sana verilen kanun maddeleri ve
@@ -16,7 +16,7 @@ def build_context(chunks: list[dict]) -> str:
     return "\n\n".join(parts)
 
 def generate_answer(soru: str, chunks: list[dict]) -> str:
-    if MOCK_MODE:
+    if MOCK_LLM:
         return f"[MOCK YANIT] '{soru}' sorusu için {len(chunks)} kaynak bulundu."
 
     from groq import Groq

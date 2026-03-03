@@ -2,7 +2,7 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: dev-Dockerfile   # Lokal için .dev kullanıyoruz
+      dockerfile: dev-Dockerfile   # Lokal için dev 
     container_name: hak-bul-backend
     ports:
       - "8000:8000"

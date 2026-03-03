@@ -1,13 +1,36 @@
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-QDRANT_URL = os.getenv("QDRANT_URL")
-QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
-QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "hukuk_chunks")
-SCORE_THRESHOLD = float(os.getenv("SCORE_THRESHOLD", "0.65"))
-MOCK_MODE = os.getenv("MOCK_MODE", "true").lower() == "true"
-MOCK_RETRIEVAL = os.getenv("MOCK_RETRIEVAL", "true").lower() == "true"
-MOCK_LLM = os.getenv("MOCK_LLM", "true").lower() == "true"
+def _as_bool(name: str, default: str) -> bool:
+    return os.environ.get(name, default).strip().lower() == "true"
+
+
+class Settings:
+    QDRANT_URL: str = os.environ.get("QDRANT_URL", "")
+    QDRANT_API_KEY: str = os.environ.get("QDRANT_API_KEY", "")
+    GROQ_API_KEY: str = os.environ.get("GROQ_API_KEY", "")
+    COLLECTION_NAME: str = os.environ.get("QDRANT_COLLECTION", "hukuk_chunks")
+    SCORE_THRESHOLD: float = float(os.environ.get("SCORE_THRESHOLD", "0.65"))
+    EMBEDDING_MODEL: str = os.environ.get(
+        "EMBEDDING_MODEL",
+        "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+    )
+    VERSION: str = os.environ.get("APP_VERSION", "1.0.0")
+    MOCK_MODE: bool = _as_bool("MOCK_MODE", "false")
+    MOCK_RETRIEVAL: bool = _as_bool("MOCK_RETRIEVAL", "false")
+    MOCK_LLM: bool = _as_bool("MOCK_LLM", "false")
+
+
+settings = Settings()
+
+# Backward-compatible constants for existing imports.
+GROQ_API_KEY = settings.GROQ_API_KEY
+QDRANT_URL = settings.QDRANT_URL
+QDRANT_API_KEY = settings.QDRANT_API_KEY
+QDRANT_COLLECTION = settings.COLLECTION_NAME
+SCORE_THRESHOLD = settings.SCORE_THRESHOLD
+MOCK_MODE = settings.MOCK_MODE
+MOCK_RETRIEVAL = settings.MOCK_RETRIEVAL
+MOCK_LLM = settings.MOCK_LLM

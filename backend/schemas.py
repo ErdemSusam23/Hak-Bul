@@ -20,7 +20,7 @@ class AskResponse(BaseModel):
 
 
 class SearchResponse(BaseModel):
-    sonuclar: list[dict]
+    sonuclar: list[KaynakItem]
     toplam: int
 
 

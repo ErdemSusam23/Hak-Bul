@@ -6,10 +6,10 @@ import DirekArama from '../components/DirekArama';
 import { useChat } from '../hooks/useChat';
 
 const ORNEK_SORULAR = [
-    'Kıdem tazminatı almak için ne kadar çalışmam gerekiyor?',
-    'İşten çıkarılırsam haklarım nelerdir?',
-    'Kiracı olarak ev sahibine karşı haklarım neler?',
-    'Trafik kazasında tazminat nasıl alınır?',
+    'İşten çıkarıldım hiçbir şey ödemediler kıdem tazminatı alabilir miyim',
+    'İş sözleşmemi imzalamadan işe başladım sözlü anlaşmayla, bu geçerli mi',
+    'Fazla mesai yaptırıyorlar ama param yatmıyor ne yapabilirim',
+    'Annem hasta bakım iznine çıkabilir miyim işten',
 ];
 
 export default function SohbetSayfasi() {

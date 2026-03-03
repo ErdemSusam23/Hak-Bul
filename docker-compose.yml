@@ -2,16 +2,24 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: dev-Dockerfile   # Lokal için .dev kullanıyoruz
     container_name: hak-bul-backend
     ports:
       - "8000:8000"
     env_file:
       - ./backend/.env
     volumes:
-      - ./backend:/app
-      - /app/__pycache__
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+      - ./backend:/app             # Hot-reload için kaynak kod mount
+      - /app/venv  
+      - /app/__pycache__           # __pycache__ ezilmesin
+      - model_data:/model_cache    # Model ilk seferden sonra kalıcı kalır
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s            # Model indirme süresi için 60s bekliyoruz
+    restart: unless-stopped
 
   frontend:
     build:
@@ -19,13 +27,18 @@ services:
       dockerfile: Dockerfile
     container_name: hak-bul-frontend
     ports:
-      - "5173:80" # Frontend'e tarayıcıdan localhost:5173 ile erişebilmek için
+      - "5173:80"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 20s
     restart: unless-stopped
     depends_on:
-      - backend # Frontend'in backend'den sonra ayağa kalkmasını sağlar
+      backend:
+        condition: service_healthy  # Backend sağlıklı olana kadar bekle
+
+# Model cache kalıcı volume
+volumes:
+  model_data:

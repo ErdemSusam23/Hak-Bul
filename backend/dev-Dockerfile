@@ -1,0 +1,30 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# curl healthcheck için, sonra cache temizle
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# appuser oluştur ve model cache dizinini hazırla
+RUN adduser --disabled-password --gecos "" appuser \
+    && mkdir -p /model_cache \
+    && chown -R appuser:appuser /model_cache
+
+# Model cache'i named volume'a yönlendir
+ENV HF_HOME=/model_cache
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt \
+    && find /usr/local -type d -name __pycache__ -exec rm -rf {} +
+
+USER appuser
+
+COPY --chown=appuser:appuser . .
+
+EXPOSE 8000
+
+# --reload ile hot-reload aktif (lokal geliştirme için)
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

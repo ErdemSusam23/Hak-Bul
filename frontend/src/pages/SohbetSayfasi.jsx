@@ -6,10 +6,10 @@ import DirekArama from '../components/DirekArama';
 import { useChat } from '../hooks/useChat';
 
 const ORNEK_SORULAR = [
-    'Kıdem tazminatı almak için ne kadar çalışmam gerekiyor?',
-    'İşten çıkarılırsam haklarım nelerdir?',
-    'Kiracı olarak ev sahibine karşı haklarım neler?',
-    'Trafik kazasında tazminat nasıl alınır?',
+    'Belirsiz süreli iş sözleşmesinde işveren tarafından yapılan fesihte ihbar öneli kaç haftadır, 3 yıl çalışmış bir işçi için?',
+    'İşçinin kıdem tazminatına hak kazanabilmesi için asgari çalışma süresi nedir ve bu süre hangi kanun maddesinde düzenlenmiştir?',
+    'İşverenin SGK primlerini süresinde ödememesi durumunda uygulanacak gecikme zammı oranı nedir?',
+    'Kiramı 4  aydır ödemiyorum ev sahibim beni evden çıkarabilir mi?'
 ];
 
 export default function SohbetSayfasi() {

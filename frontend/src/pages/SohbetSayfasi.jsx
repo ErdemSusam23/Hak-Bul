@@ -6,10 +6,10 @@ import DirekArama from '../components/DirekArama';
 import { useChat } from '../hooks/useChat';
 
 const ORNEK_SORULAR = [
-    "İşten çıkarıldım hiçbir şey ödemediler kıdem tazminatı alabilir miyim",
-    "Fazla mesai yaptırıyorlar ama param yatmıyor ne yapabilirim",
-    "İş sözleşmemi imzalamadan işe başladım sözlü anlaşmayla, bu geçerli mi",
-    "Annem hasta bakım iznine çıkabilir miyim işten"
+    'İşten çıkarıldım hiçbir şey ödemediler kıdem tazminatı alabilir miyim',
+    'İş sözleşmemi imzalamadan işe başladım sözlü anlaşmayla, bu geçerli mi',
+    'Fazla mesai yaptırıyorlar ama param yatmıyor ne yapabilirim',
+    'Annem hasta bakım iznine çıkabilir miyim işten',
 ];
 
 export default function SohbetSayfasi() {

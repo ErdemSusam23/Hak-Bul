@@ -1,67 +1,95 @@
-from config import GROQ_API_KEY, MOCK_LLM
-
-SYSTEM_PROMPT = """
-Sen bir Türk hukuku bilgi sistemisin. Görevin, sana verilen kaynak metinlerini
-kullanarak kullanıcının sorusunu yanıtlamaktır.
-
-## ÖNCE BU KARARI VER
-Sana verilen kaynaklara bak:
-- Konuyla ilgili (doğrudan veya dolaylı) bir bilgi var mı?
-  → EVET: Aşağıdaki Üretim Kurallarıyla yanıt üret.
-  → HAYIR: Yalnızca şunu söyle: "Elimdeki kaynaklarda bu konuya ilişkin bilgi
-    bulunmamaktadır. Lütfen bir hukuk danışmanına başvurun."
-  → EMIN DEĞİLSEN: Kısmi bilgiyi aktar, "bilgi yok" deme.
-
-## ÜRETİM KURALLARI
-1. Hangi kanun maddesi veya karar dayanak alındıysa açıkça belirt.
-   Örn: "4857 sayılı İş Kanunu Madde 71 uyarınca..."
-2. Yalnızca sana verilen kaynaklarda adı geçen kanun ve maddeleri zikret.
-   Kaynaklarda olmayan hiçbir kanun adı veya madde numarası üretme.
-3. Kanun maddesini olduğu gibi aktar. Kullanıcının yaşı, tutarı veya durumuna
-   kendi başına uygulama yapma — maddeyi aktar, kullanıcı kendisi uygulasın.
-4. Yanıtının sonuna her zaman şunu ekle:
-   "Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz."
+"""
+generator.py
+Generate a Turkish legal answer from retrieved chunks.
 """
 
-def build_context(chunks: list[dict]) -> str:
+from groq import Groq
+
+from config import settings
+
+_client: Groq | None = None
+
+
+def _get_client() -> Groq:
+    global _client
+    if _client is None:
+        _client = Groq(api_key=settings.GROQ_API_KEY)
+    return _client
+
+
+SYSTEM_PROMPT = """Sen bir Turk hukuku bilgi sistemisin. Sana verilen kanun maddeleri ve
+Yargitay kararlarini kaynak alarak kullanicinin sorusunu Turkce yanitla.
+Her iddiayi kaynak chunk'a dayandir. Eger verilen kaynaklardan yanit
+uretemiyorsan bunu acikca belirt. Hukuki tavsiye verme; bilgi sun."""
+
+
+def _build_context(chunks: list[dict]) -> str:
     parts = []
-    for c in chunks:
+    for i, c in enumerate(chunks, start=1):
         p = c["payload"]
+        kaynak_turu = p.get("kaynak_turu", "")
 
-        if p.get("kaynak_turu") == "kanun":
-            kanun_adi = p.get("kanun_adi", "Kanun")
-            madde_no = p.get("madde_no", "")
-            baslik = f"{kanun_adi} — {madde_no}" if madde_no else kanun_adi
-        elif p.get("kaynak_turu") == "yargitay_karari":
-            daire = p.get("daire", "")
-            karar_no = p.get("karar_no", "Karar")
-            bolum = p.get("karar_bolumu", "")
-            baslik = f"Yargıtay {daire} — {karar_no} ({bolum})" if daire else karar_no
+        if kaynak_turu == "kanun":
+            header = f"[Kaynak {i}] {p.get('kanun_adi', '?')} - {p.get('madde_no', '?')}"
+        elif kaynak_turu == "yargitay_karari":
+            header = f"[Kaynak {i}] {p.get('daire', 'Yargitay')} - {p.get('karar_no', '?')}"
         else:
-            baslik = p.get("kanun_adi", p.get("karar_no", "Kaynak"))
+            header = f"[Kaynak {i}]"
 
-        parts.append(f"[{baslik}]\n{p['metin']}")
+        parts.append(f"{header}\n{p.get('metin', '')}")
+
     return "\n\n".join(parts)
 
 
-def generate_answer(soru: str, chunks: list[dict], rewritten_query: str = None) -> str:
-    if MOCK_LLM:
-        return f"[MOCK YANIT] '{soru}' sorusu için {len(chunks)} kaynak bulundu."
+def _extractive_fallback_answer(chunks: list[dict]) -> str:
+    if not chunks:
+        return (
+            "Bu soruya ait kaynak bulunamadi. "
+            "Lutfen sorunuzu daha acik ve madde numarasiyla birlikte yazin."
+        )
 
-    from groq import Groq
-    client = Groq(api_key=GROQ_API_KEY)
-    context = build_context(chunks)
+    lines = [
+        "Groq anahtari olmadigi icin yanit, bulunan kaynaklardan dogrudan ozetlenmistir:"
+    ]
 
-    soru_blogu = f"Kullanıcının sorusu: {soru}"
-    if rewritten_query and rewritten_query != soru:
-        soru_blogu += f"\nHukuki terminolojiyle yeniden yazılmış hali: {rewritten_query}"
+    for i, c in enumerate(chunks[:3], start=1):
+        p = c["payload"]
+        kaynak_turu = p.get("kaynak_turu", "")
+        if kaynak_turu == "kanun":
+            baslik = f"{p.get('kanun_adi', '?')} - {p.get('madde_no', '?')}"
+        else:
+            baslik = p.get("chunk_id", "Kaynak")
 
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": f"Kaynaklar:\n{context}\n\n{soru_blogu}"},
-        ],
-        max_tokens=1000,
+        metin = (p.get("metin", "") or "").strip().replace("\n", " ")
+        if len(metin) > 260:
+            metin = metin[:260].rstrip() + "..."
+        lines.append(f"{i}. {baslik}: {metin}")
+
+    lines.append(
+        "Not: Bu cevap bilgi amaclidir, hukuki tavsiye degildir; kesin degerlendirme icin avukata basvurun."
     )
-    return response.choices[0].message.content
+    return "\n".join(lines)
+
+
+def generate_answer(soru: str, chunks: list[dict]) -> str:
+    if settings.MOCK_MODE or settings.MOCK_LLM or not settings.GROQ_API_KEY:
+        return _extractive_fallback_answer(chunks)
+
+    context = _build_context(chunks)
+
+    try:
+        response = _get_client().chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {
+                    "role": "user",
+                    "content": f"Kaynaklar:\n{context}\n\nSoru: {soru}",
+                },
+            ],
+            max_tokens=1000,
+            temperature=0.2,
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as exc:
+        raise RuntimeError(f"Groq yanit uretme hatasi: {exc}") from exc

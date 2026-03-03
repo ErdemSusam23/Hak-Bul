@@ -6,10 +6,10 @@ import DirekArama from '../components/DirekArama';
 import { useChat } from '../hooks/useChat';
 
 const ORNEK_SORULAR = [
-    'Belirsiz süreli iş sözleşmesinde işveren tarafından yapılan fesihte ihbar öneli kaç haftadır, 3 yıl çalışmış bir işçi için?',
-    'İşçinin kıdem tazminatına hak kazanabilmesi için asgari çalışma süresi nedir ve bu süre hangi kanun maddesinde düzenlenmiştir?',
-    'İşverenin SGK primlerini süresinde ödememesi durumunda uygulanacak gecikme zammı oranı nedir?',
-    'Kiramı 4  aydır ödemiyorum ev sahibim beni evden çıkarabilir mi?'
+    "İşten çıkarıldım hiçbir şey ödemediler kıdem tazminatı alabilir miyim",
+    "Fazla mesai yaptırıyorlar ama param yatmıyor ne yapabilirim",
+    "İş sözleşmemi imzalamadan işe başladım sözlü anlaşmayla, bu geçerli mi",
+    "Annem hasta bakım iznine çıkabilir miyim işten"
 ];
 
 export default function SohbetSayfasi() {

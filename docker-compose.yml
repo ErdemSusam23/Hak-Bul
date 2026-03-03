@@ -2,23 +2,23 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: dev-Dockerfile   # Lokal için dev 
+      dockerfile: dev-Dockerfile
     container_name: hak-bul-backend
     ports:
       - "8000:8000"
     env_file:
       - ./backend/.env
     volumes:
-      - ./backend:/app             # Hot-reload için kaynak kod mount
-      - /app/venv  
-      - /app/__pycache__           # __pycache__ ezilmesin
-      - model_data:/model_cache    # Model ilk seferden sonra kalıcı kalır
+      - ./backend:/app
+      - /app/venv
+      - /app/__pycache__
+      - model_data:/model_cache
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 60s            # Model indirme süresi için 60s bekliyoruz
+      start_period: 60s
     restart: unless-stopped
 
   frontend:
@@ -37,8 +37,7 @@ services:
     restart: unless-stopped
     depends_on:
       backend:
-        condition: service_healthy  # Backend sağlıklı olana kadar bekle
+        condition: service_healthy
 
-# Model cache kalıcı volume
 volumes:
   model_data:

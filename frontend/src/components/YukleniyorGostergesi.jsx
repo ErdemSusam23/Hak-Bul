@@ -23,19 +23,19 @@ export default function YukleniyorGostergesi() {
             <div
                 className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{
-                    background: 'linear-gradient(135deg, rgba(212,168,83,0.22) 0%, rgba(212,168,83,0.06) 100%)',
-                    border: '1px solid rgba(212,168,83,0.32)',
+                    background: `rgba(var(--a), 0.1)`,
+                    border: `1px solid rgba(var(--a), 0.22)`,
                 }}
             >
-                <Scale size={15} className="text-gold-400" />
+                <Scale size={15} style={{ color: 'var(--tema-accent)' }} />
             </div>
 
             {/* Yazıyor balonu */}
             <div
                 className="rounded-2xl px-5 py-3.5"
                 style={{
-                    background: 'rgba(255,255,255,0.035)',
-                    border: '1px solid rgba(255,255,255,0.07)',
+                    background: 'var(--tema-bubble)',
+                    border: '1px solid var(--tema-border)',
                 }}
             >
                 <div className="flex items-center gap-3">
@@ -46,7 +46,7 @@ export default function YukleniyorGostergesi() {
                                 key={i}
                                 className="w-1.5 h-1.5 rounded-full"
                                 style={{
-                                    background: 'rgba(212,168,83,0.7)',
+                                    background: `rgba(var(--a), 0.7)`,
                                     animation: `bounceDot 1.2s infinite ease-in-out`,
                                     animationDelay: `${i * 0.2}s`,
                                 }}
@@ -56,7 +56,7 @@ export default function YukleniyorGostergesi() {
                     <span
                         key={mesajIndex}
                         className="text-sm animate-fade-in"
-                        style={{ color: 'rgba(148,163,184,0.8)' }}
+                        style={{ color: 'var(--tema-text2)' }}
                     >
                         {MESAJLAR[mesajIndex]}
                     </span>

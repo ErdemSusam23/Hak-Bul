@@ -1,30 +1,29 @@
 import { BookOpen, Gavel, ExternalLink, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import clsx from 'clsx';
 
 const KAYNAK_TURU_KONFIG = {
     kanun: {
         etiket: 'Kanun',
-        solSerit: 'rgba(212,168,83,0.55)',
-        ikonArka: 'rgba(212,168,83,0.1)',
-        ikonRenk: '#d4a853',
-        rozetArka: 'rgba(212,168,83,0.12)',
-        rozetMetin: 'rgba(212,168,83,0.9)',
-        acikArka: 'rgba(212,168,83,0.06)',
-        acikSerit: 'rgba(212,168,83,0.35)',
-        acikMetin: 'rgba(240,201,106,0.85)',
+        solSerit: 'var(--kanun-strip)',
+        ikonArka: 'var(--kanun-icon-bg)',
+        ikonRenk: 'var(--kanun-icon)',
+        rozetArka: 'var(--kanun-badge-bg)',
+        rozetMetin: 'var(--kanun-badge-text)',
+        acikArka: 'var(--kanun-expand-bg)',
+        acikSerit: 'var(--kanun-expand-border)',
+        acikMetin: 'var(--kanun-expand-text)',
         Ikon: BookOpen,
     },
     yargitay_karari: {
         etiket: 'Yargıtay Kararı',
-        solSerit: 'rgba(96,165,250,0.55)',
-        ikonArka: 'rgba(96,165,250,0.1)',
-        ikonRenk: '#60a5fa',
-        rozetArka: 'rgba(96,165,250,0.12)',
-        rozetMetin: 'rgba(96,165,250,0.9)',
-        acikArka: 'rgba(59,130,246,0.06)',
-        acikSerit: 'rgba(96,165,250,0.35)',
-        acikMetin: 'rgba(147,197,253,0.85)',
+        solSerit: 'var(--yargitay-strip)',
+        ikonArka: 'var(--yargitay-icon-bg)',
+        ikonRenk: 'var(--yargitay-icon)',
+        rozetArka: 'var(--yargitay-badge-bg)',
+        rozetMetin: 'var(--yargitay-badge-text)',
+        acikArka: 'var(--yargitay-expand-bg)',
+        acikSerit: 'var(--yargitay-expand-border)',
+        acikMetin: 'var(--yargitay-expand-text)',
         Ikon: Gavel,
     },
     yonetmelik: {
@@ -43,19 +42,19 @@ const KAYNAK_TURU_KONFIG = {
 
 function SkorCubugu({ skor }) {
     const yuzde = Math.round(skor * 100);
-    let renkClass = 'bg-amber-500';
-    if (yuzde >= 85) renkClass = 'bg-emerald-400';
-    else if (yuzde >= 70) renkClass = 'bg-gold-400';
+    let bgColor = '#f59e0b'; // amber-500
+    if (yuzde >= 85) bgColor = '#34d399'; // emerald-400
+    else if (yuzde >= 70) bgColor = 'var(--tema-accent)';
 
     return (
         <div className="flex items-center gap-2">
-            <div className="flex-1 h-0.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
+            <div className="flex-1 h-0.5 rounded-full overflow-hidden" style={{ background: 'var(--tema-border)' }}>
                 <div
-                    className={`h-full rounded-full transition-all duration-700 ${renkClass}`}
-                    style={{ width: `${yuzde}%` }}
+                    className="h-full rounded-full transition-all duration-700"
+                    style={{ width: `${yuzde}%`, background: bgColor }}
                 />
             </div>
-            <span className="text-xs tabular-nums" style={{ color: 'rgba(148,163,184,0.7)' }}>
+            <span className="text-xs tabular-nums" style={{ color: 'var(--tema-muted)' }}>
                 {yuzde}%
             </span>
         </div>
@@ -76,15 +75,15 @@ export default function KaynakKarti({ kaynak }) {
         <div
             className="rounded-xl cursor-pointer group transition-all duration-200"
             style={{
-                background: 'rgba(255,255,255,0.025)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: 'var(--tema-card)',
+                border: '1px solid var(--tema-border-card)',
                 borderLeft: `3px solid ${konfig.solSerit}`,
             }}
             onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.045)';
+                e.currentTarget.style.background = 'var(--tema-card-hover)';
             }}
             onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.025)';
+                e.currentTarget.style.background = 'var(--tema-card)';
             }}
             onClick={() => setAcik(!acik)}
         >
@@ -102,7 +101,7 @@ export default function KaynakKarti({ kaynak }) {
                     <div className="flex-1 min-w-0">
                         {/* Başlık + Butonlar */}
                         <div className="flex items-start justify-between gap-2 mb-1.5">
-                            <p className="text-slate-200 text-sm font-medium leading-snug group-hover:text-white transition-colors">
+                            <p className="text-sm font-medium leading-snug transition-colors" style={{ color: 'var(--tema-text)' }}>
                                 {kaynak.baslik}
                             </p>
                             <div className="flex items-center gap-0.5 flex-shrink-0 mt-0.5">
@@ -110,9 +109,9 @@ export default function KaynakKarti({ kaynak }) {
                                     <button
                                         onClick={linkAc}
                                         className="p-1 rounded-md transition-colors"
-                                        style={{ color: 'rgba(148,163,184,0.5)' }}
+                                        style={{ color: 'var(--tema-muted)' }}
                                         onMouseEnter={(e) => { e.currentTarget.style.color = konfig.ikonRenk; }}
-                                        onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(148,163,184,0.5)'; }}
+                                        onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
                                         title="mevzuat.gov.tr'de aç"
                                     >
                                         <ExternalLink size={12} />
@@ -121,7 +120,7 @@ export default function KaynakKarti({ kaynak }) {
                                 <div
                                     className="p-1 transition-transform duration-200"
                                     style={{
-                                        color: 'rgba(148,163,184,0.5)',
+                                        color: 'var(--tema-muted)',
                                         transform: acik ? 'rotate(180deg)' : 'rotate(0deg)',
                                     }}
                                 >
@@ -165,9 +164,9 @@ export default function KaynakKarti({ kaynak }) {
                             <button
                                 onClick={linkAc}
                                 className="mt-2 flex items-center gap-1.5 text-xs transition-colors px-0.5"
-                                style={{ color: 'rgba(148,163,184,0.5)' }}
+                                style={{ color: 'var(--tema-muted)' }}
                                 onMouseEnter={(e) => { e.currentTarget.style.color = konfig.ikonRenk; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(148,163,184,0.5)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
                             >
                                 <ExternalLink size={11} />
                                 Tam metni mevzuat.gov.tr'de görüntüle

@@ -18,6 +18,7 @@ class Settings:
         "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
     )
     VERSION: str = os.environ.get("APP_VERSION", "1.0.0")
+    CORS_ORIGINS: list[str] = os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(",")
     MOCK_MODE: bool = _as_bool("MOCK_MODE", "false")
     MOCK_RETRIEVAL: bool = _as_bool("MOCK_RETRIEVAL", "false")
     MOCK_LLM: bool = _as_bool("MOCK_LLM", "false")

@@ -11,6 +11,7 @@ class KaynakItem(BaseModel):
     baslik: str
     metin_ozet: str
     skor: float
+    url: str | None = None
 
 
 class AskResponse(BaseModel):

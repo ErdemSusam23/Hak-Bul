@@ -104,6 +104,7 @@ async def search(
         raise HTTPException(status_code=422, detail="tur only supports 'kanun' or 'yargitay_karari'")
 
     try:
+        from rag.pipeline import _get_law_url
         from rag.retriever import retrieve_chunks
 
         chunks = retrieve_chunks(query=q, top_n=limit, kaynak_turu=tur)
@@ -118,18 +119,22 @@ async def search(
             else:
                 baslik = f"{p.get('daire', 'Yargitay')} - {p.get('karar_no', '?')}"
 
+            url = _get_law_url(p.get("kanun_adi", ""), p.get("madde_no", "")) if kaynak_turu == "kanun" else None
+
             sonuclar.append(
                 KaynakItem(
                     kaynak_turu=kaynak_turu,
                     baslik=baslik,
                     metin_ozet=p.get("metin", "")[:300],
                     skor=round(c.get("skor", 0), 4),
+                    url=url,
                 )
             )
 
         return SearchResponse(sonuclar=sonuclar, toplam=len(sonuclar))
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
 
 
 @app.get("/health", response_model=HealthResponse)

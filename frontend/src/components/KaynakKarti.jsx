@@ -32,14 +32,10 @@ const KAYNAK_TURU_KONFIG = {
 function SkorCubugu({ skor }) {
     const yuzde = Math.round(skor * 100);
     const renk = yuzde >= 90 ? 'bg-emerald-400' : yuzde >= 75 ? 'bg-gold-400' : 'bg-amber-500';
-
     return (
         <div className="flex items-center gap-2">
             <div className="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
-                <div
-                    className={`h-full rounded-full ${renk} transition-all duration-700`}
-                    style={{ width: `${yuzde}%` }}
-                />
+                <div className={`h-full rounded-full ${renk} transition-all duration-700`} style={{ width: `${yuzde}%` }} />
             </div>
             <span className="text-xs text-slate-400 tabular-nums w-8 text-right">{yuzde}%</span>
         </div>
@@ -51,31 +47,20 @@ export default function KaynakKarti({ kaynak }) {
     const konfig = KAYNAK_TURU_KONFIG[kaynak.kaynak_turu] || KAYNAK_TURU_KONFIG.kanun;
     const { Ikon } = konfig;
 
-    const tikla = () => {
-        if (kaynak.url) {
-            window.open(kaynak.url, '_blank', 'noopener,noreferrer');
-        } else {
-            setAcik(!acik);
-        }
+    const linkAc = (e) => {
+        e.stopPropagation();
+        window.open(kaynak.url, '_blank', 'noopener,noreferrer');
     };
 
     return (
         <div
-            className={clsx(
-                'source-card border-l-2 group',
-                konfig.kenarlık
-            )}
+            className={clsx('source-card border-l-2 group cursor-pointer', konfig.kenarlık)}
             style={{ background: 'rgba(255,255,255,0.03)' }}
-            onClick={tikla}
+            onClick={() => setAcik(!acik)}
         >
             <div className="flex items-start gap-3">
                 {/* İkon */}
-                <div
-                    className={clsx(
-                        'w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5',
-                        konfig.arkaplan
-                    )}
-                >
+                <div className={clsx('w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5', konfig.arkaplan)}>
                     <Ikon size={14} className={konfig.renk} />
                 </div>
 
@@ -85,35 +70,47 @@ export default function KaynakKarti({ kaynak }) {
                         <p className="text-slate-200 text-sm font-medium leading-snug group-hover:text-white transition-colors line-clamp-2">
                             {kaynak.baslik}
                         </p>
-                        {kaynak.url ? (
-                            <ExternalLink size={14} className="text-slate-500 group-hover:text-gold-400 flex-shrink-0 mt-0.5 transition-colors" />
-                        ) : (
-                            <button className="text-slate-500 hover:text-slate-300 flex-shrink-0 mt-0.5">
+                        <div className="flex items-center gap-1 flex-shrink-0 mt-0.5">
+                            {kaynak.url && (
+                                <button onClick={linkAc} className="text-slate-500 hover:text-gold-400 transition-colors p-0.5" title="mevzuat.gov.tr'de aç">
+                                    <ExternalLink size={13} />
+                                </button>
+                            )}
+                            <button className="text-slate-500 hover:text-slate-300 transition-colors p-0.5">
                                 {acik ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
                             </button>
-                        )}
-                    </div>
-
-                    {/* Rozet + Skor */}
-                    <div className="flex items-center gap-2 mb-2">
-                        <span className={clsx('badge', konfig.rozetRenk)}>
-                            {konfig.etiket}
-                        </span>
-                        <div className="flex-1">
-                            <SkorCubugu skor={kaynak.skor} />
                         </div>
                     </div>
 
-                    {/* Özet (toggle) */}
-                    {!kaynak.url && acik && (
-                        <p className="text-slate-400 text-xs leading-relaxed mt-2 animate-fade-in border-t border-white/5 pt-2">
-                            {kaynak.metin_ozet}
-                        </p>
-                    )}
-                    {kaynak.url && (
-                        <p className="text-slate-500 text-xs leading-relaxed line-clamp-2">
-                            {kaynak.metin_ozet}
-                        </p>
+                    {/* Rozet + Skor */}
+                    <div className="flex items-center gap-2 mb-1">
+                        <span className={clsx('badge', konfig.rozetRenk)}>{konfig.etiket}</span>
+                        <div className="flex-1"><SkorCubugu skor={kaynak.skor} /></div>
+                    </div>
+
+                    {/* Madde metni — kırmızı highlight */}
+                    {acik && (
+                        <div className="mt-2 animate-fade-in">
+                            <p
+                                className="text-xs leading-relaxed rounded px-2 py-1.5"
+                                style={{
+                                    background: 'rgba(239,68,68,0.12)',
+                                    borderLeft: '2px solid rgba(239,68,68,0.7)',
+                                    color: 'rgba(252,165,165,0.95)',
+                                }}
+                            >
+                                {kaynak.metin_ozet}
+                            </p>
+                            {kaynak.url && (
+                                <button
+                                    onClick={linkAc}
+                                    className="mt-1.5 flex items-center gap-1 text-xs text-slate-500 hover:text-gold-400 transition-colors"
+                                >
+                                    <ExternalLink size={11} />
+                                    Tam metni mevzuat.gov.tr'de görüntüle
+                                </button>
+                            )}
+                        </div>
                     )}
                 </div>
             </div>

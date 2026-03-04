@@ -17,13 +17,14 @@ def _get_client() -> Groq:
     return _client
 
 
-SYSTEM_PROMPT = """Sen bir Turk is hukuku uzmansin. Kullanicinin sorusunu,
+SYSTEM_PROMPT = """Sen bir Turk hukuku uzmansin. Kullanicinin sorusunu,
 vektor arama icin optimize edilmis kisa bir arama sorgusuna donustur.
 Kurallar:
-- Maksimum 1-2 cumle yaz
-- Turkce karakterleri duzelt
-- Ilgili kanun veya Yargitay terimlerini ekle
-- Sadece sorguyu yaz, aciklama yapma"""
+- Yalnizca 1 kisa cumle yaz (maksimum 15 kelime)
+- Turkce karakterleri duzelt (c->c, s->s, g->g vb.)
+- Hukuki kavramlari ac (ornegin 'hasta bakim izni', 'kidem tazminati', 'kira sozlesmesi')
+- KESINLIKLE kanun numarasi, madde numarasi veya aciklama EKLEME
+- Sadece arama sorgusunu yaz, baska hicbir sey yazma"""
 
 
 def rewrite_query(soru: str) -> str:
@@ -37,10 +38,14 @@ def rewrite_query(soru: str) -> str:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": soru},
             ],
-            max_tokens=80,
+            max_tokens=60,
             temperature=0.0,
         )
-        return response.choices[0].message.content.strip()
+        rewritten = response.choices[0].message.content.strip()
+        # Sanity check: if rewritten is much longer than original or looks repetitive, use original
+        if len(rewritten) > len(soru) * 2 or rewritten.count(rewritten[:20]) > 2:
+            return soru
+        return rewritten
     except Exception:
         # If Groq is temporarily unavailable, continue with original query.
         return soru

@@ -30,18 +30,20 @@ def fake_pipeline(soru: str, max_kaynak: int) -> dict:
     }
 
 
-app.dependency_overrides[get_db] = override_get_db
-main._pipeline = fake_pipeline
 client = TestClient(app)
 
 
 def setup_module() -> None:
+    app.dependency_overrides[get_db] = override_get_db
+    main._pipeline = fake_pipeline
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
 
 def teardown_module() -> None:
     Base.metadata.drop_all(bind=engine)
+    app.dependency_overrides.pop(get_db, None)
+    main._pipeline = None
 
 
 def test_guest_ask_persists_and_lists_history() -> None:

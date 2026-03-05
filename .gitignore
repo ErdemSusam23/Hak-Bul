@@ -12,6 +12,7 @@ env/
 
 # Çevresel değişkenler
 .env
+.env.docker
 backend/.env
 
 # Veri klasörleri (Sadece içindekileri yoksay, klasörü tut)

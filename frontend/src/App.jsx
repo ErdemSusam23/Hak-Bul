@@ -1,8 +1,9 @@
 import { useState, useCallback } from 'react';
-import { MessageSquare, Clock, Star, LogIn, UserPlus } from 'lucide-react';
+import { MessageSquare, Clock, Star } from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
 import SohbetSayfasi from './pages/SohbetSayfasi';
 import { TemaProvider, useTema } from './context/TemaContext';
+import { AuthProvider } from './context/AuthContext';
 
 function SolSidebar() {
     return (
@@ -97,7 +98,9 @@ function AppIcerik() {
 export default function App() {
     return (
         <TemaProvider>
-            <AppIcerik />
+            <AuthProvider>
+                <AppIcerik />
+            </AuthProvider>
         </TemaProvider>
     );
 }

@@ -2,13 +2,16 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import {
     Scale, Send, Trash2, RotateCcw, Briefcase,
     FileText, Clock, Heart, ArrowRight, Sun, Moon,
-    LogIn, UserPlus,
+    LogIn, UserPlus, LogOut, History,
 } from 'lucide-react';
 import SohbetMesaji from '../components/SohbetMesaji';
 import YukleniyorGostergesi from '../components/YukleniyorGostergesi';
 import DirekArama from '../components/DirekArama';
+import AuthModal from '../components/AuthModal';
+import GecmisPanel, { gecmiseEkle } from '../components/GecmisPanel';
 import { useChat } from '../hooks/useChat';
 import { useTema } from '../context/TemaContext';
+import { useAuth } from '../context/AuthContext';
 
 const ORNEK_SORULAR = [
     {
@@ -35,9 +38,13 @@ const ORNEK_SORULAR = [
 
 export default function SohbetSayfasi() {
     const [girdi, setGirdi] = useState('');
+    const [authModalAcik, setAuthModalAcik] = useState(false);
+    const [gecmisAcik, setGecmisAcik] = useState(false);
+    const gecmisRef = useRef(null);
     const chatSonuRef = useRef(null);
     const inputRef = useRef(null);
     const { tema, toggleTema } = useTema();
+    const { kullanici, cikis } = useAuth();
 
     const {
         mesajlar,
@@ -54,13 +61,25 @@ export default function SohbetSayfasi() {
         chatSonuRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [mesajlar, yukleniyor]);
 
+    useEffect(() => {
+        if (!gecmisAcik) return;
+        const handler = (e) => {
+            if (gecmisRef.current && !gecmisRef.current.contains(e.target)) {
+                setGecmisAcik(false);
+            }
+        };
+        document.addEventListener('mousedown', handler);
+        return () => document.removeEventListener('mousedown', handler);
+    }, [gecmisAcik]);
+
     const gonder = useCallback(async () => {
         if (!girdi.trim() || yukleniyor) return;
         const metin = girdi;
         setGirdi('');
+        if (kullanici?.email) gecmiseEkle(kullanici.email, metin);
         await mesajGonder(metin);
         inputRef.current?.focus();
-    }, [girdi, yukleniyor, mesajGonder]);
+    }, [girdi, yukleniyor, mesajGonder, kullanici]);
 
     const klavyeIsle = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -138,33 +157,65 @@ export default function SohbetSayfasi() {
                     {/* Ayırıcı */}
                     <div className="w-px h-5 mx-1" style={{ background: 'var(--tema-border)' }} />
 
-                    {/* Giriş Yap */}
-                    <button
-                        disabled
-                        title="Yakında"
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150 opacity-60 cursor-not-allowed"
-                        style={{
-                            color: 'var(--tema-muted)',
-                            border: '1px solid var(--tema-border)',
-                        }}
-                    >
-                        <LogIn size={14} />
-                        <span className="hidden sm:inline">Giriş Yap</span>
-                    </button>
-
-                    {/* Kayıt Ol */}
-                    <button
-                        disabled
-                        title="Yakında"
-                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150 opacity-60 cursor-not-allowed"
-                        style={{
-                            background: 'var(--tema-send-btn)',
-                            color: 'var(--tema-send-icon)',
-                        }}
-                    >
-                        <UserPlus size={14} />
-                        <span className="hidden sm:inline">Kayıt Ol</span>
-                    </button>
+                    {kullanici ? (
+                        <>
+                            {/* Geçmiş */}
+                            <div className="relative" ref={gecmisRef}>
+                                <button
+                                    onClick={() => setGecmisAcik(v => !v)}
+                                    title="Arama geçmişi"
+                                    className="p-2 rounded-xl transition-all duration-150"
+                                    style={{ color: 'var(--tema-muted)' }}
+                                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--tema-text)'; e.currentTarget.style.background = `rgba(var(--a),0.08)`; }}
+                                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; e.currentTarget.style.background = 'transparent'; }}
+                                >
+                                    <History size={15} />
+                                </button>
+                                {gecmisAcik && (
+                                    <GecmisPanel
+                                        email={kullanici.email}
+                                        onSoruSec={(soru) => { ornekSoruTikla(soru); setGecmisAcik(false); }}
+                                        onKapat={() => setGecmisAcik(false)}
+                                    />
+                                )}
+                            </div>
+                            {/* Çıkış */}
+                            <button
+                                onClick={cikis}
+                                title={`Çıkış (${kullanici.email})`}
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150"
+                                style={{ color: 'var(--tema-muted)', border: '1px solid var(--tema-border)' }}
+                                onMouseEnter={e => { e.currentTarget.style.color = 'var(--tema-text)'; }}
+                                onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
+                            >
+                                <LogOut size={14} />
+                                <span className="hidden sm:inline">Çıkış</span>
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            {/* Giriş Yap */}
+                            <button
+                                onClick={() => setAuthModalAcik(true)}
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150"
+                                style={{ color: 'var(--tema-muted)', border: '1px solid var(--tema-border)' }}
+                                onMouseEnter={e => { e.currentTarget.style.color = 'var(--tema-text)'; }}
+                                onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
+                            >
+                                <LogIn size={14} />
+                                <span className="hidden sm:inline">Giriş Yap</span>
+                            </button>
+                            {/* Kayıt Ol */}
+                            <button
+                                onClick={() => setAuthModalAcik(true)}
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150"
+                                style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
+                            >
+                                <UserPlus size={14} />
+                                <span className="hidden sm:inline">Kayıt Ol</span>
+                            </button>
+                        </>
+                    )}
 
                     {/* Sohbet temizle */}
                     {mesajlar.length > 0 && (
@@ -354,6 +405,7 @@ export default function SohbetSayfasi() {
                     </p>
                 </div>
             </div>
+        {authModalAcik && <AuthModal onKapat={() => setAuthModalAcik(false)} />}
         </div>
     );
 }

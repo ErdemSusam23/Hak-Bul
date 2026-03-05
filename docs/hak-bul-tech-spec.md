@@ -83,6 +83,7 @@ Vatandaşların günlük Türkçe ile sordukları hukuki sorulara, Mevzuat.gov.t
 | `karar_no` | Yargıtay kararları için |
 | `hukuk_alani` | Örn: "is_hukuku" |
 | `yil` | Yürürlük / karar yılı |
+| `url` | Resmi kaynak bağlantısı (örn. mevzuat veya karar arama linki), yoksa `null` |
 
 ---
 

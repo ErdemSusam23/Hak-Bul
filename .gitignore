@@ -26,3 +26,5 @@ Thumbs.db
 # --- Vektör Veritabanı & Geçici Dosyalar ---
 *.log
 backend/to_delete.txt
+
+.claude

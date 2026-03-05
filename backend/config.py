@@ -7,6 +7,14 @@ def _as_bool(name: str, default: str) -> bool:
     return os.environ.get(name, default).strip().lower() == "true"
 
 
+def _normalize_database_url(url: str) -> str:
+    if url.startswith("postgres://"):
+        return url.replace("postgres://", "postgresql+psycopg://", 1)
+    if url.startswith("postgresql://"):
+        return url.replace("postgresql://", "postgresql+psycopg://", 1)
+    return url
+
+
 class Settings:
     QDRANT_URL: str = os.environ.get("QDRANT_URL", "")
     QDRANT_API_KEY: str = os.environ.get("QDRANT_API_KEY", "")
@@ -22,6 +30,11 @@ class Settings:
     MOCK_MODE: bool = _as_bool("MOCK_MODE", "false")
     MOCK_RETRIEVAL: bool = _as_bool("MOCK_RETRIEVAL", "false")
     MOCK_LLM: bool = _as_bool("MOCK_LLM", "false")
+    DATABASE_URL: str = _normalize_database_url(os.environ.get("DATABASE_URL", "sqlite:///./hakbul.db"))
+    JWT_SECRET_KEY: str = os.environ.get("JWT_SECRET_KEY", "")
+    JWT_ALGORITHM: str = os.environ.get("JWT_ALGORITHM", "HS256")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+    REFRESH_TOKEN_EXPIRE_DAYS: int = int(os.environ.get("REFRESH_TOKEN_EXPIRE_DAYS", "14"))
 
 
 settings = Settings()

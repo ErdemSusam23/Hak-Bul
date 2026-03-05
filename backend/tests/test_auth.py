@@ -1,0 +1,82 @@
+from collections.abc import Generator
+
+from fastapi.testclient import TestClient
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session, sessionmaker
+
+from db.base import Base
+from db.session import get_db
+from main import app
+import models  # noqa: F401
+
+TEST_DB_URL = "sqlite:///./test_auth.db"
+engine = create_engine(TEST_DB_URL, connect_args={"check_same_thread": False})
+TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+def override_get_db() -> Generator[Session, None, None]:
+    db = TestingSessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+app.dependency_overrides[get_db] = override_get_db
+client = TestClient(app)
+
+
+def setup_module() -> None:
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+
+
+def teardown_module() -> None:
+    Base.metadata.drop_all(bind=engine)
+
+
+def test_register_and_duplicate_email() -> None:
+    payload = {"email": "test@example.com", "password": "strongpass123"}
+    response = client.post("/auth/register", json=payload)
+    assert response.status_code == 201
+    assert response.json()["email"] == payload["email"]
+
+    duplicate = client.post("/auth/register", json=payload)
+    assert duplicate.status_code == 409
+
+
+def test_login_returns_tokens() -> None:
+    response = client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
+    assert response.status_code == 200
+    body = response.json()
+    assert "access_token" in body
+    assert "refresh_token" in body
+
+
+def test_login_invalid_password() -> None:
+    response = client.post("/auth/login", json={"email": "test@example.com", "password": "wrongpass123"})
+    assert response.status_code == 401
+
+
+def test_refresh_rotation_blocks_old_refresh_token() -> None:
+    login = client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
+    refresh_token = login.json()["refresh_token"]
+
+    rotated = client.post("/auth/refresh", json={"refresh_token": refresh_token})
+    assert rotated.status_code == 200
+    new_refresh = rotated.json()["refresh_token"]
+    assert new_refresh != refresh_token
+
+    reuse_old = client.post("/auth/refresh", json={"refresh_token": refresh_token})
+    assert reuse_old.status_code == 401
+
+
+def test_logout_revokes_refresh_token() -> None:
+    login = client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
+    refresh_token = login.json()["refresh_token"]
+
+    logout = client.post("/auth/logout", json={"refresh_token": refresh_token})
+    assert logout.status_code == 204
+
+    refresh = client.post("/auth/refresh", json={"refresh_token": refresh_token})
+    assert refresh.status_code == 401

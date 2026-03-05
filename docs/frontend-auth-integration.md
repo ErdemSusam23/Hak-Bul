@@ -119,6 +119,13 @@ Not: Refresh token rotation aktif. Yani refresh cagrisi sonrasi eski refresh tok
 
 Su an `/ask`, `/search`, `/health` mevcut haliyle public davranir; ileride protected olabilir.
 
+### Guest chat davranisi
+
+- `/ask` public oldugu icin login olmadan da kullanilabilir.
+- Login olmayan kullanicida backend `guest_session_id` uretir ve response icinde doner.
+- Frontend bu `guest_session_id` degerini saklayip sonraki `/ask` cagrilarinda gondermelidir.
+- Loginli kullanicida `guest_session_id` donmez (`null`) ve chat kayitlari user id ile tutulur.
+
 ### Otomatik refresh akisi
 
 1. Request `401` donerse (ve endpoint auth gerektiriyorsa) bir kez `/auth/refresh` cagir.

@@ -14,6 +14,7 @@ from slowapi.middleware import SlowAPIMiddleware
 from slowapi.util import get_remote_address
 
 from config import settings
+from routers.auth import router as auth_router
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
 
 warnings.filterwarnings("ignore")
@@ -35,6 +36,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(auth_router)
 
 
 @app.exception_handler(RateLimitExceeded)

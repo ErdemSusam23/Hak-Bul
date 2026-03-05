@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=False)
 
 def _as_bool(name: str, default: str) -> bool:
     return os.environ.get(name, default).strip().lower() == "true"

@@ -164,3 +164,8 @@ Mevcut kapsama:
 
 - Gercek `.env` ve `.env.docker` dosyalarini repoya commit etmeyin.
 - API key ve JWT secret degerlerini production'da guvenli secret manager ile yonetin.
+
+
+<div align="center">
+  <sub>Hak-Bul Projesi • Son Güncelleme: 05.03.2026</sub>
+</div>

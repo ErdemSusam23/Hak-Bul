@@ -105,6 +105,17 @@ export function useChat() {
         setHata(null);
     }, []);
 
+    // Kaydedilmiş sohbeti geri yükle (zaman string → Date dönüşümü dahil)
+    const mesajlariYukle = useCallback((yeniMesajlar) => {
+        setMesajlar(
+            yeniMesajlar.map((m) => ({
+                ...m,
+                zaman: typeof m.zaman === 'string' ? new Date(m.zaman) : m.zaman,
+            }))
+        );
+        setHata(null);
+    }, []);
+
     return {
         mesajlar,
         yukleniyor,
@@ -116,5 +127,6 @@ export function useChat() {
         aramayiCalistir,
         aramayiTemizle,
         sohbetiTemizle,
+        mesajlariYukle,
     };
 }

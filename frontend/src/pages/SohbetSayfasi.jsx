@@ -8,7 +8,7 @@ import SohbetMesaji from '../components/SohbetMesaji';
 import YukleniyorGostergesi from '../components/YukleniyorGostergesi';
 import DirekArama from '../components/DirekArama';
 import AuthModal from '../components/AuthModal';
-import { gecmiseEkle } from '../components/GecmisPanel';
+import { sohbetKaydet } from '../utils/sohbetStore';
 import { useChat } from '../hooks/useChat';
 import { useTema } from '../context/TemaContext';
 import { useAuth } from '../context/AuthContext';
@@ -36,11 +36,12 @@ const ORNEK_SORULAR = [
     },
 ];
 
-export default function SohbetSayfasi({ secilenSoru, onSoruIslendi, temizleSinyali }) {
+export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSinyali }) {
     const [girdi, setGirdi] = useState('');
     const [authModalAcik, setAuthModalAcik] = useState(false);
     const chatSonuRef = useRef(null);
     const inputRef = useRef(null);
+    const sohbetIdRef = useRef(null); // aktif session ID
     const { tema, toggleTema } = useTema();
     const { kullanici, cikis } = useAuth();
 
@@ -53,40 +54,60 @@ export default function SohbetSayfasi({ secilenSoru, onSoruIslendi, temizleSinya
         aramayiCalistir,
         aramayiTemizle,
         sohbetiTemizle,
+        mesajlariYukle,
     } = useChat();
 
     useEffect(() => {
         chatSonuRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [mesajlar, yukleniyor]);
 
-    // Soldan soru seçilince input'a yaz
+    // Soldan sohbet seçilince mesajları geri yükle
     useEffect(() => {
-        if (secilenSoru) {
-            setGirdi(secilenSoru);
-            inputRef.current?.focus();
+        if (secilenSohbet) {
+            mesajlariYukle(secilenSohbet.mesajlar);
+            sohbetIdRef.current = secilenSohbet.id;
+            setGirdi('');
             onSoruIslendi?.();
         }
-    }, [secilenSoru]);
+    }, [secilenSohbet]);
 
     // Yeni sohbet sinyali gelince temizle
     useEffect(() => {
         if (temizleSinyali > 0) {
             sohbetiTemizle();
             setGirdi('');
+            sohbetIdRef.current = null;
         }
     }, [temizleSinyali]);
+
+    // Her AI yanıtından sonra sohbeti otomatik kaydet
+    useEffect(() => {
+        if (!kullanici?.email || mesajlar.length === 0 || yukleniyor) return;
+        if (!sohbetIdRef.current) return;
+        const ilkSoru = mesajlar.find((m) => m.rol === 'kullanici')?.icerik || 'Sohbet';
+        sohbetKaydet(kullanici.email, {
+            id: sohbetIdRef.current,
+            title: ilkSoru.slice(0, 60),
+            tarih: new Date().toISOString(),
+            mesajlar: mesajlar.map((m) => ({
+                ...m,
+                zaman: m.zaman instanceof Date ? m.zaman.toISOString() : m.zaman,
+            })),
+        });
+        window.dispatchEvent(new Event('gecmis-guncellendi'));
+    }, [mesajlar, yukleniyor]);
 
     const gonder = useCallback(async () => {
         if (!girdi.trim() || yukleniyor) return;
         const metin = girdi;
         setGirdi('');
-        if (kullanici?.email) {
-            gecmiseEkle(kullanici.email, metin);
-            window.dispatchEvent(new Event('gecmis-guncellendi'));
+        // İlk mesajsa yeni session ID oluştur
+        if (!sohbetIdRef.current) {
+            sohbetIdRef.current = `sohbet_${Date.now()}`;
         }
         await mesajGonder(metin);
         inputRef.current?.focus();
-    }, [girdi, yukleniyor, mesajGonder, kullanici]);
+    }, [girdi, yukleniyor, mesajGonder]);
 
     const klavyeIsle = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {

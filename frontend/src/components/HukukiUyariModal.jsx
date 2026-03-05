@@ -21,27 +21,19 @@ export default function HukukiUyariModal({ onKabul }) {
 
     return (
         <div
-            className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${animasyon ? 'opacity-100' : 'opacity-0'
-                }`}
-            style={{ background: 'rgba(5, 13, 26, 0.92)', backdropFilter: 'blur(8px)' }}
+            className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${animasyon ? 'opacity-100' : 'opacity-0'}`}
+            style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)' }}
         >
-            {/* Arkaplan dekoratif elementler */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
-            </div>
-
             <div
-                className={`relative w-full max-w-lg transition-all duration-300 ${animasyon ? 'translate-y-0 scale-100' : 'translate-y-8 scale-95'
-                    }`}
+                className={`relative w-full max-w-lg transition-all duration-300 ${animasyon ? 'translate-y-0 scale-100' : 'translate-y-8 scale-95'}`}
             >
                 {/* Kart */}
                 <div
                     className="glass-card p-8"
                     style={{
-                        background: 'linear-gradient(135deg, rgba(15,31,56,0.95) 0%, rgba(10,22,40,0.98) 100%)',
-                        borderColor: 'rgba(212,168,83,0.3)',
-                        boxShadow: '0 25px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,168,83,0.15), inset 0 1px 0 rgba(255,255,255,0.05)',
+                        background: 'var(--tema-panel)',
+                        border: `1px solid rgba(var(--a), 0.2)`,
+                        boxShadow: '0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05)',
                     }}
                 >
                     {/* Logo alanı */}
@@ -49,16 +41,16 @@ export default function HukukiUyariModal({ onKabul }) {
                         <div
                             className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4"
                             style={{
-                                background: 'linear-gradient(135deg, rgba(212,168,83,0.2) 0%, rgba(212,168,83,0.05) 100%)',
-                                border: '1px solid rgba(212,168,83,0.4)',
+                                background: `rgba(var(--a), 0.12)`,
+                                border: `1px solid rgba(var(--a), 0.3)`,
                             }}
                         >
-                            <Scale size={32} className="text-gold-400" />
+                            <Scale size={32} style={{ color: 'var(--tema-accent)' }} />
                         </div>
                         <h1 className="font-serif text-3xl font-semibold gold-gradient mb-1">
                             Hak-Bul
                         </h1>
-                        <p className="text-slate-400 text-sm tracking-widest uppercase">
+                        <p className="text-sm tracking-widest uppercase" style={{ color: 'var(--tema-muted)' }}>
                             Türk Hukuk Asistanı
                         </p>
                     </div>
@@ -67,17 +59,17 @@ export default function HukukiUyariModal({ onKabul }) {
                     <div
                         className="rounded-xl p-4 mb-6"
                         style={{
-                            background: 'rgba(217,119,6,0.08)',
-                            border: '1px solid rgba(217,119,6,0.25)',
+                            background: 'var(--modal-uyari-bg)',
+                            border: '1px solid var(--modal-uyari-border)',
                         }}
                     >
                         <div className="flex gap-3">
-                            <AlertTriangle size={18} className="text-amber-400 flex-shrink-0 mt-0.5" />
+                            <AlertTriangle size={18} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--modal-uyari-ikon)' }} />
                             <div>
-                                <p className="text-amber-300 font-semibold text-sm mb-1">
+                                <p className="font-semibold text-sm mb-1" style={{ color: 'var(--modal-uyari-baslik)' }}>
                                     Önemli Bilgilendirme
                                 </p>
-                                <p className="text-amber-200/80 text-sm leading-relaxed">
+                                <p className="text-sm leading-relaxed" style={{ color: 'var(--modal-uyari-metin)' }}>
                                     Bu sistem yalnızca <strong>bilgi sunma</strong> amacıyla çalışır.
                                     Verilen yanıtlar hukuki danışmanlık niteliği taşımaz ve avukat
                                     görüşünün yerini tutmaz.
@@ -94,8 +86,8 @@ export default function HukukiUyariModal({ onKabul }) {
                             'Kaynak atıflı, şeffaf yanıtlar',
                         ].map((ozellik) => (
                             <li key={ozellik} className="flex items-center gap-2.5">
-                                <CheckCircle size={15} className="text-gold-400 flex-shrink-0" />
-                                <span className="text-slate-300 text-sm">{ozellik}</span>
+                                <CheckCircle size={15} className="flex-shrink-0" style={{ color: 'var(--tema-accent)' }} />
+                                <span className="text-sm" style={{ color: 'var(--tema-text2)' }}>{ozellik}</span>
                             </li>
                         ))}
                     </ul>
@@ -103,15 +95,16 @@ export default function HukukiUyariModal({ onKabul }) {
                     {/* Kabul butonu */}
                     <button
                         onClick={kabulEt}
-                        className="w-full py-3.5 rounded-xl font-semibold text-navy-900 text-base transition-all duration-200 hover:shadow-xl hover:shadow-gold-400/20 active:scale-[0.98]"
+                        className="w-full py-3.5 rounded-xl font-semibold text-base transition-all duration-200 active:scale-[0.98]"
                         style={{
-                            background: 'linear-gradient(135deg, #d4a853 0%, #f0c96a 50%, #b8892e 100%)',
+                            background: 'var(--tema-send-btn)',
+                            color: 'var(--tema-send-icon)',
                         }}
                     >
                         Anladım, Devam Et
                     </button>
 
-                    <p className="text-center text-slate-600 text-xs mt-4">
+                    <p className="text-center text-xs mt-4" style={{ color: 'var(--tema-dimmer)' }}>
                         Devam ederek kullanım koşullarını kabul etmiş olursunuz.
                     </p>
                 </div>

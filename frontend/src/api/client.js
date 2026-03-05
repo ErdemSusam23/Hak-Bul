@@ -3,14 +3,6 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true';
 
-// Token getter/setter — AuthContext ile aynı key'leri kullanır
-const getAccessToken = () => sessionStorage.getItem('hakbul_access');
-const getRefreshToken = () => sessionStorage.getItem('hakbul_refresh');
-const setTokens = (access, refresh) => {
-    sessionStorage.setItem('hakbul_access', access);
-    if (refresh) sessionStorage.setItem('hakbul_refresh', refresh);
-};
-
 // --- Mock veriler ---
 const MOCK_DELAY = 1800;
 
@@ -82,60 +74,6 @@ const client = axios.create({
     timeout: 30000,
     headers: { 'Content-Type': 'application/json' },
 });
-
-// Request interceptor — her isteğe token ekle
-client.interceptors.request.use((config) => {
-    const token = getAccessToken();
-    if (token) config.headers.Authorization = `Bearer ${token}`;
-    return config;
-});
-
-// Response interceptor — 401 gelirse token yenile, bir kez tekrar dene
-let _yenileniyor = false;
-let _beklemeListesi = [];
-
-client.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-        const orijinal = error.config;
-        if (error?.response?.status !== 401 || orijinal._tekrarDenendi) {
-            return Promise.reject(error);
-        }
-        orijinal._tekrarDenendi = true;
-
-        if (_yenileniyor) {
-            return new Promise((resolve, reject) => {
-                _beklemeListesi.push({ resolve, reject });
-            }).then((token) => {
-                orijinal.headers.Authorization = `Bearer ${token}`;
-                return client(orijinal);
-            });
-        }
-
-        _yenileniyor = true;
-        try {
-            const refresh = getRefreshToken();
-            if (!refresh) throw new Error('Refresh token yok');
-            const { data } = await axios.post(`${API_URL}/auth/refresh`, { refresh_token: refresh });
-            setTokens(data.access_token, data.refresh_token);
-            _beklemeListesi.forEach((p) => p.resolve(data.access_token));
-            _beklemeListesi = [];
-            orijinal.headers.Authorization = `Bearer ${data.access_token}`;
-            return client(orijinal);
-        } catch {
-            _beklemeListesi.forEach((p) => p.reject(error));
-            _beklemeListesi = [];
-            // Session temizle
-            sessionStorage.removeItem('hakbul_access');
-            sessionStorage.removeItem('hakbul_refresh');
-            sessionStorage.removeItem('hakbul_email');
-            window.location.href = '/giris';
-            return Promise.reject(error);
-        } finally {
-            _yenileniyor = false;
-        }
-    }
-);
 
 // POST /ask  →  { soru, max_kaynak }
 export async function soruSor(soru, maxKaynak = 5) {

@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const TemaContext = createContext();
 
 export function TemaProvider({ children }) {
-    const [tema, setTema] = useState(() => localStorage.getItem('tema') || 'koyu');
+    const [tema, setTema] = useState(() => localStorage.getItem('tema') || 'acik');
 
     useEffect(() => {
         localStorage.setItem('tema', tema);

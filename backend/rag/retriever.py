@@ -34,9 +34,13 @@ MADDE_RE = re.compile(r"(?:madde|md)\s*\.?\s*(\d+)")
 LAW_NUMBERS = ("4857", "5510", "6098")
 
 LAW_HINT_KEYWORDS = {
-    "4857": {"isci", "isveren", "kidem", "ihbar", "mesai", "fesih", "ucret", "calisma"},
-    "5510": {"sgk", "sigorta", "emeklilik", "prim", "borclanma", "is_kazasi", "kazasi", "bildirim", "bildirimi", "malulluk", "analik"},
-    "6098": {"borclar", "kira", "depozito", "temerrut", "sozlesme", "alacak", "satis", "ayip", "faiz", "cezai"},
+    "4857": {"isci", "isveren", "kidem", "ihbar", "mesai", "fesih", "ucret", "calisma",
+             "izin", "bakim", "mazeret", "hasta", "hastalik", "dogum", "analık", "analik",
+             "isten", "ise", "isten_cik", "iscinin", "isveren", "tazminat", "istifa"},
+    "5510": {"sgk", "sigorta", "emeklilik", "prim", "borclanma", "is_kazasi", "kazasi", "bildirim", "bildirimi", "malulluk", "analik",
+             "istirahat", "rapor", "gecici", "gorezemezlik", "odeme", "saglik"},
+    "6098": {"borclar", "kira", "depozito", "temerrut", "sozlesme", "alacak", "satis", "ayip", "faiz", "cezai",
+             "kefalet", "hibe", "vekaletname", "dava"},
 }
 
 TRANSLATION_TABLE = str.maketrans(
@@ -346,13 +350,34 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
     if not is_qdrant_configured():
         return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
 
-    try:
-        model = _get_model()
-        embedding = model.encode(query).tolist()
-        results = _query_qdrant(embedding=embedding, top_n=top_n, kaynak_turu=kaynak_turu)
-        return [{"payload": r.payload, "skor": r.score} for r in results]
-    except Exception:
-        return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+    # Hybrid retrieval: local index for kanun, Qdrant for yargitay_karari
+    combined: list[dict] = []
+
+    # Always pull kanun articles from the local index
+    if not kaynak_turu or kaynak_turu == "kanun":
+        local_kanun = _retrieve_local(query=query, top_n=top_n, kaynak_turu="kanun")
+        # Normalize local scores to [0, 1] to be comparable with Qdrant cosine similarity
+        for chunk in local_kanun:
+            chunk["skor"] = round(min(chunk["skor"] / 2.0, 0.99), 4)
+        combined.extend(local_kanun)
+
+    # Pull yargitay_karari from Qdrant (semantic search works well for case law)
+    if not kaynak_turu or kaynak_turu == "yargitay_karari":
+        try:
+            model = _get_model()
+            embedding = model.encode(query).tolist()
+            qdrant_results = _query_qdrant(
+                embedding=embedding,
+                top_n=top_n,
+                kaynak_turu="yargitay_karari" if not kaynak_turu else kaynak_turu,
+            )
+            combined.extend([{"payload": r.payload, "skor": r.score} for r in qdrant_results])
+        except Exception:
+            if not combined:
+                return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+
+    combined.sort(key=lambda x: x["skor"], reverse=True)
+    return combined[:top_n]
 
 
 def filter_by_score(chunks: list[dict], threshold: float | None = None) -> list[dict]:

@@ -1,166 +1,166 @@
-# 🏛️ Hak-Bul — Türk Hukuk Asistanı
+# Hak-Bul - Turk Hukuk Asistani
 
-Vatandaşların günlük Türkçe ile sordukları hukuki sorulara, Mevzuat.gov.tr ve Yargıtay kararlarını kaynak alarak otomatik yanıt üreten RAG tabanlı web uygulaması.
+Vatandaslarin Turkce hukuki sorularina, mevzuat ve ilgili kaynaklar uzerinden yanit ureten RAG tabanli web uygulamasi.
 
-> ⚠️ Bu sistem bilgi sunma amacıyla çalışır. Hukuki danışmanlık niteliği taşımaz.
+> Uyari: Bu sistem bilgi amaclidir, hukuki danismanlik degildir.
 
----
+## Guncel Ozellikler
 
-## 📁 Proje Yapısı
+- FastAPI backend + React (Vite) frontend
+- RAG pipeline (`/ask`) ve direkt arama (`/search`)
+- JWT auth (register/login/refresh rotation/logout)
+- Sohbet kaydi: girisli kullanici icin user bazli, misafir icin `guest_session_id` bazli gecmis
+- Rate limit (`/ask` icin `20/minute`)
+- Alembic migration altyapisi
+- Docker Compose ile `postgres + backend + frontend` calistirma
 
-```
+## Proje Yapisi
+
+```text
 Hak-Bul/
-├── backend/        # FastAPI + RAG pipeline
-└── frontend/       # React + Vite (henüz kurulmadı)
+|- backend/
+|  |- alembic/
+|  |- auth/
+|  |- db/
+|  |- models/
+|  |- rag/
+|  |- routers/
+|  |- services/
+|  |- tests/
+|  |- main.py
+|  |- config.py
+|  |- requirements.txt
+|- frontend/
+|  |- src/
+|  |- package.json
+|- docs/
+|  |- ENV_SETUP.md
+|  |- frontend-auth-integration.md
+|- docker-compose.yml
 ```
 
----
+## Gereksinimler
 
-## 🚀 Backend Kurulum
+- Python 3.11
+- Node.js 20+
+- npm
+- Docker + Docker Compose (opsiyonel, tam stack icin)
 
-### Gereksinimler
-- Python 3.11 → https://www.python.org/downloads/release/python-3119/
-- Git
+## Local Gelistirme Kurulumu
 
-### 1. Repoyu klonla
+### 1. Backend
 
 ```bash
-git clone https://github.com/YOUR_ORG/Hak-Bul.git
-cd Hak-Bul/backend
+cd backend
+cp .env.example .env
 ```
 
-### 2. Virtual environment oluştur
+`.env` icinde en azindan su alanlari doldur:
 
-```bash
-# Windows
-py -3.11 -m venv venv
-.\venv\Scripts\activate
+- `DATABASE_URL`
+- `JWT_SECRET_KEY`
+- `GROQ_API_KEY` (gercek LLM yaniti icin)
+- `QDRANT_URL` ve `QDRANT_API_KEY` (varsa)
 
-# macOS / Linux
-python3.11 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Bağımlılıkları kur
+Bagimliliklar:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Environment variables
+Migration:
 
 ```bash
-cp .env.example .env
+alembic upgrade head
 ```
 
-`.env` dosyasını aç, değerleri doldur:
-
-```env
-GROQ_API_KEY=your_key_here
-QDRANT_URL=https://your-cluster.qdrant.io
-QDRANT_API_KEY=your_key_here
-QDRANT_COLLECTION=hukuk_chunks
-SCORE_THRESHOLD=0.65
-MOCK_RETRIEVAL=true    # Qdrant 
-MOCK_LLM=false         # Groq 
-```
-
-> Groq API key almak için → https://console.groq.com  
-> Qdrant Cloud hesabı açmak için → https://cloud.qdrant.io
-
-### 5. Uygulamayı başlat
+Backend'i baslat:
 
 ```bash
 uvicorn main:app --reload
 ```
 
-Uygulama ayağa kalktığında:
-- API: http://localhost:8000
-- Swagger UI (test arayüzü): http://localhost:8000/docs
-- ReDoc: http://localhost:8000/redoc
-
----
-
-## 🧪 MOCK_MODE
-
-Groq API key ve Qdrant bağlantısı olmadan geliştirme yapabilmek için `.env` dosyasında `MOCK_...=true` bırak. Bu modda:
-
-- Query rewriting adımı mock yanıt döner
-- Qdrant yerine sabit bir örnek chunk kullanılır
-- LLM çağrısı yapılmaz
-
-Gerçek API'ye geçmek için `.env`'de `MOCK_...=false` yap ve key'leri doldur.
-
----
-
-## 📡 API Endpointleri
-
-| Method | Endpoint  | Açıklama |
-|--------|-----------|----------|
-| POST   | `/ask`    | Hukuki soru sor, kaynak atıflı yanıt al |
-| GET    | `/search` | Kanun maddesi veya dava no ile direkt arama |
-| GET    | `/health` | Sistem sağlık kontrolü |
-
-Detaylı API dokümantasyonu → `backend/` klasöründeki `turk-hukuk-backend-docs.docx`
-
-### Örnek istek — POST /ask
-
-```json
-{
-  "soru": "Kıdem tazminatı almak için ne kadar çalışmam gerekiyor?",
-  "max_kaynak": 5
-}
-```
-
-### Örnek yanıt
-
-```json
-{
-  "yanit": "...",
-  "kaynaklar": [
-    {
-      "kaynak_turu": "kanun",
-      "baslik": "4857 Sayılı İş Kanunu — Madde 17",
-      "metin_ozet": "...",
-      "skor": 0.91
-    }
-  ],
-  "uyari": "Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz."
-}
-```
-
-## 🐳 Docker ile Çalıştırma (Deployment)
-
-Geliştirmede venv kullanılır. Deployment için Dockerfile hazır.
+### 2. Frontend
 
 ```bash
-cd backend
-docker build -t hak-bul-backend .
-docker run -p 8000:8000 --env-file .env hak-bul-backend
+cd frontend
+cp .env.example .env
+npm install
+npm run dev
 ```
 
----
+Varsayilanlar:
 
-## 🗂️ Backend Dizin Yapısı
+- `VITE_API_URL=http://localhost:8000`
+- `VITE_MOCK_MODE=false`
 
+## Docker ile Calistirma
+
+```bash
+cp backend/.env.docker.example backend/.env.docker
+docker compose up -d --build
 ```
-backend/
-├── main.py                  # FastAPI app, rate limiter, endpointler
-├── schemas.py               # Pydantic modelleri
-├── config.py                # Environment variables
-├── requirements.txt
-├── Dockerfile
-├── .env.example
-├── rag/
-│   ├── pipeline.py          # RAG adımlarını birleştiren ana fonksiyon
-│   ├── query_rewriter.py    # Adım 1: Query rewriting (Groq 8B)
-│   ├── retriever.py         # Adım 2-3: Vektör arama + skor filtresi
-│   └── generator.py         # Adım 4: Yanıt üretme (Groq 70B)
-├── data/
-│   ├── raw/                 # Ham scraping çıktıları
-│   └── processed/           # Chunk JSON'ları
-└── scripts/
-    ├── chunk_kanun.py        # Kanun metni chunking
-    ├── chunk_yargitay.py     # Yargıtay kararı chunking
-    └── load_qdrant.py        # Qdrant'a yükleme
+
+Servisler:
+
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:8000`
+- Swagger: `http://localhost:8000/docs`
+- Postgres: `localhost:5432`
+
+Not:
+
+- Docker backend acilisinda otomatik `alembic upgrade head` calisir.
+- `DATABASE_URL` host'u Docker icinde `postgres` olmalidir.
+
+## API Endpointleri
+
+### Core
+
+- `POST /ask`
+- `GET /search`
+- `GET /health`
+
+### Auth
+
+- `POST /auth/register`
+- `POST /auth/login`
+- `POST /auth/refresh`
+- `POST /auth/logout`
+
+### Chat Gecmisi
+
+- `GET /chat/history/{conversation_id}` (auth gerekir)
+- `GET /chat/conversations` (auth gerekir)
+- `GET /chat/guest/history/{conversation_id}?guest_session_id=...`
+- `GET /chat/guest/conversations?guest_session_id=...`
+
+## Bilinen Durumlar
+
+- Backend chat gecmisi endpointleri aktif.
+- Frontend tarafinda chat gecmisi backend endpointlerine tam entegre degil; su an kullanici bazli yerel gecmis (localStorage) kullanimi da bulunuyor.
+- Qdrant ayari yoksa backend yerel corpus fallback moduna dusebilir.
+
+## Testler
+
+Backend testlerini calistirmak icin:
+
+```bash
+python -m pytest backend/tests -q
 ```
+
+Mevcut kapsama:
+
+- Auth akisi testleri
+- Chat history persistence testleri (guest + user)
+
+## Ek Dokumanlar
+
+- `docs/ENV_SETUP.md`
+- `docs/frontend-auth-integration.md`
+- `docs/hak-bul-backend-docs.md`
+
+## Guvenlik Notu
+
+- Gercek `.env` ve `.env.docker` dosyalarini repoya commit etmeyin.
+- API key ve JWT secret degerlerini production'da guvenli secret manager ile yonetin.

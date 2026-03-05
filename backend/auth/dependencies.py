@@ -10,6 +10,7 @@ from models.enums import UserRole
 from models.user import User
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+optional_oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login", auto_error=False)
 
 
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> User:
@@ -24,6 +25,22 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     user = db.query(User).filter(User.id == payload["sub"], User.is_active.is_(True)).first()
     if not user:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found.")
+    return user
+
+
+def get_current_user_optional(token: str | None = Depends(optional_oauth2_scheme), db: Session = Depends(get_db)) -> User | None:
+    if not token:
+        return None
+
+    try:
+        payload = decode_token(token)
+    except TokenDecodeError:
+        return None
+
+    if payload.get("type") != "access":
+        return None
+
+    user = db.query(User).filter(User.id == payload["sub"], User.is_active.is_(True)).first()
     return user
 
 

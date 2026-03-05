@@ -22,17 +22,18 @@ def override_get_db() -> Generator[Session, None, None]:
         db.close()
 
 
-app.dependency_overrides[get_db] = override_get_db
 client = TestClient(app)
 
 
 def setup_module() -> None:
+    app.dependency_overrides[get_db] = override_get_db
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
 
 
 def teardown_module() -> None:
     Base.metadata.drop_all(bind=engine)
+    app.dependency_overrides.pop(get_db, None)
 
 
 def test_register_and_duplicate_email() -> None:

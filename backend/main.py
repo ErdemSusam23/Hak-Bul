@@ -5,17 +5,23 @@ main.py - Hak-Bul backend entrypoint
 import os
 import warnings
 
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from slowapi import Limiter
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 from slowapi.util import get_remote_address
+from sqlalchemy.orm import Session
 
+from auth.dependencies import get_current_user_optional
 from config import settings
 from routers.auth import router as auth_router
+from routers.chat import router as chat_router
+from db.session import get_db
+from models.user import User
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
+from services.chat_service import resolve_conversation_id, resolve_guest_session_id, save_chat_pair
 
 warnings.filterwarnings("ignore")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
@@ -37,6 +43,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.include_router(auth_router)
+app.include_router(chat_router)
 
 
 @app.exception_handler(RateLimitExceeded)
@@ -75,11 +82,42 @@ def get_qdrant():
 
 @app.post("/ask", response_model=AskResponse)
 @limiter.limit("20/minute")
-async def ask(request: Request, body: AskRequest):
+async def ask(
+    request: Request,
+    body: AskRequest,
+    db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
+):
     try:
         pipeline = get_pipeline()
         result = pipeline(soru=body.soru, max_kaynak=body.max_kaynak)
-        return AskResponse(**result)
+        conversation_id = resolve_conversation_id(body.conversation_id)
+
+        guest_session_id: str | None = None
+        if current_user:
+            save_chat_pair(
+                db=db,
+                conversation_id=conversation_id,
+                user_id=current_user.id,
+                user_message=body.soru,
+                assistant_message=result["yanit"],
+            )
+        else:
+            guest_session_id = resolve_guest_session_id(body.guest_session_id)
+            save_chat_pair(
+                db=db,
+                conversation_id=conversation_id,
+                guest_session_id=guest_session_id,
+                user_message=body.soru,
+                assistant_message=result["yanit"],
+            )
+
+        return AskResponse(
+            yanit=result["yanit"],
+            kaynaklar=result["kaynaklar"],
+            conversation_id=conversation_id,
+            guest_session_id=guest_session_id,
+        )
     except RuntimeError as exc:
         detail = str(exc)
         if "Groq" in detail:

@@ -4,6 +4,8 @@ from pydantic import BaseModel, Field
 class AskRequest(BaseModel):
     soru: str = Field(..., min_length=10, max_length=1000)
     max_kaynak: int = Field(default=5, ge=1, le=10)
+    conversation_id: str | None = Field(default=None, min_length=36, max_length=36)
+    guest_session_id: str | None = Field(default=None, min_length=36, max_length=36)
 
 
 class KaynakItem(BaseModel):
@@ -17,7 +19,9 @@ class KaynakItem(BaseModel):
 class AskResponse(BaseModel):
     yanit: str
     kaynaklar: list[KaynakItem]
-    uyari: str = "Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz."
+    conversation_id: str
+    guest_session_id: str | None = None
+    uyari: str = "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz."
 
 
 class SearchResponse(BaseModel):
@@ -60,3 +64,27 @@ class TokenPairResponse(BaseModel):
     access_token: str
     refresh_token: str
     token_type: str = "bearer"
+
+
+class ChatMessageItem(BaseModel):
+    id: str
+    conversation_id: str
+    role: str
+    content: str
+    created_at: str
+
+
+class ChatHistoryResponse(BaseModel):
+    messages: list[ChatMessageItem]
+    total: int
+
+
+class ConversationSummary(BaseModel):
+    conversation_id: str
+    message_count: int
+    last_message_at: str
+
+
+class ConversationListResponse(BaseModel):
+    conversations: list[ConversationSummary]
+    total: int

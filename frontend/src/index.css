@@ -4,117 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── CSS TEMA DEĞİŞKENLERİ ── */
-:root {
-  /* Arka planlar */
-  --tema-bg: #11111b;
-  --tema-bg-gradient: linear-gradient(135deg, #11111b 0%, #1e1e2e 50%, #27273e 100%);
-  --tema-panel: rgba(24,24,37,0.95);
-  --tema-surface: rgba(30,30,46,0.9);
-  --tema-bubble: rgba(255,255,255,0.035);
-  --tema-card: rgba(255,255,255,0.025);
-  --tema-card-hover: rgba(137,180,250,0.06);
-
-  /* Kenarlıklar */
-  --tema-border: rgba(255,255,255,0.07);
-  --tema-border-card: rgba(255,255,255,0.06);
-  --tema-border-focus: rgba(137,180,250,0.4);
-  --tema-shadow-focus: 0 0 0 3px rgba(137,180,250,0.07), 0 2px 12px rgba(0,0,0,0.2);
-
-  /* Metin */
-  --tema-text: rgba(205,214,244,0.95);
-  --tema-text2: rgba(166,173,200,0.85);
-  --tema-muted: rgba(108,112,134,0.8);
-  --tema-dimmer: rgba(69,71,90,0.9);
-
-  /* Accent (mavi) — a değişkeni rgba() içinde kullanılır */
-  --a: 137,180,250;
-  --tema-accent: #89b4fa;
-  --tema-send-btn: linear-gradient(135deg, #89b4fa 0%, #b4befe 100%);
-  --tema-send-icon: #11111b;
-  --tema-title: linear-gradient(135deg, #89b4fa 0%, #b4befe 50%, #74c7ec 100%);
-
-  /* Kullanıcı mesajı */
-  --tema-user-bg: linear-gradient(135deg, #2a2a3e 0%, #222236 100%);
-  --tema-user-border: rgba(137,180,250,0.15);
-  --tema-user-avatar: rgba(39,39,62,0.7);
-
-  /* Dekoratif */
-  --tema-glow-top: rgba(137,180,250,0.12);
-  --tema-glow-bottom: rgba(59,130,246,0.2);
-
-  /* Kaynak kartları — Kanun */
-  --kanun-strip: rgba(137,180,250,0.55);
-  --kanun-icon-bg: rgba(137,180,250,0.1);
-  --kanun-icon: #89b4fa;
-  --kanun-badge-bg: rgba(137,180,250,0.12);
-  --kanun-badge-text: rgba(180,190,254,0.9);
-  --kanun-expand-bg: rgba(137,180,250,0.06);
-  --kanun-expand-border: rgba(137,180,250,0.3);
-  --kanun-expand-text: rgba(180,190,254,0.82);
-
-  /* Kaynak kartları — Yargıtay */
-  --yargitay-strip: rgba(203,166,247,0.55);
-  --yargitay-icon-bg: rgba(203,166,247,0.1);
-  --yargitay-icon: #cba6f7;
-  --yargitay-badge-bg: rgba(203,166,247,0.12);
-  --yargitay-badge-text: rgba(203,166,247,0.9);
-  --yargitay-expand-bg: rgba(203,166,247,0.06);
-  --yargitay-expand-border: rgba(203,166,247,0.3);
-  --yargitay-expand-text: rgba(215,190,249,0.82);
-}
-
-.tema-acik {
-  --tema-bg: #f5f2ec;
-  --tema-bg-gradient: linear-gradient(135deg, #f0ece4 0%, #f5f2ec 50%, #ede9e1 100%);
-  --tema-panel: rgba(237,233,225,0.97);
-  --tema-surface: rgba(222,217,206,0.95);
-  --tema-bubble: rgba(0,0,0,0.03);
-  --tema-card: rgba(0,0,0,0.03);
-  --tema-card-hover: rgba(74,114,196,0.05);
-
-  --tema-border: rgba(0,0,0,0.09);
-  --tema-border-card: rgba(0,0,0,0.07);
-  --tema-border-focus: rgba(74,114,196,0.4);
-  --tema-shadow-focus: 0 0 0 3px rgba(74,114,196,0.08), 0 2px 12px rgba(0,0,0,0.06);
-
-  --tema-text: rgba(22,20,35,0.92);
-  --tema-text2: rgba(55,50,78,0.82);
-  --tema-muted: rgba(90,86,115,0.78);
-  --tema-dimmer: rgba(110,106,130,0.85);
-
-  --a: 74,114,196;
-  --tema-accent: #4a72c4;
-  --tema-send-btn: linear-gradient(135deg, #4a72c4 0%, #6d90d8 100%);
-  --tema-send-icon: #f5f2ec;
-  --tema-title: linear-gradient(135deg, #3a62b4 0%, #4a72c4 50%, #6d90d8 100%);
-
-  --tema-user-bg: linear-gradient(135deg, #dad7d1 0%, #e4e1db 100%);
-  --tema-user-border: rgba(74,114,196,0.15);
-  --tema-user-avatar: rgba(190,186,210,0.7);
-
-  --tema-glow-top: rgba(74,114,196,0.07);
-  --tema-glow-bottom: rgba(74,114,196,0.1);
-
-  --kanun-strip: rgba(74,114,196,0.5);
-  --kanun-icon-bg: rgba(74,114,196,0.1);
-  --kanun-icon: #4a72c4;
-  --kanun-badge-bg: rgba(74,114,196,0.1);
-  --kanun-badge-text: rgba(50,90,170,0.9);
-  --kanun-expand-bg: rgba(74,114,196,0.05);
-  --kanun-expand-border: rgba(74,114,196,0.25);
-  --kanun-expand-text: rgba(50,90,170,0.82);
-
-  --yargitay-strip: rgba(130,60,160,0.5);
-  --yargitay-icon-bg: rgba(130,60,160,0.1);
-  --yargitay-icon: #823ca0;
-  --yargitay-badge-bg: rgba(130,60,160,0.1);
-  --yargitay-badge-text: rgba(130,60,160,0.9);
-  --yargitay-expand-bg: rgba(130,60,160,0.05);
-  --yargitay-expand-border: rgba(130,60,160,0.25);
-  --yargitay-expand-text: rgba(130,60,160,0.82);
-}
-
 @layer base {
   * {
     box-sizing: border-box;
@@ -125,9 +14,7 @@
   }
 
   body {
-    background-color: var(--tema-bg);
-    color: var(--tema-text);
-    @apply font-sans antialiased;
+    @apply bg-navy-950 text-slate-100 font-sans antialiased;
     min-height: 100vh;
   }
 
@@ -136,64 +23,51 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--tema-bg);
+    @apply bg-navy-900;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--tema-border-focus);
-    border-radius: 9999px;
+    @apply bg-navy-600 rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--tema-accent);
+    @apply bg-gold-500;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-md rounded-2xl;
-    background: var(--tema-bubble);
-    border: 1px solid var(--tema-border);
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
   }
 
   .gold-gradient {
-    background: var(--tema-title);
+    background: linear-gradient(135deg, #d4a853 0%, #f0c96a 50%, #b8892e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .navy-gradient-bg {
-    background: var(--tema-bg-gradient);
+    background: linear-gradient(135deg, #0a1628 0%, #0f1f38 50%, #162840 100%);
   }
 
   .send-btn {
-    @apply font-semibold rounded-xl px-5 py-3 transition-all duration-200
-           hover:shadow-lg active:scale-95
-           disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
-    background: var(--tema-send-btn);
-    color: var(--tema-send-icon);
+    @apply bg-gold-400 hover:bg-gold-300 text-navy-900 font-semibold
+           rounded-xl px-5 py-3 transition-all duration-200
+           hover:shadow-lg hover:shadow-gold-400/20 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gold-400 disabled:active:scale-100;
   }
 
   .input-field {
-    @apply rounded-xl px-4 py-3 placeholder-slate-500 focus:outline-none
+    @apply bg-navy-800/80 border border-white/10 rounded-xl px-4 py-3
+           text-slate-100 placeholder-slate-500 focus:outline-none
+           focus:border-gold-400/60 focus:ring-1 focus:ring-gold-400/30
            transition-all duration-200 resize-none;
-    background: var(--tema-surface);
-    border: 1px solid var(--tema-border);
-    color: var(--tema-text);
-  }
-
-  .input-field:focus {
-    border-color: var(--tema-border-focus);
-    box-shadow: 0 0 0 1px rgba(var(--a), 0.3);
   }
 
   .source-card {
-    @apply p-3 cursor-pointer transition-all duration-200
-           hover:-translate-y-0.5 hover:shadow-lg;
-    background: var(--tema-card);
-    border: 1px solid var(--tema-border-card);
-    border-radius: 0.75rem;
+    @apply glass-card p-3 cursor-pointer transition-all duration-200
+           hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg;
   }
 
   .badge {
@@ -214,30 +88,4 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-}
-
-/* Dot bounce animation for loading */
-@keyframes bounceDot {
-  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
-  40% { transform: scale(1); opacity: 1; }
-}
-
-/* Slide-up for messages */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Fade-in for sources */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.25s ease-out both;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.35s ease-out both;
 }

@@ -1,65 +1,39 @@
 import { Scale } from 'lucide-react';
-import { useState, useEffect } from 'react';
-
-const MESAJLAR = [
-    'Kaynaklar taranıyor…',
-    'Kanun maddeleri aranıyor…',
-    'Yanıt oluşturuluyor…',
-];
 
 export default function YukleniyorGostergesi() {
-    const [mesajIndex, setMesajIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setMesajIndex((i) => (i + 1) % MESAJLAR.length);
-        }, 2000);
-        return () => clearInterval(interval);
-    }, []);
-
     return (
         <div className="flex items-start gap-3 animate-slide-up">
-            {/* Avatar */}
+            {/* Asistan avatarı */}
             <div
                 className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{
-                    background: `rgba(var(--a), 0.1)`,
-                    border: `1px solid rgba(var(--a), 0.22)`,
+                    background: 'linear-gradient(135deg, rgba(212,168,83,0.2) 0%, rgba(212,168,83,0.05) 100%)',
+                    border: '1px solid rgba(212,168,83,0.3)',
                 }}
             >
-                <Scale size={15} style={{ color: 'var(--tema-accent)' }} />
+                <Scale size={16} className="text-gold-400" />
             </div>
 
             {/* Yazıyor balonu */}
             <div
-                className="rounded-2xl px-5 py-3.5"
-                style={{
-                    background: 'var(--tema-bubble)',
-                    border: '1px solid var(--tema-border)',
-                }}
+                className="glass-card px-5 py-3.5 max-w-xs"
+                style={{ background: 'rgba(255,255,255,0.04)' }}
             >
                 <div className="flex items-center gap-3">
                     {/* Animasyonlu noktalar */}
-                    <div className="flex gap-1">
+                    <div className="flex gap-1.5">
                         {[0, 1, 2].map((i) => (
                             <span
                                 key={i}
-                                className="w-1.5 h-1.5 rounded-full"
+                                className="w-2 h-2 bg-gold-400 rounded-full"
                                 style={{
-                                    background: `rgba(var(--a), 0.7)`,
-                                    animation: `bounceDot 1.2s infinite ease-in-out`,
-                                    animationDelay: `${i * 0.2}s`,
+                                    animation: `bounceDot 1.4s infinite ease-in-out`,
+                                    animationDelay: `${i * 0.16}s`,
                                 }}
                             />
                         ))}
                     </div>
-                    <span
-                        key={mesajIndex}
-                        className="text-sm animate-fade-in"
-                        style={{ color: 'var(--tema-text2)' }}
-                    >
-                        {MESAJLAR[mesajIndex]}
-                    </span>
+                    <span className="text-slate-400 text-sm">Hak-Bul yanıtlıyor...</span>
                 </div>
             </div>
         </div>

@@ -30,3 +30,33 @@ class HealthResponse(BaseModel):
     qdrant: str
     groq: str
     version: str = "1.0.0"
+
+
+class RegisterRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=255)
+    password: str = Field(..., min_length=8, max_length=128)
+
+
+class LoginRequest(BaseModel):
+    email: str = Field(..., min_length=5, max_length=255)
+    password: str = Field(..., min_length=8, max_length=128)
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str = Field(..., min_length=20)
+
+
+class LogoutRequest(BaseModel):
+    refresh_token: str = Field(..., min_length=20)
+
+
+class RegisterResponse(BaseModel):
+    id: str
+    email: str
+    role: str
+
+
+class TokenPairResponse(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"

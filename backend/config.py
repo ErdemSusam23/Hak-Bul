@@ -22,6 +22,11 @@ class Settings:
     MOCK_MODE: bool = _as_bool("MOCK_MODE", "false")
     MOCK_RETRIEVAL: bool = _as_bool("MOCK_RETRIEVAL", "false")
     MOCK_LLM: bool = _as_bool("MOCK_LLM", "false")
+    DATABASE_URL: str = os.environ.get("DATABASE_URL", "sqlite:///./hakbul.db")
+    JWT_SECRET_KEY: str = os.environ.get("JWT_SECRET_KEY", "")
+    JWT_ALGORITHM: str = os.environ.get("JWT_ALGORITHM", "HS256")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+    REFRESH_TOKEN_EXPIRE_DAYS: int = int(os.environ.get("REFRESH_TOKEN_EXPIRE_DAYS", "14"))
 
 
 settings = Settings()

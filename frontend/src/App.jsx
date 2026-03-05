@@ -1,11 +1,43 @@
-import { useState, useCallback } from 'react';
-import { MessageSquare, Clock, Star } from 'lucide-react';
+import { useState, useCallback, useEffect } from 'react';
+import { MessageSquare, Clock, Star, Plus, ChevronRight } from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
 import SohbetSayfasi from './pages/SohbetSayfasi';
 import { TemaProvider, useTema } from './context/TemaContext';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import { gecmisGetir } from './components/GecmisPanel';
 
-function SolSidebar() {
+function tarihKisa(isoStr) {
+    const tarih = new Date(isoStr);
+    const simdi = new Date();
+    const fark = simdi - tarih;
+    const dakika = Math.floor(fark / 60000);
+    const saat = Math.floor(fark / 3600000);
+    const gun = Math.floor(fark / 86400000);
+    if (dakika < 1) return 'Az önce';
+    if (dakika < 60) return `${dakika}dk`;
+    if (saat < 24) return `${saat}sa`;
+    if (gun < 7) return `${gun}g`;
+    return tarih.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+}
+
+function SolSidebar({ onSoruSec, onYeniSohbet }) {
+    const { kullanici } = useAuth();
+    const [gecmis, setGecmis] = useState([]);
+
+    // İlk yükleme + kullanıcı değişince geçmişi çek
+    useEffect(() => {
+        setGecmis(kullanici?.email ? gecmisGetir(kullanici.email) : []);
+    }, [kullanici]);
+
+    // Yeni soru gönderilince geçmişi yenile (custom event)
+    useEffect(() => {
+        const handler = () => {
+            if (kullanici?.email) setGecmis(gecmisGetir(kullanici.email));
+        };
+        window.addEventListener('gecmis-guncellendi', handler);
+        return () => window.removeEventListener('gecmis-guncellendi', handler);
+    }, [kullanici]);
+
     return (
         <aside
             className="flex flex-col w-64 flex-shrink-0 h-screen"
@@ -14,28 +46,79 @@ function SolSidebar() {
                 borderRight: '1px solid var(--tema-border)',
             }}
         >
+            {/* Yeni Sohbet butonu */}
+            <div className="px-3 py-3" style={{ borderBottom: '1px solid var(--tema-border)' }}>
+                <button
+                    onClick={onYeniSohbet}
+                    className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-150"
+                    style={{
+                        background: 'var(--tema-send-btn)',
+                        color: 'var(--tema-send-icon)',
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.85'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
+                >
+                    <Plus size={14} />
+                    Yeni Sohbet
+                </button>
+            </div>
+
             {/* Sidebar başlık */}
             <div
-                className="px-4 py-4 flex items-center gap-2"
+                className="px-4 py-3 flex items-center gap-2"
                 style={{ borderBottom: '1px solid var(--tema-border)' }}
             >
-                <MessageSquare size={15} style={{ color: 'var(--tema-muted)' }} />
-                <span className="text-sm font-medium" style={{ color: 'var(--tema-muted)' }}>
+                <MessageSquare size={14} style={{ color: 'var(--tema-muted)' }} />
+                <span className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
                     Önceki Sorularım
                 </span>
             </div>
 
-            {/* Boş durum */}
-            <div className="flex-1 flex flex-col items-center justify-center px-4 text-center">
-                <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
-                    style={{ background: 'var(--tema-card)' }}
-                >
-                    <Clock size={18} style={{ color: 'var(--tema-dimmer)' }} />
-                </div>
-                <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                    Henüz soru sorulmadı
-                </p>
+            {/* Geçmiş listesi */}
+            <div className="flex-1 overflow-y-auto">
+                {gecmis.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center h-full px-4 text-center">
+                        <div
+                            className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+                            style={{ background: 'var(--tema-card)' }}
+                        >
+                            <Clock size={18} style={{ color: 'var(--tema-dimmer)' }} />
+                        </div>
+                        <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>
+                            {kullanici ? 'Henüz soru sorulmadı' : 'Geçmişi görmek için\ngiriş yapın'}
+                        </p>
+                    </div>
+                ) : (
+                    gecmis.map((kayit) => (
+                        <button
+                            key={kayit.id}
+                            onClick={() => onSoruSec(kayit.soru)}
+                            className="w-full flex items-start gap-2 px-3 py-2.5 text-left transition-all duration-150 group border-b"
+                            style={{
+                                borderColor: 'var(--tema-border)',
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+                        >
+                            <ChevronRight
+                                size={12}
+                                className="flex-shrink-0 mt-0.5 opacity-40 group-hover:opacity-100 transition-opacity"
+                                style={{ color: 'var(--tema-accent)' }}
+                            />
+                            <div className="flex-1 min-w-0">
+                                <p
+                                    className="text-xs leading-relaxed line-clamp-2"
+                                    style={{ color: 'var(--tema-text2)' }}
+                                >
+                                    {kayit.soru}
+                                </p>
+                                <p className="text-xs mt-0.5" style={{ color: 'var(--tema-dimmer)' }}>
+                                    {tarihKisa(kayit.tarih)}
+                                </p>
+                            </div>
+                        </button>
+                    ))
+                )}
             </div>
 
             {/* Alt kısım */}
@@ -56,10 +139,20 @@ function SolSidebar() {
 
 function AppIcerik() {
     const [kabul, setKabul] = useState(false);
+    const [secilenSoru, setSecilenSoru] = useState(null);
+    const [temizleSinyali, setTemizleSinyali] = useState(0);
     const { tema } = useTema();
 
     const uyariKabul = useCallback(() => {
         setKabul(true);
+    }, []);
+
+    const handleYeniSohbet = useCallback(() => {
+        setTemizleSinyali((v) => v + 1);
+    }, []);
+
+    const handleSoruSec = useCallback((soru) => {
+        setSecilenSoru(soru);
     }, []);
 
     return (
@@ -83,11 +176,18 @@ function AppIcerik() {
             {kabul && (
                 <div className="relative flex h-screen w-full">
                     {/* Sol sidebar */}
-                    <SolSidebar />
+                    <SolSidebar
+                        onSoruSec={handleSoruSec}
+                        onYeniSohbet={handleYeniSohbet}
+                    />
 
                     {/* Sohbet alanı */}
                     <div className="flex-1 flex flex-col min-w-0">
-                        <SohbetSayfasi />
+                        <SohbetSayfasi
+                            secilenSoru={secilenSoru}
+                            onSoruIslendi={() => setSecilenSoru(null)}
+                            temizleSinyali={temizleSinyali}
+                        />
                     </div>
                 </div>
             )}

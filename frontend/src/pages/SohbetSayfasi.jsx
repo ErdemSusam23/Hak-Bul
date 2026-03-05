@@ -2,13 +2,13 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import {
     Scale, Send, Trash2, RotateCcw, Briefcase,
     FileText, Clock, Heart, ArrowRight, Sun, Moon,
-    LogIn, UserPlus, LogOut, History,
+    LogIn, UserPlus, LogOut,
 } from 'lucide-react';
 import SohbetMesaji from '../components/SohbetMesaji';
 import YukleniyorGostergesi from '../components/YukleniyorGostergesi';
 import DirekArama from '../components/DirekArama';
 import AuthModal from '../components/AuthModal';
-import GecmisPanel, { gecmiseEkle } from '../components/GecmisPanel';
+import { gecmiseEkle } from '../components/GecmisPanel';
 import { useChat } from '../hooks/useChat';
 import { useTema } from '../context/TemaContext';
 import { useAuth } from '../context/AuthContext';
@@ -36,11 +36,9 @@ const ORNEK_SORULAR = [
     },
 ];
 
-export default function SohbetSayfasi() {
+export default function SohbetSayfasi({ secilenSoru, onSoruIslendi, temizleSinyali }) {
     const [girdi, setGirdi] = useState('');
     const [authModalAcik, setAuthModalAcik] = useState(false);
-    const [gecmisAcik, setGecmisAcik] = useState(false);
-    const gecmisRef = useRef(null);
     const chatSonuRef = useRef(null);
     const inputRef = useRef(null);
     const { tema, toggleTema } = useTema();
@@ -61,22 +59,31 @@ export default function SohbetSayfasi() {
         chatSonuRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [mesajlar, yukleniyor]);
 
+    // Soldan soru seçilince input'a yaz
     useEffect(() => {
-        if (!gecmisAcik) return;
-        const handler = (e) => {
-            if (gecmisRef.current && !gecmisRef.current.contains(e.target)) {
-                setGecmisAcik(false);
-            }
-        };
-        document.addEventListener('mousedown', handler);
-        return () => document.removeEventListener('mousedown', handler);
-    }, [gecmisAcik]);
+        if (secilenSoru) {
+            setGirdi(secilenSoru);
+            inputRef.current?.focus();
+            onSoruIslendi?.();
+        }
+    }, [secilenSoru]);
+
+    // Yeni sohbet sinyali gelince temizle
+    useEffect(() => {
+        if (temizleSinyali > 0) {
+            sohbetiTemizle();
+            setGirdi('');
+        }
+    }, [temizleSinyali]);
 
     const gonder = useCallback(async () => {
         if (!girdi.trim() || yukleniyor) return;
         const metin = girdi;
         setGirdi('');
-        if (kullanici?.email) gecmiseEkle(kullanici.email, metin);
+        if (kullanici?.email) {
+            gecmiseEkle(kullanici.email, metin);
+            window.dispatchEvent(new Event('gecmis-guncellendi'));
+        }
         await mesajGonder(metin);
         inputRef.current?.focus();
     }, [girdi, yukleniyor, mesajGonder, kullanici]);
@@ -159,26 +166,10 @@ export default function SohbetSayfasi() {
 
                     {kullanici ? (
                         <>
-                            {/* Geçmiş */}
-                            <div className="relative" ref={gecmisRef}>
-                                <button
-                                    onClick={() => setGecmisAcik(v => !v)}
-                                    title="Arama geçmişi"
-                                    className="p-2 rounded-xl transition-all duration-150"
-                                    style={{ color: 'var(--tema-muted)' }}
-                                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--tema-text)'; e.currentTarget.style.background = `rgba(var(--a),0.08)`; }}
-                                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; e.currentTarget.style.background = 'transparent'; }}
-                                >
-                                    <History size={15} />
-                                </button>
-                                {gecmisAcik && (
-                                    <GecmisPanel
-                                        email={kullanici.email}
-                                        onSoruSec={(soru) => { ornekSoruTikla(soru); setGecmisAcik(false); }}
-                                        onKapat={() => setGecmisAcik(false)}
-                                    />
-                                )}
-                            </div>
+                            {/* Kullanıcı emaili */}
+                            <span className="text-xs hidden sm:inline" style={{ color: 'var(--tema-muted)' }}>
+                                {kullanici.email}
+                            </span>
                             {/* Çıkış */}
                             <button
                                 onClick={cikis}

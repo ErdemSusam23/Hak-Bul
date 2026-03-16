@@ -23,6 +23,7 @@ def save_chat_pair(
     assistant_message: str,
     user_id: str | None = None,
     guest_session_id: str | None = None,
+    category: str | None = None,
 ) -> None:
     # Exactly one owner type must be set for each row.
     if (user_id is None) == (guest_session_id is None):
@@ -35,6 +36,7 @@ def save_chat_pair(
             conversation_id=conversation_id,
             role=MessageRole.USER,
             content=user_message,
+            category=category,
             metadata_json=None,
         ),
         ChatHistory(
@@ -43,6 +45,7 @@ def save_chat_pair(
             conversation_id=conversation_id,
             role=MessageRole.ASSISTANT,
             content=assistant_message,
+            category=category,
             metadata_json=None,
         ),
     ]

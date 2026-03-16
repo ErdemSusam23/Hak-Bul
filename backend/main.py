@@ -94,6 +94,8 @@ async def ask(
         conversation_id = resolve_conversation_id(body.conversation_id)
 
         guest_session_id: str | None = None
+        kategori = result.get("kategori", "Genel Hukuk")
+
         if current_user:
             save_chat_pair(
                 db=db,
@@ -101,6 +103,7 @@ async def ask(
                 user_id=current_user.id,
                 user_message=body.soru,
                 assistant_message=result["yanit"],
+                category=kategori,
             )
         else:
             guest_session_id = resolve_guest_session_id(body.guest_session_id)
@@ -110,6 +113,7 @@ async def ask(
                 guest_session_id=guest_session_id,
                 user_message=body.soru,
                 assistant_message=result["yanit"],
+                category=kategori,
             )
 
         return AskResponse(
@@ -117,6 +121,7 @@ async def ask(
             kaynaklar=result["kaynaklar"],
             conversation_id=conversation_id,
             guest_session_id=guest_session_id,
+            kategori=kategori,
         )
     except RuntimeError as exc:
         detail = str(exc)

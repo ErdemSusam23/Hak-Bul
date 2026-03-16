@@ -18,7 +18,7 @@ _Sistem geleneksel bir SQL veritabanı kullanmaz. Tüm vektör araması Qdrant C
 | Parametre | Değer | Açıklama |
 |-----------|-------|----------|
 | Koleksiyon adı | `hukuk_chunks` | Tek koleksiyon, tüm chunk türleri burada |
-| Vector size | `768` | sentence-transformers/paraphrase-multilingual-mpnet-base-v2 |
+| Vector size | `768` | intfloat/multilingual-e5-base |
 | Distance metric | `Cosine` | Semantic benzerlik için en uygun metrik |
 | Quantization | Kapalı (MVP) | Free tier için yeterli performans |
 | Indexing threshold | 20.000 vektör | Qdrant default, MVP için sorun yok |

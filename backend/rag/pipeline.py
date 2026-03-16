@@ -4,6 +4,7 @@ Main RAG pipeline orchestration.
 """
 
 from config import settings
+from rag.categorizer import get_kategorilendirici
 from rag.generator import generate_answer
 from rag.query_rewriter import rewrite_query
 from rag.retriever import filter_by_score, retrieve_chunks
@@ -24,6 +25,8 @@ def _get_law_url(kanun_adi: str, madde_no: str = "") -> str | None:
 
 
 def run_pipeline(soru: str, max_kaynak: int = 5) -> dict:
+    kategori = get_kategorilendirici().kategorile(soru)
+
     rewritten = rewrite_query(soru)
 
     chunks = retrieve_chunks(rewritten, top_n=max_kaynak)
@@ -35,6 +38,7 @@ def run_pipeline(soru: str, max_kaynak: int = 5) -> dict:
     return {
         "yanit": yanit,
         "kaynaklar": kaynaklar,
+        "kategori": kategori,
         "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
     }
 

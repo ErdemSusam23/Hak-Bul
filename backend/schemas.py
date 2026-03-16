@@ -21,6 +21,7 @@ class AskResponse(BaseModel):
     kaynaklar: list[KaynakItem]
     conversation_id: str
     guest_session_id: str | None = None
+    kategori: str = "Genel Hukuk"
     uyari: str = "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz."
 
 

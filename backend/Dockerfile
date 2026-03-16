@@ -21,7 +21,7 @@ RUN pip install --no-cache-dir -r requirements.txt \
 # Modeli build sırasında indir (Railway'de cold start olmaz)
 RUN python -c "\
 from sentence_transformers import SentenceTransformer; \
-SentenceTransformer('sentence-transformers/paraphrase-multilingual-mpnet-base-v2')" \
+SentenceTransformer('intfloat/multilingual-e5-base')" \
     && chown -R appuser:appuser /home/appuser/.cache
 
 USER appuser

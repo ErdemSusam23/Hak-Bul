@@ -365,7 +365,7 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
     if not kaynak_turu or kaynak_turu == "yargitay_karari":
         try:
             model = _get_model()
-            embedding = model.encode(query).tolist()
+            embedding = model.encode(f"query: {query}").tolist()
             qdrant_results = _query_qdrant(
                 embedding=embedding,
                 top_n=top_n,

@@ -23,7 +23,7 @@ class Settings:
     SCORE_THRESHOLD: float = float(os.environ.get("SCORE_THRESHOLD", "0.65"))
     EMBEDDING_MODEL: str = os.environ.get(
         "EMBEDDING_MODEL",
-        "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
+        "intfloat/multilingual-e5-base",
     )
     VERSION: str = os.environ.get("APP_VERSION", "1.0.0")
     CORS_ORIGINS: list[str] = os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(",")

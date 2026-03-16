@@ -213,21 +213,21 @@ def main():
         print("Yüklenecek chunk bulunamadı. Çıkılıyor.")
         sys.exit(0)
 
-    # Sadece yargitay_karari chunk'larını al (kanun chunk'ları local index'e gidiyor)
-    yargitay_chunks = [c for c in chunks if c.get("kaynak_turu") == "yargitay_karari"]
-    diger = len(chunks) - len(yargitay_chunks)
+    # Tüm chunk tipleri Qdrant'a yükleniyor (kanun + yargitay_karari)
+    tip_sayilari: dict[str, int] = {}
+    for c in chunks:
+        tip = c.get("kaynak_turu", "bilinmeyen")
+        tip_sayilari[tip] = tip_sayilari.get(tip, 0) + 1
+
     print(f"\nToplam chunk: {len(chunks)}")
-    print(f"  yargitay_karari: {len(yargitay_chunks)}  ← Qdrant'a yüklenecek")
-    if diger:
-        print(f"  diğer (kanun vb.): {diger}  ← atlanıyor (local index kullanıyor)")
+    for tip, sayi in sorted(tip_sayilari.items()):
+        print(f"  {tip}: {sayi}  <- Qdrant'a yuklenecek")
 
     if args.dry_run:
-        print("\n[DRY-RUN] Gerçek yükleme yapılmadı.")
+        print("\n[DRY-RUN] Gercek yukleme yapilmadi.")
         return
 
-    if not yargitay_chunks:
-        print("Yüklenecek yargitay_karari chunk'u yok. Çıkılıyor.")
-        sys.exit(0)
+    yukleme_chunks = chunks
 
     # 2. Model ve Qdrant bağlantısı
     model = _load_model()
@@ -240,9 +240,9 @@ def main():
         _ensure_collection_exists(client)
 
     # 4. Yükleme
-    print(f"\nYükleme başlıyor... (batch_size={BATCH_SIZE})")
+    print(f"\nYukleme basliyor... (batch_size={BATCH_SIZE})")
     baslangic = time.time()
-    yuklenen = _upload_batches(client, model, yargitay_chunks)
+    yuklenen = _upload_batches(client, model, yukleme_chunks)
     sure = time.time() - baslangic
 
     print(f"\n✓ Tamamlandı: {yuklenen} vektör {sure:.1f} saniyede yüklendi.")

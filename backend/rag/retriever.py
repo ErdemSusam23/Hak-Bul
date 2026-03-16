@@ -350,34 +350,19 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
     if not is_qdrant_configured():
         return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
 
-    # Hybrid retrieval: local index for kanun, Qdrant for yargitay_karari
-    combined: list[dict] = []
-
-    # Always pull kanun articles from the local index
-    if not kaynak_turu or kaynak_turu == "kanun":
-        local_kanun = _retrieve_local(query=query, top_n=top_n, kaynak_turu="kanun")
-        # Normalize local scores to [0, 1] to be comparable with Qdrant cosine similarity
-        for chunk in local_kanun:
-            chunk["skor"] = round(min(chunk["skor"] / 2.0, 0.99), 4)
-        combined.extend(local_kanun)
-
-    # Pull yargitay_karari from Qdrant (semantic search works well for case law)
-    if not kaynak_turu or kaynak_turu == "yargitay_karari":
-        try:
-            model = _get_model()
-            embedding = model.encode(f"query: {query}").tolist()
-            qdrant_results = _query_qdrant(
-                embedding=embedding,
-                top_n=top_n,
-                kaynak_turu="yargitay_karari" if not kaynak_turu else kaynak_turu,
-            )
-            combined.extend([{"payload": r.payload, "skor": r.score} for r in qdrant_results])
-        except Exception:
-            if not combined:
-                return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
-
-    combined.sort(key=lambda x: x["skor"], reverse=True)
-    return combined[:top_n]
+    # All data is in Qdrant — single semantic search across all chunk types
+    try:
+        model = _get_model()
+        embedding = model.encode(f"query: {query}").tolist()
+        qdrant_results = _query_qdrant(
+            embedding=embedding,
+            top_n=top_n,
+            kaynak_turu=kaynak_turu,  # None = no filter, returns kanun + yargitay_karari
+        )
+        return [{"payload": r.payload, "skor": r.score} for r in qdrant_results]
+    except Exception:
+        # Qdrant unavailable — fall back to local keyword index
+        return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
 
 
 def filter_by_score(chunks: list[dict], threshold: float | None = None) -> list[dict]:

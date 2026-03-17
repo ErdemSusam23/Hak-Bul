@@ -18,6 +18,7 @@ from auth.dependencies import get_current_user_optional
 from config import settings
 from routers.auth import router as auth_router
 from routers.chat import router as chat_router
+from routers.documents import router as documents_router
 from routers.feedback import router as feedback_router
 from db.session import get_db
 from models.user import User
@@ -45,6 +46,7 @@ app.add_middleware(
 )
 app.include_router(auth_router)
 app.include_router(chat_router)
+app.include_router(documents_router)
 app.include_router(feedback_router)
 
 

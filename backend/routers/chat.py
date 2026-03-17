@@ -63,8 +63,9 @@ def get_user_conversations(
                 conversation_id=conversation_id,
                 message_count=message_count,
                 last_message_at=last_message_at.isoformat(),
+                title=title,
             )
-            for conversation_id, message_count, last_message_at in rows
+            for conversation_id, message_count, last_message_at, title in rows
         ],
         total=total,
     )
@@ -116,8 +117,9 @@ def get_guest_conversations(
                 conversation_id=conversation_id,
                 message_count=message_count,
                 last_message_at=last_message_at.isoformat(),
+                title=title,
             )
-            for conversation_id, message_count, last_message_at in rows
+            for conversation_id, message_count, last_message_at, title in rows
         ],
         total=total,
     )

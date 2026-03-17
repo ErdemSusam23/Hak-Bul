@@ -86,6 +86,7 @@ class ConversationSummary(BaseModel):
     conversation_id: str
     message_count: int
     last_message_at: str
+    title: str | None = None
 
 
 class ConversationListResponse(BaseModel):

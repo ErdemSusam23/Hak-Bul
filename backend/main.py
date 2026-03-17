@@ -18,6 +18,7 @@ from auth.dependencies import get_current_user_optional
 from config import settings
 from routers.auth import router as auth_router
 from routers.chat import router as chat_router
+from routers.feedback import router as feedback_router
 from db.session import get_db
 from models.user import User
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
@@ -44,6 +45,7 @@ app.add_middleware(
 )
 app.include_router(auth_router)
 app.include_router(chat_router)
+app.include_router(feedback_router)
 
 
 @app.exception_handler(RateLimitExceeded)
@@ -94,22 +96,26 @@ async def ask(
         conversation_id = resolve_conversation_id(body.conversation_id)
 
         guest_session_id: str | None = None
+        kategori = result.get("kategori", "Genel Hukuk")
+
         if current_user:
-            save_chat_pair(
+            message_id = save_chat_pair(
                 db=db,
                 conversation_id=conversation_id,
                 user_id=current_user.id,
                 user_message=body.soru,
                 assistant_message=result["yanit"],
+                category=kategori,
             )
         else:
             guest_session_id = resolve_guest_session_id(body.guest_session_id)
-            save_chat_pair(
+            message_id = save_chat_pair(
                 db=db,
                 conversation_id=conversation_id,
                 guest_session_id=guest_session_id,
                 user_message=body.soru,
                 assistant_message=result["yanit"],
+                category=kategori,
             )
 
         return AskResponse(
@@ -117,6 +123,8 @@ async def ask(
             kaynaklar=result["kaynaklar"],
             conversation_id=conversation_id,
             guest_session_id=guest_session_id,
+            kategori=kategori,
+            message_id=message_id,
         )
     except RuntimeError as exc:
         detail = str(exc)

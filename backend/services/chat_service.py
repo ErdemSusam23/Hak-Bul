@@ -23,11 +23,22 @@ def save_chat_pair(
     assistant_message: str,
     user_id: str | None = None,
     guest_session_id: str | None = None,
-) -> None:
+    category: str | None = None,
+) -> str:
+    """Kullanıcı ve asistan mesajlarını kaydeder. Asistan mesajının ID'sini döndürür."""
     # Exactly one owner type must be set for each row.
     if (user_id is None) == (guest_session_id is None):
         raise ValueError("Exactly one of user_id or guest_session_id must be provided.")
 
+    assistant_row = ChatHistory(
+        user_id=user_id,
+        guest_session_id=guest_session_id,
+        conversation_id=conversation_id,
+        role=MessageRole.ASSISTANT,
+        content=assistant_message,
+        category=category,
+        metadata_json=None,
+    )
     rows = [
         ChatHistory(
             user_id=user_id,
@@ -35,19 +46,14 @@ def save_chat_pair(
             conversation_id=conversation_id,
             role=MessageRole.USER,
             content=user_message,
+            category=category,
             metadata_json=None,
         ),
-        ChatHistory(
-            user_id=user_id,
-            guest_session_id=guest_session_id,
-            conversation_id=conversation_id,
-            role=MessageRole.ASSISTANT,
-            content=assistant_message,
-            metadata_json=None,
-        ),
+        assistant_row,
     ]
     db.add_all(rows)
     db.commit()
+    return assistant_row.id
 
 
 def list_user_messages(db: Session, user_id: str, conversation_id: str, limit: int, offset: int) -> tuple[list[ChatHistory], int]:

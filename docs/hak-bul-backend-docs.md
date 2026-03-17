@@ -18,7 +18,7 @@ _Sistem geleneksel bir SQL veritabanı kullanmaz. Tüm vektör araması Qdrant C
 | Parametre | Değer | Açıklama |
 |-----------|-------|----------|
 | Koleksiyon adı | `hukuk_chunks` | Tek koleksiyon, tüm chunk türleri burada |
-| Vector size | `768` | sentence-transformers/paraphrase-multilingual-mpnet-base-v2 |
+| Vector size | `768` | intfloat/multilingual-e5-base |
 | Distance metric | `Cosine` | Semantic benzerlik için en uygun metrik |
 | Quantization | Kapalı (MVP) | Free tier için yeterli performans |
 | Indexing threshold | 20.000 vektör | Qdrant default, MVP için sorun yok |
@@ -35,6 +35,7 @@ _Sistem geleneksel bir SQL veritabanı kullanmaz. Tüm vektör araması Qdrant C
 | `hukuk_alani` | string | `"is_hukuku"` | MVP'de sabit, ilerleyen fazda genişler |
 | `yil` | integer | `2003` | Yürürlük yılı veya karar yılı |
 | `metin` | string | `"Madde 17 — ..."` | Chunk'un ham metni (arama skoru hariç) |
+| `url` | string \| null | `"https://www.mevzuat.gov.tr/..."` | Kaynağın resmi bağlantısı (yoksa `null`) |
 | `chunk_id` | string | `"kanun_4857_m17"` | Benzersiz ID, debug ve loglama için |
 
 **Kanun Chunk'larına Özel Alanlar**
@@ -70,6 +71,7 @@ _Sistem geleneksel bir SQL veritabanı kullanmaz. Tüm vektör araması Qdrant C
     "fikra_no": null,
     "yil": 2003,
     "metin": "Madde 17 — Belirsiz süreli iş sözleşmelerinin...",
+    "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5",
     "chunk_id": "kanun_4857_m17"
   }
 }
@@ -90,6 +92,7 @@ _Sistem geleneksel bir SQL veritabanı kullanmaz. Tüm vektör araması Qdrant C
     "tarih": "2023-05-12",
     "yil": 2023,
     "metin": "...kıdem tazminatına hak kazanabilmek için...",
+    "url": "https://karararama.yargitay.gov.tr/",
     "chunk_id": "yargitay_2023_1234_gerekce"
   }
 }

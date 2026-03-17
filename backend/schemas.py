@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class AskRequest(BaseModel):
@@ -21,6 +21,8 @@ class AskResponse(BaseModel):
     kaynaklar: list[KaynakItem]
     conversation_id: str
     guest_session_id: str | None = None
+    kategori: str = "Genel Hukuk"
+    message_id: str | None = None
     uyari: str = "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz."
 
 
@@ -88,3 +90,21 @@ class ConversationSummary(BaseModel):
 class ConversationListResponse(BaseModel):
     conversations: list[ConversationSummary]
     total: int
+
+
+class FeedbackGonder(BaseModel):
+    message_id: str = Field(..., min_length=36, max_length=36)
+    puan: int
+    guest_session_id: str | None = Field(default=None, min_length=36, max_length=36)
+
+    @field_validator("puan")
+    @classmethod
+    def puan_gecerli_olmali(cls, v: int) -> int:
+        if v not in (1, -1):
+            raise ValueError("Puan 1 (beğendi) veya -1 (beğenmedi) olmalıdır")
+        return v
+
+
+class FeedbackCevap(BaseModel):
+    basarili: bool
+    mesaj: str

@@ -38,3 +38,4 @@ Thumbs.db
 *.log
 backend/to_delete.txt
 .claude
+CLAUDE.md

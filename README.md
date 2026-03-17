@@ -12,6 +12,10 @@ Vatandaşların Türkçe hukuki sorularına, mevzuat ve ilgili kaynaklar üzerin
 - Cevap puanlama (👍/👎 feedback sistemi)
 - JWT kimlik doğrulama (register / login / refresh token rotation / logout)
 - Sohbet geçmişi: giriş yapmış kullanıcı için `user_id`, misafir için `guest_session_id` bazlı
+- Sohbet başlıkları: ilk mesajdan otomatik üretilir
+- PDF yükleme ve hukuki analiz (`/documents/analyze`)
+- Hukuki belge taslağı üretme — Kira, İş, İhtarname, Taahhütname (PDF çıktı)
+- Admin analytics dashboard (kategori dağılımı, feedback istatistikleri, günlük aktivite)
 - Rate limiting (`/ask` için 20 istek/dakika)
 - Alembic migration altyapısı
 - Docker Compose ile tek komutla `postgres + backend + frontend` çalıştırma
@@ -28,7 +32,7 @@ Hak-Bul/
 │   ├── rag/                # RAG pipeline (retriever, rewriter, categorizer, generator)
 │   ├── routers/            # API router'ları
 │   ├── services/           # İş mantığı
-│   ├── tests/              # Test dosyaları
+│   ├── tests/              # Test dosyaları (39 test)
 │   ├── main.py
 │   ├── config.py
 │   └── requirements.txt
@@ -234,15 +238,57 @@ Uygulama `http://localhost:5173` adresinde açılır.
 | Method | Endpoint | Açıklama |
 |--------|----------|----------|
 | GET | `/chat/history/{conversation_id}` | Sohbet mesajları (auth gerekir) |
-| GET | `/chat/conversations` | Kullanıcının sohbet listesi (auth gerekir) |
+| GET | `/chat/conversations` | Kullanıcının sohbet listesi — `title`, `message_count`, `last_message_at` döner |
 | GET | `/chat/guest/history/{conversation_id}?guest_session_id=...` | Misafir sohbet mesajları |
 | GET | `/chat/guest/conversations?guest_session_id=...` | Misafir sohbet listesi |
+
+### Döküman Analizi
+
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| POST | `/documents/analyze` | PDF yükle, hukuki analiz yap (multipart/form-data: `dosya`, `soru`, `conversation_id`, `guest_session_id`) |
+
+### Hukuki Belge Taslakları
+
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| GET | `/templates` | Mevcut taslaklar ve gerekli alanlar |
+| POST | `/templates/{template_id}/generate` | Doldurulmuş alanlarla PDF üret ve indir |
+
+Desteklenen taslaklar: `kira_sozlesmesi`, `is_sozlesmesi`, `ihtarname`, `taahhutname`
 
 ### Feedback
 
 | Method | Endpoint     | Açıklama |
 |--------|--------------|----------|
-| POST   | `/feedback`  | Cevaba 👍 (+1) veya 👎 (-1) ver |
+| POST   | `/feedback`  | Cevaba 👍 (+1) veya 👎 (-1) ver (`message_id` + `puan`) |
+
+### Admin Analytics
+
+> Tüm endpoint'ler `ADMIN` rolü gerektirir.
+
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| GET | `/admin/stats` | Toplam kullanıcı, mesaj, konuşma, feedback özeti |
+| GET | `/admin/stats/categories` | Kategori bazlı soru dağılımı |
+| GET | `/admin/stats/feedback` | 👍/👎 sayıları ve beğeni oranı |
+| GET | `/admin/stats/daily?gun=7` | Son N günün günlük mesaj aktivitesi |
+
+---
+
+## Veritabanı Migration Zinciri
+
+```
+20260305_0001  auth tabloları (users, refresh_tokens)
+    ↓
+20260305_0002  chat_history + misafir desteği
+    ↓
+20260316_0003  category kolonu
+    ↓
+20260317_0004  message_feedback tablosu
+    ↓
+20260317_0005  title kolonu (sohbet başlıkları)
+```
 
 ---
 
@@ -256,17 +302,22 @@ docker exec hak-bul-backend python -m pytest tests/ -v
 python -m pytest tests/ -v
 ```
 
-Mevcut test kapsamı:
+Mevcut test kapsamı (39 test):
 - Auth akışı (register, login, refresh rotation, logout)
 - Sohbet geçmişi (guest + user bazlı)
 - Feedback endpoint'i (validasyon, 404, 👍/👎 kaydetme, güncelleme)
+- PDF döküman servisi (metin çıkarma, boyut limiti, truncation)
+- PDF analiz endpoint'i (DB kayıt, 400 hataları)
+- Hukuki belge taslakları (liste, PDF üretimi, validasyon)
+- Admin analytics (yetki kontrolleri, veri doğrulama)
 
 ---
 
 ## Bilinen Durumlar
 
-- Frontend sohbet geçmişi şu an localStorage üzerinden çalışıyor; backend `/chat/*` endpointleri aktif fakat frontend entegrasyonu henüz tamamlanmadı.
+- Frontend sohbet geçmişi şu an localStorage üzerinden çalışıyor; backend `/chat/*` endpoint'leri aktif fakat frontend entegrasyonu henüz tamamlanmadı.
 - Qdrant ayarı yapılmazsa backend yerel JSON corpus ile fallback moduna düşer (kısıtlı içerik).
+- Türkçe karakter desteği için container'da `fonts-dejavu-core` kurulu olması önerilir (`apt-get install fonts-dejavu-core`); yoksa PDF taslakları ğ/ı dışındaki karakterleri doğru render eder.
 
 ---
 

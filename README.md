@@ -324,7 +324,7 @@ Mevcut test kapsamı (39 test):
 ## Ek Belgeler
 
 - [`docs/ENV_SETUP.md`](docs/ENV_SETUP.md) — Ortam değişkenleri detaylı rehber
-- [`docs/frontend-auth-integration.md`](docs/frontend-auth-integration.md) — Frontend auth entegrasyonu
+- [`docs/frontend_integration_plan.md`](docs/frontend_integration_plan.md) — Frontend entegrasyon planı 17.03.2026
 - [`docs/hak-bul-backend-docs.md`](docs/hak-bul-backend-docs.md) — Backend API detayları
 
 ---

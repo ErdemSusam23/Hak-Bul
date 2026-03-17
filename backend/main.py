@@ -98,6 +98,8 @@ async def ask(
         guest_session_id: str | None = None
         kategori = result.get("kategori", "Genel Hukuk")
 
+        kaynaklar = result.get("kaynaklar", [])
+
         if current_user:
             message_id = save_chat_pair(
                 db=db,
@@ -106,6 +108,7 @@ async def ask(
                 user_message=body.soru,
                 assistant_message=result["yanit"],
                 category=kategori,
+                kaynaklar=kaynaklar,
             )
         else:
             guest_session_id = resolve_guest_session_id(body.guest_session_id)
@@ -116,6 +119,7 @@ async def ask(
                 user_message=body.soru,
                 assistant_message=result["yanit"],
                 category=kategori,
+                kaynaklar=kaynaklar,
             )
 
         return AskResponse(

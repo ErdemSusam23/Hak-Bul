@@ -24,6 +24,7 @@ def save_chat_pair(
     user_id: str | None = None,
     guest_session_id: str | None = None,
     category: str | None = None,
+    kaynaklar: list | None = None,
 ) -> str:
     """Kullanıcı ve asistan mesajlarını kaydeder. Asistan mesajının ID'sini döndürür."""
     # Exactly one owner type must be set for each row.
@@ -37,7 +38,7 @@ def save_chat_pair(
         role=MessageRole.ASSISTANT,
         content=assistant_message,
         category=category,
-        metadata_json=None,
+        metadata_json={"kaynaklar": kaynaklar} if kaynaklar else None,
     )
     rows = [
         ChatHistory(

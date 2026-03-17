@@ -74,6 +74,7 @@ class ChatMessageItem(BaseModel):
     role: str
     content: str
     created_at: str
+    kaynaklar: list | None = None
 
 
 class ChatHistoryResponse(BaseModel):

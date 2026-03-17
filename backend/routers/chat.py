@@ -40,6 +40,7 @@ def get_user_chat_history(
                 role=row.role.value,
                 content=row.content,
                 created_at=row.created_at.isoformat(),
+                kaynaklar=row.metadata_json.get("kaynaklar") if row.metadata_json else None,
             )
             for row in messages
         ],
@@ -92,6 +93,7 @@ def get_guest_chat_history(
                 role=row.role.value,
                 content=row.content,
                 created_at=row.created_at.isoformat(),
+                kaynaklar=row.metadata_json.get("kaynaklar") if row.metadata_json else None,
             )
             for row in messages
         ],

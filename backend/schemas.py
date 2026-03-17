@@ -102,6 +102,52 @@ class DokumanAnalizCevap(BaseModel):
     conversation_id: str | None = None
 
 
+class AdminGenelIstatistik(BaseModel):
+    toplam_kullanici: int
+    toplam_mesaj: int
+    toplam_konusma: int
+    toplam_begeni: int
+    toplam_begenmeme: int
+
+
+class AdminKategoriItem(BaseModel):
+    kategori: str
+    sayi: int
+
+
+class AdminFeedbackOzet(BaseModel):
+    begeni: int
+    begenmeme: int
+    toplam: int
+    begeni_orani: float | None = None
+
+
+class AdminGunlukAktiviteItem(BaseModel):
+    tarih: str
+    mesaj_sayisi: int
+
+
+class TaslakAlan(BaseModel):
+    ad: str
+    etiket: str
+    zorunlu: bool
+
+
+class TaslakBilgi(BaseModel):
+    id: str
+    baslik: str
+    aciklama: str
+    alanlar: list[TaslakAlan]
+
+
+class TaslakListResponse(BaseModel):
+    taslaklar: list[TaslakBilgi]
+
+
+class TaslakOlusturRequest(BaseModel):
+    alanlar: dict[str, str]
+
+
 class FeedbackGonder(BaseModel):
     message_id: str = Field(..., min_length=36, max_length=36)
     puan: int

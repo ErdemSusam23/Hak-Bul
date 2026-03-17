@@ -102,6 +102,27 @@ class DokumanAnalizCevap(BaseModel):
     conversation_id: str | None = None
 
 
+class TaslakAlan(BaseModel):
+    ad: str
+    etiket: str
+    zorunlu: bool
+
+
+class TaslakBilgi(BaseModel):
+    id: str
+    baslik: str
+    aciklama: str
+    alanlar: list[TaslakAlan]
+
+
+class TaslakListResponse(BaseModel):
+    taslaklar: list[TaslakBilgi]
+
+
+class TaslakOlusturRequest(BaseModel):
+    alanlar: dict[str, str]
+
+
 class FeedbackGonder(BaseModel):
     message_id: str = Field(..., min_length=36, max_length=36)
     puan: int

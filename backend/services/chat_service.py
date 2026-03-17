@@ -24,11 +24,21 @@ def save_chat_pair(
     user_id: str | None = None,
     guest_session_id: str | None = None,
     category: str | None = None,
+    kaynaklar: list | None = None,
 ) -> str:
     """Kullanıcı ve asistan mesajlarını kaydeder. Asistan mesajının ID'sini döndürür."""
     # Exactly one owner type must be set for each row.
     if (user_id is None) == (guest_session_id is None):
         raise ValueError("Exactly one of user_id or guest_session_id must be provided.")
+
+    # İlk mesajsa title oluştur (60 karakter, kelime ortasında kesmez)
+    filters = [ChatHistory.conversation_id == conversation_id]
+    if user_id:
+        filters.append(ChatHistory.user_id == user_id)
+    else:
+        filters.append(ChatHistory.guest_session_id == guest_session_id)
+    is_first = db.query(ChatHistory.id).filter(*filters).first() is None
+    title = (user_message[:60].rsplit(" ", 1)[0] if len(user_message) > 60 else user_message) if is_first else None
 
     assistant_row = ChatHistory(
         user_id=user_id,
@@ -36,8 +46,9 @@ def save_chat_pair(
         conversation_id=conversation_id,
         role=MessageRole.ASSISTANT,
         content=assistant_message,
+        title=title,
         category=category,
-        metadata_json=None,
+        metadata_json={"kaynaklar": kaynaklar} if kaynaklar else None,
     )
     rows = [
         ChatHistory(
@@ -46,6 +57,7 @@ def save_chat_pair(
             conversation_id=conversation_id,
             role=MessageRole.USER,
             content=user_message,
+            title=title,
             category=category,
             metadata_json=None,
         ),
@@ -88,12 +100,13 @@ def list_guest_messages(
     return messages, total
 
 
-def list_user_conversations(db: Session, user_id: str, limit: int, offset: int) -> list[tuple[str, int, datetime]]:
+def list_user_conversations(db: Session, user_id: str, limit: int, offset: int) -> list[tuple[str, int, datetime, str | None]]:
     return (
         db.query(
             ChatHistory.conversation_id,
             func.count(ChatHistory.id).label("message_count"),
             func.max(ChatHistory.created_at).label("last_message_at"),
+            func.max(ChatHistory.title).label("title"),
         )
         .filter(ChatHistory.user_id == user_id)
         .group_by(ChatHistory.conversation_id)
@@ -113,12 +126,13 @@ def count_user_conversations(db: Session, user_id: str) -> int:
     )
 
 
-def list_guest_conversations(db: Session, guest_session_id: str, limit: int, offset: int) -> list[tuple[str, int, datetime]]:
+def list_guest_conversations(db: Session, guest_session_id: str, limit: int, offset: int) -> list[tuple[str, int, datetime, str | None]]:
     return (
         db.query(
             ChatHistory.conversation_id,
             func.count(ChatHistory.id).label("message_count"),
             func.max(ChatHistory.created_at).label("last_message_at"),
+            func.max(ChatHistory.title).label("title"),
         )
         .filter(ChatHistory.guest_session_id == guest_session_id)
         .group_by(ChatHistory.conversation_id)

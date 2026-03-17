@@ -18,7 +18,10 @@ from auth.dependencies import get_current_user_optional
 from config import settings
 from routers.auth import router as auth_router
 from routers.chat import router as chat_router
+from routers.documents import router as documents_router
 from routers.feedback import router as feedback_router
+from routers.admin import router as admin_router
+from routers.templates import router as templates_router
 from db.session import get_db
 from models.user import User
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
@@ -45,7 +48,10 @@ app.add_middleware(
 )
 app.include_router(auth_router)
 app.include_router(chat_router)
+app.include_router(documents_router)
 app.include_router(feedback_router)
+app.include_router(admin_router)
+app.include_router(templates_router)
 
 
 @app.exception_handler(RateLimitExceeded)
@@ -98,6 +104,8 @@ async def ask(
         guest_session_id: str | None = None
         kategori = result.get("kategori", "Genel Hukuk")
 
+        kaynaklar = result.get("kaynaklar", [])
+
         if current_user:
             message_id = save_chat_pair(
                 db=db,
@@ -106,6 +114,7 @@ async def ask(
                 user_message=body.soru,
                 assistant_message=result["yanit"],
                 category=kategori,
+                kaynaklar=kaynaklar,
             )
         else:
             guest_session_id = resolve_guest_session_id(body.guest_session_id)
@@ -116,6 +125,7 @@ async def ask(
                 user_message=body.soru,
                 assistant_message=result["yanit"],
                 category=kategori,
+                kaynaklar=kaynaklar,
             )
 
         return AskResponse(

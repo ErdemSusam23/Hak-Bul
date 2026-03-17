@@ -40,6 +40,7 @@ def get_user_chat_history(
                 role=row.role.value,
                 content=row.content,
                 created_at=row.created_at.isoformat(),
+                kaynaklar=row.metadata_json.get("kaynaklar") if row.metadata_json else None,
             )
             for row in messages
         ],
@@ -62,8 +63,9 @@ def get_user_conversations(
                 conversation_id=conversation_id,
                 message_count=message_count,
                 last_message_at=last_message_at.isoformat(),
+                title=title,
             )
-            for conversation_id, message_count, last_message_at in rows
+            for conversation_id, message_count, last_message_at, title in rows
         ],
         total=total,
     )
@@ -92,6 +94,7 @@ def get_guest_chat_history(
                 role=row.role.value,
                 content=row.content,
                 created_at=row.created_at.isoformat(),
+                kaynaklar=row.metadata_json.get("kaynaklar") if row.metadata_json else None,
             )
             for row in messages
         ],
@@ -114,8 +117,9 @@ def get_guest_conversations(
                 conversation_id=conversation_id,
                 message_count=message_count,
                 last_message_at=last_message_at.isoformat(),
+                title=title,
             )
-            for conversation_id, message_count, last_message_at in rows
+            for conversation_id, message_count, last_message_at, title in rows
         ],
         total=total,
     )

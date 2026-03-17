@@ -93,6 +93,14 @@ class ConversationListResponse(BaseModel):
     total: int
 
 
+class DokumanAnalizCevap(BaseModel):
+    yanit: str
+    belge_ozeti: str
+    kaynaklar: list
+    kategori: str = "Genel Hukuk"
+    conversation_id: str | None = None
+
+
 class FeedbackGonder(BaseModel):
     message_id: str = Field(..., min_length=36, max_length=36)
     puan: int

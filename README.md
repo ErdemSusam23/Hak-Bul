@@ -1,171 +1,283 @@
-# Hak-Bul - Turk Hukuk Asistani
+# Hak-Bul - Türk Hukuk Asistanı
 
-Vatandaslarin Turkce hukuki sorularina, mevzuat ve ilgili kaynaklar uzerinden yanit ureten RAG tabanli web uygulamasi.
+Vatandaşların Türkçe hukuki sorularına, mevzuat ve ilgili kaynaklar üzerinden yanıt üreten RAG tabanlı web uygulaması.
 
-> Uyari: Bu sistem bilgi amaclidir, hukuki danismanlik degildir.
+> **Uyarı:** Bu sistem bilgi amaçlıdır, hukuki danışmanlık değildir.
 
-## Guncel Ozellikler
+## Özellikler
 
 - FastAPI backend + React (Vite) frontend
-- RAG pipeline (`/ask`) ve direkt arama (`/search`)
-- JWT auth (register/login/refresh rotation/logout)
-- Sohbet kaydi: girisli kullanici icin user bazli, misafir icin `guest_session_id` bazli gecmis
-- Rate limit (`/ask` icin `20/minute`)
-- Alembic migration altyapisi
-- Docker Compose ile `postgres + backend + frontend` calistirma
+- RAG pipeline: soru yeniden yazma → Qdrant vektör araması → Groq LLM ile yanıt üretme
+- Soru kategorilendirme (İş, Kira, Tüketici, Aile, Ceza, İdare, Ticaret, Genel)
+- Cevap puanlama (👍/👎 feedback sistemi)
+- JWT kimlik doğrulama (register / login / refresh token rotation / logout)
+- Sohbet geçmişi: giriş yapmış kullanıcı için `user_id`, misafir için `guest_session_id` bazlı
+- Rate limiting (`/ask` için 20 istek/dakika)
+- Alembic migration altyapısı
+- Docker Compose ile tek komutla `postgres + backend + frontend` çalıştırma
 
-## Proje Yapisi
+## Proje Yapısı
 
 ```text
 Hak-Bul/
-|- backend/
-|  |- alembic/
-|  |- auth/
-|  |- db/
-|  |- models/
-|  |- rag/
-|  |- routers/
-|  |- services/
-|  |- tests/
-|  |- main.py
-|  |- config.py
-|  |- requirements.txt
-|- frontend/
-|  |- src/
-|  |- package.json
-|- docs/
-|  |- ENV_SETUP.md
-|  |- frontend-auth-integration.md
-|- docker-compose.yml
+├── backend/
+│   ├── alembic/versions/   # Veritabanı migration dosyaları
+│   ├── auth/               # JWT ve kimlik doğrulama
+│   ├── db/                 # SQLAlchemy bağlantı ayarları
+│   ├── models/             # ORM modelleri
+│   ├── rag/                # RAG pipeline (retriever, rewriter, categorizer, generator)
+│   ├── routers/            # API router'ları
+│   ├── services/           # İş mantığı
+│   ├── tests/              # Test dosyaları
+│   ├── main.py
+│   ├── config.py
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   └── package.json
+├── docs/
+└── docker-compose.yml
 ```
 
 ## Gereksinimler
 
 - Python 3.11
-- Node.js 20+
-- npm
-- Docker + Docker Compose (opsiyonel, tam stack icin)
+- Node.js 20+ ve npm
+- Docker + Docker Compose (**önerilen yöntem**)
+- Harici servis hesapları: [Groq](https://console.groq.com) API anahtarı, [Qdrant Cloud](https://cloud.qdrant.io) cluster'ı
 
-## Local Gelistirme Kurulumu
+---
 
-### 1. Backend
+## Kurulum — Docker ile (Önerilen)
+
+Tüm bağımlılıkları, migration'ları ve servisleri tek seferde ayağa kaldırır.
+
+### Adım 1 — Repo'yu klonla
+
+```bash
+git clone https://github.com/ErdemSusam23/Hak-Bul.git
+cd Hak-Bul
+```
+
+### Adım 2 — Ortam değişkenlerini hazırla
+
+```bash
+cp backend/.env.docker.example backend/.env.docker
+```
+
+Ardından `backend/.env.docker` dosyasını bir editörde aç ve şu alanları doldur:
+
+```env
+# Postgres ayarları — üç alanda da aynı kullanıcı/şifre/db adını kullan
+POSTGRES_DB=hakbul
+POSTGRES_USER=hakbul_user
+POSTGRES_PASSWORD=guclu_bir_sifre_yaz
+
+# DATABASE_URL'deki kullanıcı, şifre ve db adı POSTGRES_ alanlarıyla eşleşmeli
+DATABASE_URL=postgresql+psycopg://hakbul_user:guclu_bir_sifre_yaz@postgres:5432/hakbul
+
+# Güvenli rastgele bir string üret: python -c "import secrets; print(secrets.token_hex(32))"
+JWT_SECRET_KEY=buraya_urettığın_değeri_yaz
+
+# Groq API anahtarın (https://console.groq.com)
+GROQ_API_KEY=gsk_...
+
+# Qdrant Cloud bilgilerin (https://cloud.qdrant.io)
+QDRANT_URL=https://xxxx.qdrant.io
+QDRANT_API_KEY=...
+```
+
+> **Not:** `CORS_ORIGINS`, `MOCK_*`, `EMBEDDING_MODEL`, `SCORE_THRESHOLD` alanlarını değiştirmene gerek yok, varsayılanlar çalışır.
+
+### Adım 3 — Konteynerleri başlat
+
+```bash
+docker compose up -d --build
+```
+
+İlk çalıştırmada embedding modeli (`intfloat/multilingual-e5-base`) indirilir, bu birkaç dakika sürebilir.
+
+### Adım 4 — Çalışıp çalışmadığını kontrol et
+
+```bash
+docker compose ps
+```
+
+Üç servis de `healthy` görünmeli:
+
+```
+hak-bul-postgres   Up (healthy)
+hak-bul-backend    Up (healthy)
+hak-bul-frontend   Up (healthy)
+```
+
+Sorun çıkarsa logları incele:
+
+```bash
+docker compose logs backend
+docker compose logs frontend
+```
+
+### Adım 5 — Tarayıcıda aç
+
+| Servis    | Adres                        |
+|-----------|------------------------------|
+| Uygulama  | http://localhost:5173         |
+| API       | http://localhost:8000         |
+| Swagger   | http://localhost:8000/docs    |
+
+> **Not:** `alembic upgrade head` backend container açılışında otomatik çalışır, migration'ları elle uygulamana gerek yok.
+
+### Konteynerleri durdur / sil
+
+```bash
+# Durdur (veri korunur)
+docker compose down
+
+# Durdur ve veritabanı verisini de sil
+docker compose down -v
+```
+
+---
+
+## Kurulum — Local Geliştirme (Docker olmadan)
+
+Bu yöntem için PostgreSQL'in yerel makinende kurulu ve çalışıyor olması gerekir.
+
+### Adım 1 — Ortam değişkenlerini hazırla
 
 ```bash
 cd backend
 cp .env.example .env
 ```
 
-`.env` icinde en azindan su alanlari doldur:
+`.env` dosyasında şu alanları doldur:
 
-- `DATABASE_URL`
-- `JWT_SECRET_KEY`
-- `GROQ_API_KEY` (gercek LLM yaniti icin)
-- `QDRANT_URL` ve `QDRANT_API_KEY` (varsa)
+```env
+DATABASE_URL=postgresql+psycopg://kullanici:sifre@localhost:5432/db_adi
 
-Bagimliliklar:
+# Güvenli rastgele bir string üret: python -c "import secrets; print(secrets.token_hex(32))"
+JWT_SECRET_KEY=buraya_urettığın_değeri_yaz
+
+GROQ_API_KEY=gsk_...
+QDRANT_URL=https://xxxx.qdrant.io
+QDRANT_API_KEY=...
+```
+
+> SQLite ile hızlı test için: `DATABASE_URL=sqlite:///./dev.db`
+
+### Adım 2 — Python bağımlılıklarını kur
 
 ```bash
+# backend/ klasöründeyken
 pip install -r requirements.txt
 ```
 
-Migration:
+### Adım 3 — Veritabanı migration'larını uygula
 
 ```bash
 alembic upgrade head
 ```
 
-Backend'i baslat:
+### Adım 4 — Backend'i başlat
 
 ```bash
-uvicorn main:app --reload
+uvicorn main:app --reload --port 8000
 ```
 
-### 2. Frontend
+### Adım 5 — Frontend ortam değişkenlerini hazırla
 
 ```bash
-cd frontend
+cd ../frontend
 cp .env.example .env
+```
+
+`.env` içeriği (varsayılanlar genellikle yeterli):
+
+```env
+VITE_API_URL=http://localhost:8000
+VITE_MOCK_MODE=false
+```
+
+### Adım 6 — Frontend bağımlılıklarını kur ve başlat
+
+```bash
 npm install
 npm run dev
 ```
 
-Varsayilanlar:
+Uygulama `http://localhost:5173` adresinde açılır.
 
-- `VITE_API_URL=http://localhost:8000`
-- `VITE_MOCK_MODE=false`
-
-## Docker ile Calistirma
-
-```bash
-cp backend/.env.docker.example backend/.env.docker
-docker compose up -d --build
-```
-
-Servisler:
-
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:8000`
-- Swagger: `http://localhost:8000/docs`
-- Postgres: `localhost:5432`
-
-Not:
-
-- Docker backend acilisinda otomatik `alembic upgrade head` calisir.
-- `DATABASE_URL` host'u Docker icinde `postgres` olmalidir.
+---
 
 ## API Endpointleri
 
 ### Core
 
-- `POST /ask`
-- `GET /search`
-- `GET /health`
+| Method | Endpoint   | Açıklama |
+|--------|------------|----------|
+| POST   | `/ask`     | Hukuki soru sor (RAG pipeline, rate limited) |
+| GET    | `/search`  | Kanun maddesi veya dava numarasına göre ara |
+| GET    | `/health`  | Servis sağlık durumu |
 
 ### Auth
 
-- `POST /auth/register`
-- `POST /auth/login`
-- `POST /auth/refresh`
-- `POST /auth/logout`
+| Method | Endpoint          | Açıklama |
+|--------|-------------------|----------|
+| POST   | `/auth/register`  | Kayıt |
+| POST   | `/auth/login`     | Giriş (access + refresh token döner) |
+| POST   | `/auth/refresh`   | Token yenileme (rotation ile) |
+| POST   | `/auth/logout`    | Çıkış (refresh token iptal) |
 
-### Chat Gecmisi
+### Sohbet Geçmişi
 
-- `GET /chat/history/{conversation_id}` (auth gerekir)
-- `GET /chat/conversations` (auth gerekir)
-- `GET /chat/guest/history/{conversation_id}?guest_session_id=...`
-- `GET /chat/guest/conversations?guest_session_id=...`
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| GET | `/chat/history/{conversation_id}` | Sohbet mesajları (auth gerekir) |
+| GET | `/chat/conversations` | Kullanıcının sohbet listesi (auth gerekir) |
+| GET | `/chat/guest/history/{conversation_id}?guest_session_id=...` | Misafir sohbet mesajları |
+| GET | `/chat/guest/conversations?guest_session_id=...` | Misafir sohbet listesi |
 
-## Bilinen Durumlar
+### Feedback
 
-- Backend chat gecmisi endpointleri aktif.
-- Frontend tarafinda chat gecmisi backend endpointlerine tam entegre degil; su an kullanici bazli yerel gecmis (localStorage) kullanimi da bulunuyor.
-- Qdrant ayari yoksa backend yerel corpus fallback moduna dusebilir.
+| Method | Endpoint     | Açıklama |
+|--------|--------------|----------|
+| POST   | `/feedback`  | Cevaba 👍 (+1) veya 👎 (-1) ver |
+
+---
 
 ## Testler
 
-Backend testlerini calistirmak icin:
-
 ```bash
-python -m pytest backend/tests -q
+# Docker içinde çalıştır
+docker exec hak-bul-backend python -m pytest tests/ -v
+
+# Ya da local geliştirmede (backend/ klasöründeyken)
+python -m pytest tests/ -v
 ```
 
-Mevcut kapsama:
+Mevcut test kapsamı:
+- Auth akışı (register, login, refresh rotation, logout)
+- Sohbet geçmişi (guest + user bazlı)
+- Feedback endpoint'i (validasyon, 404, 👍/👎 kaydetme, güncelleme)
 
-- Auth akisi testleri
-- Chat history persistence testleri (guest + user)
+---
 
-## Ek Dokumanlar
+## Bilinen Durumlar
 
-- `docs/ENV_SETUP.md`
-- `docs/frontend-auth-integration.md`
-- `docs/hak-bul-backend-docs.md`
+- Frontend sohbet geçmişi şu an localStorage üzerinden çalışıyor; backend `/chat/*` endpointleri aktif fakat frontend entegrasyonu henüz tamamlanmadı.
+- Qdrant ayarı yapılmazsa backend yerel JSON corpus ile fallback moduna düşer (kısıtlı içerik).
 
-## Guvenlik Notu
+---
 
-- Gercek `.env` ve `.env.docker` dosyalarini repoya commit etmeyin.
-- API key ve JWT secret degerlerini production'da guvenli secret manager ile yonetin.
+## Ek Belgeler
 
+- [`docs/ENV_SETUP.md`](docs/ENV_SETUP.md) — Ortam değişkenleri detaylı rehber
+- [`docs/frontend-auth-integration.md`](docs/frontend-auth-integration.md) — Frontend auth entegrasyonu
+- [`docs/hak-bul-backend-docs.md`](docs/hak-bul-backend-docs.md) — Backend API detayları
+
+---
 
 <div align="center">
-  <sub>Hak-Bul Projesi • Son Güncelleme: 05.03.2026</sub>
+  <sub>Hak-Bul Projesi • Son Güncelleme: 17.03.2026</sub>
 </div>

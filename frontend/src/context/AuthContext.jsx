@@ -12,16 +12,18 @@ export function AuthProvider({ children }) {
     const [kullanici, setKullanici] = useState(() => {
         const email = sessionStorage.getItem(EMAIL_KEY);
         const token = sessionStorage.getItem(ACCESS_KEY);
-        return token ? { email, token } : null;
+        const rol = sessionStorage.getItem('hakbul_role') || 'user';
+        return token ? { email, token, rol } : null;
     });
     const [yukleniyor, setYukleniyor] = useState(false);
     const refreshPromiseRef = useRef(null);
 
     // Token'ları kaydet
-    const tokenlariKaydet = useCallback((access, refresh, email) => {
+    const tokenlariKaydet = useCallback((access, refresh, email, rol) => {
         sessionStorage.setItem(ACCESS_KEY, access);
         sessionStorage.setItem(REFRESH_KEY, refresh);
         if (email) sessionStorage.setItem(EMAIL_KEY, email);
+        if (rol) sessionStorage.setItem('hakbul_role', rol);
     }, []);
 
     // Giriş yap
@@ -29,8 +31,8 @@ export function AuthProvider({ children }) {
         setYukleniyor(true);
         try {
             const data = await girisYap({ email, sifre });
-            tokenlariKaydet(data.access_token, data.refresh_token, email);
-            setKullanici({ email, token: data.access_token });
+            tokenlariKaydet(data.access_token, data.refresh_token, email, data.role);
+            setKullanici({ email, token: data.access_token, rol: data.role || 'user' });
             return { basarili: true };
         } catch (err) {
             const mesaj =
@@ -92,6 +94,7 @@ export function AuthProvider({ children }) {
         sessionStorage.removeItem(ACCESS_KEY);
         sessionStorage.removeItem(REFRESH_KEY);
         sessionStorage.removeItem(EMAIL_KEY);
+        sessionStorage.removeItem('hakbul_role');
         setKullanici(null);
     }, []);
 

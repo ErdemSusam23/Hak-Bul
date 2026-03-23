@@ -66,6 +66,7 @@ class TokenPairResponse(BaseModel):
     access_token: str
     refresh_token: str
     token_type: str = "bearer"
+    role: str = "user"
 
 
 class ChatMessageItem(BaseModel):
@@ -125,6 +126,8 @@ class AdminFeedbackOzet(BaseModel):
 class AdminGunlukAktiviteItem(BaseModel):
     tarih: str
     mesaj_sayisi: int
+    konusma_sayisi: int = 0
+    kullanici_sayisi: int = 0
 
 
 class TaslakAlan(BaseModel):

@@ -63,7 +63,7 @@ export default function AdminSayfasi() {
     }
 
     const begenOrani = feedback?.toplam > 0
-        ? Math.round((feedback.puan_1 / feedback.toplam) * 100)
+        ? Math.round((feedback.begeni / feedback.toplam) * 100)
         : 0;
 
     return (
@@ -89,10 +89,10 @@ export default function AdminSayfasi() {
             <main className="flex-1 p-6 flex flex-col gap-6 max-w-5xl mx-auto w-full">
                 {/* İstatistik Kartları */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <StatKarti ikon={Users} baslik="Toplam Kullanıcı" deger={istatistik?.total_users} renk="#6366f1" />
-                    <StatKarti ikon={MessageSquare} baslik="Toplam Mesaj" deger={istatistik?.total_messages} renk="#22c55e" />
-                    <StatKarti ikon={TrendingUp} baslik="Konuşma" deger={istatistik?.total_conversations} renk="#f59e0b" />
-                    <StatKarti ikon={ThumbsUp} baslik="Feedback" deger={istatistik?.feedback_count} renk="#ec4899" />
+                    <StatKarti ikon={Users} baslik="Toplam Kullanıcı" deger={istatistik?.toplam_kullanici} renk="#6366f1" />
+                    <StatKarti ikon={MessageSquare} baslik="Toplam Mesaj" deger={istatistik?.toplam_mesaj} renk="#22c55e" />
+                    <StatKarti ikon={TrendingUp} baslik="Konuşma" deger={istatistik?.toplam_konusma} renk="#f59e0b" />
+                    <StatKarti ikon={ThumbsUp} baslik="Feedback" deger={istatistik ? istatistik.toplam_begeni + istatistik.toplam_begenmeme : null} renk="#ec4899" />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -150,11 +150,11 @@ export default function AdminSayfasi() {
                                 </div>
                                 <div className="grid grid-cols-2 gap-3 text-center">
                                     <div className="rounded-xl p-3" style={{ background: 'var(--tema-surface)' }}>
-                                        <p className="text-xl font-bold text-green-500">👍 {feedback.puan_1}</p>
+                                        <p className="text-xl font-bold text-green-500">👍 {feedback.begeni}</p>
                                         <p className="text-xs mt-1" style={{ color: 'var(--tema-dimmer)' }}>Beğendi</p>
                                     </div>
                                     <div className="rounded-xl p-3" style={{ background: 'var(--tema-surface)' }}>
-                                        <p className="text-xl font-bold text-red-400">👎 {feedback.puan_minus1}</p>
+                                        <p className="text-xl font-bold text-red-400">👎 {feedback.begenmeme}</p>
                                         <p className="text-xs mt-1" style={{ color: 'var(--tema-dimmer)' }}>Beğenmedi</p>
                                     </div>
                                 </div>

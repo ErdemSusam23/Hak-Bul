@@ -55,7 +55,7 @@ def login(body: LoginRequest, db: Session = Depends(get_db)):
     db.add(db_token)
     db.commit()
 
-    return TokenPairResponse(access_token=access_token, refresh_token=refresh_token)
+    return TokenPairResponse(access_token=access_token, refresh_token=refresh_token, role=user.role.value)
 
 
 @router.post("/refresh", response_model=TokenPairResponse)
@@ -98,7 +98,7 @@ def refresh(body: RefreshRequest, db: Session = Depends(get_db)):
     )
     db.commit()
 
-    return TokenPairResponse(access_token=access_token, refresh_token=new_refresh_token)
+    return TokenPairResponse(access_token=access_token, refresh_token=new_refresh_token, role=user.role.value)
 
 
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)

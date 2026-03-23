@@ -2,13 +2,12 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import {
     Scale, Send, Trash2, RotateCcw, Briefcase,
     FileText, Clock, Heart, ArrowRight, Sun, Moon,
-    LogIn, UserPlus, LogOut,
+    LogIn, UserPlus, LogOut, Paperclip, X
 } from 'lucide-react';
 import SohbetMesaji from '../components/SohbetMesaji';
 import YukleniyorGostergesi from '../components/YukleniyorGostergesi';
 import DirekArama from '../components/DirekArama';
 import AuthModal from '../components/AuthModal';
-import { sohbetKaydet } from '../utils/sohbetStore';
 import { useChat } from '../hooks/useChat';
 import { useTema } from '../context/TemaContext';
 import { useAuth } from '../context/AuthContext';
@@ -38,9 +37,11 @@ const ORNEK_SORULAR = [
 
 export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSinyali }) {
     const [girdi, setGirdi] = useState('');
+    const [secilenDosya, setSecilenDosya] = useState(null);
     const [authModalAcik, setAuthModalAcik] = useState(false);
     const chatSonuRef = useRef(null);
     const inputRef = useRef(null);
+    const dosyaInputRef = useRef(null);
     const sohbetIdRef = useRef(null); // aktif session ID
     const { tema, toggleTema } = useTema();
     const { kullanici, cikis } = useAuth();
@@ -76,38 +77,41 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         if (temizleSinyali > 0) {
             sohbetiTemizle();
             setGirdi('');
+            setSecilenDosya(null);
             sohbetIdRef.current = null;
         }
     }, [temizleSinyali]);
 
-    // Her AI yanıtından sonra sohbeti otomatik kaydet
+    // Her AI yanıtından sonra sohbet geçmiş listesinin güncellenmesi için sinyal gönder
     useEffect(() => {
-        if (!kullanici?.email || mesajlar.length === 0 || yukleniyor) return;
-        if (!sohbetIdRef.current) return;
-        const ilkSoru = mesajlar.find((m) => m.rol === 'kullanici')?.icerik || 'Sohbet';
-        sohbetKaydet(kullanici.email, {
-            id: sohbetIdRef.current,
-            title: ilkSoru.slice(0, 60),
-            tarih: new Date().toISOString(),
-            mesajlar: mesajlar.map((m) => ({
-                ...m,
-                zaman: m.zaman instanceof Date ? m.zaman.toISOString() : m.zaman,
-            })),
-        });
+        if (mesajlar.length === 0 || yukleniyor) return;
         window.dispatchEvent(new Event('gecmis-guncellendi'));
     }, [mesajlar, yukleniyor]);
 
     const gonder = useCallback(async () => {
-        if (!girdi.trim() || yukleniyor) return;
+        if ((!girdi.trim() && !secilenDosya) || yukleniyor) return;
         const metin = girdi;
+        const dosya = secilenDosya;
         setGirdi('');
-        // İlk mesajsa yeni session ID oluştur
-        if (!sohbetIdRef.current) {
-            sohbetIdRef.current = `sohbet_${Date.now()}`;
+        setSecilenDosya(null);
+        
+        const localGuestId = localStorage.getItem('hakbul_guest_session_id') || null;
+
+        const stateVars = await mesajGonder(metin, {
+            conversationId: sohbetIdRef.current,
+            guestSessionId: localGuestId,
+            dosya: dosya,
+        });
+
+        if (stateVars) {
+            sohbetIdRef.current = stateVars.conversation_id;
+            if (stateVars.guest_session_id) {
+                localStorage.setItem('hakbul_guest_session_id', stateVars.guest_session_id);
+            }
         }
-        await mesajGonder(metin);
+        
         inputRef.current?.focus();
-    }, [girdi, yukleniyor, mesajGonder]);
+    }, [girdi, yukleniyor, mesajGonder, kullanici]);
 
     const klavyeIsle = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -356,6 +360,17 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                 }}
             >
                 <div className="max-w-3xl mx-auto">
+                    {secilenDosya && (
+                        <div className="mb-2 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border"
+                             style={{ background: 'var(--tema-card)', borderColor: 'var(--tema-border)', color: 'var(--tema-text2)' }}>
+                            <FileText size={14} className="opacity-70" />
+                            <span className="text-sm truncate max-w-[200px]">{secilenDosya.name}</span>
+                            <button onClick={() => setSecilenDosya(null)} className="ml-1 opacity-60 hover:opacity-100 hover:text-red-400 transition-colors">
+                                <X size={14} />
+                            </button>
+                        </div>
+                    )}
+
                     <div
                         className="flex gap-0 items-end rounded-2xl overflow-hidden transition-all duration-200"
                         style={{
@@ -372,6 +387,21 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.1)';
                         }}
                     >
+                        <input 
+                            type="file" 
+                            ref={dosyaInputRef} 
+                            accept=".pdf" 
+                            className="hidden" 
+                            onChange={(e) => { if(e.target.files[0]) setSecilenDosya(e.target.files[0]); }} 
+                        />
+                        <button
+                            onClick={() => dosyaInputRef.current?.click()}
+                            disabled={yukleniyor}
+                            className="flex items-center justify-center w-11 h-11 m-1.5 rounded-xl transition-all duration-150 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/5"
+                            title="PDF Yükle"
+                        >
+                            <Paperclip size={18} style={{ color: secilenDosya ? 'var(--tema-accent)' : 'var(--tema-muted)' }} />
+                        </button>
                         <textarea
                             ref={inputRef}
                             value={girdi}
@@ -392,10 +422,10 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                         />
                         <button
                             onClick={gonder}
-                            disabled={!girdi.trim() || yukleniyor}
+                            disabled={(!girdi.trim() && !secilenDosya) || yukleniyor}
                             className="flex items-center justify-center w-11 h-11 m-1.5 rounded-xl transition-all duration-150 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
                             style={{
-                                background: girdi.trim() && !yukleniyor
+                                background: (girdi.trim() || secilenDosya) && !yukleniyor
                                     ? 'var(--tema-send-btn)'
                                     : `rgba(var(--a), 0.08)`,
                             }}
@@ -406,7 +436,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             ) : (
                                 <Send
                                     size={16}
-                                    style={{ color: girdi.trim() ? 'var(--tema-send-icon)' : 'var(--tema-muted)' }}
+                                    style={{ color: girdi.trim() || secilenDosya ? 'var(--tema-send-icon)' : 'var(--tema-muted)' }}
                                 />
                             )}
                         </button>

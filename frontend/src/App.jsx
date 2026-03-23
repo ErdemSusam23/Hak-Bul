@@ -1,18 +1,34 @@
 import { useState, useCallback, useEffect } from 'react';
-import { MessageSquare, Clock, Star, Plus, ChevronRight } from 'lucide-react';
+import { MessageSquare, Clock, Star, Plus, ChevronRight, FileText, BarChart2 } from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
 import SohbetSayfasi from './pages/SohbetSayfasi';
+import TaslakSayfasi from './pages/TaslakSayfasi';
+import AdminSayfasi from './pages/AdminSayfasi';
 import { TemaProvider, useTema } from './context/TemaContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import { sohbetleriGetir } from './utils/sohbetStore';
+import {
+    sohbetGecmisiListeleAPI,
+    sohbetDetayGetirAPI,
+    misafirSohbetGecmisiListeleAPI,
+    misafirSohbetDetayGetirAPI,
+} from './api/client';
 
 function tarihKisa(isoStr) {
-    const tarih = new Date(isoStr);
+    if (!isoStr) return '';
+    // Backend'den gelen tarih UTC ancak sonunda 'Z' olmayabilir,
+    // Türkiye +3 saat olduğu için tarayıcı bunu yerel saat sanarsa '3 saat uzaklıkta' görünür.
+    const gercekStr = isoStr.endsWith('Z') ? isoStr : `${isoStr}Z`;
+    const tarih = new Date(gercekStr);
     const simdi = new Date();
-    const fark = simdi - tarih;
+    let fark = simdi - tarih;
+    
+    // Eğer hafif senkron farkı varsa negatif olabilir
+    if (fark < 0) fark = 0;
+
     const dakika = Math.floor(fark / 60000);
     const saat = Math.floor(fark / 3600000);
     const gun = Math.floor(fark / 86400000);
+
     if (dakika < 1) return 'Az önce';
     if (dakika < 60) return `${dakika}dk`;
     if (saat < 24) return `${saat}sa`;
@@ -20,23 +36,80 @@ function tarihKisa(isoStr) {
     return tarih.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
 }
 
-function SolSidebar({ onSohbetSec, onYeniSohbet }) {
+function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSayfa }) {
     const { kullanici } = useAuth();
     const [sohbetler, setSohbetler] = useState([]);
+    const [yukleniyor, setYukleniyor] = useState(false);
 
-    // İlk yükleme + kullanıcı değişince sohbetleri çek
+    const gecmisiCek = async () => {
+        setYukleniyor(true);
+        try {
+            if (kullanici?.token) {
+                // Giriş yapmış kullanıcı geçmişi
+                const data = await sohbetGecmisiListeleAPI();
+                const formatli = data.conversations.map(c => ({
+                    id: c.conversation_id,
+                    title: c.title || `Sohbet (${c.message_count} mesaj)`,
+                    tarih: c.last_message_at,
+                }));
+                setSohbetler(formatli);
+            } else {
+                // Misafir kullanıcı geçmişi
+                const guestId = localStorage.getItem('hakbul_guest_session_id');
+                if (guestId) {
+                    const data = await misafirSohbetGecmisiListeleAPI(guestId);
+                    const formatli = (data.conversations || []).map(c => ({
+                        id: c.conversation_id,
+                        title: c.title || `Sohbet (${c.message_count} mesaj)`,
+                        tarih: c.last_message_at,
+                        misafir: true,
+                    }));
+                    setSohbetler(formatli);
+                } else {
+                    setSohbetler([]);
+                }
+            }
+        } catch (e) {
+            console.error('Geçmiş çekilemedi:', e);
+        } finally {
+            setYukleniyor(false);
+        }
+    };
+
     useEffect(() => {
-        setSohbetler(kullanici?.email ? sohbetleriGetir(kullanici.email) : []);
+        gecmisiCek();
     }, [kullanici]);
 
-    // Sohbet kaydedilince güncelle (custom event)
     useEffect(() => {
-        const handler = () => {
-            if (kullanici?.email) setSohbetler(sohbetleriGetir(kullanici.email));
-        };
+        const handler = () => gecmisiCek();
         window.addEventListener('gecmis-guncellendi', handler);
         return () => window.removeEventListener('gecmis-guncellendi', handler);
     }, [kullanici]);
+
+    const handleSohbetTikla = async (sohbet) => {
+        try {
+            let detay;
+            if (sohbet.misafir) {
+                const guestId = localStorage.getItem('hakbul_guest_session_id');
+                detay = await misafirSohbetDetayGetirAPI(sohbet.id, guestId);
+            } else {
+                detay = await sohbetDetayGetirAPI(sohbet.id);
+            }
+            onSohbetSec({
+                id: sohbet.id,
+                mesajlar: detay.messages.map(m => ({
+                    id: m.id,
+                    rol: m.role === 'user' ? 'kullanici' : 'asistan',
+                    icerik: m.content,
+                    kategori: 'Geçmiş',
+                    zaman: m.created_at,
+                    kaynaklar: m.kaynaklar || []
+                }))
+            });
+        } catch (e) {
+            console.error('Sohbet detayı çekilemedi:', e);
+        }
+    };
 
     return (
         <aside
@@ -92,7 +165,7 @@ function SolSidebar({ onSohbetSec, onYeniSohbet }) {
                     sohbetler.map((sohbet) => (
                         <button
                             key={sohbet.id}
-                            onClick={() => onSohbetSec(sohbet)}
+                            onClick={() => handleSohbetTikla(sohbet)}
                             className="w-full flex items-start gap-2 px-3 py-2.5 text-left transition-all duration-150 group border-b"
                             style={{ borderColor: 'var(--tema-border)' }}
                             onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
@@ -121,15 +194,37 @@ function SolSidebar({ onSohbetSec, onYeniSohbet }) {
 
             {/* Alt kısım */}
             <div
-                className="px-4 py-3"
+                className="px-3 py-3 flex flex-col gap-1"
                 style={{ borderTop: '1px solid var(--tema-border)' }}
             >
-                <div className="flex items-center gap-2">
-                    <Star size={13} style={{ color: 'var(--tema-dimmer)' }} />
-                    <span className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                        Yakında: Favori sorular
-                    </span>
-                </div>
+                <button
+                    onClick={onTaslakAc}
+                    className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                    style={{
+                        background: aktifSayfa === 'taslak' ? 'var(--tema-surface)' : 'transparent',
+                        color: aktifSayfa === 'taslak' ? 'var(--tema-accent)' : 'var(--tema-text2)',
+                    }}
+                    onMouseEnter={(e) => { if (aktifSayfa !== 'taslak') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
+                    onMouseLeave={(e) => { if (aktifSayfa !== 'taslak') e.currentTarget.style.background = 'transparent'; }}
+                >
+                    <FileText size={16} />
+                    Belge Taslakları
+                </button>
+                {kullanici?.rol === 'admin' && (
+                    <button
+                        onClick={onAdminAc}
+                        className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                        style={{
+                            background: aktifSayfa === 'admin' ? 'var(--tema-surface)' : 'transparent',
+                            color: aktifSayfa === 'admin' ? 'var(--tema-accent)' : 'var(--tema-text2)',
+                        }}
+                        onMouseEnter={(e) => { if (aktifSayfa !== 'admin') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
+                        onMouseLeave={(e) => { if (aktifSayfa !== 'admin') e.currentTarget.style.background = 'transparent'; }}
+                    >
+                        <BarChart2 size={16} />
+                        Admin Paneli
+                    </button>
+                )}
             </div>
         </aside>
     );
@@ -139,6 +234,7 @@ function AppIcerik() {
     const [kabul, setKabul] = useState(false);
     const [secilenSohbet, setSecilenSohbet] = useState(null);
     const [temizleSinyali, setTemizleSinyali] = useState(0);
+    const [aktifSayfa, setAktifSayfa] = useState('sohbet'); // 'sohbet' | 'taslak' | 'admin'
     const { tema } = useTema();
 
     const uyariKabul = useCallback(() => {
@@ -146,10 +242,12 @@ function AppIcerik() {
     }, []);
 
     const handleYeniSohbet = useCallback(() => {
+        setAktifSayfa('sohbet');
         setTemizleSinyali((v) => v + 1);
     }, []);
 
     const handleSohbetSec = useCallback((sohbet) => {
+        setAktifSayfa('sohbet');
         setSecilenSohbet(sohbet);
     }, []);
 
@@ -177,15 +275,24 @@ function AppIcerik() {
                     <SolSidebar
                         onSohbetSec={handleSohbetSec}
                         onYeniSohbet={handleYeniSohbet}
+                        onTaslakAc={() => setAktifSayfa('taslak')}
+                        onAdminAc={() => setAktifSayfa('admin')}
+                        aktifSayfa={aktifSayfa}
                     />
 
-                    {/* Sohbet alanı */}
+                    {/* Ana alan */}
                     <div className="flex-1 flex flex-col min-w-0">
-                        <SohbetSayfasi
-                            secilenSohbet={secilenSohbet}
-                            onSoruIslendi={() => setSecilenSohbet(null)}
-                            temizleSinyali={temizleSinyali}
-                        />
+                        {aktifSayfa === 'admin' ? (
+                            <AdminSayfasi />
+                        ) : aktifSayfa === 'taslak' ? (
+                            <TaslakSayfasi />
+                        ) : (
+                            <SohbetSayfasi
+                                secilenSohbet={secilenSohbet}
+                                onSoruIslendi={() => setSecilenSohbet(null)}
+                                temizleSinyali={temizleSinyali}
+                            />
+                        )}
                     </div>
                 </div>
             )}

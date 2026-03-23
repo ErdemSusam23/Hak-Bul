@@ -2,6 +2,7 @@ import { Scale, User, AlertCircle } from 'lucide-react';
 import { useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import KaynakKarti from './KaynakKarti';
+import FeedbackButonlari from './FeedbackButonlari';
 
 function SaatDamgasi({ zaman }) {
     if (!zaman) return null;
@@ -140,17 +141,30 @@ function AsistanMesaji({ mesaj }) {
                     }}
                 >
                     {!mesaj.hata && (
-                        <div className="flex items-center gap-2 mb-2.5">
+                        <div className="flex items-center justify-between gap-2 mb-2.5 border-b pb-2" style={{ borderColor: 'rgba(var(--a), 0.08)' }}>
                             <span
-                                className="inline-flex items-center gap-1.5 text-xs font-medium tracking-widest uppercase"
-                                style={{ color: `rgba(var(--a), 0.65)` }}
+                                className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase"
+                                style={{ color: `rgba(var(--a), 0.7)` }}
                             >
                                 <span
                                     className="w-1.5 h-1.5 rounded-full"
-                                    style={{ background: `rgba(var(--a), 0.7)` }}
+                                    style={{ background: `rgba(var(--a), 0.8)` }}
                                 />
                                 Hak-Bul
                             </span>
+                            
+                            {mesaj.kategori && (
+                                <span 
+                                    className="px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase shadow-sm"
+                                    style={{ 
+                                        background: 'var(--tema-surface)', 
+                                        color: 'var(--tema-accent)', 
+                                        border: '1px solid var(--tema-border)' 
+                                    }}
+                                >
+                                    {mesaj.kategori}
+                                </span>
+                            )}
                         </div>
                     )}
 
@@ -180,6 +194,14 @@ function AsistanMesaji({ mesaj }) {
                     <p className="text-xs mt-3 px-1 italic" style={{ color: 'var(--tema-dimmer)' }}>
                         {mesaj.uyari}
                     </p>
+                )}
+
+                {/* Feedback butonları — sadece başarılı asistan mesajlarında */}
+                {!mesaj.hata && mesaj.id && (
+                    <FeedbackButonlari
+                        mesajId={mesaj.id}
+                        guestSessionId={mesaj.guest_session_id}
+                    />
                 )}
 
                 <SaatDamgasi zaman={mesaj.zaman} />

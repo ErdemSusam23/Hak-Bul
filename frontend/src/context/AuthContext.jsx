@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useCallback, useRef } from 'react';
+import { createContext, useContext, useState, useCallback, useRef, useEffect } from 'react';
 import { girisYap, kayitOl, tokenYenile, cikisYap } from '../api/auth';
+import { setAuthHandlers } from '../api/client';
 
 const AuthContext = createContext(null);
 
@@ -75,6 +76,10 @@ export function AuthProvider({ children }) {
                 setKullanici((prev) => prev ? { ...prev, token: data.access_token } : null);
                 return data.access_token;
             })
+            .catch(() => {
+                cikis(); // Yenileme başarısızsa direkt çıkış yap
+                throw new Error('Oturum süresi doldu');
+            })
             .finally(() => { refreshPromiseRef.current = null; });
 
         return refreshPromiseRef.current;
@@ -90,7 +95,12 @@ export function AuthProvider({ children }) {
         setKullanici(null);
     }, []);
 
-    const accessToken = () => sessionStorage.getItem(ACCESS_KEY);
+    const accessToken = useCallback(() => sessionStorage.getItem(ACCESS_KEY), []);
+
+    // Interceptor için handler'ları set et
+    useEffect(() => {
+        setAuthHandlers(accessToken, tokenYenileFn);
+    }, [accessToken, tokenYenileFn]);
 
     return (
         <AuthContext.Provider value={{

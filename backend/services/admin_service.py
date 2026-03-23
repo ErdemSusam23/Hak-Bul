@@ -71,6 +71,8 @@ def gunluk_aktivite(db: Session, gun: int) -> list[dict]:
         db.query(
             func.date(ChatHistory.created_at).label("tarih"),
             func.count(ChatHistory.id).label("mesaj_sayisi"),
+            func.count(func.distinct(ChatHistory.conversation_id)).label("konusma_sayisi"),
+            func.count(func.distinct(ChatHistory.user_id)).label("kullanici_sayisi"),
         )
         .filter(
             ChatHistory.created_at >= baslangic,
@@ -80,4 +82,12 @@ def gunluk_aktivite(db: Session, gun: int) -> list[dict]:
         .order_by(func.date(ChatHistory.created_at).asc())
         .all()
     )
-    return [{"tarih": str(tarih), "mesaj_sayisi": sayi} for tarih, sayi in satirlar]
+    return [
+        {
+            "tarih": str(tarih),
+            "mesaj_sayisi": mesaj,
+            "konusma_sayisi": konusma,
+            "kullanici_sayisi": kullanici,
+        }
+        for tarih, mesaj, konusma, kullanici in satirlar
+    ]

@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useCallback, useRef } from 'react';
+import { createContext, useContext, useState, useCallback, useRef, useEffect } from 'react';
 import { girisYap, kayitOl, tokenYenile, cikisYap } from '../api/auth';
+import { setAuthHandlers } from '../api/client';
 
 const AuthContext = createContext(null);
 
@@ -11,16 +12,18 @@ export function AuthProvider({ children }) {
     const [kullanici, setKullanici] = useState(() => {
         const email = sessionStorage.getItem(EMAIL_KEY);
         const token = sessionStorage.getItem(ACCESS_KEY);
-        return token ? { email, token } : null;
+        const rol = sessionStorage.getItem('hakbul_role') || 'user';
+        return token ? { email, token, rol } : null;
     });
     const [yukleniyor, setYukleniyor] = useState(false);
     const refreshPromiseRef = useRef(null);
 
     // Token'ları kaydet
-    const tokenlariKaydet = useCallback((access, refresh, email) => {
+    const tokenlariKaydet = useCallback((access, refresh, email, rol) => {
         sessionStorage.setItem(ACCESS_KEY, access);
         sessionStorage.setItem(REFRESH_KEY, refresh);
         if (email) sessionStorage.setItem(EMAIL_KEY, email);
+        if (rol) sessionStorage.setItem('hakbul_role', rol);
     }, []);
 
     // Giriş yap
@@ -28,8 +31,8 @@ export function AuthProvider({ children }) {
         setYukleniyor(true);
         try {
             const data = await girisYap({ email, sifre });
-            tokenlariKaydet(data.access_token, data.refresh_token, email);
-            setKullanici({ email, token: data.access_token });
+            tokenlariKaydet(data.access_token, data.refresh_token, email, data.role);
+            setKullanici({ email, token: data.access_token, rol: data.role || 'user' });
             return { basarili: true };
         } catch (err) {
             const mesaj =
@@ -75,6 +78,10 @@ export function AuthProvider({ children }) {
                 setKullanici((prev) => prev ? { ...prev, token: data.access_token } : null);
                 return data.access_token;
             })
+            .catch(() => {
+                cikis(); // Yenileme başarısızsa direkt çıkış yap
+                throw new Error('Oturum süresi doldu');
+            })
             .finally(() => { refreshPromiseRef.current = null; });
 
         return refreshPromiseRef.current;
@@ -87,10 +94,16 @@ export function AuthProvider({ children }) {
         sessionStorage.removeItem(ACCESS_KEY);
         sessionStorage.removeItem(REFRESH_KEY);
         sessionStorage.removeItem(EMAIL_KEY);
+        sessionStorage.removeItem('hakbul_role');
         setKullanici(null);
     }, []);
 
-    const accessToken = () => sessionStorage.getItem(ACCESS_KEY);
+    const accessToken = useCallback(() => sessionStorage.getItem(ACCESS_KEY), []);
+
+    // Interceptor için handler'ları set et
+    useEffect(() => {
+        setAuthHandlers(accessToken, tokenYenileFn);
+    }, [accessToken, tokenYenileFn]);
 
     return (
         <AuthContext.Provider value={{

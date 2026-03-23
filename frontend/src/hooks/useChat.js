@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { soruSor, aramaYap } from '../api/client';
+import { soruSor, aramaYap, dokumanAnalizAPI } from '../api/client';
 
 let mesajSayac = 0;
 const yeniId = () => `msg_${++mesajSayac}_${Date.now()}`;
@@ -12,11 +12,14 @@ export function useChat() {
     const [aramaSonuclari, setAramaSonuclari] = useState(null);
     const sonMesajRef = useRef(null);
 
-    const mesajGonder = useCallback(async (metin) => {
-        if (!metin.trim() || yukleniyor) return;
+    const mesajGonder = useCallback(async (metin, config = {}) => {
+        const metinVar = metin ? metin.trim() : '';
+        const dosyaVar = config.dosya;
 
-        // Soru min 10 karakter (backend validasyonu ile uyumlu)
-        if (metin.trim().length < 10) {
+        if ((!metinVar && !dosyaVar) || yukleniyor) return null;
+
+        // Soru min 10 karakter (Eğer dosya yollanmıyorsa)
+        if (!dosyaVar && metinVar.length < 10) {
             const hataMesaj = {
                 id: yeniId(),
                 rol: 'asistan',
@@ -26,34 +29,55 @@ export function useChat() {
                 zaman: new Date(),
             };
             setMesajlar((onceki) => [...onceki, hataMesaj]);
-            return;
+            return null;
         }
 
         setHata(null);
 
         // Kullanıcı mesajını ekle
-        const kullaniciMesaj = {
+        const kullaniciMesicb = {
             id: yeniId(),
             rol: 'kullanici',
-            icerik: metin.trim(),
+            icerik: dosyaVar ? `[PDF: ${dosyaVar.name}] ${metinVar}` : metinVar,
             kaynaklar: [],
             zaman: new Date(),
         };
-        setMesajlar((onceki) => [...onceki, kullaniciMesaj]);
+        setMesajlar((onceki) => [...onceki, kullaniciMesicb]);
         setYukleniyor(true);
 
         try {
-            const yanit = await soruSor(metin.trim());
+            let yanit;
+            if (dosyaVar) {
+                yanit = await dokumanAnalizAPI({
+                    dosya: dosyaVar,
+                    soru: metinVar || undefined,
+                    conversation_id: config.conversationId,
+                    guest_session_id: config.guestSessionId,
+                });
+            } else {
+                yanit = await soruSor({
+                    soru: metinVar,
+                    conversation_id: config.conversationId,
+                    guest_session_id: config.guestSessionId,
+                });
+            }
 
             const asistanMesaj = {
-                id: yeniId(),
+                id: yanit.message_id || yeniId(),
                 rol: 'asistan',
                 icerik: yanit.yanit,
                 kaynaklar: yanit.kaynaklar || [],
                 uyari: yanit.uyari,
+                kategori: yanit.kategori || 'Genel Hukuk',
+                guest_session_id: yanit.guest_session_id || null,
                 zaman: new Date(),
             };
             setMesajlar((onceki) => [...onceki, asistanMesaj]);
+            
+            return {
+                conversation_id: yanit.conversation_id,
+                guest_session_id: yanit.guest_session_id
+            };
         } catch (err) {
             const status = err?.response?.status;
             const retryAfter = err?.response?.data?.retry_after;

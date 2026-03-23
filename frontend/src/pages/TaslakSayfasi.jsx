@@ -48,11 +48,11 @@ export default function TaslakSayfasi() {
 
         setPdfUretiliyor(true);
         try {
-            const blob = await taslakPdfUretAPI(secilenTaslak.id, formVerileri);
-            const url = window.URL.createObjectURL(new Blob([blob]));
+            const blob = await taslakPdfUretAPI(secilenTaslak.id, { alanlar: formVerileri });
+            const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', `${secilenTaslak.title.replace(/\s+/g, '_')}_Taslak.pdf`);
+            link.setAttribute('download', `${secilenTaslak.baslik.replace(/\s+/g, '_')}_Taslak.pdf`);
             document.body.appendChild(link);
             link.click();
             link.parentNode.removeChild(link);

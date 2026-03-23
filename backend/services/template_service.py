@@ -144,10 +144,10 @@ def _uyari_stili() -> ParagraphStyle:
     return ParagraphStyle(
         "Uyari",
         fontName=_FONT,
-        fontSize=8,
-        leading=11,
-        textColor=(0.4, 0.4, 0.4),
-        spaceBefore=0.5 * cm,
+        fontSize=6.5,
+        leading=9,
+        textColor=(0.72, 0.72, 0.72),
+        spaceBefore=0.8 * cm,
     )
 
 

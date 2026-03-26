@@ -1,13 +1,15 @@
 # Frontend Backend Entegrasyon Planı
 
+> **Durum: TAMAMLANDI** — Aşağıdaki tüm görevler implement edilmiştir.
+
 ## Context
-Backend tüm endpoint'leri hazır (39 test geçiyor) ancak frontend hâlâ localStorage'da çalışıyor. Bu plan; auth token gönderimi, sohbet geçmişi backend senkronizasyonu, feedback butonu, PDF yükleme ve taslak sayfasını frontend'e entegre eder.
+Backend tüm endpoint'leri hazır, frontend tüm backend entegrasyonu tamamlanmıştır. Bu doküman referans olarak saklanmaktadır.
 
 ---
 
-## Görev Sırası (Öncelik Sıralı)
+## Görev Sırası (Tümü Tamamlandı)
 
-### 1. `api/client.js` — Auth interceptor + yeni API fonksiyonları
+### 1. ✅ `api/client.js` — Auth interceptor + yeni API fonksiyonları
 
 **Sorun:** Token sessionStorage'da duruyor ama hiçbir isteğe eklenmıyor.
 
@@ -38,7 +40,7 @@ Eklenecekler:
 
 ---
 
-### 2. `hooks/useChat.js` — Oturum & ID takibi
+### 2. ✅ `hooks/useChat.js` — Oturum & ID takibi
 
 **Sorun:** `/ask` response'undaki `conversation_id`, `guest_session_id`, `message_id` capture edilmiyor.
 
@@ -52,7 +54,7 @@ Değişiklikler:
 
 ---
 
-### 3. `components/SohbetMesaji.jsx` — Feedback butonları
+### 3. ✅ `components/SohbetMesaji.jsx` + `FeedbackButonlari.jsx` — Feedback butonları
 
 Asistan mesajının altına 👍/👎 butonları ekle:
 - `mesaj.messageId` varsa butonları göster
@@ -66,7 +68,7 @@ Asistan mesajının altına 👍/👎 butonları ekle:
 
 ---
 
-### 4. `pages/SohbetSayfasi.jsx` — PDF yükleme butonu
+### 4. ✅ `pages/SohbetSayfasi.jsx` — PDF yükleme butonu
 
 Giriş çubuğuna Paperclip butonu ve hidden `<input type="file">` ekle:
 - Dosya seçilince `pdfGonder(dosya, girdi)` çağır, `girdi` temizle
@@ -76,7 +78,7 @@ Giriş çubuğuna Paperclip butonu ve hidden `<input type="file">` ekle:
 
 ---
 
-### 5. `App.jsx` — Sohbet geçmişi backend'den çek
+### 5. ✅ `App.jsx` — Sohbet geçmişi backend'den çek
 
 **Sorun:** Sol panel `sohbetleriGetir()` ile localStorage okuyor, backend'e hiç gitmiyor.
 
@@ -93,7 +95,7 @@ Değişiklikler:
 
 ---
 
-### 6. `pages/TaslakSayfasi.jsx` — Yeni sayfa (Hukuki Belge Taslakları)
+### 6. ✅ `pages/TaslakSayfasi.jsx` — Hukuki Belge Taslakları
 
 Yeni sayfa:
 - `taslakListesi()` ile 4 taslağı listele
@@ -106,7 +108,7 @@ Yeni sayfa:
 
 ---
 
-### 7. `pages/AdminSayfasi.jsx` — Admin dashboard (düşük öncelik)
+### 7. ✅ `pages/AdminSayfasi.jsx` — Admin dashboard
 
 Sadece `kullanici.role === 'admin'` ise sidebar'da görünür:
 - 4 kart: toplam kullanıcı / mesaj / konuşma / feedback oranı

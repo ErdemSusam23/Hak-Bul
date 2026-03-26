@@ -29,8 +29,8 @@ Vatandaşların günlük Türkçe ile sordukları hukuki sorulara, Mevzuat.gov.t
 - Yanıt kaynak atıflarıyla birlikte üretilmeli (hangi kanun, hangi madde, hangi karar)
 - Kullanıcı kanun maddesi numarası veya dava numarasıyla direkt arama yapabilmeli
 - Her yanıtta "Bu bir hukuki tavsiye değildir" uyarısı gösterilmeli
-- Kullanıcıdan ilk girişte sorumluluk reddi onayı alınmalı (checkbox / açılış ekranı)
-- MVP'de auth/kota yok; ilerleyen fazda freemium model değerlendirilecek
+- Kullanıcıdan ilk girişte sorumluluk reddi onayı alınmalı (checkbox / açılış ekranı) ✅
+- Auth sistemi uygulandı (JWT + refresh token); kota sistemi ilerleyen fazda değerlendirilebilir
 
 ### 2.2 Fonksiyonel Olmayan Gereksinimler
 - Yanıt süresi: p95 < 10 saniye
@@ -47,14 +47,20 @@ Vatandaşların günlük Türkçe ile sordukları hukuki sorulara, Mevzuat.gov.t
 - **Yargıtay kararları** — emsal.yargitay.gov.tr üzerinden HTML parse *(PDF'e göre parse çok daha kolay)*
 - Başlangıç noktası olarak GitHub / HuggingFace Türkçe hukuki veri setleri değerlendirilecek
 
-#### MVP Kapsamındaki Hukuk Alanı
-| Alan | Durum |
-|------|-------|
-| **İş Hukuku** | ✅ MVP — tek alan ile başlanır |
-| Kira Hukuku | 🔜 Sonraki faz |
-| Tüketici Hukuku | 🔜 Sonraki faz |
+#### Desteklenen Hukuk Kategorileri (8 + varsayılan)
 
-> **Karar gerekçesi:** RAG pipeline kalitesi alan sayısından bağımsız. Sistem tek alanda sağlam çalıştıktan sonra diğer alanlar eklenir. İş Hukuku tercih sebebi: Yargıtay kararı bol, kullanıcı soruları net (kıdem, ihbar), jüri de konuya hakimdir.
+Soru kategorilendirme keyword tabanlıdır (`rag/categorizer.py`):
+
+| Kategori | Durum |
+|----------|-------|
+| İş Hukuku | ✅ |
+| Kira Hukuku | ✅ |
+| Tüketici Hukuku | ✅ |
+| Aile Hukuku | ✅ |
+| Ceza Hukuku | ✅ |
+| İdare Hukuku | ✅ |
+| Ticaret Hukuku | ✅ |
+| Genel Hukuk | ✅ (varsayılan — eşleşme bulunamazsa) |
 
 #### MVP Veri Hacmi Hedefi
 | İçerik | Hedef | Gerekçe |
@@ -174,8 +180,8 @@ Kaynak atıflı yanıt + "Bu bir hukuki tavsiye değildir" uyarısı
 
 ## 6. İş Modeli
 
-- MVP'de auth/kota sistemi **yok** — scope dışı bırakıldı
-- İlerleyen fazda: Freemium model (aylık soru kotası, PostgreSQL + middleware ile kota takibi)
+- Auth sistemi **uygulandı** — JWT + refresh token, `users` tablosu PostgreSQL'de
+- Kota sistemi henüz yok; ilerleyen fazda: Freemium model (aylık soru kotası, middleware ile)
 - Reklam yok; Avukatlık Kanunu kapsamında tavsiye sınırları gözetilir
 
 ---
@@ -214,17 +220,21 @@ Retrieval doğruluğu: **%80**
 
 ---
 
-## 9. Açık Kararlar
+## 9. Kararlar
 
 | # | Konu | Durum |
 |---|------|-------|
-| 9.1 | Skor eşiği değeri (retrieval filtresi) | ❓ Test ile belirlenecek |
-| 9.2 | Reranker eklenecek mi? (cross-encoder) | ⏸️ MVP sonrası — pipeline hazır |
-| 9.3 | Evaluation seti sorumlusu ve tamamlanma tarihi | ❓ Açık |
+| 9.1 | Skor eşiği değeri (retrieval filtresi) | ✅ 0.65 — `retriever.py`'de uygulandı |
+| 9.2 | Reranker eklenecek mi? (cross-encoder) | ⏸️ MVP sonrası — pipeline modüler |
+| 9.3 | RAGAS evaluation pipeline | ❓ Henüz uygulanmadı (Yağız + Mustafa) |
 | 9.4 | Avukatlık Kanunu için hukuk fakültesinden görüş | ❓ Açık |
+| 9.5 | Auth sistemi | ✅ JWT + refresh token uygulandı |
+| 9.6 | PDF analizi | ✅ `POST /documents/analyze` — pypdf |
+| 9.7 | Hukuki belge taslakları | ✅ `GET/POST /templates` — reportlab |
+| 9.8 | Admin analytics | ✅ `GET /admin/stats/*` |
 
-> Bu doküman canlı tutulur. Kararlar netleştikçe Bölüm 9 güncellenir.
+> Bu doküman canlı tutulur. Kararlar netleştikçe bu bölüm güncellenir.
 
 ---
 
-*Son güncelleme: v0.3 — Veri hacmi hedefi, Groq API mimarisi, retrieval parametreleri, evaluation planı ve etik sınırlar netleştirildi.*
+*Son güncelleme: v1.0 — Auth, kategori sistemi, PDF analizi, taslaklar ve admin dashboard eklendi.*

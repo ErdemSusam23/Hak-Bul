@@ -315,7 +315,7 @@ Mevcut test kapsamı (39 test):
 
 ## Bilinen Durumlar
 
-- Frontend sohbet geçmişi şu an localStorage üzerinden çalışıyor; backend `/chat/*` endpoint'leri aktif fakat frontend entegrasyonu henüz tamamlanmadı.
+- Frontend sohbet geçmişi backend `/chat/*` endpoint'leriyle entegre çalışmaktadır (`sohbetGecmisiListeleAPI()` / `misafirSohbetGecmisiListeleAPI()`).
 - Qdrant ayarı yapılmazsa backend yerel JSON corpus ile fallback moduna düşer (kısıtlı içerik).
 - Türkçe karakter desteği için container'da `fonts-dejavu-core` kurulu olması önerilir (`apt-get install fonts-dejavu-core`); yoksa PDF taslakları ğ/ı dışındaki karakterleri doğru render eder.
 
@@ -323,12 +323,14 @@ Mevcut test kapsamı (39 test):
 
 ## Ek Belgeler
 
-- [`docs/ENV_SETUP.md`](docs/ENV_SETUP.md) — Ortam değişkenleri detaylı rehber
-- [`docs/frontend_integration_plan.md`](docs/frontend_integration_plan.md) — Frontend entegrasyon planı 17.03.2026
-- [`docs/hak-bul-backend-docs.md`](docs/hak-bul-backend-docs.md) — Backend API detayları
+- [`docs/guides/env-setup.md`](docs/guides/env-setup.md) — Ortam değişkenleri detaylı rehber
+- [`docs/reference/api.md`](docs/reference/api.md) — API endpoint'leri ve şemalar
+- [`docs/reference/database.md`](docs/reference/database.md) — PostgreSQL ve Qdrant şemaları
+- [`docs/reference/rag-pipeline.md`](docs/reference/rag-pipeline.md) — RAG pipeline akışı
+- [`docs/reference/tech-spec.md`](docs/reference/tech-spec.md) — Teknik gereksinimler ve mimari
 
 ---
 
 <div align="center">
-  <sub>Hak-Bul Projesi • Son Güncelleme: 17.03.2026</sub>
+  <sub>Hak-Bul Projesi • Son Güncelleme: 26.03.2026</sub>
 </div>

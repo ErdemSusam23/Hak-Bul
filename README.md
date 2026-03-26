@@ -315,7 +315,7 @@ Mevcut test kapsamı (39 test):
 
 ## Bilinen Durumlar
 
-- Frontend sohbet geçmişi şu an localStorage üzerinden çalışıyor; backend `/chat/*` endpoint'leri aktif fakat frontend entegrasyonu henüz tamamlanmadı.
+- Frontend sohbet geçmişi backend `/chat/*` endpoint'leriyle entegre çalışmaktadır (`sohbetGecmisiListeleAPI()` / `misafirSohbetGecmisiListeleAPI()`).
 - Qdrant ayarı yapılmazsa backend yerel JSON corpus ile fallback moduna düşer (kısıtlı içerik).
 - Türkçe karakter desteği için container'da `fonts-dejavu-core` kurulu olması önerilir (`apt-get install fonts-dejavu-core`); yoksa PDF taslakları ğ/ı dışındaki karakterleri doğru render eder.
 

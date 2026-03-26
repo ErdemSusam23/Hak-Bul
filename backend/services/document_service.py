@@ -1,40 +1,49 @@
-"""PDF doküman işleme servisi."""
+"""PDF document processing helpers."""
+
 import io
 
 from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 
 MAX_PDF_BOYUT_MB = 10
-MAX_METIN_KARAKTER = 15_000  # LLM context limiti için
+MAX_METIN_KARAKTER = 15_000
 
 
 def pdf_metin_cikar(pdf_baytlari: bytes) -> str:
-    """PDF baytlarından metin çıkarır. Çok büyük PDF'ler kırpılır."""
+    """Extract text from PDF bytes and cap oversized documents."""
     if len(pdf_baytlari) > MAX_PDF_BOYUT_MB * 1024 * 1024:
-        raise ValueError(f"PDF boyutu {MAX_PDF_BOYUT_MB}MB'ı aşıyor")
+        raise ValueError(f"PDF boyutu {MAX_PDF_BOYUT_MB}MB'i asiyor")
 
     try:
         okuyucu = PdfReader(io.BytesIO(pdf_baytlari))
-    except PdfReadError as e:
-        raise ValueError(f"Geçersiz PDF dosyası: {e}") from e
+    except PdfReadError as exc:
+        raise ValueError(f"Gecersiz PDF dosyasi: {exc}") from exc
 
-    satirlar = []
+    satirlar: list[str] = []
     for sayfa in okuyucu.pages:
         metin = sayfa.extract_text()
         if metin:
             satirlar.append(metin)
 
-    tam_metin = "\n".join(satirlar)
+    tam_metin = "\n".join(satirlar).strip()
     if len(tam_metin) > MAX_METIN_KARAKTER:
-        tam_metin = tam_metin[:MAX_METIN_KARAKTER] + "\n[... belge kesildi]"
+        tam_metin = tam_metin[:MAX_METIN_KARAKTER].rstrip() + "\n[... belge kesildi]"
 
     return tam_metin
 
 
-def dokuman_analiz_sorusu_hazirla(belge_metni: str, kullanici_sorusu: str) -> str:
-    """RAG pipeline'a gönderilecek zenginleştirilmiş sorguyu oluşturur."""
-    return (
-        f"Aşağıdaki belgeyi analiz et ve soruyu yanıtla:\n\n"
-        f"BELGE:\n{belge_metni}\n\n"
-        f"SORU: {kullanici_sorusu}"
-    )
+def compact_document_text(metin: str, max_chars: int) -> str:
+    metin = (metin or "").strip()
+    if len(metin) <= max_chars:
+        return metin
+
+    head = max_chars // 2
+    tail = max_chars - head
+    return f"{metin[:head].rstrip()}\n[... belge kisaltildi ...]\n{metin[-tail:].lstrip()}"
+
+
+def document_preview(metin: str, max_chars: int = 300) -> str:
+    temiz = " ".join((metin or "").split())
+    if len(temiz) <= max_chars:
+        return temiz
+    return temiz[:max_chars].rstrip() + "..."

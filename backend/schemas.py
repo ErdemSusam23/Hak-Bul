@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field, field_validator
 class AskRequest(BaseModel):
     soru: str = Field(..., min_length=10, max_length=1000)
     max_kaynak: int = Field(default=5, ge=1, le=10)
+    language: str = Field(default="tr", pattern="^(tr|en)$")
     conversation_id: str | None = Field(default=None, min_length=36, max_length=36)
     guest_session_id: str | None = Field(default=None, min_length=36, max_length=36)
 
@@ -14,6 +15,7 @@ class KaynakItem(BaseModel):
     kaynak_turu: str
     baslik: str
     metin_ozet: str
+    metin: str | None = None
     skor: float
     url: str | None = None
 
@@ -103,6 +105,9 @@ class DokumanAnalizCevap(BaseModel):
     kaynaklar: list
     kategori: str = "Genel Hukuk"
     conversation_id: str | None = None
+    guest_session_id: str | None = None
+    message_id: str | None = None
+    uyari: str = "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz."
 
 
 class AdminGenelIstatistik(BaseModel):
@@ -151,6 +156,7 @@ class TaslakListResponse(BaseModel):
 
 class TaslakOlusturRequest(BaseModel):
     alanlar: dict[str, str]
+    language: str = Field(default="tr", pattern="^(tr|en)$")
 
 
 class FeedbackGonder(BaseModel):

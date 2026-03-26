@@ -1,5 +1,6 @@
 """Hukuki belge taslakları — tanımlar ve PDF üretimi."""
 import io
+from copy import deepcopy
 from pathlib import Path
 
 from reportlab.lib.pagesizes import A4
@@ -8,6 +9,8 @@ from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+
+from services.language_service import normalize_language
 
 # ---------------------------------------------------------------------------
 # Türkçe karakter desteği için sistem fontu aranır; bulunamazsa Helvetica.
@@ -157,10 +160,151 @@ TEMPLATES: dict[str, dict] = {
     },
 }
 
+TEMPLATE_TRANSLATIONS: dict[str, dict[str, dict]] = {
+    "en": {
+        "kira_sozlesmesi": {
+            "baslik": "Lease Agreement",
+            "aciklama": "Residential or commercial lease agreement template",
+            "alanlar": {
+                "kiraci_ad_soyad": "Tenant Full Name",
+                "mal_sahibi_ad_soyad": "Landlord Full Name",
+                "adres": "Property Address",
+                "kira_bedeli": "Monthly Rent Amount (TRY)",
+                "baslangic_tarihi": "Start Date (DD.MM.YYYY)",
+                "sure_ay": "Lease Term (Months)",
+                "depozito": "Deposit Amount (TRY)",
+            },
+        },
+        "is_sozlesmesi": {
+            "baslik": "Employment Agreement",
+            "aciklama": "Indefinite-term employment agreement template",
+            "alanlar": {
+                "isci_ad_soyad": "Employee Full Name",
+                "isveren_unvan": "Employer Name / Title",
+                "gorev": "Role / Title",
+                "maas": "Gross Monthly Salary (TRY)",
+                "baslangic_tarihi": "Employment Start Date (DD.MM.YYYY)",
+                "haftalik_calisma_saati": "Weekly Working Hours",
+            },
+        },
+        "ihtarname": {
+            "baslik": "Formal Notice",
+            "aciklama": "Formal notice template for notary delivery",
+            "alanlar": {
+                "gonderen_ad_soyad": "Sender Full Name",
+                "gonderen_adres": "Sender Address",
+                "alici_ad_soyad": "Recipient Full Name",
+                "alici_adres": "Recipient Address",
+                "konu": "Notice Subject",
+                "ihtar_metni": "Notice Content",
+                "tarih": "Date (DD.MM.YYYY)",
+            },
+        },
+        "taahhutname": {
+            "baslik": "Undertaking Letter",
+            "aciklama": "General-purpose undertaking template",
+            "alanlar": {
+                "taahut_eden_ad_soyad": "Declarant Full Name",
+                "taahut_eden_tc": "National ID Number",
+                "taahut_eden_adres": "Address",
+                "taahut_konusu": "Subject of Undertaking",
+                "tarih": "Date (DD.MM.YYYY)",
+            },
+        },
+        "vekaletname": {
+            "baslik": "Power of Attorney",
+            "aciklama": "General-purpose power of attorney template (requires notarization)",
+            "alanlar": {
+                "vekil_veren_ad_soyad": "Principal Full Name",
+                "vekil_veren_tc": "Principal National ID Number",
+                "vekil_veren_adres": "Principal Address",
+                "vekil_ad_soyad": "Attorney-in-Fact Full Name",
+                "vekil_tc": "Attorney-in-Fact National ID Number",
+                "vekil_adres": "Attorney-in-Fact Address",
+                "yetki_konusu": "Scope of Authority",
+                "tarih": "Date (DD.MM.YYYY)",
+            },
+        },
+        "bosanma_dilekce": {
+            "baslik": "Divorce Petition",
+            "aciklama": "Mutual-consent divorce petition template",
+            "alanlar": {
+                "davaci_ad_soyad": "Plaintiff Full Name",
+                "davaci_tc": "Plaintiff National ID Number",
+                "davaci_adres": "Plaintiff Address",
+                "davali_ad_soyad": "Defendant Spouse Full Name",
+                "davali_adres": "Defendant Address",
+                "evlilik_tarihi": "Marriage Date (DD.MM.YYYY)",
+                "cocuk_bilgisi": "Children Information (if any)",
+                "nafaka_talebi": "Alimony Request (if any)",
+                "mahkeme": "Authorized Family Court",
+                "tarih": "Date (DD.MM.YYYY)",
+            },
+        },
+        "icra_itiraz_dilekce": {
+            "baslik": "Enforcement Objection Petition",
+            "aciklama": "Objection to payment order template (must be filed within 7 days)",
+            "alanlar": {
+                "borclunun_ad_soyad": "Debtor Full Name",
+                "borclunun_tc": "Debtor National ID Number",
+                "borclunun_adres": "Debtor Address",
+                "icra_mudurluğu": "Enforcement Office (Name / City)",
+                "dosya_no": "Enforcement File Number",
+                "alacaklinin_ad_soyad": "Creditor Full Name",
+                "borcun_tutari": "Claim Amount in Payment Order",
+                "itiraz_gerekce": "Grounds for Objection",
+                "tarih": "Date (DD.MM.YYYY)",
+            },
+        },
+        "tuketici_sikayet_dilekce": {
+            "baslik": "Consumer Complaint Petition",
+            "aciklama": "Consumer arbitration board complaint template",
+            "alanlar": {
+                "tuketici_ad_soyad": "Consumer Full Name",
+                "tuketici_tc": "National ID Number",
+                "tuketici_adres": "Consumer Address",
+                "satici_firma": "Seller / Provider Name",
+                "satici_adres": "Seller Address",
+                "urun_hizmet": "Product / Service Name",
+                "satin_alma_tarihi": "Purchase Date",
+                "satin_alma_bedeli": "Purchase Amount (TRY)",
+                "sikayet_konusu": "Complaint Subject",
+                "talep": "Requested Remedy",
+                "tarih": "Date (DD.MM.YYYY)",
+            },
+        },
+    }
+}
 
-def zorunlu_alanlari_dogrula(template_id: str, alanlar: dict[str, str]) -> list[str]:
+
+def _localized_template(template_id: str, language: str = "tr") -> dict | None:
+    base = TEMPLATES.get(template_id)
+    if not base:
+        return None
+
+    language = normalize_language(language)
+    localized = deepcopy(base)
+    if language == "tr":
+        return localized
+
+    translation = TEMPLATE_TRANSLATIONS.get(language, {}).get(template_id, {})
+    localized["baslik"] = translation.get("baslik", localized["baslik"])
+    localized["aciklama"] = translation.get("aciklama", localized["aciklama"])
+
+    alan_cevirileri = translation.get("alanlar", {})
+    for alan in localized["alanlar"]:
+        alan["etiket"] = alan_cevirileri.get(alan["ad"], alan["etiket"])
+
+    return localized
+
+
+def get_templates(language: str = "tr") -> list[dict]:
+    return [_localized_template(template_id, language) for template_id in TEMPLATES]
+
+
+def zorunlu_alanlari_dogrula(template_id: str, alanlar: dict[str, str], language: str = "tr") -> list[str]:
     """Eksik zorunlu alanları döndürür. Boş liste → hata yok."""
-    taslak = TEMPLATES.get(template_id)
+    taslak = _localized_template(template_id, language)
     if not taslak:
         return []
     return [
@@ -604,7 +748,7 @@ def _sanitize_alanlar(alanlar: dict[str, str]) -> dict[str, str]:
     return temiz
 
 
-def pdf_uret(template_id: str, alanlar: dict[str, str]) -> bytes:
+def pdf_uret(template_id: str, alanlar: dict[str, str], language: str = "tr") -> bytes:
     """Verilen taslak için PDF baytları üretir."""
     uretici = _PDF_URETICI.get(template_id)
     if not uretici:

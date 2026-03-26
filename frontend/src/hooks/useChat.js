@@ -16,7 +16,24 @@ const MOCK_YANIT = {
     uyari: 'Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.',
 };
 
-export function useChat() {
+const CHAT_COPY = {
+    tr: {
+        minLength: '⚠️ Sorunuz en az 10 karakter olmalıdır. Lütfen daha ayrıntılı yazın.',
+        tooManyRequests: (retryAfter) => `⏳ Çok fazla istek gönderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`,
+        unavailable: '🔧 Sunucu geçici olarak erişilemiyor. Lütfen 30 saniye sonra tekrar deneyin.',
+        generic: '⚠️ Yanıt alınamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.',
+    },
+    en: {
+        minLength: '⚠️ Your question must be at least 10 characters long. Please provide a bit more detail.',
+        tooManyRequests: (retryAfter) => `⏳ Too many requests were sent. Please wait ${retryAfter ? `${retryAfter} seconds` : '1 minute'} and try again.`,
+        unavailable: '🔧 The server is temporarily unavailable. Please try again in 30 seconds.',
+        generic: '⚠️ No response was received. Please check your connection and try again.',
+    },
+};
+
+const getChatCopy = (language) => CHAT_COPY[language] || CHAT_COPY.tr;
+
+export function useChat(language = 'tr') {
     const [mesajlar, setMesajlar] = useState([]);
     const [yukleniyor, setYukleniyor] = useState(false);
     const [hata, setHata] = useState(null);
@@ -25,6 +42,7 @@ export function useChat() {
     const sonMesajRef = useRef(null);
     // Aktif streaming abortController
     const abortRef = useRef(null);
+    const ui = getChatCopy(language);
 
     const mesajGonder = useCallback(async (metin, config = {}) => {
         const metinVar = metin ? metin.trim() : '';
@@ -33,13 +51,13 @@ export function useChat() {
         if ((!metinVar && !dosyaVar) || yukleniyor) return null;
 
         if (!dosyaVar && metinVar.length < 10) {
-            const hataMesaj = {
-                id: yeniId(),
-                rol: 'asistan',
-                icerik: '⚠️ Sorunuz en az 10 karakter olmalıdır. Lütfen daha ayrıntılı yazın.',
-                kaynaklar: [],
-                hata: true,
-                zaman: new Date(),
+                const hataMesaj = {
+                    id: yeniId(),
+                    rol: 'asistan',
+                    icerik: ui.minLength,
+                    kaynaklar: [],
+                    hata: true,
+                    zaman: new Date(),
             };
             setMesajlar((onceki) => [...onceki, hataMesaj]);
             return null;
@@ -63,6 +81,7 @@ export function useChat() {
                 const yanit = await dokumanAnalizAPI({
                     dosya: dosyaVar,
                     soru: metinVar || undefined,
+                    language,
                     conversation_id: config.conversationId,
                     guest_session_id: config.guestSessionId,
                 });
@@ -78,7 +97,7 @@ export function useChat() {
                 setMesajlar((onceki) => [...onceki, asistanMesaj]);
                 return { conversation_id: yanit.conversation_id, guest_session_id: yanit.guest_session_id };
             } catch (err) {
-                _hataEkle(err, setHata, setMesajlar);
+                _hataEkle(err, setHata, setMesajlar, language);
             } finally {
                 setYukleniyor(false);
             }
@@ -123,6 +142,7 @@ export function useChat() {
         const payload = {
             soru: metinVar,
             max_kaynak: 5,
+            language,
         };
         if (config.conversationId) payload.conversation_id = config.conversationId;
         if (config.guestSessionId) payload.guest_session_id = config.guestSessionId;
@@ -146,7 +166,8 @@ export function useChat() {
 
             if (!resp.ok) {
                 const errData = await resp.json().catch(() => ({}));
-                throw Object.assign(new Error(errData.detail || 'Sunucu hatası'), { response: { status: resp.status, data: errData } });
+                const detail = typeof errData.detail === 'string' ? errData.detail : errData.detail?.detail || 'Sunucu hatası';
+                throw Object.assign(new Error(detail), { response: { status: resp.status, data: errData } });
             }
 
             const reader = resp.body.getReader();
@@ -218,11 +239,11 @@ export function useChat() {
                 setMesajlar((onceki) =>
                     onceki.map((m) => {
                         if (m.id !== streamMesajId) return m;
-                        const hataMetni = _hataMetniOlustur(err);
+                        const hataMetni = _hataMetniOlustur(err, language);
                         return { ...m, icerik: hataMetni, streaming: false, hata: true };
                     })
                 );
-                setHata(_hataMetniOlustur(err));
+                setHata(_hataMetniOlustur(err, language));
             }
         } finally {
             abortRef.current = null;
@@ -230,7 +251,7 @@ export function useChat() {
         }
 
         return resultConvId ? { conversation_id: resultConvId, guest_session_id: resultGuestId } : null;
-    }, [yukleniyor]);
+    }, [language, ui.minLength, yukleniyor]);
 
     const aramayiCalistir = useCallback(async (sorgu) => {
         if (!sorgu.trim()) return;
@@ -280,18 +301,19 @@ export function useChat() {
     };
 }
 
-function _hataMetniOlustur(err) {
+function _hataMetniOlustur(err, language = 'tr') {
+    const ui = getChatCopy(language);
     const status = err?.response?.status;
     const retryAfter = err?.response?.data?.retry_after;
     if (status === 429)
-        return `⏳ Çok fazla istek gönderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`;
+        return ui.tooManyRequests(retryAfter);
     if (status === 503)
-        return '🔧 Sunucu geçici olarak erişilemiyor. Lütfen 30 saniye sonra tekrar deneyin.';
-    return '⚠️ Yanıt alınamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.';
+        return ui.unavailable;
+    return ui.generic;
 }
 
-function _hataEkle(err, setHata, setMesajlar) {
-    const hataMetni = _hataMetniOlustur(err);
+function _hataEkle(err, setHata, setMesajlar, language = 'tr') {
+    const hataMetni = _hataMetniOlustur(err, language);
     setHata(hataMetni);
     setMesajlar((onceki) => [
         ...onceki,

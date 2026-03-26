@@ -17,6 +17,7 @@ sqlalchemy==2.0.47
 alembic==1.17.1
 psycopg[binary]==3.2.12
 pypdf>=4.0.0
+pdfplumber>=0.11.0
 python-multipart>=0.0.9
 reportlab>=4.0.0
 pytest==8.4.2

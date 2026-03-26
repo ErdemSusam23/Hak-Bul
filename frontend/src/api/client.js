@@ -7,6 +7,7 @@ const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true';
 const MOCK_DELAY = 1800;
 
 const mockDelay = () => new Promise((r) => setTimeout(r, MOCK_DELAY));
+const normalizeLanguage = (language) => (language === 'en' ? 'en' : 'tr');
 
 const MOCK_YANIT = {
     yanit: `Kıdem tazminatı hakkı kazanabilmek için iş sözleşmenizin asgari **1 yıl** sürmüş olması ve işveren tarafından haksız fesih, emeklilik, askerlik ya da kadın işçi için evlilik gibi kanunda sayılan hallerden biriyle sona ermesi gerekmektedir.
@@ -117,12 +118,12 @@ client.interceptors.response.use(
 );
 
 // POST /ask
-export async function soruSor({ soru, maxKaynak = 5, conversation_id = null, guest_session_id = null }) {
+export async function soruSor({ soru, maxKaynak = 5, language = 'tr', conversation_id = null, guest_session_id = null }) {
     if (MOCK_MODE) {
         await mockDelay();
         return MOCK_YANIT;
     }
-    const payload = { soru, max_kaynak: maxKaynak };
+    const payload = { soru, max_kaynak: maxKaynak, language: normalizeLanguage(language) };
     if (conversation_id) payload.conversation_id = conversation_id;
     if (guest_session_id) payload.guest_session_id = guest_session_id;
 
@@ -131,7 +132,7 @@ export async function soruSor({ soru, maxKaynak = 5, conversation_id = null, gue
 }
 
 // POST /documents/analyze
-export async function dokumanAnalizAPI({ dosya, soru, conversation_id, guest_session_id }) {
+export async function dokumanAnalizAPI({ dosya, soru, language = 'tr', conversation_id, guest_session_id }) {
     if (MOCK_MODE) {
         await mockDelay();
         return MOCK_YANIT;
@@ -140,6 +141,7 @@ export async function dokumanAnalizAPI({ dosya, soru, conversation_id, guest_ses
     const formData = new FormData();
     formData.append('dosya', dosya);
     if (soru) formData.append('soru', soru);
+    formData.append('language', normalizeLanguage(language));
     if (conversation_id) formData.append('conversation_id', conversation_id);
     if (guest_session_id) formData.append('guest_session_id', guest_session_id);
 
@@ -148,7 +150,7 @@ export async function dokumanAnalizAPI({ dosya, soru, conversation_id, guest_ses
 }
 
 // POST /documents/compare
-export async function dokumanKarsilastirAPI({ dosya1, dosya2, soru }) {
+export async function dokumanKarsilastirAPI({ dosya1, dosya2, soru, language = 'tr' }) {
     if (MOCK_MODE) {
         await mockDelay();
         return { ...MOCK_YANIT, belge1_ozet: 'Belge 1 özeti...', belge2_ozet: 'Belge 2 özeti...' };
@@ -157,6 +159,7 @@ export async function dokumanKarsilastirAPI({ dosya1, dosya2, soru }) {
     formData.append('dosya1', dosya1);
     formData.append('dosya2', dosya2);
     if (soru) formData.append('soru', soru);
+    formData.append('language', normalizeLanguage(language));
     const { data } = await client.post('/documents/compare', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
     });
@@ -258,18 +261,19 @@ export async function sohbetYenidenAdlandirAPI(conversationId, title) {
 }
 
 // REST API TASLAK METOTLARI
-export async function taslakListesiAPI() {
+export async function taslakListesiAPI(language = 'tr') {
     if (MOCK_MODE) return [{ id: 1, title: 'Kira Sözleşmesi Taslağı', description: 'Kiracı ve Ev Sahibi arasında temel kontrat.', alanlar: ['Kiracı Adı', 'Mülk Adresi'] }];
-    const { data } = await client.get('/templates');
+    const { data } = await client.get('/templates', { params: { language: normalizeLanguage(language) } });
     return data;
 }
 
-export async function taslakPdfUretAPI(templateId, alanlar) {
+export async function taslakPdfUretAPI(templateId, body, language = 'tr') {
     if (MOCK_MODE) {
         await mockDelay();
         return new Blob(['Mock PDF Content'], { type: 'application/pdf' });
     }
-    const { data } = await client.post(`/templates/${templateId}/generate`, alanlar, {
+    const payload = { ...body, language: normalizeLanguage(language) };
+    const { data } = await client.post(`/templates/${templateId}/generate`, payload, {
         responseType: 'blob'
     });
     return data;

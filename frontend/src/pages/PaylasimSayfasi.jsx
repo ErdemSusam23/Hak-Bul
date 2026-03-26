@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Share2, RotateCcw, AlertTriangle } from 'lucide-react';
-import { paylasimSohbetGetirAPI } from '../api/client';
+import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { AlertTriangle, RotateCcw, Share2 } from 'lucide-react';
+
+import { paylasimSohbetGetirAPI } from '../api/client';
+import { useDil } from '../context/DilContext';
 
 export default function PaylasimSayfasi({ shareToken }) {
+    const { t } = useDil();
     const [mesajlar, setMesajlar] = useState([]);
     const [yukleniyor, setYukleniyor] = useState(true);
     const [hata, setHata] = useState(null);
@@ -11,26 +14,25 @@ export default function PaylasimSayfasi({ shareToken }) {
     useEffect(() => {
         if (!shareToken) return;
         paylasimSohbetGetirAPI(shareToken)
-            .then(data => setMesajlar(data.messages || []))
-            .catch(() => setHata('Bu paylaşım bağlantısı bulunamadı veya devre dışı bırakıldı.'))
+            .then((data) => setMesajlar(data.messages || []))
+            .catch(() => setHata(t('sharedNotFound')))
             .finally(() => setYukleniyor(false));
-    }, [shareToken]);
+    }, [shareToken, t]);
 
     return (
         <div className="min-h-screen flex flex-col" style={{ background: 'var(--tema-bg)', color: 'var(--tema-text)' }}>
-            {/* Header */}
             <header className="flex items-center gap-3 px-6 py-4 border-b" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
                 <Share2 size={18} style={{ color: 'var(--tema-accent)' }} />
                 <div>
-                    <h1 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>Hak-Bul — Paylaşılan Sohbet</h1>
-                    <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>Bu sohbet salt okunur olarak paylaşıldı</p>
+                    <h1 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>{t('sharedChatTitle')}</h1>
+                    <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>{t('sharedChatSubtitle')}</p>
                 </div>
                 <a
                     href="/"
                     className="ml-auto text-xs px-3 py-1.5 rounded-lg transition-colors"
                     style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
                 >
-                    Uygulamaya Git
+                    {t('goToApp')}
                 </a>
             </header>
 
@@ -45,13 +47,10 @@ export default function PaylasimSayfasi({ shareToken }) {
                         <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>{hata}</p>
                     </div>
                 ) : mesajlar.length === 0 ? (
-                    <p className="text-sm text-center py-16" style={{ color: 'var(--tema-muted)' }}>Sohbet boş.</p>
+                    <p className="text-sm text-center py-16" style={{ color: 'var(--tema-muted)' }}>{t('sharedEmpty')}</p>
                 ) : (
                     mesajlar.map((msg) => (
-                        <div
-                            key={msg.id}
-                            className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                        >
+                        <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                             <div
                                 className="max-w-xl rounded-xl px-4 py-3"
                                 style={{
@@ -61,7 +60,7 @@ export default function PaylasimSayfasi({ shareToken }) {
                                 }}
                             >
                                 <div className="text-xs mb-1 font-medium" style={{ opacity: 0.6 }}>
-                                    {msg.role === 'user' ? 'Kullanıcı' : 'Hak-Bul'}
+                                    {msg.role === 'user' ? t('userLabel') : 'Hak-Bul'}
                                 </div>
                                 <div className="text-sm prose prose-sm max-w-none" style={{ color: 'inherit' }}>
                                     <ReactMarkdown>{msg.content}</ReactMarkdown>
@@ -73,7 +72,7 @@ export default function PaylasimSayfasi({ shareToken }) {
             </main>
 
             <footer className="text-center py-4 text-xs" style={{ color: 'var(--tema-dimmer)', borderTop: '1px solid var(--tema-border)' }}>
-                Bu içerik bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.
+                {t('sharedFooter')}
             </footer>
         </div>
     );

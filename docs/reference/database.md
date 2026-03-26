@@ -6,7 +6,7 @@
 
 ## PostgreSQL Şeması (Alembic)
 
-Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `20260317_0004`
+Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `20260317_0004` → `20260317_0005` → `20260326_0006` → `20260326_0007`
 
 | Tablo | Açıklama |
 |-------|----------|
@@ -14,8 +14,31 @@ Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `
 | `refresh_tokens` | JWT refresh token'ları (rotation destekli) |
 | `chat_history` | Kullanıcı + misafir mesajları; `user_id` XOR `guest_session_id` |
 | `message_feedback` | `chat_history.id` FK; `puan` 1 / -1 |
+| `weak_queries` | Düşük güven skorlu sorgular — retrieval kalitesi izleme için loglanır |
+| `shared_conversations` | Sohbet paylaşma token'ları; `share_token` URL-safe, `is_active` ile devre dışı bırakılır |
 
-`chat_history` önemli alanlar: `conversation_id`, `role` (user/assistant), `content`, `category`, `metadata_json` (asistan mesajlarında `{"kaynaklar": [...]}`).
+`chat_history` önemli alanlar: `conversation_id`, `role` (user/assistant), `content`, `category`, `title`, `metadata_json` (asistan mesajlarında `{"kaynaklar": [...]}`), `deleted_at` (soft-delete; `NULL` = aktif, dolu = silinmiş).
+
+### `weak_queries` Alanları
+
+| Alan | Tip | Açıklama |
+|------|-----|----------|
+| `id` | UUID | PK |
+| `soru` | text | Kullanıcının orijinal sorusu |
+| `max_skor` | float | Retrieval sonucundaki en yüksek skor |
+| `kategori` | string\|null | Tespit edilen hukuk kategorisi |
+| `created_at` | datetime | Kayıt zamanı |
+
+### `shared_conversations` Alanları
+
+| Alan | Tip | Açıklama |
+|------|-----|----------|
+| `id` | UUID | PK |
+| `share_token` | string(64) | URL-safe token (`secrets.token_urlsafe(24)`) |
+| `conversation_id` | UUID | Paylaşılan sohbetin ID'si |
+| `user_id` | UUID FK | Paylaşımı oluşturan kullanıcı (`users.id`, CASCADE) |
+| `is_active` | bool | `false` yapılarak paylaşım devre dışı bırakılır |
+| `created_at` | datetime | Oluşturulma zamanı |
 
 ---
 

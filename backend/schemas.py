@@ -1,3 +1,5 @@
+import re
+
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -167,3 +169,51 @@ class FeedbackGonder(BaseModel):
 class FeedbackCevap(BaseModel):
     basarili: bool
     mesaj: str
+
+
+class HesapSil(BaseModel):
+    mevcut_sifre: str = Field(..., min_length=1, max_length=128)
+
+
+class ProfilGuncelle(BaseModel):
+    email: str | None = Field(default=None, min_length=5, max_length=255)
+    yeni_sifre: str | None = Field(default=None, min_length=8, max_length=128)
+    mevcut_sifre: str = Field(..., min_length=1, max_length=128)
+
+    @field_validator("email")
+    @classmethod
+    def email_gecerli_olmali(cls, v: str | None) -> str | None:
+        if v and not re.match(r"^[^@]+@[^@]+\.[^@]+$", v):
+            raise ValueError("Geçersiz e-posta formatı")
+        return v
+
+
+class ProfilCevap(BaseModel):
+    id: str
+    email: str
+    role: str
+
+
+class AdminKullaniciItem(BaseModel):
+    id: str
+    email: str
+    role: str
+    is_active: bool
+    created_at: str
+
+
+class AdminKullaniciListeCevap(BaseModel):
+    kullanicilar: list[AdminKullaniciItem]
+    total: int
+
+
+class AdminRolGuncelle(BaseModel):
+    rol: str
+
+
+class AdminZayifSorguItem(BaseModel):
+    id: str
+    soru: str
+    max_skor: float
+    kategori: str | None = None
+    created_at: str

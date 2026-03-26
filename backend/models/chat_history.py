@@ -34,5 +34,6 @@ class ChatHistory(Base):
     category: Mapped[str | None] = mapped_column(String(50), nullable=True)
     metadata_json: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True, default=None)
 
     user = relationship("User", back_populates="chat_history")

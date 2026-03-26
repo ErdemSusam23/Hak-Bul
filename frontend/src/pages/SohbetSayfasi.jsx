@@ -11,28 +11,13 @@ import AuthModal from '../components/AuthModal';
 import { useChat } from '../hooks/useChat';
 import { useTema } from '../context/TemaContext';
 import { useAuth } from '../context/AuthContext';
+import { useDil } from '../context/DilContext';
 
-const ORNEK_SORULAR = [
-    {
-        soru: 'İşten çıkarıldım, kıdem tazminatı alabilir miyim?',
-        kategori: 'İş Hukuku',
-        Ikon: Briefcase,
-    },
-    {
-        soru: 'İş sözleşmemi imzalamadım, sözlü anlaşmayla çalışıyorum, bu geçerli mi?',
-        kategori: 'Sözleşme',
-        Ikon: FileText,
-    },
-    {
-        soru: 'Fazla mesai yaptırıyorlar ama param yatmıyor, ne yapabilirim?',
-        kategori: 'Ücret Hakkı',
-        Ikon: Clock,
-    },
-    {
-        soru: 'Annem hasta, bakım iznine çıkabilir miyim işten?',
-        kategori: 'İzin Hakkı',
-        Ikon: Heart,
-    },
+const ORNEK_SORULAR_DATA = [
+    { soru: 'İşten çıkarıldım, kıdem tazminatı alabilir miyim?', soru_en: 'I was fired, can I receive severance pay?', kategoriKey: 'isHukuku', Ikon: Briefcase },
+    { soru: 'İş sözleşmemi imzalamadım, sözlü anlaşmayla çalışıyorum, bu geçerli mi?', soru_en: 'I did not sign an employment contract, I work verbally — is this valid?', kategoriKey: 'sozlesme', Ikon: FileText },
+    { soru: 'Fazla mesai yaptırıyorlar ama param yatmıyor, ne yapabilirim?', soru_en: 'I work overtime but do not get paid — what can I do?', kategoriKey: 'ucretHakki', Ikon: Clock },
+    { soru: 'Annem hasta, bakım iznine çıkabilir miyim işten?', soru_en: 'My mother is ill, can I take caregiver leave from work?', kategoriKey: 'izinHakki', Ikon: Heart },
 ];
 
 export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSinyali }) {
@@ -45,6 +30,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
     const sohbetIdRef = useRef(null); // aktif session ID
     const { tema, toggleTema } = useTema();
     const { kullanici, cikis } = useAuth();
+    const { t, dil } = useDil();
 
     const {
         mesajlar,
@@ -70,7 +56,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
             setGirdi('');
             onSoruIslendi?.();
         }
-    }, [secilenSohbet]);
+    }, [secilenSohbet, mesajlariYukle, onSoruIslendi]);
 
     // Yeni sohbet sinyali gelince temizle
     useEffect(() => {
@@ -80,7 +66,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
             setSecilenDosya(null);
             sohbetIdRef.current = null;
         }
-    }, [temizleSinyali]);
+    }, [temizleSinyali, sohbetiTemizle]);
 
     // Her AI yanıtından sonra sohbet geçmiş listesinin güncellenmesi için sinyal gönder
     useEffect(() => {
@@ -111,7 +97,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         }
         
         inputRef.current?.focus();
-    }, [girdi, yukleniyor, mesajGonder, kullanici]);
+    }, [girdi, secilenDosya, yukleniyor, mesajGonder, kullanici]);
 
     const klavyeIsle = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -126,6 +112,12 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
     };
 
     const bosEkran = mesajlar.length === 0;
+
+    const ORNEK_SORULAR = ORNEK_SORULAR_DATA.map(item => ({
+        soru: dil === 'en' ? item.soru_en : item.soru,
+        kategori: t(item.kategoriKey),
+        Ikon: item.Ikon,
+    }));
 
     return (
         <div className="flex flex-col h-full">
@@ -154,7 +146,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             Hak-Bul
                         </h1>
                         <p className="text-xs leading-none mt-0.5" style={{ color: 'var(--tema-muted)' }}>
-                            Türk Hukuk Asistanı
+                            {t('turkHukukAsistani')}
                         </p>
                     </div>
                 </div>
@@ -171,7 +163,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                     {/* Tema toggle */}
                     <button
                         onClick={toggleTema}
-                        title={tema === 'koyu' ? 'Açık temaya geç' : 'Koyu temaya geç'}
+                        title={tema === 'koyu' ? t('acikTemaya') : t('koyuTemaya')}
                         className="p-2 rounded-xl transition-all duration-150"
                         style={{ color: 'var(--tema-muted)' }}
                         onMouseEnter={(e) => {
@@ -198,14 +190,14 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             {/* Çıkış */}
                             <button
                                 onClick={cikis}
-                                title={`Çıkış (${kullanici.email})`}
+                                title={`${t('cikis')} (${kullanici.email})`}
                                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150"
                                 style={{ color: 'var(--tema-muted)', border: '1px solid var(--tema-border)' }}
                                 onMouseEnter={e => { e.currentTarget.style.color = 'var(--tema-text)'; }}
                                 onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
                             >
                                 <LogOut size={14} />
-                                <span className="hidden sm:inline">Çıkış</span>
+                                <span className="hidden sm:inline">{t('cikis')}</span>
                             </button>
                         </>
                     ) : (
@@ -219,7 +211,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                                 onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
                             >
                                 <LogIn size={14} />
-                                <span className="hidden sm:inline">Giriş Yap</span>
+                                <span className="hidden sm:inline">{t('giriYap')}</span>
                             </button>
                             {/* Kayıt Ol */}
                             <button
@@ -228,7 +220,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                                 style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
                             >
                                 <UserPlus size={14} />
-                                <span className="hidden sm:inline">Kayıt Ol</span>
+                                <span className="hidden sm:inline">{t('kayitOl')}</span>
                             </button>
                         </>
                     )}
@@ -237,7 +229,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                     {mesajlar.length > 0 && (
                         <button
                             onClick={sohbetiTemizle}
-                            title="Sohbeti temizle"
+                            title={t('sohbetiTemizle')}
                             className="p-2 rounded-xl transition-all duration-150"
                             style={{ color: 'var(--tema-muted)' }}
                             onMouseEnter={(e) => {
@@ -272,14 +264,13 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                         </div>
 
                         <h2 className="font-serif text-3xl font-semibold gold-gradient mb-2">
-                            Hak-Bul'a Hoş Geldiniz
+                            {t('hosGeldiniz')}
                         </h2>
                         <p className="text-sm max-w-sm mb-1" style={{ color: 'var(--tema-text2)' }}>
-                            Hukuki sorularınızı Türkçe sorun; kanun maddeleri ve
-                            Yargıtay kararlarıyla desteklenmiş yanıtlar alın.
+                            {t('hosGeldinizAlt')}
                         </p>
                         <p className="text-xs mb-10" style={{ color: 'var(--tema-muted)' }}>
-                            Bilgi amaçlıdır · Avukat görüşünün yerini tutmaz
+                            {t('bilgiAmacliAvukat')}
                         </p>
 
                         {/* Örnek sorular — 2×2 grid */}
@@ -288,7 +279,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                                 className="text-xs uppercase tracking-widest font-medium mb-3"
                                 style={{ color: 'var(--tema-muted)' }}
                             >
-                                Örnek Sorular
+                                {t('ornekSorular')}
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                                 {ORNEK_SORULAR.map(({ soru, kategori, Ikon }) => (
@@ -398,7 +389,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             onClick={() => dosyaInputRef.current?.click()}
                             disabled={yukleniyor}
                             className="flex items-center justify-center w-11 h-11 m-1.5 rounded-xl transition-all duration-150 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/5"
-                            title="PDF Yükle"
+                            title={t('pdfYukleTip')}
                         >
                             <Paperclip size={18} style={{ color: secilenDosya ? 'var(--tema-accent)' : 'var(--tema-muted)' }} />
                         </button>
@@ -407,7 +398,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             value={girdi}
                             onChange={(e) => setGirdi(e.target.value)}
                             onKeyDown={klavyeIsle}
-                            placeholder="Hukuki sorunuzu yazın…"
+                            placeholder={t('soruPlaceholder')}
                             rows={1}
                             disabled={yukleniyor}
                             className="flex-1 bg-transparent text-sm px-4 py-3.5 focus:outline-none resize-none min-h-[48px] max-h-40"
@@ -429,7 +420,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                                     ? 'var(--tema-send-btn)'
                                     : `rgba(var(--a), 0.08)`,
                             }}
-                            title="Gönder (Enter)"
+                            title={t('gonderTip')}
                         >
                             {yukleniyor ? (
                                 <RotateCcw size={16} className="animate-spin" style={{ color: 'var(--tema-accent)' }} />
@@ -443,7 +434,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                     </div>
 
                     <p className="text-center text-xs mt-2" style={{ color: 'var(--tema-dimmer)' }}>
-                        Enter ile gönder · Shift+Enter satır ekler · Yanıtlar bilgi amaçlıdır
+                        {t('enterHint')}
                     </p>
                 </div>
             </div>

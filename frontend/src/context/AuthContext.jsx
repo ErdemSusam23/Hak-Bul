@@ -5,7 +5,6 @@ import { setAuthHandlers } from '../api/client';
 const AuthContext = createContext(null);
 
 const ACCESS_KEY = 'hakbul_access';
-const REFRESH_KEY = 'hakbul_refresh';
 const EMAIL_KEY = 'hakbul_email';
 
 export function AuthProvider({ children }) {
@@ -18,10 +17,9 @@ export function AuthProvider({ children }) {
     const [yukleniyor, setYukleniyor] = useState(false);
     const refreshPromiseRef = useRef(null);
 
-    // Token'ları kaydet
-    const tokenlariKaydet = useCallback((access, refresh, email, rol) => {
+    // Token'ları kaydet (refresh_token artık httpOnly cookie'de, sadece access_token saklanır)
+    const tokenlariKaydet = useCallback((access, _refresh, email, rol) => {
         sessionStorage.setItem(ACCESS_KEY, access);
-        sessionStorage.setItem(REFRESH_KEY, refresh);
         if (email) sessionStorage.setItem(EMAIL_KEY, email);
         if (rol) sessionStorage.setItem('hakbul_role', rol);
     }, []);
@@ -65,16 +63,22 @@ export function AuthProvider({ children }) {
         }
     }, []);
 
-    // Token yenile (otomatik — singleton promise)
+    // Çıkış yap (cookie'yi sunucu tarafında iptal et)
+    const cikis = useCallback(async () => {
+        try { await cikisYap(); } catch { /* sessiz */ }
+        sessionStorage.removeItem(ACCESS_KEY);
+        sessionStorage.removeItem(EMAIL_KEY);
+        sessionStorage.removeItem('hakbul_role');
+        setKullanici(null);
+    }, []);
+
+    // Token yenile (otomatik — singleton promise, httpOnly cookie kullanır)
     const tokenYenileFn = useCallback(async () => {
         if (refreshPromiseRef.current) return refreshPromiseRef.current;
 
-        const refresh = sessionStorage.getItem(REFRESH_KEY);
-        if (!refresh) throw new Error('Refresh token yok');
-
-        refreshPromiseRef.current = tokenYenile(refresh)
+        refreshPromiseRef.current = tokenYenile()
             .then((data) => {
-                tokenlariKaydet(data.access_token, data.refresh_token);
+                tokenlariKaydet(data.access_token, "");
                 setKullanici((prev) => prev ? { ...prev, token: data.access_token } : null);
                 return data.access_token;
             })
@@ -85,18 +89,7 @@ export function AuthProvider({ children }) {
             .finally(() => { refreshPromiseRef.current = null; });
 
         return refreshPromiseRef.current;
-    }, [tokenlariKaydet]);
-
-    // Çıkış yap
-    const cikis = useCallback(async () => {
-        const refresh = sessionStorage.getItem(REFRESH_KEY);
-        try { if (refresh) await cikisYap(refresh); } catch { /* sessiz */ }
-        sessionStorage.removeItem(ACCESS_KEY);
-        sessionStorage.removeItem(REFRESH_KEY);
-        sessionStorage.removeItem(EMAIL_KEY);
-        sessionStorage.removeItem('hakbul_role');
-        setKullanici(null);
-    }, []);
+    }, [tokenlariKaydet, cikis]);
 
     const accessToken = useCallback(() => sessionStorage.getItem(ACCESS_KEY), []);
 

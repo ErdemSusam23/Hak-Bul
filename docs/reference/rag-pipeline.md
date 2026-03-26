@@ -74,20 +74,20 @@ def retrieve_chunks(query: str, top_n: int = 5) -> list[dict]:
     return [{"payload": r.payload, "skor": r.score} for r in results]
 ```
 
-### Adım 3 — Skor Filtresi
+### Adım 3 — Skor Filtresi ve Zayıf Sorgu Tespiti
 
 ```python
 # rag/retriever.py
 
-SCORE_THRESHOLD = 0.65  # Test ile belirlenecek, başlangıç değeri
-
-def filter_by_score(chunks: list[dict]) -> list[dict]:
-    filtered = [c for c in chunks if c["skor"] >= SCORE_THRESHOLD]
+def filter_by_score(chunks: list[dict], threshold: float = settings.SCORE_THRESHOLD) -> list[dict]:
+    filtered = [c for c in chunks if c["skor"] >= threshold]
     if not filtered:
         # Hiç chunk kalmadıysa en yüksek skorlu 1 tanesini döndür
         return [max(chunks, key=lambda c: c["skor"])]
     return filtered
 ```
+
+Tüm chunk'ların `max_skor < SCORE_THRESHOLD` ise sorgu `weak_queries` tablosuna loglanır (soru metni, max skor, kategori). Bu veriler admin panelinden izlenebilir (`GET /admin/weak-queries`).
 
 ### Adım 4 — Yanıt Üretme
 
@@ -95,10 +95,18 @@ def filter_by_score(chunks: list[dict]) -> list[dict]:
 # rag/generator.py
 
 SYSTEM_PROMPT = """
-Sen bir Türk hukuku bilgi sistemisin. Sana verilen kanun maddeleri ve
-Yargıtay kararlarını kaynak alarak kullanıcının sorusunu Türkçe yanıtla.
-Her iddiayı kaynak chunk'a dayandır. Eğer verilen kaynaklardan yanıt
-üretemiyorsan bunu açıkça belirt.
+Sen bir Turk hukuku bilgi sistemisin. Sana verilen kanun maddeleri ve
+Yargitay kararlarini kaynak alarak kullanicinin sorusunu Turkce yanitla.
+Her iddiayi kaynak chunk'a dayandir. Eger verilen kaynaklardan yanit
+uretemiyorsan bunu acikca belirt. Hukuki tavsiye verme; bilgi sun.
+
+Eger kullanicinin sorusu su konulardan birini iceriyorsa yanit sonuna bir paragraf olarak
+avukat yonlendirmesi ekle:
+- Ceza davasi, tutukluluk, gozalti, yargilama sureci
+- Bosanma, velayet, nafaka davasi
+- Is mahkemesi, tazminat davasi
+- Icra ve iflas hukuku, haciz
+- Multeciler, vatandaslik, oturma izni
 """
 
 def generate_answer(soru: str, chunks: list[dict]) -> str:
@@ -113,6 +121,10 @@ def generate_answer(soru: str, chunks: list[dict]) -> str:
     )
     return response.choices[0].message.content
 ```
+
+**Avukat Yönlendirmesi:** Kritik konularda (ceza, boşanma, icra, tazminat, mültecilik) yanıt sonuna otomatik olarak "Adalet Bakanlığı ALO 182 hattından ücretsiz hukuki danışmanlık alabilirsiniz." paragrafı eklenir.
+
+**SSE Streaming:** `generate_answer_stream()` ile aynı Groq çağrısı token token yield edilir; `/ask/stream` endpoint'i bu fonksiyonu kullanır.
 
 ---
 
@@ -158,23 +170,25 @@ backend/
 │   ├── jwt_service.py       # JWT üretimi / doğrulama
 │   └── security.py          # bcrypt hash
 ├── models/
-│   ├── user.py              # User SQLAlchemy modeli
-│   ├── refresh_token.py     # RefreshToken modeli
-│   ├── chat_history.py      # ChatHistory + save_chat_pair()
-│   ├── feedback.py          # MessageFeedback modeli
-│   └── enums.py             # UserRole enum
+│   ├── user.py                   # User SQLAlchemy modeli
+│   ├── refresh_token.py          # RefreshToken modeli
+│   ├── chat_history.py           # ChatHistory + save_chat_pair()
+│   ├── feedback.py               # MessageFeedback modeli
+│   ├── weak_query.py             # WeakQuery modeli — düşük skorlu sorgu loglama
+│   ├── shared_conversation.py    # SharedConversation modeli — paylaşım token'ları
+│   └── enums.py                  # UserRole enum
 ├── routers/
-│   ├── auth.py              # /auth/*
-│   ├── chat.py              # /chat/*
+│   ├── auth.py              # /auth/* (profil + hesap silme dahil)
+│   ├── chat.py              # /chat/* (export, share, delete, rename dahil)
 │   ├── feedback.py          # /feedback
-│   ├── documents.py         # /documents/analyze
-│   ├── admin.py             # /admin/stats/*
+│   ├── documents.py         # /documents/analyze + /documents/compare
+│   ├── admin.py             # /admin/stats/*, /admin/users/*, /admin/weak-queries
 │   └── templates.py         # /templates/*
 ├── services/
 │   ├── chat_service.py      # resolve_conversation_id, save_chat_pair
 │   ├── document_service.py  # pdf_metin_cikar (pypdf, 10MB/15k char limit)
 │   ├── feedback_service.py  # upsert feedback
-│   ├── admin_service.py     # istatistik sorguları
+│   ├── admin_service.py     # istatistik sorguları + kullanıcı yönetimi
 │   └── template_service.py  # TEMPLATES dict + reportlab PDF üretimi
 ├── db/
 │   └── session.py           # SQLAlchemy engine + get_db()
@@ -182,7 +196,9 @@ backend/
 │   ├── 20260305_0001_*      # auth tabloları
 │   ├── 20260305_0002_*      # chat_history + misafir desteği
 │   ├── 20260316_0003_*      # category kolonu
-│   └── 20260317_0004_*      # message_feedback tablosu
+│   ├── 20260317_0004_*      # message_feedback tablosu
+│   ├── 20260317_0005_*      # title kolonu (sohbet başlıkları)
+│   └── 20260326_0006_*      # weak_queries + shared_conversations tabloları
 └── tests/
     └── test_*.py            # pytest testleri (Docker üzerinden çalıştırılır)
 ```

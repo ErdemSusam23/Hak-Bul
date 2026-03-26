@@ -1,6 +1,10 @@
 """Hukuki belge taslakları endpoint'leri."""
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import Response
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+
+limiter = Limiter(key_func=get_remote_address)
 
 from schemas import TaslakBilgi, TaslakListResponse, TaslakOlusturRequest
 from services.template_service import TEMPLATES, pdf_uret, zorunlu_alanlari_dogrula
@@ -17,7 +21,8 @@ def taslak_listesi():
 
 
 @router.post("/{template_id}/generate")
-def taslak_olustur(template_id: str, body: TaslakOlusturRequest):
+@limiter.limit("20/minute")
+def taslak_olustur(request: Request, template_id: str, body: TaslakOlusturRequest):
     """Doldurulmuş alanlarla PDF belgesi üretir."""
     if template_id not in TEMPLATES:
         raise HTTPException(status_code=404, detail=f"Taslak bulunamadı: {template_id}")

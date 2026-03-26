@@ -16,6 +16,7 @@ Uyarı:
 """
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -52,6 +53,11 @@ def _get_qdrant_client():
         print("HATA: QDRANT_URL ayarlanmamış. .env dosyasını kontrol edin.")
         sys.exit(1)
     return QdrantClient(url=settings.QDRANT_URL, api_key=settings.QDRANT_API_KEY or None)
+
+
+def _stable_point_id(chunk_id: str) -> int:
+    digest = hashlib.blake2b(chunk_id.encode("utf-8"), digest_size=8).digest()
+    return int.from_bytes(digest, byteorder="big") & ((1 << 63) - 1)
 
 
 def _recreate_collection(client):
@@ -97,9 +103,9 @@ def _load_chunks_from_path(input_path: Path) -> list[dict]:
     if input_path.is_file():
         paths = [input_path]
     elif input_path.is_dir():
-        paths = sorted(input_path.glob("yargitay_*.json"))
+        paths = sorted(input_path.glob("*_chunks.json"))
         if not paths:
-            print(f"UYARI: {input_path} içinde yargitay_*.json bulunamadı.")
+            print(f"UYARI: {input_path} içinde *_chunks.json bulunamadı.")
         print(f"{len(paths)} dosya bulundu: {[p.name for p in paths]}")
     else:
         print(f"HATA: {input_path} bulunamadı.")
@@ -160,13 +166,17 @@ def _upload_batches(client, model, chunks: list[dict]) -> int:
 
         points = []
         for (orijinal_idx, chunk), embedding in zip(gecerli, embeddings):
-            # Qdrant point ID'si: chunk_id'den deterministik int üret
-            point_id = abs(hash(chunk["chunk_id"])) % (2**63)
+            # Deterministik ID, tekrar yüklemelerde duplicate point üretmemesi için sabittir.
+            point_id = _stable_point_id(chunk["chunk_id"])
 
             payload = {
                 "chunk_id":    chunk.get("chunk_id"),
                 "kaynak_turu": chunk.get("kaynak_turu", "yargitay_karari"),
                 "hukuk_alani": chunk.get("hukuk_alani", ""),
+                "kanun_adi":   chunk.get("kanun_adi", ""),
+                "kanun_no":    chunk.get("kanun_no", ""),
+                "madde_no":    chunk.get("madde_no", ""),
+                "fikra_no":    chunk.get("fikra_no"),
                 "metin":       chunk.get("metin", ""),
                 "karar_no":    chunk.get("karar_no", ""),
                 "daire":       chunk.get("daire", ""),

@@ -39,6 +39,13 @@
   --tema-user-border: rgba(137,180,250,0.15);
   --tema-user-avatar: rgba(39,39,62,0.7);
 
+  /* Modal uyarı kutusu */
+  --modal-uyari-bg: rgba(217,119,6,0.08);
+  --modal-uyari-border: rgba(217,119,6,0.25);
+  --modal-uyari-ikon: #fbbf24;
+  --modal-uyari-baslik: #fcd34d;
+  --modal-uyari-metin: rgba(253,230,138,0.85);
+
   /* Dekoratif */
   --tema-glow-top: rgba(137,180,250,0.12);
   --tema-glow-bottom: rgba(59,130,246,0.2);
@@ -95,6 +102,13 @@
 
   --tema-glow-top: rgba(74,114,196,0.07);
   --tema-glow-bottom: rgba(74,114,196,0.1);
+
+  /* Modal uyarı kutusu — light mode */
+  --modal-uyari-bg: rgba(180,83,9,0.07);
+  --modal-uyari-border: rgba(180,83,9,0.22);
+  --modal-uyari-ikon: #b45309;
+  --modal-uyari-baslik: #92400e;
+  --modal-uyari-metin: rgba(120,53,15,0.88);
 
   --kanun-strip: rgba(74,114,196,0.5);
   --kanun-icon-bg: rgba(74,114,196,0.1);

@@ -6,6 +6,7 @@ const authClient = axios.create({
     baseURL: API_URL,
     timeout: 15000,
     headers: { 'Content-Type': 'application/json' },
+    withCredentials: true,  // Required for httpOnly cookie-based refresh token
 });
 
 // POST /auth/register
@@ -26,15 +27,13 @@ export async function girisYap({ email, sifre }) {
     return data; // { access_token, refresh_token, token_type }
 }
 
-// POST /auth/refresh
-export async function tokenYenile(refreshToken) {
-    const { data } = await authClient.post('/auth/refresh', {
-        refresh_token: refreshToken,
-    });
-    return data; // { access_token, refresh_token, token_type }
+// POST /auth/refresh — uses httpOnly cookie automatically (withCredentials: true)
+export async function tokenYenile() {
+    const { data } = await authClient.post('/auth/refresh');
+    return data; // { access_token, token_type, role }
 }
 
-// POST /auth/logout
-export async function cikisYap(refreshToken) {
-    await authClient.post('/auth/logout', { refresh_token: refreshToken });
+// POST /auth/logout — uses httpOnly cookie automatically
+export async function cikisYap() {
+    await authClient.post('/auth/logout');
 }

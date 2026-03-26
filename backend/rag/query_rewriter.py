@@ -3,6 +3,8 @@ query_rewriter.py
 User query rewriting for better retrieval quality.
 """
 
+import re
+
 from groq import Groq
 
 from config import settings
@@ -26,8 +28,19 @@ Kurallar:
 - KESINLIKLE kanun numarasi, madde numarasi veya aciklama EKLEME
 - Sadece arama sorgusunu yaz, baska hicbir sey yazma"""
 
+EXPLICIT_REFERENCE_RE = re.compile(
+    r"(?i)\b(?:madde|md|gecici\s+madde|ek\s+madde|mukerrer\s+madde)\b|\b\d{3,4}\b"
+)
+
+
+def _has_explicit_legal_reference(soru: str) -> bool:
+    return bool(EXPLICIT_REFERENCE_RE.search(soru or ""))
+
 
 def rewrite_query(soru: str) -> str:
+    if _has_explicit_legal_reference(soru):
+        return soru
+
     if settings.MOCK_MODE or settings.MOCK_LLM or not settings.GROQ_API_KEY:
         return soru
 

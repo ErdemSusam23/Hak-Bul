@@ -1,16 +1,25 @@
-import { useState, useCallback, useEffect } from 'react';
-import { MessageSquare, Clock, Star, Plus, ChevronRight, FileText, BarChart2 } from 'lucide-react';
+import { useState, useCallback, useEffect, useRef } from 'react';
+import { MessageSquare, Clock, Plus, ChevronRight, FileText, BarChart2, Trash2, Pencil, Check, X, User, Download, Share2, GitCompare } from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
+import AsistanBot from './components/AsistanBot';
 import SohbetSayfasi from './pages/SohbetSayfasi';
 import TaslakSayfasi from './pages/TaslakSayfasi';
 import AdminSayfasi from './pages/AdminSayfasi';
+import ProfilSayfasi from './pages/ProfilSayfasi';
+import PaylasimSayfasi from './pages/PaylasimSayfasi';
+import KarsilastirmaSayfasi from './pages/KarsilastirmaSayfasi';
 import { TemaProvider, useTema } from './context/TemaContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { DilProvider, useDil } from './context/DilContext';
 import {
     sohbetGecmisiListeleAPI,
     sohbetDetayGetirAPI,
     misafirSohbetGecmisiListeleAPI,
     misafirSohbetDetayGetirAPI,
+    sohbetSilAPI,
+    sohbetYenidenAdlandirAPI,
+    sohbetPDFIndirAPI,
+    sohbetPaylasAPI,
 } from './api/client';
 
 function tarihKisa(isoStr) {
@@ -36,12 +45,16 @@ function tarihKisa(isoStr) {
     return tarih.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
 }
 
-function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSayfa }) {
+function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfilAc, onKarsilastirAc, aktifSayfa }) {
     const { kullanici } = useAuth();
+    const { t, dil, dilDegistir } = useDil();
     const [sohbetler, setSohbetler] = useState([]);
     const [yukleniyor, setYukleniyor] = useState(false);
+    const [duzenleId, setDuzenleId] = useState(null);
+    const [duzenleMetin, setDuzenleMetin] = useState('');
+    const duzenleInputRef = useRef(null);
 
-    const gecmisiCek = async () => {
+    const gecmisiCek = useCallback(async () => {
         setYukleniyor(true);
         try {
             if (kullanici?.token) {
@@ -74,19 +87,20 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
         } finally {
             setYukleniyor(false);
         }
-    };
+    }, [kullanici]);
 
     useEffect(() => {
         gecmisiCek();
-    }, [kullanici]);
+    }, [gecmisiCek]);
 
     useEffect(() => {
         const handler = () => gecmisiCek();
         window.addEventListener('gecmis-guncellendi', handler);
         return () => window.removeEventListener('gecmis-guncellendi', handler);
-    }, [kullanici]);
+    }, [gecmisiCek]);
 
     const handleSohbetTikla = async (sohbet) => {
+        if (duzenleId === sohbet.id) return;
         try {
             let detay;
             if (sohbet.misafir) {
@@ -111,6 +125,64 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
         }
     };
 
+    const handleSil = async (e, sohbetId) => {
+        e.stopPropagation();
+        if (!confirm(t('silOnay'))) return;
+        try {
+            await sohbetSilAPI(sohbetId);
+            setSohbetler(prev => prev.filter(s => s.id !== sohbetId));
+            window.dispatchEvent(new Event('gecmis-guncellendi'));
+        } catch (err) {
+            console.error('Sohbet silinemedi:', err);
+        }
+    };
+
+    const handlePaylas = async (e, sohbet) => {
+        e.stopPropagation();
+        try {
+            const { share_token } = await sohbetPaylasAPI(sohbet.id);
+            const url = `${window.location.origin}/#/shared/${share_token}`;
+            await navigator.clipboard.writeText(url);
+            alert(t('paylasimKopyalandi'));
+        } catch (err) {
+            console.error('Paylaşım oluşturulamadı:', err);
+        }
+    };
+
+    const handleIndir = async (e, sohbet) => {
+        e.stopPropagation();
+        try {
+            const blob = await sohbetPDFIndirAPI(sohbet.id);
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `hak-bul-${sohbet.title?.slice(0, 30).replace(/\s+/g, '_') || sohbet.id.slice(0, 8)}.pdf`;
+            a.click();
+            URL.revokeObjectURL(url);
+        } catch (err) {
+            console.error('PDF indirilemedi:', err);
+        }
+    };
+
+    const handleDuzenleBaslat = (e, sohbet) => {
+        e.stopPropagation();
+        setDuzenleId(sohbet.id);
+        setDuzenleMetin(sohbet.title || '');
+        setTimeout(() => duzenleInputRef.current?.focus(), 50);
+    };
+
+    const handleDuzenleKaydet = async (sohbetId) => {
+        if (!duzenleMetin.trim()) { setDuzenleId(null); return; }
+        try {
+            await sohbetYenidenAdlandirAPI(sohbetId, duzenleMetin.trim());
+            setSohbetler(prev => prev.map(s => s.id === sohbetId ? { ...s, title: duzenleMetin.trim() } : s));
+        } catch (err) {
+            console.error('Yeniden adlandırılamadı:', err);
+        } finally {
+            setDuzenleId(null);
+        }
+    };
+
     return (
         <aside
             className="flex flex-col w-64 flex-shrink-0 h-screen"
@@ -121,9 +193,10 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
         >
             {/* Yeni Sohbet butonu */}
             <div className="px-3 py-3" style={{ borderBottom: '1px solid var(--tema-border)' }}>
+                <div className="flex gap-2">
                 <button
                     onClick={onYeniSohbet}
-                    className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-150"
+                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-150"
                     style={{
                         background: 'var(--tema-send-btn)',
                         color: 'var(--tema-send-icon)',
@@ -132,8 +205,19 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
                     onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
                 >
                     <Plus size={14} />
-                    Yeni Sohbet
+                    {t('yeniSohbet')}
                 </button>
+                <button
+                    onClick={() => dilDegistir(dil === 'tr' ? 'en' : 'tr')}
+                    className="px-3 py-2 rounded-xl text-xs font-bold transition-all duration-150"
+                    title={dil === 'tr' ? 'Switch to English' : "Türkçe'ye geç"}
+                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-accent)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
+                >
+                    {dil === 'tr' ? 'EN' : 'TR'}
+                </button>
+                </div>
             </div>
 
             {/* Sidebar başlık */}
@@ -143,7 +227,7 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
             >
                 <MessageSquare size={14} style={{ color: 'var(--tema-muted)' }} />
                 <span className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                    Önceki Sorularım
+                    {t('oncekiSorularim')}
                 </span>
             </div>
 
@@ -158,36 +242,80 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
                             <Clock size={18} style={{ color: 'var(--tema-dimmer)' }} />
                         </div>
                         <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                            {kullanici ? 'Henüz sohbet başlatılmadı' : 'Geçmişi görmek için\ngiriş yapın'}
+                            {kullanici ? t('henuzSohbet') : t('gecmisIcinGiris')}
                         </p>
                     </div>
                 ) : (
                     sohbetler.map((sohbet) => (
-                        <button
+                        <div
                             key={sohbet.id}
-                            onClick={() => handleSohbetTikla(sohbet)}
-                            className="w-full flex items-start gap-2 px-3 py-2.5 text-left transition-all duration-150 group border-b"
+                            className="group flex items-start gap-1 px-2 py-2 border-b transition-all duration-150 cursor-pointer"
                             style={{ borderColor: 'var(--tema-border)' }}
+                            onClick={() => handleSohbetTikla(sohbet)}
                             onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
                             onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
                         >
                             <ChevronRight
                                 size={12}
-                                className="flex-shrink-0 mt-0.5 opacity-40 group-hover:opacity-100 transition-opacity"
+                                className="flex-shrink-0 mt-1 opacity-40 group-hover:opacity-100 transition-opacity"
                                 style={{ color: 'var(--tema-accent)' }}
                             />
                             <div className="flex-1 min-w-0">
-                                <p
-                                    className="text-xs leading-relaxed line-clamp-2"
-                                    style={{ color: 'var(--tema-text2)' }}
-                                >
-                                    {sohbet.title}
-                                </p>
+                                {duzenleId === sohbet.id ? (
+                                    <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
+                                        <input
+                                            ref={duzenleInputRef}
+                                            value={duzenleMetin}
+                                            onChange={e => setDuzenleMetin(e.target.value)}
+                                            onKeyDown={e => {
+                                                if (e.key === 'Enter') handleDuzenleKaydet(sohbet.id);
+                                                if (e.key === 'Escape') setDuzenleId(null);
+                                            }}
+                                            className="flex-1 text-xs rounded px-1.5 py-0.5 outline-none"
+                                            style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border-focus)' }}
+                                        />
+                                        <button onClick={() => handleDuzenleKaydet(sohbet.id)} className="p-0.5 hover:text-green-400" style={{ color: 'var(--tema-muted)' }}><Check size={12} /></button>
+                                        <button onClick={() => setDuzenleId(null)} className="p-0.5 hover:text-red-400" style={{ color: 'var(--tema-muted)' }}><X size={12} /></button>
+                                    </div>
+                                ) : (
+                                    <p className="text-xs leading-relaxed line-clamp-2" style={{ color: 'var(--tema-text2)' }}>
+                                        {sohbet.title}
+                                    </p>
+                                )}
                                 <p className="text-xs mt-0.5" style={{ color: 'var(--tema-dimmer)' }}>
                                     {tarihKisa(sohbet.tarih)}
                                 </p>
                             </div>
-                        </button>
+                            {/* Düzenle / Sil butonları — sadece giriş yapmış kullanıcıda */}
+                            {kullanici && !sohbet.misafir && duzenleId !== sohbet.id && (
+                                <div className="flex-shrink-0 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button
+                                        onClick={(e) => handlePaylas(e, sohbet)}
+                                        className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                                        title={t('paylas')}
+                                        style={{ color: 'var(--tema-muted)' }}
+                                    ><Share2 size={11} /></button>
+                                    <button
+                                        onClick={(e) => handleIndir(e, sohbet)}
+                                        className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                                        title={t('pdfIndir')}
+                                        style={{ color: 'var(--tema-muted)' }}
+                                    ><Download size={11} /></button>
+                                    <button
+                                        onClick={(e) => handleDuzenleBaslat(e, sohbet)}
+                                        className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                                        title={t('yenidenAdlandir')}
+                                        style={{ color: 'var(--tema-muted)' }}
+                                    ><Pencil size={11} /></button>
+                                    <button
+                                        onClick={(e) => handleSil(e, sohbet.id)}
+                                        className="p-1 rounded hover:text-red-400 transition-colors"
+                                        title={t('sil')}
+                                        style={{ color: 'var(--tema-muted)' }}
+                                    ><Trash2 size={11} /></button>
+                                </div>
+                            )}
+                        </div>
                     ))
                 )}
             </div>
@@ -208,8 +336,36 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
                     onMouseLeave={(e) => { if (aktifSayfa !== 'taslak') e.currentTarget.style.background = 'transparent'; }}
                 >
                     <FileText size={16} />
-                    Belge Taslakları
+                    {t('belgeTaslaklari')}
                 </button>
+                <button
+                    onClick={onKarsilastirAc}
+                    className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                    style={{
+                        background: aktifSayfa === 'karsilastir' ? 'var(--tema-surface)' : 'transparent',
+                        color: aktifSayfa === 'karsilastir' ? 'var(--tema-accent)' : 'var(--tema-text2)',
+                    }}
+                    onMouseEnter={(e) => { if (aktifSayfa !== 'karsilastir') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
+                    onMouseLeave={(e) => { if (aktifSayfa !== 'karsilastir') e.currentTarget.style.background = 'transparent'; }}
+                >
+                    <GitCompare size={16} />
+                    {t('belgeKarsilastir')}
+                </button>
+                {kullanici && (
+                    <button
+                        onClick={onProfilAc}
+                        className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                        style={{
+                            background: aktifSayfa === 'profil' ? 'var(--tema-surface)' : 'transparent',
+                            color: aktifSayfa === 'profil' ? 'var(--tema-accent)' : 'var(--tema-text2)',
+                        }}
+                        onMouseEnter={(e) => { if (aktifSayfa !== 'profil') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
+                        onMouseLeave={(e) => { if (aktifSayfa !== 'profil') e.currentTarget.style.background = 'transparent'; }}
+                    >
+                        <User size={16} />
+                        {t('profilim')}
+                    </button>
+                )}
                 {kullanici?.rol === 'admin' && (
                     <button
                         onClick={onAdminAc}
@@ -222,7 +378,7 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, aktifSay
                         onMouseLeave={(e) => { if (aktifSayfa !== 'admin') e.currentTarget.style.background = 'transparent'; }}
                     >
                         <BarChart2 size={16} />
-                        Admin Paneli
+                        {t('adminPaneli')}
                     </button>
                 )}
             </div>
@@ -234,7 +390,7 @@ function AppIcerik() {
     const [kabul, setKabul] = useState(false);
     const [secilenSohbet, setSecilenSohbet] = useState(null);
     const [temizleSinyali, setTemizleSinyali] = useState(0);
-    const [aktifSayfa, setAktifSayfa] = useState('sohbet'); // 'sohbet' | 'taslak' | 'admin'
+    const [aktifSayfa, setAktifSayfa] = useState('sohbet'); // 'sohbet' | 'taslak' | 'admin' | 'profil'
     const { tema } = useTema();
 
     const uyariKabul = useCallback(() => {
@@ -268,6 +424,9 @@ function AppIcerik() {
             {/* Disclaimer modal */}
             <HukukiUyariModal onKabul={uyariKabul} />
 
+            {/* Asistan bot — her zaman görünür */}
+            {kabul && <AsistanBot />}
+
             {/* Ana içerik — modal kapanınca görünür */}
             {kabul && (
                 <div className="relative flex h-screen w-full">
@@ -277,6 +436,8 @@ function AppIcerik() {
                         onYeniSohbet={handleYeniSohbet}
                         onTaslakAc={() => setAktifSayfa('taslak')}
                         onAdminAc={() => setAktifSayfa('admin')}
+                        onProfilAc={() => setAktifSayfa('profil')}
+                        onKarsilastirAc={() => setAktifSayfa('karsilastir')}
                         aktifSayfa={aktifSayfa}
                     />
 
@@ -286,6 +447,10 @@ function AppIcerik() {
                             <AdminSayfasi />
                         ) : aktifSayfa === 'taslak' ? (
                             <TaslakSayfasi />
+                        ) : aktifSayfa === 'profil' ? (
+                            <ProfilSayfasi onGeri={() => setAktifSayfa('sohbet')} />
+                        ) : aktifSayfa === 'karsilastir' ? (
+                            <KarsilastirmaSayfasi />
                         ) : (
                             <SohbetSayfasi
                                 secilenSohbet={secilenSohbet}
@@ -300,12 +465,37 @@ function AppIcerik() {
     );
 }
 
+function SharedRoute() {
+    // Hash-based routing: /#/shared/TOKEN
+    const hash = window.location.hash;
+    const match = hash.match(/^#\/shared\/([A-Za-z0-9_-]+)$/);
+    if (match) {
+        return <PaylasimSayfasi shareToken={match[1]} />;
+    }
+    return null;
+}
+
 export default function App() {
+    const hash = window.location.hash;
+    const isSharedRoute = /^#\/shared\//.test(hash);
+
+    if (isSharedRoute) {
+        return (
+            <TemaProvider>
+                <DilProvider>
+                    <SharedRoute />
+                </DilProvider>
+            </TemaProvider>
+        );
+    }
+
     return (
         <TemaProvider>
-            <AuthProvider>
-                <AppIcerik />
-            </AuthProvider>
+            <DilProvider>
+                <AuthProvider>
+                    <AppIcerik />
+                </AuthProvider>
+            </DilProvider>
         </TemaProvider>
     );
 }

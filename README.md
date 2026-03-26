@@ -7,17 +7,21 @@ Vatandaşların Türkçe hukuki sorularına, mevzuat ve ilgili kaynaklar üzerin
 ## Özellikler
 
 - FastAPI backend + React (Vite) frontend
-- RAG pipeline: soru yeniden yazma → Qdrant vektör araması → Groq LLM ile yanıt üretme
+- RAG pipeline: soru yeniden yazma → Qdrant vektör araması → Groq LLM ile yanıt üretme (SSE streaming destekli)
 - Soru kategorilendirme (İş, Kira, Tüketici, Aile, Ceza, İdare, Ticaret, Genel)
+- Kritik konularda (ceza, boşanma, icra, tazminat) otomatik avukat yönlendirmesi (ALO 182)
 - Cevap puanlama (👍/👎 feedback sistemi)
-- JWT kimlik doğrulama (register / login / refresh token rotation / logout)
+- JWT kimlik doğrulama (register / login / refresh token rotation / logout / profil yönetimi / hesap silme)
 - Sohbet geçmişi: giriş yapmış kullanıcı için `user_id`, misafir için `guest_session_id` bazlı
-- Sohbet başlıkları: ilk mesajdan otomatik üretilir
+- Sohbet başlıkları: ilk mesajdan otomatik üretilir; yeniden adlandırma ve silme desteklenir
+- Sohbet paylaşma (URL-safe token, public görüntüleme) ve PDF olarak dışa aktarma
 - PDF yükleme ve hukuki analiz (`/documents/analyze`)
+- İki PDF belgesini karşılaştırma ve AI analizi (`/documents/compare`)
 - Hukuki belge taslağı üretme — Kira, İş, İhtarname, Taahhütname (PDF çıktı)
-- Admin analytics dashboard (kategori dağılımı, feedback istatistikleri, günlük aktivite)
-- Rate limiting (`/ask` için 20 istek/dakika)
-- Alembic migration altyapısı
+- Admin analytics dashboard (kategori dağılımı, feedback istatistikleri, günlük aktivite, kullanıcı yönetimi, zayıf sorgu listesi)
+- Çoklu dil arayüzü (Türkçe / İngilizce)
+- Rate limiting (`/ask` ve `/ask/stream` için 20/dk, `/documents/compare` için 5/dk)
+- Alembic migration altyapısı (6 migration)
 - Docker Compose ile tek komutla `postgres + backend + frontend` çalıştırma
 
 ## Proje Yapısı
@@ -228,10 +232,13 @@ Uygulama `http://localhost:5173` adresinde açılır.
 
 | Method | Endpoint          | Açıklama |
 |--------|-------------------|----------|
-| POST   | `/auth/register`  | Kayıt |
+| POST   | `/auth/register`  | Kayıt (rate: 5/dk) |
 | POST   | `/auth/login`     | Giriş (access + refresh token döner) |
 | POST   | `/auth/refresh`   | Token yenileme (rotation ile) |
 | POST   | `/auth/logout`    | Çıkış (refresh token iptal) |
+| GET    | `/auth/profile`   | Profil görüntüle |
+| PUT    | `/auth/profile`   | Email / şifre güncelle |
+| DELETE | `/auth/account`   | Hesabı kalıcı olarak sil |
 
 ### Sohbet Geçmişi
 
@@ -239,6 +246,12 @@ Uygulama `http://localhost:5173` adresinde açılır.
 |--------|----------|----------|
 | GET | `/chat/history/{conversation_id}` | Sohbet mesajları (auth gerekir) |
 | GET | `/chat/conversations` | Kullanıcının sohbet listesi — `title`, `message_count`, `last_message_at` döner |
+| DELETE | `/chat/conversations/{id}` | Sohbeti sil |
+| PATCH | `/chat/conversations/{id}/title` | Sohbet başlığını yeniden adlandır |
+| GET | `/chat/conversations/{id}/export` | Sohbeti PDF olarak indir |
+| POST | `/chat/conversations/{id}/share` | Paylaşım linki oluştur |
+| DELETE | `/chat/conversations/{id}/share` | Paylaşımı kaldır |
+| GET | `/chat/shared/{share_token}` | Paylaşılan sohbeti görüntüle (herkese açık) |
 | GET | `/chat/guest/history/{conversation_id}?guest_session_id=...` | Misafir sohbet mesajları |
 | GET | `/chat/guest/conversations?guest_session_id=...` | Misafir sohbet listesi |
 
@@ -247,6 +260,7 @@ Uygulama `http://localhost:5173` adresinde açılır.
 | Method | Endpoint | Açıklama |
 |--------|----------|----------|
 | POST | `/documents/analyze` | PDF yükle, hukuki analiz yap (multipart/form-data: `dosya`, `soru`, `conversation_id`, `guest_session_id`) |
+| POST | `/documents/compare` | İki PDF karşılaştır — `dosya1`, `dosya2`, `soru` (rate: 5/dk) |
 
 ### Hukuki Belge Taslakları
 
@@ -273,6 +287,10 @@ Desteklenen taslaklar: `kira_sozlesmesi`, `is_sozlesmesi`, `ihtarname`, `taahhut
 | GET | `/admin/stats/categories` | Kategori bazlı soru dağılımı |
 | GET | `/admin/stats/feedback` | 👍/👎 sayıları ve beğeni oranı |
 | GET | `/admin/stats/daily?gun=7` | Son N günün günlük mesaj aktivitesi |
+| GET | `/admin/users` | Kullanıcı listesi |
+| PATCH | `/admin/users/{id}/role` | Kullanıcı rolü güncelle |
+| PATCH | `/admin/users/{id}/status` | Kullanıcı aktif/pasif durumu değiştir |
+| GET | `/admin/weak-queries` | Düşük güven skorlu sorgu listesi |
 
 ---
 
@@ -288,6 +306,8 @@ Desteklenen taslaklar: `kira_sozlesmesi`, `is_sozlesmesi`, `ihtarname`, `taahhut
 20260317_0004  message_feedback tablosu
     ↓
 20260317_0005  title kolonu (sohbet başlıkları)
+    ↓
+20260326_0006  weak_queries + shared_conversations tabloları
 ```
 
 ---

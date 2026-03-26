@@ -16,36 +16,52 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 | Method | Path | Auth | Açıklama |
 |--------|------|------|----------|
 | POST | `/ask` | Opsiyonel | RAG pipeline (rate: 20/min) |
+| POST | `/ask/stream` | Opsiyonel | SSE streaming yanıt (rate: 20/min) |
 | GET | `/search` | — | Kanun/karar keyword arama |
 | GET | `/health` | — | Servis durumu |
-| POST | `/auth/register` | — | Kayıt |
+| POST | `/auth/register` | — | Kayıt (rate: 5/min) |
 | POST | `/auth/login` | — | Giriş → token çifti |
 | POST | `/auth/refresh` | — | Access token yenileme |
 | POST | `/auth/logout` | — | Refresh token iptal |
+| GET | `/auth/profile` | Zorunlu | Profil bilgilerini görüntüle |
+| PUT | `/auth/profile` | Zorunlu | Email / şifre güncelle |
+| DELETE | `/auth/account` | Zorunlu | Hesabı kalıcı olarak sil |
 | GET | `/chat/conversations` | Zorunlu | Auth kullanıcı sohbet listesi |
 | GET | `/chat/history/{id}` | Zorunlu | Auth sohbet mesajları |
+| DELETE | `/chat/conversations/{id}` | Zorunlu | Sohbeti sil |
+| PATCH | `/chat/conversations/{id}/title` | Zorunlu | Sohbet başlığını yeniden adlandır |
+| GET | `/chat/conversations/{id}/export` | Zorunlu | Sohbeti PDF olarak dışa aktar |
+| POST | `/chat/conversations/{id}/share` | Zorunlu | Paylaşım linki oluştur |
+| DELETE | `/chat/conversations/{id}/share` | Zorunlu | Paylaşımı kaldır |
+| GET | `/chat/shared/{share_token}` | — | Paylaşılan sohbeti görüntüle (salt okunur) |
 | GET | `/chat/guest/conversations` | — | Misafir sohbet listesi |
 | GET | `/chat/guest/history/{id}` | — | Misafir mesajları |
 | POST | `/feedback` | Opsiyonel | 👍/👎 gönder (`puan`: 1 veya -1) |
 | POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et |
+| POST | `/documents/compare` | Opsiyonel | İki PDF karşılaştır (rate: 5/min) |
 | GET | `/templates` | — | Taslak listesi |
 | POST | `/templates/{id}/generate` | — | PDF taslağı indir |
 | GET | `/admin/stats` | ADMIN | Genel istatistikler |
 | GET | `/admin/stats/categories` | ADMIN | Kategori dağılımı |
 | GET | `/admin/stats/feedback` | ADMIN | Feedback özeti |
 | GET | `/admin/stats/daily` | ADMIN | Günlük aktivite (son N gün) |
+| GET | `/admin/users` | ADMIN | Kullanıcı listesi |
+| PATCH | `/admin/users/{id}/role` | ADMIN | Kullanıcı rolü güncelle |
+| PATCH | `/admin/users/{id}/status` | ADMIN | Kullanıcı aktif/pasif durumu değiştir |
+| GET | `/admin/weak-queries` | ADMIN | Zayıf sorgu listesi (düşük güven skorlu) |
 
 ---
 
 ## Rate Limiting
 
-| Parametre | Değer |
-|-----------|-------|
-| Limit | 20 istek / dakika / IP |
-| Scope | Sadece `POST /ask` endpoint'i |
-| Aşım yanıtı | HTTP 429 Too Many Requests |
-| Reset süresi | 60 saniye (sabit pencere) |
-| Prod'da kalıcı depolama | Yok — server restart'ta sıfırlanır (MVP için yeterli) |
+| Endpoint | Limit |
+|----------|-------|
+| `POST /ask` | 20 istek / dakika / IP |
+| `POST /ask/stream` | 20 istek / dakika / IP |
+| `POST /auth/register` | 5 istek / dakika / IP |
+| `POST /documents/compare` | 5 istek / dakika / IP |
+
+Aşım yanıtı: HTTP 429 Too Many Requests. Reset süresi: 60 saniye (sabit pencere). Prod'da kalıcı depolama yok — server restart'ta sıfırlanır.
 
 ---
 
@@ -117,6 +133,36 @@ Ana endpoint. Kullanıcının hukuki sorusunu alır, RAG pipeline'ı çalıştı
   "detail": "Groq API timeout",
   "retry_after": 30
 }
+```
+
+---
+
+## POST /ask/stream
+
+`/ask` ile aynı istek gövdesini alır, yanıtı SSE (Server-Sent Events) olarak token token akıtır.
+
+**İlk SSE mesajı — meta**
+
+```json
+{
+  "type": "meta",
+  "kaynaklar": [...],
+  "kategori": "İş Hukuku",
+  "conversation_id": "uuid",
+  "guest_session_id": "uuid|null"
+}
+```
+
+**Sonraki mesajlar — token**
+
+```json
+{ "type": "token", "text": "Madde" }
+```
+
+**Hata mesajı**
+
+```json
+{ "type": "error", "detail": "string" }
 ```
 
 ---

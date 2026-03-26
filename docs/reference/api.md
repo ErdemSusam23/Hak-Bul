@@ -25,7 +25,7 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 | POST | `/auth/logout` | — | Refresh token iptal |
 | GET | `/auth/profile` | Zorunlu | Profil bilgilerini görüntüle |
 | PUT | `/auth/profile` | Zorunlu | Email / şifre güncelle |
-| DELETE | `/auth/account` | Zorunlu | Hesabı kalıcı olarak sil |
+| DELETE | `/auth/account` | Zorunlu | Hesabı kalıcı olarak sil (şifre JSON body'de) |
 | GET | `/chat/conversations` | Zorunlu | Auth kullanıcı sohbet listesi |
 | GET | `/chat/history/{id}` | Zorunlu | Auth sohbet mesajları |
 | DELETE | `/chat/conversations/{id}` | Zorunlu | Sohbeti sil |

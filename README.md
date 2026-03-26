@@ -332,5 +332,5 @@ Mevcut test kapsamı (39 test):
 ---
 
 <div align="center">
-  <sub>Hak-Bul Projesi • Son Güncelleme: 17.03.2026</sub>
+  <sub>Hak-Bul Projesi • Son Güncelleme: 26.03.2026</sub>
 </div>

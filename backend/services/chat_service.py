@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 
 from models.chat_history import ChatHistory
 from models.enums import MessageRole
+from models.shared_conversation import SharedConversation
 
 
 def resolve_conversation_id(conversation_id: str | None) -> str:
@@ -32,7 +33,7 @@ def save_chat_pair(
         raise ValueError("Exactly one of user_id or guest_session_id must be provided.")
 
     # İlk mesajsa title oluştur (60 karakter, kelime ortasında kesmez)
-    filters = [ChatHistory.conversation_id == conversation_id]
+    filters = [ChatHistory.conversation_id == conversation_id, ChatHistory.deleted_at.is_(None)]
     if user_id:
         filters.append(ChatHistory.user_id == user_id)
     else:
@@ -72,6 +73,7 @@ def list_user_messages(db: Session, user_id: str, conversation_id: str, limit: i
     base_query = db.query(ChatHistory).filter(
         ChatHistory.user_id == user_id,
         ChatHistory.conversation_id == conversation_id,
+        ChatHistory.deleted_at.is_(None),
     )
     total = base_query.count()
     messages = (
@@ -89,6 +91,7 @@ def list_guest_messages(
     base_query = db.query(ChatHistory).filter(
         ChatHistory.guest_session_id == guest_session_id,
         ChatHistory.conversation_id == conversation_id,
+        ChatHistory.deleted_at.is_(None),
     )
     total = base_query.count()
     messages = (
@@ -108,7 +111,7 @@ def list_user_conversations(db: Session, user_id: str, limit: int, offset: int) 
             func.max(ChatHistory.created_at).label("last_message_at"),
             func.max(ChatHistory.title).label("title"),
         )
-        .filter(ChatHistory.user_id == user_id)
+        .filter(ChatHistory.user_id == user_id, ChatHistory.deleted_at.is_(None))
         .group_by(ChatHistory.conversation_id)
         .order_by(func.max(ChatHistory.created_at).desc())
         .offset(offset)
@@ -120,7 +123,7 @@ def list_user_conversations(db: Session, user_id: str, limit: int, offset: int) 
 def count_user_conversations(db: Session, user_id: str) -> int:
     return (
         db.query(func.count(func.distinct(ChatHistory.conversation_id)))
-        .filter(ChatHistory.user_id == user_id)
+        .filter(ChatHistory.user_id == user_id, ChatHistory.deleted_at.is_(None))
         .scalar()
         or 0
     )
@@ -134,7 +137,7 @@ def list_guest_conversations(db: Session, guest_session_id: str, limit: int, off
             func.max(ChatHistory.created_at).label("last_message_at"),
             func.max(ChatHistory.title).label("title"),
         )
-        .filter(ChatHistory.guest_session_id == guest_session_id)
+        .filter(ChatHistory.guest_session_id == guest_session_id, ChatHistory.deleted_at.is_(None))
         .group_by(ChatHistory.conversation_id)
         .order_by(func.max(ChatHistory.created_at).desc())
         .offset(offset)
@@ -146,7 +149,7 @@ def list_guest_conversations(db: Session, guest_session_id: str, limit: int, off
 def count_guest_conversations(db: Session, guest_session_id: str) -> int:
     return (
         db.query(func.count(func.distinct(ChatHistory.conversation_id)))
-        .filter(ChatHistory.guest_session_id == guest_session_id)
+        .filter(ChatHistory.guest_session_id == guest_session_id, ChatHistory.deleted_at.is_(None))
         .scalar()
         or 0
     )
@@ -158,21 +161,33 @@ def get_conversation_messages_for_export(
     """Sohbeti PDF olarak dışa aktarmak için tüm mesajları döndürür."""
     return (
         db.query(ChatHistory)
-        .filter(ChatHistory.user_id == user_id, ChatHistory.conversation_id == conversation_id)
+        .filter(
+            ChatHistory.user_id == user_id,
+            ChatHistory.conversation_id == conversation_id,
+            ChatHistory.deleted_at.is_(None),
+        )
         .order_by(ChatHistory.created_at.asc())
         .all()
     )
 
 
 def delete_user_conversation(db: Session, user_id: str, conversation_id: str) -> bool:
-    """Kullanıcıya ait sohbetin tüm mesajlarını siler. True döner → silindi, False → bulunamadı."""
-    deleted = (
+    """Kullanıcıya ait sohbeti soft-delete yapar. True döner → silindi, False → bulunamadı."""
+    updated = (
         db.query(ChatHistory)
-        .filter(ChatHistory.user_id == user_id, ChatHistory.conversation_id == conversation_id)
-        .delete(synchronize_session=False)
+        .filter(
+            ChatHistory.user_id == user_id,
+            ChatHistory.conversation_id == conversation_id,
+            ChatHistory.deleted_at.is_(None),
+        )
+        .update({"deleted_at": datetime.utcnow()}, synchronize_session=False)
     )
+    if updated > 0:
+        db.query(SharedConversation).filter(
+            SharedConversation.conversation_id == conversation_id
+        ).update({"is_active": False}, synchronize_session=False)
     db.commit()
-    return deleted > 0
+    return updated > 0
 
 
 def rename_user_conversation(db: Session, user_id: str, conversation_id: str, new_title: str) -> bool:

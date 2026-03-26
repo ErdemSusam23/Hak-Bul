@@ -16,7 +16,9 @@ from db.session import get_db
 from models.chat_history import ChatHistory
 from models.refresh_token import RefreshToken
 from models.user import User
+from models.shared_conversation import SharedConversation
 from schemas import (
+    HesapSil,
     LoginRequest,
     LogoutRequest,
     ProfilCevap,
@@ -188,6 +190,10 @@ def update_profile(
 
     if body.yeni_sifre:
         current_user.password_hash = hash_password(body.yeni_sifre)
+        db.query(RefreshToken).filter(
+            RefreshToken.user_id == current_user.id,
+            RefreshToken.revoked_at.is_(None),
+        ).update({"revoked_at": datetime.utcnow()}, synchronize_session=False)
 
     db.commit()
     db.refresh(current_user)
@@ -196,19 +202,25 @@ def update_profile(
 
 @router.delete("/account", status_code=status.HTTP_204_NO_CONTENT)
 def delete_account(
-    mevcut_sifre: str,
+    response: Response,
+    body: HesapSil,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    if not verify_password(mevcut_sifre, current_user.password_hash):
+    if not verify_password(body.mevcut_sifre, current_user.password_hash):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Şifre hatalı.")
 
     # Tüm refresh token'ları iptal et
     db.query(RefreshToken).filter(RefreshToken.user_id == current_user.id).update(
         {"revoked_at": datetime.utcnow()}, synchronize_session=False
     )
+    # Paylaşılan sohbetleri devre dışı bırak
+    db.query(SharedConversation).filter(SharedConversation.user_id == current_user.id).update(
+        {"is_active": False}, synchronize_session=False
+    )
     # Sohbet geçmişini sil
     db.query(ChatHistory).filter(ChatHistory.user_id == current_user.id).delete(synchronize_session=False)
     # Kullanıcıyı pasif yap
     current_user.is_active = False
     db.commit()
+    _clear_refresh_cookie(response)

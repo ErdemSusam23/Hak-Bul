@@ -1,3 +1,5 @@
+import re
+
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -169,10 +171,21 @@ class FeedbackCevap(BaseModel):
     mesaj: str
 
 
+class HesapSil(BaseModel):
+    mevcut_sifre: str = Field(..., min_length=1, max_length=128)
+
+
 class ProfilGuncelle(BaseModel):
     email: str | None = Field(default=None, min_length=5, max_length=255)
     yeni_sifre: str | None = Field(default=None, min_length=8, max_length=128)
     mevcut_sifre: str = Field(..., min_length=1, max_length=128)
+
+    @field_validator("email")
+    @classmethod
+    def email_gecerli_olmali(cls, v: str | None) -> str | None:
+        if v and not re.match(r"^[^@]+@[^@]+\.[^@]+$", v):
+            raise ValueError("Geçersiz e-posta formatı")
+        return v
 
 
 class ProfilCevap(BaseModel):

@@ -8,6 +8,7 @@ from models.chat_history import ChatHistory
 from models.enums import MessageRole, UserRole
 from models.feedback import MessageFeedback
 from models.user import User
+from models.weak_query import WeakQuery
 
 
 def genel_istatistikler(db: Session) -> dict:
@@ -63,6 +64,56 @@ def feedback_ozeti(db: Session) -> dict:
         "toplam": toplam,
         "begeni_orani": oran,
     }
+
+
+def kullanici_listesi(db: Session, limit: int = 50, offset: int = 0) -> tuple[list[User], int]:
+    total = db.query(func.count(User.id)).scalar() or 0
+    users = (
+        db.query(User)
+        .order_by(User.created_at.desc())
+        .offset(offset)
+        .limit(limit)
+        .all()
+    )
+    return users, total
+
+
+def kullanici_rol_guncelle(db: Session, user_id: str, new_role: str) -> User | None:
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        return None
+    from models.enums import UserRole
+    try:
+        user.role = UserRole(new_role)
+    except ValueError:
+        raise ValueError(f"Geçersiz rol: {new_role}")
+    db.commit()
+    db.refresh(user)
+    return user
+
+
+def kullanici_askiya_al(db: Session, user_id: str, aktif: bool) -> User | None:
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        return None
+    user.is_active = aktif
+    db.commit()
+    db.refresh(user)
+    return user
+
+
+def zayif_sorgular_listele(db: Session, limit: int = 100) -> list[WeakQuery]:
+    return (
+        db.query(WeakQuery)
+        .order_by(WeakQuery.created_at.desc())
+        .limit(limit)
+        .all()
+    )
+
+
+def zayif_sorgu_kaydet(db: Session, soru: str, max_skor: float, kategori: str | None) -> None:
+    db.add(WeakQuery(soru=soru, max_skor=max_skor, kategori=kategori))
+    db.commit()
 
 
 def gunluk_aktivite(db: Session, gun: int) -> list[dict]:

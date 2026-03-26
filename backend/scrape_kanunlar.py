@@ -146,9 +146,46 @@ def pdf_metin_cikart(pdf_bytes: bytes) -> str:
 # ── Madde'lere böl ────────────────────────────────────────────────────────────
 # "Madde 1 -", "Madde 1-", "MADDE 1 –", "Madde 1." biçimlerini yakala
 MADDE_RE = re.compile(
-    r"(?:^|\n)\s*(Madde|MADDE)\s+(\d+)\s*[-–—\.]\s*",
+    r"(?:^|\n)\s*"
+    r"((?:Madde|MADDE|Geçici\s+Madde|GEÇİCİ\s+MADDE|Ek\s+Madde|EK\s+MADDE|Mükerrer\s+Madde|MÜKERRER\s+MADDE)"
+    r"\s+\d+[A-Za-z]?)\s*[-–—\.]\s*",
     re.MULTILINE,
 )
+
+SLUG_TRANSLATION = str.maketrans(
+    {
+        "ç": "c",
+        "Ç": "c",
+        "ğ": "g",
+        "Ğ": "g",
+        "ı": "i",
+        "İ": "i",
+        "ö": "o",
+        "Ö": "o",
+        "ş": "s",
+        "Ş": "s",
+        "ü": "u",
+        "Ü": "u",
+    }
+)
+
+
+def _normalize_madde_label(label: str) -> str:
+    temiz = re.sub(r"\s+", " ", label).strip()
+    temiz = temiz.replace("MADDE", "Madde")
+    temiz = temiz.replace("GEÇİCİ Madde", "Geçici Madde")
+    temiz = temiz.replace("GEÇİCİ MADDE", "Geçici Madde")
+    temiz = temiz.replace("EK Madde", "Ek Madde")
+    temiz = temiz.replace("EK MADDE", "Ek Madde")
+    temiz = temiz.replace("MÜKERRER Madde", "Mükerrer Madde")
+    temiz = temiz.replace("MÜKERRER MADDE", "Mükerrer Madde")
+    return temiz
+
+
+def _slugify_madde_label(label: str) -> str:
+    normalized = _normalize_madde_label(label).translate(SLUG_TRANSLATION).lower()
+    return re.sub(r"[^0-9a-z]+", "_", normalized).strip("_")
+
 
 def maddelere_bol(tam_metin: str) -> list[tuple[str, str]]:
     """[(madde_no_str, madde_metni), ...] döndürür."""
@@ -158,13 +195,13 @@ def maddelere_bol(tam_metin: str) -> list[tuple[str, str]]:
         return []
 
     for i, m in enumerate(eslesme):
-        madde_no = m.group(2)
+        madde_str = _normalize_madde_label(m.group(1))
         baslangic = m.start()
         bitis = eslesme[i + 1].start() if i + 1 < len(eslesme) else len(tam_metin)
         icerik = tam_metin[baslangic:bitis].strip()
         # Çok kısa "madde" satırlarını atla (büyük ihtimal sayfa numarası vs.)
         if len(icerik) >= 30:
-            parcalar.append((f"Madde {madde_no}", icerik))
+            parcalar.append((madde_str, icerik))
 
     return parcalar
 
@@ -175,7 +212,7 @@ def chunk_olustur(kanun_no, kanun_adi, hukuk_alani, yil, madde_parcalari):
         # Fazla boşlukları/yeni satırları temizle
         metin_temiz = re.sub(r"\s{3,}", "  ", metin)
         chunks.append({
-            "chunk_id":    f"kanun_{kanun_no}_{madde_str.lower().replace(' ', '')}",
+            "chunk_id":    f"kanun_{kanun_no}_{_slugify_madde_label(madde_str)}",
             "kaynak_turu": "kanun",
             "hukuk_alani": hukuk_alani,
             "kanun_adi":   f"{kanun_no} Sayılı {kanun_adi}",

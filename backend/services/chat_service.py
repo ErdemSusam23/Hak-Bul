@@ -150,3 +150,37 @@ def count_guest_conversations(db: Session, guest_session_id: str) -> int:
         .scalar()
         or 0
     )
+
+
+def get_conversation_messages_for_export(
+    db: Session, user_id: str, conversation_id: str
+) -> list[ChatHistory]:
+    """Sohbeti PDF olarak dışa aktarmak için tüm mesajları döndürür."""
+    return (
+        db.query(ChatHistory)
+        .filter(ChatHistory.user_id == user_id, ChatHistory.conversation_id == conversation_id)
+        .order_by(ChatHistory.created_at.asc())
+        .all()
+    )
+
+
+def delete_user_conversation(db: Session, user_id: str, conversation_id: str) -> bool:
+    """Kullanıcıya ait sohbetin tüm mesajlarını siler. True döner → silindi, False → bulunamadı."""
+    deleted = (
+        db.query(ChatHistory)
+        .filter(ChatHistory.user_id == user_id, ChatHistory.conversation_id == conversation_id)
+        .delete(synchronize_session=False)
+    )
+    db.commit()
+    return deleted > 0
+
+
+def rename_user_conversation(db: Session, user_id: str, conversation_id: str, new_title: str) -> bool:
+    """Sohbetin tüm mesajlarındaki title alanını günceller."""
+    updated = (
+        db.query(ChatHistory)
+        .filter(ChatHistory.user_id == user_id, ChatHistory.conversation_id == conversation_id)
+        .update({"title": new_title[:80]}, synchronize_session=False)
+    )
+    db.commit()
+    return updated > 0

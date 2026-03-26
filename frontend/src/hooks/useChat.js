@@ -1,8 +1,20 @@
 import { useState, useCallback, useRef } from 'react';
-import { soruSor, aramaYap, dokumanAnalizAPI } from '../api/client';
+import { dokumanAnalizAPI } from '../api/client';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true';
 
 let mesajSayac = 0;
 const yeniId = () => `msg_${++mesajSayac}_${Date.now()}`;
+
+const MOCK_YANIT = {
+    yanit: `**4857 Sayılı İş Kanunu** kapsamında kıdem tazminatı alabilmek için iş sözleşmenizin asgari **1 yıl** sürmüş olması ve işveren tarafından haksız fesih gibi kanunda sayılan hallerden biriyle sona ermesi gerekmektedir.`,
+    kaynaklar: [
+        { kaynak_turu: 'kanun', baslik: '4857 Sayılı İş Kanunu — Madde 17', metin_ozet: 'Belirsiz süreli iş sözleşmelerinin feshinde bildirim şartı.', skor: 0.94, url: null },
+    ],
+    kategori: 'İş Hukuku',
+    uyari: 'Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.',
+};
 
 export function useChat() {
     const [mesajlar, setMesajlar] = useState([]);
@@ -11,6 +23,8 @@ export function useChat() {
     const [aramaYukleniyor, setAramaYukleniyor] = useState(false);
     const [aramaSonuclari, setAramaSonuclari] = useState(null);
     const sonMesajRef = useRef(null);
+    // Aktif streaming abortController
+    const abortRef = useRef(null);
 
     const mesajGonder = useCallback(async (metin, config = {}) => {
         const metinVar = metin ? metin.trim() : '';
@@ -18,7 +32,6 @@ export function useChat() {
 
         if ((!metinVar && !dosyaVar) || yukleniyor) return null;
 
-        // Soru min 10 karakter (Eğer dosya yollanmıyorsa)
         if (!dosyaVar && metinVar.length < 10) {
             const hataMesaj = {
                 id: yeniId(),
@@ -34,76 +47,189 @@ export function useChat() {
 
         setHata(null);
 
-        // Kullanıcı mesajını ekle
-        const kullaniciMesicb = {
+        const kullaniciMesaj = {
             id: yeniId(),
             rol: 'kullanici',
             icerik: dosyaVar ? `[PDF: ${dosyaVar.name}] ${metinVar}` : metinVar,
             kaynaklar: [],
             zaman: new Date(),
         };
-        setMesajlar((onceki) => [...onceki, kullaniciMesicb]);
+        setMesajlar((onceki) => [...onceki, kullaniciMesaj]);
         setYukleniyor(true);
 
-        try {
-            let yanit;
-            if (dosyaVar) {
-                yanit = await dokumanAnalizAPI({
+        // PDF analizi — streaming yok, normal POST
+        if (dosyaVar) {
+            try {
+                const yanit = await dokumanAnalizAPI({
                     dosya: dosyaVar,
                     soru: metinVar || undefined,
                     conversation_id: config.conversationId,
                     guest_session_id: config.guestSessionId,
                 });
-            } else {
-                yanit = await soruSor({
-                    soru: metinVar,
-                    conversation_id: config.conversationId,
-                    guest_session_id: config.guestSessionId,
-                });
+                const asistanMesaj = {
+                    id: yanit.message_id || yeniId(),
+                    rol: 'asistan',
+                    icerik: yanit.yanit,
+                    kaynaklar: yanit.kaynaklar || [],
+                    uyari: yanit.uyari,
+                    kategori: yanit.kategori || 'Genel Hukuk',
+                    zaman: new Date(),
+                };
+                setMesajlar((onceki) => [...onceki, asistanMesaj]);
+                return { conversation_id: yanit.conversation_id, guest_session_id: yanit.guest_session_id };
+            } catch (err) {
+                _hataEkle(err, setHata, setMesajlar);
+            } finally {
+                setYukleniyor(false);
             }
+            return null;
+        }
 
+        // Mock mode
+        if (MOCK_MODE) {
+            await new Promise(r => setTimeout(r, 1200));
             const asistanMesaj = {
-                id: yanit.message_id || yeniId(),
+                id: yeniId(),
                 rol: 'asistan',
-                icerik: yanit.yanit,
-                kaynaklar: yanit.kaynaklar || [],
-                uyari: yanit.uyari,
-                kategori: yanit.kategori || 'Genel Hukuk',
-                guest_session_id: yanit.guest_session_id || null,
+                icerik: MOCK_YANIT.yanit,
+                kaynaklar: MOCK_YANIT.kaynaklar,
+                uyari: MOCK_YANIT.uyari,
+                kategori: MOCK_YANIT.kategori,
                 zaman: new Date(),
             };
             setMesajlar((onceki) => [...onceki, asistanMesaj]);
-            
-            return {
-                conversation_id: yanit.conversation_id,
-                guest_session_id: yanit.guest_session_id
-            };
-        } catch (err) {
-            const status = err?.response?.status;
-            const retryAfter = err?.response?.data?.retry_after;
+            setYukleniyor(false);
+            return { conversation_id: 'mock-conv-id', guest_session_id: null };
+        }
 
-            let hataMetni;
-            if (status === 429) {
-                hataMetni = `⏳ Çok fazla istek gönderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`;
-            } else if (status === 503) {
-                hataMetni = '🔧 Sunucu geçici olarak erişilemiyor (Groq veya Qdrant sorunu). Lütfen 30 saniye sonra tekrar deneyin.';
-            } else {
-                hataMetni = '⚠️ Yanıt alınamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.';
+        // SSE Streaming
+        const streamMesajId = yeniId();
+
+        // Placeholder asistan mesajı — boş, streaming başlayınca dolacak
+        setMesajlar((onceki) => [
+            ...onceki,
+            {
+                id: streamMesajId,
+                rol: 'asistan',
+                icerik: '',
+                kaynaklar: [],
+                kategori: 'Genel Hukuk',
+                streaming: true,
+                zaman: new Date(),
+            },
+        ]);
+
+        const accessToken = sessionStorage.getItem('hakbul_access');
+        const payload = {
+            soru: metinVar,
+            max_kaynak: 5,
+        };
+        if (config.conversationId) payload.conversation_id = config.conversationId;
+        if (config.guestSessionId) payload.guest_session_id = config.guestSessionId;
+
+        const controller = new AbortController();
+        abortRef.current = controller;
+
+        let resultConvId = null;
+        let resultGuestId = null;
+
+        try {
+            const resp = await fetch(`${API_URL}/ask/stream`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
+                },
+                body: JSON.stringify(payload),
+                signal: controller.signal,
+            });
+
+            if (!resp.ok) {
+                const errData = await resp.json().catch(() => ({}));
+                throw Object.assign(new Error(errData.detail || 'Sunucu hatası'), { response: { status: resp.status, data: errData } });
             }
 
-            setHata(hataMetni);
-            const hataMesaj = {
-                id: yeniId(),
-                rol: 'asistan',
-                icerik: hataMetni,
-                kaynaklar: [],
-                hata: true,
-                zaman: new Date(),
-            };
-            setMesajlar((onceki) => [...onceki, hataMesaj]);
+            const reader = resp.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = '';
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split('\n');
+                buffer = lines.pop(); // Son satır tamamlanmamış olabilir
+
+                for (const line of lines) {
+                    if (!line.startsWith('data: ')) continue;
+                    const raw = line.slice(6).trim();
+                    if (!raw) continue;
+
+                    let event;
+                    try { event = JSON.parse(raw); } catch { continue; }
+
+                    if (event.type === 'meta') {
+                        resultConvId = event.conversation_id;
+                        resultGuestId = event.guest_session_id;
+                        setMesajlar((onceki) =>
+                            onceki.map((m) =>
+                                m.id === streamMesajId
+                                    ? { ...m, kaynaklar: event.kaynaklar || [], kategori: event.kategori }
+                                    : m
+                            )
+                        );
+                    } else if (event.type === 'token') {
+                        setMesajlar((onceki) =>
+                            onceki.map((m) =>
+                                m.id === streamMesajId
+                                    ? { ...m, icerik: m.icerik + event.text }
+                                    : m
+                            )
+                        );
+                    } else if (event.type === 'done') {
+                        setMesajlar((onceki) =>
+                            onceki.map((m) =>
+                                m.id === streamMesajId
+                                    ? {
+                                        ...m,
+                                        id: event.message_id || m.id,
+                                        streaming: false,
+                                        uyari: event.uyari,
+                                    }
+                                    : m
+                            )
+                        );
+                    } else if (event.type === 'error') {
+                        throw new Error(event.detail || 'Streaming hatası');
+                    }
+                }
+            }
+        } catch (err) {
+            if (err.name === 'AbortError') {
+                // Kullanıcı iptal etti — mesajı olduğu gibi bırak
+                setMesajlar((onceki) =>
+                    onceki.map((m) =>
+                        m.id === streamMesajId ? { ...m, streaming: false } : m
+                    )
+                );
+            } else {
+                // Streaming başlamışsa placeholder'ı hata mesajına dönüştür
+                setMesajlar((onceki) =>
+                    onceki.map((m) => {
+                        if (m.id !== streamMesajId) return m;
+                        const hataMetni = _hataMetniOlustur(err);
+                        return { ...m, icerik: hataMetni, streaming: false, hata: true };
+                    })
+                );
+                setHata(_hataMetniOlustur(err));
+            }
         } finally {
+            abortRef.current = null;
             setYukleniyor(false);
         }
+
+        return resultConvId ? { conversation_id: resultConvId, guest_session_id: resultGuestId } : null;
     }, [yukleniyor]);
 
     const aramayiCalistir = useCallback(async (sorgu) => {
@@ -111,6 +237,7 @@ export function useChat() {
         setAramaYukleniyor(true);
         setAramaSonuclari(null);
         try {
+            const { aramaYap } = await import('../api/client');
             const veri = await aramaYap(sorgu.trim());
             setAramaSonuclari(veri.sonuclar || []);
         } catch {
@@ -120,16 +247,14 @@ export function useChat() {
         }
     }, []);
 
-    const aramayiTemizle = useCallback(() => {
-        setAramaSonuclari(null);
-    }, []);
+    const aramayiTemizle = useCallback(() => setAramaSonuclari(null), []);
 
     const sohbetiTemizle = useCallback(() => {
+        abortRef.current?.abort();
         setMesajlar([]);
         setHata(null);
     }, []);
 
-    // Kaydedilmiş sohbeti geri yükle (zaman string → Date dönüşümü dahil)
     const mesajlariYukle = useCallback((yeniMesajlar) => {
         setMesajlar(
             yeniMesajlar.map((m) => ({
@@ -153,4 +278,23 @@ export function useChat() {
         sohbetiTemizle,
         mesajlariYukle,
     };
+}
+
+function _hataMetniOlustur(err) {
+    const status = err?.response?.status;
+    const retryAfter = err?.response?.data?.retry_after;
+    if (status === 429)
+        return `⏳ Çok fazla istek gönderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`;
+    if (status === 503)
+        return '🔧 Sunucu geçici olarak erişilemiyor. Lütfen 30 saniye sonra tekrar deneyin.';
+    return '⚠️ Yanıt alınamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.';
+}
+
+function _hataEkle(err, setHata, setMesajlar) {
+    const hataMetni = _hataMetniOlustur(err);
+    setHata(hataMetni);
+    setMesajlar((onceki) => [
+        ...onceki,
+        { id: `err_${Date.now()}`, rol: 'asistan', icerik: hataMetni, kaynaklar: [], hata: true, zaman: new Date() },
+    ]);
 }

@@ -1,6 +1,8 @@
 from models.chat_history import ChatHistory
 from models.feedback import MessageFeedback
 from models.refresh_token import RefreshToken
+from models.shared_conversation import SharedConversation
 from models.user import User
+from models.weak_query import WeakQuery
 
-__all__ = ["User", "RefreshToken", "ChatHistory", "MessageFeedback"]
+__all__ = ["User", "RefreshToken", "ChatHistory", "MessageFeedback", "WeakQuery", "SharedConversation"]

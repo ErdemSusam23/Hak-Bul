@@ -20,7 +20,19 @@ def _get_client() -> Groq:
 SYSTEM_PROMPT = """Sen bir Turk hukuku bilgi sistemisin. Sana verilen kanun maddeleri ve
 Yargitay kararlarini kaynak alarak kullanicinin sorusunu Turkce yanitla.
 Her iddiayi kaynak chunk'a dayandir. Eger verilen kaynaklardan yanit
-uretemiyorsan bunu acikca belirt. Hukuki tavsiye verme; bilgi sun."""
+uretemiyorsan bunu acikca belirt. Hukuki tavsiye verme; bilgi sun.
+
+Eger kullanicinin sorusu su konulardan birini iceriyorsa yanit sonuna bir paragraf olarak
+avukat yonlendirmesi ekle (hic uzatma, tek cumle yeter):
+- Ceza davasi, tutukluluk, gozalti, yargilama sureci
+- Bosanma, velayet, nafaka davasi
+- Is mahkemesi, tazminat davasi
+- Icra ve iflas hukuku, haciz
+- Multeciler, vatandaslik, oturma izni
+
+Yonlendirme formati: "Bu konu profesyonel hukuki destek gerektirmektedir;
+baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.
+Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz." """
 
 
 def _build_context(chunks: list[dict]) -> str:
@@ -93,3 +105,36 @@ def generate_answer(soru: str, chunks: list[dict]) -> str:
         return response.choices[0].message.content.strip()
     except Exception as exc:
         raise RuntimeError(f"Groq yanit uretme hatasi: {exc}") from exc
+
+
+def generate_answer_stream(soru: str, chunks: list[dict]):
+    """Groq streaming yanıt üreteci. Her token için str yield eder."""
+    if settings.MOCK_MODE or settings.MOCK_LLM or not settings.GROQ_API_KEY:
+        # Mock modda fallback yanıtı token token simüle et
+        full = _extractive_fallback_answer(chunks)
+        for word in full.split(" "):
+            yield word + " "
+        return
+
+    context = _build_context(chunks)
+
+    try:
+        stream = _get_client().chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {
+                    "role": "user",
+                    "content": f"Kaynaklar:\n{context}\n\nSoru: {soru}",
+                },
+            ],
+            max_tokens=1000,
+            temperature=0.2,
+            stream=True,
+        )
+        for chunk in stream:
+            delta = chunk.choices[0].delta.content
+            if delta:
+                yield delta
+    except Exception as exc:
+        raise RuntimeError(f"Groq streaming hatasi: {exc}") from exc

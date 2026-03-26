@@ -167,3 +167,40 @@ class FeedbackGonder(BaseModel):
 class FeedbackCevap(BaseModel):
     basarili: bool
     mesaj: str
+
+
+class ProfilGuncelle(BaseModel):
+    email: str | None = Field(default=None, min_length=5, max_length=255)
+    yeni_sifre: str | None = Field(default=None, min_length=8, max_length=128)
+    mevcut_sifre: str = Field(..., min_length=1, max_length=128)
+
+
+class ProfilCevap(BaseModel):
+    id: str
+    email: str
+    role: str
+
+
+class AdminKullaniciItem(BaseModel):
+    id: str
+    email: str
+    role: str
+    is_active: bool
+    created_at: str
+
+
+class AdminKullaniciListeCevap(BaseModel):
+    kullanicilar: list[AdminKullaniciItem]
+    total: int
+
+
+class AdminRolGuncelle(BaseModel):
+    rol: str
+
+
+class AdminZayifSorguItem(BaseModel):
+    id: str
+    soru: str
+    max_skor: float
+    kategori: str | None = None
+    created_at: str

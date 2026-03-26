@@ -13,6 +13,7 @@ Kullanım:
 """
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -46,6 +47,11 @@ def _get_qdrant_client():
         print("HATA: QDRANT_URL ayarlanmamış.")
         sys.exit(1)
     return QdrantClient(url=settings.QDRANT_URL, api_key=settings.QDRANT_API_KEY or None)
+
+
+def _stable_point_id(chunk_id: str) -> int:
+    digest = hashlib.blake2b(chunk_id.encode("utf-8"), digest_size=8).digest()
+    return int.from_bytes(digest, byteorder="big") & ((1 << 63) - 1)
 
 
 def _ensure_collection(client):
@@ -121,7 +127,7 @@ def _upload_batches(client, model, chunks: list[dict]) -> int:
 
         points = []
         for chunk, embedding in zip(batch, embeddings):
-            point_id = abs(hash(chunk["chunk_id"])) % (2**63)
+            point_id = _stable_point_id(chunk["chunk_id"])
             points.append(PointStruct(
                 id=point_id,
                 vector=embedding.tolist(),

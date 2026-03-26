@@ -89,6 +89,72 @@ TEMPLATES: dict[str, dict] = {
             {"ad": "tarih",                "etiket": "Tarih (GG.AA.YYYY)",       "zorunlu": True},
         ],
     },
+    "vekaletname": {
+        "id": "vekaletname",
+        "baslik": "Vekaletname",
+        "aciklama": "Genel amaçlı vekaletname taslağı (noter onayı gerektirir)",
+        "alanlar": [
+            {"ad": "vekil_veren_ad_soyad", "etiket": "Vekil Veren Adı Soyadı",  "zorunlu": True},
+            {"ad": "vekil_veren_tc",        "etiket": "Vekil Veren TC Kimlik No", "zorunlu": True},
+            {"ad": "vekil_veren_adres",     "etiket": "Vekil Veren Adresi",       "zorunlu": True},
+            {"ad": "vekil_ad_soyad",        "etiket": "Vekil Adı Soyadı",         "zorunlu": True},
+            {"ad": "vekil_tc",              "etiket": "Vekil TC Kimlik No",        "zorunlu": True},
+            {"ad": "vekil_adres",           "etiket": "Vekil Adresi",              "zorunlu": True},
+            {"ad": "yetki_konusu",          "etiket": "Yetki Konusu / Kapsamı",   "zorunlu": True},
+            {"ad": "tarih",                 "etiket": "Tarih (GG.AA.YYYY)",        "zorunlu": True},
+        ],
+    },
+    "bosanma_dilekce": {
+        "id": "bosanma_dilekce",
+        "baslik": "Boşanma Dilekçesi",
+        "aciklama": "Anlaşmalı boşanma davası dilekçesi taslağı",
+        "alanlar": [
+            {"ad": "davaci_ad_soyad",       "etiket": "Davacı Adı Soyadı",           "zorunlu": True},
+            {"ad": "davaci_tc",             "etiket": "Davacı TC Kimlik No",          "zorunlu": True},
+            {"ad": "davaci_adres",          "etiket": "Davacı Adresi",               "zorunlu": True},
+            {"ad": "davali_ad_soyad",       "etiket": "Davalı (Eş) Adı Soyadı",     "zorunlu": True},
+            {"ad": "davali_adres",          "etiket": "Davalı Adresi",               "zorunlu": True},
+            {"ad": "evlilik_tarihi",        "etiket": "Evlilik Tarihi (GG.AA.YYYY)", "zorunlu": True},
+            {"ad": "cocuk_bilgisi",         "etiket": "Müşterek Çocuk Bilgisi (varsa)", "zorunlu": False},
+            {"ad": "nafaka_talebi",         "etiket": "Nafaka Talebi (varsa)",        "zorunlu": False},
+            {"ad": "mahkeme",               "etiket": "Yetkili Aile Mahkemesi",       "zorunlu": True},
+            {"ad": "tarih",                 "etiket": "Tarih (GG.AA.YYYY)",           "zorunlu": True},
+        ],
+    },
+    "icra_itiraz_dilekce": {
+        "id": "icra_itiraz_dilekce",
+        "baslik": "İcra İtiraz Dilekçesi",
+        "aciklama": "Ödeme emrine itiraz dilekçesi taslağı (7 gün içinde yapılmalıdır)",
+        "alanlar": [
+            {"ad": "borclunun_ad_soyad",    "etiket": "Borçlunun Adı Soyadı",         "zorunlu": True},
+            {"ad": "borclunun_tc",          "etiket": "Borçlunun TC Kimlik No",        "zorunlu": True},
+            {"ad": "borclunun_adres",       "etiket": "Borçlunun Adresi",              "zorunlu": True},
+            {"ad": "icra_mudurluğu",        "etiket": "İcra Müdürlüğü (Adı / Şehri)", "zorunlu": True},
+            {"ad": "dosya_no",              "etiket": "İcra Dosya Numarası",           "zorunlu": True},
+            {"ad": "alacaklinin_ad_soyad",  "etiket": "Alacaklının Adı Soyadı",       "zorunlu": True},
+            {"ad": "borcun_tutari",         "etiket": "Ödeme Emrindeki Borç Tutarı",  "zorunlu": True},
+            {"ad": "itiraz_gerekce",        "etiket": "İtiraz Gerekçesi",              "zorunlu": True},
+            {"ad": "tarih",                 "etiket": "Tarih (GG.AA.YYYY)",            "zorunlu": True},
+        ],
+    },
+    "tuketici_sikayet_dilekce": {
+        "id": "tuketici_sikayet_dilekce",
+        "baslik": "Tüketici Şikayet Dilekçesi",
+        "aciklama": "Tüketici hakem heyetine şikayet dilekçesi taslağı",
+        "alanlar": [
+            {"ad": "tuketici_ad_soyad",     "etiket": "Tüketici Adı Soyadı",          "zorunlu": True},
+            {"ad": "tuketici_tc",           "etiket": "TC Kimlik No",                  "zorunlu": True},
+            {"ad": "tuketici_adres",        "etiket": "Tüketici Adresi",               "zorunlu": True},
+            {"ad": "satici_firma",          "etiket": "Satıcı / Sağlayıcı Firma Adı", "zorunlu": True},
+            {"ad": "satici_adres",          "etiket": "Satıcı Adresi",                 "zorunlu": True},
+            {"ad": "urun_hizmet",           "etiket": "Ürün / Hizmet Adı",             "zorunlu": True},
+            {"ad": "satin_alma_tarihi",     "etiket": "Satın Alma Tarihi",             "zorunlu": True},
+            {"ad": "satin_alma_bedeli",     "etiket": "Satın Alma Bedeli (TL)",        "zorunlu": True},
+            {"ad": "sikayet_konusu",        "etiket": "Şikayet Konusu",                "zorunlu": True},
+            {"ad": "talep",                 "etiket": "Talebiniz (iade / değişim vb.)", "zorunlu": True},
+            {"ad": "tarih",                 "etiket": "Tarih (GG.AA.YYYY)",            "zorunlu": True},
+        ],
+    },
 }
 
 
@@ -337,12 +403,205 @@ def _pdf_taahhutname(a: dict[str, str]) -> bytes:
     return _build_pdf(story)
 
 
+def _pdf_vekaletname(a: dict[str, str]) -> bytes:
+    story = [
+        Paragraph("VEKÂLETNAMİ", _baslik_stili()),
+        Spacer(1, 0.4 * cm),
+        Paragraph("VEKİL VEREN", _alt_baslik_stili()),
+        Paragraph(f"<b>Ad Soyad:</b> {a['vekil_veren_ad_soyad']}", _normal_stili()),
+        Paragraph(f"<b>TC Kimlik No:</b> {a['vekil_veren_tc']}", _normal_stili()),
+        Paragraph(f"<b>Adres:</b> {a['vekil_veren_adres']}", _normal_stili()),
+        Paragraph("VEKİL", _alt_baslik_stili()),
+        Paragraph(f"<b>Ad Soyad:</b> {a['vekil_ad_soyad']}", _normal_stili()),
+        Paragraph(f"<b>TC Kimlik No:</b> {a['vekil_tc']}", _normal_stili()),
+        Paragraph(f"<b>Adres:</b> {a['vekil_adres']}", _normal_stili()),
+        Paragraph("YETKİ KAPSAMI", _alt_baslik_stili()),
+        Paragraph(a["yetki_konusu"], _normal_stili()),
+        Spacer(1, 0.4 * cm),
+        Paragraph(
+            "Yukarıda belirtilen konularda vekil tayin ettiğimi, vekilimin bu kapsamda "
+            "yapacağı tüm işlemleri kabul ve teyit ettiğimi beyan ederim.",
+            _normal_stili(),
+        ),
+        Spacer(1, 0.8 * cm),
+        Paragraph(f"Tarih: {a['tarih']}", _normal_stili()),
+        Spacer(1, 1.2 * cm),
+        Paragraph(f"Vekil Veren: {a['vekil_veren_ad_soyad']}", _normal_stili()),
+        Paragraph("İmza: ______________________", _normal_stili()),
+        Paragraph(
+            "⚠ Bu belge taslak niteliğindedir. Vekaletname hukuki geçerlilik kazanması için noter onayı gerektirir.",
+            _uyari_stili(),
+        ),
+    ]
+    return _build_pdf(story)
+
+
+def _pdf_bosanma_dilekce(a: dict[str, str]) -> bytes:
+    cocuk_satiri = (
+        f"Tarafların müşterek çocuğu/çocukları: {a['cocuk_bilgisi']}"
+        if a.get("cocuk_bilgisi", "").strip()
+        else "Tarafların müşterek çocuğu bulunmamaktadır."
+    )
+    nafaka_satiri = (
+        f"Nafaka talebi: {a['nafaka_talebi']}"
+        if a.get("nafaka_talebi", "").strip()
+        else "Nafaka talebim bulunmamaktadır."
+    )
+    story = [
+        Paragraph(f"{a['mahkeme'].upper()}", _baslik_stili()),
+        Spacer(1, 0.2 * cm),
+        Paragraph("BOŞANMA DAVASI DİLEKÇESİ", _baslik_stili()),
+        Spacer(1, 0.4 * cm),
+        Paragraph("DAVACI", _alt_baslik_stili()),
+        Paragraph(f"{a['davaci_ad_soyad']} — TC: {a['davaci_tc']}", _normal_stili()),
+        Paragraph(f"Adres: {a['davaci_adres']}", _normal_stili()),
+        Paragraph("DAVALI", _alt_baslik_stili()),
+        Paragraph(f"{a['davali_ad_soyad']}", _normal_stili()),
+        Paragraph(f"Adres: {a['davali_adres']}", _normal_stili()),
+        Paragraph("KONU", _alt_baslik_stili()),
+        Paragraph("Anlaşmalı boşanma talebimizden ibarettir.", _normal_stili()),
+        Paragraph("AÇIKLAMALAR", _alt_baslik_stili()),
+        Paragraph(
+            f"Taraflar, {a['evlilik_tarihi']} tarihinde evlenmiş olup evlilik birliği "
+            "sarsılmış ve ortak hayatın devamı taraflarca mümkün görülmemektedir.",
+            _normal_stili(),
+        ),
+        Paragraph(cocuk_satiri, _normal_stili()),
+        Paragraph(nafaka_satiri, _normal_stili()),
+        Paragraph("TALEP", _alt_baslik_stili()),
+        Paragraph(
+            "4721 Sayılı Türk Medeni Kanunu'nun 166/3. maddesi uyarınca anlaşmalı "
+            "boşanmamıza karar verilmesini saygıyla arz ederim.",
+            _normal_stili(),
+        ),
+        Spacer(1, 0.8 * cm),
+        Paragraph(f"Tarih: {a['tarih']}", _normal_stili()),
+        Spacer(1, 1.2 * cm),
+        Paragraph(f"Davacı: {a['davaci_ad_soyad']}", _normal_stili()),
+        Paragraph("İmza: ______________________", _normal_stili()),
+        Paragraph(
+            "⚠ Bu belge taslak niteliğindedir. Boşanma davası için avukat desteği önerilir; "
+            "anlaşmalı boşanmada protokol ayrıca hazırlanmalıdır.",
+            _uyari_stili(),
+        ),
+    ]
+    return _build_pdf(story)
+
+
+def _pdf_icra_itiraz_dilekce(a: dict[str, str]) -> bytes:
+    story = [
+        Paragraph(f"{a['icra_mudurluğu'].upper()} İCRA MÜDÜRLÜĞÜ'NE", _baslik_stili()),
+        Spacer(1, 0.3 * cm),
+        Paragraph("ÖDEME EMRİNE İTİRAZ DİLEKÇESİ", _baslik_stili()),
+        Spacer(1, 0.4 * cm),
+        Paragraph(f"<b>Dosya No:</b> {a['dosya_no']}", _normal_stili()),
+        Paragraph("BORÇLU (İTİRAZ EDEN)", _alt_baslik_stili()),
+        Paragraph(f"<b>Ad Soyad:</b> {a['borclunun_ad_soyad']}", _normal_stili()),
+        Paragraph(f"<b>TC Kimlik No:</b> {a['borclunun_tc']}", _normal_stili()),
+        Paragraph(f"<b>Adres:</b> {a['borclunun_adres']}", _normal_stili()),
+        Paragraph("ALACAKLI", _alt_baslik_stili()),
+        Paragraph(f"{a['alacaklinin_ad_soyad']}", _normal_stili()),
+        Paragraph("İTİRAZ KONUSU VE GEREKÇESİ", _alt_baslik_stili()),
+        Paragraph(
+            f"Tarafınızdan tebliğ edilen, {a['alacaklinin_ad_soyad']} alacaklısına ait "
+            f"{a['borcun_tutari']} TL tutarlı ödeme emrine itiraz etmekteyim.",
+            _normal_stili(),
+        ),
+        Paragraph(f"<b>Gerekçe:</b> {a['itiraz_gerekce']}", _normal_stili()),
+        Paragraph("TALEP", _alt_baslik_stili()),
+        Paragraph(
+            "2004 Sayılı İcra ve İflas Kanunu'nun 62. maddesi uyarınca, tebliğden "
+            "itibaren 7 günlük süre içinde ödeme emrine itiraz ediyorum. "
+            "İtirazımın kabulüne ve takibin durdurulmasına karar verilmesini arz ederim.",
+            _normal_stili(),
+        ),
+        Spacer(1, 0.8 * cm),
+        Paragraph(f"Tarih: {a['tarih']}", _normal_stili()),
+        Spacer(1, 1.2 * cm),
+        Paragraph(f"Borçlu: {a['borclunun_ad_soyad']}", _normal_stili()),
+        Paragraph("İmza: ______________________", _normal_stili()),
+        Paragraph(
+            "⚠ Bu belge taslak niteliğindedir. İtiraz dilekçesi tebliğden itibaren 7 gün içinde "
+            "icra müdürlüğüne şahsen veya posta yoluyla ulaştırılmalıdır.",
+            _uyari_stili(),
+        ),
+    ]
+    return _build_pdf(story)
+
+
+def _pdf_tuketici_sikayet_dilekce(a: dict[str, str]) -> bytes:
+    story = [
+        Paragraph("TÜKETİCİ HAKEM HEYETİ BAŞKANLIĞI'NA", _baslik_stili()),
+        Spacer(1, 0.3 * cm),
+        Paragraph("TÜKETİCİ ŞİKAYET DİLEKÇESİ", _baslik_stili()),
+        Spacer(1, 0.4 * cm),
+        Paragraph("ŞİKAYETÇİ (TÜKETİCİ)", _alt_baslik_stili()),
+        Paragraph(f"<b>Ad Soyad:</b> {a['tuketici_ad_soyad']}", _normal_stili()),
+        Paragraph(f"<b>TC Kimlik No:</b> {a['tuketici_tc']}", _normal_stili()),
+        Paragraph(f"<b>Adres:</b> {a['tuketici_adres']}", _normal_stili()),
+        Paragraph("ŞİKAYET EDİLEN (SATICI / SAĞLAYICI)", _alt_baslik_stili()),
+        Paragraph(f"<b>Firma:</b> {a['satici_firma']}", _normal_stili()),
+        Paragraph(f"<b>Adres:</b> {a['satici_adres']}", _normal_stili()),
+        Paragraph("ŞİKAYET KONUSU", _alt_baslik_stili()),
+        Paragraph(
+            f"{a['satin_alma_tarihi']} tarihinde {a['satici_firma']} firmasından "
+            f"<b>{a['urun_hizmet']}</b> adlı ürün/hizmet için <b>{a['satin_alma_bedeli']} TL</b> "
+            "ödeme yapılmıştır.",
+            _normal_stili(),
+        ),
+        Paragraph(f"<b>Sorun:</b> {a['sikayet_konusu']}", _normal_stili()),
+        Paragraph("TALEP", _alt_baslik_stili()),
+        Paragraph(
+            f"6502 Sayılı Tüketicinin Korunması Hakkında Kanun kapsamındaki haklarım "
+            f"çerçevesinde talebim: {a['talep']}",
+            _normal_stili(),
+        ),
+        Spacer(1, 0.4 * cm),
+        Paragraph(
+            "Gereğini saygıyla arz ederim.",
+            _normal_stili(),
+        ),
+        Spacer(1, 0.8 * cm),
+        Paragraph(f"Tarih: {a['tarih']}", _normal_stili()),
+        Spacer(1, 1.2 * cm),
+        Paragraph(f"Şikayetçi: {a['tuketici_ad_soyad']}", _normal_stili()),
+        Paragraph("İmza: ______________________", _normal_stili()),
+        Paragraph(
+            "⚠ Bu belge taslak niteliğindedir. Dilekçeyi ikamet ettiğiniz yerdeki "
+            "Tüketici Hakem Heyeti'ne şahsen veya e-Devlet üzerinden iletebilirsiniz.",
+            _uyari_stili(),
+        ),
+    ]
+    return _build_pdf(story)
+
+
 _PDF_URETICI = {
-    "kira_sozlesmesi": _pdf_kira_sozlesmesi,
-    "is_sozlesmesi":   _pdf_is_sozlesmesi,
-    "ihtarname":       _pdf_ihtarname,
-    "taahhutname":     _pdf_taahhutname,
+    "kira_sozlesmesi":          _pdf_kira_sozlesmesi,
+    "is_sozlesmesi":            _pdf_is_sozlesmesi,
+    "ihtarname":                _pdf_ihtarname,
+    "taahhutname":              _pdf_taahhutname,
+    "vekaletname":              _pdf_vekaletname,
+    "bosanma_dilekce":          _pdf_bosanma_dilekce,
+    "icra_itiraz_dilekce":      _pdf_icra_itiraz_dilekce,
+    "tuketici_sikayet_dilekce": _pdf_tuketici_sikayet_dilekce,
 }
+
+
+_MAX_ALAN_UZUNLUK = 500
+_GUVENLI_OLMAYAN = str.maketrans({"<": "&lt;", ">": "&gt;", "&": "&amp;"})
+
+
+def _sanitize_alanlar(alanlar: dict[str, str]) -> dict[str, str]:
+    """Alan değerlerini ReportLab injection ve aşırı uzunluğa karşı temizler."""
+    temiz: dict[str, str] = {}
+    for anahtar, deger in alanlar.items():
+        if not isinstance(deger, str):
+            deger = str(deger) if deger is not None else ""
+        deger = deger.strip()
+        deger = deger[:_MAX_ALAN_UZUNLUK]
+        deger = deger.translate(_GUVENLI_OLMAYAN)
+        temiz[anahtar] = deger
+    return temiz
 
 
 def pdf_uret(template_id: str, alanlar: dict[str, str]) -> bytes:
@@ -350,4 +609,4 @@ def pdf_uret(template_id: str, alanlar: dict[str, str]) -> bytes:
     uretici = _PDF_URETICI.get(template_id)
     if not uretici:
         raise ValueError(f"Bilinmeyen taslak: {template_id}")
-    return uretici(alanlar)
+    return uretici(_sanitize_alanlar(alanlar))

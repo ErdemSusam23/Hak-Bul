@@ -35,6 +35,8 @@ class Settings:
     JWT_ALGORITHM: str = os.environ.get("JWT_ALGORITHM", "HS256")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.environ.get("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
     REFRESH_TOKEN_EXPIRE_DAYS: int = int(os.environ.get("REFRESH_TOKEN_EXPIRE_DAYS", "14"))
+    COOKIE_SECURE: bool = _as_bool("COOKIE_SECURE", "false")  # True when HTTPS
+    COOKIE_SAMESITE: str = os.environ.get("COOKIE_SAMESITE", "lax")
 
 
 settings = Settings()

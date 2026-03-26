@@ -5,9 +5,11 @@ main.py - Hak-Bul backend entrypoint
 import os
 import warnings
 
+import json
+
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from slowapi import Limiter
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
@@ -25,6 +27,7 @@ from routers.templates import router as templates_router
 from db.session import get_db
 from models.user import User
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
+from services.admin_service import zayif_sorgu_kaydet
 from services.chat_service import resolve_conversation_id, resolve_guest_session_id, save_chat_pair
 
 warnings.filterwarnings("ignore")
@@ -45,6 +48,7 @@ app.add_middleware(
     allow_origins=settings.CORS_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
+    allow_credentials=True,
 )
 app.include_router(auth_router)
 app.include_router(chat_router)
@@ -106,6 +110,14 @@ async def ask(
 
         kaynaklar = result.get("kaynaklar", [])
 
+        # Zayıf sorgu tespiti: kaynak yoksa veya en yüksek skor düşükse logla
+        if not kaynaklar or (kaynaklar and max(k.get("skor", 0) for k in kaynaklar) < settings.SCORE_THRESHOLD):
+            try:
+                max_skor = max((k.get("skor", 0) for k in kaynaklar), default=0.0)
+                zayif_sorgu_kaydet(db=db, soru=body.soru, max_skor=max_skor, kategori=kategori)
+            except Exception:
+                pass
+
         if current_user:
             message_id = save_chat_pair(
                 db=db,
@@ -150,6 +162,105 @@ async def ask(
         raise HTTPException(status_code=500, detail=detail) from exc
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@app.post("/ask/stream")
+@limiter.limit("20/minute")
+async def ask_stream(
+    request: Request,
+    body: AskRequest,
+    db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
+):
+    """SSE streaming yanıt endpoint'i. Önce kaynakları JSON olarak gönderir,
+    sonra yanıt metnini token token akıtır."""
+    from rag.categorizer import get_kategorilendirici
+    from rag.generator import generate_answer_stream
+    from rag.pipeline import _deduplicate_sources, _format_sources
+    from rag.query_rewriter import rewrite_query
+    from rag.retriever import filter_by_score, retrieve_chunks
+
+    try:
+        kategori = get_kategorilendirici().kategorile(body.soru)
+        rewritten = rewrite_query(body.soru)
+        chunks = retrieve_chunks(rewritten, top_n=body.max_kaynak * 2)
+        filtered = filter_by_score(chunks, threshold=settings.SCORE_THRESHOLD)
+        filtered = _deduplicate_sources(filtered)[: body.max_kaynak]
+        kaynaklar = _format_sources(filtered)
+        conversation_id = resolve_conversation_id(body.conversation_id)
+
+        guest_session_id: str | None = None
+        if not current_user:
+            guest_session_id = resolve_guest_session_id(body.guest_session_id)
+
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+    async def event_stream():
+        # İlk SSE mesajı: meta (kaynaklar, kategori, conversation_id)
+        meta = {
+            "type": "meta",
+            "kaynaklar": kaynaklar,
+            "kategori": kategori,
+            "conversation_id": conversation_id,
+            "guest_session_id": guest_session_id,
+        }
+        yield f"data: {json.dumps(meta, ensure_ascii=False)}\n\n"
+
+        # Token token yanıt
+        full_answer_parts: list[str] = []
+        try:
+            for token in generate_answer_stream(body.soru, filtered):
+                full_answer_parts.append(token)
+                payload = {"type": "token", "text": token}
+                yield f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
+        except RuntimeError as exc:
+            err_payload = {"type": "error", "detail": str(exc)}
+            yield f"data: {json.dumps(err_payload, ensure_ascii=False)}\n\n"
+            return
+
+        full_answer = "".join(full_answer_parts)
+
+        # Mesajları DB'ye kaydet
+        try:
+            if current_user:
+                message_id = save_chat_pair(
+                    db=db,
+                    conversation_id=conversation_id,
+                    user_id=current_user.id,
+                    user_message=body.soru,
+                    assistant_message=full_answer,
+                    category=kategori,
+                    kaynaklar=kaynaklar,
+                )
+            else:
+                message_id = save_chat_pair(
+                    db=db,
+                    conversation_id=conversation_id,
+                    guest_session_id=guest_session_id,
+                    user_message=body.soru,
+                    assistant_message=full_answer,
+                    category=kategori,
+                    kaynaklar=kaynaklar,
+                )
+        except Exception:
+            message_id = None
+
+        done_payload = {
+            "type": "done",
+            "message_id": message_id,
+            "uyari": "Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.",
+        }
+        yield f"data: {json.dumps(done_payload, ensure_ascii=False)}\n\n"
+
+    return StreamingResponse(
+        event_stream(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @app.get("/search", response_model=SearchResponse)

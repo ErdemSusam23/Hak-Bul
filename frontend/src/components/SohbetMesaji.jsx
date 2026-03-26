@@ -170,6 +170,12 @@ function AsistanMesaji({ mesaj }) {
 
                     <div className={mesaj.hata ? 'text-red-300' : ''}>
                         <RenderMarkdown icerik={mesaj.icerik} />
+                        {mesaj.streaming && (
+                            <span
+                                className="inline-block w-0.5 h-4 ml-0.5 align-middle animate-pulse rounded-sm"
+                                style={{ background: 'var(--tema-accent)', verticalAlign: 'middle' }}
+                            />
+                        )}
                     </div>
                 </div>
 
@@ -196,8 +202,8 @@ function AsistanMesaji({ mesaj }) {
                     </p>
                 )}
 
-                {/* Feedback butonları — sadece başarılı asistan mesajlarında */}
-                {!mesaj.hata && mesaj.id && (
+                {/* Feedback butonları — sadece başarılı, tamamlanmış asistan mesajlarında */}
+                {!mesaj.hata && !mesaj.streaming && mesaj.id && (
                     <FeedbackButonlari
                         mesajId={mesaj.id}
                         guestSessionId={mesaj.guest_session_id}

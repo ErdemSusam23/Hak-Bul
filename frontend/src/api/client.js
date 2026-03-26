@@ -73,6 +73,7 @@ const client = axios.create({
     baseURL: API_URL,
     timeout: 30000,
     headers: { 'Content-Type': 'application/json' },
+    withCredentials: true,  // Required for httpOnly cookie-based refresh token
 });
 
 let getAccessToken = null;
@@ -146,6 +147,22 @@ export async function dokumanAnalizAPI({ dosya, soru, conversation_id, guest_ses
     return data;
 }
 
+// POST /documents/compare
+export async function dokumanKarsilastirAPI({ dosya1, dosya2, soru }) {
+    if (MOCK_MODE) {
+        await mockDelay();
+        return { ...MOCK_YANIT, belge1_ozet: 'Belge 1 özeti...', belge2_ozet: 'Belge 2 özeti...' };
+    }
+    const formData = new FormData();
+    formData.append('dosya1', dosya1);
+    formData.append('dosya2', dosya2);
+    if (soru) formData.append('soru', soru);
+    const { data } = await client.post('/documents/compare', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return data;
+}
+
 // GET /search  →  { q }
 export async function aramaYap(q) {
     if (MOCK_MODE) {
@@ -204,6 +221,42 @@ export async function misafirSohbetDetayGetirAPI(conversationId, guestSessionId)
     return data;
 }
 
+export async function sohbetSilAPI(conversationId) {
+    if (MOCK_MODE) return { ok: true };
+    await client.delete(`/chat/conversations/${conversationId}`);
+}
+
+export async function sohbetPaylasAPI(conversationId) {
+    if (MOCK_MODE) return { share_token: 'mock-token-123' };
+    const { data } = await client.post(`/chat/conversations/${conversationId}/share`);
+    return data;
+}
+
+export async function sohbetPaylasimKaldirAPI(conversationId) {
+    if (MOCK_MODE) return;
+    await client.delete(`/chat/conversations/${conversationId}/share`);
+}
+
+export async function paylasimSohbetGetirAPI(shareToken) {
+    if (MOCK_MODE) return { messages: [], total: 0 };
+    const { data } = await client.get(`/chat/shared/${shareToken}`);
+    return data;
+}
+
+export async function sohbetPDFIndirAPI(conversationId) {
+    if (MOCK_MODE) return new Blob(['Mock PDF'], { type: 'application/pdf' });
+    const { data } = await client.get(`/chat/conversations/${conversationId}/export`, {
+        responseType: 'blob',
+    });
+    return data;
+}
+
+export async function sohbetYenidenAdlandirAPI(conversationId, title) {
+    if (MOCK_MODE) return { ok: true };
+    const { data } = await client.patch(`/chat/conversations/${conversationId}/title`, { title });
+    return data;
+}
+
 // REST API TASLAK METOTLARI
 export async function taslakListesiAPI() {
     if (MOCK_MODE) return [{ id: 1, title: 'Kira Sözleşmesi Taslağı', description: 'Kiracı ve Ev Sahibi arasında temel kontrat.', alanlar: ['Kiracı Adı', 'Mülk Adresi'] }];
@@ -222,9 +275,27 @@ export async function taslakPdfUretAPI(templateId, alanlar) {
     return data;
 }
 
+// REST API PROFİL METOTLARI
+export async function profilGetirAPI() {
+    if (MOCK_MODE) return { id: 'mock', email: 'kullanici@ornek.com', role: 'user' };
+    const { data } = await client.get('/auth/profile');
+    return data;
+}
+
+export async function profilGuncelleAPI({ email, yeni_sifre, mevcut_sifre }) {
+    if (MOCK_MODE) return { id: 'mock', email: email || 'kullanici@ornek.com', role: 'user' };
+    const { data } = await client.put('/auth/profile', { email, yeni_sifre, mevcut_sifre });
+    return data;
+}
+
+export async function hesapSilAPI(mevcut_sifre) {
+    if (MOCK_MODE) return;
+    await client.delete(`/auth/account?mevcut_sifre=${encodeURIComponent(mevcut_sifre)}`);
+}
+
 // REST API ADMIN METOTLARI
 export async function adminIstatistikAPI() {
-    if (MOCK_MODE) return { total_users: 42, total_messages: 1280, total_conversations: 310, feedback_count: 89 };
+    if (MOCK_MODE) return { toplam_kullanici: 42, toplam_mesaj: 1280, toplam_konusma: 310 };
     const { data } = await client.get('/admin/stats');
     return data;
 }
@@ -236,7 +307,7 @@ export async function adminKategoriDagilimiAPI() {
 }
 
 export async function adminFeedbackOzetiAPI() {
-    if (MOCK_MODE) return { puan_1: 12, puan_minus1: 3, toplam: 15, oran: 0.8 };
+    if (MOCK_MODE) return { begeni: 12, begenmeme: 3, toplam: 15, oran: 0.8 };
     const { data } = await client.get('/admin/stats/feedback');
     return data;
 }
@@ -244,5 +315,29 @@ export async function adminFeedbackOzetiAPI() {
 export async function adminGunlukAktiviteAPI(gun = 7) {
     if (MOCK_MODE) return [];
     const { data } = await client.get('/admin/stats/daily', { params: { gun } });
+    return data;
+}
+
+export async function adminKullaniciListesiAPI(limit = 50, offset = 0) {
+    if (MOCK_MODE) return { kullanicilar: [], total: 0 };
+    const { data } = await client.get('/admin/users', { params: { limit, offset } });
+    return data;
+}
+
+export async function adminRolGuncelleAPI(userId, rol) {
+    if (MOCK_MODE) return {};
+    const { data } = await client.patch(`/admin/users/${userId}/role`, { rol });
+    return data;
+}
+
+export async function adminKullaniciDurumAPI(userId, aktif) {
+    if (MOCK_MODE) return {};
+    const { data } = await client.patch(`/admin/users/${userId}/status`, null, { params: { aktif } });
+    return data;
+}
+
+export async function adminZayifSorguListesiAPI(limit = 100) {
+    if (MOCK_MODE) return [];
+    const { data } = await client.get('/admin/weak-queries', { params: { limit } });
     return data;
 }

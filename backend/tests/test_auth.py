@@ -60,24 +60,22 @@ def test_login_invalid_password() -> None:
 
 
 def test_refresh_rotation_blocks_old_refresh_token() -> None:
-    login = client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
-    refresh_token = login.json()["refresh_token"]
+    client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
+    old_refresh_token = client.cookies["refresh_token"]
 
-    rotated = client.post("/auth/refresh", json={"refresh_token": refresh_token})
+    rotated = client.post("/auth/refresh")
     assert rotated.status_code == 200
-    new_refresh = rotated.json()["refresh_token"]
-    assert new_refresh != refresh_token
 
-    reuse_old = client.post("/auth/refresh", json={"refresh_token": refresh_token})
+    reuse_old = client.post("/auth/refresh", cookies={"refresh_token": old_refresh_token})
     assert reuse_old.status_code == 401
 
 
 def test_logout_revokes_refresh_token() -> None:
-    login = client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
-    refresh_token = login.json()["refresh_token"]
+    client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
+    old_refresh_token = client.cookies["refresh_token"]
 
-    logout = client.post("/auth/logout", json={"refresh_token": refresh_token})
+    logout = client.post("/auth/logout")
     assert logout.status_code == 204
 
-    refresh = client.post("/auth/refresh", json={"refresh_token": refresh_token})
+    refresh = client.post("/auth/refresh", cookies={"refresh_token": old_refresh_token})
     assert refresh.status_code == 401

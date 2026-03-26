@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, Loader2, ChevronDown } from 'lucide-react';
 import { soruSor } from '../api/client';
+import { useDil } from '../context/DilContext';
 
 function MesajBalonu({ mesaj }) {
     const kullanici = mesaj.rol === 'kullanici';
@@ -47,11 +48,14 @@ function MesajBalonu({ mesaj }) {
 }
 
 export default function AsistanBot() {
+    const { dil } = useDil();
     const [acik, setAcik] = useState(false);
     const [mesajlar, setMesajlar] = useState([
         {
             rol: 'asistan',
-            icerik: 'Merhaba! Hukuki sorularınızda size yardımcı olmak için buradayım. Ne öğrenmek istersiniz?',
+            icerik: dil === 'en'
+                ? 'Hello! I am here to help with your legal questions. What would you like to learn?'
+                : 'Merhaba! Hukuki sorularınızda size yardımcı olmak için buradayım. Ne öğrenmek istersiniz?',
         },
     ]);
     const [girdi, setGirdi] = useState('');
@@ -86,17 +90,18 @@ export default function AsistanBot() {
             const yanit = await soruSor({
                 soru,
                 maxKaynak: 3,
+                language: dil,
                 guest_session_id: guestId || undefined,
             });
             setMesajlar((prev) => [
                 ...prev,
-                { rol: 'asistan', icerik: yanit.yanit || 'Yanıt alınamadı.' },
+                { rol: 'asistan', icerik: yanit.yanit || (dil === 'en' ? 'No response was received.' : 'Yanıt alınamadı.') },
             ]);
         } catch (e) {
             const durum = e?.response?.status;
-            let mesaj = 'Bir hata oluştu. Lütfen tekrar deneyin.';
-            if (durum === 429) mesaj = 'Çok fazla istek gönderildi. Biraz bekleyin.';
-            else if (durum === 503) mesaj = 'Servis şu an kullanılamıyor.';
+            let mesaj = dil === 'en' ? 'An error occurred. Please try again.' : 'Bir hata oluştu. Lütfen tekrar deneyin.';
+            if (durum === 429) mesaj = dil === 'en' ? 'Too many requests were sent. Please wait a bit.' : 'Çok fazla istek gönderildi. Biraz bekleyin.';
+            else if (durum === 503) mesaj = dil === 'en' ? 'The service is currently unavailable.' : 'Servis şu an kullanılamıyor.';
             setHata(mesaj);
         } finally {
             setYukleniyor(false);

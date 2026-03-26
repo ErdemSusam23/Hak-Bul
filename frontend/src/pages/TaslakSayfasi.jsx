@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import { FileText, Download, RotateCcw } from 'lucide-react';
-import { taslakListesiAPI, taslakPdfUretAPI } from '../api/client';
-import { useTema } from '../context/TemaContext';
-import { useAuth } from '../context/AuthContext';
+import { useEffect, useState } from 'react';
+import { Download, FileText, RotateCcw } from 'lucide-react';
+
 import AuthModal from '../components/AuthModal';
+import { taslakListesiAPI, taslakPdfUretAPI } from '../api/client';
+import { useAuth } from '../context/AuthContext';
+import { useDil } from '../context/DilContext';
 
 export default function TaslakSayfasi() {
-    const { tema } = useTema();
     const { kullanici } = useAuth();
+    const { t, dil } = useDil();
     const [taslaklar, setTaslaklar] = useState([]);
     const [yukleniyor, setYukleniyor] = useState(true);
     const [secilenTaslak, setSecilenTaslak] = useState(null);
@@ -16,19 +17,25 @@ export default function TaslakSayfasi() {
     const [authModalAcik, setAuthModalAcik] = useState(false);
 
     useEffect(() => {
-        taslakListesiAPI().then((data) => {
-            // Backend: { taslaklar: [{id, baslik, aciklama, alanlar:[{ad,etiket,zorunlu}]}] }
-            const liste = Array.isArray(data) ? data : (data.taslaklar || []);
-            setTaslaklar(liste);
-            setYukleniyor(false);
-        }).catch(err => {
-            console.error(err);
-            setYukleniyor(false);
-        });
-    }, []);
+        setYukleniyor(true);
+        taslakListesiAPI(dil)
+            .then((data) => {
+                const liste = Array.isArray(data) ? data : (data.taslaklar || []);
+                setTaslaklar(liste);
+                setSecilenTaslak((onceki) => {
+                    if (!onceki) return null;
+                    return liste.find((item) => item.id === onceki.id) || null;
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+                setTaslaklar([]);
+            })
+            .finally(() => setYukleniyor(false));
+    }, [dil]);
 
     const handleAlanDegistir = (ad, deger) => {
-        setFormVerileri(prev => ({ ...prev, [ad]: deger }));
+        setFormVerileri((prev) => ({ ...prev, [ad]: deger }));
     };
 
     const handlePdfUret = async () => {
@@ -37,28 +44,27 @@ export default function TaslakSayfasi() {
             return;
         }
 
-        // Zorunlu alan kontrolü
-        for (let alan of secilenTaslak.alanlar) {
+        for (const alan of secilenTaslak.alanlar) {
             if (alan.zorunlu && (!formVerileri[alan.ad] || formVerileri[alan.ad].trim() === '')) {
-                alert(`Lütfen "${alan.etiket}" alanını doldurun.`);
+                alert(`${t('templatesFillField')} "${alan.etiket}"`);
                 return;
             }
         }
 
-
         setPdfUretiliyor(true);
         try {
-            const blob = await taslakPdfUretAPI(secilenTaslak.id, { alanlar: formVerileri });
+            const blob = await taslakPdfUretAPI(secilenTaslak.id, { alanlar: formVerileri }, dil);
             const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', `${secilenTaslak.baslik.replace(/\s+/g, '_')}_Taslak.pdf`);
+            link.setAttribute('download', `${secilenTaslak.baslik.replace(/\s+/g, '_')}.pdf`);
             document.body.appendChild(link);
             link.click();
             link.parentNode.removeChild(link);
+            window.URL.revokeObjectURL(url);
         } catch (error) {
             console.error('PDF üretilirken hata:', error);
-            alert('Belge üretilemedi. Lütfen tekrar deneyin.');
+            alert(t('templatesGenerateFailed'));
         } finally {
             setPdfUretiliyor(false);
         }
@@ -68,14 +74,13 @@ export default function TaslakSayfasi() {
         return (
             <div className="flex-1 flex flex-col items-center justify-center p-8 bg-transparent">
                 <RotateCcw size={32} className="animate-spin text-gray-400 mb-4" />
-                <p className="text-sm text-gray-500">Taslaklar yükleniyor...</p>
+                <p className="text-sm text-gray-500">{t('templatesLoading')}</p>
             </div>
         );
     }
 
     return (
         <div className="flex-1 flex flex-col h-full bg-transparent overflow-y-auto">
-            {/* Navigasyon Çubuğu */}
             <header
                 className="flex-shrink-0 flex items-center justify-between px-5 py-4"
                 style={{
@@ -93,21 +98,20 @@ export default function TaslakSayfasi() {
                     </div>
                     <div>
                         <h2 className="text-sm font-semibold tracking-wide" style={{ color: 'var(--tema-text)' }}>
-                            Hukuki Belge Taslakları
+                            {t('templatesTitle')}
                         </h2>
                         <div className="text-xs mt-0.5 font-medium flex items-center gap-1.5" style={{ color: 'var(--tema-dimmer)' }}>
-                            Dilekçe ve sözleşme şablonlarını saniyeler içinde hazırlayın
+                            {t('templatesSubtitle')}
                         </div>
                     </div>
                 </div>
             </header>
 
-            {/* İçerik Alanı */}
             <main className="flex-1 p-6 md:p-8 flex gap-6 max-w-6xl mx-auto w-full">
-                
-                {/* Sol Taraf: Taslak Listesi */}
                 <div className="w-full md:w-1/3 flex flex-col gap-4">
-                    <h3 className="text-sm font-medium uppercase tracking-wider mb-2" style={{ color: 'var(--tema-muted)' }}>Mevcut Taslaklar</h3>
+                    <h3 className="text-sm font-medium uppercase tracking-wider mb-2" style={{ color: 'var(--tema-muted)' }}>
+                        {t('templatesAvailable')}
+                    </h3>
                     {taslaklar.map((taslak) => (
                         <button
                             key={taslak.id}
@@ -119,7 +123,7 @@ export default function TaslakSayfasi() {
                             style={{
                                 background: secilenTaslak?.id === taslak.id ? 'var(--tema-surface)' : 'var(--tema-panel)',
                                 borderColor: secilenTaslak?.id === taslak.id ? 'var(--tema-border-focus)' : 'var(--tema-border)',
-                                boxShadow: secilenTaslak?.id === taslak.id ? 'var(--tema-shadow-focus)' : 'none'
+                                boxShadow: secilenTaslak?.id === taslak.id ? 'var(--tema-shadow-focus)' : 'none',
                             }}
                         >
                             <h4 className="text-md font-semibold mb-1" style={{ color: 'var(--tema-text)' }}>{taslak.baslik}</h4>
@@ -127,26 +131,29 @@ export default function TaslakSayfasi() {
                         </button>
                     ))}
                     {taslaklar.length === 0 && (
-                        <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Şu an için taslak bulunmuyor.</p>
+                        <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>{t('templatesEmpty')}</p>
                     )}
                 </div>
 
-                {/* Sağ Taraf: Form Doldurma */}
-                <div className="flex-1 rounded-xl border p-6 flex flex-col"
-                     style={{
-                         background: 'var(--tema-panel)',
-                         borderColor: 'var(--tema-border)'
-                     }}>
+                <div
+                    className="flex-1 rounded-xl border p-6 flex flex-col"
+                    style={{
+                        background: 'var(--tema-panel)',
+                        borderColor: 'var(--tema-border)',
+                    }}
+                >
                     {secilenTaslak ? (
                         <>
                             <div className="mb-6">
-                                <h3 className="text-xl font-semibold mb-1" style={{ color: 'var(--tema-text)' }}>{secilenTaslak.baslik}</h3>
+                                <h3 className="text-xl font-semibold mb-1" style={{ color: 'var(--tema-text)' }}>
+                                    {secilenTaslak.baslik}
+                                </h3>
                                 <p className="text-sm" style={{ color: 'var(--tema-dimmer)' }}>{secilenTaslak.aciklama}</p>
                             </div>
 
                             <div className="flex-1 overflow-y-auto mb-6 flex flex-col gap-4">
-                                {secilenTaslak.alanlar.map((alan, idx) => (
-                                    <div key={idx} className="flex flex-col gap-1.5">
+                                {secilenTaslak.alanlar.map((alan, index) => (
+                                    <div key={index} className="flex flex-col gap-1.5">
                                         <label className="text-sm font-medium" style={{ color: 'var(--tema-text2)' }}>
                                             {alan.etiket}{alan.zorunlu && <span style={{ color: 'var(--tema-accent)' }}> *</span>}
                                         </label>
@@ -158,11 +165,11 @@ export default function TaslakSayfasi() {
                                             style={{
                                                 background: 'var(--tema-surface)',
                                                 borderColor: 'var(--tema-border)',
-                                                color: 'var(--tema-text)'
+                                                color: 'var(--tema-text)',
                                             }}
-                                            onFocus={(e) => e.target.style.borderColor = 'var(--tema-border-focus)'}
-                                            onBlur={(e) => e.target.style.borderColor = 'var(--tema-border)'}
-                                            placeholder={`${alan.etiket} giriniz...`}
+                                            onFocus={(e) => { e.target.style.borderColor = 'var(--tema-border-focus)'; }}
+                                            onBlur={(e) => { e.target.style.borderColor = 'var(--tema-border)'; }}
+                                            placeholder={`${alan.etiket} ${t('templatesPlaceholderSuffix')}`}
                                         />
                                     </div>
                                 ))}
@@ -176,24 +183,24 @@ export default function TaslakSayfasi() {
                                     style={{
                                         background: 'var(--tema-accent)',
                                         color: '#fff',
-                                        opacity: pdfUretiliyor ? 0.7 : 1
+                                        opacity: pdfUretiliyor ? 0.7 : 1,
                                     }}
                                 >
                                     {pdfUretiliyor ? (
                                         <>
                                             <RotateCcw size={18} className="animate-spin" />
-                                            Hazırlanıyor...
+                                            {t('templatesPreparing')}
                                         </>
                                     ) : (
                                         <>
                                             <Download size={18} />
-                                            PDF Olarak İndir
+                                            {t('templatesDownloadPdf')}
                                         </>
                                     )}
                                 </button>
                                 {!kullanici && (
                                     <p className="text-xs text-center mt-3" style={{ color: 'var(--tema-dimmer)' }}>
-                                        PDF indirebilmek için giriş yapmanız gerekmektedir.
+                                        {t('templatesLoginRequired')}
                                     </p>
                                 )}
                             </div>
@@ -201,9 +208,11 @@ export default function TaslakSayfasi() {
                     ) : (
                         <div className="flex-1 flex flex-col items-center justify-center text-center opacity-70">
                             <FileText size={48} className="mb-4" style={{ color: 'var(--tema-muted)' }} />
-                            <p className="text-md font-medium" style={{ color: 'var(--tema-text2)' }}>Soldan bir taslak seçiniz</p>
+                            <p className="text-md font-medium" style={{ color: 'var(--tema-text2)' }}>
+                                {t('templatesSelectPrompt')}
+                            </p>
                             <p className="text-sm mt-2 max-w-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                                Seçtiğiniz taslak formunu doldurarak anında profesyonel hukuki belgenizi PDF olarak oluşturabilirsiniz.
+                                {t('templatesSelectHint')}
                             </p>
                         </div>
                     )}

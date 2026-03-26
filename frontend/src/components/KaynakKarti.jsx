@@ -65,6 +65,7 @@ export default function KaynakKarti({ kaynak }) {
     const [acik, setAcik] = useState(false);
     const konfig = KAYNAK_TURU_KONFIG[kaynak.kaynak_turu] || KAYNAK_TURU_KONFIG.kanun;
     const { Ikon } = konfig;
+    const gosterilecekMetin = kaynak.metin || kaynak.metin_ozet;
 
     const linkAc = (e) => {
         e.stopPropagation();
@@ -156,9 +157,10 @@ export default function KaynakKarti({ kaynak }) {
                                 background: konfig.acikArka,
                                 borderLeft: `2px solid ${konfig.acikSerit}`,
                                 color: konfig.acikMetin,
+                                whiteSpace: 'pre-wrap',
                             }}
                         >
-                            {kaynak.metin_ozet}
+                            {gosterilecekMetin}
                         </div>
                         {kaynak.url && (
                             <button

@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
-import { User, Mail, Lock, Trash2, ArrowLeft, CheckCircle, AlertCircle, Eye, EyeOff } from 'lucide-react';
-import { profilGetirAPI, profilGuncelleAPI, hesapSilAPI } from '../api/client';
+import { useEffect, useState } from 'react';
+import { AlertCircle, ArrowLeft, CheckCircle, Eye, EyeOff, Lock, Mail, Trash2, User } from 'lucide-react';
+
+import { hesapSilAPI, profilGetirAPI, profilGuncelleAPI } from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { useDil } from '../context/DilContext';
 
 function InputAlan({ label, type = 'text', value, onChange, placeholder, disabled, showToggle, onToggle }) {
     return (
@@ -43,21 +45,17 @@ function InputAlan({ label, type = 'text', value, onChange, placeholder, disable
 
 export default function ProfilSayfasi({ onGeri }) {
     const { kullanici, cikis } = useAuth();
+    const { t } = useDil();
     const [profil, setProfil] = useState(null);
     const [yukleniyor, setYukleniyor] = useState(true);
-
-    // Form alanları
     const [yeniEmail, setYeniEmail] = useState('');
     const [mevcutSifre, setMevcutSifre] = useState('');
     const [yeniSifre, setYeniSifre] = useState('');
     const [yeniSifreTekrar, setYeniSifreTekrar] = useState('');
     const [showSifre, setShowSifre] = useState(false);
-
-    // Silme
     const [silModu, setSilModu] = useState(false);
     const [silSifre, setSilSifre] = useState('');
-
-    const [mesaj, setMesaj] = useState(null); // { tip: 'basari'|'hata', metin: '' }
+    const [mesaj, setMesaj] = useState(null);
     const [kaydetYukleniyor, setKaydetYukleniyor] = useState(false);
 
     useEffect(() => {
@@ -66,20 +64,20 @@ export default function ProfilSayfasi({ onGeri }) {
                 setProfil(data);
                 setYeniEmail(data.email);
             })
-            .catch(() => setMesaj({ tip: 'hata', metin: 'Profil bilgileri yüklenemedi.' }))
+            .catch(() => setMesaj({ tip: 'hata', metin: t('profileLoadFailed') }))
             .finally(() => setYukleniyor(false));
-    }, []);
+    }, [t]);
 
     const handleKaydet = async (e) => {
         e.preventDefault();
         setMesaj(null);
 
         if (yeniSifre && yeniSifre !== yeniSifreTekrar) {
-            setMesaj({ tip: 'hata', metin: 'Yeni şifreler eşleşmiyor.' });
+            setMesaj({ tip: 'hata', metin: t('passwordsMismatch') });
             return;
         }
         if (!mevcutSifre) {
-            setMesaj({ tip: 'hata', metin: 'Değişiklik için mevcut şifrenizi girin.' });
+            setMesaj({ tip: 'hata', metin: t('currentPasswordPrompt') });
             return;
         }
 
@@ -94,13 +92,13 @@ export default function ProfilSayfasi({ onGeri }) {
             setMevcutSifre('');
             setYeniSifre('');
             setYeniSifreTekrar('');
-            setMesaj({ tip: 'basari', metin: 'Profil başarıyla güncellendi.' });
+            setMesaj({ tip: 'basari', metin: t('profileUpdated') });
         } catch (err) {
             const status = err?.response?.status;
             const metin =
-                status === 401 ? 'Mevcut şifre hatalı.' :
-                status === 409 ? 'Bu e-posta zaten kullanılıyor.' :
-                'Güncelleme başarısız. Lütfen tekrar deneyin.';
+                status === 401 ? t('wrongCurrentPassword') :
+                status === 409 ? t('emailInUse') :
+                t('profileUpdateFailed');
             setMesaj({ tip: 'hata', metin });
         } finally {
             setKaydetYukleniyor(false);
@@ -109,23 +107,23 @@ export default function ProfilSayfasi({ onGeri }) {
 
     const handleHesapSil = async () => {
         if (!silSifre) {
-            setMesaj({ tip: 'hata', metin: 'Şifrenizi girin.' });
+            setMesaj({ tip: 'hata', metin: t('enterPassword') });
             return;
         }
+
         setKaydetYukleniyor(true);
         try {
             await hesapSilAPI(silSifre);
             await cikis();
         } catch (err) {
             const status = err?.response?.status;
-            setMesaj({ tip: 'hata', metin: status === 401 ? 'Şifre hatalı.' : 'Hesap silinemedi.' });
+            setMesaj({ tip: 'hata', metin: status === 401 ? t('passwordWrong') : t('deleteFailed') });
             setKaydetYukleniyor(false);
         }
     };
 
     return (
         <div className="flex flex-col h-full">
-            {/* Başlık */}
             <header
                 className="flex-shrink-0 flex items-center gap-3 px-6 py-4"
                 style={{ background: 'var(--tema-panel)', borderBottom: '1px solid var(--tema-border)' }}
@@ -147,7 +145,7 @@ export default function ProfilSayfasi({ onGeri }) {
                 </div>
                 <div>
                     <h1 className="font-semibold text-base leading-none" style={{ color: 'var(--tema-text)' }}>
-                        Hesap Ayarları
+                        {t('profileTitle')}
                     </h1>
                     <p className="text-xs mt-0.5" style={{ color: 'var(--tema-muted)' }}>
                         {profil?.email || kullanici?.email}
@@ -155,17 +153,14 @@ export default function ProfilSayfasi({ onGeri }) {
                 </div>
             </header>
 
-            {/* İçerik */}
             <div className="flex-1 overflow-y-auto px-6 py-6">
                 <div className="max-w-lg mx-auto space-y-6">
-
                     {yukleniyor ? (
                         <div className="flex justify-center py-16">
                             <div className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: 'var(--tema-accent)', borderTopColor: 'transparent' }} />
                         </div>
                     ) : (
                         <>
-                            {/* Mesaj */}
                             {mesaj && (
                                 <div
                                     className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm"
@@ -175,27 +170,23 @@ export default function ProfilSayfasi({ onGeri }) {
                                         color: mesaj.tip === 'basari' ? '#a6e3a1' : '#f38ba8',
                                     }}
                                 >
-                                    {mesaj.tip === 'basari'
-                                        ? <CheckCircle size={15} />
-                                        : <AlertCircle size={15} />
-                                    }
+                                    {mesaj.tip === 'basari' ? <CheckCircle size={15} /> : <AlertCircle size={15} />}
                                     {mesaj.metin}
                                 </div>
                             )}
 
-                            {/* Profil Güncelleme Formu */}
                             <div
                                 className="rounded-2xl p-5 space-y-4"
                                 style={{ background: 'var(--tema-card)', border: '1px solid var(--tema-border)' }}
                             >
                                 <h2 className="font-semibold text-sm flex items-center gap-2" style={{ color: 'var(--tema-text)' }}>
                                     <Mail size={15} style={{ color: 'var(--tema-accent)' }} />
-                                    Profil Bilgileri
+                                    {t('profileInfo')}
                                 </h2>
 
                                 <form onSubmit={handleKaydet} className="space-y-3">
                                     <InputAlan
-                                        label="E-posta Adresi"
+                                        label={t('emailAddress')}
                                         type="email"
                                         value={yeniEmail}
                                         onChange={(e) => setYeniEmail(e.target.value)}
@@ -206,25 +197,25 @@ export default function ProfilSayfasi({ onGeri }) {
                                     <div className="pt-1 border-t" style={{ borderColor: 'var(--tema-border)' }}>
                                         <p className="text-xs mb-3 flex items-center gap-1.5" style={{ color: 'var(--tema-muted)' }}>
                                             <Lock size={11} />
-                                            Şifre Değiştir (boş bırakırsanız değişmez)
+                                            {t('passwordChange')}
                                         </p>
                                         <div className="space-y-3">
                                             <InputAlan
-                                                label="Yeni Şifre"
+                                                label={t('newPassword')}
                                                 type={showSifre ? 'text' : 'password'}
                                                 value={yeniSifre}
                                                 onChange={(e) => setYeniSifre(e.target.value)}
                                                 placeholder="En az 8 karakter"
                                                 disabled={kaydetYukleniyor}
                                                 showToggle
-                                                onToggle={() => setShowSifre(v => !v)}
+                                                onToggle={() => setShowSifre((value) => !value)}
                                             />
                                             <InputAlan
-                                                label="Yeni Şifre Tekrar"
+                                                label={t('newPasswordRepeat')}
                                                 type={showSifre ? 'text' : 'password'}
                                                 value={yeniSifreTekrar}
                                                 onChange={(e) => setYeniSifreTekrar(e.target.value)}
-                                                placeholder="Yeni şifreyi tekrar girin"
+                                                placeholder={t('newPasswordRepeat')}
                                                 disabled={kaydetYukleniyor}
                                             />
                                         </div>
@@ -232,11 +223,11 @@ export default function ProfilSayfasi({ onGeri }) {
 
                                     <div className="pt-1 border-t" style={{ borderColor: 'var(--tema-border)' }}>
                                         <InputAlan
-                                            label="Mevcut Şifre (değişiklik için zorunlu)"
+                                            label={t('currentPasswordRequired')}
                                             type="password"
                                             value={mevcutSifre}
                                             onChange={(e) => setMevcutSifre(e.target.value)}
-                                            placeholder="Mevcut şifreniz"
+                                            placeholder={t('currentPasswordRequired')}
                                             disabled={kaydetYukleniyor}
                                         />
                                     </div>
@@ -251,22 +242,21 @@ export default function ProfilSayfasi({ onGeri }) {
                                             opacity: kaydetYukleniyor ? 0.6 : 1,
                                         }}
                                     >
-                                        {kaydetYukleniyor ? 'Kaydediliyor…' : 'Değişiklikleri Kaydet'}
+                                        {kaydetYukleniyor ? t('saving') : t('saveChanges')}
                                     </button>
                                 </form>
                             </div>
 
-                            {/* Tehlikeli Bölge */}
                             <div
                                 className="rounded-2xl p-5 space-y-3"
                                 style={{ background: 'rgba(243,139,168,0.05)', border: '1px solid rgba(243,139,168,0.2)' }}
                             >
                                 <h2 className="font-semibold text-sm flex items-center gap-2 text-red-400">
                                     <Trash2 size={15} />
-                                    Hesabı Sil
+                                    {t('deleteAccount')}
                                 </h2>
                                 <p className="text-xs" style={{ color: 'var(--tema-muted)' }}>
-                                    Hesabınız ve tüm sohbet geçmişiniz kalıcı olarak silinir. Bu işlem geri alınamaz.
+                                    {t('deleteAccountWarning')}
                                 </p>
                                 {!silModu ? (
                                     <button
@@ -274,16 +264,16 @@ export default function ProfilSayfasi({ onGeri }) {
                                         className="px-4 py-2 rounded-xl text-sm font-medium transition-all"
                                         style={{ background: 'rgba(243,139,168,0.1)', color: '#f38ba8', border: '1px solid rgba(243,139,168,0.3)' }}
                                     >
-                                        Hesabı Sil
+                                        {t('deleteAccount')}
                                     </button>
                                 ) : (
                                     <div className="space-y-3">
                                         <InputAlan
-                                            label="Onaylamak için şifrenizi girin"
+                                            label={t('confirmPassword')}
                                             type="password"
                                             value={silSifre}
                                             onChange={(e) => setSilSifre(e.target.value)}
-                                            placeholder="Şifreniz"
+                                            placeholder={t('confirmPassword')}
                                             disabled={kaydetYukleniyor}
                                         />
                                         <div className="flex gap-2">
@@ -293,14 +283,14 @@ export default function ProfilSayfasi({ onGeri }) {
                                                 className="flex-1 py-2 rounded-xl text-sm font-medium transition-all"
                                                 style={{ background: '#f38ba8', color: '#1e1e2e' }}
                                             >
-                                                Evet, Sil
+                                                {t('confirmDelete')}
                                             </button>
                                             <button
                                                 onClick={() => { setSilModu(false); setSilSifre(''); }}
                                                 className="flex-1 py-2 rounded-xl text-sm font-medium"
                                                 style={{ background: 'var(--tema-card)', color: 'var(--tema-text2)', border: '1px solid var(--tema-border)' }}
                                             >
-                                                Vazgeç
+                                                {t('cancel')}
                                             </button>
                                         </div>
                                     </div>

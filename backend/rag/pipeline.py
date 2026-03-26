@@ -8,6 +8,7 @@ from rag.categorizer import get_kategorilendirici
 from rag.generator import generate_answer
 from rag.query_rewriter import rewrite_query
 from rag.retriever import filter_by_score, retrieve_chunks
+from services.language_service import informational_warning
 
 LAW_MEVZUAT_URLS: dict[str, str] = {
     "193":  "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5",
@@ -75,23 +76,30 @@ def _deduplicate_sources(chunks: list[dict]) -> list[dict]:
     return unique
 
 
-def run_pipeline(soru: str, max_kaynak: int = 5) -> dict:
+def retrieve_context(soru: str, max_kaynak: int = 5) -> dict:
     kategori = get_kategorilendirici().kategorile(soru)
-
     rewritten = rewrite_query(soru)
-
     chunks = retrieve_chunks(rewritten, top_n=max_kaynak * 2)
     filtered = filter_by_score(chunks, threshold=settings.SCORE_THRESHOLD)
     filtered = _deduplicate_sources(filtered)[:max_kaynak]
-
-    yanit = generate_answer(soru, filtered)
     kaynaklar = _format_sources(filtered)
 
     return {
-        "yanit": yanit,
-        "kaynaklar": kaynaklar,
         "kategori": kategori,
-        "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+        "chunks": filtered,
+        "kaynaklar": kaynaklar,
+    }
+
+
+def run_pipeline(soru: str, max_kaynak: int = 5, language: str = "tr") -> dict:
+    context = retrieve_context(soru, max_kaynak=max_kaynak)
+    yanit = generate_answer(soru, context["chunks"], language=language)
+
+    return {
+        "yanit": yanit,
+        "kaynaklar": context["kaynaklar"],
+        "kategori": context["kategori"],
+        "uyari": informational_warning(language),
     }
 
 
@@ -100,9 +108,12 @@ def _format_sources(chunks: list[dict]) -> list[dict]:
     for c in chunks:
         p = c["payload"]
         kaynak_turu = p.get("kaynak_turu", "")
+        fikra_no = p.get("fikra_no")
 
         if kaynak_turu == "kanun":
             baslik = f"{p.get('kanun_adi', '?')} - {p.get('madde_no', '?')}"
+            if fikra_no:
+                baslik = f"{baslik} - {fikra_no}"
         elif kaynak_turu == "yargitay_karari":
             baslik = f"{p.get('daire', 'Yargitay')} - {p.get('karar_no', '?')}"
         else:
@@ -115,6 +126,7 @@ def _format_sources(chunks: list[dict]) -> list[dict]:
                 "kaynak_turu": kaynak_turu,
                 "baslik": baslik,
                 "metin_ozet": p.get("metin", "")[:300],
+                "metin": p.get("metin", ""),
                 "skor": round(c["skor"], 4),
                 "url": url,
             }

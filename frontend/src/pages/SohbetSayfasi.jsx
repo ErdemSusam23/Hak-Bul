@@ -42,7 +42,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         aramayiTemizle,
         sohbetiTemizle,
         mesajlariYukle,
-    } = useChat();
+    } = useChat(dil);
 
     useEffect(() => {
         chatSonuRef.current?.scrollIntoView({ behavior: 'smooth' });

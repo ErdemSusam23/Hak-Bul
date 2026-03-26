@@ -29,6 +29,7 @@ from models.user import User
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
 from services.admin_service import zayif_sorgu_kaydet
 from services.chat_service import resolve_conversation_id, resolve_guest_session_id, save_chat_pair
+from services.language_service import informational_warning
 
 warnings.filterwarnings("ignore")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
@@ -102,7 +103,7 @@ async def ask(
 ):
     try:
         pipeline = get_pipeline()
-        result = pipeline(soru=body.soru, max_kaynak=body.max_kaynak)
+        result = pipeline(soru=body.soru, max_kaynak=body.max_kaynak, language=body.language)
         conversation_id = resolve_conversation_id(body.conversation_id)
 
         guest_session_id: str | None = None
@@ -147,6 +148,7 @@ async def ask(
             guest_session_id=guest_session_id,
             kategori=kategori,
             message_id=message_id,
+            uyari=result.get("uyari", informational_warning(body.language)),
         )
     except RuntimeError as exc:
         detail = str(exc)
@@ -174,19 +176,14 @@ async def ask_stream(
 ):
     """SSE streaming yanıt endpoint'i. Önce kaynakları JSON olarak gönderir,
     sonra yanıt metnini token token akıtır."""
-    from rag.categorizer import get_kategorilendirici
     from rag.generator import generate_answer_stream
-    from rag.pipeline import _deduplicate_sources, _format_sources
-    from rag.query_rewriter import rewrite_query
-    from rag.retriever import filter_by_score, retrieve_chunks
+    from rag.pipeline import retrieve_context
 
     try:
-        kategori = get_kategorilendirici().kategorile(body.soru)
-        rewritten = rewrite_query(body.soru)
-        chunks = retrieve_chunks(rewritten, top_n=body.max_kaynak * 2)
-        filtered = filter_by_score(chunks, threshold=settings.SCORE_THRESHOLD)
-        filtered = _deduplicate_sources(filtered)[: body.max_kaynak]
-        kaynaklar = _format_sources(filtered)
+        context = retrieve_context(body.soru, max_kaynak=body.max_kaynak)
+        kategori = context["kategori"]
+        filtered = context["chunks"]
+        kaynaklar = context["kaynaklar"]
         conversation_id = resolve_conversation_id(body.conversation_id)
 
         guest_session_id: str | None = None
@@ -210,7 +207,7 @@ async def ask_stream(
         # Token token yanıt
         full_answer_parts: list[str] = []
         try:
-            for token in generate_answer_stream(body.soru, filtered):
+            for token in generate_answer_stream(body.soru, filtered, language=body.language):
                 full_answer_parts.append(token)
                 payload = {"type": "token", "text": token}
                 yield f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
@@ -249,7 +246,7 @@ async def ask_stream(
         done_payload = {
             "type": "done",
             "message_id": message_id,
-            "uyari": "Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.",
+            "uyari": informational_warning(body.language),
         }
         yield f"data: {json.dumps(done_payload, ensure_ascii=False)}\n\n"
 
@@ -282,9 +279,12 @@ async def search(
         for c in chunks:
             p = c["payload"]
             kaynak_turu = p.get("kaynak_turu", "")
+            fikra_no = p.get("fikra_no")
 
             if kaynak_turu == "kanun":
                 baslik = f"{p.get('kanun_adi', '?')} - {p.get('madde_no', '?')}"
+                if fikra_no:
+                    baslik = f"{baslik} - {fikra_no}"
             else:
                 baslik = f"{p.get('daire', 'Yargitay')} - {p.get('karar_no', '?')}"
 
@@ -295,6 +295,7 @@ async def search(
                     kaynak_turu=kaynak_turu,
                     baslik=baslik,
                     metin_ozet=p.get("metin", "")[:300],
+                    metin=p.get("metin", ""),
                     skor=round(c.get("skor", 0), 4),
                     url=url,
                 )

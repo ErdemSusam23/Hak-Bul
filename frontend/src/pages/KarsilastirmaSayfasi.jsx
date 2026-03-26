@@ -1,12 +1,15 @@
-import { useState, useRef } from 'react';
-import { GitCompare, Upload, RotateCcw, FileText, AlertTriangle } from 'lucide-react';
-import { dokumanKarsilastirAPI } from '../api/client';
+import { useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { AlertTriangle, FileText, GitCompare, RotateCcw, Upload } from 'lucide-react';
+
+import { dokumanKarsilastirAPI } from '../api/client';
+import { useDil } from '../context/DilContext';
 
 export default function KarsilastirmaSayfasi() {
+    const { t, dil } = useDil();
     const [dosya1, setDosya1] = useState(null);
     const [dosya2, setDosya2] = useState(null);
-    const [soru, setSoru] = useState('Bu iki belge arasındaki temel farklar ve dikkat etmem gereken maddeler nelerdir?');
+    const [soru, setSoru] = useState('');
     const [sonuc, setSonuc] = useState(null);
     const [yukleniyor, setYukleniyor] = useState(false);
     const [hata, setHata] = useState(null);
@@ -15,17 +18,25 @@ export default function KarsilastirmaSayfasi() {
 
     const handleKarsilastir = async () => {
         if (!dosya1 || !dosya2) {
-            setHata('İki PDF dosyası da seçilmelidir.');
+            setHata(t('compareNeedTwoFiles'));
             return;
         }
+
         setHata(null);
         setSonuc(null);
         setYukleniyor(true);
         try {
-            const data = await dokumanKarsilastirAPI({ dosya1, dosya2, soru });
+            const data = await dokumanKarsilastirAPI({
+                dosya1,
+                dosya2,
+                soru: soru.trim() || undefined,
+                language: dil,
+            });
             setSonuc(data);
         } catch (err) {
-            setHata(err?.response?.data?.detail || 'Karşılaştırma yapılamadı.');
+            const detail = err?.response?.data?.detail;
+            const detailText = typeof detail === 'string' ? detail : detail?.detail;
+            setHata(detailText || t('compareFailed'));
         } finally {
             setYukleniyor(false);
         }
@@ -42,8 +53,8 @@ export default function KarsilastirmaSayfasi() {
             onDragOver={(e) => e.preventDefault()}
             onDrop={(e) => {
                 e.preventDefault();
-                const f = e.dataTransfer.files[0];
-                if (f?.type === 'application/pdf') setDosya(f);
+                const file = e.dataTransfer.files[0];
+                if (file?.type === 'application/pdf') setDosya(file);
             }}
         >
             <input
@@ -69,7 +80,7 @@ export default function KarsilastirmaSayfasi() {
                         onMouseEnter={(e) => { e.currentTarget.style.color = '#f87171'; }}
                         onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
                     >
-                        Kaldır
+                        {t('removeFile')}
                     </button>
                 </>
             ) : (
@@ -77,7 +88,7 @@ export default function KarsilastirmaSayfasi() {
                     <Upload size={24} style={{ color: 'var(--tema-dimmer)' }} />
                     <div className="text-center">
                         <p className="text-sm font-medium" style={{ color: 'var(--tema-text2)' }}>{label}</p>
-                        <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>PDF sürükle veya tıkla</p>
+                        <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>{t('dragPdf')}</p>
                     </div>
                 </>
             )}
@@ -90,32 +101,33 @@ export default function KarsilastirmaSayfasi() {
                 className="flex-shrink-0 flex items-center gap-3 px-6 py-4"
                 style={{ background: 'var(--tema-panel)', borderBottom: '1px solid var(--tema-border)' }}
             >
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: 'rgba(var(--a), 0.12)', border: '1px solid rgba(var(--a), 0.25)' }}>
+                <div
+                    className="w-9 h-9 rounded-xl flex items-center justify-center"
+                    style={{ background: 'rgba(var(--a), 0.12)', border: '1px solid rgba(var(--a), 0.25)' }}
+                >
                     <GitCompare size={18} style={{ color: 'var(--tema-accent)' }} />
                 </div>
                 <div>
-                    <h2 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>Belge Karşılaştırma</h2>
-                    <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>İki PDF'i yükleyip AI ile karşılaştırın</p>
+                    <h2 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>{t('compareTitle')}</h2>
+                    <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>{t('compareSubtitle')}</p>
                 </div>
             </header>
 
             <main className="flex-1 p-6 flex flex-col gap-5 max-w-4xl mx-auto w-full">
-                {/* Dosya seçiciler */}
                 <div className="flex gap-4">
-                    <DosyaSecici label="1. Belge" dosya={dosya1} setDosya={setDosya1} inputRef={ref1} />
-                    <DosyaSecici label="2. Belge" dosya={dosya2} setDosya={setDosya2} inputRef={ref2} />
+                    <DosyaSecici label={t('documentOne')} dosya={dosya1} setDosya={setDosya1} inputRef={ref1} />
+                    <DosyaSecici label={t('documentTwo')} dosya={dosya2} setDosya={setDosya2} inputRef={ref2} />
                 </div>
 
-                {/* Soru alanı */}
                 <div className="flex flex-col gap-2">
                     <label className="text-xs font-medium" style={{ color: 'var(--tema-muted)' }}>
-                        Karşılaştırma sorusu
+                        {t('compareQuestion')}
                     </label>
                     <textarea
                         value={soru}
                         onChange={(e) => setSoru(e.target.value)}
                         rows={2}
+                        placeholder={t('compareQuestionPlaceholder')}
                         className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all"
                         style={{
                             background: 'var(--tema-surface)',
@@ -127,7 +139,6 @@ export default function KarsilastirmaSayfasi() {
                     />
                 </div>
 
-                {/* Buton */}
                 <button
                     onClick={handleKarsilastir}
                     disabled={yukleniyor || !dosya1 || !dosya2}
@@ -140,42 +151,57 @@ export default function KarsilastirmaSayfasi() {
                     }}
                 >
                     {yukleniyor ? (
-                        <><RotateCcw size={16} className="animate-spin" /> Karşılaştırılıyor...</>
+                        <><RotateCcw size={16} className="animate-spin" /> {t('compareLoading')}</>
                     ) : (
-                        <><GitCompare size={16} /> Karşılaştır</>
+                        <><GitCompare size={16} /> {t('compareButton')}</>
                     )}
                 </button>
 
-                {/* Hata */}
                 {hata && (
-                    <div className="flex items-start gap-2 rounded-xl px-4 py-3" style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)' }}>
+                    <div
+                        className="flex items-start gap-2 rounded-xl px-4 py-3"
+                        style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)' }}
+                    >
                         <AlertTriangle size={16} className="flex-shrink-0 mt-0.5" style={{ color: '#f87171' }} />
                         <p className="text-sm" style={{ color: '#f87171' }}>{hata}</p>
                     </div>
                 )}
 
-                {/* Sonuç */}
                 {sonuc && (
                     <div className="flex flex-col gap-4">
-                        {/* Belge özetleri */}
                         <div className="grid grid-cols-2 gap-3">
                             {[
                                 { baslik: `📄 ${dosya1?.name}`, ozet: sonuc.belge1_ozet },
                                 { baslik: `📄 ${dosya2?.name}`, ozet: sonuc.belge2_ozet },
-                            ].map((b, i) => (
-                                <div key={i} className="rounded-xl p-4 border" style={{ background: 'var(--tema-card)', borderColor: 'var(--tema-border)' }}>
-                                    <p className="text-xs font-semibold mb-2 truncate" style={{ color: 'var(--tema-accent)' }}>{b.baslik}</p>
-                                    <p className="text-xs leading-relaxed" style={{ color: 'var(--tema-muted)' }}>{b.ozet}</p>
+                            ].map((belge, index) => (
+                                <div
+                                    key={index}
+                                    className="rounded-xl p-4 border"
+                                    style={{ background: 'var(--tema-card)', borderColor: 'var(--tema-border)' }}
+                                >
+                                    <p className="text-xs font-semibold mb-2 truncate" style={{ color: 'var(--tema-accent)' }}>
+                                        {belge.baslik}
+                                    </p>
+                                    <p className="text-xs leading-relaxed" style={{ color: 'var(--tema-muted)' }}>
+                                        {belge.ozet}
+                                    </p>
                                 </div>
                             ))}
                         </div>
 
-                        {/* AI analiz */}
-                        <div className="rounded-xl p-5 border" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
+                        <div
+                            className="rounded-xl p-5 border"
+                            style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}
+                        >
                             <div className="flex items-center gap-2 mb-3">
                                 <GitCompare size={14} style={{ color: 'var(--tema-accent)' }} />
-                                <h3 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>Karşılaştırma Analizi</h3>
-                                <span className="ml-auto text-xs px-2 py-0.5 rounded-full" style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}>
+                                <h3 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>
+                                    {t('compareAnalysis')}
+                                </h3>
+                                <span
+                                    className="ml-auto text-xs px-2 py-0.5 rounded-full"
+                                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}
+                                >
                                     {sonuc.kategori}
                                 </span>
                             </div>
@@ -185,7 +211,7 @@ export default function KarsilastirmaSayfasi() {
                         </div>
 
                         <p className="text-xs text-center" style={{ color: 'var(--tema-dimmer)' }}>
-                            Bu analiz bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.
+                            {t('compareInfo')}
                         </p>
                     </div>
                 )}

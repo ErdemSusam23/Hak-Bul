@@ -41,13 +41,22 @@ ZORUNLU_ALANLAR = {
 }
 
 
-def test_taslak_listesi_dort_taslak_dondurur():
+def test_taslak_listesi_mevcut_taslaklari_dondurur():
     r = client.get("/templates")
     assert r.status_code == 200
     data = r.json()
-    assert len(data["taslaklar"]) == 4
+    assert len(data["taslaklar"]) == 8
     ids = {t["id"] for t in data["taslaklar"]}
-    assert ids == {"kira_sozlesmesi", "is_sozlesmesi", "ihtarname", "taahhutname"}
+    assert ids == {
+        "kira_sozlesmesi",
+        "is_sozlesmesi",
+        "ihtarname",
+        "taahhutname",
+        "vekaletname",
+        "bosanma_dilekce",
+        "icra_itiraz_dilekce",
+        "tuketici_sikayet_dilekce",
+    }
 
 
 def test_taslak_listesi_alanlar_iceriyor():
@@ -57,6 +66,14 @@ def test_taslak_listesi_alanlar_iceriyor():
         for alan in taslak["alanlar"]:
             assert "ad" in alan
             assert "zorunlu" in alan
+
+
+def test_taslak_listesi_english_localization_supports_labels():
+    r = client.get("/templates", params={"language": "en"})
+    assert r.status_code == 200
+    kira = next(t for t in r.json()["taslaklar"] if t["id"] == "kira_sozlesmesi")
+    assert kira["baslik"] == "Lease Agreement"
+    assert kira["alanlar"][0]["etiket"] == "Tenant Full Name"
 
 
 @pytest.mark.parametrize("template_id", list(ZORUNLU_ALANLAR.keys()))

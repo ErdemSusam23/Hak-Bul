@@ -1,17 +1,30 @@
 # 🏛️ Türk Hukuk Asistanı — Backend Teknik Dokümantasyonu
 
-`v1.0 — Bitirme Projesi — 2025`
+`v2.0 — Bitirme Projesi — 2026`
 
 > Bu doküman 3 bölümden oluşur:
-> 1. Veri Şeması (Qdrant koleksiyonu + chunk metadata)
-> 2. API Dokümantasyonu (endpoint'ler, rate limiting)
+> 1. Veri Şeması (Qdrant koleksiyonu + chunk metadata + PostgreSQL)
+> 2. API Dokümantasyonu (tüm endpoint'ler, rate limiting, auth)
 > 3. RAG Pipeline Akış Dokümantasyonu
 
 ---
 
 ## 1. Veri Şeması
 
-_Sistem geleneksel bir SQL veritabanı kullanmaz. Tüm vektör araması Qdrant Cloud üzerinde, rate limiting ise uygulama belleğinde (in-memory) tutulur._
+_Sistem iki veri katmanı kullanır: vektör araması için **Qdrant Cloud**, kullanıcı/sohbet/feedback verileri için **PostgreSQL**. Rate limiting uygulama belleğinde (in-memory, slowapi) tutulur._
+
+### 1.0 PostgreSQL Şeması (Alembic)
+
+Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `20260317_0004`
+
+| Tablo | Açıklama |
+|-------|----------|
+| `users` | Kayıtlı kullanıcılar (email, bcrypt hash, rol) |
+| `refresh_tokens` | JWT refresh token'ları (rotation destekli) |
+| `chat_history` | Kullanıcı + misafir mesajları; `user_id` XOR `guest_session_id` |
+| `message_feedback` | `chat_history.id` FK; `puan` 1 / -1 |
+
+`chat_history` önemli alanlar: `conversation_id`, `role` (user/assistant), `content`, `category`, `metadata_json` (asistan mesajlarında `{"kaynaklar": [...]}`).
 
 ### 1.1 Qdrant Koleksiyon Konfigürasyonu
 
@@ -119,7 +132,7 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 
 ### 2.1 Rate Limiting
 
-Auth sistemi yoktur. Rate limiting IP bazlı, uygulama belleğinde (in-memory) tutulur. Library: `slowapi`
+Auth sistemi mevcuttur (JWT + refresh token). Rate limiting IP bazlı, uygulama belleğinde (in-memory) tutulur. Library: `slowapi`
 
 | Parametre | Değer |
 |-----------|-------|
@@ -162,8 +175,10 @@ _Ana endpoint. Kullanıcının hukuki sorusunu alır, RAG pipeline'ı çalışt�
 
 ```json
 {
-  "soru": "string",     // Zorunlu. Min 10, max 1000 karakter.
-  "max_kaynak": 5       // Opsiyonel. Kaç kaynak gösterilsin? Default: 5
+  "soru": "string",           // Zorunlu. Min 10, max 1000 karakter.
+  "max_kaynak": 5,            // Opsiyonel. Default: 5, max: 10
+  "conversation_id": "uuid",  // Opsiyonel. Mevcut sohbete devam için.
+  "guest_session_id": "uuid"  // Opsiyonel. Misafir oturumu için.
 }
 ```
 
@@ -177,16 +192,15 @@ _Ana endpoint. Kullanıcının hukuki sorusunu alır, RAG pipeline'ı çalışt�
       "kaynak_turu": "kanun",
       "baslik": "4857 Sayılı İş Kanunu — Madde 17",
       "metin_ozet": "string",
-      "skor": 0.87
-    },
-    {
-      "kaynak_turu": "yargitay_karari",
-      "baslik": "Yargıtay 9. HD — 2023/1234",
-      "metin_ozet": "string",
-      "skor": 0.81
+      "skor": 0.87,
+      "url": "https://www.mevzuat.gov.tr/..."
     }
   ],
-  "uyari": "Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz."
+  "conversation_id": "uuid",      // Sohbet ID (yeni veya mevcut)
+  "guest_session_id": "uuid|null", // Misafir oturumu yoksa null
+  "kategori": "İş Hukuku",        // 8 kategoriden biri veya "Genel Hukuk"
+  "message_id": "uuid",           // Asistan mesajının DB ID'si — feedback için
+  "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz."
 }
 ```
 
@@ -262,25 +276,61 @@ _Render.com cron job ve deployment check için. Qdrant ve Groq API erişimini ko
 }
 ```
 
-### 2.6 Pydantic Modelleri
+### 2.6 Endpoint Listesi (Tüm)
+
+| Method | Path | Auth | Açıklama |
+|--------|------|------|----------|
+| POST | `/ask` | Opsiyonel | RAG pipeline (rate: 20/min) |
+| GET | `/search` | — | Kanun/karar keyword arama |
+| GET | `/health` | — | Servis durumu |
+| POST | `/auth/register` | — | Kayıt |
+| POST | `/auth/login` | — | Giriş → token çifti |
+| POST | `/auth/refresh` | — | Access token yenileme |
+| POST | `/auth/logout` | — | Refresh token iptal |
+| GET | `/chat/conversations` | Zorunlu | Auth kullanıcı sohbet listesi |
+| GET | `/chat/history/{id}` | Zorunlu | Auth sohbet mesajları |
+| GET | `/chat/guest/conversations` | — | Misafir sohbet listesi |
+| GET | `/chat/guest/history/{id}` | — | Misafir mesajları |
+| POST | `/feedback` | Opsiyonel | 👍/👎 gönder (`puan`: 1 veya -1) |
+| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et |
+| GET | `/templates` | — | Taslak listesi |
+| POST | `/templates/{id}/generate` | — | PDF taslağı indir |
+| GET | `/admin/stats` | ADMIN | Genel istatistikler |
+| GET | `/admin/stats/categories` | ADMIN | Kategori dağılımı |
+| GET | `/admin/stats/feedback` | ADMIN | Feedback özeti |
+| GET | `/admin/stats/daily` | ADMIN | Günlük aktivite (son N gün) |
+
+### 2.7 Pydantic Modelleri (Güncel)
 
 ```python
-# schemas.py
+# schemas.py — önemli modeller
 
 class AskRequest(BaseModel):
     soru: str = Field(..., min_length=10, max_length=1000)
     max_kaynak: int = Field(default=5, ge=1, le=10)
+    conversation_id: str | None = Field(default=None, min_length=36, max_length=36)
+    guest_session_id: str | None = Field(default=None, min_length=36, max_length=36)
 
 class KaynakItem(BaseModel):
     kaynak_turu: str
     baslik: str
     metin_ozet: str
     skor: float
+    url: str | None = None
 
 class AskResponse(BaseModel):
     yanit: str
     kaynaklar: list[KaynakItem]
-    uyari: str = "Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz."
+    conversation_id: str
+    guest_session_id: str | None = None
+    kategori: str = "Genel Hukuk"
+    message_id: str | None = None
+    uyari: str = "..."
+
+class FeedbackGonder(BaseModel):
+    message_id: str = Field(..., min_length=36, max_length=36)
+    puan: int        # 1 veya -1 (validator ile doğrulanır)
+    guest_session_id: str | None = None
 ```
 
 ---
@@ -409,17 +459,51 @@ def generate_answer(soru: str, chunks: list[dict]) -> str:
 
 ```
 backend/
-├── main.py                  # FastAPI app, rate limiter, endpoint'ler
-├── schemas.py               # Pydantic modelleri
-├── config.py                # Environment variables
+├── main.py                  # FastAPI app, rate limiter, /ask + /search + /health
+├── schemas.py               # Tüm Pydantic modelleri
+├── config.py                # Environment variables (Settings sınıfı)
 ├── requirements.txt
 ├── Dockerfile
 ├── .env.example
 ├── rag/
-│   ├── pipeline.py          # Adımları birleştiren ana fonksiyon
-│   ├── query_rewriter.py    # Adım 1
-│   ├── retriever.py         # Adım 2 + 3
-│   └── generator.py         # Adım 4
+│   ├── pipeline.py          # run_pipeline() — adımları zincirler
+│   ├── categorizer.py       # Keyword tabanlı kategori tespiti (8 kategori)
+│   ├── query_rewriter.py    # Groq llama-3.1-8b-instant ile sorgu optimizasyonu
+│   ├── retriever.py         # Qdrant Cloud araması; yerel JSON fallback
+│   └── generator.py         # Groq llama-3.3-70b-versatile ile yanıt üretimi
+├── auth/
+│   ├── dependencies.py      # get_current_user_optional, require_roles
+│   ├── jwt_service.py       # JWT üretimi / doğrulama
+│   └── security.py          # bcrypt hash
+├── models/
+│   ├── user.py              # User SQLAlchemy modeli
+│   ├── refresh_token.py     # RefreshToken modeli
+│   ├── chat_history.py      # ChatHistory + save_chat_pair()
+│   ├── feedback.py          # MessageFeedback modeli
+│   └── enums.py             # UserRole enum
+├── routers/
+│   ├── auth.py              # /auth/*
+│   ├── chat.py              # /chat/*
+│   ├── feedback.py          # /feedback
+│   ├── documents.py         # /documents/analyze
+│   ├── admin.py             # /admin/stats/*
+│   └── templates.py         # /templates/*
+├── services/
+│   ├── chat_service.py      # resolve_conversation_id, save_chat_pair
+│   ├── document_service.py  # pdf_metin_cikar (pypdf, 10MB/15k char limit)
+│   ├── feedback_service.py  # upsert feedback
+│   ├── admin_service.py     # istatistik sorguları
+│   └── template_service.py  # TEMPLATES dict + reportlab PDF üretimi
+├── db/
+│   └── session.py           # SQLAlchemy engine + get_db()
+├── migrations/              # Alembic migration dosyaları
+│   └── versions/
+│       ├── 20260305_0001_*  # auth tabloları
+│       ├── 20260305_0002_*  # chat_history + misafir desteği
+│       ├── 20260316_0003_*  # category kolonu
+│       └── 20260317_0004_*  # message_feedback tablosu
+├── tests/
+│   └── test_*.py            # pytest testleri (Docker üzerinden çalıştırılır)
 ├── data/
 │   ├── raw/                 # Ham scraping çıktıları
 │   └── processed/           # Chunk JSON'ları (Qdrant yüklenmeden önce)

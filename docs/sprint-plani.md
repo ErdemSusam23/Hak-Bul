@@ -44,9 +44,9 @@ Hafta 8    │ Deployment + jüri hazırlığı
 | FastAPI proje iskeleti kurma | Erdem |
 
 ### Sprint Sonu Çıktısı
-- [ ] 3-5 kanun temiz metin olarak elde edildi
-- [ ] 500+ Yargıtay kararı HTML'den parse edildi
-- [ ] Ham veri `/data/raw` klasöründe düzenli halde
+- [x] 3-5 kanun temiz metin olarak elde edildi
+- [x] 500+ Yargıtay kararı HTML'den parse edildi
+- [x] Ham veri `/data/raw` klasöründe düzenli halde
 
 > ⚠️ **Risk:** Scraping sıfırdan öğreniliyor. Mevzuat.gov.tr XML çalışırsa Yağız 1 hafta kazanır, çalışmazsa scraping yazılır — bu yüzden Yağız ve Mustafa paralel araştırır.
 
@@ -70,9 +70,9 @@ Hafta 8    │ Deployment + jüri hazırlığı
 | Frontend sohbet arayüzü — temel chat UI | Ömer |
 
 ### Sprint Sonu Çıktısı
-- [ ] Terminalde: soru yaz → chunk'lar gelsin → yanıt üretilsin
-- [ ] Groq API her iki noktada çalışıyor
-- [ ] Qdrant'ta vektörler yüklü
+- [x] Terminalde: soru yaz → chunk'lar gelsin → yanıt üretilsin
+- [x] Groq API her iki noktada çalışıyor
+- [x] Qdrant'ta vektörler yüklü
 
 > ⚠️ **Risk:** Chunking beklenenden uzun sürebilir. Madde regex'leri Türk hukuk metni formatına göre ayarlanmalı — Yağız ve Mustafa ham veriyle erken tanışmış olacak, bu avantaj.
 
@@ -99,9 +99,9 @@ Hafta 8    │ Deployment + jüri hazırlığı
 | Evaluation seti oluşturmaya başlama (20-30 manuel soru) | Yağız + Mustafa |
 
 ### Sprint Sonu Çıktısı
-- [ ] Tarayıcıdan soru sorulabiliyor
-- [ ] Yanıt + kaynak atıfı ekranda görünüyor
-- [ ] Sorumluluk reddi ekranı çalışıyor
+- [x] Tarayıcıdan soru sorulabiliyor
+- [x] Yanıt + kaynak atıfı ekranda görünüyor
+- [x] Sorumluluk reddi ekranı çalışıyor
 - [ ] 20-30 manuel evaluation sorusu hazır
 
 ---
@@ -125,7 +125,7 @@ Hafta 8    │ Deployment + jüri hazırlığı
 ### Sprint Sonu Çıktısı
 - [ ] RAGAS skoru ölçüldü (hedef: %80)
 - [ ] En az 1 iterasyon iyileştirme yapıldı
-- [ ] UI demo'ya hazır hissettiriyor
+- [x] UI demo'ya hazır hissettiriyor
 
 ---
 

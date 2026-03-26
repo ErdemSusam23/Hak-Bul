@@ -12,12 +12,12 @@ MAX_METIN_KARAKTER = 15_000
 def pdf_metin_cikar(pdf_baytlari: bytes) -> str:
     """Extract text from PDF bytes and cap oversized documents."""
     if len(pdf_baytlari) > MAX_PDF_BOYUT_MB * 1024 * 1024:
-        raise ValueError(f"PDF boyutu {MAX_PDF_BOYUT_MB}MB'i asiyor")
+        raise ValueError(f"PDF boyutu {MAX_PDF_BOYUT_MB}MB'ı aşıyor")
 
     try:
         okuyucu = PdfReader(io.BytesIO(pdf_baytlari))
     except PdfReadError as exc:
-        raise ValueError(f"Gecersiz PDF dosyasi: {exc}") from exc
+        raise ValueError(f"Geçersiz PDF dosyası: {exc}") from exc
 
     satirlar: list[str] = []
     for sayfa in okuyucu.pages:
@@ -47,3 +47,10 @@ def document_preview(metin: str, max_chars: int = 300) -> str:
     if len(temiz) <= max_chars:
         return temiz
     return temiz[:max_chars].rstrip() + "..."
+
+
+def dokuman_analiz_sorusu_hazirla(belge_metni: str, soru: str) -> str:
+    """Prepare a prompt-like analysis query that includes both document and question."""
+    temiz_belge = (belge_metni or "").strip()
+    temiz_soru = (soru or "").strip()
+    return f"Belge içeriği:\n{temiz_belge}\n\nSoru:\n{temiz_soru}"

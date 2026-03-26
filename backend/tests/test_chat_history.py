@@ -23,7 +23,7 @@ def override_get_db() -> Generator[Session, None, None]:
         db.close()
 
 
-def fake_pipeline(soru: str, max_kaynak: int) -> dict:
+def fake_pipeline(soru: str, max_kaynak: int, language: str = "tr") -> dict:
     return {
         "yanit": f"Yanıt: {soru}",
         "kaynaklar": [],

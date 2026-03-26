@@ -36,12 +36,6 @@ def _minimal_pdf_bytes() -> bytes:
     return buf.getvalue()
 
 
-FAKE_PIPELINE_RESULT = {
-    "yanit": "Test yanıtı.",
-    "kaynaklar": [],
-    "kategori": "Genel Hukuk",
-}
-
 client = TestClient(app)
 
 
@@ -61,7 +55,11 @@ def test_analyze_guest_persists_to_chat_history() -> None:
 
     with (
         patch("routers.documents.pdf_metin_cikar", return_value="Kira sözleşmesi önemli maddeler içeriği."),
-        patch("routers.documents.run_pipeline", return_value=FAKE_PIPELINE_RESULT),
+        patch(
+            "routers.documents.retrieve_context",
+            return_value={"chunks": [], "kaynaklar": [], "kategori": "Genel Hukuk"},
+        ),
+        patch("routers.documents.generate_document_answer", return_value="Test yanıtı."),
     ):
         response = client.post(
             "/documents/analyze",

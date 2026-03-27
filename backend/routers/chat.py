@@ -13,6 +13,7 @@ from schemas import ChatHistoryResponse, ChatMessageItem, ConversationListRespon
 from services.chat_service import (
     count_guest_conversations,
     count_user_conversations,
+    delete_guest_conversation,
     delete_user_conversation,
     get_conversation_messages_for_export,
     list_guest_conversations,
@@ -283,6 +284,21 @@ def delete_conversation(
     current_user: User = Depends(get_current_user),
 ):
     found = delete_user_conversation(db=db, user_id=current_user.id, conversation_id=conversation_id)
+    if not found:
+        raise HTTPException(status_code=404, detail="Konuşma bulunamadı.")
+
+
+@router.delete("/guest/conversations/{conversation_id}", status_code=204)
+def delete_guest_conversation_route(
+    conversation_id: str,
+    guest_session_id: str = Query(..., min_length=36, max_length=36),
+    db: Session = Depends(get_db),
+):
+    found = delete_guest_conversation(
+        db=db,
+        guest_session_id=guest_session_id,
+        conversation_id=conversation_id,
+    )
     if not found:
         raise HTTPException(status_code=404, detail="Konuşma bulunamadı.")
 

@@ -70,6 +70,7 @@ export function AuthProvider({ children }) {
         sessionStorage.removeItem(EMAIL_KEY);
         sessionStorage.removeItem('hakbul_role');
         setKullanici(null);
+        window.dispatchEvent(new Event('auth-cikis'));
     }, []);
 
     // Token yenile (otomatik — singleton promise, httpOnly cookie kullanır)
@@ -93,6 +94,18 @@ export function AuthProvider({ children }) {
 
     const accessToken = useCallback(() => sessionStorage.getItem(ACCESS_KEY), []);
 
+    const kullaniciGuncelle = useCallback((patch) => {
+        if (!patch) return;
+        setKullanici((prev) => {
+            if (!prev) return prev;
+            const next = { ...prev, ...patch };
+            if (next.token) sessionStorage.setItem(ACCESS_KEY, next.token);
+            if (next.email) sessionStorage.setItem(EMAIL_KEY, next.email);
+            if (next.rol) sessionStorage.setItem('hakbul_role', next.rol);
+            return next;
+        });
+    }, []);
+
     // Interceptor için handler'ları set et
     useEffect(() => {
         setAuthHandlers(accessToken, tokenYenileFn);
@@ -107,6 +120,7 @@ export function AuthProvider({ children }) {
             cikis,
             tokenYenile: tokenYenileFn,
             accessToken,
+            kullaniciGuncelle,
             girisYapildi: !!kullanici,
         }}>
             {children}

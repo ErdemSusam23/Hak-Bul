@@ -190,6 +190,21 @@ def delete_user_conversation(db: Session, user_id: str, conversation_id: str) ->
     return updated > 0
 
 
+def delete_guest_conversation(db: Session, guest_session_id: str, conversation_id: str) -> bool:
+    """Misafire ait sohbeti soft-delete yapar."""
+    updated = (
+        db.query(ChatHistory)
+        .filter(
+            ChatHistory.guest_session_id == guest_session_id,
+            ChatHistory.conversation_id == conversation_id,
+            ChatHistory.deleted_at.is_(None),
+        )
+        .update({"deleted_at": datetime.utcnow()}, synchronize_session=False)
+    )
+    db.commit()
+    return updated > 0
+
+
 def rename_user_conversation(db: Session, user_id: str, conversation_id: str, new_title: str) -> bool:
     """Sohbetin tüm mesajlarındaki title alanını günceller."""
     updated = (

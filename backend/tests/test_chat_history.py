@@ -113,3 +113,31 @@ def test_user_ask_persists_and_lists_history() -> None:
     assert history_response.status_code == 200
     history = history_response.json()
     assert history["total"] == 2
+
+
+def test_user_can_export_conversation_pdf() -> None:
+    register = client.post("/auth/register", json={"email": "pdf-user@example.com", "password": "StrongPass123"})
+    assert register.status_code == 201
+
+    login = client.post("/auth/login", json={"email": "pdf-user@example.com", "password": "StrongPass123"})
+    assert login.status_code == 200
+    token = login.json()["access_token"]
+
+    ask_response = client.post(
+        "/ask",
+        json={
+            "soru": "Kıdem tazminatı hesaplaması için örnek bir açıklama yapar mısın?",
+            "max_kaynak": 3,
+        },
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert ask_response.status_code == 200
+    conversation_id = ask_response.json()["conversation_id"]
+
+    export_response = client.get(
+        f"/chat/conversations/{conversation_id}/export",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert export_response.status_code == 200
+    assert export_response.headers["content-type"].startswith("application/pdf")
+    assert export_response.content.startswith(b"%PDF")

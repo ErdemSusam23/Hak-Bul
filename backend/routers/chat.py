@@ -1,4 +1,5 @@
 import io
+import unicodedata
 from datetime import datetime
 
 from fastapi import APIRouter, Body, Depends, HTTPException, Query
@@ -134,22 +135,39 @@ def export_conversation_pdf(
         from reportlab.pdfbase.ttfonts import TTFont
         from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
         from pathlib import Path
+        import reportlab
 
         _font = "Helvetica"
         _font_bold = "Helvetica-Bold"
+        _reportlab_fonts = Path(reportlab.__file__).resolve().parent / "fonts"
         _ttf_candidates = [
-            ("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-             "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"),
-            ("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
-             "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"),
+            (
+                "TR-DejaVu",
+                "TR-DejaVu-Bold",
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            ),
+            (
+                "TR-Liberation",
+                "TR-Liberation-Bold",
+                "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+                "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+            ),
+            (
+                "TR-Vera",
+                "TR-Vera-Bold",
+                str(_reportlab_fonts / "Vera.ttf"),
+                str(_reportlab_fonts / "VeraBd.ttf"),
+            ),
         ]
-        if not pdfmetrics.getFont("TR", default=None):
-            for _reg, _bold in _ttf_candidates:
-                if Path(_reg).exists() and Path(_bold).exists():
-                    pdfmetrics.registerFont(TTFont("TR", _reg))
-                    pdfmetrics.registerFont(TTFont("TR-Bold", _bold))
-                    _font, _font_bold = "TR", "TR-Bold"
-                    break
+        for _name, _bold_name, _reg, _bold in _ttf_candidates:
+            if Path(_reg).exists() and Path(_bold).exists():
+                if _name not in pdfmetrics.getRegisteredFontNames():
+                    pdfmetrics.registerFont(TTFont(_name, _reg))
+                if _bold_name not in pdfmetrics.getRegisteredFontNames():
+                    pdfmetrics.registerFont(TTFont(_bold_name, _bold))
+                _font, _font_bold = _name, _bold_name
+                break
 
         title_style = ParagraphStyle("T", fontName=_font_bold, fontSize=14, leading=18, spaceAfter=0.3*cm, alignment=1)
         meta_style = ParagraphStyle("M", fontName=_font, fontSize=8, leading=11, textColor=(0.5, 0.5, 0.5), spaceAfter=0.3*cm, alignment=1)
@@ -192,8 +210,14 @@ def export_conversation_pdf(
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"PDF üretilemedi: {exc}") from exc
 
-    safe_title = "".join(c for c in (messages[0].title or "sohbet") if c.isalnum() or c in " _-")[:40]
-    filename = f"hak-bul-{safe_title.strip().replace(' ', '_')}.pdf"
+    raw_title = messages[0].title or "sohbet"
+    ascii_title = (
+        unicodedata.normalize("NFKD", raw_title)
+        .encode("ascii", "ignore")
+        .decode("ascii")
+    )
+    safe_title = "".join(c for c in ascii_title if c.isalnum() or c in " _-").strip().replace(" ", "_")[:40]
+    filename = f"hak-bul-{safe_title or 'sohbet'}.pdf"
     return Response(
         content=pdf_bytes,
         media_type="application/pdf",

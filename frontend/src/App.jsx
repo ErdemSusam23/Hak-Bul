@@ -173,11 +173,14 @@ function SolSidebar({
             const a = document.createElement('a');
             a.href = url;
             a.download = `hak-bul-${sohbet.title?.slice(0, 30).replace(/\s+/g, '_') || sohbet.id.slice(0, 8)}.pdf`;
+            document.body.appendChild(a);
             a.click();
-            URL.revokeObjectURL(url);
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
             setMenuAcikId(null);
         } catch (err) {
             console.error('PDF indirilemedi:', err);
+            alert('PDF indirilemedi. Lütfen tekrar deneyin.');
         }
     };
 

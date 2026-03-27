@@ -184,9 +184,9 @@ export async function saglikKontrol() {
 }
 
 // POST /feedback  →  { message_id, puan, guest_session_id }
-export async function feedbackGonder({ message_id, puan, guest_session_id }) {
+export async function feedbackGonder({ message_id, puan }) {
     if (MOCK_MODE) return { basarili: true, mesaj: 'Mock feedback' };
-    const { data } = await client.post('/feedback', { message_id, puan, guest_session_id });
+    const { data } = await client.post('/feedback', { message_id, puan });
     return data;
 }
 
@@ -200,10 +200,10 @@ export async function sohbetGecmisiListeleAPI() {
     return data;
 }
 
-export async function misafirSohbetGecmisiListeleAPI(guestSessionId) {
+export async function misafirSohbetGecmisiListeleAPI() {
     if (MOCK_MODE) return { conversations: [], total: 0 };
     const { data } = await client.get('/chat/guest/conversations', {
-        params: { guest_session_id: guestSessionId, limit: 50, offset: 0 }
+        params: { limit: 50, offset: 0 }
     });
     return data;
 }
@@ -216,10 +216,10 @@ export async function sohbetDetayGetirAPI(conversationId) {
     return data;
 }
 
-export async function misafirSohbetDetayGetirAPI(conversationId, guestSessionId) {
+export async function misafirSohbetDetayGetirAPI(conversationId) {
     if (MOCK_MODE) return { messages: [], total: 0 };
     const { data } = await client.get(`/chat/guest/history/${conversationId}`, {
-        params: { guest_session_id: guestSessionId, limit: 100, offset: 0 }
+        params: { limit: 100, offset: 0 }
     });
     return data;
 }
@@ -229,11 +229,9 @@ export async function sohbetSilAPI(conversationId) {
     await client.delete(`/chat/conversations/${conversationId}`);
 }
 
-export async function misafirSohbetSilAPI(conversationId, guestSessionId) {
+export async function misafirSohbetSilAPI(conversationId) {
     if (MOCK_MODE) return { ok: true };
-    await client.delete(`/chat/guest/conversations/${conversationId}`, {
-        params: { guest_session_id: guestSessionId },
-    });
+    await client.delete(`/chat/guest/conversations/${conversationId}`);
 }
 
 export async function sohbetPaylasAPI(conversationId) {
@@ -352,3 +350,4 @@ export async function adminZayifSorguListesiAPI(limit = 100) {
     const { data } = await client.get('/admin/weak-queries', { params: { limit } });
     return data;
 }
+

@@ -182,14 +182,20 @@ def update_profile(
     if not verify_password(body.mevcut_sifre, current_user.password_hash):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Mevcut şifre hatalı.")
 
+    should_revoke_tokens = False
+
     if body.email and body.email.lower() != current_user.email:
         existing = db.query(User).filter(User.email == body.email.lower()).first()
         if existing:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Bu e-posta zaten kullanılıyor.")
         current_user.email = body.email.lower()
+        should_revoke_tokens = True
 
     if body.yeni_sifre:
         current_user.password_hash = hash_password(body.yeni_sifre)
+        should_revoke_tokens = True
+
+    if should_revoke_tokens:
         db.query(RefreshToken).filter(
             RefreshToken.user_id == current_user.id,
             RefreshToken.revoked_at.is_(None),
@@ -224,3 +230,4 @@ def delete_account(
     current_user.is_active = False
     db.commit()
     _clear_refresh_cookie(response)
+

@@ -79,3 +79,21 @@ def test_logout_revokes_refresh_token() -> None:
 
     refresh = client.post("/auth/refresh", cookies={"refresh_token": old_refresh_token})
     assert refresh.status_code == 401
+
+
+def test_profile_email_change_revokes_refresh_tokens() -> None:
+    client.post("/auth/login", json={"email": "test@example.com", "password": "strongpass123"})
+    old_refresh_token = client.cookies["refresh_token"]
+    access_token = client.post(
+        "/auth/login", json={"email": "test@example.com", "password": "strongpass123"}
+    ).json()["access_token"]
+
+    update = client.put(
+        "/auth/profile",
+        json={"email": "test-new@example.com", "mevcut_sifre": "strongpass123"},
+        headers={"Authorization": f"Bearer {access_token}"},
+    )
+    assert update.status_code == 200
+
+    refresh = client.post("/auth/refresh", cookies={"refresh_token": old_refresh_token})
+    assert refresh.status_code == 401

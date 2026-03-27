@@ -209,7 +209,11 @@ def rename_user_conversation(db: Session, user_id: str, conversation_id: str, ne
     """Sohbetin tüm mesajlarındaki title alanını günceller."""
     updated = (
         db.query(ChatHistory)
-        .filter(ChatHistory.user_id == user_id, ChatHistory.conversation_id == conversation_id)
+        .filter(
+            ChatHistory.user_id == user_id,
+            ChatHistory.conversation_id == conversation_id,
+            ChatHistory.deleted_at.is_(None),
+        )
         .update({"title": new_title[:80]}, synchronize_session=False)
     )
     db.commit()

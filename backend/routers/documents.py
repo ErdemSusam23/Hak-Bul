@@ -1,18 +1,19 @@
 """PDF upload and document analysis endpoints."""
 
-from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, UploadFile
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, Response, UploadFile
 from fastapi.responses import JSONResponse
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 from sqlalchemy.orm import Session
 
 from auth.dependencies import get_current_user_optional
+from auth.guest_session import resolve_guest_session_for_request, set_guest_session_cookie
 from db.session import get_db
 from models.user import User
 from rag.generator import generate_document_answer, generate_document_compare_answer
 from rag.pipeline import retrieve_context
 from schemas import DokumanAnalizCevap
-from services.chat_service import resolve_conversation_id, resolve_guest_session_id, save_chat_pair
+from services.chat_service import resolve_conversation_id, save_chat_pair
 from services.document_service import document_preview, pdf_metin_cikar
 from services.language_service import (
     default_compare_question,
@@ -47,6 +48,7 @@ def _raise_generation_http_error(exc: RuntimeError) -> None:
 @limiter.limit("10/minute")
 async def dokuman_analiz_et(
     request: Request,
+    response: Response,
     dosya: UploadFile = File(...),
     soru: str | None = Form(default=None),
     language: str = Form(default="tr"),
@@ -114,7 +116,7 @@ async def dokuman_analiz_et(
             kaynaklar=kaynaklar,
         )
     else:
-        resolved_guest = resolve_guest_session_id(guest_session_id)
+        resolved_guest = resolve_guest_session_for_request(request, guest_session_id)
         message_id = save_chat_pair(
             db=db,
             conversation_id=resolved_conv,
@@ -125,7 +127,7 @@ async def dokuman_analiz_et(
             kaynaklar=kaynaklar,
         )
 
-    return DokumanAnalizCevap(
+    response_payload = DokumanAnalizCevap(
         yanit=yanit,
         belge_ozeti=ozet,
         kaynaklar=kaynaklar,
@@ -135,6 +137,9 @@ async def dokuman_analiz_et(
         message_id=message_id,
         uyari=uyari,
     )
+    if resolved_guest:
+        set_guest_session_cookie(response, resolved_guest)
+    return response_payload
 
 
 @router.post("/compare")

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ThumbsUp, ThumbsDown } from 'lucide-react';
 import { feedbackGonder } from '../api/client';
 
-export default function FeedbackButonlari({ mesajId, guestSessionId }) {
+export default function FeedbackButonlari({ mesajId }) {
     const [secim, setSecim] = useState(null); // 1, -1, veya null
     const [gonderiliyor, setGonderiliyor] = useState(false);
 
@@ -10,7 +10,7 @@ export default function FeedbackButonlari({ mesajId, guestSessionId }) {
         if (secim === puan || gonderiliyor) return;
         setGonderiliyor(true);
         try {
-            await feedbackGonder({ message_id: mesajId, puan, guest_session_id: guestSessionId });
+            await feedbackGonder({ message_id: mesajId, puan });
             setSecim(puan);
         } catch (err) {
             console.error('Feedback gönderilemedi:', err);

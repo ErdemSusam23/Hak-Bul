@@ -37,6 +37,7 @@ class Settings:
     REFRESH_TOKEN_EXPIRE_DAYS: int = int(os.environ.get("REFRESH_TOKEN_EXPIRE_DAYS", "14"))
     COOKIE_SECURE: bool = _as_bool("COOKIE_SECURE", "false")  # True when HTTPS
     COOKIE_SAMESITE: str = os.environ.get("COOKIE_SAMESITE", "lax")
+    GUEST_SESSION_EXPIRE_DAYS: int = int(os.environ.get("GUEST_SESSION_EXPIRE_DAYS", "30"))
 
 
 settings = Settings()

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import {
-    Scale, Send, Trash2, RotateCcw, Briefcase,
+    Scale, Send, RotateCcw, Briefcase,
     FileText, Clock, Heart, ArrowRight, Sun, Moon,
     LogIn, UserPlus, LogOut, Paperclip, X
 } from 'lucide-react';
@@ -225,25 +225,6 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                         </>
                     )}
 
-                    {/* Sohbet temizle */}
-                    {mesajlar.length > 0 && (
-                        <button
-                            onClick={sohbetiTemizle}
-                            title={t('sohbetiTemizle')}
-                            className="p-2 rounded-xl transition-all duration-150"
-                            style={{ color: 'var(--tema-muted)' }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.color = 'var(--tema-text)';
-                                e.currentTarget.style.background = 'var(--tema-card-hover)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = 'var(--tema-muted)';
-                                e.currentTarget.style.background = 'transparent';
-                            }}
-                        >
-                            <Trash2 size={15} />
-                        </button>
-                    )}
                 </div>
             </header>
 

@@ -44,7 +44,7 @@ function InputAlan({ label, type = 'text', value, onChange, placeholder, disable
 }
 
 export default function ProfilSayfasi({ onGeri }) {
-    const { kullanici, cikis } = useAuth();
+    const { kullanici, cikis, kullaniciGuncelle } = useAuth();
     const { t } = useDil();
     const [profil, setProfil] = useState(null);
     const [yukleniyor, setYukleniyor] = useState(true);
@@ -89,6 +89,7 @@ export default function ProfilSayfasi({ onGeri }) {
 
             const updated = await profilGuncelleAPI(payload);
             setProfil(updated);
+            kullaniciGuncelle({ email: updated.email, rol: updated.role || kullanici?.rol });
             setMevcutSifre('');
             setYeniSifre('');
             setYeniSifreTekrar('');

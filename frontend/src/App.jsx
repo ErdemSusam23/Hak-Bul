@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { MessageSquare, Clock, Plus, ChevronRight, FileText, BarChart2, Trash2, Pencil, Check, X, User, Download, Share2, GitCompare } from 'lucide-react';
+import { MessageSquare, Clock, Plus, ChevronRight, FileText, BarChart2, Trash2, Pencil, Check, X, User, Download, Share2, GitCompare, MoreHorizontal } from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
 import AsistanBot from './components/AsistanBot';
 import SohbetSayfasi from './pages/SohbetSayfasi';
@@ -17,6 +17,7 @@ import {
     misafirSohbetGecmisiListeleAPI,
     misafirSohbetDetayGetirAPI,
     sohbetSilAPI,
+    misafirSohbetSilAPI,
     sohbetYenidenAdlandirAPI,
     sohbetPDFIndirAPI,
     sohbetPaylasAPI,
@@ -45,17 +46,25 @@ function tarihKisa(isoStr) {
     return tarih.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
 }
 
-function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfilAc, onKarsilastirAc, aktifSayfa }) {
+function SolSidebar({
+    onSohbetSec,
+    onYeniSohbet,
+    onTaslakAc,
+    onAdminAc,
+    onProfilAc,
+    onKarsilastirAc,
+    aktifSayfa,
+    onSohbetSilindi,
+}) {
     const { kullanici } = useAuth();
     const { t, dil, dilDegistir } = useDil();
     const [sohbetler, setSohbetler] = useState([]);
-    const [yukleniyor, setYukleniyor] = useState(false);
     const [duzenleId, setDuzenleId] = useState(null);
     const [duzenleMetin, setDuzenleMetin] = useState('');
+    const [menuAcikId, setMenuAcikId] = useState(null);
     const duzenleInputRef = useRef(null);
 
     const gecmisiCek = useCallback(async () => {
-        setYukleniyor(true);
         try {
             if (kullanici?.token) {
                 // Giriş yapmış kullanıcı geçmişi
@@ -84,8 +93,6 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfil
             }
         } catch (e) {
             console.error('Geçmiş çekilemedi:', e);
-        } finally {
-            setYukleniyor(false);
         }
     }, [kullanici]);
 
@@ -98,6 +105,13 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfil
         window.addEventListener('gecmis-guncellendi', handler);
         return () => window.removeEventListener('gecmis-guncellendi', handler);
     }, [gecmisiCek]);
+
+    useEffect(() => {
+        if (!menuAcikId) return;
+        const closeMenu = () => setMenuAcikId(null);
+        window.addEventListener('click', closeMenu);
+        return () => window.removeEventListener('click', closeMenu);
+    }, [menuAcikId]);
 
     const handleSohbetTikla = async (sohbet) => {
         if (duzenleId === sohbet.id) return;
@@ -125,12 +139,21 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfil
         }
     };
 
-    const handleSil = async (e, sohbetId) => {
+    const handleSil = async (e, sohbet) => {
         e.stopPropagation();
+        const sohbetId = sohbet.id;
         if (!confirm(t('silOnay'))) return;
         try {
-            await sohbetSilAPI(sohbetId);
+            if (sohbet.misafir) {
+                const guestId = localStorage.getItem('hakbul_guest_session_id');
+                if (!guestId) return;
+                await misafirSohbetSilAPI(sohbetId, guestId);
+            } else {
+                await sohbetSilAPI(sohbetId);
+            }
             setSohbetler(prev => prev.filter(s => s.id !== sohbetId));
+            setMenuAcikId(null);
+            onSohbetSilindi?.(sohbetId);
             window.dispatchEvent(new Event('gecmis-guncellendi'));
         } catch (err) {
             console.error('Sohbet silinemedi:', err);
@@ -144,6 +167,7 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfil
             const url = `${window.location.origin}/#/shared/${share_token}`;
             await navigator.clipboard.writeText(url);
             alert(t('paylasimKopyalandi'));
+            setMenuAcikId(null);
         } catch (err) {
             console.error('Paylaşım oluşturulamadı:', err);
         }
@@ -159,6 +183,7 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfil
             a.download = `hak-bul-${sohbet.title?.slice(0, 30).replace(/\s+/g, '_') || sohbet.id.slice(0, 8)}.pdf`;
             a.click();
             URL.revokeObjectURL(url);
+            setMenuAcikId(null);
         } catch (err) {
             console.error('PDF indirilemedi:', err);
         }
@@ -168,6 +193,7 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfil
         e.stopPropagation();
         setDuzenleId(sohbet.id);
         setDuzenleMetin(sohbet.title || '');
+        setMenuAcikId(null);
         setTimeout(() => duzenleInputRef.current?.focus(), 50);
     };
 
@@ -287,32 +313,59 @@ function SolSidebar({ onSohbetSec, onYeniSohbet, onTaslakAc, onAdminAc, onProfil
                                 </p>
                             </div>
                             {/* Düzenle / Sil butonları — sadece giriş yapmış kullanıcıda */}
-                            {kullanici && !sohbet.misafir && duzenleId !== sohbet.id && (
-                                <div className="flex-shrink-0 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                            {duzenleId !== sohbet.id && (
+                                <div className="relative flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <button
-                                        onClick={(e) => handlePaylas(e, sohbet)}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setMenuAcikId((onceki) => (onceki === sohbet.id ? null : sohbet.id));
+                                        }}
                                         className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-                                        title={t('paylas')}
+                                        title="Aksiyonlar"
                                         style={{ color: 'var(--tema-muted)' }}
-                                    ><Share2 size={11} /></button>
-                                    <button
-                                        onClick={(e) => handleIndir(e, sohbet)}
-                                        className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-                                        title={t('pdfIndir')}
-                                        style={{ color: 'var(--tema-muted)' }}
-                                    ><Download size={11} /></button>
-                                    <button
-                                        onClick={(e) => handleDuzenleBaslat(e, sohbet)}
-                                        className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-                                        title={t('yenidenAdlandir')}
-                                        style={{ color: 'var(--tema-muted)' }}
-                                    ><Pencil size={11} /></button>
-                                    <button
-                                        onClick={(e) => handleSil(e, sohbet.id)}
-                                        className="p-1 rounded hover:text-red-400 transition-colors"
-                                        title={t('sil')}
-                                        style={{ color: 'var(--tema-muted)' }}
-                                    ><Trash2 size={11} /></button>
+                                    >
+                                        <MoreHorizontal size={12} />
+                                    </button>
+                                    {menuAcikId === sohbet.id && (
+                                        <div
+                                            className="absolute right-0 top-7 z-20 w-44 rounded-lg py-1 shadow-lg"
+                                            style={{ background: 'var(--tema-panel)', border: '1px solid var(--tema-border)' }}
+                                            onClick={(e) => e.stopPropagation()}
+                                        >
+                                            {!sohbet.misafir && (
+                                                <>
+                                                    <button
+                                                        onClick={(e) => handlePaylas(e, sohbet)}
+                                                        className="w-full px-3 py-1.5 text-left text-xs hover:bg-black/10 dark:hover:bg-white/10"
+                                                        style={{ color: 'var(--tema-text2)' }}
+                                                    >
+                                                        {t('paylas')}
+                                                    </button>
+                                                    <button
+                                                        onClick={(e) => handleIndir(e, sohbet)}
+                                                        className="w-full px-3 py-1.5 text-left text-xs hover:bg-black/10 dark:hover:bg-white/10"
+                                                        style={{ color: 'var(--tema-text2)' }}
+                                                    >
+                                                        {t('pdfIndir')}
+                                                    </button>
+                                                    <button
+                                                        onClick={(e) => handleDuzenleBaslat(e, sohbet)}
+                                                        className="w-full px-3 py-1.5 text-left text-xs hover:bg-black/10 dark:hover:bg-white/10"
+                                                        style={{ color: 'var(--tema-text2)' }}
+                                                    >
+                                                        {t('yenidenAdlandir')}
+                                                    </button>
+                                                </>
+                                            )}
+                                            <button
+                                                onClick={(e) => handleSil(e, sohbet)}
+                                                className="w-full px-3 py-1.5 text-left text-xs hover:bg-red-500/10"
+                                                style={{ color: 'var(--tema-text2)' }}
+                                            >
+                                                {t('sil')}
+                                            </button>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>
@@ -399,12 +452,29 @@ function AppIcerik() {
 
     const handleYeniSohbet = useCallback(() => {
         setAktifSayfa('sohbet');
+        setSecilenSohbet(null);
         setTemizleSinyali((v) => v + 1);
     }, []);
 
     const handleSohbetSec = useCallback((sohbet) => {
         setAktifSayfa('sohbet');
         setSecilenSohbet(sohbet);
+    }, []);
+
+    const handleSohbetSilindi = useCallback((silinenId) => {
+        if (secilenSohbet?.id !== silinenId) return;
+        setSecilenSohbet(null);
+        setTemizleSinyali((v) => v + 1);
+    }, [secilenSohbet]);
+
+    useEffect(() => {
+        const handleAuthCikis = () => {
+            setAktifSayfa('sohbet');
+            setSecilenSohbet(null);
+            setTemizleSinyali((v) => v + 1);
+        };
+        window.addEventListener('auth-cikis', handleAuthCikis);
+        return () => window.removeEventListener('auth-cikis', handleAuthCikis);
     }, []);
 
     return (
@@ -439,6 +509,7 @@ function AppIcerik() {
                         onProfilAc={() => setAktifSayfa('profil')}
                         onKarsilastirAc={() => setAktifSayfa('karsilastir')}
                         aktifSayfa={aktifSayfa}
+                        onSohbetSilindi={handleSohbetSilindi}
                     />
 
                     {/* Ana alan */}

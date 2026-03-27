@@ -229,6 +229,13 @@ export async function sohbetSilAPI(conversationId) {
     await client.delete(`/chat/conversations/${conversationId}`);
 }
 
+export async function misafirSohbetSilAPI(conversationId, guestSessionId) {
+    if (MOCK_MODE) return { ok: true };
+    await client.delete(`/chat/guest/conversations/${conversationId}`, {
+        params: { guest_session_id: guestSessionId },
+    });
+}
+
 export async function sohbetPaylasAPI(conversationId) {
     if (MOCK_MODE) return { share_token: 'mock-token-123' };
     const { data } = await client.post(`/chat/conversations/${conversationId}/share`);

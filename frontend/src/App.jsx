@@ -442,6 +442,7 @@ function SolSidebar({
 function AppIcerik() {
     const [kabul, setKabul] = useState(false);
     const [secilenSohbet, setSecilenSohbet] = useState(null);
+    const [aktifSohbetId, setAktifSohbetId] = useState(null);
     const [temizleSinyali, setTemizleSinyali] = useState(0);
     const [aktifSayfa, setAktifSayfa] = useState('sohbet'); // 'sohbet' | 'taslak' | 'admin' | 'profil'
     const { tema } = useTema();
@@ -453,24 +454,28 @@ function AppIcerik() {
     const handleYeniSohbet = useCallback(() => {
         setAktifSayfa('sohbet');
         setSecilenSohbet(null);
+        setAktifSohbetId(null);
         setTemizleSinyali((v) => v + 1);
     }, []);
 
     const handleSohbetSec = useCallback((sohbet) => {
         setAktifSayfa('sohbet');
         setSecilenSohbet(sohbet);
+        setAktifSohbetId(sohbet?.id || null);
     }, []);
 
     const handleSohbetSilindi = useCallback((silinenId) => {
-        if (secilenSohbet?.id !== silinenId) return;
+        if (aktifSohbetId !== silinenId) return;
         setSecilenSohbet(null);
+        setAktifSohbetId(null);
         setTemizleSinyali((v) => v + 1);
-    }, [secilenSohbet]);
+    }, [aktifSohbetId]);
 
     useEffect(() => {
         const handleAuthCikis = () => {
             setAktifSayfa('sohbet');
             setSecilenSohbet(null);
+            setAktifSohbetId(null);
             setTemizleSinyali((v) => v + 1);
         };
         window.addEventListener('auth-cikis', handleAuthCikis);

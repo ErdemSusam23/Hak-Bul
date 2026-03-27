@@ -5,7 +5,18 @@ import { hesapSilAPI, profilGetirAPI, profilGuncelleAPI } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import { useDil } from '../context/DilContext';
 
-function InputAlan({ label, type = 'text', value, onChange, placeholder, disabled, showToggle, onToggle }) {
+function InputAlan({
+    label,
+    type = 'text',
+    value,
+    onChange,
+    placeholder,
+    disabled,
+    showToggle,
+    onToggle,
+    name,
+    autoComplete,
+}) {
     return (
         <div>
             <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--tema-muted)' }}>
@@ -14,6 +25,8 @@ function InputAlan({ label, type = 'text', value, onChange, placeholder, disable
             <div className="relative">
                 <input
                     type={type}
+                    name={name}
+                    autoComplete={autoComplete}
                     value={value}
                     onChange={onChange}
                     placeholder={placeholder}
@@ -185,10 +198,31 @@ export default function ProfilSayfasi({ onGeri }) {
                                     {t('profileInfo')}
                                 </h2>
 
-                                <form onSubmit={handleKaydet} className="space-y-3">
+                                <form onSubmit={handleKaydet} autoComplete="off" className="space-y-3">
+                                    {/* Autofill tuzak alanlari: sifre yoneticilerinin profile formuna istemsiz sifre basmasini azaltir */}
+                                    <input
+                                        type="text"
+                                        name="fake_username"
+                                        autoComplete="username"
+                                        tabIndex={-1}
+                                        className="hidden"
+                                        value=""
+                                        onChange={() => {}}
+                                    />
+                                    <input
+                                        type="password"
+                                        name="fake_password"
+                                        autoComplete="current-password"
+                                        tabIndex={-1}
+                                        className="hidden"
+                                        value=""
+                                        onChange={() => {}}
+                                    />
                                     <InputAlan
                                         label={t('emailAddress')}
                                         type="email"
+                                        name="profile_email"
+                                        autoComplete="email"
                                         value={yeniEmail}
                                         onChange={(e) => setYeniEmail(e.target.value)}
                                         placeholder="ornek@email.com"
@@ -204,6 +238,8 @@ export default function ProfilSayfasi({ onGeri }) {
                                             <InputAlan
                                                 label={t('newPassword')}
                                                 type={showSifre ? 'text' : 'password'}
+                                                name="new_password"
+                                                autoComplete="new-password"
                                                 value={yeniSifre}
                                                 onChange={(e) => setYeniSifre(e.target.value)}
                                                 placeholder="En az 8 karakter"
@@ -214,6 +250,8 @@ export default function ProfilSayfasi({ onGeri }) {
                                             <InputAlan
                                                 label={t('newPasswordRepeat')}
                                                 type={showSifre ? 'text' : 'password'}
+                                                name="new_password_repeat"
+                                                autoComplete="new-password"
                                                 value={yeniSifreTekrar}
                                                 onChange={(e) => setYeniSifreTekrar(e.target.value)}
                                                 placeholder={t('newPasswordRepeat')}
@@ -226,6 +264,8 @@ export default function ProfilSayfasi({ onGeri }) {
                                         <InputAlan
                                             label={t('currentPasswordRequired')}
                                             type="password"
+                                            name="current_password"
+                                            autoComplete="current-password"
                                             value={mevcutSifre}
                                             onChange={(e) => setMevcutSifre(e.target.value)}
                                             placeholder={t('currentPasswordRequired')}
@@ -272,6 +312,8 @@ export default function ProfilSayfasi({ onGeri }) {
                                         <InputAlan
                                             label={t('confirmPassword')}
                                             type="password"
+                                            name="delete_confirm_password"
+                                            autoComplete="current-password"
                                             value={silSifre}
                                             onChange={(e) => setSilSifre(e.target.value)}
                                             placeholder={t('confirmPassword')}

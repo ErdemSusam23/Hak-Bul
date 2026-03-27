@@ -37,9 +37,9 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 | GET | `/chat/guest/conversations` | — | Misafir sohbet listesi |
 | GET | `/chat/guest/history/{id}` | — | Misafir mesajları |
 | POST | `/feedback` | Opsiyonel | 👍/👎 gönder (`puan`: 1 veya -1) |
-| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et |
-| POST | `/documents/compare` | Opsiyonel | İki PDF karşılaştır (rate: 5/min) |
-| GET | `/templates` | — | Taslak listesi |
+| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et (form: `dosya`, `soru`, `language`) |
+| POST | `/documents/compare` | Opsiyonel | İki PDF karşılaştır (form: `dosya1`, `dosya2`, `soru`, `language`; rate: 5/min) |
+| GET | `/templates` | — | Taslak listesi (`?language=tr\|en`) |
 | POST | `/templates/{id}/generate` | — | PDF taslağı indir |
 | GET | `/admin/stats` | ADMIN | Genel istatistikler |
 | GET | `/admin/stats/categories` | ADMIN | Kategori dağılımı |

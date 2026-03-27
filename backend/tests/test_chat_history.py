@@ -61,13 +61,28 @@ def test_guest_ask_persists_and_lists_history() -> None:
 
     history_response = client.get(
         f"/chat/guest/history/{payload['conversation_id']}",
-        params={"guest_session_id": payload["guest_session_id"]},
     )
     assert history_response.status_code == 200
     history = history_response.json()
     assert history["total"] == 2
     assert history["messages"][0]["role"] == "user"
     assert history["messages"][1]["role"] == "assistant"
+
+
+def test_guest_history_requires_cookie() -> None:
+    ask_response = client.post(
+        "/ask",
+        json={
+            "soru": "Misafir sohbetine cookie olmadan ulasilmamali, bu bir test sorusudur.",
+            "max_kaynak": 3,
+        },
+    )
+    assert ask_response.status_code == 200
+    conversation_id = ask_response.json()["conversation_id"]
+
+    fresh_client = TestClient(app)
+    unauthorized = fresh_client.get(f"/chat/guest/history/{conversation_id}")
+    assert unauthorized.status_code == 401
 
 
 def test_user_ask_persists_and_lists_history() -> None:

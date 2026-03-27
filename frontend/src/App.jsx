@@ -77,19 +77,14 @@ function SolSidebar({
                 setSohbetler(formatli);
             } else {
                 // Misafir kullanıcı geçmişi
-                const guestId = localStorage.getItem('hakbul_guest_session_id');
-                if (guestId) {
-                    const data = await misafirSohbetGecmisiListeleAPI(guestId);
-                    const formatli = (data.conversations || []).map(c => ({
-                        id: c.conversation_id,
-                        title: c.title || `Sohbet (${c.message_count} mesaj)`,
-                        tarih: c.last_message_at,
-                        misafir: true,
-                    }));
-                    setSohbetler(formatli);
-                } else {
-                    setSohbetler([]);
-                }
+                const data = await misafirSohbetGecmisiListeleAPI();
+                const formatli = (data.conversations || []).map(c => ({
+                    id: c.conversation_id,
+                    title: c.title || `Sohbet (${c.message_count} mesaj)`,
+                    tarih: c.last_message_at,
+                    misafir: true,
+                }));
+                setSohbetler(formatli);
             }
         } catch (e) {
             console.error('Geçmiş çekilemedi:', e);
@@ -118,8 +113,7 @@ function SolSidebar({
         try {
             let detay;
             if (sohbet.misafir) {
-                const guestId = localStorage.getItem('hakbul_guest_session_id');
-                detay = await misafirSohbetDetayGetirAPI(sohbet.id, guestId);
+                detay = await misafirSohbetDetayGetirAPI(sohbet.id);
             } else {
                 detay = await sohbetDetayGetirAPI(sohbet.id);
             }
@@ -145,9 +139,7 @@ function SolSidebar({
         if (!confirm(t('silOnay'))) return;
         try {
             if (sohbet.misafir) {
-                const guestId = localStorage.getItem('hakbul_guest_session_id');
-                if (!guestId) return;
-                await misafirSohbetSilAPI(sohbetId, guestId);
+                await misafirSohbetSilAPI(sohbetId);
             } else {
                 await sohbetSilAPI(sohbetId);
             }

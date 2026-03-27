@@ -6,7 +6,9 @@ from fastapi.responses import Response
 from sqlalchemy.orm import Session
 
 from auth.dependencies import get_current_user
+from auth.guest_session import require_guest_session_id
 from db.session import get_db
+from models.chat_history import ChatHistory
 from models.shared_conversation import SharedConversation
 from models.user import User
 from schemas import ChatHistoryResponse, ChatMessageItem, ConversationListResponse, ConversationSummary
@@ -83,7 +85,7 @@ def get_user_conversations(
 @router.get("/guest/history/{conversation_id}", response_model=ChatHistoryResponse)
 def get_guest_chat_history(
     conversation_id: str,
-    guest_session_id: str = Query(..., min_length=36, max_length=36),
+    guest_session_id: str = Depends(require_guest_session_id),
     limit: int = Query(default=50, ge=1, le=100),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
@@ -207,10 +209,10 @@ def share_conversation(
 ):
     """Konuşma için paylaşım bağlantısı oluşturur."""
     # Sohbetin gerçekten bu kullanıcıya ait olduğunu doğrula
-    from models.chat_history import ChatHistory
     exists = db.query(ChatHistory.id).filter(
         ChatHistory.user_id == current_user.id,
         ChatHistory.conversation_id == conversation_id,
+        ChatHistory.deleted_at.is_(None),
     ).first()
     if not exists:
         raise HTTPException(status_code=404, detail="Konuşma bulunamadı.")
@@ -254,10 +256,13 @@ def get_shared_conversation(share_token: str, db: Session = Depends(get_db)):
     if not shared:
         raise HTTPException(status_code=404, detail="Paylaşım bağlantısı bulunamadı veya devre dışı.")
 
-    from models.chat_history import ChatHistory
     messages = (
         db.query(ChatHistory)
-        .filter(ChatHistory.conversation_id == shared.conversation_id)
+        .filter(
+            ChatHistory.conversation_id == shared.conversation_id,
+            ChatHistory.user_id == shared.user_id,
+            ChatHistory.deleted_at.is_(None),
+        )
         .order_by(ChatHistory.created_at.asc())
         .all()
     )
@@ -291,7 +296,7 @@ def delete_conversation(
 @router.delete("/guest/conversations/{conversation_id}", status_code=204)
 def delete_guest_conversation_route(
     conversation_id: str,
-    guest_session_id: str = Query(..., min_length=36, max_length=36),
+    guest_session_id: str = Depends(require_guest_session_id),
     db: Session = Depends(get_db),
 ):
     found = delete_guest_conversation(
@@ -318,7 +323,7 @@ def rename_conversation(
 
 @router.get("/guest/conversations", response_model=ConversationListResponse)
 def get_guest_conversations(
-    guest_session_id: str = Query(..., min_length=36, max_length=36),
+    guest_session_id: str = Depends(require_guest_session_id),
     limit: int = Query(default=50, ge=1, le=100),
     offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),

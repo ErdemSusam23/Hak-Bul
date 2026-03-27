@@ -4,10 +4,11 @@ main.py - Hak-Bul backend entrypoint
 
 import os
 import warnings
+import logging
 
 import json
 
-from fastapi import Depends, FastAPI, HTTPException, Query, Request
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 from slowapi import Limiter
@@ -17,6 +18,7 @@ from slowapi.util import get_remote_address
 from sqlalchemy.orm import Session
 
 from auth.dependencies import get_current_user_optional
+from auth.guest_session import resolve_guest_session_for_request, set_guest_session_cookie
 from config import settings
 from routers.auth import router as auth_router
 from routers.chat import router as chat_router
@@ -28,13 +30,14 @@ from db.session import get_db
 from models.user import User
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
 from services.admin_service import zayif_sorgu_kaydet
-from services.chat_service import resolve_conversation_id, resolve_guest_session_id, save_chat_pair
+from services.chat_service import resolve_conversation_id, save_chat_pair
 from services.language_service import informational_warning
 
 warnings.filterwarnings("ignore")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 limiter = Limiter(key_func=get_remote_address)
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="Hak-Bul API",
@@ -97,6 +100,7 @@ def get_qdrant():
 @limiter.limit("20/minute")
 async def ask(
     request: Request,
+    response: Response,
     body: AskRequest,
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user_optional),
@@ -130,7 +134,8 @@ async def ask(
                 kaynaklar=kaynaklar,
             )
         else:
-            guest_session_id = resolve_guest_session_id(body.guest_session_id)
+            guest_session_id = resolve_guest_session_for_request(request, body.guest_session_id)
+            set_guest_session_cookie(response, guest_session_id)
             message_id = save_chat_pair(
                 db=db,
                 conversation_id=conversation_id,
@@ -157,13 +162,15 @@ async def ask(
                 status_code=503,
                 detail={
                     "error": "upstream_unavailable",
-                    "detail": detail,
+                    "detail": "Yapay zeka servisine şu an erişilemiyor.",
                     "retry_after": 30,
                 },
             ) from exc
-        raise HTTPException(status_code=500, detail=detail) from exc
+        logger.exception("Unhandled RuntimeError in /ask")
+        raise HTTPException(status_code=500, detail="Sunucu hatası oluştu.") from exc
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        logger.exception("Unhandled exception in /ask")
+        raise HTTPException(status_code=500, detail="Sunucu hatası oluştu.") from exc
 
 
 @app.post("/ask/stream")
@@ -188,10 +195,11 @@ async def ask_stream(
 
         guest_session_id: str | None = None
         if not current_user:
-            guest_session_id = resolve_guest_session_id(body.guest_session_id)
+            guest_session_id = resolve_guest_session_for_request(request, body.guest_session_id)
 
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        logger.exception("Unhandled exception preparing /ask/stream")
+        raise HTTPException(status_code=500, detail="Sunucu hatası oluştu.") from exc
 
     async def event_stream():
         # İlk SSE mesajı: meta (kaynaklar, kategori, conversation_id)
@@ -250,7 +258,7 @@ async def ask_stream(
         }
         yield f"data: {json.dumps(done_payload, ensure_ascii=False)}\n\n"
 
-    return StreamingResponse(
+    stream_response = StreamingResponse(
         event_stream(),
         media_type="text/event-stream",
         headers={
@@ -258,6 +266,9 @@ async def ask_stream(
             "X-Accel-Buffering": "no",
         },
     )
+    if not current_user and guest_session_id:
+        set_guest_session_cookie(stream_response, guest_session_id)
+    return stream_response
 
 
 @app.get("/search", response_model=SearchResponse)
@@ -303,7 +314,8 @@ async def search(
 
         return SearchResponse(sonuclar=sonuclar, toplam=len(sonuclar))
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
+        logger.exception("Unhandled exception in /search")
+        raise HTTPException(status_code=500, detail="Sunucu hatası oluştu.") from exc
 
 
 

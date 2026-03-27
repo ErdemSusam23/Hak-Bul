@@ -37,9 +37,9 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 | GET | `/chat/guest/conversations` | — | Misafir sohbet listesi |
 | GET | `/chat/guest/history/{id}` | — | Misafir mesajları |
 | POST | `/feedback` | Opsiyonel | 👍/👎 gönder (`puan`: 1 veya -1) |
-| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et |
-| POST | `/documents/compare` | Opsiyonel | İki PDF karşılaştır (rate: 5/min) |
-| GET | `/templates` | — | Taslak listesi |
+| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et (form: `dosya`, `soru`, `language`) |
+| POST | `/documents/compare` | Opsiyonel | İki PDF karşılaştır (form: `dosya1`, `dosya2`, `soru`, `language`; rate: 5/min) |
+| GET | `/templates` | — | Taslak listesi (`?language=tr\|en`) |
 | POST | `/templates/{id}/generate` | — | PDF taslağı indir |
 | GET | `/admin/stats` | ADMIN | Genel istatistikler |
 | GET | `/admin/stats/categories` | ADMIN | Kategori dağılımı |
@@ -88,6 +88,7 @@ Ana endpoint. Kullanıcının hukuki sorusunu alır, RAG pipeline'ı çalıştı
 {
   "soru": "string",           // Zorunlu. Min 10, max 1000 karakter.
   "max_kaynak": 5,            // Opsiyonel. Default: 5, max: 10
+  "language": "tr",           // Opsiyonel. "tr" | "en" (default: "tr")
   "conversation_id": "uuid",  // Opsiyonel. Mevcut sohbete devam için.
   "guest_session_id": "uuid"  // Opsiyonel. Misafir oturumu için.
 }
@@ -103,6 +104,7 @@ Ana endpoint. Kullanıcının hukuki sorusunu alır, RAG pipeline'ı çalıştı
       "kaynak_turu": "kanun",
       "baslik": "4857 Sayılı İş Kanunu — Madde 17",
       "metin_ozet": "string",
+      "metin": "string|null",
       "skor": 0.87,
       "url": "https://www.mevzuat.gov.tr/..."
     }
@@ -220,6 +222,7 @@ Render.com cron job ve deployment check için. Qdrant ve Groq API erişimini kon
 class AskRequest(BaseModel):
     soru: str = Field(..., min_length=10, max_length=1000)
     max_kaynak: int = Field(default=5, ge=1, le=10)
+    language: str = Field(default="tr", pattern="^(tr|en)$")
     conversation_id: str | None = Field(default=None, min_length=36, max_length=36)
     guest_session_id: str | None = Field(default=None, min_length=36, max_length=36)
 
@@ -227,6 +230,7 @@ class KaynakItem(BaseModel):
     kaynak_turu: str
     baslik: str
     metin_ozet: str
+    metin: str | None = None
     skor: float
     url: str | None = None
 
@@ -238,6 +242,20 @@ class AskResponse(BaseModel):
     kategori: str = "Genel Hukuk"
     message_id: str | None = None
     uyari: str = "..."
+
+class DokumanAnalizCevap(BaseModel):
+    yanit: str
+    belge_ozeti: str
+    kaynaklar: list
+    kategori: str = "Genel Hukuk"
+    conversation_id: str | None = None
+    guest_session_id: str | None = None
+    message_id: str | None = None
+    uyari: str = "..."
+
+class TaslakOlusturRequest(BaseModel):
+    alanlar: dict[str, str]
+    language: str = Field(default="tr", pattern="^(tr|en)$")
 
 class FeedbackGonder(BaseModel):
     message_id: str = Field(..., min_length=36, max_length=36)

@@ -69,10 +69,13 @@ def admin_gunluk_aktivite(
 def admin_kullanici_listesi(
     limit: int = Query(default=50, ge=1, le=200),
     offset: int = Query(default=0, ge=0),
+    q: str | None = Query(default=None, max_length=255),
+    rol: UserRole | None = Query(default=None),
+    aktif: bool | None = Query(default=None),
     db: Session = Depends(get_db),
     _: User = Depends(_admin_required),
 ):
-    users, total = kullanici_listesi(db=db, limit=limit, offset=offset)
+    users, total = kullanici_listesi(db=db, limit=limit, offset=offset, q=q, rol=rol, aktif=aktif)
     return AdminKullaniciListeCevap(
         kullanicilar=[
             AdminKullaniciItem(

@@ -327,9 +327,19 @@ export async function adminGunlukAktiviteAPI(gun = 7) {
     return data;
 }
 
-export async function adminKullaniciListesiAPI(limit = 50, offset = 0) {
+export async function adminKullaniciListesiAPI({
+    limit = 50,
+    offset = 0,
+    q = null,
+    rol = null,
+    aktif = null,
+} = {}) {
     if (MOCK_MODE) return { kullanicilar: [], total: 0 };
-    const { data } = await client.get('/admin/users', { params: { limit, offset } });
+    const params = { limit, offset };
+    if (q && q.trim()) params.q = q.trim();
+    if (rol) params.rol = rol;
+    if (typeof aktif === 'boolean') params.aktif = aktif;
+    const { data } = await client.get('/admin/users', { params });
     return data;
 }
 

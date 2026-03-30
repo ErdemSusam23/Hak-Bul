@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { BarChart2, Users, MessageSquare, ThumbsUp, TrendingUp, RotateCcw, ShieldCheck, ShieldOff, UserCheck, AlertTriangle } from 'lucide-react';
+import { createElement, useState, useEffect } from 'react';
+import { BarChart2, Users, MessageSquare, ThumbsUp, TrendingUp, RotateCcw, ShieldOff, UserCheck, AlertTriangle } from 'lucide-react';
 import {
     adminIstatistikAPI,
     adminKategoriDagilimiAPI,
@@ -10,8 +10,9 @@ import {
     adminKullaniciDurumAPI,
     adminZayifSorguListesiAPI,
 } from '../api/client';
+import { useAuth } from '../context/AuthContext';
 
-function StatKarti({ ikon: Ikon, baslik, deger, renk }) {
+function StatKarti({ ikon, baslik, deger, renk }) {
     return (
         <div
             className="rounded-xl p-5 border flex items-center gap-4"
@@ -21,7 +22,7 @@ function StatKarti({ ikon: Ikon, baslik, deger, renk }) {
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: `${renk}20`, border: `1px solid ${renk}40` }}
             >
-                <Ikon size={22} style={{ color: renk }} />
+                {createElement(ikon, { size: 22, style: { color: renk } })}
             </div>
             <div>
                 <p className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>{baslik}</p>
@@ -34,38 +35,126 @@ function StatKarti({ ikon: Ikon, baslik, deger, renk }) {
 }
 
 function KullaniciYonetimi() {
+    const { kullanici } = useAuth();
     const [kullanicilar, setKullanicilar] = useState([]);
+    const [toplam, setToplam] = useState(0);
     const [yukleniyor, setYukleniyor] = useState(true);
+    const [hata, setHata] = useState('');
+    const [sayfa, setSayfa] = useState(1);
+    const [aramaInput, setAramaInput] = useState('');
+    const [arama, setArama] = useState('');
+    const [rolFiltre, setRolFiltre] = useState('tum');
+    const [durumFiltre, setDurumFiltre] = useState('tum');
+    const [rolTaslaklari, setRolTaslaklari] = useState({});
+    const [rolKaydedilenId, setRolKaydedilenId] = useState(null);
+    const sayfaBoyutu = 20;
 
     useEffect(() => {
-        adminKullaniciListesiAPI()
-            .then(data => setKullanicilar(data.kullanicilar || []))
-            .catch(() => {})
-            .finally(() => setYukleniyor(false));
-    }, []);
+        const timer = setTimeout(() => {
+            setSayfa(1);
+            setArama(aramaInput.trim());
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [aramaInput]);
 
-    const handleRolDegistir = async (userId, mevcutRol) => {
-        const yeniRol = mevcutRol === 'admin' ? 'user' : 'admin';
-        if (!confirm(`${yeniRol === 'admin' ? 'Admin' : 'Kullanıcı'} rolüne geçirilsin mi?`)) return;
+    useEffect(() => {
+        let aktif = true;
+        const yukle = async () => {
+            setYukleniyor(true);
+            setHata('');
+            try {
+                const data = await adminKullaniciListesiAPI({
+                    limit: sayfaBoyutu,
+                    offset: (sayfa - 1) * sayfaBoyutu,
+                    q: arama || null,
+                    rol: rolFiltre === 'tum' ? null : rolFiltre,
+                    aktif: durumFiltre === 'tum' ? null : durumFiltre === 'aktif',
+                });
+                if (!aktif) return;
+                const liste = data.kullanicilar || [];
+                setKullanicilar(liste);
+                setToplam(data.total || 0);
+                setRolTaslaklari((prev) => {
+                    const next = {};
+                    liste.forEach((u) => {
+                        next[u.id] = prev[u.id] || u.role;
+                    });
+                    return next;
+                });
+            } catch (err) {
+                if (!aktif) return;
+                setHata(err?.response?.data?.detail || 'Kullanıcı listesi yüklenemedi.');
+            } finally {
+                if (aktif) setYukleniyor(false);
+            }
+        };
+        yukle();
+        return () => {
+            aktif = false;
+        };
+    }, [sayfa, arama, rolFiltre, durumFiltre]);
+
+    const toplamSayfa = Math.max(1, Math.ceil(toplam / sayfaBoyutu));
+
+    useEffect(() => {
+        if (sayfa > toplamSayfa) {
+            setSayfa(toplamSayfa);
+        }
+    }, [sayfa, toplamSayfa]);
+
+    const handleRolKaydet = async (u) => {
+        const hedefRol = rolTaslaklari[u.id] || u.role;
+        const kendiHesabi = kullanici?.email === u.email;
+        if (kendiHesabi) {
+            alert('Kendi rolünüzü değiştiremezsiniz.');
+            return;
+        }
+        if (hedefRol === u.role) return;
+        if (!confirm(`"${u.email}" kullanıcısının rolü "${hedefRol}" olarak güncellensin mi?`)) return;
+        setRolKaydedilenId(u.id);
         try {
-            const updated = await adminRolGuncelleAPI(userId, yeniRol);
-            setKullanicilar(prev => prev.map(u => u.id === userId ? { ...u, role: updated.role } : u));
+            const updated = await adminRolGuncelleAPI(u.id, hedefRol);
+            setKullanicilar((prev) => prev.map((row) => (row.id === u.id ? { ...row, role: updated.role } : row)));
+            setRolTaslaklari((prev) => ({ ...prev, [u.id]: updated.role }));
         } catch (err) {
             alert('Rol güncellenemedi: ' + (err?.response?.data?.detail || err.message));
+        } finally {
+            setRolKaydedilenId(null);
         }
     };
 
-    const handleDurumDegistir = async (userId, aktif) => {
-        if (!confirm(aktif ? 'Hesap aktif edilsin mi?' : 'Hesap askıya alınsın mı?')) return;
+    const handleDurumDegistir = async (u, aktifMi) => {
+        if (kullanici?.email === u.email) {
+            alert('Kendi hesabınızı askıya alamazsınız.');
+            return;
+        }
+        if (!confirm(aktifMi ? 'Hesap aktif edilsin mi?' : 'Hesap askıya alınsın mı?')) return;
         try {
-            const updated = await adminKullaniciDurumAPI(userId, aktif);
-            setKullanicilar(prev => prev.map(u => u.id === userId ? { ...u, is_active: updated.is_active } : u));
+            const updated = await adminKullaniciDurumAPI(u.id, aktifMi);
+            setKullanicilar((prev) => prev.map((row) => (row.id === u.id ? { ...row, is_active: updated.is_active } : row)));
         } catch (err) {
             alert('Durum güncellenemedi: ' + (err?.response?.data?.detail || err.message));
         }
     };
 
+    const filtreleriTemizle = () => {
+        setAramaInput('');
+        setArama('');
+        setRolFiltre('tum');
+        setDurumFiltre('tum');
+        setSayfa(1);
+    };
+
     if (yukleniyor) return <div className="flex justify-center py-8"><RotateCcw size={20} className="animate-spin" style={{ color: 'var(--tema-muted)' }} /></div>;
+
+    const baslangic = toplam === 0 ? 0 : (sayfa - 1) * sayfaBoyutu + 1;
+    const bitis = Math.min(toplam, sayfa * sayfaBoyutu);
+    const sayfaBaslangic = Math.max(1, sayfa - 2);
+    const sayfaBitis = Math.min(toplamSayfa, sayfa + 2);
+    const sayfalar = [];
+    for (let i = sayfaBaslangic; i <= sayfaBitis; i += 1) {
+        sayfalar.push(i);
+    }
 
     return (
         <div className="rounded-xl border overflow-hidden" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
@@ -73,9 +162,54 @@ function KullaniciYonetimi() {
                 <UserCheck size={16} style={{ color: 'var(--tema-accent)' }} />
                 <h3 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>Kullanıcı Yönetimi</h3>
                 <span className="ml-auto text-xs px-2 py-0.5 rounded-full" style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}>
-                    {kullanicilar.length} kullanıcı
+                    {toplam} kullanıcı
                 </span>
             </div>
+
+            <div className="px-5 py-3 border-b flex flex-wrap items-center gap-2" style={{ borderColor: 'var(--tema-border)' }}>
+                <input
+                    value={aramaInput}
+                    onChange={(e) => setAramaInput(e.target.value)}
+                    placeholder="E-posta ara..."
+                    className="min-w-[220px] flex-1 rounded-lg px-3 py-1.5 text-sm outline-none"
+                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
+                />
+                <select
+                    value={rolFiltre}
+                    onChange={(e) => { setRolFiltre(e.target.value); setSayfa(1); }}
+                    className="rounded-lg px-3 py-1.5 text-sm outline-none"
+                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
+                >
+                    <option value="tum">Tüm Roller</option>
+                    <option value="user">Kullanıcı</option>
+                    <option value="lawyer">Avukat</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <select
+                    value={durumFiltre}
+                    onChange={(e) => { setDurumFiltre(e.target.value); setSayfa(1); }}
+                    className="rounded-lg px-3 py-1.5 text-sm outline-none"
+                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
+                >
+                    <option value="tum">Tüm Durumlar</option>
+                    <option value="aktif">Aktif</option>
+                    <option value="askida">Askıda</option>
+                </select>
+                <button
+                    onClick={filtreleriTemizle}
+                    className="px-3 py-1.5 rounded-lg text-xs"
+                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}
+                >
+                    Temizle
+                </button>
+            </div>
+
+            {hata && (
+                <p className="px-5 py-3 text-xs text-red-400 border-b" style={{ borderColor: 'var(--tema-border)' }}>
+                    {hata}
+                </p>
+            )}
+
             {kullanicilar.length === 0 ? (
                 <p className="px-5 py-4 text-sm" style={{ color: 'var(--tema-muted)' }}>Henüz kayıtlı kullanıcı yok.</p>
             ) : (
@@ -98,10 +232,31 @@ function KullaniciYonetimi() {
                                 >
                                     <td className="px-5 py-3" style={{ color: 'var(--tema-text)' }}>{u.email}</td>
                                     <td className="px-3 py-3">
-                                        <span className={`px-2 py-0.5 rounded text-xs font-bold ${u.role === 'admin' ? 'text-yellow-400' : ''}`}
-                                            style={{ background: u.role === 'admin' ? 'rgba(250,204,21,0.15)' : 'var(--tema-surface)', color: u.role === 'admin' ? '#facc15' : 'var(--tema-muted)' }}>
-                                            {u.role === 'admin' ? 'Admin' : 'Kullanıcı'}
-                                        </span>
+                                        <div className="flex items-center gap-2">
+                                            <select
+                                                value={rolTaslaklari[u.id] || u.role}
+                                                onChange={(e) => setRolTaslaklari((prev) => ({ ...prev, [u.id]: e.target.value }))}
+                                                className="rounded-md px-2 py-1 text-xs outline-none"
+                                                style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', border: '1px solid var(--tema-border)' }}
+                                                disabled={kullanici?.email === u.email}
+                                            >
+                                                <option value="user">Kullanıcı</option>
+                                                <option value="lawyer">Avukat</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                            <button
+                                                onClick={() => handleRolKaydet(u)}
+                                                className="px-2 py-1 rounded-md text-xs font-medium"
+                                                style={{
+                                                    background: 'var(--tema-surface)',
+                                                    color: 'var(--tema-accent)',
+                                                    opacity: rolKaydedilenId === u.id || (rolTaslaklari[u.id] || u.role) === u.role ? 0.5 : 1,
+                                                }}
+                                                disabled={rolKaydedilenId === u.id || (rolTaslaklari[u.id] || u.role) === u.role || kullanici?.email === u.email}
+                                            >
+                                                {rolKaydedilenId === u.id ? 'Kaydediliyor...' : 'Kaydet'}
+                                            </button>
+                                        </div>
                                     </td>
                                     <td className="px-3 py-3">
                                         <span className="text-xs font-medium" style={{ color: u.is_active ? '#a6e3a1' : '#f38ba8' }}>
@@ -114,22 +269,13 @@ function KullaniciYonetimi() {
                                     <td className="px-5 py-3 text-right">
                                         <div className="flex items-center justify-end gap-1.5">
                                             <button
-                                                onClick={() => handleRolDegistir(u.id, u.role)}
-                                                title={u.role === 'admin' ? 'Admin yetkisini kaldır' : 'Admin yap'}
-                                                className="p-1.5 rounded-lg transition-colors"
-                                                style={{ color: 'var(--tema-muted)' }}
-                                                onMouseEnter={(e) => { e.currentTarget.style.color = '#facc15'; }}
-                                                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
-                                            >
-                                                <ShieldCheck size={14} />
-                                            </button>
-                                            <button
-                                                onClick={() => handleDurumDegistir(u.id, !u.is_active)}
+                                                onClick={() => handleDurumDegistir(u, !u.is_active)}
                                                 title={u.is_active ? 'Askıya al' : 'Aktif et'}
                                                 className="p-1.5 rounded-lg transition-colors"
                                                 style={{ color: 'var(--tema-muted)' }}
                                                 onMouseEnter={(e) => { e.currentTarget.style.color = u.is_active ? '#f38ba8' : '#a6e3a1'; }}
                                                 onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
+                                                disabled={kullanici?.email === u.email}
                                             >
                                                 <ShieldOff size={14} />
                                             </button>
@@ -141,6 +287,43 @@ function KullaniciYonetimi() {
                     </table>
                 </div>
             )}
+
+            <div className="px-5 py-3 border-t flex items-center justify-between gap-3" style={{ borderColor: 'var(--tema-border)' }}>
+                <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>
+                    {baslangic}-{bitis} / {toplam} kayıt
+                </p>
+                <div className="flex items-center gap-1">
+                    <button
+                        onClick={() => setSayfa((p) => Math.max(1, p - 1))}
+                        disabled={sayfa === 1}
+                        className="px-2 py-1 rounded text-xs"
+                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', opacity: sayfa === 1 ? 0.4 : 1 }}
+                    >
+                        ←
+                    </button>
+                    {sayfalar.map((p) => (
+                        <button
+                            key={p}
+                            onClick={() => setSayfa(p)}
+                            className="px-2 py-1 rounded text-xs min-w-7"
+                            style={{
+                                background: p === sayfa ? 'var(--tema-accent)' : 'var(--tema-surface)',
+                                color: p === sayfa ? '#fff' : 'var(--tema-text2)',
+                            }}
+                        >
+                            {p}
+                        </button>
+                    ))}
+                    <button
+                        onClick={() => setSayfa((p) => Math.min(toplamSayfa, p + 1))}
+                        disabled={sayfa === toplamSayfa}
+                        className="px-2 py-1 rounded text-xs"
+                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', opacity: sayfa === toplamSayfa ? 0.4 : 1 }}
+                    >
+                        →
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }

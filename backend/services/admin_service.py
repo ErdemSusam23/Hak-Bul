@@ -66,11 +66,29 @@ def feedback_ozeti(db: Session) -> dict:
     }
 
 
-def kullanici_listesi(db: Session, limit: int = 50, offset: int = 0) -> tuple[list[User], int]:
-    total = db.query(func.count(User.id)).scalar() or 0
+def kullanici_listesi(
+    db: Session,
+    limit: int = 50,
+    offset: int = 0,
+    q: str | None = None,
+    rol: UserRole | None = None,
+    aktif: bool | None = None,
+) -> tuple[list[User], int]:
+    query = db.query(User)
+
+    if q and q.strip():
+        arama = f"%{q.strip().lower()}%"
+        query = query.filter(func.lower(User.email).like(arama))
+
+    if rol is not None:
+        query = query.filter(User.role == rol)
+
+    if aktif is not None:
+        query = query.filter(User.is_active.is_(aktif))
+
+    total = query.count()
     users = (
-        db.query(User)
-        .order_by(User.created_at.desc())
+        query.order_by(User.created_at.desc())
         .offset(offset)
         .limit(limit)
         .all()

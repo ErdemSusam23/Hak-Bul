@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, X, BookOpen, Gavel, Loader2 } from 'lucide-react';
 import clsx from 'clsx';
+import { useDil } from '../context/DilContext';
 
 export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle }) {
     const [acik, setAcik] = useState(false);
     const [sorgu, setSorgu] = useState('');
     const inputRef = useRef(null);
+    const { t } = useDil();
 
     useEffect(() => {
         if (acik) {
@@ -27,60 +29,80 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
         temizle();
     };
 
-    const kaynak_turu_ikon = (tur) =>
+    const kaynakTuruIkon = (tur) =>
         tur === 'yargitay' ? (
-            <Gavel size={13} className="text-blue-400" />
+            <Gavel size={13} style={{ color: 'var(--yargitay-icon)' }} />
         ) : (
-            <BookOpen size={13} className="text-gold-400" />
+            <BookOpen size={13} style={{ color: 'var(--kanun-icon)' }} />
         );
 
     return (
         <div className="relative">
-            {/* Tetikleyici buton */}
             <button
                 onClick={() => setAcik(!acik)}
-                className={clsx(
-                    'flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200',
+                className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200"
+                style={
                     acik
-                        ? 'bg-gold-400/10 text-gold-400 border border-gold-400/30'
-                        : 'text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-transparent'
-                )}
+                        ? {
+                            background: 'rgba(var(--a), 0.1)',
+                            color: 'var(--tema-accent)',
+                            border: '1px solid rgba(var(--a), 0.24)',
+                        }
+                        : {
+                            color: 'var(--tema-muted)',
+                            border: '1px solid transparent',
+                        }
+                }
+                onMouseEnter={(e) => {
+                    if (!acik) {
+                        e.currentTarget.style.color = 'var(--tema-text)';
+                        e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+                    }
+                }}
+                onMouseLeave={(e) => {
+                    if (!acik) {
+                        e.currentTarget.style.color = 'var(--tema-muted)';
+                        e.currentTarget.style.background = 'transparent';
+                    }
+                }}
             >
                 <Search size={16} />
-                <span className="hidden sm:inline">Hızlı Ara</span>
+                <span className="hidden sm:inline">{t('fastSearch')}</span>
             </button>
 
-            {/* Açılır panel */}
             {acik && (
                 <div
-                    className="absolute right-0 top-12 w-80 glass-card p-3 z-30 animate-slide-up"
-                    style={{ boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}
+                    className="absolute right-0 top-12 z-30 w-80 glass-card p-3 animate-slide-up"
+                    style={{ boxShadow: '0 20px 40px rgba(0, 0, 0, 0.32)' }}
                 >
-                    {/* Başlık */}
-                    <div className="flex items-center justify-between mb-3">
-                        <p className="text-xs text-slate-400 font-medium uppercase tracking-wider">
-                            Madde / Dava No Ara
+                    <div className="mb-3 flex items-center justify-between">
+                        <p className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
+                            {t('searchByArticleOrCase')}
                         </p>
-                        <button onClick={kapat} className="text-slate-500 hover:text-slate-300">
+                        <button
+                            onClick={kapat}
+                            style={{ color: 'var(--tema-dimmer)' }}
+                            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-text)'; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-dimmer)'; }}
+                        >
                             <X size={14} />
                         </button>
                     </div>
 
-                    {/* Arama inputu */}
-                    <div className="flex gap-2 mb-3">
+                    <div className="mb-3 flex gap-2">
                         <input
                             ref={inputRef}
                             type="text"
                             value={sorgu}
                             onChange={(e) => setSorgu(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && ara()}
-                            placeholder="örn: 4857 Md.17 veya 2021/1234"
-                            className="input-field flex-1 text-sm py-2"
+                            placeholder={t('searchPlaceholder')}
+                            className="input-field flex-1 py-2 text-sm"
                         />
                         <button
                             onClick={ara}
                             disabled={!sorgu.trim() || yukleniyor}
-                            className="send-btn py-2 px-3 text-sm"
+                            className="send-btn px-3 py-2 text-sm"
                         >
                             {yukleniyor ? (
                                 <Loader2 size={16} className="animate-spin" />
@@ -90,39 +112,53 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
                         </button>
                     </div>
 
-                    {/* Sonuçlar */}
                     {sonuclar && (
-                        <div className="space-y-2 max-h-72 overflow-y-auto scrollbar-hide">
+                        <div className="max-h-72 space-y-2 overflow-y-auto scrollbar-hide">
                             {sonuclar.length === 0 ? (
-                                <p className="text-slate-500 text-sm text-center py-4">
-                                    Sonuç bulunamadı.
+                                <p className="py-4 text-center text-sm" style={{ color: 'var(--tema-dimmer)' }}>
+                                    {t('searchNoResults')}
                                 </p>
                             ) : (
                                 sonuclar.map((s) => (
                                     <div
                                         key={s.id}
                                         onClick={() => s.url && window.open(s.url, '_blank', 'noopener,noreferrer')}
-                                        className={clsx(
-                                            'p-2.5 rounded-xl border border-white/8 transition-all duration-150',
-                                            s.url ? 'cursor-pointer hover:bg-white/8 hover:border-white/15' : 'cursor-default'
-                                        )}
-                                        style={{ background: 'rgba(255,255,255,0.03)' }}
+                                        className={clsx('rounded-xl p-2.5 transition-all duration-150', s.url ? 'cursor-pointer' : 'cursor-default')}
+                                        style={{
+                                            background: 'var(--tema-card)',
+                                            border: '1px solid var(--tema-border-card)',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            if (!s.url) return;
+                                            e.currentTarget.style.background = 'var(--tema-card-hover)';
+                                            e.currentTarget.style.borderColor = 'rgba(var(--a), 0.18)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            if (!s.url) return;
+                                            e.currentTarget.style.background = 'var(--tema-card)';
+                                            e.currentTarget.style.borderColor = 'var(--tema-border-card)';
+                                        }}
                                     >
-                                        <div className="flex items-center gap-2 mb-1">
-                                            {kaynak_turu_ikon(s.kaynak_turu)}
-                                            <span className="text-slate-200 text-xs font-medium line-clamp-1">
+                                        <div className="mb-1 flex items-center gap-2">
+                                            {kaynakTuruIkon(s.kaynak_turu)}
+                                            <span className="line-clamp-1 text-xs font-medium" style={{ color: 'var(--tema-text)' }}>
                                                 {s.baslik}
                                             </span>
                                         </div>
-                                        <p className="text-slate-500 text-xs line-clamp-2 pl-5">{s.metin || s.metin_ozet}</p>
+                                        <p className="line-clamp-2 pl-5 text-xs" style={{ color: 'var(--tema-dimmer)' }}>
+                                            {s.metin || s.metin_ozet}
+                                        </p>
                                     </div>
                                 ))
                             )}
                             <button
                                 onClick={temizle}
-                                className="w-full text-xs text-slate-600 hover:text-slate-400 py-1 transition-colors"
+                                className="w-full py-1 text-xs transition-colors"
+                                style={{ color: 'var(--tema-dimmer)' }}
+                                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-accent)'; }}
+                                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-dimmer)'; }}
                             >
-                                Sonuçları temizle
+                                {t('clearSearchResults')}
                             </button>
                         </div>
                     )}

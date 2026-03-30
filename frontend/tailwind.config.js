@@ -8,25 +8,25 @@ export default {
     extend: {
       colors: {
         navy: {
-          950: '#11111b',
-          900: '#181825',
-          800: '#1e1e2e',
-          700: '#27273e',
-          600: '#313244',
+          950: '#0B0E22',
+          900: '#121731',
+          800: '#1B2139',
+          700: '#272E4A',
+          600: '#3D4671',
         },
         gold: {
-          300: '#b4befe',
-          400: '#89b4fa',
-          500: '#74c7ec',
-          600: '#6c7086',
+          300: '#B9C2FF',
+          400: '#8A95FF',
+          500: '#5E6EFF',
+          600: '#444FDD',
         },
         slate: {
-          850: '#1a2535',
+          850: '#161C31',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['"Crimson Pro"', 'Georgia', 'serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        serif: ['"Manrope"', 'system-ui', 'sans-serif'],
       },
       animation: {
         'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',

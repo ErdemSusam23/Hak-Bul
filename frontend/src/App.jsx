@@ -1,5 +1,17 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { MessageSquare, Clock, Plus, ChevronRight, FileText, BarChart2, Trash2, Pencil, Check, X, User, Download, Share2, GitCompare, MoreHorizontal, BookOpen } from 'lucide-react';
+import {
+    MessageSquare,
+    Plus,
+    FileText,
+    BarChart2,
+    Check,
+    X,
+    User,
+    GitCompare,
+    MoreHorizontal,
+    BookOpen,
+    Scale,
+} from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
 import AsistanBot from './components/AsistanBot';
 import SohbetSayfasi from './pages/SohbetSayfasi';
@@ -27,14 +39,11 @@ import {
 
 function tarihKisa(isoStr) {
     if (!isoStr) return '';
-    // Backend'den gelen tarih UTC ancak sonunda 'Z' olmayabilir,
-    // Türkiye +3 saat olduğu için tarayıcı bunu yerel saat sanarsa '3 saat uzaklıkta' görünür.
     const gercekStr = isoStr.endsWith('Z') ? isoStr : `${isoStr}Z`;
     const tarih = new Date(gercekStr);
     const simdi = new Date();
     let fark = simdi - tarih;
-    
-    // Eğer hafif senkron farkı varsa negatif olabilir
+
     if (fark < 0) fark = 0;
 
     const dakika = Math.floor(fark / 60000);
@@ -48,6 +57,29 @@ function tarihKisa(isoStr) {
     return tarih.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
 }
 
+function SidebarNavButton({ icon: Icon, label, active, onClick }) {
+    return (
+        <button
+            onClick={onClick}
+            className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-[13.5px] font-medium transition-all duration-150"
+            style={{
+                background: active ? 'var(--tema-soft-bg)' : 'transparent',
+                color: active ? 'var(--tema-text)' : 'var(--tema-text2)',
+                border: active ? '1px solid var(--tema-border-card)' : '1px solid transparent',
+            }}
+            onMouseEnter={(e) => {
+                if (!active) e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+            }}
+            onMouseLeave={(e) => {
+                if (!active) e.currentTarget.style.background = 'transparent';
+            }}
+        >
+            <Icon size={16} style={{ color: active ? 'var(--tema-accent-soft)' : 'var(--tema-muted)' }} />
+            <span>{label}</span>
+        </button>
+    );
+}
+
 function SolSidebar({
     onSohbetSec,
     onYeniSohbet,
@@ -57,6 +89,7 @@ function SolSidebar({
     onKarsilastirAc,
     onForumAc,
     aktifSayfa,
+    aktifSohbetId,
     onSohbetSilindi,
 }) {
     const { kullanici } = useAuth();
@@ -70,27 +103,28 @@ function SolSidebar({
     const gecmisiCek = useCallback(async () => {
         try {
             if (kullanici?.token) {
-                // Giriş yapmış kullanıcı geçmişi
                 const data = await sohbetGecmisiListeleAPI();
-                const formatli = data.conversations.map(c => ({
-                    id: c.conversation_id,
-                    title: c.title || `Sohbet (${c.message_count} mesaj)`,
-                    tarih: c.last_message_at,
-                }));
-                setSohbetler(formatli);
-            } else {
-                // Misafir kullanıcı geçmişi
-                const data = await misafirSohbetGecmisiListeleAPI();
-                const formatli = (data.conversations || []).map(c => ({
+                setSohbetler(
+                    data.conversations.map((c) => ({
+                        id: c.conversation_id,
+                        title: c.title || `Sohbet (${c.message_count} mesaj)`,
+                        tarih: c.last_message_at,
+                    })),
+                );
+                return;
+            }
+
+            const data = await misafirSohbetGecmisiListeleAPI();
+            setSohbetler(
+                (data.conversations || []).map((c) => ({
                     id: c.conversation_id,
                     title: c.title || `Sohbet (${c.message_count} mesaj)`,
                     tarih: c.last_message_at,
                     misafir: true,
-                }));
-                setSohbetler(formatli);
-            }
+                })),
+            );
         } catch (e) {
-            console.error('Geçmiş çekilemedi:', e);
+            console.error('Gecmis cekilemedi:', e);
         }
     }, [kullanici]);
 
@@ -114,41 +148,40 @@ function SolSidebar({
     const handleSohbetTikla = async (sohbet) => {
         if (duzenleId === sohbet.id) return;
         try {
-            let detay;
-            if (sohbet.misafir) {
-                detay = await misafirSohbetDetayGetirAPI(sohbet.id);
-            } else {
-                detay = await sohbetDetayGetirAPI(sohbet.id);
-            }
+            const detay = sohbet.misafir
+                ? await misafirSohbetDetayGetirAPI(sohbet.id)
+                : await sohbetDetayGetirAPI(sohbet.id);
+
             onSohbetSec({
                 id: sohbet.id,
-                mesajlar: detay.messages.map(m => ({
+                mesajlar: detay.messages.map((m) => ({
                     id: m.id,
                     rol: m.role === 'user' ? 'kullanici' : 'asistan',
                     icerik: m.content,
                     kategori: 'Geçmiş',
                     zaman: m.created_at,
-                    kaynaklar: m.kaynaklar || []
-                }))
+                    kaynaklar: m.kaynaklar || [],
+                })),
             });
         } catch (e) {
-            console.error('Sohbet detayı çekilemedi:', e);
+            console.error('Sohbet detayi cekilemedi:', e);
         }
     };
 
     const handleSil = async (e, sohbet) => {
         e.stopPropagation();
-        const sohbetId = sohbet.id;
         if (!confirm(t('silOnay'))) return;
+
         try {
             if (sohbet.misafir) {
-                await misafirSohbetSilAPI(sohbetId);
+                await misafirSohbetSilAPI(sohbet.id);
             } else {
-                await sohbetSilAPI(sohbetId);
+                await sohbetSilAPI(sohbet.id);
             }
-            setSohbetler(prev => prev.filter(s => s.id !== sohbetId));
+
+            setSohbetler((prev) => prev.filter((s) => s.id !== sohbet.id));
             setMenuAcikId(null);
-            onSohbetSilindi?.(sohbetId);
+            onSohbetSilindi?.(sohbet.id);
             window.dispatchEvent(new Event('gecmis-guncellendi'));
         } catch (err) {
             console.error('Sohbet silinemedi:', err);
@@ -164,7 +197,7 @@ function SolSidebar({
             alert(t('paylasimKopyalandi'));
             setMenuAcikId(null);
         } catch (err) {
-            console.error('Paylaşım oluşturulamadı:', err);
+            console.error('Paylasim olusturulamadi:', err);
         }
     };
 
@@ -183,7 +216,7 @@ function SolSidebar({
             setMenuAcikId(null);
         } catch (err) {
             console.error('PDF indirilemedi:', err);
-            alert('PDF indirilemedi. Lütfen tekrar deneyin.');
+                            alert('PDF indirilemedi. Lütfen tekrar deneyin.');
         }
     };
 
@@ -196,255 +229,292 @@ function SolSidebar({
     };
 
     const handleDuzenleKaydet = async (sohbetId) => {
-        if (!duzenleMetin.trim()) { setDuzenleId(null); return; }
+        if (!duzenleMetin.trim()) {
+            setDuzenleId(null);
+            return;
+        }
+
         try {
             await sohbetYenidenAdlandirAPI(sohbetId, duzenleMetin.trim());
-            setSohbetler(prev => prev.map(s => s.id === sohbetId ? { ...s, title: duzenleMetin.trim() } : s));
+            setSohbetler((prev) => prev.map((s) => (s.id === sohbetId ? { ...s, title: duzenleMetin.trim() } : s)));
         } catch (err) {
-            console.error('Yeniden adlandırılamadı:', err);
+            console.error('Yeniden adlandirilamadi:', err);
         } finally {
             setDuzenleId(null);
         }
     };
 
+    const navItems = [
+        { key: 'forum', icon: BookOpen, label: 'Forum', onClick: onForumAc },
+        { key: 'taslak', icon: FileText, label: t('belgeTaslaklari'), onClick: onTaslakAc },
+        { key: 'karsilastir', icon: GitCompare, label: t('belgeKarsilastir'), onClick: onKarsilastirAc },
+        ...(kullanici ? [{ key: 'profil', icon: User, label: t('profilim'), onClick: onProfilAc }] : []),
+        ...(kullanici?.rol === 'admin' ? [{ key: 'admin', icon: BarChart2, label: t('adminPaneli'), onClick: onAdminAc }] : []),
+    ];
+
     return (
         <aside
-            className="flex flex-col w-64 flex-shrink-0 h-screen"
+            className="flex h-screen w-[282px] shrink-0 flex-col px-3 pb-3 pt-4"
             style={{
                 background: 'var(--tema-panel)',
-                borderRight: '1px solid var(--tema-border)',
+                borderRight: '1px solid var(--tema-border-strong)',
+                backdropFilter: 'blur(18px)',
             }}
         >
-            {/* Yeni Sohbet butonu */}
-            <div className="px-3 py-3" style={{ borderBottom: '1px solid var(--tema-border)' }}>
+            <div className="mb-4 px-3">
+                <div className="mb-4 flex items-center gap-3">
+                    <div
+                        className="flex h-10 w-10 items-center justify-center rounded-2xl"
+                        style={{
+                            background: 'var(--tema-soft-bg-subtle)',
+                            border: '1px solid var(--tema-border-card)',
+                        }}
+                    >
+                        <Scale size={18} style={{ color: 'var(--tema-accent-soft)' }} />
+                    </div>
+                    <div className="min-w-0">
+                        <h1 className="font-serif text-[1.56rem] leading-[0.98] tracking-[-0.02em]" style={{ color: 'var(--tema-text)' }}>
+                            Hak-Bul
+                        </h1>
+                        <p className="mt-1 text-[11px]" style={{ color: 'var(--tema-muted)' }}>
+                            {t('turkHukukAsistani')}
+                        </p>
+                    </div>
+                </div>
+
                 <div className="flex gap-2">
-                <button
-                    onClick={onYeniSohbet}
-                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-150"
-                    style={{
-                        background: 'var(--tema-send-btn)',
-                        color: 'var(--tema-send-icon)',
-                    }}
-                    onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.85'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
-                >
-                    <Plus size={14} />
-                    {t('yeniSohbet')}
-                </button>
-                <button
-                    onClick={() => dilDegistir(dil === 'tr' ? 'en' : 'tr')}
-                    className="px-3 py-2 rounded-xl text-xs font-bold transition-all duration-150"
-                    title={dil === 'tr' ? 'Switch to English' : "Türkçe'ye geç"}
-                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-accent)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
-                >
-                    {dil === 'tr' ? 'EN' : 'TR'}
-                </button>
+                    <button
+                        onClick={onYeniSohbet}
+                        className="flex flex-1 items-center gap-2 rounded-2xl px-4 py-3 text-[13.5px] font-medium transition-all duration-150"
+                        style={{
+                            background: 'var(--tema-soft-bg-subtle)',
+                            border: '1px solid var(--tema-border-card)',
+                            color: 'var(--tema-text)',
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.background = 'var(--tema-soft-bg)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+                        }}
+                    >
+                        <Plus size={16} />
+                        {t('yeniSohbet')}
+                    </button>
+                    <button
+                        onClick={() => dilDegistir(dil === 'tr' ? 'en' : 'tr')}
+                        className="rounded-2xl px-3 text-xs font-semibold tracking-[0.12em]"
+                        style={{
+                            background: 'var(--tema-soft-bg-subtle)',
+                            border: '1px solid var(--tema-border-card)',
+                            color: 'var(--tema-muted)',
+                        }}
+                    >
+                        {dil === 'tr' ? 'EN' : 'TR'}
+                    </button>
                 </div>
             </div>
 
-            {/* Sidebar başlık */}
-            <div
-                className="px-4 py-3 flex items-center gap-2"
-                style={{ borderBottom: '1px solid var(--tema-border)' }}
-            >
-                <MessageSquare size={14} style={{ color: 'var(--tema-muted)' }} />
-                <span className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                    {t('oncekiSorularim')}
-                </span>
+            <div className="mb-5 space-y-1 px-2">
+                <SidebarNavButton
+                    icon={MessageSquare}
+                    label={t('oncekiSorularim')}
+                    active={aktifSayfa === 'sohbet'}
+                    onClick={onYeniSohbet}
+                />
+                {navItems.map((item) => (
+                    <SidebarNavButton
+                        key={item.key}
+                        icon={item.icon}
+                        label={item.label}
+                        active={aktifSayfa === item.key}
+                        onClick={item.onClick}
+                    />
+                ))}
             </div>
 
-            {/* Sohbet listesi */}
-            <div className="flex-1 overflow-y-auto">
+            <div className="px-3 pb-2">
+                <p
+                    className="text-[11px] font-medium uppercase tracking-[0.22em]"
+                    style={{ color: 'var(--tema-dimmer)' }}
+                >
+                    {t('recentChats')}
+                </p>
+            </div>
+
+            <div className="flex-1 space-y-1 overflow-y-auto px-1">
                 {sohbetler.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center h-full px-4 text-center">
-                        <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
-                            style={{ background: 'var(--tema-card)' }}
-                        >
-                            <Clock size={18} style={{ color: 'var(--tema-dimmer)' }} />
-                        </div>
-                        <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                            {kullanici ? t('henuzSohbet') : t('gecmisIcinGiris')}
-                        </p>
+                    <div
+                        className="mx-2 rounded-3xl px-4 py-5 text-[13.5px]"
+                        style={{
+                            background: 'var(--tema-soft-bg-subtle)',
+                            border: '1px solid var(--tema-border-card)',
+                            color: 'var(--tema-dimmer)',
+                        }}
+                    >
+                        {kullanici ? t('henuzSohbet') : t('gecmisIcinGiris')}
                     </div>
                 ) : (
-                    sohbetler.map((sohbet) => (
-                        <div
-                            key={sohbet.id}
-                            className="group flex items-start gap-1 px-2 py-2 border-b transition-all duration-150 cursor-pointer"
-                            style={{ borderColor: 'var(--tema-border)' }}
-                            onClick={() => handleSohbetTikla(sohbet)}
-                            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
-                        >
-                            <ChevronRight
-                                size={12}
-                                className="flex-shrink-0 mt-1 opacity-40 group-hover:opacity-100 transition-opacity"
-                                style={{ color: 'var(--tema-accent)' }}
-                            />
-                            <div className="flex-1 min-w-0">
-                                {duzenleId === sohbet.id ? (
-                                    <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
-                                        <input
-                                            ref={duzenleInputRef}
-                                            value={duzenleMetin}
-                                            onChange={e => setDuzenleMetin(e.target.value)}
-                                            onKeyDown={e => {
-                                                if (e.key === 'Enter') handleDuzenleKaydet(sohbet.id);
-                                                if (e.key === 'Escape') setDuzenleId(null);
-                                            }}
-                                            className="flex-1 text-xs rounded px-1.5 py-0.5 outline-none"
-                                            style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border-focus)' }}
-                                        />
-                                        <button onClick={() => handleDuzenleKaydet(sohbet.id)} className="p-0.5 hover:text-green-400" style={{ color: 'var(--tema-muted)' }}><Check size={12} /></button>
-                                        <button onClick={() => setDuzenleId(null)} className="p-0.5 hover:text-red-400" style={{ color: 'var(--tema-muted)' }}><X size={12} /></button>
+                    sohbetler.map((sohbet) => {
+                        const aktif = aktifSayfa === 'sohbet' && aktifSohbetId === sohbet.id;
+
+                        return (
+                            <div
+                                key={sohbet.id}
+                                className="group relative rounded-2xl px-3 py-3 transition-all duration-150"
+                                style={{
+                                    background: aktif ? 'var(--tema-soft-bg)' : 'transparent',
+                                    border: aktif ? '1px solid var(--tema-border-card)' : '1px solid transparent',
+                                }}
+                                onClick={() => handleSohbetTikla(sohbet)}
+                                onMouseEnter={(e) => {
+                                    if (!aktif) e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    if (!aktif) e.currentTarget.style.background = 'transparent';
+                                }}
+                            >
+                                <div className="flex items-start gap-2">
+                                    <div
+                                        className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                                        style={{ background: aktif ? 'var(--tema-accent)' : 'var(--tema-border-strong)' }}
+                                    />
+
+                                    <div className="min-w-0 flex-1">
+                                        {duzenleId === sohbet.id ? (
+                                            <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+                                                <input
+                                                    ref={duzenleInputRef}
+                                                    value={duzenleMetin}
+                                                    onChange={(e) => setDuzenleMetin(e.target.value)}
+                                                    onKeyDown={(e) => {
+                                                        if (e.key === 'Enter') handleDuzenleKaydet(sohbet.id);
+                                                        if (e.key === 'Escape') setDuzenleId(null);
+                                                    }}
+                                                    className="flex-1 rounded-xl px-2 py-1.5 text-xs outline-none"
+                                                    style={{
+                                                        background: 'var(--tema-surface)',
+                                                        color: 'var(--tema-text)',
+                                                        border: '1px solid var(--tema-border-focus)',
+                                                    }}
+                                                />
+                                                <button
+                                                    onClick={() => handleDuzenleKaydet(sohbet.id)}
+                                                    className="p-1"
+                                                    style={{ color: 'var(--tema-muted)' }}
+                                                >
+                                                    <Check size={12} />
+                                                </button>
+                                                <button
+                                                    onClick={() => setDuzenleId(null)}
+                                                    className="p-1"
+                                                    style={{ color: 'var(--tema-muted)' }}
+                                                >
+                                                    <X size={12} />
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <>
+                                                <p className="line-clamp-2 text-[13px] leading-[1.45]" style={{ color: 'var(--tema-text2)' }}>
+                                                    {sohbet.title}
+                                                </p>
+                                                <p className="mt-1 text-[11px]" style={{ color: 'var(--tema-dimmer)' }}>
+                                                    {tarihKisa(sohbet.tarih)}
+                                                </p>
+                                            </>
+                                        )}
                                     </div>
-                                ) : (
-                                    <p className="text-xs leading-relaxed line-clamp-2" style={{ color: 'var(--tema-text2)' }}>
-                                        {sohbet.title}
-                                    </p>
-                                )}
-                                <p className="text-xs mt-0.5" style={{ color: 'var(--tema-dimmer)' }}>
-                                    {tarihKisa(sohbet.tarih)}
-                                </p>
-                            </div>
-                            {/* Düzenle / Sil butonları — sadece giriş yapmış kullanıcıda */}
-                            {duzenleId !== sohbet.id && (
-                                <div className="relative flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setMenuAcikId((onceki) => (onceki === sohbet.id ? null : sohbet.id));
-                                        }}
-                                        className="p-1 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-                                        title="Aksiyonlar"
-                                        style={{ color: 'var(--tema-muted)' }}
-                                    >
-                                        <MoreHorizontal size={12} />
-                                    </button>
-                                    {menuAcikId === sohbet.id && (
-                                        <div
-                                            className="absolute right-0 top-7 z-20 w-44 rounded-lg py-1 shadow-lg"
-                                            style={{ background: 'var(--tema-panel)', border: '1px solid var(--tema-border)' }}
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            {!sohbet.misafir && (
-                                                <>
-                                                    <button
-                                                        onClick={(e) => handlePaylas(e, sohbet)}
-                                                        className="w-full px-3 py-1.5 text-left text-xs hover:bg-black/10 dark:hover:bg-white/10"
-                                                        style={{ color: 'var(--tema-text2)' }}
-                                                    >
-                                                        {t('paylas')}
-                                                    </button>
-                                                    <button
-                                                        onClick={(e) => handleIndir(e, sohbet)}
-                                                        className="w-full px-3 py-1.5 text-left text-xs hover:bg-black/10 dark:hover:bg-white/10"
-                                                        style={{ color: 'var(--tema-text2)' }}
-                                                    >
-                                                        {t('pdfIndir')}
-                                                    </button>
-                                                    <button
-                                                        onClick={(e) => handleDuzenleBaslat(e, sohbet)}
-                                                        className="w-full px-3 py-1.5 text-left text-xs hover:bg-black/10 dark:hover:bg-white/10"
-                                                        style={{ color: 'var(--tema-text2)' }}
-                                                    >
-                                                        {t('yenidenAdlandir')}
-                                                    </button>
-                                                </>
-                                            )}
+
+                                    {duzenleId !== sohbet.id && (
+                                        <div className="relative flex-shrink-0 opacity-0 transition-opacity group-hover:opacity-100">
                                             <button
-                                                onClick={(e) => handleSil(e, sohbet)}
-                                                className="w-full px-3 py-1.5 text-left text-xs hover:bg-red-500/10"
-                                                style={{ color: 'var(--tema-text2)' }}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    setMenuAcikId((onceki) => (onceki === sohbet.id ? null : sohbet.id));
+                                                }}
+                                                className="rounded-xl p-1.5"
+                                                style={{ color: 'var(--tema-muted)' }}
                                             >
-                                                {t('sil')}
+                                                <MoreHorizontal size={14} />
                                             </button>
+
+                                            {menuAcikId === sohbet.id && (
+                                                <div
+                                                    className="absolute right-0 top-8 z-20 w-44 overflow-hidden rounded-2xl py-1"
+                                                    style={{
+                                                        background: 'var(--tema-surface)',
+                                                        border: '1px solid var(--tema-border-card)',
+                                                        boxShadow: '0 16px 30px rgba(0,0,0,0.26)',
+                                                    }}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    {!sohbet.misafir && (
+                                                        <>
+                                                            <button
+                                                                onClick={(e) => handlePaylas(e, sohbet)}
+                                                                className="w-full px-3 py-2 text-left text-xs transition-colors"
+                                                                style={{ color: 'var(--tema-text2)' }}
+                                                            >
+                                                                {t('paylas')}
+                                                            </button>
+                                                            <button
+                                                                onClick={(e) => handleIndir(e, sohbet)}
+                                                                className="w-full px-3 py-2 text-left text-xs transition-colors"
+                                                                style={{ color: 'var(--tema-text2)' }}
+                                                            >
+                                                                {t('pdfIndir')}
+                                                            </button>
+                                                            <button
+                                                                onClick={(e) => handleDuzenleBaslat(e, sohbet)}
+                                                                className="w-full px-3 py-2 text-left text-xs transition-colors"
+                                                                style={{ color: 'var(--tema-text2)' }}
+                                                            >
+                                                                {t('yenidenAdlandir')}
+                                                            </button>
+                                                        </>
+                                                    )}
+                                                    <button
+                                                        onClick={(e) => handleSil(e, sohbet)}
+                                                        className="w-full px-3 py-2 text-left text-xs transition-colors"
+                                                        style={{ color: 'var(--tema-text2)' }}
+                                                    >
+                                                        {t('sil')}
+                                                    </button>
+                                                </div>
+                                            )}
                                         </div>
                                     )}
                                 </div>
-                            )}
-                        </div>
-                    ))
+                            </div>
+                        );
+                    })
                 )}
             </div>
 
-            {/* Alt kısım */}
             <div
-                className="px-3 py-3 flex flex-col gap-1"
-                style={{ borderTop: '1px solid var(--tema-border)' }}
+                className="mt-3 flex items-center gap-3 rounded-3xl px-3 py-3"
+                style={{
+                    background: 'var(--tema-soft-bg-subtle)',
+                    border: '1px solid var(--tema-border-card)',
+                }}
             >
-                <button
-                    onClick={onForumAc}
-                    className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                <div
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
                     style={{
-                        background: aktifSayfa === 'forum' ? 'var(--tema-surface)' : 'transparent',
-                        color: aktifSayfa === 'forum' ? 'var(--tema-accent)' : 'var(--tema-text2)',
+                        background: 'var(--tema-soft-bg-strong)',
+                        color: 'var(--tema-text)',
                     }}
-                    onMouseEnter={(e) => { if (aktifSayfa !== 'forum') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                    onMouseLeave={(e) => { if (aktifSayfa !== 'forum') e.currentTarget.style.background = 'transparent'; }}
                 >
-                    <BookOpen size={16} />
-                    Forum
-                </button>
-                <button
-                    onClick={onTaslakAc}
-                    className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
-                    style={{
-                        background: aktifSayfa === 'taslak' ? 'var(--tema-surface)' : 'transparent',
-                        color: aktifSayfa === 'taslak' ? 'var(--tema-accent)' : 'var(--tema-text2)',
-                    }}
-                    onMouseEnter={(e) => { if (aktifSayfa !== 'taslak') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                    onMouseLeave={(e) => { if (aktifSayfa !== 'taslak') e.currentTarget.style.background = 'transparent'; }}
-                >
-                    <FileText size={16} />
-                    {t('belgeTaslaklari')}
-                </button>
-                <button
-                    onClick={onKarsilastirAc}
-                    className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
-                    style={{
-                        background: aktifSayfa === 'karsilastir' ? 'var(--tema-surface)' : 'transparent',
-                        color: aktifSayfa === 'karsilastir' ? 'var(--tema-accent)' : 'var(--tema-text2)',
-                    }}
-                    onMouseEnter={(e) => { if (aktifSayfa !== 'karsilastir') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                    onMouseLeave={(e) => { if (aktifSayfa !== 'karsilastir') e.currentTarget.style.background = 'transparent'; }}
-                >
-                    <GitCompare size={16} />
-                    {t('belgeKarsilastir')}
-                </button>
-                {kullanici && (
-                    <button
-                        onClick={onProfilAc}
-                        className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
-                        style={{
-                            background: aktifSayfa === 'profil' ? 'var(--tema-surface)' : 'transparent',
-                            color: aktifSayfa === 'profil' ? 'var(--tema-accent)' : 'var(--tema-text2)',
-                        }}
-                        onMouseEnter={(e) => { if (aktifSayfa !== 'profil') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                        onMouseLeave={(e) => { if (aktifSayfa !== 'profil') e.currentTarget.style.background = 'transparent'; }}
-                    >
-                        <User size={16} />
-                        {t('profilim')}
-                    </button>
-                )}
-                {kullanici?.rol === 'admin' && (
-                    <button
-                        onClick={onAdminAc}
-                        className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
-                        style={{
-                            background: aktifSayfa === 'admin' ? 'var(--tema-surface)' : 'transparent',
-                            color: aktifSayfa === 'admin' ? 'var(--tema-accent)' : 'var(--tema-text2)',
-                        }}
-                        onMouseEnter={(e) => { if (aktifSayfa !== 'admin') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                        onMouseLeave={(e) => { if (aktifSayfa !== 'admin') e.currentTarget.style.background = 'transparent'; }}
-                    >
-                        <BarChart2 size={16} />
-                        {t('adminPaneli')}
-                    </button>
-                )}
+                    {(kullanici?.email || 'M').slice(0, 1).toUpperCase()}
+                </div>
+                <div className="min-w-0 flex-1">
+                    <p className="truncate text-[13.5px]" style={{ color: 'var(--tema-text)' }}>
+                        {kullanici?.email || 'Misafir'}
+                    </p>
+                    <p className="text-[11px]" style={{ color: 'var(--tema-dimmer)' }}>
+                        {kullanici ? t('accountOwned') : t('guestSession')}
+                    </p>
+                </div>
             </div>
         </aside>
     );
@@ -455,7 +525,7 @@ function AppIcerik() {
     const [secilenSohbet, setSecilenSohbet] = useState(null);
     const [aktifSohbetId, setAktifSohbetId] = useState(null);
     const [temizleSinyali, setTemizleSinyali] = useState(0);
-    const [aktifSayfa, setAktifSayfa] = useState('sohbet'); // 'sohbet' | 'taslak' | 'admin' | 'profil' | 'karsilastir' | 'forum'
+    const [aktifSayfa, setAktifSayfa] = useState('sohbet');
     const [aktifForumThread, setAktifForumThread] = useState(null);
     const { tema } = useTema();
 
@@ -499,28 +569,22 @@ function AppIcerik() {
 
     return (
         <div className={`min-h-screen navy-gradient-bg ${tema === 'acik' ? 'tema-acik' : ''}`}>
-            {/* Arkaplan dekoratif gradyanlar */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden">
                 <div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-20"
-                    style={{ background: `radial-gradient(ellipse at center top, var(--tema-glow-top) 0%, transparent 70%)` }}
+                    className="absolute left-1/2 top-0 h-[340px] w-[780px] -translate-x-1/2 opacity-80"
+                    style={{ background: 'radial-gradient(circle at top, var(--tema-glow-top) 0%, transparent 72%)' }}
                 />
                 <div
-                    className="absolute bottom-0 right-0 w-80 h-80 opacity-10"
-                    style={{ background: `radial-gradient(ellipse at bottom right, var(--tema-glow-bottom) 0%, transparent 70%)` }}
+                    className="absolute bottom-[-120px] left-1/3 h-[320px] w-[520px] opacity-70"
+                    style={{ background: 'radial-gradient(circle, var(--tema-glow-bottom) 0%, transparent 74%)' }}
                 />
             </div>
 
-            {/* Disclaimer modal */}
             <HukukiUyariModal onKabul={uyariKabul} />
-
-            {/* Asistan bot — her zaman görünür */}
             {kabul && <AsistanBot />}
 
-            {/* Ana içerik — modal kapanınca görünür */}
             {kabul && (
-                <div className="relative flex h-screen w-full">
-                    {/* Sol sidebar */}
+                <div className="relative flex h-screen w-full overflow-hidden">
                     <SolSidebar
                         onSohbetSec={handleSohbetSec}
                         onYeniSohbet={handleYeniSohbet}
@@ -528,13 +592,16 @@ function AppIcerik() {
                         onAdminAc={() => setAktifSayfa('admin')}
                         onProfilAc={() => setAktifSayfa('profil')}
                         onKarsilastirAc={() => setAktifSayfa('karsilastir')}
-                        onForumAc={() => { setAktifSayfa('forum'); setAktifForumThread(null); }}
+                        onForumAc={() => {
+                            setAktifSayfa('forum');
+                            setAktifForumThread(null);
+                        }}
                         aktifSayfa={aktifSayfa}
+                        aktifSohbetId={aktifSohbetId}
                         onSohbetSilindi={handleSohbetSilindi}
                     />
 
-                    {/* Ana alan */}
-                    <div className="flex-1 flex flex-col min-w-0">
+                    <div className="flex min-w-0 flex-1 flex-col">
                         {aktifSayfa === 'admin' ? (
                             <AdminSayfasi />
                         ) : aktifSayfa === 'taslak' ? (
@@ -567,7 +634,6 @@ function AppIcerik() {
 }
 
 function SharedRoute() {
-    // Hash-based routing: /#/shared/TOKEN
     const hash = window.location.hash;
     const match = hash.match(/^#\/shared\/([A-Za-z0-9_-]+)$/);
     if (match) {

@@ -126,7 +126,7 @@ export default function AsistanBot() {
                         height: '480px',
                         background: 'var(--tema-panel)',
                         border: '1px solid var(--tema-border)',
-                        boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+                        boxShadow: '0 12px 40px rgba(0,0,0,0.32)',
                         animation: 'bot-slide-up 0.2s ease-out',
                     }}
                 >
@@ -189,7 +189,7 @@ export default function AsistanBot() {
                         )}
                         {hata && (
                             <p className="text-xs text-center px-3 py-1.5 rounded-xl"
-                                style={{ color: '#f38ba8', background: 'rgba(243,139,168,0.08)', border: '1px solid rgba(243,139,168,0.2)' }}>
+                                style={{ color: 'var(--tema-accent-soft)', background: 'rgba(var(--a),0.08)', border: '1px solid rgba(var(--a),0.2)' }}>
                                 {hata}
                             </p>
                         )}
@@ -253,7 +253,7 @@ export default function AsistanBot() {
                 style={{
                     background: acik ? 'var(--tema-surface)' : 'var(--tema-send-btn)',
                     border: '1px solid var(--tema-border)',
-                    boxShadow: '0 4px 20px rgba(137,180,250,0.3)',
+                    boxShadow: '0 8px 24px rgba(var(--a),0.18)',
                     transform: acik ? 'scale(0.95)' : 'scale(1)',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.08)'; }}

@@ -1,6 +1,7 @@
 export default {
     yeniSohbet: 'Yeni Sohbet',
     oncekiSorularim: 'Önceki Sorularım',
+    recentChats: 'Önceki Sohbetler',
     belgeTaslaklari: 'Belge Taslakları',
     belgeKarsilastir: 'Belge Karşılaştır',
     profilim: 'Profilim',
@@ -25,6 +26,7 @@ export default {
     language: 'TR',
     // SohbetSayfasi
     turkHukukAsistani: 'Türk Hukuk Asistanı',
+    assistantChatLabel: 'Türk hukuk asistanı ile sohbet',
     hosGeldiniz: "Hak-Bul'a Hoş Geldiniz",
     hosGeldinizAlt: 'Hukuki sorularınızı sorun; kanun maddeleri ve Yargıtay kararlarıyla desteklenmiş yanıtlar alın.',
     bilgiAmacliAvukat: 'Bilgi amaçlıdır · Avukat görüşünün yerini tutmaz',
@@ -99,4 +101,11 @@ export default {
     enterPassword: 'Şifrenizi girin.',
     deleteFailed: 'Hesap silinemedi.',
     passwordWrong: 'Şifre hatalı.',
+    accountOwned: 'Hak-Bul hesabınız',
+    guestSession: 'Geçici oturum',
+    fastSearch: 'Hızlı Ara',
+    searchByArticleOrCase: 'Madde / Dava No Ara',
+    searchPlaceholder: 'örn: 4857 Md.17 veya 2021/1234',
+    searchNoResults: 'Sonuç bulunamadı.',
+    clearSearchResults: 'Sonuçları temizle',
 };

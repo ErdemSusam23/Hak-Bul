@@ -37,7 +37,7 @@ function RenderMarkdown({ icerik }) {
     const bloklar = icerik.split(/\n{2,}/);
 
     return (
-        <div className="space-y-2.5 text-sm leading-relaxed" style={{ color: 'var(--tema-text2)' }}>
+        <div className="space-y-2.5 text-[14.5px] leading-[1.7]" style={{ color: 'var(--tema-text2)' }}>
             {bloklar.map((blok, bi) => {
                 const satirlar = blok.split('\n').filter(Boolean);
 
@@ -91,7 +91,7 @@ function KullaniciMesaji({ mesaj }) {
                         boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
                     }}
                 >
-                    <p className="text-sm leading-relaxed" style={{ color: 'var(--tema-text)' }}>{mesaj.icerik}</p>
+                    <p className="text-[14.5px] leading-[1.68]" style={{ color: 'var(--tema-text)' }}>{mesaj.icerik}</p>
                 </div>
                 <SaatDamgasi zaman={mesaj.zaman} />
             </div>
@@ -123,7 +123,7 @@ function AsistanMesaji({ mesaj }) {
                 }}
             >
                 {mesaj.hata ? (
-                    <AlertCircle size={15} className="text-red-400" />
+                    <AlertCircle size={15} style={{ color: 'var(--tema-danger-text)' }} />
                 ) : (
                     <Scale size={15} style={{ color: 'var(--tema-accent)' }} />
                 )}
@@ -135,15 +135,15 @@ function AsistanMesaji({ mesaj }) {
                 <div
                     className={clsx('rounded-2xl px-4 py-4 mb-3', mesaj.hata && 'border border-red-500/20')}
                     style={{
-                        background: mesaj.hata ? 'rgba(239,68,68,0.07)' : 'var(--tema-bubble)',
-                        border: mesaj.hata ? undefined : '1px solid var(--tema-border)',
+                        background: mesaj.hata ? 'var(--tema-danger-bg)' : 'var(--tema-bubble)',
+                        border: mesaj.hata ? '1px solid var(--tema-danger-border)' : '1px solid var(--tema-border)',
                         boxShadow: '0 2px 16px rgba(0,0,0,0.1)',
                     }}
                 >
                     {!mesaj.hata && (
                         <div className="flex items-center justify-between gap-2 mb-2.5 border-b pb-2" style={{ borderColor: 'rgba(var(--a), 0.08)' }}>
                             <span
-                                className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase"
+                                className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.16em] uppercase"
                                 style={{ color: `rgba(var(--a), 0.7)` }}
                             >
                                 <span
@@ -168,7 +168,7 @@ function AsistanMesaji({ mesaj }) {
                         </div>
                     )}
 
-                    <div className={mesaj.hata ? 'text-red-300' : ''}>
+                    <div style={mesaj.hata ? { color: 'var(--tema-danger-text)' } : undefined}>
                         <RenderMarkdown icerik={mesaj.icerik} />
                         {mesaj.streaming && (
                             <span

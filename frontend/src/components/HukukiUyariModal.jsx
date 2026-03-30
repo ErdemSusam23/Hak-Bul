@@ -47,10 +47,10 @@ export default function HukukiUyariModal({ onKabul }) {
                         >
                             <Scale size={32} style={{ color: 'var(--tema-accent)' }} />
                         </div>
-                        <h1 className="font-serif text-3xl font-semibold gold-gradient mb-1">
+                        <h1 className="font-serif text-[1.75rem] leading-[1.1] font-semibold gold-gradient mb-1 tracking-[-0.02em]">
                             Hak-Bul
                         </h1>
-                        <p className="text-sm tracking-widest uppercase" style={{ color: 'var(--tema-muted)' }}>
+                        <p className="text-[13px] tracking-[0.14em] uppercase" style={{ color: 'var(--tema-muted)' }}>
                             Türk Hukuk Asistanı
                         </p>
                     </div>
@@ -66,10 +66,10 @@ export default function HukukiUyariModal({ onKabul }) {
                         <div className="flex gap-3">
                             <AlertTriangle size={18} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--modal-uyari-ikon)' }} />
                             <div>
-                                <p className="font-semibold text-sm mb-1" style={{ color: 'var(--modal-uyari-baslik)' }}>
+                                <p className="font-semibold text-[14px] mb-1" style={{ color: 'var(--modal-uyari-baslik)' }}>
                                     Önemli Bilgilendirme
                                 </p>
-                                <p className="text-sm leading-relaxed" style={{ color: 'var(--modal-uyari-metin)' }}>
+                                <p className="text-[14px] leading-[1.68]" style={{ color: 'var(--modal-uyari-metin)' }}>
                                     Bu sistem yalnızca <strong>bilgi sunma</strong> amacıyla çalışır.
                                     Verilen yanıtlar hukuki danışmanlık niteliği taşımaz ve avukat
                                     görüşünün yerini tutmaz.
@@ -87,7 +87,7 @@ export default function HukukiUyariModal({ onKabul }) {
                         ].map((ozellik) => (
                             <li key={ozellik} className="flex items-center gap-2.5">
                                 <CheckCircle size={15} className="flex-shrink-0" style={{ color: 'var(--tema-accent)' }} />
-                                <span className="text-sm" style={{ color: 'var(--tema-text2)' }}>{ozellik}</span>
+                                <span className="text-[14px]" style={{ color: 'var(--tema-text2)' }}>{ozellik}</span>
                             </li>
                         ))}
                     </ul>
@@ -95,7 +95,7 @@ export default function HukukiUyariModal({ onKabul }) {
                     {/* Kabul butonu */}
                     <button
                         onClick={kabulEt}
-                        className="w-full py-3.5 rounded-xl font-semibold text-base transition-all duration-200 active:scale-[0.98]"
+                        className="w-full py-3.5 rounded-xl font-semibold text-[15px] transition-all duration-200 active:scale-[0.98]"
                         style={{
                             background: 'var(--tema-send-btn)',
                             color: 'var(--tema-send-icon)',

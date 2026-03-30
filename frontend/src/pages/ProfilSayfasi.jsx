@@ -179,9 +179,9 @@ export default function ProfilSayfasi({ onGeri }) {
                                 <div
                                     className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm"
                                     style={{
-                                        background: mesaj.tip === 'basari' ? 'rgba(166,227,161,0.1)' : 'rgba(243,139,168,0.1)',
-                                        border: `1px solid ${mesaj.tip === 'basari' ? 'rgba(166,227,161,0.3)' : 'rgba(243,139,168,0.3)'}`,
-                                        color: mesaj.tip === 'basari' ? '#a6e3a1' : '#f38ba8',
+                                        background: mesaj.tip === 'basari' ? 'var(--tema-success-bg)' : 'var(--tema-danger-bg)',
+                                        border: `1px solid ${mesaj.tip === 'basari' ? 'var(--tema-success-border)' : 'var(--tema-danger-border)'}`,
+                                        color: mesaj.tip === 'basari' ? 'var(--tema-success-text)' : 'var(--tema-danger-text)',
                                     }}
                                 >
                                     {mesaj.tip === 'basari' ? <CheckCircle size={15} /> : <AlertCircle size={15} />}

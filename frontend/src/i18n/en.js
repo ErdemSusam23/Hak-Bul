@@ -1,6 +1,7 @@
 export default {
     yeniSohbet: 'New Chat',
     oncekiSorularim: 'Previous Questions',
+    recentChats: 'Recent Chats',
     belgeTaslaklari: 'Document Templates',
     belgeKarsilastir: 'Compare Documents',
     profilim: 'My Profile',
@@ -25,6 +26,7 @@ export default {
     language: 'EN',
     // SohbetSayfasi
     turkHukukAsistani: 'Turkish Legal Assistant',
+    assistantChatLabel: 'Chat with the Turkish legal assistant',
     hosGeldiniz: 'Welcome to Hak-Bul',
     hosGeldinizAlt: 'Ask your legal questions; get answers backed by Turkish law articles and Supreme Court decisions.',
     bilgiAmacliAvukat: 'Informational only · Does not replace legal advice',
@@ -99,4 +101,11 @@ export default {
     enterPassword: 'Please enter your password.',
     deleteFailed: 'The account could not be deleted.',
     passwordWrong: 'Incorrect password.',
+    accountOwned: 'Your Hak-Bul account',
+    guestSession: 'Temporary session',
+    fastSearch: 'Quick Search',
+    searchByArticleOrCase: 'Search by Article / Case No',
+    searchPlaceholder: 'e.g. Labor Law Art.17 or 2021/1234',
+    searchNoResults: 'No results found.',
+    clearSearchResults: 'Clear results',
 };

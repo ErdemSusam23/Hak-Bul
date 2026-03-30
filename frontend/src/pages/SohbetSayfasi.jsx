@@ -1,8 +1,20 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import {
-    Scale, Send, RotateCcw, Briefcase,
-    FileText, Clock, Heart, ArrowRight, Sun, Moon,
-    LogIn, UserPlus, LogOut, Paperclip, X
+    Scale,
+    Send,
+    RotateCcw,
+    Briefcase,
+    FileText,
+    Clock,
+    Heart,
+    Sun,
+    Moon,
+    LogIn,
+    UserPlus,
+    LogOut,
+    Paperclip,
+    X,
+    Sparkles,
 } from 'lucide-react';
 import SohbetMesaji from '../components/SohbetMesaji';
 import YukleniyorGostergesi from '../components/YukleniyorGostergesi';
@@ -14,20 +26,317 @@ import { useAuth } from '../context/AuthContext';
 import { useDil } from '../context/DilContext';
 
 const ORNEK_SORULAR_DATA = [
-    { soru: 'İşten çıkarıldım, kıdem tazminatı alabilir miyim?', soru_en: 'I was fired, can I receive severance pay?', kategoriKey: 'isHukuku', Ikon: Briefcase },
-    { soru: 'İş sözleşmemi imzalamadım, sözlü anlaşmayla çalışıyorum, bu geçerli mi?', soru_en: 'I did not sign an employment contract, I work verbally — is this valid?', kategoriKey: 'sozlesme', Ikon: FileText },
-    { soru: 'Fazla mesai yaptırıyorlar ama param yatmıyor, ne yapabilirim?', soru_en: 'I work overtime but do not get paid — what can I do?', kategoriKey: 'ucretHakki', Ikon: Clock },
-    { soru: 'Annem hasta, bakım iznine çıkabilir miyim işten?', soru_en: 'My mother is ill, can I take caregiver leave from work?', kategoriKey: 'izinHakki', Ikon: Heart },
+    {
+        soru: 'İşten çıkarıldım, kıdem tazminatı alabilir miyim?',
+        soruEn: 'I was fired, can I receive severance pay?',
+        kategoriKey: 'isHukuku',
+        Ikon: Briefcase,
+    },
+    {
+        soru: 'İş sözleşmemi imzalamadım, sözlü anlaşmayla çalışıyorum, bu geçerli mi?',
+        soruEn: 'I did not sign an employment contract, I work verbally. Is this valid?',
+        kategoriKey: 'sozlesme',
+        Ikon: FileText,
+    },
+    {
+        soru: 'Fazla mesai yaptırıyorlar ama param yatmıyor, ne yapabilirim?',
+        soruEn: 'I work overtime but do not get paid. What can I do?',
+        kategoriKey: 'ucretHakki',
+        Ikon: Clock,
+    },
+    {
+        soru: 'Annem hasta, bakım iznine çıkabilir miyim işten?',
+        soruEn: 'My mother is ill. Can I take caregiver leave from work?',
+        kategoriKey: 'izinHakki',
+        Ikon: Heart,
+    },
 ];
+
+function kullaniciEtiketi(kullanici) {
+    const hamAd =
+        kullanici?.name ||
+        kullanici?.full_name ||
+        kullanici?.display_name ||
+        kullanici?.email?.split('@')[0];
+
+    return hamAd?.trim() || null;
+}
+
+function ustMetin(kullanici, dil) {
+    const kullaniciAdi = kullaniciEtiketi(kullanici);
+    if (!kullaniciAdi) {
+        return dil === 'en' ? 'Welcome' : 'Hoş geldin';
+    }
+
+    return dil === 'en' ? `Welcome, ${kullaniciAdi}` : `Hoş geldin, ${kullaniciAdi}`;
+}
+
+function UstAksiyonlar({
+    tema,
+    toggleTema,
+    kullanici,
+    cikis,
+    t,
+    setAuthModalAcik,
+    aramayiCalistir,
+    aramaYukleniyor,
+    aramaSonuclari,
+    aramayiTemizle,
+}) {
+    return (
+        <header className="flex shrink-0 items-center justify-end px-8 pt-6">
+            <div
+                className="flex items-center gap-2 rounded-full px-2 py-2"
+                style={{
+                    background: 'var(--tema-soft-bg-subtle)',
+                    border: '1px solid var(--tema-border-card)',
+                    backdropFilter: 'blur(14px)',
+                }}
+            >
+                <DirekArama
+                    onArama={aramayiCalistir}
+                    yukleniyor={aramaYukleniyor}
+                    sonuclar={aramaSonuclari}
+                    onTemizle={aramayiTemizle}
+                />
+
+                <button
+                    onClick={toggleTema}
+                    title={tema === 'koyu' ? t('acikTemaya') : t('koyuTemaya')}
+                    className="rounded-full p-2.5 transition-all duration-150"
+                    style={{ color: 'var(--tema-muted)' }}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.color = 'var(--tema-text)';
+                        e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'var(--tema-muted)';
+                        e.currentTarget.style.background = 'transparent';
+                    }}
+                >
+                    {tema === 'koyu' ? <Sun size={15} /> : <Moon size={15} />}
+                </button>
+
+                <div className="mx-1 h-5 w-px" style={{ background: 'var(--tema-border-card)' }} />
+
+                {kullanici ? (
+                    <>
+                        <span className="hidden text-xs sm:inline" style={{ color: 'var(--tema-muted)' }}>
+                            {kullanici.email}
+                        </span>
+                        <button
+                            onClick={cikis}
+                            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[13.5px] transition-all duration-150"
+                            style={{
+                                color: 'var(--tema-text2)',
+                                border: '1px solid var(--tema-border-card)',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.color = 'var(--tema-text)';
+                                e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.color = 'var(--tema-text2)';
+                                e.currentTarget.style.background = 'transparent';
+                            }}
+                        >
+                            <LogOut size={14} />
+                            <span className="hidden sm:inline">{t('cikis')}</span>
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <button
+                            onClick={() => setAuthModalAcik(true)}
+                            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[13.5px] transition-all duration-150"
+                            style={{
+                                color: 'var(--tema-text2)',
+                                border: '1px solid var(--tema-border-card)',
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.color = 'var(--tema-text)';
+                                e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.color = 'var(--tema-text2)';
+                                e.currentTarget.style.background = 'transparent';
+                            }}
+                        >
+                            <LogIn size={14} />
+                            <span className="hidden sm:inline">{t('giriYap')}</span>
+                        </button>
+
+                        <button
+                            onClick={() => setAuthModalAcik(true)}
+                            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[13.5px] transition-all duration-150"
+                            style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
+                        >
+                            <UserPlus size={14} />
+                            <span className="hidden sm:inline">{t('kayitOl')}</span>
+                        </button>
+                    </>
+                )}
+            </div>
+        </header>
+    );
+}
+
+function SoruChip({ Ikon, label, onClick }) {
+    return (
+        <button
+            onClick={onClick}
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13.5px] transition-all duration-150"
+            style={{
+                background: 'var(--tema-soft-bg-subtle)',
+                border: '1px solid var(--tema-border-card)',
+                color: 'var(--tema-text2)',
+            }}
+            onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--tema-soft-bg)';
+                e.currentTarget.style.borderColor = 'var(--tema-border-strong)';
+            }}
+            onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
+                e.currentTarget.style.borderColor = 'var(--tema-border-card)';
+            }}
+        >
+            <Ikon size={14} style={{ color: 'var(--tema-accent-soft)' }} />
+            <span>{label}</span>
+        </button>
+    );
+}
+
+function ComposerPanel({
+    compact,
+    t,
+    girdi,
+    setGirdi,
+    secilenDosya,
+    setSecilenDosya,
+    dosyaInputRef,
+    klavyeIsle,
+    yukleniyor,
+    gonder,
+}) {
+    const textareaRef = useRef(null);
+
+    useEffect(() => {
+        if (!textareaRef.current) return;
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, compact ? 160 : 190)}px`;
+    }, [girdi, compact]);
+
+    return (
+        <div className={`mx-auto w-full ${compact ? 'max-w-4xl' : 'max-w-[700px]'}`}>
+            {secilenDosya && (
+                <div
+                    className="mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[13.5px]"
+                    style={{
+                        background: 'var(--tema-soft-bg)',
+                        border: '1px solid var(--tema-border-card)',
+                        color: 'var(--tema-text2)',
+                    }}
+                >
+                    <FileText size={14} />
+                    <span className="max-w-[240px] truncate">{secilenDosya.name}</span>
+                    <button
+                        onClick={() => setSecilenDosya(null)}
+                        className="rounded-full p-1 transition-colors"
+                        style={{ color: 'var(--tema-muted)' }}
+                    >
+                        <X size={13} />
+                    </button>
+                </div>
+            )}
+
+            <div
+                className={`rounded-[2rem] ${compact ? 'px-5 py-4' : 'px-5 py-4'}`}
+                style={{
+                    background: 'var(--tema-surface)',
+                    border: compact ? '1px solid var(--tema-border-card)' : '1px solid var(--tema-border-strong)',
+                    boxShadow: compact ? '0 18px 40px rgba(0,0,0,0.18)' : '0 28px 60px rgba(0,0,0,0.22)',
+                }}
+            >
+                <input
+                    type="file"
+                    ref={dosyaInputRef}
+                    accept=".pdf"
+                    className="hidden"
+                    onChange={(e) => {
+                        if (e.target.files?.[0]) setSecilenDosya(e.target.files[0]);
+                    }}
+                />
+
+                <textarea
+                    ref={textareaRef}
+                    value={girdi}
+                    onChange={(e) => setGirdi(e.target.value)}
+                    onKeyDown={klavyeIsle}
+                    placeholder={t('soruPlaceholder')}
+                    rows={compact ? 1 : 2}
+                    disabled={yukleniyor}
+                    className="w-full resize-none bg-transparent text-[14.5px] leading-[1.65] outline-none"
+                    style={{
+                        color: 'var(--tema-text)',
+                        minHeight: compact ? '48px' : '92px',
+                        maxHeight: compact ? '160px' : '190px',
+                    }}
+                />
+
+                <div
+                    className="mt-4 flex items-center justify-between gap-3 border-t pt-3"
+                    style={{ borderColor: 'var(--tema-border-card)' }}
+                >
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => dosyaInputRef.current?.click()}
+                            disabled={yukleniyor}
+                            className="flex h-10 w-10 items-center justify-center rounded-full transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-40"
+                            style={{
+                                background: 'var(--tema-soft-bg-subtle)',
+                                border: '1px solid var(--tema-border-card)',
+                            }}
+                            title={t('pdfYukleTip')}
+                        >
+                            <Paperclip size={16} style={{ color: secilenDosya ? 'var(--tema-accent)' : 'var(--tema-muted)' }} />
+                        </button>
+
+                        <span className="hidden text-xs sm:inline" style={{ color: 'var(--tema-dimmer)' }}>
+                            {t('enterHint')}
+                        </span>
+                    </div>
+
+                    <button
+                        onClick={gonder}
+                        disabled={(!girdi.trim() && !secilenDosya) || yukleniyor}
+                        className="flex h-11 min-w-[52px] items-center justify-center rounded-full px-4 transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-40"
+                        style={{
+                            background: (girdi.trim() || secilenDosya) && !yukleniyor
+                                ? 'var(--tema-send-btn)'
+                                : 'var(--tema-soft-bg-subtle)',
+                            border: '1px solid var(--tema-border-card)',
+                        }}
+                        title={t('gonderTip')}
+                    >
+                        {yukleniyor ? (
+                            <RotateCcw size={16} className="animate-spin" style={{ color: 'var(--tema-accent)' }} />
+                        ) : (
+                            <Send size={16} style={{ color: girdi.trim() || secilenDosya ? 'var(--tema-send-icon)' : 'var(--tema-muted)' }} />
+                        )}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSinyali }) {
     const [girdi, setGirdi] = useState('');
     const [secilenDosya, setSecilenDosya] = useState(null);
     const [authModalAcik, setAuthModalAcik] = useState(false);
     const chatSonuRef = useRef(null);
-    const inputRef = useRef(null);
     const dosyaInputRef = useRef(null);
-    const sohbetIdRef = useRef(null); // aktif session ID
+    const sohbetIdRef = useRef(null);
     const { tema, toggleTema } = useTema();
     const { kullanici, cikis } = useAuth();
     const { t, dil } = useDil();
@@ -48,7 +357,6 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         chatSonuRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [mesajlar, yukleniyor]);
 
-    // Soldan sohbet seçilince mesajları geri yükle
     useEffect(() => {
         if (secilenSohbet) {
             mesajlariYukle(secilenSohbet.mesajlar);
@@ -58,7 +366,6 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         }
     }, [secilenSohbet, mesajlariYukle, onSoruIslendi]);
 
-    // Yeni sohbet sinyali gelince temizle
     useEffect(() => {
         if (temizleSinyali > 0) {
             sohbetiTemizle();
@@ -68,7 +375,6 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         }
     }, [temizleSinyali, sohbetiTemizle]);
 
-    // Her AI yanıtından sonra sohbet geçmiş listesinin güncellenmesi için sinyal gönder
     useEffect(() => {
         if (mesajlar.length === 0 || yukleniyor) return;
         window.dispatchEvent(new Event('gecmis-guncellendi'));
@@ -76,17 +382,17 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
 
     const gonder = useCallback(async () => {
         if ((!girdi.trim() && !secilenDosya) || yukleniyor) return;
+
         const metin = girdi;
         const dosya = secilenDosya;
         setGirdi('');
         setSecilenDosya(null);
-        
-        const localGuestId = localStorage.getItem('hakbul_guest_session_id') || null;
 
+        const localGuestId = localStorage.getItem('hakbul_guest_session_id') || null;
         const stateVars = await mesajGonder(metin, {
             conversationId: sohbetIdRef.current,
             guestSessionId: localGuestId,
-            dosya: dosya,
+            dosya,
         });
 
         if (stateVars) {
@@ -95,9 +401,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                 localStorage.setItem('hakbul_guest_session_id', stateVars.guest_session_id);
             }
         }
-        
-        inputRef.current?.focus();
-    }, [girdi, secilenDosya, yukleniyor, mesajGonder, kullanici]);
+    }, [girdi, secilenDosya, yukleniyor, mesajGonder]);
 
     const klavyeIsle = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -106,320 +410,136 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         }
     };
 
-    const ornekSoruTikla = (soru) => {
+    const ornekSoruyuYukle = (soru) => {
         setGirdi(soru);
-        inputRef.current?.focus();
     };
 
     const bosEkran = mesajlar.length === 0;
-
-    const ORNEK_SORULAR = ORNEK_SORULAR_DATA.map(item => ({
-        soru: dil === 'en' ? item.soru_en : item.soru,
+    const ornekSorular = ORNEK_SORULAR_DATA.map((item) => ({
+        soru: dil === 'en' ? item.soruEn : item.soru,
         kategori: t(item.kategoriKey),
         Ikon: item.Ikon,
     }));
 
     return (
-        <div className="flex flex-col h-full">
-            {/* ── NAVİGASYON ÇUBUĞU ── */}
-            <header
-                className="flex-shrink-0 flex items-center justify-between px-5 py-3"
-                style={{
-                    background: 'var(--tema-panel)',
-                    backdropFilter: 'blur(20px)',
-                    borderBottom: '1px solid var(--tema-border)',
-                }}
-            >
-                {/* Sol: Logo */}
-                <div className="flex items-center gap-3">
-                    <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center"
-                        style={{
-                            background: `rgba(var(--a), 0.12)`,
-                            border: `1px solid rgba(var(--a), 0.25)`,
-                        }}
-                    >
-                        <Scale size={18} style={{ color: 'var(--tema-accent)' }} />
-                    </div>
-                    <div>
-                        <h1 className="font-serif font-semibold text-lg leading-none gold-gradient">
-                            Hak-Bul
-                        </h1>
-                        <p className="text-xs leading-none mt-0.5" style={{ color: 'var(--tema-muted)' }}>
-                            {t('turkHukukAsistani')}
-                        </p>
-                    </div>
-                </div>
+        <div className="flex h-full flex-col">
+            <UstAksiyonlar
+                tema={tema}
+                toggleTema={toggleTema}
+                kullanici={kullanici}
+                cikis={cikis}
+                t={t}
+                setAuthModalAcik={setAuthModalAcik}
+                aramayiCalistir={aramayiCalistir}
+                aramaYukleniyor={aramaYukleniyor}
+                aramaSonuclari={aramaSonuclari}
+                aramayiTemizle={aramayiTemizle}
+            />
 
-                {/* Sağ: Arama + Tema + Auth + Temizle */}
-                <div className="flex items-center gap-1.5">
-                    <DirekArama
-                        onArama={aramayiCalistir}
-                        yukleniyor={aramaYukleniyor}
-                        sonuclar={aramaSonuclari}
-                        onTemizle={aramayiTemizle}
-                    />
-
-                    {/* Tema toggle */}
-                    <button
-                        onClick={toggleTema}
-                        title={tema === 'koyu' ? t('acikTemaya') : t('koyuTemaya')}
-                        className="p-2 rounded-xl transition-all duration-150"
-                        style={{ color: 'var(--tema-muted)' }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.color = 'var(--tema-text)';
-                            e.currentTarget.style.background = `rgba(var(--a), 0.08)`;
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.color = 'var(--tema-muted)';
-                            e.currentTarget.style.background = 'transparent';
-                        }}
-                    >
-                        {tema === 'koyu' ? <Sun size={15} /> : <Moon size={15} />}
-                    </button>
-
-                    {/* Ayırıcı */}
-                    <div className="w-px h-5 mx-1" style={{ background: 'var(--tema-border)' }} />
-
-                    {kullanici ? (
-                        <>
-                            {/* Kullanıcı emaili */}
-                            <span className="text-xs hidden sm:inline" style={{ color: 'var(--tema-muted)' }}>
-                                {kullanici.email}
-                            </span>
-                            {/* Çıkış */}
-                            <button
-                                onClick={cikis}
-                                title={`${t('cikis')} (${kullanici.email})`}
-                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150"
-                                style={{ color: 'var(--tema-muted)', border: '1px solid var(--tema-border)' }}
-                                onMouseEnter={e => { e.currentTarget.style.color = 'var(--tema-text)'; }}
-                                onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
-                            >
-                                <LogOut size={14} />
-                                <span className="hidden sm:inline">{t('cikis')}</span>
-                            </button>
-                        </>
-                    ) : (
-                        <>
-                            {/* Giriş Yap */}
-                            <button
-                                onClick={() => setAuthModalAcik(true)}
-                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150"
-                                style={{ color: 'var(--tema-muted)', border: '1px solid var(--tema-border)' }}
-                                onMouseEnter={e => { e.currentTarget.style.color = 'var(--tema-text)'; }}
-                                onMouseLeave={e => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
-                            >
-                                <LogIn size={14} />
-                                <span className="hidden sm:inline">{t('giriYap')}</span>
-                            </button>
-                            {/* Kayıt Ol */}
-                            <button
-                                onClick={() => setAuthModalAcik(true)}
-                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-150"
-                                style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
-                            >
-                                <UserPlus size={14} />
-                                <span className="hidden sm:inline">{t('kayitOl')}</span>
-                            </button>
-                        </>
-                    )}
-
-                </div>
-            </header>
-
-            {/* ── SOHBET ALANI ── */}
-            <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
-                {bosEkran ? (
-                    <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-center animate-fade-in">
-                        {/* Hero */}
-                        <div
-                            className="w-20 h-20 rounded-3xl flex items-center justify-center mb-5"
-                            style={{
-                                background: `rgba(var(--a), 0.1)`,
-                                border: `1px solid rgba(var(--a), 0.2)`,
-                                boxShadow: `0 0 40px rgba(var(--a), 0.06)`,
-                            }}
-                        >
-                            <Scale size={38} style={{ color: 'var(--tema-accent)' }} />
-                        </div>
-
-                        <h2 className="font-serif text-3xl font-semibold gold-gradient mb-2">
-                            {t('hosGeldiniz')}
-                        </h2>
-                        <p className="text-sm max-w-sm mb-1" style={{ color: 'var(--tema-text2)' }}>
-                            {t('hosGeldinizAlt')}
-                        </p>
-                        <p className="text-xs mb-10" style={{ color: 'var(--tema-muted)' }}>
-                            {t('bilgiAmacliAvukat')}
-                        </p>
-
-                        {/* Örnek sorular — 2×2 grid */}
-                        <div className="w-full max-w-2xl">
-                            <p
-                                className="text-xs uppercase tracking-widest font-medium mb-3"
-                                style={{ color: 'var(--tema-muted)' }}
-                            >
-                                {t('ornekSorular')}
-                            </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                {ORNEK_SORULAR.map(({ soru, kategori, Ikon }) => (
-                                    <button
-                                        key={soru}
-                                        onClick={() => ornekSoruTikla(soru)}
-                                        className="group text-left px-4 py-3.5 rounded-xl transition-all duration-150 flex items-start gap-3"
-                                        style={{
-                                            background: 'var(--tema-card)',
-                                            border: '1px solid var(--tema-border-card)',
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.currentTarget.style.background = 'var(--tema-card-hover)';
-                                            e.currentTarget.style.borderColor = `rgba(var(--a), 0.2)`;
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.currentTarget.style.background = 'var(--tema-card)';
-                                            e.currentTarget.style.borderColor = 'var(--tema-border-card)';
-                                        }}
-                                    >
-                                        <div
-                                            className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                                            style={{ background: `rgba(var(--a), 0.1)` }}
-                                        >
-                                            <Ikon size={13} style={{ color: 'var(--tema-accent)' }} />
-                                        </div>
-                                        <div className="min-w-0">
-                                            <p
-                                                className="text-xs font-medium mb-0.5"
-                                                style={{ color: `rgba(var(--a), 0.7)` }}
-                                            >
-                                                {kategori}
-                                            </p>
-                                            <p
-                                                className="text-sm leading-snug transition-colors"
-                                                style={{ color: 'var(--tema-text2)' }}
-                                            >
-                                                {soru}
-                                            </p>
-                                        </div>
-                                        <ArrowRight
-                                            size={14}
-                                            className="flex-shrink-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity ml-auto"
-                                            style={{ color: `rgba(var(--a), 0.6)` }}
-                                        />
-                                    </button>
-                                ))}
+            {bosEkran ? (
+                <div className="flex flex-1 items-center justify-center px-6 pb-12">
+                    <div className="w-full max-w-[900px] -translate-y-5">
+                        <div className="mb-8 text-center">
+                            <div className="mb-4 flex justify-center">
+                                <div
+                                    className="inline-flex items-center gap-3 rounded-full px-4 py-2"
+                                    style={{
+                                        background: 'var(--tema-soft-bg-subtle)',
+                                        border: '1px solid var(--tema-border-card)',
+                                        color: 'var(--tema-accent-soft)',
+                                    }}
+                                >
+                                    <Sparkles size={16} style={{ color: 'var(--tema-accent)' }} />
+                                    <span className="text-[11px] tracking-[0.14em] uppercase">Hak-Bul</span>
+                                </div>
                             </div>
+                            <h2 className="gold-gradient inline-block pb-[0.08em] font-serif text-[clamp(2rem,4.4vw,3.35rem)] leading-[1.12] tracking-[-0.025em]">
+                                {ustMetin(kullanici, dil)}
+                            </h2>
+                            <p className="mx-auto mt-3 max-w-xl text-[14px] leading-[1.7]" style={{ color: 'var(--tema-text2)' }}>
+                                {t('hosGeldinizAlt')}
+                            </p>
+                            <p className="mt-2.5 text-[12px]" style={{ color: 'var(--tema-dimmer)' }}>
+                                {t('bilgiAmacliAvukat')}
+                            </p>
                         </div>
-                    </div>
-                ) : (
-                    <>
-                        {mesajlar.map((mesaj) => (
-                            <SohbetMesaji key={mesaj.id} mesaj={mesaj} />
-                        ))}
-                        {yukleniyor && <YukleniyorGostergesi />}
-                    </>
-                )}
-                <div ref={chatSonuRef} />
-            </div>
 
-            {/* ── GİRDİ ÇUBUĞU ── */}
-            <div
-                className="flex-shrink-0 px-6 py-4"
-                style={{
-                    background: 'var(--tema-panel)',
-                    backdropFilter: 'blur(20px)',
-                    borderTop: '1px solid var(--tema-border)',
-                }}
-            >
-                <div className="max-w-3xl mx-auto">
-                    {secilenDosya && (
-                        <div className="mb-2 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border"
-                             style={{ background: 'var(--tema-card)', borderColor: 'var(--tema-border)', color: 'var(--tema-text2)' }}>
-                            <FileText size={14} className="opacity-70" />
-                            <span className="text-sm truncate max-w-[200px]">{secilenDosya.name}</span>
-                            <button onClick={() => setSecilenDosya(null)} className="ml-1 opacity-60 hover:opacity-100 hover:text-red-400 transition-colors">
-                                <X size={14} />
-                            </button>
-                        </div>
-                    )}
+                        <ComposerPanel
+                            compact={false}
+                            t={t}
+                            girdi={girdi}
+                            setGirdi={setGirdi}
+                            secilenDosya={secilenDosya}
+                            setSecilenDosya={setSecilenDosya}
+                            dosyaInputRef={dosyaInputRef}
+                            klavyeIsle={klavyeIsle}
+                            yukleniyor={yukleniyor}
+                            gonder={gonder}
+                        />
 
-                    <div
-                        className="flex gap-0 items-end rounded-2xl overflow-hidden transition-all duration-200"
-                        style={{
-                            background: 'var(--tema-surface)',
-                            border: '1px solid var(--tema-border)',
-                            boxShadow: '0 2px 12px rgba(0,0,0,0.1)',
-                        }}
-                        onFocusCapture={(e) => {
-                            e.currentTarget.style.borderColor = 'var(--tema-border-focus)';
-                            e.currentTarget.style.boxShadow = 'var(--tema-shadow-focus)';
-                        }}
-                        onBlurCapture={(e) => {
-                            e.currentTarget.style.borderColor = 'var(--tema-border)';
-                            e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.1)';
-                        }}
-                    >
-                        <input 
-                            type="file" 
-                            ref={dosyaInputRef} 
-                            accept=".pdf" 
-                            className="hidden" 
-                            onChange={(e) => { if(e.target.files[0]) setSecilenDosya(e.target.files[0]); }} 
-                        />
-                        <button
-                            onClick={() => dosyaInputRef.current?.click()}
-                            disabled={yukleniyor}
-                            className="flex items-center justify-center w-11 h-11 m-1.5 rounded-xl transition-all duration-150 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black/5 dark:hover:bg-white/5"
-                            title={t('pdfYukleTip')}
-                        >
-                            <Paperclip size={18} style={{ color: secilenDosya ? 'var(--tema-accent)' : 'var(--tema-muted)' }} />
-                        </button>
-                        <textarea
-                            ref={inputRef}
-                            value={girdi}
-                            onChange={(e) => setGirdi(e.target.value)}
-                            onKeyDown={klavyeIsle}
-                            placeholder={t('soruPlaceholder')}
-                            rows={1}
-                            disabled={yukleniyor}
-                            className="flex-1 bg-transparent text-sm px-4 py-3.5 focus:outline-none resize-none min-h-[48px] max-h-40"
-                            style={{
-                                color: 'var(--tema-text)',
-                                overflowY: girdi.split('\n').length > 3 ? 'auto' : 'hidden',
-                            }}
-                            onInput={(e) => {
-                                e.target.style.height = 'auto';
-                                e.target.style.height = `${Math.min(e.target.scrollHeight, 160)}px`;
-                            }}
-                        />
-                        <button
-                            onClick={gonder}
-                            disabled={(!girdi.trim() && !secilenDosya) || yukleniyor}
-                            className="flex items-center justify-center w-11 h-11 m-1.5 rounded-xl transition-all duration-150 flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed active:scale-95"
-                            style={{
-                                background: (girdi.trim() || secilenDosya) && !yukleniyor
-                                    ? 'var(--tema-send-btn)'
-                                    : `rgba(var(--a), 0.08)`,
-                            }}
-                            title={t('gonderTip')}
-                        >
-                            {yukleniyor ? (
-                                <RotateCcw size={16} className="animate-spin" style={{ color: 'var(--tema-accent)' }} />
-                            ) : (
-                                <Send
-                                    size={16}
-                                    style={{ color: girdi.trim() || secilenDosya ? 'var(--tema-send-icon)' : 'var(--tema-muted)' }}
+                        <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
+                            {ornekSorular.map(({ soru, kategori, Ikon }) => (
+                                <SoruChip
+                                    key={kategori}
+                                    Ikon={Ikon}
+                                    label={kategori}
+                                    onClick={() => ornekSoruyuYukle(soru)}
                                 />
-                            )}
-                        </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                <>
+                    <div className="min-h-0 flex-1 overflow-y-auto px-6">
+                        <div className="mx-auto w-full max-w-4xl space-y-6 py-10">
+                            <div className="mb-2 flex items-center gap-3">
+                                <div
+                                    className="flex h-10 w-10 items-center justify-center rounded-2xl"
+                                    style={{
+                                        background: 'var(--tema-soft-bg-subtle)',
+                                        border: '1px solid var(--tema-border-card)',
+                                    }}
+                                >
+                                    <Scale size={18} style={{ color: 'var(--tema-accent-soft)' }} />
+                                </div>
+                                <div>
+                                    <p className="text-xs uppercase tracking-[0.18em]" style={{ color: 'var(--tema-dimmer)' }}>
+                                        Hak-Bul
+                                    </p>
+                                    <p className="text-[13.5px]" style={{ color: 'var(--tema-text2)' }}>
+                                        {t('assistantChatLabel')}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {mesajlar.map((mesaj) => (
+                                <SohbetMesaji key={mesaj.id} mesaj={mesaj} />
+                            ))}
+
+                            {yukleniyor && <YukleniyorGostergesi />}
+                            <div ref={chatSonuRef} />
+                        </div>
                     </div>
 
-                    <p className="text-center text-xs mt-2" style={{ color: 'var(--tema-dimmer)' }}>
-                        {t('enterHint')}
-                    </p>
-                </div>
-            </div>
-        {authModalAcik && <AuthModal onKapat={() => setAuthModalAcik(false)} />}
+                    <div className="shrink-0 px-6 pb-6 pt-3">
+                        <ComposerPanel
+                            compact
+                            t={t}
+                            girdi={girdi}
+                            setGirdi={setGirdi}
+                            secilenDosya={secilenDosya}
+                            setSecilenDosya={setSecilenDosya}
+                            dosyaInputRef={dosyaInputRef}
+                            klavyeIsle={klavyeIsle}
+                            yukleniyor={yukleniyor}
+                            gonder={gonder}
+                        />
+                    </div>
+                </>
+            )}
+
+            {authModalAcik && <AuthModal onKapat={() => setAuthModalAcik(false)} />}
         </div>
     );
 }

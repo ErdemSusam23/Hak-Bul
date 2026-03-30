@@ -174,6 +174,104 @@ Misafir ve ücretsiz kayıtlı kullanıcılar için günlük/aylık soru kotası
 
 **Bağımlılık:** Yüksek öncelikli görevler bitmeden başlanmayacak.
 
+Genel Değerlendirme
+
+  Güncel yapıda bu işin zorluğu orta. Sebep şu: auth ve guest ayrımı zaten var, /ask ve /ask/stream giriş noktaları da
+  net; ama kota kavramı veri modelinde hiç yok ve soru üretimi birkaç endpoint’e dağılmış durumda. Yani sıfırdan auth
+  yazmıyorsunuz, fakat “tek yerde çalışan, guest + free user + streaming + PDF analizi” kuralını kurmak için küçük bir
+  refactor gerekiyor.
+
+  En gerçekçi tahmin:
+
+  - Sadece backend enforcement, sabit kotalar, kullanıcıya basit hata mesajı: 1.5 - 3 gün
+  - Buna admin görünürlüğü, profilde kalan kota bilgisi, daha temiz domain modeli ve testlerin tamamı eklenirse: 3 - 5
+    gün
+  - İleride premium/abonelik/billing de gelecekse, şimdi doğru tasarlanmazsa sonradan ikinci refactor gerekir.
+
+  Nereler Etkilenir
+
+  Ana giriş noktaları şu dosyalarda:
+
+  - backend/main.py:99 ve backend/main.py:176: /ask ve /ask/stream burada. Kota kontrolü için en doğal yer burası.
+  - backend/routers/documents.py:42 ve backend/routers/documents.py:145: PDF analiz/karşılaştırma da aynı tüketim
+    modeline dahil edilecek mi burada karar verilmeli.
+  - backend/auth/dependencies.py:31: get_current_user_optional guest/free ayrımını resolve etmek için zaten
+    kullanılıyor. Kota dependency’si buraya benzer bir ortak katman olarak eklenebilir.
+  - backend/models/user.py:11: kullanıcıda şu an sadece role, is_active gibi alanlar var; free/premium tier veya
+    override quota bilgisi yok.
+  - backend/services/chat_service.py:20: chat kayıtları burada yapılıyor. Kota sayımı için burayı kullanmak mümkün ama
+    doğru yer değil; kota mantığı ayrı servis olmalı.
+  - backend/config.py: günlük/aylık limitler config’den yönetilmeli.
+  - frontend/src/hooks/useChat.js:157 ve frontend/src/hooks/useChat.js:309: stream akışı ve 429 hata gösterimi burada;
+    kota doldu mesajı UI’da burada ele alınır.
+  - frontend/src/api/client.js:121 ve frontend/src/api/client.js:135: /ask ve /documents/analyze çağrıları.
+  - frontend/src/api/client.js:288 ve frontend/src/pages/ProfilSayfasi.jsx: kalan kota profil ekranında gösterilecekse
+    burası etkilenir.
+
+  Refactor İhtiyacı
+
+  Asıl refactor ihtiyacı şu noktada: şu an rate limit IP bazlı slowapi ile endpoint üzerinde duruyor, iş kuralı bazlı
+  “bu kullanıcı bugün kaç soru sordu” mantığı ise hiç yok. Yani kota için ikinci bir katman gerekiyor. Bunu endpoint
+  içine gömmek mümkün ama kötü olur; ortak bir quota_service veya dependency yazmak daha doğru.
+
+  Önerilen yapı:
+
+  - users tablosuna plan/tier alanı eklemek: örn. plan = guest/free/premium ya da auth user için free/premium
+  - Ayrı bir kullanım tablosu eklemek: örn. usage_events veya quota_usage
+  - Ortak bir servis: check_and_consume_quota(actor, action_type)
+  - /ask, /ask/stream, gerekirse /documents/analyze bu servisi çağırır
+  - Yanıtta opsiyonel kota bilgisi dönülür: remaining_daily, remaining_monthly, reset_at
+
+  Bu refactor küçük-orta ölçekli. Çünkü şu an domain mantığı router’larda duruyor; yeni kota kuralı bunu biraz daha
+  servis katmanına çekmeyi gerektirir.
+
+  Maliyet Kırılımı
+
+  Backend:
+
+  - DB migration: 0.5 gün
+  - quota modeli/servisi: 0.5 - 1 gün
+  - /ask + /ask/stream entegrasyonu: 0.5 gün
+  - /documents/analyze ve diğer soru-benzeri uçlar için karar ve entegrasyon: 0.25 - 0.5 gün
+  - hata sözleşmesi ve response genişletme: 0.25 gün
+  - testler: 0.5 - 1 gün
+
+  Frontend:
+
+  - mevcut 429 akışını kota-dolu mesajına uyarlama: 0.25 gün
+  - profil veya chat ekranında kalan kota göstergesi: 0.5 gün
+  - i18n metinleri ve edge-case’ler: 0.25 gün
+
+  Toplam:
+
+  - Minimum uygulanabilir sürüm: 2 - 3 gün
+  - Daha temiz ve büyümeye uygun sürüm: 3 - 5 gün
+
+  Başlıca Riskler
+
+  - Guest kullanıcı sayımı IP’ye göre yapılırsa hatalı olur; sizde guest cookie/session altyapısı var, bunu kullanmak
+    daha doğru.
+  - Streaming’de kota ne zaman düşecek sorusu kritik. İstek başında mı, ilk token’da mı, tamamlanınca mı? En pratik
+    çözüm istek başında reserve etmek.
+  - Sadece chat_history sayarak kota hesaplamak kısa vadede çalışır ama uzun vadede sorun çıkarır; silinen sohbetler,
+    başarısız istekler, belge analizi ve farklı action tipleri karışır.
+  - role şu an sadece user/admin; premium’ı role’a sıkıştırmak kötü tasarım olur. Plan/tier ayrı alan olmalı.
+  - Profil ekranında kota gösterecekseniz yeni endpoint veya profile response genişletmesi gerekir.
+
+  Sonuç
+
+  Bugünkü mimaride bu iş yapılabilir ve bloklayıcı bir mimari sorun yok. Zorluk seviyesi orta; ana maliyet auth’tan
+  değil, doğru quota domain modelini kurmaktan geliyor. En önemli karar da şu: bunu sadece “429 benzeri basit sayaç” mı
+  yapacaksınız, yoksa yarın premium/billing bağlanabilecek şekilde mi tasarlayacaksınız. İlkini hızlı çıkarırsınız,
+  ikincisi için küçük ama doğru bir refactor şart.
+
+  İsterseniz bir sonraki adımda size doğrudan:
+
+  1. önerilen tablo şemasını,
+  2. endpoint sözleşmesini,
+  3. sprint/task breakdown’ını
+     çıkarayım.
+
 ---
 
 ### G10 — Email Bildirimleri

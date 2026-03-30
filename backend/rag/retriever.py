@@ -65,6 +65,7 @@ LOCAL_PROCESSED_FILENAMES = [
 
 TOKEN_RE = re.compile(r"[0-9a-z_]+")
 MADDE_RE = re.compile(r"(?:madde|md)\s*\.?\s*(\d+)")
+MULGA_RE = re.compile(r"\(M[üu]lga", re.IGNORECASE)
 LAW_NUMBERS = (
     "193", "2004", "2577", "2709", "2911", "2918", "2942",
     "3065", "3071", "3194", "4447", "4721", "4734", "4857",
@@ -234,6 +235,10 @@ def _build_local_index() -> list[dict[str, Any]]:
 
         for item in raw:
             if not isinstance(item, dict):
+                continue
+
+            metin = item.get("metin", "")
+            if _is_tamamen_mulga(metin):
                 continue
 
             payload = {
@@ -489,15 +494,10 @@ def _should_merge_local_law_results(query: str, kaynak_turu: str | None = None) 
         return True
 
     hinted_laws = _semantic_law_hints(query_tokens)
-    if not hinted_laws:
-        return False
+    if hinted_laws:
+        return True
 
-    reference_prefixes = ("kanun", "madde", "madd", "sayil", "uyar")
-    return any(
-        token.startswith(prefix)
-        for token in query_tokens
-        for prefix in reference_prefixes
-    )
+    return False
 
 
 def _merge_scored_chunks(
@@ -581,7 +581,8 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
                     boost = 0.85 if _extract_query_madde_numbers(_normalize(query)) else 0.95
                     deduped = _merge_scored_chunks(local_kanun, deduped, secondary_boost=boost)
                 elif should_merge_local_laws:
-                    deduped = _merge_scored_chunks(local_kanun, deduped, secondary_boost=0.92)
+                    # Kanun maddeleri oncelikli — Yargitay kararlari ikincil
+                    deduped = _merge_scored_chunks(local_kanun, deduped, secondary_boost=0.85)
                 else:
                     has_kanun = any(c["payload"].get("kaynak_turu") == "kanun" for c in deduped)
                     if not has_kanun:
@@ -593,9 +594,22 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
         return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
 
 
+def _is_tamamen_mulga(metin: str) -> bool:
+    """Tamamen mulga olan (icerigi olmayan) maddeleri tespit eder."""
+    if not MULGA_RE.search(metin):
+        return False
+    stripped = MULGA_RE.sub("", metin)
+    stripped = re.sub(r"\([^)]*\)", "", stripped)
+    stripped = re.sub(r"(?i)madde\s+\d+\s*[-–]?\s*", "", stripped).strip()
+    return len(stripped) < 30
+
+
 def filter_by_score(chunks: list[dict], threshold: float | None = None) -> list[dict]:
     if not chunks:
         return []
+
+    # Tamamen mulga olan maddeleri filtrele
+    chunks = [c for c in chunks if not _is_tamamen_mulga(c.get("payload", {}).get("metin", ""))]
 
     if threshold is None:
         threshold = settings.SCORE_THRESHOLD

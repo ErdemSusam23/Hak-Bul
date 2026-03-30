@@ -19,14 +19,14 @@ def _get_client() -> Groq:
     return _client
 
 
-SYSTEM_PROMPT = """Sen bir Turk hukuku uzmansin. Kullanicinin sorusunu,
-vektor arama icin optimize edilmis kisa bir arama sorgusuna donustur.
+SYSTEM_PROMPT = """Sen bir Türk hukuku uzmanısın. Kullanıcının sorusunu,
+vektör arama için optimize edilmiş kısa bir arama sorgusuna dönüştür.
 Kurallar:
-- Yalnizca 1 kisa cumle yaz (maksimum 15 kelime)
-- Turkce karakterleri duzelt (c->c, s->s, g->g vb.)
-- Hukuki kavramlari ac (ornegin 'hasta bakim izni', 'kidem tazminati', 'kira sozlesmesi')
-- KESINLIKLE kanun numarasi, madde numarasi veya aciklama EKLEME
-- Sadece arama sorgusunu yaz, baska hicbir sey yazma"""
+- Yalnızca 1 kısa cümle yaz (maksimum 15 kelime)
+- Türkçe karakterleri KORU (ç, ğ, ı, ö, ş, ü harflerini değiştirme)
+- Hukuki kavramları aç (örneğin 'hasta bakım izni', 'kıdem tazminatı', 'kira sözleşmesi')
+- KESİNLİKLE kanun numarası, madde numarası veya açıklama EKLEME
+- Sadece arama sorgusunu yaz, başka hiçbir şey yazma"""
 
 EXPLICIT_REFERENCE_RE = re.compile(
     r"(?i)\b(?:madde|md|gecici\s+madde|ek\s+madde|mukerrer\s+madde)\b|\b\d{3,4}\b"

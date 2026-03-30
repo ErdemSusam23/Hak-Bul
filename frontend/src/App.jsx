@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { MessageSquare, Clock, Plus, ChevronRight, FileText, BarChart2, Trash2, Pencil, Check, X, User, Download, Share2, GitCompare, MoreHorizontal } from 'lucide-react';
+import { MessageSquare, Clock, Plus, ChevronRight, FileText, BarChart2, Trash2, Pencil, Check, X, User, Download, Share2, GitCompare, MoreHorizontal, BookOpen } from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
 import AsistanBot from './components/AsistanBot';
 import SohbetSayfasi from './pages/SohbetSayfasi';
@@ -8,6 +8,8 @@ import AdminSayfasi from './pages/AdminSayfasi';
 import ProfilSayfasi from './pages/ProfilSayfasi';
 import PaylasimSayfasi from './pages/PaylasimSayfasi';
 import KarsilastirmaSayfasi from './pages/KarsilastirmaSayfasi';
+import ForumSayfasi from './pages/ForumSayfasi';
+import ForumBaslikSayfasi from './pages/ForumBaslikSayfasi';
 import { TemaProvider, useTema } from './context/TemaContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DilProvider, useDil } from './context/DilContext';
@@ -53,6 +55,7 @@ function SolSidebar({
     onAdminAc,
     onProfilAc,
     onKarsilastirAc,
+    onForumAc,
     aktifSayfa,
     onSohbetSilindi,
 }) {
@@ -374,6 +377,19 @@ function SolSidebar({
                 style={{ borderTop: '1px solid var(--tema-border)' }}
             >
                 <button
+                    onClick={onForumAc}
+                    className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
+                    style={{
+                        background: aktifSayfa === 'forum' ? 'var(--tema-surface)' : 'transparent',
+                        color: aktifSayfa === 'forum' ? 'var(--tema-accent)' : 'var(--tema-text2)',
+                    }}
+                    onMouseEnter={(e) => { if (aktifSayfa !== 'forum') e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
+                    onMouseLeave={(e) => { if (aktifSayfa !== 'forum') e.currentTarget.style.background = 'transparent'; }}
+                >
+                    <BookOpen size={16} />
+                    Forum
+                </button>
+                <button
                     onClick={onTaslakAc}
                     className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
                     style={{
@@ -439,7 +455,8 @@ function AppIcerik() {
     const [secilenSohbet, setSecilenSohbet] = useState(null);
     const [aktifSohbetId, setAktifSohbetId] = useState(null);
     const [temizleSinyali, setTemizleSinyali] = useState(0);
-    const [aktifSayfa, setAktifSayfa] = useState('sohbet'); // 'sohbet' | 'taslak' | 'admin' | 'profil'
+    const [aktifSayfa, setAktifSayfa] = useState('sohbet'); // 'sohbet' | 'taslak' | 'admin' | 'profil' | 'karsilastir' | 'forum'
+    const [aktifForumThread, setAktifForumThread] = useState(null);
     const { tema } = useTema();
 
     const uyariKabul = useCallback(() => {
@@ -448,6 +465,7 @@ function AppIcerik() {
 
     const handleYeniSohbet = useCallback(() => {
         setAktifSayfa('sohbet');
+        setAktifForumThread(null);
         setSecilenSohbet(null);
         setAktifSohbetId(null);
         setTemizleSinyali((v) => v + 1);
@@ -455,6 +473,7 @@ function AppIcerik() {
 
     const handleSohbetSec = useCallback((sohbet) => {
         setAktifSayfa('sohbet');
+        setAktifForumThread(null);
         setSecilenSohbet(sohbet);
         setAktifSohbetId(sohbet?.id || null);
     }, []);
@@ -469,6 +488,7 @@ function AppIcerik() {
     useEffect(() => {
         const handleAuthCikis = () => {
             setAktifSayfa('sohbet');
+            setAktifForumThread(null);
             setSecilenSohbet(null);
             setAktifSohbetId(null);
             setTemizleSinyali((v) => v + 1);
@@ -508,6 +528,7 @@ function AppIcerik() {
                         onAdminAc={() => setAktifSayfa('admin')}
                         onProfilAc={() => setAktifSayfa('profil')}
                         onKarsilastirAc={() => setAktifSayfa('karsilastir')}
+                        onForumAc={() => { setAktifSayfa('forum'); setAktifForumThread(null); }}
                         aktifSayfa={aktifSayfa}
                         onSohbetSilindi={handleSohbetSilindi}
                     />
@@ -522,6 +543,15 @@ function AppIcerik() {
                             <ProfilSayfasi onGeri={() => setAktifSayfa('sohbet')} />
                         ) : aktifSayfa === 'karsilastir' ? (
                             <KarsilastirmaSayfasi />
+                        ) : aktifSayfa === 'forum' ? (
+                            aktifForumThread ? (
+                                <ForumBaslikSayfasi
+                                    threadId={aktifForumThread}
+                                    onGeri={() => setAktifForumThread(null)}
+                                />
+                            ) : (
+                                <ForumSayfasi onThreadSec={(id) => setAktifForumThread(id)} />
+                            )
                         ) : (
                             <SohbetSayfasi
                                 secilenSohbet={secilenSohbet}

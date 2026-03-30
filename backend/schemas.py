@@ -296,4 +296,3 @@ class ForumOyGonder(BaseModel):
 class ForumOyCevap(BaseModel):
     basarili: bool
     yeni_skor: int
-    created_at: str

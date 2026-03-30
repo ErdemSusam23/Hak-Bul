@@ -351,3 +351,65 @@ export async function adminZayifSorguListesiAPI(limit = 100) {
     return data;
 }
 
+// --- FORUM API ---
+export async function forumThreadListesiAPI({ category = null, page = 1, size = 20 } = {}) {
+    if (MOCK_MODE) return { threads: [], total: 0, page, size };
+    const params = { page, size };
+    if (category) params.category = category;
+    const { data } = await client.get('/forum/threads', { params });
+    return data;
+}
+
+export async function forumThreadOlusturAPI({ title, content, category }) {
+    const { data } = await client.post('/forum/threads', { title, content, category });
+    return data;
+}
+
+export async function forumThreadDetayAPI(threadId) {
+    const { data } = await client.get(`/forum/threads/${threadId}`);
+    return data;
+}
+
+export async function forumThreadGuncelleAPI(threadId, { title, content }) {
+    const { data } = await client.put(`/forum/threads/${threadId}`, { title, content });
+    return data;
+}
+
+export async function forumThreadSilAPI(threadId) {
+    await client.delete(`/forum/threads/${threadId}`);
+}
+
+export async function forumThreadKilitleAPI(threadId, locked) {
+    const { data } = await client.patch(`/forum/threads/${threadId}/lock`, null, { params: { locked } });
+    return data;
+}
+
+export async function forumYanitOlusturAPI(threadId, content) {
+    const { data } = await client.post(`/forum/threads/${threadId}/replies`, { content });
+    return data;
+}
+
+export async function forumYanitGuncelleAPI(replyId, content) {
+    const { data } = await client.put(`/forum/replies/${replyId}`, { content });
+    return data;
+}
+
+export async function forumYanitSilAPI(replyId) {
+    await client.delete(`/forum/replies/${replyId}`);
+}
+
+export async function forumYanitDogrulaAPI(replyId, verified) {
+    const { data } = await client.patch(`/forum/replies/${replyId}/verify`, null, { params: { verified } });
+    return data;
+}
+
+export async function forumThreadOyAPI(threadId, value) {
+    const { data } = await client.post(`/forum/threads/${threadId}/vote`, { value });
+    return data;
+}
+
+export async function forumReplyOyAPI(replyId, value) {
+    const { data } = await client.post(`/forum/replies/${replyId}/vote`, { value });
+    return data;
+}
+

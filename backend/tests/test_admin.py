@@ -67,6 +67,36 @@ def _user_token() -> str:
     return login.json()["access_token"]
 
 
+def _kullanici_olustur(email: str, password: str = "StrongPass123") -> None:
+    r = client.post("/auth/register", json={"email": email, "password": password})
+    assert r.status_code in (201, 409)
+
+
+def _kullanici_getir(email: str):
+    db = TestingSessionLocal()
+    try:
+        from models.user import User
+        return db.query(User).filter(User.email == email).first()
+    finally:
+        db.close()
+
+
+def _kullanici_guncelle(email: str, role: str | None = None, is_active: bool | None = None) -> None:
+    db = TestingSessionLocal()
+    try:
+        from models.enums import UserRole
+        from models.user import User
+        user = db.query(User).filter(User.email == email).first()
+        assert user is not None
+        if role is not None:
+            user.role = UserRole(role)
+        if is_active is not None:
+            user.is_active = is_active
+        db.commit()
+    finally:
+        db.close()
+
+
 def test_admin_stats_yetkisiz_401():
     r = client.get("/admin/stats")
     assert r.status_code == 401
@@ -137,3 +167,82 @@ def test_admin_gunluk_aktivite_gecersiz_gun():
     token = _admin_token()
     r = client.get("/admin/stats/daily?gun=0", headers={"Authorization": f"Bearer {token}"})
     assert r.status_code == 422  # ge=1 constraint
+
+
+def test_admin_kullanici_listesi_arama_ve_filtreleme():
+    token = _admin_token()
+    headers = {"Authorization": f"Bearer {token}"}
+
+    _kullanici_olustur("lawyer.filter@test.com")
+    _kullanici_olustur("inactive.filter@test.com")
+    _kullanici_olustur("normal.filter@test.com")
+    _kullanici_guncelle("lawyer.filter@test.com", role="lawyer", is_active=True)
+    _kullanici_guncelle("inactive.filter@test.com", role="user", is_active=False)
+    _kullanici_guncelle("normal.filter@test.com", role="user", is_active=True)
+
+    q_resp = client.get(
+        "/admin/users",
+        params={"q": "lawyer.filter", "limit": 50, "offset": 0},
+        headers=headers,
+    )
+    assert q_resp.status_code == 200
+    q_users = q_resp.json()["kullanicilar"]
+    assert q_users
+    assert all("lawyer.filter" in u["email"] for u in q_users)
+
+    rol_resp = client.get(
+        "/admin/users",
+        params={"rol": "lawyer", "limit": 50, "offset": 0},
+        headers=headers,
+    )
+    assert rol_resp.status_code == 200
+    rol_users = rol_resp.json()["kullanicilar"]
+    assert rol_users
+    assert all(u["role"] == "lawyer" for u in rol_users)
+
+    aktif_resp = client.get(
+        "/admin/users",
+        params={"aktif": False, "limit": 50, "offset": 0},
+        headers=headers,
+    )
+    assert aktif_resp.status_code == 200
+    aktif_users = aktif_resp.json()["kullanicilar"]
+    assert aktif_users
+    assert all(u["is_active"] is False for u in aktif_users)
+    assert any(u["email"] == "inactive.filter@test.com" for u in aktif_users)
+
+    combo_resp = client.get(
+        "/admin/users",
+        params={"q": "normal.filter", "rol": "user", "aktif": True, "limit": 50, "offset": 0},
+        headers=headers,
+    )
+    assert combo_resp.status_code == 200
+    combo_users = combo_resp.json()["kullanicilar"]
+    assert combo_users
+    assert all(u["role"] == "user" and u["is_active"] is True for u in combo_users)
+    assert any(u["email"] == "normal.filter@test.com" for u in combo_users)
+
+
+def test_admin_kullanici_listesi_gecersiz_rol_422():
+    token = _admin_token()
+    r = client.get(
+        "/admin/users",
+        params={"rol": "invalid-role"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert r.status_code == 422
+
+
+def test_admin_rol_guncelle_lawyer():
+    token = _admin_token()
+    _kullanici_olustur("to.lawyer@test.com")
+    hedef = _kullanici_getir("to.lawyer@test.com")
+    assert hedef is not None
+
+    r = client.patch(
+        f"/admin/users/{hedef.id}/role",
+        json={"rol": "lawyer"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert r.status_code == 200
+    assert r.json()["role"] == "lawyer"

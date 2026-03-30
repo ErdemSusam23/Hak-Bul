@@ -26,6 +26,7 @@ from routers.documents import router as documents_router
 from routers.feedback import router as feedback_router
 from routers.admin import router as admin_router
 from routers.templates import router as templates_router
+from routers.forum import router as forum_router
 from db.session import get_db
 from models.user import User
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
@@ -60,6 +61,7 @@ app.include_router(documents_router)
 app.include_router(feedback_router)
 app.include_router(admin_router)
 app.include_router(templates_router)
+app.include_router(forum_router)
 
 
 @app.exception_handler(RateLimitExceeded)

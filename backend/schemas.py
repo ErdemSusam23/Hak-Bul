@@ -222,4 +222,77 @@ class AdminZayifSorguItem(BaseModel):
     soru: str
     max_skor: float
     kategori: str | None = None
+
+
+class ForumThreadOlustur(BaseModel):
+    title: str = Field(..., min_length=5, max_length=200)
+    content: str = Field(..., min_length=10)
+    category: str = Field(..., min_length=2, max_length=50)
+
+
+class ForumThreadGuncelle(BaseModel):
+    title: str | None = Field(default=None, min_length=5, max_length=200)
+    content: str | None = Field(default=None, min_length=10)
+
+
+class ForumThreadItem(BaseModel):
+    id: str
+    title: str
+    content: str
+    category: str
+    is_locked: bool
+    user_id: str
+    user_email: str
+    reply_count: int
+    vote_score: int
     created_at: str
+    updated_at: str
+
+
+class ForumThreadListeCevap(BaseModel):
+    threads: list[ForumThreadItem]
+    total: int
+    page: int
+    size: int
+
+
+class ForumReplyOlustur(BaseModel):
+    content: str = Field(..., min_length=5)
+
+
+class ForumReplyGuncelle(BaseModel):
+    content: str = Field(..., min_length=5)
+
+
+class ForumReplyItem(BaseModel):
+    id: str
+    thread_id: str
+    content: str
+    is_verified: bool
+    user_id: str
+    user_email: str
+    user_role: str
+    vote_score: int
+    created_at: str
+    updated_at: str
+
+
+class ForumThreadDetay(BaseModel):
+    thread: ForumThreadItem
+    replies: list[ForumReplyItem]
+
+
+class ForumOyGonder(BaseModel):
+    value: int
+
+    @field_validator("value")
+    @classmethod
+    def value_gecerli_olmali(cls, v: int) -> int:
+        if v not in (1, -1):
+            raise ValueError("Oy değeri 1 veya -1 olmalıdır")
+        return v
+
+
+class ForumOyCevap(BaseModel):
+    basarili: bool
+    yeni_skor: int

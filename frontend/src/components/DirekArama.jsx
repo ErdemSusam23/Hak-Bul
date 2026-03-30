@@ -40,7 +40,7 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
         <div className="relative">
             <button
                 onClick={() => setAcik(!acik)}
-                className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200"
+                className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-all duration-200 hover:text-[var(--tema-text)] hover:bg-[var(--tema-soft-bg-subtle)]"
                 style={
                     acik
                         ? {
@@ -53,18 +53,6 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
                             border: '1px solid transparent',
                         }
                 }
-                onMouseEnter={(e) => {
-                    if (!acik) {
-                        e.currentTarget.style.color = 'var(--tema-text)';
-                        e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
-                    }
-                }}
-                onMouseLeave={(e) => {
-                    if (!acik) {
-                        e.currentTarget.style.color = 'var(--tema-muted)';
-                        e.currentTarget.style.background = 'transparent';
-                    }
-                }}
             >
                 <Search size={16} />
                 <span className="hidden sm:inline">{t('fastSearch')}</span>
@@ -72,8 +60,8 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
 
             {acik && (
                 <div
-                    className="absolute right-0 top-12 z-30 w-80 glass-card p-3 animate-slide-up"
-                    style={{ boxShadow: '0 20px 40px rgba(0, 0, 0, 0.32)' }}
+                    className="absolute right-0 top-12 z-30 w-80 glass-card p-3 animate-fade-in"
+                    style={{ boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}
                 >
                     <div className="mb-3 flex items-center justify-between">
                         <p className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
@@ -81,9 +69,8 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
                         </p>
                         <button
                             onClick={kapat}
+                            className="transition-colors hover:text-[var(--tema-text)]"
                             style={{ color: 'var(--tema-dimmer)' }}
-                            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-text)'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-dimmer)'; }}
                         >
                             <X size={14} />
                         </button>
@@ -123,20 +110,10 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
                                     <div
                                         key={s.id}
                                         onClick={() => s.url && window.open(s.url, '_blank', 'noopener,noreferrer')}
-                                        className={clsx('rounded-xl p-2.5 transition-all duration-150', s.url ? 'cursor-pointer' : 'cursor-default')}
+                                        className={clsx('rounded-xl p-2.5 transition-all duration-150', s.url ? 'cursor-pointer hover:bg-[var(--tema-card-hover)]' : 'cursor-default')}
                                         style={{
                                             background: 'var(--tema-card)',
                                             border: '1px solid var(--tema-border-card)',
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            if (!s.url) return;
-                                            e.currentTarget.style.background = 'var(--tema-card-hover)';
-                                            e.currentTarget.style.borderColor = 'rgba(var(--a), 0.18)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            if (!s.url) return;
-                                            e.currentTarget.style.background = 'var(--tema-card)';
-                                            e.currentTarget.style.borderColor = 'var(--tema-border-card)';
                                         }}
                                     >
                                         <div className="mb-1 flex items-center gap-2">
@@ -153,10 +130,8 @@ export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle })
                             )}
                             <button
                                 onClick={temizle}
-                                className="w-full py-1 text-xs transition-colors"
+                                className="w-full py-1 text-xs transition-colors hover:text-[var(--tema-accent)]"
                                 style={{ color: 'var(--tema-dimmer)' }}
-                                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-accent)'; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-dimmer)'; }}
                             >
                                 {t('clearSearchResults')}
                             </button>

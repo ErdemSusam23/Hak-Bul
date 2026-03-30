@@ -18,10 +18,10 @@ export default function YukleniyorGostergesi() {
     }, []);
 
     return (
-        <div className="flex items-start gap-3 animate-slide-up">
+        <div className="flex items-start gap-3">
             {/* Avatar */}
             <div
-                className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
+                className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                 style={{
                     background: `rgba(var(--a), 0.1)`,
                     border: `1px solid rgba(var(--a), 0.22)`,
@@ -32,7 +32,7 @@ export default function YukleniyorGostergesi() {
 
             {/* Yazıyor balonu */}
             <div
-                className="rounded-2xl px-5 py-3.5"
+                className="rounded-xl px-5 py-3.5"
                 style={{
                     background: 'var(--tema-bubble)',
                     border: '1px solid var(--tema-border)',

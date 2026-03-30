@@ -85,7 +85,6 @@ export default function TaslakSayfasi() {
                 className="flex-shrink-0 flex items-center justify-between px-5 py-4"
                 style={{
                     background: 'var(--tema-panel)',
-                    backdropFilter: 'blur(20px)',
                     borderBottom: '1px solid var(--tema-border)',
                 }}
             >
@@ -161,14 +160,12 @@ export default function TaslakSayfasi() {
                                             type="text"
                                             value={formVerileri[alan.ad] || ''}
                                             onChange={(e) => handleAlanDegistir(alan.ad, e.target.value)}
-                                            className="px-3 py-2 text-sm rounded-lg border outline-none transition-colors"
+                                            className="px-3 py-2 text-sm rounded-lg border outline-none transition-colors focus:border-[var(--tema-border-focus)]"
                                             style={{
                                                 background: 'var(--tema-surface)',
                                                 borderColor: 'var(--tema-border)',
                                                 color: 'var(--tema-text)',
                                             }}
-                                            onFocus={(e) => { e.target.style.borderColor = 'var(--tema-border-focus)'; }}
-                                            onBlur={(e) => { e.target.style.borderColor = 'var(--tema-border)'; }}
                                             placeholder={`${alan.etiket} ${t('templatesPlaceholderSuffix')}`}
                                         />
                                     </div>

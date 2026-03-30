@@ -61,17 +61,11 @@ function SidebarNavButton({ icon: Icon, label, active, onClick }) {
     return (
         <button
             onClick={onClick}
-            className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-[13.5px] font-medium transition-all duration-150"
+            className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[13.5px] font-medium transition-colors duration-150 ${!active ? 'hover:bg-[var(--tema-soft-bg-subtle)]' : ''}`}
             style={{
                 background: active ? 'var(--tema-soft-bg)' : 'transparent',
                 color: active ? 'var(--tema-text)' : 'var(--tema-text2)',
                 border: active ? '1px solid var(--tema-border-card)' : '1px solid transparent',
-            }}
-            onMouseEnter={(e) => {
-                if (!active) e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
-            }}
-            onMouseLeave={(e) => {
-                if (!active) e.currentTarget.style.background = 'transparent';
             }}
         >
             <Icon size={16} style={{ color: active ? 'var(--tema-accent-soft)' : 'var(--tema-muted)' }} />
@@ -258,13 +252,12 @@ function SolSidebar({
             style={{
                 background: 'var(--tema-panel)',
                 borderRight: '1px solid var(--tema-border-strong)',
-                backdropFilter: 'blur(18px)',
             }}
         >
             <div className="mb-4 px-3">
                 <div className="mb-4 flex items-center gap-3">
                     <div
-                        className="flex h-10 w-10 items-center justify-center rounded-2xl"
+                        className="flex h-10 w-10 items-center justify-center rounded-xl"
                         style={{
                             background: 'var(--tema-soft-bg-subtle)',
                             border: '1px solid var(--tema-border-card)',
@@ -285,17 +278,11 @@ function SolSidebar({
                 <div className="flex gap-2">
                     <button
                         onClick={onYeniSohbet}
-                        className="flex flex-1 items-center gap-2 rounded-2xl px-4 py-3 text-[13.5px] font-medium transition-all duration-150"
+                        className="flex flex-1 items-center gap-2 rounded-lg px-4 py-3 text-[13.5px] font-medium transition-colors duration-150 hover:bg-[var(--tema-soft-bg)]"
                         style={{
                             background: 'var(--tema-soft-bg-subtle)',
                             border: '1px solid var(--tema-border-card)',
                             color: 'var(--tema-text)',
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.background = 'var(--tema-soft-bg)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
                         }}
                     >
                         <Plus size={16} />
@@ -303,7 +290,7 @@ function SolSidebar({
                     </button>
                     <button
                         onClick={() => dilDegistir(dil === 'tr' ? 'en' : 'tr')}
-                        className="rounded-2xl px-3 text-xs font-semibold tracking-[0.12em]"
+                        className="rounded-lg px-3 text-xs font-semibold tracking-[0.12em]"
                         style={{
                             background: 'var(--tema-soft-bg-subtle)',
                             border: '1px solid var(--tema-border-card)',
@@ -345,7 +332,7 @@ function SolSidebar({
             <div className="flex-1 space-y-1 overflow-y-auto px-1">
                 {sohbetler.length === 0 ? (
                     <div
-                        className="mx-2 rounded-3xl px-4 py-5 text-[13.5px]"
+                        className="mx-2 rounded-xl px-4 py-5 text-[13.5px]"
                         style={{
                             background: 'var(--tema-soft-bg-subtle)',
                             border: '1px solid var(--tema-border-card)',
@@ -361,18 +348,12 @@ function SolSidebar({
                         return (
                             <div
                                 key={sohbet.id}
-                                className="group relative rounded-2xl px-3 py-3 transition-all duration-150"
+                                className={`group relative rounded-lg px-3 py-3 transition-colors duration-150 ${!aktif ? 'hover:bg-[var(--tema-soft-bg-subtle)]' : ''}`}
                                 style={{
                                     background: aktif ? 'var(--tema-soft-bg)' : 'transparent',
                                     border: aktif ? '1px solid var(--tema-border-card)' : '1px solid transparent',
                                 }}
                                 onClick={() => handleSohbetTikla(sohbet)}
-                                onMouseEnter={(e) => {
-                                    if (!aktif) e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    if (!aktif) e.currentTarget.style.background = 'transparent';
-                                }}
                             >
                                 <div className="flex items-start gap-2">
                                     <div
@@ -440,11 +421,11 @@ function SolSidebar({
 
                                             {menuAcikId === sohbet.id && (
                                                 <div
-                                                    className="absolute right-0 top-8 z-20 w-44 overflow-hidden rounded-2xl py-1"
+                                                    className="absolute right-0 top-8 z-20 w-44 overflow-hidden rounded-xl py-1"
                                                     style={{
                                                         background: 'var(--tema-surface)',
                                                         border: '1px solid var(--tema-border-card)',
-                                                        boxShadow: '0 16px 30px rgba(0,0,0,0.26)',
+                                                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
                                                     }}
                                                     onClick={(e) => e.stopPropagation()}
                                                 >
@@ -492,7 +473,7 @@ function SolSidebar({
             </div>
 
             <div
-                className="mt-3 flex items-center gap-3 rounded-3xl px-3 py-3"
+                className="mt-3 flex items-center gap-3 rounded-xl px-3 py-3"
                 style={{
                     background: 'var(--tema-soft-bg-subtle)',
                     border: '1px solid var(--tema-border-card)',
@@ -569,17 +550,6 @@ function AppIcerik() {
 
     return (
         <div className={`min-h-screen navy-gradient-bg ${tema === 'acik' ? 'tema-acik' : ''}`}>
-            <div className="fixed inset-0 pointer-events-none overflow-hidden">
-                <div
-                    className="absolute left-1/2 top-0 h-[340px] w-[780px] -translate-x-1/2 opacity-80"
-                    style={{ background: 'radial-gradient(circle at top, var(--tema-glow-top) 0%, transparent 72%)' }}
-                />
-                <div
-                    className="absolute bottom-[-120px] left-1/3 h-[320px] w-[520px] opacity-70"
-                    style={{ background: 'radial-gradient(circle, var(--tema-glow-bottom) 0%, transparent 74%)' }}
-                />
-            </div>
-
             <HukukiUyariModal onKabul={uyariKabul} />
             {kabul && <AsistanBot />}
 

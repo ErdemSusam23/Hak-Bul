@@ -90,7 +90,6 @@ function UstAksiyonlar({
                 style={{
                     background: 'var(--tema-soft-bg-subtle)',
                     border: '1px solid var(--tema-border-card)',
-                    backdropFilter: 'blur(14px)',
                 }}
             >
                 <DirekArama
@@ -103,16 +102,8 @@ function UstAksiyonlar({
                 <button
                     onClick={toggleTema}
                     title={tema === 'koyu' ? t('acikTemaya') : t('koyuTemaya')}
-                    className="rounded-full p-2.5 transition-all duration-150"
+                    className="rounded-full p-2.5 transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
                     style={{ color: 'var(--tema-muted)' }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.color = 'var(--tema-text)';
-                        e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'var(--tema-muted)';
-                        e.currentTarget.style.background = 'transparent';
-                    }}
                 >
                     {tema === 'koyu' ? <Sun size={15} /> : <Moon size={15} />}
                 </button>
@@ -126,18 +117,10 @@ function UstAksiyonlar({
                         </span>
                         <button
                             onClick={cikis}
-                            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[13.5px] transition-all duration-150"
+                            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[13.5px] transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
                             style={{
                                 color: 'var(--tema-text2)',
                                 border: '1px solid var(--tema-border-card)',
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.color = 'var(--tema-text)';
-                                e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = 'var(--tema-text2)';
-                                e.currentTarget.style.background = 'transparent';
                             }}
                         >
                             <LogOut size={14} />
@@ -148,18 +131,10 @@ function UstAksiyonlar({
                     <>
                         <button
                             onClick={() => setAuthModalAcik(true)}
-                            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[13.5px] transition-all duration-150"
+                            className="flex items-center gap-1.5 rounded-full px-3 py-2 text-[13.5px] transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
                             style={{
                                 color: 'var(--tema-text2)',
                                 border: '1px solid var(--tema-border-card)',
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.color = 'var(--tema-text)';
-                                e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = 'var(--tema-text2)';
-                                e.currentTarget.style.background = 'transparent';
                             }}
                         >
                             <LogIn size={14} />
@@ -185,19 +160,11 @@ function SoruChip({ Ikon, label, onClick }) {
     return (
         <button
             onClick={onClick}
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13.5px] transition-all duration-150"
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13.5px] transition-colors hover:bg-[var(--tema-soft-bg)] hover:border-[var(--tema-border-strong)]"
             style={{
                 background: 'var(--tema-soft-bg-subtle)',
                 border: '1px solid var(--tema-border-card)',
                 color: 'var(--tema-text2)',
-            }}
-            onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--tema-soft-bg)';
-                e.currentTarget.style.borderColor = 'var(--tema-border-strong)';
-            }}
-            onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'var(--tema-soft-bg-subtle)';
-                e.currentTarget.style.borderColor = 'var(--tema-border-card)';
             }}
         >
             <Ikon size={14} style={{ color: 'var(--tema-accent-soft)' }} />
@@ -250,11 +217,11 @@ function ComposerPanel({
             )}
 
             <div
-                className={`rounded-[2rem] ${compact ? 'px-5 py-4' : 'px-5 py-4'}`}
+                className={`rounded-2xl ${compact ? 'px-5 py-4' : 'px-5 py-4'}`}
                 style={{
                     background: 'var(--tema-surface)',
                     border: compact ? '1px solid var(--tema-border-card)' : '1px solid var(--tema-border-strong)',
-                    boxShadow: compact ? '0 18px 40px rgba(0,0,0,0.18)' : '0 28px 60px rgba(0,0,0,0.22)',
+                    boxShadow: compact ? '0 4px 16px rgba(0,0,0,0.12)' : '0 4px 16px rgba(0,0,0,0.15)',
                 }}
             >
                 <input

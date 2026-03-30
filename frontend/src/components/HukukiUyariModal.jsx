@@ -22,7 +22,7 @@ export default function HukukiUyariModal({ onKabul }) {
     return (
         <div
             className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${animasyon ? 'opacity-100' : 'opacity-0'}`}
-            style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)' }}
+            style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}
         >
             <div
                 className={`relative w-full max-w-lg transition-all duration-300 ${animasyon ? 'translate-y-0 scale-100' : 'translate-y-8 scale-95'}`}
@@ -33,13 +33,13 @@ export default function HukukiUyariModal({ onKabul }) {
                     style={{
                         background: 'var(--tema-panel)',
                         border: `1px solid rgba(var(--a), 0.2)`,
-                        boxShadow: '0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05)',
+                        boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
                     }}
                 >
                     {/* Logo alanı */}
                     <div className="flex flex-col items-center mb-8">
                         <div
-                            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4"
+                            className="w-16 h-16 rounded-xl flex items-center justify-center mb-4"
                             style={{
                                 background: `rgba(var(--a), 0.12)`,
                                 border: `1px solid rgba(var(--a), 0.3)`,
@@ -95,7 +95,7 @@ export default function HukukiUyariModal({ onKabul }) {
                     {/* Kabul butonu */}
                     <button
                         onClick={kabulEt}
-                        className="w-full py-3.5 rounded-xl font-semibold text-[15px] transition-all duration-200 active:scale-[0.98]"
+                        className="w-full py-3.5 rounded-lg font-semibold text-[15px] transition-all duration-200 active:scale-[0.98]"
                         style={{
                             background: 'var(--tema-send-btn)',
                             color: 'var(--tema-send-icon)',

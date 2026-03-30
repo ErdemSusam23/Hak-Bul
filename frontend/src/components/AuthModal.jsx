@@ -66,11 +66,11 @@ export default function AuthModal({ onKapat }) {
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            style={{ background: 'var(--tema-overlay)', backdropFilter: 'blur(10px)' }}
+            style={{ background: 'var(--tema-overlay)', backdropFilter: 'blur(4px)' }}
             onClick={(e) => e.target === e.currentTarget && onKapat()}
         >
             <div
-                className="relative w-full max-w-sm animate-fade-in rounded-2xl p-6"
+                className="relative w-full max-w-sm animate-fade-in rounded-xl p-6"
                 style={{
                     background: 'var(--tema-dialog-bg)',
                     border: '1px solid var(--tema-dialog-border)',
@@ -79,10 +79,8 @@ export default function AuthModal({ onKapat }) {
             >
                 <button
                     onClick={onKapat}
-                    className="absolute top-4 right-4 transition-colors"
+                    className="absolute top-4 right-4 transition-colors hover:text-[var(--tema-text)]"
                     style={{ color: 'var(--tema-muted)' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-text)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
                 >
                     <X size={18} />
                 </button>
@@ -92,7 +90,7 @@ export default function AuthModal({ onKapat }) {
                         <button
                             key={s}
                             onClick={() => temizle(s)}
-                            className="flex-1 -mb-px border-b-2 py-2.5 text-sm font-medium transition-all"
+                            className="flex-1 -mb-px border-b-2 py-2.5 text-sm font-medium transition-all hover:text-[var(--tema-text)]"
                             style={
                                 sekme === s
                                     ? {
@@ -105,12 +103,6 @@ export default function AuthModal({ onKapat }) {
                                         color: 'var(--tema-muted)',
                                     }
                             }
-                            onMouseEnter={(e) => {
-                                if (sekme !== s) e.currentTarget.style.color = 'var(--tema-text)';
-                            }}
-                            onMouseLeave={(e) => {
-                                if (sekme !== s) e.currentTarget.style.color = 'var(--tema-muted)';
-                            }}
                         >
                             {s === 'giris' ? 'Giriş Yap' : 'Kayıt Ol'}
                         </button>
@@ -180,10 +172,8 @@ export default function AuthModal({ onKapat }) {
                             <button
                                 type="button"
                                 onClick={() => setSifreGoster(!sifreGoster)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors hover:text-[var(--tema-text)]"
                                 style={{ color: 'var(--tema-dimmer)' }}
-                                onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--tema-text)'; }}
-                                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-dimmer)'; }}
                             >
                                 {sifreGoster ? <EyeOff size={15} /> : <Eye size={15} />}
                             </button>
@@ -235,7 +225,7 @@ export default function AuthModal({ onKapat }) {
                     <button
                         type="submit"
                         disabled={yukleniyor || !email || !sifre || (sekme === 'kayit' && (!sifreGecerli || !sifreslerEsit)) || basarili}
-                        className="mt-1 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50"
+                        className="mt-1 flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50"
                         style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
                     >
                         {yukleniyor ? (

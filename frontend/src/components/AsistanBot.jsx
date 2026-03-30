@@ -28,7 +28,7 @@ function MesajBalonu({ mesaj }) {
                 </div>
             )}
             <div
-                className="max-w-[85%] px-3 py-2 rounded-2xl text-xs leading-relaxed"
+                className="max-w-[85%] px-3 py-2 rounded-xl text-xs leading-relaxed"
                 style={kullanici ? {
                     background: 'var(--tema-user-bg)',
                     border: '1px solid var(--tema-user-border)',
@@ -120,14 +120,13 @@ export default function AsistanBot() {
             {/* Açık panel */}
             {acik && (
                 <div
-                    className="fixed bottom-20 right-4 z-50 flex flex-col rounded-2xl overflow-hidden shadow-2xl"
+                    className="fixed bottom-20 right-4 z-50 flex flex-col rounded-xl overflow-hidden animate-fade-in"
                     style={{
                         width: '340px',
                         height: '480px',
                         background: 'var(--tema-panel)',
                         border: '1px solid var(--tema-border)',
-                        boxShadow: '0 12px 40px rgba(0,0,0,0.32)',
-                        animation: 'bot-slide-up 0.2s ease-out',
+                        boxShadow: '0 8px 24px rgba(0,0,0,0.25)',
                     }}
                 >
                     {/* Başlık */}
@@ -153,10 +152,8 @@ export default function AsistanBot() {
                         </div>
                         <button
                             onClick={() => setAcik(false)}
-                            className="p-1.5 rounded-lg transition-colors"
+                            className="p-1.5 rounded-lg transition-colors hover:bg-[var(--tema-card-hover)]"
                             style={{ color: 'var(--tema-muted)' }}
-                            onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
                         >
                             <ChevronDown size={16} />
                         </button>
@@ -249,15 +246,12 @@ export default function AsistanBot() {
             {/* Açma butonu */}
             <button
                 onClick={() => setAcik((v) => !v)}
-                className="fixed bottom-4 right-4 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-200"
+                className="fixed bottom-4 right-4 z-50 w-12 h-12 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-105"
                 style={{
                     background: acik ? 'var(--tema-surface)' : 'var(--tema-send-btn)',
                     border: '1px solid var(--tema-border)',
-                    boxShadow: '0 8px 24px rgba(var(--a),0.18)',
-                    transform: acik ? 'scale(0.95)' : 'scale(1)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.08)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = acik ? 'scale(0.95)' : 'scale(1)'; }}
                 title="Hukuk Asistanı"
             >
                 {acik
@@ -266,12 +260,6 @@ export default function AsistanBot() {
                 }
             </button>
 
-            <style>{`
-                @keyframes bot-slide-up {
-                    from { opacity: 0; transform: translateY(12px) scale(0.97); }
-                    to   { opacity: 1; transform: translateY(0) scale(1); }
-                }
-            `}</style>
         </>
     );
 }

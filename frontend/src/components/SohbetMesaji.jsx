@@ -81,14 +81,14 @@ function RenderMarkdown({ icerik }) {
 
 function KullaniciMesaji({ mesaj }) {
     return (
-        <div className="flex items-end justify-end gap-2.5 animate-slide-up">
+        <div className="flex items-end justify-end gap-2.5">
             <div className="flex flex-col items-end max-w-[78%]">
                 <div
-                    className="px-4 py-3 rounded-2xl rounded-br-md"
+                    className="px-4 py-3 rounded-xl rounded-br-md"
                     style={{
                         background: 'var(--tema-user-bg)',
                         border: '1px solid var(--tema-user-border)',
-                        boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
                     }}
                 >
                     <p className="text-[14.5px] leading-[1.68]" style={{ color: 'var(--tema-text)' }}>{mesaj.icerik}</p>
@@ -96,7 +96,7 @@ function KullaniciMesaji({ mesaj }) {
                 <SaatDamgasi zaman={mesaj.zaman} />
             </div>
             <div
-                className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 mb-5"
+                className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mb-5"
                 style={{
                     background: 'var(--tema-user-avatar)',
                     border: '1px solid var(--tema-border)',
@@ -112,14 +112,13 @@ function AsistanMesaji({ mesaj }) {
     const varKaynak = mesaj.kaynaklar && mesaj.kaynaklar.length > 0;
 
     return (
-        <div className="flex items-start gap-3 animate-slide-up">
+        <div className="flex items-start gap-3">
             {/* Avatar */}
             <div
-                className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 mt-1"
+                className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-1"
                 style={{
                     background: `rgba(var(--a), 0.1)`,
                     border: `1px solid rgba(var(--a), 0.22)`,
-                    boxShadow: `0 0 12px rgba(var(--a), 0.05)`,
                 }}
             >
                 {mesaj.hata ? (
@@ -133,11 +132,11 @@ function AsistanMesaji({ mesaj }) {
             <div className="flex-1 min-w-0 max-w-[87%]">
                 {/* Yanıt balonu */}
                 <div
-                    className={clsx('rounded-2xl px-4 py-4 mb-3', mesaj.hata && 'border border-red-500/20')}
+                    className={clsx('rounded-xl px-4 py-4 mb-3', mesaj.hata && 'border border-red-500/20')}
                     style={{
                         background: mesaj.hata ? 'var(--tema-danger-bg)' : 'var(--tema-bubble)',
                         border: mesaj.hata ? '1px solid var(--tema-danger-border)' : '1px solid var(--tema-border)',
-                        boxShadow: '0 2px 16px rgba(0,0,0,0.1)',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
                     }}
                 >
                     {!mesaj.hata && (

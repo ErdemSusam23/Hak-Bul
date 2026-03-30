@@ -47,3 +47,10 @@ def test_forum_vote_type_exists() -> None:
     from models.enums import ForumVoteType
     assert ForumVoteType.THREAD.value == "thread"
     assert ForumVoteType.REPLY.value == "reply"
+
+
+def test_forum_models_importable() -> None:
+    from models.forum import ForumThread, ForumReply, ForumVote
+    assert ForumThread.__tablename__ == "forum_threads"
+    assert ForumReply.__tablename__ == "forum_replies"
+    assert ForumVote.__tablename__ == "forum_votes"

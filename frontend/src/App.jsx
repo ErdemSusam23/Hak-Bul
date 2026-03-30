@@ -11,6 +11,7 @@ import {
     MoreHorizontal,
     BookOpen,
     Scale,
+    Trash2,
 } from 'lucide-react';
 import HukukiUyariModal from './components/HukukiUyariModal';
 import AsistanBot from './components/AsistanBot';
@@ -407,14 +408,25 @@ function SolSidebar({
                                     </div>
 
                                     {duzenleId !== sohbet.id && (
-                                        <div className="relative flex-shrink-0 opacity-0 transition-opacity group-hover:opacity-100">
+                                        <div className="relative flex flex-shrink-0 items-center gap-1">
+                                            <button
+                                                onClick={(e) => handleSil(e, sohbet)}
+                                                className="rounded-xl p-1.5 transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
+                                                style={{ color: 'var(--tema-muted)' }}
+                                                title={t('sil')}
+                                                aria-label={t('sil')}
+                                            >
+                                                <Trash2 size={14} />
+                                            </button>
                                             <button
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     setMenuAcikId((onceki) => (onceki === sohbet.id ? null : sohbet.id));
                                                 }}
-                                                className="rounded-xl p-1.5"
+                                                className="rounded-xl p-1.5 transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
                                                 style={{ color: 'var(--tema-muted)' }}
+                                                title={t('moreActions')}
+                                                aria-label={t('moreActions')}
                                             >
                                                 <MoreHorizontal size={14} />
                                             </button>

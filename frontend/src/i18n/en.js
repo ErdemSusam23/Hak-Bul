@@ -19,6 +19,7 @@ export default {
     bilgiAmaclidir: 'This response is for informational purposes only and does not constitute legal advice.',
     yenidenAdlandir: 'Rename',
     sil: 'Delete',
+    moreActions: 'More actions',
     paylas: 'Share (copy link)',
     pdfIndir: 'Download as PDF',
     paylasimKopyalandi: 'Share link copied to clipboard!',

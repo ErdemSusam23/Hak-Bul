@@ -19,6 +19,7 @@ export default {
     bilgiAmaclidir: 'Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.',
     yenidenAdlandir: 'Yeniden adlandır',
     sil: 'Sil',
+    moreActions: 'Diğer işlemler',
     paylas: 'Paylaş (link kopyala)',
     pdfIndir: 'PDF olarak indir',
     paylasimKopyalandi: 'Paylaşım bağlantısı panoya kopyalandı!',

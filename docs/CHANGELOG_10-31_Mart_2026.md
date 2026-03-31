@@ -21,7 +21,7 @@
 - **Misafir oturum guvenlik sertlestirmesi:** Misafir session ID dogrulama mekanizmasi eklendi, sohbet ve geri bildirim endpoint'lerinde sahiplik kontrolleri guclendirildi. (`0e1403d`)
 - **Auth ve chat guvenlik iyilestirmeleri:** Refresh token rotasyonu duzeltildi, `deleted_at` kolonu ile soft-delete destegi eklendi. (`bf91fb8`)
 
-### Belge Analizi (
+### Belge Analizi 
 
 - **PDF yukleme ve hukuki analiz:** `/documents/analyze` endpoint'i eklendi. PDF dosyasi yuklenir, metin cikarilir ve Groq LLM ile hukuki analiz yapilir. Kaynaklarla desteklenir. (`2d559aa`)
 - **Belge karsilastirma:** Iki PDF'i karsilastirarak fark analizi yapan `/documents/compare` endpoint'i eklendi. (`f96f266`)

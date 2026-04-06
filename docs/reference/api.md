@@ -76,6 +76,9 @@ Aşım yanıtı: HTTP 429 Too Many Requests. Reset süresi: 60 saniye (sabit pen
 | `503` | Service Unavailable | Groq API veya Qdrant erişilemiyor |
 | `500` | Internal Server Error | Beklenmedik sunucu hatası |
 
+`STRICT_UPSTREAMS=true` ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=false` kombinasyonunda `/ask` ve `/ask/stream`
+endpoint'leri dış servis kesintilerinde fallback yerine doğrudan `503` döndürür.
+
 ---
 
 ## POST /ask

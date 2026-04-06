@@ -78,6 +78,25 @@ docker compose up -d --build
 
 ---
 
+## Production Önerilen Flag'ler
+
+Production ortamında aşağıdaki ayarları açıkça set et:
+
+```env
+CORS_ORIGINS=https://app.hakbul.com
+COOKIE_SECURE=true
+COOKIE_SAMESITE=none
+STRICT_UPSTREAMS=true
+ALLOW_LOCAL_RETRIEVAL_FALLBACK=false
+MOCK_RETRIEVAL=false
+MOCK_LLM=false
+```
+
+`STRICT_UPSTREAMS=true` ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=false` birlikte kullanıldığında,
+Qdrant/Groq erişilemezse `/ask` ve `/ask/stream` endpoint'leri 503 döner (hard-fail politika).
+
+---
+
 ## ⚠️ Önemli Notlar
 
 **Volume sıfırlama:** `.env.docker`'da Postgres credentials'ı değiştirirsen eski volume'u silmen gerekir, aksi halde şifre uyuşmazlığı yaşanır:

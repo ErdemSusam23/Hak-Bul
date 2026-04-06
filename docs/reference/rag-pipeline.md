@@ -133,10 +133,21 @@ def generate_answer(soru: str, chunks: list[dict]) -> str:
 | Senaryo | Davranış | HTTP Yanıt |
 |---------|----------|------------|
 | Groq API timeout (>10s) | 503 döner, retry önerilir | `503 + retry_after` |
-| Qdrant bağlantı hatası | 503 döner | `503 + retry_after` |
+| Qdrant bağlantı hatası | `ALLOW_LOCAL_RETRIEVAL_FALLBACK=true` ise local corpus fallback; `false` ise 503 | `200` veya `503 + retry_after` |
 | Hiç chunk bulunamadı (skor < eşik) | En yüksek 1 chunk ile devam et | `200` (düşük güven uyarısı ile) |
 | Groq rate limit (429) | Exponential backoff, 3 deneme | `200` (gecikmeli) veya `503` |
 | Soru çok kısa (<10 karakter) | Validasyon hatası | `422` |
+
+### Production Hard-Fail Politikası
+
+Production'da dış bağımlılık kesintisinde sessiz fallback yerine kontrollü hata döndürmek için:
+
+```env
+STRICT_UPSTREAMS=true
+ALLOW_LOCAL_RETRIEVAL_FALLBACK=false
+```
+
+Bu kombinasyonda `/ask` ve `/ask/stream` endpoint'leri Groq/Qdrant erişilemiyorsa `503` döner.
 
 ---
 

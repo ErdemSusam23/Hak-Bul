@@ -98,6 +98,27 @@ def get_qdrant():
     return _qdrant
 
 
+def assert_upstreams_ready_for_ask() -> None:
+    if not settings.STRICT_UPSTREAMS:
+        return
+
+    if settings.MOCK_MODE or settings.MOCK_LLM or settings.MOCK_RETRIEVAL:
+        raise RuntimeError("Strict upstream mode is incompatible with mock mode")
+
+    if not settings.GROQ_API_KEY or settings.GROQ_API_KEY == "your_groq_api_key_here":
+        raise RuntimeError("Groq API key is not configured")
+
+    from rag.retriever import is_qdrant_configured
+
+    if not is_qdrant_configured():
+        raise RuntimeError("Qdrant is not configured")
+
+    try:
+        get_qdrant().get_collection(settings.COLLECTION_NAME)
+    except Exception as exc:
+        raise RuntimeError("Qdrant is unreachable") from exc
+
+
 @app.post("/ask", response_model=AskResponse)
 @limiter.limit("20/minute")
 async def ask(
@@ -108,6 +129,7 @@ async def ask(
     current_user: User | None = Depends(get_current_user_optional),
 ):
     try:
+        assert_upstreams_ready_for_ask()
         pipeline = get_pipeline()
         result = pipeline(soru=body.soru, max_kaynak=body.max_kaynak, language=body.language)
         conversation_id = resolve_conversation_id(body.conversation_id)
@@ -159,12 +181,12 @@ async def ask(
         )
     except RuntimeError as exc:
         detail = str(exc)
-        if "Groq" in detail:
+        if any(token in detail for token in ("Groq", "Qdrant", "Strict upstream")):
             raise HTTPException(
                 status_code=503,
                 detail={
                     "error": "upstream_unavailable",
-                    "detail": "Yapay zeka servisine şu an erişilemiyor.",
+                    "detail": "Harici servis(ler)e su an erisilemiyor.",
                     "retry_after": 30,
                 },
             ) from exc
@@ -189,6 +211,7 @@ async def ask_stream(
     from rag.pipeline import retrieve_context
 
     try:
+        assert_upstreams_ready_for_ask()
         context = retrieve_context(body.soru, max_kaynak=body.max_kaynak)
         kategori = context["kategori"]
         filtered = context["chunks"]
@@ -199,6 +222,19 @@ async def ask_stream(
         if not current_user:
             guest_session_id = resolve_guest_session_for_request(request, body.guest_session_id)
 
+    except RuntimeError as exc:
+        detail = str(exc)
+        if any(token in detail for token in ("Groq", "Qdrant", "Strict upstream")):
+            raise HTTPException(
+                status_code=503,
+                detail={
+                    "error": "upstream_unavailable",
+                    "detail": "Harici servis(ler)e su an erisilemiyor.",
+                    "retry_after": 30,
+                },
+            ) from exc
+        logger.exception("Unhandled RuntimeError preparing /ask/stream")
+        raise HTTPException(status_code=500, detail="Sunucu hatası oluştu.") from exc
     except Exception as exc:
         logger.exception("Unhandled exception preparing /ask/stream")
         raise HTTPException(status_code=500, detail="Sunucu hatası oluştu.") from exc
@@ -345,7 +381,12 @@ async def health():
     elif not settings.GROQ_API_KEY or settings.GROQ_API_KEY == "your_groq_api_key_here":
         groq_status = "not_configured"
 
-    overall = "ok" if qdrant_status in {"connected", "mock", "local_fallback"} else "degraded"
+    qdrant_ok_states = {"connected", "mock", "local_fallback"}
+    groq_ok_states = {"reachable", "mock"}
+    if settings.STRICT_UPSTREAMS:
+        qdrant_ok_states = {"connected", "mock"}
+
+    overall = "ok" if qdrant_status in qdrant_ok_states and groq_status in groq_ok_states else "degraded"
 
     return HealthResponse(
         status=overall,

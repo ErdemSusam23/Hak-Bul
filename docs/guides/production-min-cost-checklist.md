@@ -4,8 +4,8 @@ Bu rehber bitirme projesi için düşük maliyetli production çıkışı hedefl
 
 ## 1) Hedef Mimari
 
-- Frontend: Vercel Hobby (`app.hakbul.com`)
-- Backend: Render Web Service (`api.hakbul.com`)
+- Frontend: Vercel Hobby (`https://<your-project>.vercel.app`)
+- Backend: Render Web Service (`https://hak-bul.onrender.com`)
 - Veritabanı: Render Postgres (free/hobby)
 - Embedding: Backend icinde local model (ayri embedding-service yok)
 - Ortam: Tek production ortamı (staging yok)
@@ -16,7 +16,7 @@ Backend production env:
 
 ```env
 APP_VERSION=1.0.0
-CORS_ORIGINS=https://app.hakbul.com
+CORS_ORIGINS=https://<your-project>.vercel.app
 
 DATABASE_URL=postgresql+psycopg://...
 JWT_SECRET_KEY=<strong-random-secret>
@@ -43,7 +43,7 @@ ALLOW_LOCAL_RETRIEVAL_FALLBACK=false
 Frontend production env/build arg:
 
 ```env
-VITE_API_URL=https://api.hakbul.com
+VITE_API_URL=https://hak-bul.onrender.com
 VITE_MOCK_MODE=false
 ```
 
@@ -54,11 +54,11 @@ VITE_MOCK_MODE=false
 3. Backend ayakta kalkınca migration uygula: `alembic upgrade head`.
 4. `GET /health` kontrol et.
 5. Frontend deploy et.
-6. Domain DNS kontrollerini doğrula (`app` ve `api`).
+6. Frontend ve backend public URL'lerinin erişilebilir olduğunu doğrula.
 
 ## 4) Go-Live Smoke Test
 
-- `GET https://api.hakbul.com/health` -> `status=ok`.
+- `GET https://hak-bul.onrender.com/health` -> `status=ok`.
 - Auth: register/login/refresh/logout.
 - Chat: `/ask` ve `/ask/stream`.
 - Feedback: `/feedback`.

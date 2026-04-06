@@ -4,7 +4,7 @@
 
 **Goal:** Hak-Bul uygulamasini minimum maliyetli production mimaride (Vercel + Render + Render Postgres + Qdrant Cloud + Groq) guvenli ve dogrulanmis sekilde canliya almak.
 
-**Architecture:** Frontend Vercel Hobby ortaminda `app.hakbul.com`, backend Render Web Service ortaminda `api.hakbul.com` calisir. Backend Render Postgres'e baglanir; retrieval icin Qdrant Cloud, yanit uretimi icin Groq kullanilir. Embedding backend servisinin icinde local model ile calisir (ayri embedding servisi deploy edilmez). Local fallback ve mock modlari production'da kapatilir; upstream erisilemezse hard-fail (503) politikasi uygulanir.
+**Architecture:** Frontend Vercel Hobby ortaminda `https://<your-project>.vercel.app`, backend Render Web Service ortaminda `https://hak-bul.onrender.com` calisir. Backend Render Postgres'e baglanir; retrieval icin Qdrant Cloud, yanit uretimi icin Groq kullanilir. Embedding backend servisinin icinde local model ile calisir (ayri embedding servisi deploy edilmez). Local fallback ve mock modlari production'da kapatilir; upstream erisilemezse hard-fail (503) politikasi uygulanir.
 
 **Tech Stack:** FastAPI, React/Vite, Docker image deploy, Render, Vercel, PostgreSQL, Qdrant Cloud, Groq API
 
@@ -19,8 +19,8 @@
 - [ ] **Step 1: Domain ve servis hedeflerini kilitle**
 
 Karar:
-- Frontend: `app.hakbul.com` (Vercel)
-- Backend: `api.hakbul.com` (Render)
+- Frontend: `https://<your-project>.vercel.app` (Vercel)
+- Backend: `https://hak-bul.onrender.com` (Render)
 - Tek ortam: production (staging yok)
 
 - [ ] **Step 2: Dis servis hesaplarini dogrula**
@@ -48,7 +48,7 @@ Minimum:
 Zorunlu:
 ```env
 APP_VERSION=1.0.0
-CORS_ORIGINS=https://app.hakbul.com
+CORS_ORIGINS=https://<your-project>.vercel.app
 DATABASE_URL=postgresql+psycopg://...
 JWT_SECRET_KEY=<strong-random-secret>
 JWT_ALGORITHM=HS256
@@ -99,7 +99,7 @@ Beklenen:
 
 Kontrol:
 ```bash
-GET https://api.hakbul.com/health
+GET https://hak-bul.onrender.com/health
 ```
 
 Beklenen:
@@ -114,26 +114,26 @@ Beklenen:
 - [ ] **Step 1: Vercel environment variable'larini gir**
 
 ```env
-VITE_API_URL=https://api.hakbul.com
+VITE_API_URL=https://hak-bul.onrender.com
 VITE_MOCK_MODE=false
 ```
 
 - [ ] **Step 2: Frontend deploy et**
 
 Beklenen:
-- `app.hakbul.com` uzerinden SPA acilir
-- API cagrilari `https://api.hakbul.com` adresine gider
+- `https://<your-project>.vercel.app` uzerinden SPA acilir
+- API cagrilari `https://hak-bul.onrender.com` adresine gider
 
-### Task 5: DNS ve CORS Dogrulamasi
+### Task 5: Public URL ve CORS Dogrulamasi
 
 **Files:**
 - Reference: `docs/guides/production-min-cost-checklist.md`
 
-- [ ] **Step 1: DNS kayitlarini dogrula**
+- [ ] **Step 1: Public URL'leri dogrula**
 
 Kontrol:
-- `app.hakbul.com` -> Vercel
-- `api.hakbul.com` -> Render
+- Frontend URL aciliyor
+- Backend URL aciliyor (`https://hak-bul.onrender.com/health`)
 
 - [ ] **Step 2: CORS davranisini tarayicidan dogrula**
 

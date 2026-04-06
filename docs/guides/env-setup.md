@@ -83,7 +83,7 @@ docker compose up -d --build
 Production ortamında aşağıdaki ayarları açıkça set et:
 
 ```env
-CORS_ORIGINS=https://app.hakbul.com
+CORS_ORIGINS=https://<your-project>.vercel.app
 COOKIE_SECURE=true
 COOKIE_SAMESITE=none
 EMBEDDING_MODEL=intfloat/multilingual-e5-base

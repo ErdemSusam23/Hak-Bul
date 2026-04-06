@@ -29,8 +29,26 @@ def test_rewrite_query_preserves_explicit_legal_reference():
 
 
 def test_retrieve_chunks_prioritizes_exact_law_match_over_qdrant_noise(monkeypatch):
+    monkeypatch.setattr(retriever.settings, "EMBEDDING_MODE", "local")
+    monkeypatch.setattr(retriever.settings, "ALLOW_LOCAL_RETRIEVAL_FALLBACK", True)
     monkeypatch.setattr(retriever, "_get_model", lambda: _DummyModel())
     monkeypatch.setattr(retriever, "is_qdrant_configured", lambda: True)
+    monkeypatch.setattr(
+        retriever,
+        "_retrieve_local",
+        lambda query, top_n, kaynak_turu=None: [
+            {
+                "payload": {
+                    "chunk_id": "kanun_193_madde94",
+                    "kaynak_turu": "kanun",
+                    "kanun_adi": "193 Sayılı Gelir Vergisi Kanunu",
+                    "madde_no": "Madde 94",
+                    "metin": "Stopaj düzenlemesi.",
+                },
+                "skor": 1.0,
+            }
+        ],
+    )
     monkeypatch.setattr(
         retriever,
         "_query_qdrant",

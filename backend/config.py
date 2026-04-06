@@ -26,7 +26,11 @@ class Settings:
         "intfloat/multilingual-e5-base",
     )
     VERSION: str = os.environ.get("APP_VERSION", "1.0.0")
-    CORS_ORIGINS: list[str] = os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(",")
+    CORS_ORIGINS: list[str] = [
+        origin.strip()
+        for origin in os.environ.get("CORS_ORIGINS", "http://localhost:5173").split(",")
+        if origin.strip()
+    ]
     MOCK_MODE: bool = _as_bool("MOCK_MODE", "false")
     MOCK_RETRIEVAL: bool = _as_bool("MOCK_RETRIEVAL", "false")
     MOCK_LLM: bool = _as_bool("MOCK_LLM", "false")
@@ -38,6 +42,8 @@ class Settings:
     COOKIE_SECURE: bool = _as_bool("COOKIE_SECURE", "false")  # True when HTTPS
     COOKIE_SAMESITE: str = os.environ.get("COOKIE_SAMESITE", "lax")
     GUEST_SESSION_EXPIRE_DAYS: int = int(os.environ.get("GUEST_SESSION_EXPIRE_DAYS", "30"))
+    STRICT_UPSTREAMS: bool = _as_bool("STRICT_UPSTREAMS", "false")
+    ALLOW_LOCAL_RETRIEVAL_FALLBACK: bool = _as_bool("ALLOW_LOCAL_RETRIEVAL_FALLBACK", "true")
 
 
 settings = Settings()

@@ -555,7 +555,9 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
         return [c for c in MOCK_CHUNKS if c["payload"].get("kaynak_turu") == kaynak_turu]
 
     if not is_qdrant_configured():
-        return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+        if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
+            return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+        raise RuntimeError("Qdrant is not configured and local fallback is disabled")
 
     # Qdrant for semantic search + local corpus for kanun maddeleri
     try:
@@ -572,9 +574,11 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
         should_merge_local_laws = _should_merge_local_law_results(query, kaynak_turu=kaynak_turu)
 
         if not deduped and not should_merge_local_laws:
-            return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+            if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
+                return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+            raise RuntimeError("Qdrant returned no retrieval results")
 
-        if should_merge_local_laws or kaynak_turu is None:
+        if (should_merge_local_laws or kaynak_turu is None) and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
             local_kanun = _retrieve_local(query=query, top_n=top_n * 2, kaynak_turu="kanun")
             if local_kanun:
                 if kaynak_turu == "kanun":
@@ -589,9 +593,11 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
                         deduped = _merge_scored_chunks(deduped, local_kanun, secondary_boost=0.9)
 
         return deduped[:top_n]
-    except Exception:
-        # Qdrant unavailable — fall back to local keyword index
-        return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+    except Exception as exc:
+        # Qdrant unavailable — optionally fall back to local keyword index.
+        if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
+            return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+        raise RuntimeError("Qdrant retrieval failed and local fallback is disabled") from exc
 
 
 def _is_tamamen_mulga(metin: str) -> bool:

@@ -86,11 +86,14 @@ Production ortamında aşağıdaki ayarları açıkça set et:
 CORS_ORIGINS=https://app.hakbul.com
 COOKIE_SECURE=true
 COOKIE_SAMESITE=none
+EMBEDDING_MODEL=intfloat/multilingual-e5-base
 STRICT_UPSTREAMS=true
 ALLOW_LOCAL_RETRIEVAL_FALLBACK=false
 MOCK_RETRIEVAL=false
 MOCK_LLM=false
 ```
+
+Production kurulumunda embedding backend icinde calisir; ayri embedding servisi gerekmez.
 
 `STRICT_UPSTREAMS=true` ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=false` birlikte kullanıldığında,
 Qdrant/Groq erişilemezse `/ask` ve `/ask/stream` endpoint'leri 503 döner (hard-fail politika).
@@ -117,3 +120,4 @@ docker compose up -d --build
 | `password authentication failed` | Volume eski şifreyle initialize edilmiş | `docker compose down -v` ile volume'u sıfırla |
 | `No address associated with hostname` | `DATABASE_URL`'de `localhost` kullanılmış | Docker env'de host'u `postgres` yap |
 | Env değişkeni geçersiz kalıyor | `load_dotenv()` Docker env'i eziyor | `load_dotenv(override=False)` kullan |
+

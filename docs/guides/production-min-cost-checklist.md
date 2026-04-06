@@ -7,6 +7,7 @@ Bu rehber bitirme projesi için düşük maliyetli production çıkışı hedefl
 - Frontend: Vercel Hobby (`app.hakbul.com`)
 - Backend: Render Web Service (`api.hakbul.com`)
 - Veritabanı: Render Postgres (free/hobby)
+- Embedding: Backend icinde local model (ayri embedding-service yok)
 - Ortam: Tek production ortamı (staging yok)
 
 ## 2) Zorunlu Environment Değerleri
@@ -31,10 +32,7 @@ QDRANT_URL=https://...
 QDRANT_API_KEY=...
 QDRANT_COLLECTION=hukuk_chunks
 
-EMBEDDING_MODE=remote
-EMBEDDING_SERVICE_URL=<render-embedding-service-url>
-EMBEDDING_SERVICE_API_KEY=...
-EMBEDDING_TIMEOUT_MS=2000
+EMBEDDING_MODEL=intfloat/multilingual-e5-base
 
 MOCK_RETRIEVAL=false
 MOCK_LLM=false
@@ -82,3 +80,4 @@ Amaç: Dış servis yoksa sessiz fallback yerine 503 dönmek.
 2. Vercel'de bir önceki başarılı deployment'ı promote et.
 3. Gerekirse DB snapshot'tan geri dön.
 4. `health` + smoke testleri tekrar çalıştır.
+

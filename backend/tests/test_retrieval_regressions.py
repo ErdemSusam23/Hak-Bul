@@ -29,7 +29,7 @@ def test_rewrite_query_preserves_explicit_legal_reference():
 
 
 def test_retrieve_chunks_prioritizes_exact_law_match_over_qdrant_noise(monkeypatch):
-    monkeypatch.setattr(retriever.settings, "EMBEDDING_MODE", "local")
+    monkeypatch.setattr(retriever.settings, "EMBEDDING_MODE", "local", raising=False)
     monkeypatch.setattr(retriever.settings, "ALLOW_LOCAL_RETRIEVAL_FALLBACK", True)
     monkeypatch.setattr(retriever, "_get_model", lambda: _DummyModel())
     monkeypatch.setattr(retriever, "is_qdrant_configured", lambda: True)

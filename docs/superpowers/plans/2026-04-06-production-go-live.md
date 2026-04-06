@@ -4,7 +4,7 @@
 
 **Goal:** Hak-Bul uygulamasini minimum maliyetli production mimaride (Vercel + Render + Render Postgres + Qdrant Cloud + Groq) guvenli ve dogrulanmis sekilde canliya almak.
 
-**Architecture:** Frontend Vercel Hobby ortaminda `app.hakbul.com`, backend Render Web Service ortaminda `api.hakbul.com` calisir. Backend Render Postgres'e baglanir; retrieval icin Qdrant Cloud, yanit uretimi icin Groq kullanilir. Local fallback ve mock modlari production'da kapatilir; upstream erisilemezse hard-fail (503) politikasi uygulanir.
+**Architecture:** Frontend Vercel Hobby ortaminda `app.hakbul.com`, backend Render Web Service ortaminda `api.hakbul.com` calisir. Backend Render Postgres'e baglanir; retrieval icin Qdrant Cloud, yanit uretimi icin Groq kullanilir. Embedding backend servisinin icinde local model ile calisir (ayri embedding servisi deploy edilmez). Local fallback ve mock modlari production'da kapatilir; upstream erisilemezse hard-fail (503) politikasi uygulanir.
 
 **Tech Stack:** FastAPI, React/Vite, Docker image deploy, Render, Vercel, PostgreSQL, Qdrant Cloud, Groq API
 
@@ -60,10 +60,7 @@ GROQ_API_KEY=...
 QDRANT_URL=https://...
 QDRANT_API_KEY=...
 QDRANT_COLLECTION=hukuk_chunks
-EMBEDDING_MODE=remote
-EMBEDDING_SERVICE_URL=<render-embedding-service-url>
-EMBEDDING_SERVICE_API_KEY=...
-EMBEDDING_TIMEOUT_MS=2000
+EMBEDDING_MODEL=intfloat/multilingual-e5-base
 MOCK_RETRIEVAL=false
 MOCK_LLM=false
 STRICT_UPSTREAMS=true

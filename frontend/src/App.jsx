@@ -264,6 +264,9 @@ function SolSidebar({
         { key: 'karsilastir', icon: GitCompare, label: t('belgeKarsilastir'), onClick: onKarsilastirAc },
         ...(kullanici?.rol === 'admin' ? [{ key: 'admin', icon: BarChart2, label: t('adminPaneli'), onClick: onAdminAc }] : []),
     ];
+    const kullaniciEtiketi = kullanici?.email
+        ? (kullanici.email.includes('@') ? kullanici.email.split('@')[0] : kullanici.email)
+        : 'Misafir';
 
     return (
         <aside
@@ -345,16 +348,16 @@ function SolSidebar({
                         return (
                             <div
                                 key={sohbet.id}
-                                className={`group relative rounded-lg px-3 py-3 transition-colors duration-150 ${!aktif ? 'hover:bg-[var(--tema-soft-bg-subtle)]' : ''}`}
+                                className={`group relative rounded-lg px-2.5 py-2 transition-colors duration-150 ${!aktif ? 'hover:bg-[var(--tema-soft-bg-subtle)]' : ''}`}
                                 style={{
                                     background: aktif ? 'var(--tema-soft-bg)' : 'transparent',
                                     border: aktif ? '1px solid var(--tema-border-card)' : '1px solid transparent',
                                 }}
                                 onClick={() => handleSohbetTikla(sohbet)}
                             >
-                                <div className="flex items-start gap-2">
+                                <div className="flex items-center gap-2">
                                     <div
-                                        className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full"
+                                        className="h-1.5 w-1.5 flex-shrink-0 rounded-full"
                                         style={{ background: aktif ? 'var(--tema-accent)' : 'var(--tema-border-strong)' }}
                                     />
 
@@ -392,14 +395,14 @@ function SolSidebar({
                                                 </button>
                                             </div>
                                         ) : (
-                                            <>
-                                                <p className="line-clamp-2 text-[13px] leading-[1.45]" style={{ color: 'var(--tema-text2)' }}>
+                                            <div className="flex items-center gap-2">
+                                                <p className="min-w-0 flex-1 truncate text-[12.5px] leading-5" style={{ color: 'var(--tema-text2)' }}>
                                                     {sohbet.title}
                                                 </p>
-                                                <p className="mt-1 text-[11px]" style={{ color: 'var(--tema-dimmer)' }}>
+                                                <p className="flex-shrink-0 text-[10px]" style={{ color: 'var(--tema-dimmer)' }}>
                                                     {tarihKisa(sohbet.tarih)}
                                                 </p>
-                                            </>
+                                            </div>
                                         )}
                                     </div>
 
@@ -407,24 +410,24 @@ function SolSidebar({
                                         <div className="relative flex flex-shrink-0 items-center gap-1">
                                             <button
                                                 onClick={(e) => handleSil(e, sohbet)}
-                                                className="rounded-xl p-1.5 transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
+                                                className="rounded-xl p-1 transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
                                                 style={{ color: 'var(--tema-muted)' }}
                                                 title={t('sil')}
                                                 aria-label={t('sil')}
                                             >
-                                                <Trash2 size={14} />
+                                                <Trash2 size={13} />
                                             </button>
                                             <button
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     setMenuAcikId((onceki) => (onceki === sohbet.id ? null : sohbet.id));
                                                 }}
-                                                className="rounded-xl p-1.5 transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
+                                                className="rounded-xl p-1 transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
                                                 style={{ color: 'var(--tema-muted)' }}
                                                 title={t('moreActions')}
                                                 aria-label={t('moreActions')}
                                             >
-                                                <MoreHorizontal size={14} />
+                                                <MoreHorizontal size={13} />
                                             </button>
 
                                             {menuAcikId === sohbet.id && (
@@ -527,7 +530,7 @@ function SolSidebar({
                     </div>
                     <div className="min-w-0 flex-1">
                         <p className="truncate text-[13.5px]" style={{ color: 'var(--tema-text)' }}>
-                            {kullanici?.email || 'Misafir'}
+                            {kullaniciEtiketi}
                         </p>
                         <p className="text-[11px]" style={{ color: 'var(--tema-dimmer)' }}>
                             {kullanici ? t('accountOwned') : t('guestSession')}

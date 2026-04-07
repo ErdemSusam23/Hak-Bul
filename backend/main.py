@@ -116,6 +116,10 @@ def assert_upstreams_ready_for_ask() -> None:
     try:
         get_qdrant().get_collection(settings.COLLECTION_NAME)
     except Exception as exc:
+        logger.exception(
+            "Qdrant strict upstream check failed for collection '%s'",
+            settings.COLLECTION_NAME,
+        )
         raise RuntimeError("Qdrant is unreachable") from exc
 
 
@@ -374,6 +378,11 @@ async def health():
                 client = get_qdrant()
                 client.get_collection(settings.COLLECTION_NAME)
             except Exception:
+                logger.warning(
+                    "Qdrant health check failed for collection '%s'",
+                    settings.COLLECTION_NAME,
+                    exc_info=True,
+                )
                 qdrant_status = "local_fallback" if has_local_corpus() else "unreachable"
 
     if settings.MOCK_MODE or settings.MOCK_LLM:

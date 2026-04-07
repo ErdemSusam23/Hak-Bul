@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import logging
 import warnings
 from pathlib import Path
 from typing import Any
@@ -18,6 +19,7 @@ from config import settings
 
 warnings.filterwarnings("ignore")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+logger = logging.getLogger(__name__)
 
 _qdrant: QdrantClient | None = None
 _model: Any | None = None
@@ -594,6 +596,12 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
 
         return deduped[:top_n]
     except Exception as exc:
+        logger.warning(
+            "Qdrant retrieval failed; using local fallback. collection=%s error=%s",
+            settings.COLLECTION_NAME,
+            exc,
+            exc_info=True,
+        )
         # Qdrant unavailable — optionally fall back to local keyword index.
         if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
             return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)

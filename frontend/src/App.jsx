@@ -1,6 +1,5 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { createElement, useState, useCallback, useEffect, useRef } from 'react';
 import {
-    MessageSquare,
     Plus,
     FileText,
     BarChart2,
@@ -58,7 +57,7 @@ function tarihKisa(isoStr) {
     return tarih.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
 }
 
-function SidebarNavButton({ icon: Icon, label, active, onClick }) {
+function SidebarNavButton({ icon, label, active, onClick }) {
     return (
         <button
             onClick={onClick}
@@ -69,7 +68,7 @@ function SidebarNavButton({ icon: Icon, label, active, onClick }) {
                 border: active ? '1px solid var(--tema-border-card)' : '1px solid transparent',
             }}
         >
-            <Icon size={16} style={{ color: active ? 'var(--tema-accent-soft)' : 'var(--tema-muted)' }} />
+            {createElement(icon, { size: 16, style: { color: active ? 'var(--tema-accent-soft)' : 'var(--tema-muted)' } })}
             <span>{label}</span>
         </button>
     );
@@ -93,7 +92,9 @@ function SolSidebar({
     const [duzenleId, setDuzenleId] = useState(null);
     const [duzenleMetin, setDuzenleMetin] = useState('');
     const [menuAcikId, setMenuAcikId] = useState(null);
+    const [profilMenuAcik, setProfilMenuAcik] = useState(false);
     const duzenleInputRef = useRef(null);
+    const profilMenuRef = useRef(null);
 
     const gecmisiCek = useCallback(async () => {
         try {
@@ -139,6 +140,17 @@ function SolSidebar({
         window.addEventListener('click', closeMenu);
         return () => window.removeEventListener('click', closeMenu);
     }, [menuAcikId]);
+
+    useEffect(() => {
+        if (!profilMenuAcik) return;
+        const handleDisTiklama = (event) => {
+            if (profilMenuRef.current && !profilMenuRef.current.contains(event.target)) {
+                setProfilMenuAcik(false);
+            }
+        };
+        window.addEventListener('mousedown', handleDisTiklama);
+        return () => window.removeEventListener('mousedown', handleDisTiklama);
+    }, [profilMenuAcik]);
 
     const handleSohbetTikla = async (sohbet) => {
         if (duzenleId === sohbet.id) return;
@@ -240,10 +252,16 @@ function SolSidebar({
     };
 
     const navItems = [
+        {
+            key: 'yeni-sohbet',
+            icon: Plus,
+            label: t('yeniSohbet'),
+            onClick: onYeniSohbet,
+            active: aktifSayfa === 'sohbet' && !aktifSohbetId,
+        },
         { key: 'forum', icon: BookOpen, label: 'Forum', onClick: onForumAc },
         { key: 'taslak', icon: FileText, label: t('belgeTaslaklari'), onClick: onTaslakAc },
         { key: 'karsilastir', icon: GitCompare, label: t('belgeKarsilastir'), onClick: onKarsilastirAc },
-        ...(kullanici ? [{ key: 'profil', icon: User, label: t('profilim'), onClick: onProfilAc }] : []),
         ...(kullanici?.rol === 'admin' ? [{ key: 'admin', icon: BarChart2, label: t('adminPaneli'), onClick: onAdminAc }] : []),
     ];
 
@@ -256,39 +274,23 @@ function SolSidebar({
             }}
         >
             <div className="mb-4 px-3">
-                <div className="mb-4 flex items-center gap-3">
-                    <div
-                        className="flex h-10 w-10 items-center justify-center rounded-xl"
-                        style={{
-                            background: 'var(--tema-soft-bg-subtle)',
-                            border: '1px solid var(--tema-border-card)',
-                        }}
-                    >
-                        <Scale size={18} style={{ color: 'var(--tema-accent-soft)' }} />
+                <div className="mb-4 flex items-center justify-between gap-3">
+                    <div className="flex min-w-0 items-center gap-3">
+                        <div
+                            className="flex h-10 w-10 items-center justify-center rounded-xl"
+                            style={{
+                                background: 'var(--tema-soft-bg-subtle)',
+                                border: '1px solid var(--tema-border-card)',
+                            }}
+                        >
+                            <Scale size={18} style={{ color: 'var(--tema-accent-soft)' }} />
+                        </div>
+                        <div className="min-w-0">
+                            <h1 className="font-serif text-[1.56rem] leading-[0.98] tracking-[-0.02em]" style={{ color: 'var(--tema-text)' }}>
+                                Hak-Bul
+                            </h1>
+                        </div>
                     </div>
-                    <div className="min-w-0">
-                        <h1 className="font-serif text-[1.56rem] leading-[0.98] tracking-[-0.02em]" style={{ color: 'var(--tema-text)' }}>
-                            Hak-Bul
-                        </h1>
-                        <p className="mt-1 text-[11px]" style={{ color: 'var(--tema-muted)' }}>
-                            {t('turkHukukAsistani')}
-                        </p>
-                    </div>
-                </div>
-
-                <div className="flex gap-2">
-                    <button
-                        onClick={onYeniSohbet}
-                        className="flex flex-1 items-center gap-2 rounded-lg px-4 py-3 text-[13.5px] font-medium transition-colors duration-150 hover:bg-[var(--tema-soft-bg)]"
-                        style={{
-                            background: 'var(--tema-soft-bg-subtle)',
-                            border: '1px solid var(--tema-border-card)',
-                            color: 'var(--tema-text)',
-                        }}
-                    >
-                        <Plus size={16} />
-                        {t('yeniSohbet')}
-                    </button>
                     <button
                         onClick={() => dilDegistir(dil === 'tr' ? 'en' : 'tr')}
                         className="rounded-lg px-3 text-xs font-semibold tracking-[0.12em]"
@@ -304,18 +306,12 @@ function SolSidebar({
             </div>
 
             <div className="mb-5 space-y-1 px-2">
-                <SidebarNavButton
-                    icon={MessageSquare}
-                    label={t('oncekiSorularim')}
-                    active={aktifSayfa === 'sohbet'}
-                    onClick={onYeniSohbet}
-                />
                 {navItems.map((item) => (
                     <SidebarNavButton
                         key={item.key}
                         icon={item.icon}
                         label={item.label}
-                        active={aktifSayfa === item.key}
+                        active={item.active ?? aktifSayfa === item.key}
                         onClick={item.onClick}
                     />
                 ))}
@@ -484,30 +480,60 @@ function SolSidebar({
                 )}
             </div>
 
-            <div
-                className="mt-3 flex items-center gap-3 rounded-xl px-3 py-3"
-                style={{
-                    background: 'var(--tema-soft-bg-subtle)',
-                    border: '1px solid var(--tema-border-card)',
-                }}
-            >
-                <div
-                    className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
+            <div className="relative mt-3" ref={profilMenuRef}>
+                {kullanici && profilMenuAcik && (
+                    <div
+                        className="absolute bottom-full left-0 right-0 z-20 mb-2 overflow-hidden rounded-xl py-1"
+                        style={{
+                            background: 'var(--tema-surface)',
+                            border: '1px solid var(--tema-border-card)',
+                            boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+                        }}
+                    >
+                        <button
+                            onClick={() => {
+                                setProfilMenuAcik(false);
+                                onProfilAc();
+                            }}
+                            className="flex w-full items-center gap-2 px-3 py-2 text-left text-xs transition-colors hover:bg-[var(--tema-soft-bg-subtle)]"
+                            style={{ color: 'var(--tema-text2)' }}
+                        >
+                            <User size={14} />
+                            {t('profilim')}
+                        </button>
+                    </div>
+                )}
+
+                <button
+                    type="button"
+                    onClick={() => {
+                        if (!kullanici) return;
+                        setProfilMenuAcik((onceki) => !onceki);
+                    }}
+                    className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left"
                     style={{
-                        background: 'var(--tema-soft-bg-strong)',
-                        color: 'var(--tema-text)',
+                        background: 'var(--tema-soft-bg-subtle)',
+                        border: '1px solid var(--tema-border-card)',
                     }}
                 >
-                    {(kullanici?.email || 'M').slice(0, 1).toUpperCase()}
-                </div>
-                <div className="min-w-0 flex-1">
-                    <p className="truncate text-[13.5px]" style={{ color: 'var(--tema-text)' }}>
-                        {kullanici?.email || 'Misafir'}
-                    </p>
-                    <p className="text-[11px]" style={{ color: 'var(--tema-dimmer)' }}>
-                        {kullanici ? t('accountOwned') : t('guestSession')}
-                    </p>
-                </div>
+                    <div
+                        className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold"
+                        style={{
+                            background: 'var(--tema-soft-bg-strong)',
+                            color: 'var(--tema-text)',
+                        }}
+                    >
+                        {(kullanici?.email || 'M').slice(0, 1).toUpperCase()}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                        <p className="truncate text-[13.5px]" style={{ color: 'var(--tema-text)' }}>
+                            {kullanici?.email || 'Misafir'}
+                        </p>
+                        <p className="text-[11px]" style={{ color: 'var(--tema-dimmer)' }}>
+                            {kullanici ? t('accountOwned') : t('guestSession')}
+                        </p>
+                    </div>
+                </button>
             </div>
         </aside>
     );

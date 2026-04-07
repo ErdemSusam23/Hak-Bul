@@ -7,6 +7,7 @@ import warnings
 import logging
 
 import json
+import httpx
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -98,6 +99,38 @@ def get_qdrant():
     return _qdrant
 
 
+def _qdrant_collection_exists_via_rest(collection_name: str) -> None:
+    base_url = settings.QDRANT_URL.rstrip("/")
+    headers = {"api-key": settings.QDRANT_API_KEY} if settings.QDRANT_API_KEY else {}
+    url = f"{base_url}/collections/{collection_name}"
+    response = httpx.get(url, headers=headers, timeout=15.0)
+    try:
+        response.raise_for_status()
+    except Exception:
+        logger.warning(
+            "Qdrant REST collection check failed. url=%s status=%s body=%s",
+            url,
+            response.status_code,
+            response.text[:300],
+        )
+        raise
+
+
+def assert_qdrant_collection_reachable(collection_name: str) -> None:
+    client = get_qdrant()
+    try:
+        client.get_collection(collection_name)
+        return
+    except Exception:
+        logger.warning(
+            "Qdrant SDK get_collection failed for '%s'; trying REST fallback",
+            collection_name,
+            exc_info=True,
+        )
+
+    _qdrant_collection_exists_via_rest(collection_name)
+
+
 def assert_upstreams_ready_for_ask() -> None:
     if not settings.STRICT_UPSTREAMS:
         return
@@ -114,7 +147,7 @@ def assert_upstreams_ready_for_ask() -> None:
         raise RuntimeError("Qdrant is not configured")
 
     try:
-        get_qdrant().get_collection(settings.COLLECTION_NAME)
+        assert_qdrant_collection_reachable(settings.COLLECTION_NAME)
     except Exception as exc:
         logger.exception(
             "Qdrant strict upstream check failed for collection '%s'",
@@ -375,8 +408,7 @@ async def health():
             qdrant_status = "local_fallback" if has_local_corpus() else "not_configured"
         else:
             try:
-                client = get_qdrant()
-                client.get_collection(settings.COLLECTION_NAME)
+                assert_qdrant_collection_reachable(settings.COLLECTION_NAME)
             except Exception:
                 logger.warning(
                     "Qdrant health check failed for collection '%s'",

@@ -37,6 +37,7 @@ API_URL = "http://127.0.0.1:8000"
 SORULAR_DOSYASI = os.path.join(os.path.dirname(__file__), "test_sorular.json")
 CIKTI_DOSYASI = os.path.join(
     os.path.dirname(__file__),
+    "test_results",
     f"test_sonuclari_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
 )
 BEKLEME_SN = 4          # Sorular arası bekleme (saniye)

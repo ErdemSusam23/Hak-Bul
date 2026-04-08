@@ -2,12 +2,23 @@
 """
 test_api_otomatik.py — Hak-Bul API otomatik test scripti
 
-Kullanım:
+Çalıştırma (Docker):
+    docker exec hak-bul-backend python test_api_otomatik.py
+    docker exec hak-bul-backend python test_api_otomatik.py --bekleme 4 --cikti test_sonuclari.json
+
+Çalıştırma (Local):
+    cd backend
     python test_api_otomatik.py
-    python test_api_otomatik.py --sorular test_sorular.json --cikti test_sonuclari.json --api-url http://localhost:8000
 
 Gereksinimler:
-    pip install httpx
+    httpx (Docker image'da zaten kurulu)
+
+Soru Havuzu Formatı (backend/test_sorular.json):
+    {
+      "İş Hukuku": ["Soru 1?", "Soru 2?"],
+      "Kira Hukuku": ["Soru 1?", "Soru 2?"],
+      ...
+    }
 """
 
 import argparse

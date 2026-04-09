@@ -44,7 +44,15 @@ Hak-Bul/
 │   ├── src/
 │   └── package.json
 ├── docs/
-└── docker-compose.yml
+│   ├── audits/             # Audit raporları
+│   ├── tests/              # Test raporları
+│   ├── guides/             # Kullanıcı/kurulum rehberleri
+│   ├── contributing/       # Katkı rehberi
+│   └── reference/          # Teknik referans dokümanları
+├── scripts/                # Yardımcı scriptler
+│   └── run_backend.py
+├── docker-compose.yml
+└── README.md
 ```
 
 ## Gereksinimler
@@ -343,14 +351,16 @@ Mevcut test kapsamı (39 test):
 
 ## Ek Belgeler
 
+- [`docs/contributing/CONTRIBUTING.md`](docs/contributing/CONTRIBUTING.md) — Projeye katkı rehberi
 - [`docs/guides/env-setup.md`](docs/guides/env-setup.md) — Ortam değişkenleri detaylı rehber
 - [`docs/reference/api.md`](docs/reference/api.md) — API endpoint'leri ve şemalar
 - [`docs/reference/database.md`](docs/reference/database.md) — PostgreSQL ve Qdrant şemaları
 - [`docs/reference/rag-pipeline.md`](docs/reference/rag-pipeline.md) — RAG pipeline akışı
 - [`docs/reference/tech-spec.md`](docs/reference/tech-spec.md) — Teknik gereksinimler ve mimari
 
+## Yardımcı Scriptler
 ---
 
 <div align="center">
-  <sub>Hak-Bul Projesi • Son Güncelleme: 26.03.2026</sub>
+  <sub>Hak-Bul Projesi • Son Güncelleme: 09.04.2026</sub>
 </div>

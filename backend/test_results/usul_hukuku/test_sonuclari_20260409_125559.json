@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-09T12:57:19.913077+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 4.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/usul_hukuku/test_sonuclari_20260409_125559.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 80.8,
+    "ortalama_sure_sn": 6.73,
+    "kategori_dagilimi": {
+      "Usul Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 2.73,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 1368.0,
+        "ortalama_kaynak_skor": 0.8588
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Arabuluculuk nedir, hangi davalarda zorunludur?",
+      "cevap": "Arabuluculuk, sistematik teknikler uygulayarak, görüşmek ve müzakerelerde bulunmak aracılığıyla tarafları bir araya getiren, onların birbirlerini anlamalarını ve bu suretle çözümlerini keşfetmelerine yardım eden bir uyuşmazlık çözüm yöntemidir. 6325 sayılı Hukuk Uyuşmazlıklarında Arabuluculuk Kanunu'na göre, arabuluculuk; tarafların birbirlerini anlamalarını ve bu suretle çözümlerini keşfetmelerine yardım eden bir yöntemdir.\n\n7036 sayılı İş Mahkemeleri Kanunu'nun 3/1 hükmünde, \"Kanuna, bireysel veya toplu iş sözleşmesine dayanan işçi veya işveren alacağı ve tazminatı ile işe iade talebi ile açılan davalarda arabulucuya başvurulmuş olması dava şartıdır\" şeklinde düzenlemeye yer verilmiştir. Yani, işçi veya işveren alacağı ve tazminatı ile işe iade talebi ile açılan davalarda arabuluculuğa başvurmak zorunludur.\n\nAncak, özel kanunlarda tahkim veya başka bir alternatif uyuşmazlık çözüm yoluna başvurma zorunluluğunun olduğu veya tahkim sözleşmesinin bulunduğu hallerde, dava şartı olarak arabuluculuğa ilişkin hükümler uygulanmaz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3465",
+          "metin_ozet": "n kapsamı dışındaki temyiz itirazları yerinde görülmemiştir.\n2. 7036 sayılı İş Mahkemeleri Kanunu'nun 3/1 hükmünde “Kanuna, bireysel veya  toplu iş sözleşmesine dayanan işçi veya işveren alacağı ve tazminatı ile işe iade talebi ile açılan davalarda arabulucuya başvurulmuş olması dava şartıdır.” şekl",
+          "metin": "n kapsamı dışındaki temyiz itirazları yerinde görülmemiştir.\n2. 7036 sayılı İş Mahkemeleri Kanunu'nun 3/1 hükmünde “Kanuna, bireysel veya  toplu iş sözleşmesine dayanan işçi veya işveren alacağı ve tazminatı ile işe iade talebi ile açılan davalarda arabulucuya başvurulmuş olması dava şartıdır.” şeklinde düzenlemeye yer verilmiştir.\nDava şartı olarak arabuluculuk sürecinin başından sonuna kadar detaylı kurallara bağlanması, yaşanması muhtemel hak kayıplarının önüne geçilmesi açısından gereklidir. Şüphesiz arabulucuğun en önemli aşamalarından biri başvurunun yapılması, diğeri ise arabuluculuk tutanağı düzenlenmesidir. Anlaşmazlıklara ve tereddütlere meydan verilmemesi için arabuluculuk tutanağında tarafların anlaştıkları ya da anlaşamadıkları alacak kalemleri tek tek belirtilmelidir.\nDava şartı arabuluculuk uygulamalarının başlangıcında, hem talepte bulunanlar ve hem de arabulucular tarafından yapılan hataların tarafların mağduriyetine sebebiyet verdiği, arabuluculuk uygulamasının amaçlandığı gibi uygulanmasına engel olduğu görülmüştür. Bu sebeple Dairemizce, 6325 sayılı Hukuk Uyuşmazlıklarında Arabuluculuk Kanunu’na dayanılarak çıkartılan ve 02.06.2018 tarihinde yürürlüğe giren Yöne",
+          "skor": 0.8781,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7430",
+          "metin_ozet": "luk faaliyeti ise tarafların anlaşamadığına ilişkin düzenlenen son tutanak tarihinden önce muaccel olan alacaklar için gerçekleştirilmiştir. Arabuluculuk son tutanak tarihinden sonra muaccel olan son tutanak tarihi ile hesaplamaya esas alınan tarih arasında kalan talep dönemi için arabuluculuk dava ",
+          "metin": "luk faaliyeti ise tarafların anlaşamadığına ilişkin düzenlenen son tutanak tarihinden önce muaccel olan alacaklar için gerçekleştirilmiştir. Arabuluculuk son tutanak tarihinden sonra muaccel olan son tutanak tarihi ile hesaplamaya esas alınan tarih arasında kalan talep dönemi için arabuluculuk dava şartının yerine getirilmediği dikkate alındığında; bu dönem yönünden davanın, dava şartı yokluğu sebebiyle usulden reddine karar verilmesi gerekirken yazılı şekilde hüküm kurulması hatalı olup bozmayı gerektirmiştir.\n3. Bilindiği üzere 6100 sayılı Hukuk Muhakemeleri Kanunu'nda usuli kazanılmış hak kavramına ilişkin açık bir hüküm bulunmamaktadır. Bu kavram, davaların uzamasını önlemek, hukuki alanda istikrar sağlamak ve kararlara karşı genel güvenin sarsılmasını önlemek amacıyla Yargıtay uygulamaları ile geliştirilmiş, öğretide kabul görmüş ve usul hukukunun vazgeçilmez, ana ilkelerinden biri hâline gelmiştir. Anlam itibarıyla bir davada, mahkemenin ya da tarafların yapmış olduğu bir usul işlemi ile taraflardan biri lehine doğmuş ve kendisine uyulması zorunlu olan hakkı ifade etmektedir.\nMahkemenin, Yargıtayın bozma kararına uyması ile bozma kararı lehine olan taraf yararına bir usuli ka",
+          "skor": 0.8733,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7429",
+          "metin_ozet": "uk faaliyeti ise tarafların anlaşamadığına ilişkin düzenlenen son tutanak tarihinden önce muaccel olan alacaklar için gerçekleştirilmiştir. Arabuluculuk son tutanak tarihinden sonra muaccel olan son tutanak tarihi ile hesaplamaya esas alınan tarih arasında kalan talep dönemi için arabuluculuk dava ş",
+          "metin": "uk faaliyeti ise tarafların anlaşamadığına ilişkin düzenlenen son tutanak tarihinden önce muaccel olan alacaklar için gerçekleştirilmiştir. Arabuluculuk son tutanak tarihinden sonra muaccel olan son tutanak tarihi ile hesaplamaya esas alınan tarih arasında kalan talep dönemi için arabuluculuk dava şartının yerine getirilmediği dikkate alındığında; bu dönem yönünden davanın, dava şartı yokluğu sebebiyle usulden reddine karar verilmesi gerekirken yazılı şekilde hüküm kurulması hatalı olup bozmayı gerektirmiştir.\n3. Bilindiği üzere 6100 sayılı Hukuk Muhakemeleri Kanunu'nda usuli kazanılmış hak kavramına ilişkin açık bir hüküm bulunmamaktadır. Bu kavram, davaların uzamasını önlemek, hukuki alanda istikrar sağlamak ve kararlara karşı genel güvenin sarsılmasını önlemek amacıyla Yargıtay uygulamaları ile geliştirilmiş, öğretide kabul görmüş ve usul hukukunun vazgeçilmez, ana ilkelerinden biri hâline gelmiştir. Anlam itibarıyla bir davada, mahkemenin ya da tarafların yapmış olduğu bir usul işlemi ile taraflardan biri lehine doğmuş ve kendisine uyulması zorunlu olan hakkı ifade etmektedir.\nMahkemenin, Yargıtayın bozma kararına uyması ile bozma kararı lehine olan taraf yararına bir usuli kaz",
+          "skor": 0.8721,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5080",
+          "metin_ozet": "n yerinde  de değildir. Somut olayda...Bölge Adliye Mahkemesi Başkanlar Kurulunca daire kararları arasında uyuşmazlık bulunup bulunmadığının belirlenmesi ile yetinilmesi gerekirken, uyuşmazlığın hangi daire görüşü doğrultusunda giderilmesi gerektiğinin belirtilmesi isabetsiz olup eleştirilmiştir.\n2.",
+          "metin": "n yerinde  de değildir. Somut olayda...Bölge Adliye Mahkemesi Başkanlar Kurulunca daire kararları arasında uyuşmazlık bulunup bulunmadığının belirlenmesi ile yetinilmesi gerekirken, uyuşmazlığın hangi daire görüşü doğrultusunda giderilmesi gerektiğinin belirtilmesi isabetsiz olup eleştirilmiştir.\n2. Bölge Adliye Mahkemeleri kararlarına konu somut olaylarda, telekonferans yöntemi ile gerçekleştirilmiş olan arabuluculuk faaliyetleri sonucunda, tarafların anlaşamaması üzerine düzenlenen arabuluculuk son tutanaklarının düzenlendiği tarih uyuşmazlık konusudur.\nBilindiği üzere Ülkemizde bireysel hukuk uyuşmazlıklarında alternatif bir uyuşmazlık çözüm yöntemi olarak arabuluculuk, ilk defa 07.06.2012 tarihli ve 6325 sayılı Hukuk Uyuşmazlıklarında Arabuluculuk Kanunu (6325 sayılı Kanun) ile kabul edilmiştir. Daha sonra başta 12.10.2017 tarihli ve 7036 sayılı İş Mahkemeleri Kanunu (7036 sayılı Kanun) olmak üzere bazı kanunlarla dava şartı arabuluculuk ihdas edilmiştir.\n6325 sayılı Kanun'un 2. maddesine göre arabuluculuk; sistematik teknikler uygulayarak, görüşmek ve müzakerelerde bulunmak aracılığıyla tarafları bir araya getiren, onların birbirlerini anlamalarını ve bu suretle çözümlerini ke",
+          "skor": 0.8717,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7426",
+          "metin_ozet": "ören öncelikle tazminat taleplerini sigortacıya iletecek ve böylece uyuşmazlığı kendi aralarında çözmeye çalışacaklardır. Bu haliyle zarar görenin dava açmadan önce sigortacıya başvuru dava şartı alternatif uyuşmazlık çözüm yolu olarak önümüze çıkmaktadır. Hukuk Uyuşmazlıklarında Arabuluculuk Kanunu",
+          "metin": "ören öncelikle tazminat taleplerini sigortacıya iletecek ve böylece uyuşmazlığı kendi aralarında çözmeye çalışacaklardır. Bu haliyle zarar görenin dava açmadan önce sigortacıya başvuru dava şartı alternatif uyuşmazlık çözüm yolu olarak önümüze çıkmaktadır. Hukuk Uyuşmazlıklarında Arabuluculuk Kanunu'na eklenen 18/A maddesinin 18 inci fıkrasında \"Özel kanunlarda tahkim veya başka bir alternatif uyuşmazlık çözüm yoluna başvurma zorunluluğunun olduğu veya tahkim sözleşmesinin bulunduğu hâllerde, dava şartı olarak arabuluculuğa ilişkin hükümler uygulanmaz.\"  ifadesi ile dava şartı olarak arabuluculuğun sınırları özel kanunlarda tahkim ve başka alternatif uyuşmazlık çözüm yollarına  başvurunun zorunlu olması ile çizilmiştir.\nBir başka deyişle tahkimin veya başka  alternatif uyuşmazlık çözüm yollarının zorunlu kılındığı durumlarda arabuluculuğa başvuru dava şartı olarak uygulanmayacaktır.\nBölge Adliye Mahkemesince, davalı tarafın davada haksız olduğu dolayısıyla zorunlu arabuluculuk masraflarından davalının sorumlu olacağı gerekçesiyle arabuluculuk giderlerinin davalıdan tahsiline şeklinde hüküm kurulmuş ise de yukarıda açıklandığı üzere, trafik kazası sonucu davacının tazminat talepleri",
+          "skor": 0.8707,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Is Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1243,
+      "ortalama_kaynak_skor": 0.8732,
+      "kaynak_sayisi": 5,
+      "message_id": "0a99c9aa-94bc-45a3-8a96-c31eabcde6bf",
+      "conversation_id": "6feb6810-1fbe-45ba-a378-e3791ea6edd3",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.79,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "İcra takibi nasıl başlatılır, borçluya tebligat nasıl yapılır?",
+      "cevap": "İcra takibi, ilamın icra dairesine tevdii ile başlar (Kaynak 5, Madde 35). İcra takibinin başlatılması için, alacaklının ilamın bir suretini icra dairesine vermesi gerekir. İcra dairesi, ilamın tevdii üzerine, takip talebini değerlendirir ve gerekli işlemleri başlatır.\n\nBorçluya tebligat, Tebligat Kanunu hükümlerine göre yapılır (Kaynak 1, Madde 57). İcra memuru, borçluya tebligat yapılmasını ait olduğu makamdan ister. Tebligat, borçlunun meslek veya sanatına mütaallik muamelelerden doğmuş bir borca dair ise, kendilerine yapılır. Ayrıca, haciz sırasında borçlu veya alacaklı adına Tebligat Kanunu hükümlerine göre tebellüğe yetkili kimse bulunduğu takdirde, haciz tutanağının bir örneği bulunan şahsa verilir (Kaynak 2, Madde 103).\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 57",
+          "metin_ozet": "Madde 57 – (Değişik: 18/2/1965-538/29 md.)\nİcraya ait tebliğlerde Tebligat Kanunu hükümleri uygulanır. Ancak borçlu, kendilerine\nkanunen mümessil tayin olunması icabeden şahıslardan ise icra memuru kısa bir zamanda\nmümessil tayin edilmesini ait olduğu makamdan ister.\nTebliğ, Medeni Kanunun 159 ve 39",
+          "metin": "Madde 57 – (Değişik: 18/2/1965-538/29 md.)\nİcraya ait tebliğlerde Tebligat Kanunu hükümleri uygulanır. Ancak borçlu, kendilerine\nkanunen mümessil tayin olunması icabeden şahıslardan ise icra memuru kısa bir zamanda\nmümessil tayin edilmesini ait olduğu makamdan ister.\nTebliğ, Medeni Kanunun 159 ve 396 ncı maddelerine göre mezun olanların meslek\nveya sanatına mütaallik muamelelerden doğmuş bir borca dair ise kendilerine yapılır.\nV. TAKİP TALEBİ\nTakip talebi ve muhtevası:",
+          "skor": 0.8913,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 103",
+          "metin_ozet": "Madde 103 – (Değişik: 9/11/1988-3494/12 md.)\nTutanak tutulurken alacaklı, borçlu veya namlarına Tebligat Kanunu hükümlerine göre\ntebellüğe yetkili kimse bulunmazsa, bulunmayan alacaklı veya borçlu üç gün içinde tutanağı\ntetkik ve diyeceği varsa söylemesi için icra dairesine davet olunur. Kanunen ila",
+          "metin": "Madde 103 – (Değişik: 9/11/1988-3494/12 md.)\nTutanak tutulurken alacaklı, borçlu veya namlarına Tebligat Kanunu hükümlerine göre\ntebellüğe yetkili kimse bulunmazsa, bulunmayan alacaklı veya borçlu üç gün içinde tutanağı\ntetkik ve diyeceği varsa söylemesi için icra dairesine davet olunur. Kanunen ilavesi gereken\nmüddetler mahfuzdur. Haciz sırasında borçlu veya alacaklı adına Tebligat Kanunu\nhükümlerine göre tebellüğe yetkili kimse bulunduğu takdirde haciz tutanağının bir örneği\nbulunan şahsa verilir. Borçluya veya alacaklıya ayrıca haber verilmez.\nHacze iştirak halinde davet:",
+          "skor": 0.8716,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 50",
+          "metin_ozet": "Madde 50 – (Değişik: 3/7/1940-3890/1 md.)\nPara veya teminat borcu için takip hususunda Hukuk Usulü Muhakemeleri Kanununun\nyetkiye dair hükümleri kıyas yolu ile tatbik olunur. Şu kadar ki, takibe esas olan akdin\nyapıldığı icra dairesi de takibe yetkilidir.\nYetki itirazı esas hakkındaki itirazla birli",
+          "metin": "Madde 50 – (Değişik: 3/7/1940-3890/1 md.)\nPara veya teminat borcu için takip hususunda Hukuk Usulü Muhakemeleri Kanununun\nyetkiye dair hükümleri kıyas yolu ile tatbik olunur. Şu kadar ki, takibe esas olan akdin\nyapıldığı icra dairesi de takibe yetkilidir.\nYetki itirazı esas hakkındaki itirazla birlikte yapılır. İcra mahkemesi tarafından önce\nyetki meselesi tetkik ve kati surette karara raptolunur.\nİki icra mahkemesi arasında yetki noktasından ihtilaf çıkarsa Hukuk Usulü\nMuhakemeleri Kanununun 25 inci maddesi hükmü tatbik olunur.\nIII. TATİLLER VE TALİKLER\nTatiller:\n1 – Bütün borçlular hakkında:",
+          "skor": 0.8711,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 158",
+          "metin_ozet": "Madde 158 – (Değişik: 9/11/1988-3494/26 md.)\nAlacaklının iflas takibi kesinleştiğinde l66 ncı maddenin ikinci fıkrasındaki usulle ilan\nedilir. İflas talebinin ilanından itibaren onbeş gün içinde diğer alacaklılar davaya müdahele\nveya itiraz ederek iflası gerektiren bir hal bulunmadığını ileri sürere",
+          "metin": "Madde 158 – (Değişik: 9/11/1988-3494/26 md.)\nAlacaklının iflas takibi kesinleştiğinde l66 ncı maddenin ikinci fıkrasındaki usulle ilan\nedilir. İflas talebinin ilanından itibaren onbeş gün içinde diğer alacaklılar davaya müdahele\nveya itiraz ederek iflası gerektiren bir hal bulunmadığını ileri sürerek mahkemeden talebin\nreddini isteyebilirler.\nMahkeme, icra dosyasını celbeder ve basit yargılama usulüne göre duruşma yaparak,\ngerek iflas talebini gerek itiraz ve defileri umumi hükümler dairesinde tetkik ve intac eder. Şu\nkadar ki, borçlu takibe karşı usulü dairesinde itiraz etmemiş veya itiraz ve defileri varit\ngörülmemişse mahkeme yedi gün içinde faiz ve icra masrafları ile birlikte borcunu ifa veya o\nmiktar meblağın mahkeme veznesine depo edilmesini borçluya veya iflas davasında kendisini\ntemsil etmiş olan vekiline, dava vicahda devam ediyorsa duruşmada, aksi takdirde Tebligat\nKanunu hükümleri dairesinde yapılacak tebliğ ile emreder. Borçlu imtina ederse ilk oturumda\niflasına karar verilir.\nMuhafaza tedbirleri:",
+          "skor": 0.8704,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 35",
+          "metin_ozet": "Madde 35 – Takip, ilamın icra dairesine tevdii ile başlar. İstiyen alacaklıya kayıt\nnumarasını mübeyyin bedava ve pulsuz bir ilmühaber verilir.\nİcranın geri bırakılması için verilecek süre21",
+          "metin": "Madde 35 – Takip, ilamın icra dairesine tevdii ile başlar. İstiyen alacaklıya kayıt\nnumarasını mübeyyin bedava ve pulsuz bir ilmühaber verilir.\nİcranın geri bırakılması için verilecek süre21",
+          "skor": 0.8675,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 941,
+      "ortalama_kaynak_skor": 0.8744,
+      "kaynak_sayisi": 5,
+      "message_id": "baf74752-57b9-407d-87fb-2947883c988a",
+      "conversation_id": "874f6b18-cf56-4a73-9d63-ab0895f53653",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Dava açma süresi (zamanaşımı) genel olarak ne kadardır, nasıl kesilir?",
+      "cevap": "Dava açma süresi, diğer adıyla zamanaşımı süresi, genel olarak 10 yıl olarak belirlenmiştir. Bu süre, 6098 Sayılı Türk Borçlar Kanunu'nun 146. maddesinde \"Kanunda aksine bir hüküm bulunmadıkça, her alacak on yıllık zamanaşımına tabidir\" şeklinde belirtilmiştir.\n\nZamanaşımı süresi, belirli koşullar altında kesilebilir. 6098 Sayılı Türk Borçlar Kanunu'nun 154. maddesinde, zamanaşımının kesilmesine ilişkin durumlar belirtilmiştir. Buna göre, zamanaşımı aşağıdaki durumlarda kesilir:\n1. Borçlu borcu ikrar etmişse, özellikle faiz ödemiş veya kısmen ifada bulunmuşsa ya da rehin vermiş veya kefil göstermişse.\n2. Alacaklı, dava veya def’i yoluyla mahkemeye veya hakeme başvurmuşsa, icra takibinde bulunmuşsa ya da iflas masasına başvurmuşsa.\n\nZamanaşımının kesilmesi ile, yeni bir süre işlemeye başlar. Bu yeni süre, genel olarak 10 yıl olarak belirlenmiştir. Ancak, borç bir senetle ikrar edilmiş veya bir mahkeme ya da hakem kararına bağlanmış ise, yeni süre her zaman 10 yıldır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 32 - Fıkra 3",
+          "metin_ozet": "Ücret alacaklarında zamanaşımı süresi beş yıldır. İşverenin ödeme aczine düşmesi",
+          "metin": "Ücret alacaklarında zamanaşımı süresi beş yıldır. İşverenin ödeme aczine düşmesi",
+          "skor": 0.8726,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 156",
+          "metin_ozet": "MADDE 156- Zamanaşımının kesilmesiyle, yeni bir süre işlemeye başlar. Borç bir senetle ikrar edilmiş veya bir mahkeme ya da hakem kararına bağlanmış ise, yeni süre her zaman on yıldır.",
+          "metin": "MADDE 156- Zamanaşımının kesilmesiyle, yeni bir süre işlemeye başlar. Borç bir senetle ikrar edilmiş veya bir mahkeme ya da hakem kararına bağlanmış ise, yeni süre her zaman on yıldır.",
+          "skor": 0.8687,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 146",
+          "metin_ozet": "MADDE 146- Kanunda aksine bir hüküm bulunmadıkça, her alacak on yıllık zamanaşımına tabidir.",
+          "metin": "MADDE 146- Kanunda aksine bir hüküm bulunmadıkça, her alacak on yıllık zamanaşımına tabidir.",
+          "skor": 0.867,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 148",
+          "metin_ozet": "MADDE 148- Bu ayırımda belirlenen zamanaşımı süreleri, sözleşmeyle değiştirilemez.",
+          "metin": "MADDE 148- Bu ayırımda belirlenen zamanaşımı süreleri, sözleşmeyle değiştirilemez.",
+          "skor": 0.8627,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/6553",
+          "metin_ozet": "re maddi tazminat talepleri için de geçerlidir.\" hükmü yer almaktadır.\nDavaya konu olayın 09.05.2013 tarihinde meydana geldiği ve kazada davacının da aralarında olduğu iki kişinin yaralandığı anlaşılmış olup,  kaza tarihi itibari ile yürürlükte bulunan Türk Ceza Kanunu uyarınca uzamış ceza zamanaşım",
+          "metin": "re maddi tazminat talepleri için de geçerlidir.\" hükmü yer almaktadır.\nDavaya konu olayın 09.05.2013 tarihinde meydana geldiği ve kazada davacının da aralarında olduğu iki kişinin yaralandığı anlaşılmış olup,  kaza tarihi itibari ile yürürlükte bulunan Türk Ceza Kanunu uyarınca uzamış ceza zamanaşımı süresi 8 yıldır.\nSomut olayda davacının eldeki davayı (başvuruyu) açmadan önce, 8 yıllık süre içinde 01.03.2021 tarihinde Sigorta Tahkim Komisyonuna başvurduğu ve bu başvurunun; sunulan maluliyet raporunun usulüne uygun olmadığı gerekçesi ile  İtiraz Hakem Heyetince usulden reddedildiği anlaşılmaktadır.\n6098 sayılı TBK’nın \"Zamanaşımının kesilmesi\" başlıklı 154 üncü maddesinde; \"Aşağıdaki durumlarda zamanaşımı kesilir:1. Borçlu borcu ikrar etmişse, özellikle faiz ödemiş veya kısmen ifada bulunmuşsa ya da rehin vermiş veya kefil göstermişse. 2. Alacaklı, dava veya def’i yoluyla mahkemeye veya hakeme başvurmuşsa, icra takibinde bulunmuşsa ya da iflas masasına başvurmuşsa\"\nşeklinde, 156/1 inci maddesinde; \" Zamanaşımının kesilmesiyle, yeni bir süre işlemeye başlar.\" ve 157/1 inci maddesinde ise ;\"Bir dava veya def’i yoluyla kesilmiş olan zamanaşımı, dava süresince tarafların yargılamaya i",
+          "skor": 0.8596,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1184,
+      "ortalama_kaynak_skor": 0.8661,
+      "kaynak_sayisi": 5,
+      "message_id": "6176f357-a6e1-4968-bb4a-5608dd0cec4a",
+      "conversation_id": "8fc08584-9ef3-411b-b30d-5edb11c6da64",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.67,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Hak düşürücü süre nedir, zamanaşımından farkı nedir?",
+      "cevap": "Hak düşürücü süre, bir hakkın doğumu, kullanımı veya sona ermesine ilişkin olarak belirlenen sürelerdir. Bu süreler, genellikle belirli bir hak veya yükümlülüğün doğması veya sona ermesi için öngörülen zaman dilimini ifade eder. Hak düşürücü süreler, genellikle belirli bir işlem veya eylemin yapılması için öngörülen sürelerdir.\n\nZamanaşımı ise, bir hakkın doğduğu tarihten itibaren belirli bir süre geçtikten sonra, o hakkın kullanılamaması veya düşmesi durumunu ifade eder. Zamanaşımı, bir hakkın kullanılmasına engel olan bir süre olarak düşünülebilir.\n\nHak düşürücü süre ve zamanaşımı arasındaki fark, hak düşürücü sürelerin genellikle belirli bir işlem veya eylemin yapılması için öngörülen süreler olması, जबकi zamanaşımı bir hakkın doğduğu tarihten itibaren belirli bir süre geçtikten sonra o hakkın kullanılamaması veya düşmesi durumunu ifade eder.\n\nÖrneğin, Türk Medeni Kanunu'nun 152. maddesinde belirtilen iptal davası açma hakkı, iptal sebebinin öğrenildiği veya korkunun etkisinin ortadan kalktığı tarihten başlayarak altı ay ve her hâlde evlenmenin üzerinden beş yıl geçmekle düşer. Bu, bir hak düşürücü süredir. Eğer bu süre içinde dava açılmazsa, hak düşer.\n\nZamanaşımı ise, bir hakkın doğduğu tarihten itibaren belirli bir süre geçtikten sonra o hakkın kullanılamaması veya düşmesi durumunu ifade eder. Örneğin, Türk Borçlar Kanunu'nun 156. maddesinde belirtilen zamanaşımı süresi, bir borcun doğduğu tarihten itibaren on yıl geçtikten sonra o borcun ödenmemesi durumunu ifade eder.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 152",
+          "metin_ozet": "Madde 152- İptal davası açma hakkı, iptal sebebinin öğrenildiği veya korkunun etkisinin\nortadan kalktığı tarihten başlayarak altı ay ve her hâlde evlenmenin üzerinden beş yıl geçmekle\ndüşer.\nII. Yasal temsilcinin dava hakkı",
+          "metin": "Madde 152- İptal davası açma hakkı, iptal sebebinin öğrenildiği veya korkunun etkisinin\nortadan kalktığı tarihten başlayarak altı ay ve her hâlde evlenmenin üzerinden beş yıl geçmekle\ndüşer.\nII. Yasal temsilcinin dava hakkı",
+          "skor": 0.8627,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/14160",
+          "metin_ozet": "nun 49 uncu maddesinde haksız fiil tanımlanmış, 72 nci maddesinde de haksız fiilden zarar görenin bundan kaynaklanan zararının tazmini istemiyle açacağı davaların zararı ve faili öğrendiği tarihten itibaren 2 yıl ve herhalde haksız fiil tarihinden itibaren 10 yıllık zamanaşımı süresine  tabi olduğu ",
+          "metin": "nun 49 uncu maddesinde haksız fiil tanımlanmış, 72 nci maddesinde de haksız fiilden zarar görenin bundan kaynaklanan zararının tazmini istemiyle açacağı davaların zararı ve faili öğrendiği tarihten itibaren 2 yıl ve herhalde haksız fiil tarihinden itibaren 10 yıllık zamanaşımı süresine  tabi olduğu belirtilmiştir.\nHer ne karar ilgili yasal düzenleme karşısında 2 yıllık zamanaşımı süresi öngörülmüş ise de  “Bazı Kanunlarda Değişiklik Yapılmasına Dair 7226 sayılı Kanunun Geçici 1. maddesi  (1) Covid-19 salgın hastalığının ülkemizde görülmüş olması sebebiyle yargı alanındaki hak kayıplarının önlenmesi amacıyla; a) Dava açma, icra takibi başlatma, başvuru, şikâyet, itiraz, ihtar, bildirim, ibraz ve zamanaşımı süreleri, hak düşürücü süreler ve zorunlu idari başvuru süreleri de dâhil olmak üzere bir hakkın doğumu, kullanımı veya sona ermesine ilişkin tüm süreler; 06.01.1982 tarihli ve 2577 sayılı İdari Yargılama Usulü Kanunu, 04.12.2004 tarihli ve 5271 sayılı Ceza Muhakemesi Kanunu ve 12.01.2011 tarihli ve 6100 sayılı Hukuk Muhakemeleri Kanunu ile usul hükmü içeren diğer kanunlarda taraflar bakımından belirlenen süreler ve bu kapsamda hâkim tarafından tayin edilen süreler ile arabuluculu",
+          "skor": 0.8616,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 156",
+          "metin_ozet": "MADDE 156- Zamanaşımının kesilmesiyle, yeni bir süre işlemeye başlar. Borç bir senetle ikrar edilmiş veya bir mahkeme ya da hakem kararına bağlanmış ise, yeni süre her zaman on yıldır.",
+          "metin": "MADDE 156- Zamanaşımının kesilmesiyle, yeni bir süre işlemeye başlar. Borç bir senetle ikrar edilmiş veya bir mahkeme ya da hakem kararına bağlanmış ise, yeni süre her zaman on yıldır.",
+          "skor": 0.8598,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/6553",
+          "metin_ozet": "ir süre işlemeye başlar.\" ve 157/1 inci maddesinde ise ;\"Bir dava veya def’i yoluyla kesilmiş olan zamanaşımı, dava süresince tarafların yargılamaya ilişkin her işleminden veya hâkimin her kararından sonra yeniden işlemeye başlar\" şeklinde düzenlenme mevcuttur.\nYukarıdaki hükümlere göre; davacı (red",
+          "metin": "ir süre işlemeye başlar.\" ve 157/1 inci maddesinde ise ;\"Bir dava veya def’i yoluyla kesilmiş olan zamanaşımı, dava süresince tarafların yargılamaya ilişkin her işleminden veya hâkimin her kararından sonra yeniden işlemeye başlar\" şeklinde düzenlenme mevcuttur.\nYukarıdaki hükümlere göre; davacı (reddedilen) ilk tahkim başvurusunu  8 yıllık (uzamış ceza zamanaşımı) süresi içinde 01.03.2021 tarihinde yapmış ve bu tarih itibarı ile zamanaşımı süresi kesilmiş, kesilen zamanaşımı süresi davacının 24.01.2022 tarihli (ikinci) başvurusu ile yeniden işlemeye başlamış olup, 24.01.2022 (ikinci başvuru) tarihi itibarı ile 8 yıllık zamanaşımı süresinin dolmadığı anlaşılmıştır.\nKonu 6098 sayılı TBK’nın 158 inci maddesi açısından ele alınacak olduğunda ise; anılan maddede \"Dava veya def’i; mahkemenin yetkili veya görevli olmaması ya da düzeltilebilecek bir yanlışlık yapılması yahut vaktinden önce açılmış olması nedeniyle reddedilmiş olup da o arada zamanaşımı veya hak düşürücü süre dolmuşsa, alacaklı altmış günlük ek süre içinde haklarını kullanabilir.\n\" düzenlemesinin bulunduğu, somut olayda davacı davasını 8 yıllık zamanaşımı süresi içinde(zamanaşımı süresi dolmadan) açmış olduğundan, işbu madd",
+          "skor": 0.8577,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.8569,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1704,
+      "ortalama_kaynak_skor": 0.8597,
+      "kaynak_sayisi": 5,
+      "message_id": "ca6a1c49-df17-43c3-b508-5eb09fbc6964",
+      "conversation_id": "62ca6908-36a8-4a80-b556-57a50c95ad66",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.29,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Hükmün açıklanmasının geri bırakılması (HAGB) nedir, koşulları nedir?",
+      "cevap": "Hükmün açıklanmasının geri bırakılması (HAGB), Türk Ceza Kanunu'nda düzenlenen bir kurum olup, mahkeme tarafından hüküm verildikten sonra, hükmün açıklanmasının belirli bir süre için ertelenmesidir. Bu kurum, suçlunun yeniden suç işlemesini önlemek ve topluma kazandırılmasını amaçlar.\n\nHAGB'nin koşulları, Türk Ceza Kanunu'nun 231. maddesinde düzenlenmiştir. Bu koşullar şunlardır:\n\n1. Suçun temel cezası iki yıl veya daha az süreli hapis cezası olmalıdır.\n2. Suçlunun daha önce kasıtlı bir suçtan dolayı mahkûm olmamış olması gerekir.\n3. Suçlunun suçun işlenmesiyle ilgili olarak görevli mahkemece belirlenen koşulları yerine getirmesi gerekir.\n4. Suçlunun yeniden suç işlemesi olasılığı bulunmamalıdır.\n\nMahkeme, HAGB kararı vermeden önce, suçlunun kişilik özellikleri, suçun işlenmesindeki davranışları, suçun işlenmesinden sonra gösterdiği davranışlar ve diğer koşulları değerlendirir. HAGB kararı verildiğinde, mahkeme ayrıca bir dizi koşulu da belirler. Bu koşullar, suçlunun belirli bir süre içinde suç işlememesi, belirli bir yerde ikamet etmesi, belirli bir işi yapması veya yapmaması gibi hususları içerebilir.\n\nHAGB kararı verildikten sonra, suçlu belirli bir süre içinde koşullara uymak zorundadır. Bu süre, genellikle 5 yıl olarak belirlenir. Bu süre içinde suçlu, koşullara uyarsa, hüküm açıklanmaz ve dava düşer. Ancak, suçlu koşullara uymazsa, mahkeme hüküm açıklar ve ceza infaz edilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1691",
+          "metin_ozet": "na devam olunan mülga 1086 sayılı Hukuk Usulü Muhakemeleri  Kanunu'nun  428. maddesi ile 439/2 hükmünde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen Mahkeme kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir",
+          "metin": "na devam olunan mülga 1086 sayılı Hukuk Usulü Muhakemeleri  Kanunu'nun  428. maddesi ile 439/2 hükmünde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen Mahkeme kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizlik  bulunmadığı, bozmaya uyulmakla karşı taraf yararına kazanılmış hak durumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde  ileri sürülen nedenler  kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nDavalı ... vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nAşağıda yazılı temyiz giderinin temyiz edene yükletilmesine,\nDosyanın Mahkemesine gönderilmesine,\n17.02.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8399,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7514",
+          "metin_ozet": "nan  mülga 1086 sayılı Hukuk Usulü Muhakemeleri  Kanunu'nun  428. maddesi ile 439/2 hükmünde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen Mahkeme kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizl",
+          "metin": "nan  mülga 1086 sayılı Hukuk Usulü Muhakemeleri  Kanunu'nun  428. maddesi ile 439/2 hükmünde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen Mahkeme kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizlik bulunmadığı, bozmaya uyulmakla karşı taraf yararına kazanılmış hak durumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; davalı ... vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nDavalı ... vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nAşağıda yazılı temyiz giderinin davalı ... Başkanlığına yükletilmesine,\nDosyanın Mahkemesine gönderilmesine,\n07.10.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8391,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/6721",
+          "metin_ozet": "le başvurunun esastan reddine kesin olarak karar verilmiştir. Davacı işçinin söz konusu ilâm ile birlikte tek başına SGK'ya başvurarak çıkış kodunun düzeltilmesini sağlaması mümkün olduğu hâlde, dosyaya, böyle bir başvurunun yapıldığını yahut yapıldığı hâlde kabul edilmediğini ortaya koyan herhangi ",
+          "metin": "le başvurunun esastan reddine kesin olarak karar verilmiştir. Davacı işçinin söz konusu ilâm ile birlikte tek başına SGK'ya başvurarak çıkış kodunun düzeltilmesini sağlaması mümkün olduğu hâlde, dosyaya, böyle bir başvurunun yapıldığını yahut yapıldığı hâlde kabul edilmediğini ortaya koyan herhangi bir delil sunulmamıştır. Hâl böyle olunca davacının 21.11.2024 tarihinde bu davayı açmakta güncel hukuki yararının bulunmadığı açıktır. Mahkemece  hukuki yarar yokluğundan davanın usulden reddine karar verilmesi gerekirken yazılı gerekçe ile kabulüne karar verilmesi hatalıdır.\nAçıklanan sebeplerle Mahkeme kararının bozulması gerektiği kanaatinde olduğumdan Sayın Çoğunluğun onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.8389,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5408",
+          "metin_ozet": "ın bozulması 6100 sayılı Hukuk Muhakemeleri Kanunu'nun  geçici 3/2 hükmü atfıyla uygulanmasına devam olunan mülga 1086 sayılı Hukuk Usulü Muhakemeleri  Kanunu'nun  428. maddesi ile 439/2 hükmünde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen Mahkeme kararının bozmaya uyg",
+          "metin": "ın bozulması 6100 sayılı Hukuk Muhakemeleri Kanunu'nun  geçici 3/2 hükmü atfıyla uygulanmasına devam olunan mülga 1086 sayılı Hukuk Usulü Muhakemeleri  Kanunu'nun  428. maddesi ile 439/2 hükmünde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen Mahkeme kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizlik  bulunmadığı, bozmaya uyulmakla karşı taraf yararına kazanılmış hak durumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla birleşen dava bakımından temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeplerle;\nDavacı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDosyanın Mahkemesine gönderilmesine,25.06.2025  tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8384,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2025/6331",
+          "metin_ozet": "maddesinin ikinci fıkrası atfıyla uygulanmasına devam olunan mülga 1086 sayılı Hukuk Usulü Muhakemeleri Kanunu'nun 428. maddesi ile 439. maddesinin ikinci fıkrasında yer alan sebeplerden birinin varlığı hâlinde mümkündür. Temyizen incelenen mahkeme kararının bozmaya uygun olduğu, kararda ve kararın ",
+          "metin": "maddesinin ikinci fıkrası atfıyla uygulanmasına devam olunan mülga 1086 sayılı Hukuk Usulü Muhakemeleri Kanunu'nun 428. maddesi ile 439. maddesinin ikinci fıkrasında yer alan sebeplerden birinin varlığı hâlinde mümkündür. Temyizen incelenen mahkeme kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizlik bulunmadığı, bozmaya uyulmakla karşı taraf yararına kazanılmış hak durumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir. VI. KARAR\nAçıklanan sebeplerle;\nDavalı Kurum vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8374,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1608,
+      "ortalama_kaynak_skor": 0.8387,
+      "kaynak_sayisi": 5,
+      "message_id": "de8d4d62-8644-4029-81c4-5fc2cb9fec04",
+      "conversation_id": "2e635018-e3d4-4005-a1c8-44d9583a0ea0",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Adli sicil kaydı nasıl silinir, hangi durumlarda silinir?",
+      "cevap": "Adli sicil kaydının silinmesi ile ilgili olarak verilen kaynaklarda yeterli bilgi bulunmamaktadır. Adli sicil kaydının silinmesi, genellikle 5271 sayılı Ceza Muhakemesi Kanunu ve ilgili mevzuata göre düzenlenir. Ancak, verilen kaynaklar bu konuya ilişkin bilgi içermez. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14793",
+          "metin_ozet": " 2 nci Maddesinin Kaldırılması Hakkında Kanun'un 1 vd. maddeleri.\n3. Değerlendirme\n1. Temyiz olunan nihai kararların bozulması 6100 sayılı  Kanun'un  371 inci  maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\n2. Temyizen incelenen Bölge Adliye Mahkemesi kararının bozmaya uygun oldu",
+          "metin": " 2 nci Maddesinin Kaldırılması Hakkında Kanun'un 1 vd. maddeleri.\n3. Değerlendirme\n1. Temyiz olunan nihai kararların bozulması 6100 sayılı  Kanun'un  371 inci  maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\n2. Temyizen incelenen Bölge Adliye Mahkemesi kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizlik bulunmadığı, bozmaya uyulmakla karşı taraf yararına kazanılmış hak durumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavalı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDavalı ... harçtan muaf olduğundan harç alınmasına yer olmadığına,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n07.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8481,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14124",
+          "metin_ozet": "çilere İlave Tediye Yapılması ve 6452 Sayılı Kanunla 6212 Sayılı Kanunun 2 nci Maddesinin Kaldırılması Hakkında Kanun'un 1 vd. maddeleri.\n3. Değerlendirme\n1. Bölge adliye mahkemelerinin nihai kararlarının bozulması 6100 sayılı Kanun'un 371 inci  maddesinde yer alan sebeplerden birinin varlığı hâlind",
+          "metin": "çilere İlave Tediye Yapılması ve 6452 Sayılı Kanunla 6212 Sayılı Kanunun 2 nci Maddesinin Kaldırılması Hakkında Kanun'un 1 vd. maddeleri.\n3. Değerlendirme\n1. Bölge adliye mahkemelerinin nihai kararlarının bozulması 6100 sayılı Kanun'un 371 inci  maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\n2. Temyizen incelenen karar, tarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk kuralları ile hukuki ilişkinin nitelendirilmesine, dava şartlarına, yargılama ve ispat kuralları ile kararda belirtilen gerekçelere göre usul ve kanuna uygun olup davalı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370 inci maddesinin birinci fıkrası uyarınca ONANMASINA,\nDavalı... Bakanlığı harçtan muaf olduğundan harç alınmasına yer olmadığına,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n22.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8479,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3218",
+          "metin_ozet": "ı 6100 sayılı Kanun'un 371. maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen karar, tarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk kuralları ile hukuki ilişkinin nitelendirilmesine, dava şartlarına, yar",
+          "metin": "ı 6100 sayılı Kanun'un 371. maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen karar, tarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk kuralları ile hukuki ilişkinin nitelendirilmesine, dava şartlarına, yargılama ve ispat kuralları ile kararda belirtilen gerekçelere göre usul ve kanuna uygun olup davacı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nA. Davalı Temyizi Yönünden\nDavalı vekilinin temyiz dilekçesinin miktardan REDDİNE,\nB. Davacı Temyizi Yönünden\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nAşağıda yazılı temyiz giderinin temyiz edenlerden  davacı tarafa yükletilmesine,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n09.04.2025  tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8477,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14065",
+          "metin_ozet": "ge adliye mahkemelerinin nihai kararlarının bozulması 6100 sayılı Kanun'un 371 inci  maddesinde  yer alan sebeplerden birinin varlığı hâlinde mümkündür.\n2. Temyizen incelenen karar, tarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk kuralları ",
+          "metin": "ge adliye mahkemelerinin nihai kararlarının bozulması 6100 sayılı Kanun'un 371 inci  maddesinde  yer alan sebeplerden birinin varlığı hâlinde mümkündür.\n2. Temyizen incelenen karar, tarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk kuralları ile hukuki ilişkinin nitelendirilmesine, dava şartlarına, yargılama ve ispat kuralları ile kararda belirtilen gerekçelere göre usul ve kanuna uygun olup  davacı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeplerle;\nA. Davalı Temyizi Yönünden\nDavalı vekilinin temyiz dilekçesinin  miktardan  REDDİNE,\nB. Davacı Temyizi Yönünden\nTemyiz olunan  Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370 inci maddesinin birinci fıkrası uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n22.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8466,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2621",
+          "metin_ozet": "r verilmiştir.\nBölge Adliye Mahkemesi kararı davalı vekili tarafından temyiz edilmekle; yapılan ön inceleme sonucunda gereği düşünüldü:\n25.10.2017 tarihli Resmî Gazete'de yayımlanarak yürürlüğe giren 7036 sayılı İş Mahkemeleri Kanunu'nun 8/1-(a) hükmü gereğince 4857 sayılı İş Kanunu'nun (4857 sayılı",
+          "metin": "r verilmiştir.\nBölge Adliye Mahkemesi kararı davalı vekili tarafından temyiz edilmekle; yapılan ön inceleme sonucunda gereği düşünüldü:\n25.10.2017 tarihli Resmî Gazete'de yayımlanarak yürürlüğe giren 7036 sayılı İş Mahkemeleri Kanunu'nun 8/1-(a) hükmü gereğince 4857 sayılı İş Kanunu'nun (4857 sayılı Kanun) 20. maddesi uyarınca açılan fesih bildirimine itiraz davalarında verilen kararlar hakkında temyiz yoluna başvurulamaz. 4857 sayılı Kanun'un geçici 1/4 hükmü uyarınca  da ilk derece mahkemeleri tarafından bu Kanun'un yürürlüğe girdiği tarihten önce verilen kararların karar tarihindeki kanun yoluna ilişkin hükümlere tâbi olduğu hususu düzenlenmiştir. Belirtilen düzenlemeler uyarınca ilk derece mahkemelerinden 25.10.2017 tarihinden sonra verilen işe iade davalarındaki kararlar hakkında bölge adliye mahkemesi kararları kesindir, bu kararlara karşı temyiz yoluna başvurulamaz.\nAnayasa Mahkemesince bireysel başvuru üzerine verilen ihlal kararı nedeniyle yeniden yapılan yargılamada; ihlalin, gerçekleştiği karar tarihindeki koşullara dönülerek ortadan kaldırılması gerekir. Bu sebeple kararı ile ihlale sebebiyet veren derece mahkemelerinin veya Yargıtayın, ihlal kararından sonra yeniden ya",
+          "skor": 0.8465,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 474,
+      "ortalama_kaynak_skor": 0.8474,
+      "kaynak_sayisi": 5,
+      "message_id": "5321e6d9-ee6e-4919-8316-589b0440a604",
+      "conversation_id": "00b73557-3e1a-4400-a072-a76cbcf0e494",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.35,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "İstinaf ve temyiz arasındaki fark nedir, başvuru süreleri nedir?",
+      "cevap": "İstinaf ve temyiz, Türk hukukunda kullanılan iki farklı kanun yoludur. İstinaf, ilk derece mahkemesi kararlarına karşı başvurulan bir kanun yoludur. İstinaf yoluyla, ilk derece mahkemesi kararının bölge adliye mahkemesince incelenmesi talep edilir. İstinaf başvuru süresi, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 345. maddesine göre, ilamın usulen taraflardan her birine tebliğiyle başlayan iki haftadır (Kaynak 5).\n\nTemyiz ise, bölge adliye mahkemesi kararlarına karşı başvurulan bir kanun yoludur. Temyiz yoluyla, bölge adliye mahkemesi kararının Yargıtay tarafından incelenmesi talep edilir. Temyiz başvuru süresi, 2004 Sayılı İcra ve İflas Kanunu'nun 164. maddesine göre, tebliğ tarihinden itibaren iki haftadır (Kaynak 3).\n\nİstinaf ve temyiz arasındaki temel fark, başvurulan mahkeme ve inceleme konusudur. İstinaf, ilk derece mahkemesi kararlarına karşı başvurulur ve bölge adliye mahkemesince incelenir. Temyiz ise, bölge adliye mahkemesi kararlarına karşı başvurulur ve Yargıtay tarafından incelenir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/12692",
+          "metin_ozet": "daki yeni düzenleme ile getirilen istinaf yolu, İlk Derece Mahkemesi ile temyiz incelemesi arasında, ikinci derece bir denetim mekanizması ve kanun yoludur. 3. İstinaf yolu uygulamasında, ilk derece mahkemesi kararından sonra, karar önce istinaf denetimine tâbi tutulmakta, istinaf denetiminden sonra",
+          "metin": "daki yeni düzenleme ile getirilen istinaf yolu, İlk Derece Mahkemesi ile temyiz incelemesi arasında, ikinci derece bir denetim mekanizması ve kanun yoludur. 3. İstinaf yolu uygulamasında, ilk derece mahkemesi kararından sonra, karar önce istinaf denetimine tâbi tutulmakta, istinaf denetiminden sonra temyiz yolu açıksa temyize başvurulmaktadır. bölge adliye mahkemelerinin faaliyete geçmesiyle yargılama üç aşamalı ... gelmiştir. Önce ilk derece mahkemesinde ilk derece yargılaması yapılarak karar verilmekte, ardından bölge adliye mahkemesinde istinaf incelemesi ile vakıa ve hukukilik denetimi yapılmakta, son olarak da Yargıtay’da temyiz incelemesine gidilmektedir. Yeni sistemde temyiz edilen karar ilk derece mahkemesinin kararı değil, bölge adliye mahkemesinin kararıdır. Artık ilk derece mahkemesi kararının doğrudan temyiz edilmesi mümkün değildir. 4.",
+          "skor": 0.8554,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/11370",
+          "metin_ozet": "e, başvuran tarafın istinaf başvurusunun usulden ya da esastan reddine karar verilebilir veya İlk Derece Mahkemesi kararı kaldırılarak yeniden hüküm kurulabilir. Bu durumda Bölge Adliye Mahkemesi kararına karşı, istinaf başvurusu reddedilen tarafın ya da istinaf incelemesi sonucunda ilk derece mahke",
+          "metin": "e, başvuran tarafın istinaf başvurusunun usulden ya da esastan reddine karar verilebilir veya İlk Derece Mahkemesi kararı kaldırılarak yeniden hüküm kurulabilir. Bu durumda Bölge Adliye Mahkemesi kararına karşı, istinaf başvurusu reddedilen tarafın ya da istinaf incelemesi sonucunda ilk derece mahkemesi kararı kaldırılarak yeni hüküm kurulması hâlinde aleyhine karar verilen tarafın temyiz hakkı bulunmaktadır. Başka bir deyişle istinaf başvurusunun reddi        hâlinde Bölge Adliye Mahkemesi kararına karşı temyiz hakkı sadece istinaf başvurusu reddedilen tarafa ait olup bu hâlde İlk Derece Mahkemesi kararını istinaf etmeyen tarafın temyiz hakkı bulunmamaktadır.\nSomut uyuşmazlıkta, İlk Derece Mahkemesince verilen davanın reddine dair karara karşı davacı ...  vekili tarafından istinaf yoluna başvurulmuştur. Bu davacının istinaf başvurusu reddedilmiş ancak davacı şirket yönünden istinaf başvurusu olmadığından bu şirket bakımından inceleme yapılmamıştır. Hâl böyle iken İlk Derece Mahkemesi kararına karşı istinaf yoluna başvurmayan davacı şirketin, diğer davacının  istinaf başvurusunun esastan reddine dair Bölge Adliye Mahkemesi kararına karşı temyiz hakkı bulunmamaktadır. Açıklanan nede",
+          "skor": 0.853,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 164",
+          "metin_ozet": "Madde 164- (Değişik: 2/3/2005-5311/12 md.)\nTicaret mahkemesince verilen nihaî kararlar, 160 ıncı maddenin son fıkrasına göre\nalınan masraftan karşılanmak suretiyle mahkemece re’sen taraflara tebliğ olunur.\nBu kararlara karşı tebliğ tarihinden itibaren iki hafta içinde istinaf yoluna\nbaşvurulabilir. ",
+          "metin": "Madde 164- (Değişik: 2/3/2005-5311/12 md.)\nTicaret mahkemesince verilen nihaî kararlar, 160 ıncı maddenin son fıkrasına göre\nalınan masraftan karşılanmak suretiyle mahkemece re’sen taraflara tebliğ olunur.\nBu kararlara karşı tebliğ tarihinden itibaren iki hafta içinde istinaf yoluna\nbaşvurulabilir. Bölge adliye mahkemesi kararına karşı da tebliğ tarihinden itibaren iki hafta\niçinde temyiz yoluna başvurulabilir. İstinaf ve temyiz incelemeleri, Hukuk Usulü\nMuhakemeleri Kanunu hükümlerine göre yapılır.60\nİflâs kararına karşı kanun yoluna başvurulması, iflâsın ilânına ve masanın teşkiline\nmâni değildir. Yalnız ikinci alacaklılar toplantısı, iflâs kararı kesinleşmedikçe yapılamaz.\nBölge adliye mahkemesince iflâs kararı kaldırılırsa, borçlunun malları üzerindeki\ntedbirler devam eder. Şu kadar ki, ticaret mahkemesi davanın seyrine göre bu tedbirleri\ndeğiştirmeye veya kaldırmaya yetkilidir.\nİflas tarihi:",
+          "skor": 0.8522,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2023/12694",
+          "metin_ozet": "Ancak temyiz edilen karar kesin olduğu halde bu konuda inceleme yapılıp karar verilmeksizin dosya Yargıtay’a gönderilmiş ise, 01.06.1990 tarih, 1989/3 E. - 1990/4 K. sayılı içtihadı birleştirme kararı gereğince dosyanın mahalline çevrilmesine gerek olmaksızın Yargıtay tarafından temyiz talebinin red",
+          "metin": "Ancak temyiz edilen karar kesin olduğu halde bu konuda inceleme yapılıp karar verilmeksizin dosya Yargıtay’a gönderilmiş ise, 01.06.1990 tarih, 1989/3 E. - 1990/4 K. sayılı içtihadı birleştirme kararı gereğince dosyanın mahalline çevrilmesine gerek olmaksızın Yargıtay tarafından temyiz talebinin reddine karar verebilecektir. Yukarıda belirtildiği şekilde, iş mahkemelerinin kararlarının istinaf incelemesi sonucu bölge adliye mahkemelerince verilen kararlarda karar tarihine göre kesinlik sınırı: 20.07.2016-01.12.2016 tarihleri arasında 5.000,00 TL; 02.12.2016 tarihi sonrası için 40.000,00 TL; 01.01.2017 sonrası için 41.530,00 TL ve 01.01.2018 tarihi sonrası için 47.530,00 TL; 01.01.2019 tarihi sonrası için 58.800,00 TL, 01.01.2020 tarihi arası için 72.07000 TL, 01.01.2021 tarihi sonrası için 78.630,00 TL, 01.01.2022 tarihi sonrası için 107.090,00 TL, 01.01.2023 tarihi sonrası için 238.735,737 TL’dir. Bu tür davalarda, 6100 sayılı HMK’nın 110 uncu maddesi kapsamında dava yığılması (objektif dava birleşmesi) kapsamında her bir talebin ayrı bir dava olduğu ve ayrı ayrı hüküm ve sonuç doğuracağı dikkate alınmalıdır. Belirtilen açıklamalar ışığında somut olay incelendiğinde, temyize konu tutarın yukarıda değinilen temyiz (kesinlik) sınırının altında bulunduğu anlaşılmakla davalı vekilinin bu kısma yönelik temyiz itirazlarının aşağıdaki şekilde reddine karar verilmiştir. 2. Davalı vekilinin maddi tazminata yönelik temyiz itirazlarının incelenmesinde;\n1.",
+          "skor": 0.8519,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 345",
+          "metin_ozet": "MADDE 345- (1) İstinaf yoluna başvuru süresi iki haftadır. Bu süre, ilamın usulen\ntaraflardan her birine tebliğiyle işlemeye başlar. İstinaf yoluna başvuru süresine ilişkin özel\nkanun hükümleri saklıdır.\nİstinaf dilekçesinin reddi",
+          "metin": "MADDE 345- (1) İstinaf yoluna başvuru süresi iki haftadır. Bu süre, ilamın usulen\ntaraflardan her birine tebliğiyle işlemeye başlar. İstinaf yoluna başvuru süresine ilişkin özel\nkanun hükümleri saklıdır.\nİstinaf dilekçesinin reddi",
+          "skor": 0.8518,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1214,
+      "ortalama_kaynak_skor": 0.8529,
+      "kaynak_sayisi": 5,
+      "message_id": "124680eb-01b6-4307-ae96-d268bdeb54c3",
+      "conversation_id": "1ea2c82d-f5bd-45de-a99a-1de67fdb25c4",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.67,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "İhtiyati tedbir kararı nedir, nasıl alınır, ne kadar sürer?",
+      "cevap": "İhtiyati tedbir kararı, 6100 sayılı Hukuk Muhakemeleri Kanunu'nda düzenlenen bir kavramdır. Bu kanun maddelerine göre, ihtiyati tedbir kararı, dava açılmadan önce veya dava açıldıktan sonra, mahkeme tarafından verilecek bir karardır. Bu karar, bir tarafın haklarının korunması amacıyla, karşı tarafın belirli bir davranışı yapmasını veya yapmamasını gerektirir.\n\nİhtiyati tedbir kararı, 6100 sayılı Hukuk Muhakemeleri Kanunu'nun 390. maddesine göre, dava açılmadan önce, esas hakkında görevli ve yetkili olan mahkemeden; dava açıldıktan sonra ise ancak asıl davanın görüldüğü mahkemeden talep edilebilir. Talep edenin haklarının derhâl korunmasında zorunluluk bulunan hâllerde, hâkim karşı tarafı dinlemeden de tedbire karar verebilir.\n\nİhtiyati tedbir kararı, 6100 sayılı Hukuk Muhakemeleri Kanunu'nun 391. maddesine göre, mahkeme tarafından verilecek bir karardır. Bu karar, mal veya hakkın muhafaza altına alınması, bir yediemine tevdii, bir şeyin yapılması veya yapılmaması gibi, sakıncayı ortadan kaldıracak veya zararı engelleyecek her türlü tedbire karar verebilir.\n\nİhtiyati tedbir kararı, 6100 sayılı Hukuk Muhakemeleri Kanunu'nun 397. maddesine göre, nihai kararın kesinleşmesine kadar devam eder. Ancak, tedbir talep eden, bu kararın uygulanmasını talep ettiği tarihten itibaren iki hafta içinde esas hakkındaki davasını açmak ve dava açtığına ilişkin evrakı, kararı uygulayan memura ibrazla dosyaya koydurtmak ve karşılığında bir belge almak zorundadır. Aksi hâlde, tedbir kendiliğinden kalkar.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 397",
+          "metin_ozet": "MADDE 397- (1) İhtiyati tedbir kararı dava açılmasından önce verilmişse, tedbir talep\neden, bu kararın uygulanmasını talep ettiği tarihten itibaren iki hafta içinde esas hakkındaki\ndavasını açmak ve dava açtığına ilişkin evrakı, kararı uygulayan memura ibrazla dosyaya\nkoydurtmak ve karşılığında bir ",
+          "metin": "MADDE 397- (1) İhtiyati tedbir kararı dava açılmasından önce verilmişse, tedbir talep\neden, bu kararın uygulanmasını talep ettiği tarihten itibaren iki hafta içinde esas hakkındaki\ndavasını açmak ve dava açtığına ilişkin evrakı, kararı uygulayan memura ibrazla dosyaya\nkoydurtmak ve karşılığında bir belge almak zorundadır. Aksi hâlde tedbir kendiliğinden kalkar.\n(2) İhtiyati tedbir kararının etkisi, aksi belirtilmediği takdirde, nihai kararın kesinleşmesine\nkadar devam eder.\n(3) Tedbir kalkmış veya kaldırılmış ise bu husus ilgili yerlere bildirilir.\n(4) İhtiyati tedbir dosyası, asıl dava dosyasının eki sayılır.\nTedbire muhalefetin cezası",
+          "skor": 0.8767,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 390",
+          "metin_ozet": "MADDE 390- (1) İhtiyati tedbir, dava açılmadan önce, esas hakkında görevli ve yetkili\nolan mahkemeden; dava açıldıktan sonra ise ancak asıl davanın görüldüğü mahkemeden talep\nedilir.\n(2) Talep edenin haklarının derhâl korunmasında zorunluluk bulunan hâllerde, hâkim\nkarşı tarafı dinlemeden de tedbire",
+          "metin": "MADDE 390- (1) İhtiyati tedbir, dava açılmadan önce, esas hakkında görevli ve yetkili\nolan mahkemeden; dava açıldıktan sonra ise ancak asıl davanın görüldüğü mahkemeden talep\nedilir.\n(2) Talep edenin haklarının derhâl korunmasında zorunluluk bulunan hâllerde, hâkim\nkarşı tarafı dinlemeden de tedbire karar verebilir.\n(3) Tedbir talep eden taraf, dilekçesinde dayandığı ihtiyati tedbir sebebini ve türünü\naçıkça belirtmek ve davanın esası yönünden kendisinin haklılığını yaklaşık olarak ispat etmek\nzorundadır.\nİhtiyati tedbir kararı",
+          "skor": 0.8723,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 391",
+          "metin_ozet": "MADDE 391- (1) Mahkeme, tedbire konu olan mal veya hakkın muhafaza altına\nalınması veya bir yediemine tevdii ya da bir şeyin yapılması veya yapılmaması gibi, sakıncayı\nortadan kaldıracak veya zararı engelleyecek her türlü tedbire karar verebilir.\n(2) İhtiyati tedbir kararında;\na) İhtiyati tedbir tal",
+          "metin": "MADDE 391- (1) Mahkeme, tedbire konu olan mal veya hakkın muhafaza altına\nalınması veya bir yediemine tevdii ya da bir şeyin yapılması veya yapılmaması gibi, sakıncayı\nortadan kaldıracak veya zararı engelleyecek her türlü tedbire karar verebilir.\n(2) İhtiyati tedbir kararında;\na) İhtiyati tedbir talep edenin, varsa kanuni temsilcisi ve vekilinin ve karşı tarafın adı,\nsoyadı ve yerleşim yeri ile talep edenin Türkiye Cumhuriyeti kimlik numarası,\nb) Tedbirin, açık ve somut olarak hangi sebebe ve delillere dayandığı,\nc) Tereddüde yer vermeyecek şekilde, neyin üzerinde ve ne tür bir tedbire karar verildiği,\nç) Talepte bulunanın, ne tutarda ve ne türde bir teminat göstereceği,\nyazılır.\n(3) (Değişik:22/7/2020-7251/40 md.) İhtiyati tedbir talebinin reddi kararı gerekçeli\nolarak verilir ve bu karara karşı kanun yoluna başvurulabilir. Yüzüne karşı aleyhine ihtiyati\ntedbir kararı verilen taraf da kanun yoluna başvurabilir. Bu başvurular öncelikle incelenir ve\nkesin olarak karara bağlanır.\nİhtiyati tedbirde teminat gösterilmesi",
+          "skor": 0.8691,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 393",
+          "metin_ozet": "MADDE 393- (1) İhtiyati tedbir kararının uygulanması, bu kararın, tedbir isteyen\ntarafa tefhim veya tebliğinden itibaren bir hafta içinde talep edilmek zorundadır. Aksi hâlde,\nkanuni süre içinde dava açılmış olsa dahi, tedbir kararı kendiliğinden kalkar.65\n(2) Tedbir kararının uygulanması, kararı ve",
+          "metin": "MADDE 393- (1) İhtiyati tedbir kararının uygulanması, bu kararın, tedbir isteyen\ntarafa tefhim veya tebliğinden itibaren bir hafta içinde talep edilmek zorundadır. Aksi hâlde,\nkanuni süre içinde dava açılmış olsa dahi, tedbir kararı kendiliğinden kalkar.65\n(2) Tedbir kararının uygulanması, kararı veren mahkemenin yargı çevresinde bulunan\nveya tedbir konusu mal ya da hakkın bulunduğu yer icra dairesinden talep edilir. Mahkeme,\nkararında belirtmek suretiyle, tedbirin uygulanmasında, yazı işleri müdürünü de görevlendirebilir.\n(3) İhtiyati tedbir kararının uygulanması için, gerekirse zor kullanılabilir. Zor kullanmak\nhususunda, bütün kolluk kuvvetleri ve köylerde muhtarlar, uygulamayı gerçekleştirecek memurun\nyazılı başvurusu üzerine, kendisine yardım etmek ve emirlerine uymakla yükümlüdürler.\n(4) İhtiyati tedbiri uygulayan memur, bir tutanak düzenler. Bu tutanakta, tedbir konusu\nve bulunduğu yer gösterilir; tedbir konusu ile ilgili her türlü iddia bu tutanağa geçirilir.\nTedbiri uygulayan memur, bu tutanağın bir örneğini tedbir sırasında hazır bulunmayan\n65 22/7/2020 tarihli ve 7251 sayılı Kanunun 41 inci maddesiyle, bu fıkrada yer alan “verildiği\ntarihten” ibaresi “bu kararın, tedbir isteyen tarafa tefhim veya tebliğinden” şeklinde değiştirilmiştir.\ntaraflara ve duruma göre üçüncü kişiye tebliğ eder.\n(5) İhtiyati tedbir kararları hakkında kanun yoluna başvurulması hâlinde, tedbire\nilişkin dosya ve delillerin sadece örnekleri ilgili mahkemeye gönderilir.\nİhtiyati tedbir kararına karşı itiraz",
+          "skor": 0.8686,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 396",
+          "metin_ozet": "MADDE 396- (1) Durum ve koşulların değiştiği sabit olursa, talep üzerine ihtiyati\ntedbirin değiştirilmesine veya kaldırılmasına teminat aranmaksızın karar verilebilir.\n(2) İtiraza ilişkin 394 üncü maddenin üçüncü ve dördüncü fıkrası, kıyas yoluyla uygulanır.\nİhtiyati tedbiri tamamlayan işlemler",
+          "metin": "MADDE 396- (1) Durum ve koşulların değiştiği sabit olursa, talep üzerine ihtiyati\ntedbirin değiştirilmesine veya kaldırılmasına teminat aranmaksızın karar verilebilir.\n(2) İtiraza ilişkin 394 üncü maddenin üçüncü ve dördüncü fıkrası, kıyas yoluyla uygulanır.\nİhtiyati tedbiri tamamlayan işlemler",
+          "skor": 0.8579,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1710,
+      "ortalama_kaynak_skor": 0.8689,
+      "kaynak_sayisi": 5,
+      "message_id": "3ecfe806-8735-4167-af77-eeec1374c1ca",
+      "conversation_id": "cdee9a8b-ca0e-4d3e-9f68-de7a7710f0a8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.24,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Avukatsız dava açılabilir mi, hangi davalarda avukat zorunludur?",
+      "cevap": "Avukatsız dava açılması konusu, Türk hukukunda belirli koşullara bağlıdır. Genel olarak, davalarda avukat zorunluluğu yoktur, ancak bazı istisnai durumlar vardır. 1136 sayılı Avukatlık Kanunu'nun 35/A maddesi, avukatların uzlaşma sağlama konusundaki rollerini düzenler. Ancak, bu madde avukatsız dava açılmasına ilişkin değildir.\n\nAvukat zorunluluğu, genellikle daha kompleks veya yüksek miktarlı davalarda söz konusu olur. Örneğin, bazı ticari davalarda, özellikle yüksek tutarlı alacak veya tazminat davalarında avukat zorunluluğu olabilir. Bununla birlikte, genel olarak avukat zorunluluğu, davanın niteliğine ve mahkemenin türüne göre değişebilir.\n\n1136 sayılı Avukatlık Kanunu'nun 35/A maddesi, avukatların dava açılmadan veya dava açılmış olup da henüz duruşma başlamadan önce kendilerine intikal eden iş ve davalarda, tarafların kendi iradeleriyle istem sonucu elde edebilecekleri konulara inhisar etmek kaydıyla, müvekkilleriyle birlikte karşı tarafı uzlaşmaya davet edebileceğini düzenler. Bu madde, avukatların uzlaşma sağlama konusundaki rollerini vurgular, ancak avukatsız dava açılmasına ilişkin bir düzenleme içermez.\n\nBu konuda daha spesifik bir cevap verebilmek için, davanın niteliği ve mahkemenin türü hakkında daha fazla bilgiye ihtiyaç vardır. Ancak, genel olarak, avukatsız dava açılması mümkündür, ancak bazı durumlarda avukat zorunluluğu olabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5521",
+          "metin_ozet": "lınmasının zorunlu kılındığı hâller hariç, taraflar ve avukatları ile arabulucunun, ticari uyuşmazlıklar bakımından ise avukatlar ile arabulucunun birlikte imzaladıkları anlaşma belgesi, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılır.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk",
+          "metin": "lınmasının zorunlu kılındığı hâller hariç, taraflar ve avukatları ile arabulucunun, ticari uyuşmazlıklar bakımından ise avukatlar ile arabulucunun birlikte imzaladıkları anlaşma belgesi, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılır.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ve avukatları ile arabulucunun birlikte imzaladıkları anlaşma belgesinin, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılacağı hükme bağlanmaktadır. Bu düzenleme yapılırken 19.03.1969 tarihli ve 1136 sayılı Avukatlık Kanununun 'Uzlaşma sağlama' başlıklı 35/A maddesi dikkate alınmaktadır. Zira bu maddede 'Avukatlar dava açılmadan veya dava açılmış olup da henüz duruşma başlamadan önce kendilerine intikal eden iş ve davalarda, tarafların kendi iradeleriyle istem sonucu elde edebilecekleri konulara inhisar etmek kaydıyla, müvekkilleriyle birlikte karşı tarafı uzlaşmaya davet edebilirler. Karşı taraf bu davete icabet eder ve",
+          "skor": 0.8573,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1863",
+          "metin_ozet": "ır.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ",
+          "metin": "ır.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ve avukatları ile arabulucunun birlikte imzaladıkları anlaşma belgesinin, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılacağı hükme bağlanmaktadır. Bu düzenleme yapılırken 19.03.1969 tarihli ve 1136 sayılı Avukatlık Kanununun 'Uzlaşma sağlama' başlıklı 35/A maddesi dikkate alınmaktadır. Zira bu maddede 'Avukatlar dava açılmadan veya dava açılmış olup da henüz duruşma başlamadan önce kendilerine intikal eden iş ve davalarda, tarafların kendi iradeleriyle istem sonucu elde edebilecekleri konulara inhisar etmek kaydıyla, müvekkilleriyle birlikte karşı tarafı uzlaşmaya davet edebilirler. Karşı taraf bu davete icabet eder ve uzlaşma sağlanırsa, uzlaşma konusunu, yerini, tarihini, karşılıklı yerine getirmeleri gereken hususları içeren tutanak, avukatlar ile müvekkilleri tarafından birlikte imza altına alınır. Bu tutanaklar 09.06.1932 tarihli ve 2004 sayılı İcra ve İflas Kan",
+          "skor": 0.8535,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1867",
+          "metin_ozet": "ır.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ",
+          "metin": "ır.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ve avukatları ile arabulucunun birlikte imzaladıkları anlaşma belgesinin, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılacağı hükme bağlanmaktadır. Bu düzenleme yapılırken 19.03.1969 tarihli ve 1136 sayılı Avukatlık Kanununun 'Uzlaşma sağlama' başlıklı 35/A maddesi dikkate alınmaktadır. Zira bu maddede 'Avukatlar dava açılmadan veya dava açılmış olup da henüz duruşma başlamadan önce kendilerine intikal eden iş ve davalarda, tarafların kendi iradeleriyle istem sonucu elde edebilecekleri konulara inhisar etmek kaydıyla, müvekkilleriyle birlikte karşı tarafı uzlaşmaya davet edebilirler. Karşı taraf bu davete icabet eder ve uzlaşma sağlanırsa, uzlaşma konusunu, yerini, tarihini, karşılıklı yerine getirmeleri gereken hususları içeren tutanak, avukatlar ile müvekkilleri tarafından birlikte imza altına alınır. Bu tutanaklar 09.06.1932 tarihli ve 2004 sayılı İcra ve İflas Kan",
+          "skor": 0.8535,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1868",
+          "metin_ozet": "r.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar v",
+          "metin": "r.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ve avukatları ile arabulucunun birlikte imzaladıkları anlaşma belgesinin, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılacağı hükme bağlanmaktadır. Bu düzenleme yapılırken 19.03.1969 tarihli ve 1136 sayılı Avukatlık Kanununun 'Uzlaşma sağlama' başlıklı 35/A maddesi dikkate alınmaktadır. Zira bu maddede 'Avukatlar dava açılmadan veya dava açılmış olup da henüz duruşma başlamadan önce kendilerine intikal eden iş ve davalarda, tarafların kendi iradeleriyle istem sonucu elde edebilecekleri konulara inhisar etmek kaydıyla, müvekkilleriyle birlikte karşı tarafı uzlaşmaya davet edebilirler. Karşı taraf bu davete icabet eder ve uzlaşma sağlanırsa, uzlaşma konusunu, yerini, tarihini, karşılıklı yerine getirmeleri gereken hususları içeren tutanak, avukatlar ile müvekkilleri tarafından birlikte imza altına alınır. Bu tutanaklar 09.06.1932 tarihli ve 2004 sayılı İcra ve İflas Kanu",
+          "skor": 0.8525,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1864",
+          "metin_ozet": "r.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar v",
+          "metin": "r.”\nAynı Kanun'un 18/5 hükmü ise “Arabuluculuk faaliyeti sonunda anlaşmaya varılması hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi ise sırasıyla;\n“6325 sayılı Kanunun 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ve avukatları ile arabulucunun birlikte imzaladıkları anlaşma belgesinin, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılacağı hükme bağlanmaktadır. Bu düzenleme yapılırken 19.03.1969 tarihli ve 1136 sayılı Avukatlık Kanununun 'Uzlaşma sağlama' başlıklı 35/A maddesi dikkate alınmaktadır. Zira bu maddede 'Avukatlar dava açılmadan veya dava açılmış olup da henüz duruşma başlamadan önce kendilerine intikal eden iş ve davalarda, tarafların kendi iradeleriyle istem sonucu elde edebilecekleri konulara inhisar etmek kaydıyla, müvekkilleriyle birlikte karşı tarafı uzlaşmaya davet edebilirler. Karşı taraf bu davete icabet eder ve uzlaşma sağlanırsa, uzlaşma konusunu, yerini, tarihini, karşılıklı yerine getirmeleri gereken hususları içeren tutanak, avukatlar ile müvekkilleri tarafından birlikte imza altına alınır. Bu tutanaklar 09.06.1932 tarihli ve 2004 sayılı İcra ve İflas Kanu",
+          "skor": 0.8525,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1574,
+      "ortalama_kaynak_skor": 0.8539,
+      "kaynak_sayisi": 5,
+      "message_id": "51862a3b-45fe-4293-a969-1043d1d57de2",
+      "conversation_id": "1cf074a7-5b26-4c84-95ac-48a46729590e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.48,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Yargılama giderleri ve vekalet ücreti kim tarafından ödenir?",
+      "cevap": "Yargılama giderleri ve vekalet ücreti, genellikle davanın kabul veya ret oranına göre belirlenir. Davanın kabul edilen kısmına ilişkin yargılama giderleri ve vekalet ücreti, genellikle davalı tarafından ödenir. Ret edilen kısma ilişkin yargılama giderleri ve vekalet ücreti ise, genellikle davacı tarafından ödenir.\n\nÖrneğin, [Kaynak 1]'de görüldüğü gibi, davacı tarafça yapılan 975,00 TL bilirkişi ücreti ile 1.302,85 TL tebligat ve müzekkere gideri olmak üzere toplam 2.277,85 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 68,30 TL yargılama giderinin davalıdan tahsili ile davacıya verilmesine karar verilmiştir. Benzer şekilde, [Kaynak 3]'te, davacının karşıladığı toplam 1.384,50 TL yargılama giderinin, kabul / talep oranına göre hesaplanan 295,240 TL'sinin davalıdan alınarak davacıya verilmesine karar verilmiştir.\n\nVekalet ücreti açısından da benzer bir durum söz konusudur. Örneğin, [Kaynak 1]'de, davacının kendisini vekille temsil ettirdiğinden, karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca hesaplanan 506,38 TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine karar verilmiştir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1414",
+          "metin_ozet": "e temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca hesaplanan 506,38 TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine,\n7-Davalı kendisini vekille temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarın",
+          "metin": "e temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca hesaplanan 506,38 TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine,\n7-Davalı kendisini vekille temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca reddedilen miktar üzerinden hesaplanan 17.115,85 TL vekâlet ücretinin davacıdan alınarak davalıya verilmesine,\n8-Davacı tarafça yapılan 975,00 TL bilirkişi ücreti ile 1.302,85 TL tebligat ve müzekkere gideri olmak üzere toplam 2.277,85 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 68,30 TL yargılama giderinin davalıdan tahsili ile davacıya verilmesine,\n9-Davalı tarafça yapılan toplam 205,50 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 199,30 TL yargılama giderinin davacıdan tahsili ile davalıya verilmesine,\n10-Arabuluculuk aşamasında yapılan 680,00 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 20,40 TL yargılama giderinin davalıdan, 659,60 TL yargılama giderinin davacıdan tahsili ile Hazineye gelir kaydına,\" ibarelerinin yazılması suretiyle DÜZELTİLEREK ONANMASINA,\nPeşin alınan temyiz karar harcının istek hâlinde il",
+          "skor": 0.8745,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1416",
+          "metin_ozet": "e temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca hesaplanan 514,64 TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine,\n7-Davalı kendisini vekille temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarın",
+          "metin": "e temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca hesaplanan 514,64 TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine,\n7-Davalı kendisini vekille temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca reddedilen miktar üzerinden hesaplanan 17.138,63 TL vekâlet ücretinin davacıdan alınarak davalıya verilmesine,\n8-Davacı tarafça yapılan 975,00 TL bilirkişi ücreti ile 1.240,60 TL tebligat ve müzekkere gideri olmak üzere toplam 2.215,60 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 66,46 TL yargılama giderinin davalıdan tahsili ile davacıya verilmesine,\n9-Davalı tarafça yapılan toplam 205,50 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 198,85 TL yargılama giderinin davacıdan tahsili ile davalıya verilmesine,\n10-Arabuluculuk aşamasında yapılan 680,00 TL yargılama giderinden davanın kabul  ve ret oranına göre hesaplanan 20,40 TL yargılama giderinin davalıdan, 659,60 TL yargılama giderinin davacıdan tahsili ile Hazineye gelir kaydına,\" ibarelerinin yazılması suretiyle DÜZELTİLEREK ONANMASINA,\nPeşin alınan temyiz karar harcının istek hâlinde i",
+          "skor": 0.8745,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4079",
+          "metin_ozet": "ı en az (maktu) harca ulaşmadığından, alınması gereken 615,40 TL harçtan 59,30 TL peşin harç, 89,10 TL ıslah harcı, 381,98 bakiye karar harcı toplamı 530,38 TL harcın düşümü ile eksik kalan 85,02 TL harcın davalıdan tahsili ile hazineye irad kaydına,\n-Davacının karşıladığı toplam 1.384,50 TL yargıla",
+          "metin": "ı en az (maktu) harca ulaşmadığından, alınması gereken 615,40 TL harçtan 59,30 TL peşin harç, 89,10 TL ıslah harcı, 381,98 bakiye karar harcı toplamı 530,38 TL harcın düşümü ile eksik kalan 85,02 TL harcın davalıdan tahsili ile hazineye irad kaydına,\n-Davacının karşıladığı toplam 1.384,50 TL yargılama giderinin, kabul / talep oranına göre hesaplanan 295,240 TL sinin davalıdan alınarak davacıya verilmesine, geri kalan 1.089,260 TL yargılama giderinin davacı üzerinde bırakılmasına,\n-Davalının karşıladığı toplam 165,70 TL yargılama giderinin, red / talep oranına göre hesaplanan 130,36 TL sinin davacıdan alınarak davalıya verilmesine, geri kalan 35,34 TL yargılama giderinin davalı üzerinde bırakılmasına,\n-Davacı kendisini vekil ile temsil ettirdiğinden, hüküm tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca kabul edilen 1.655,72 TL üzerinden takdir edilen 1.655,72  TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine,\n-Davalı kendisini vekil ile temsil ettirdiğinden, hüküm tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca reddedilen 6.108,61 TL üzerinden takdir edilen 6.108,61 TL vekâlet ücretinin davacıdan alınarak davalıya verilmesine,",
+          "skor": 0.8734,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1415",
+          "metin_ozet": "te bulunan Avukatlık Asgari Ücret Tarifesi uyarınca hesaplanan 505,00 TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine,\n7-Davalı kendisini vekille temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca reddedilen miktar üzerinden hesaplanan 17.11",
+          "metin": "te bulunan Avukatlık Asgari Ücret Tarifesi uyarınca hesaplanan 505,00 TL vekâlet ücretinin davalıdan alınarak davacıya verilmesine,\n7-Davalı kendisini vekille temsil ettirdiğinden karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi uyarınca reddedilen miktar üzerinden hesaplanan 17.113,39 TL vekâlet ücretinin davacıdan alınarak davalıya verilmesine,\n8-Davacı tarafça yapılan 1.300,00 TL bilirkişi ücreti ile 984,85 TL tebligat ve müzekkere gideri olmak üzere toplam 2.284,85 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 68,54 TL yargılama giderinin davalıdan tahsili ile davacıya verilmesine,\n9-Davalı tarafça yapılan toplam 205,50 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 198,85 TL yargılama giderinin davacıdan tahsili ile davalıya verilmesine,\n10-Arabuluculuk aşamasında yapılan 680,00 TL yargılama giderinden davanın kabul ve ret oranına göre hesaplanan 20,40 TL yargılama giderinin davalıdan, 659,60 TL yargılama giderinin davacıdan tahsili ile Hazineye gelir kaydına,\" ibaresinin yazılması suretiyle DÜZELTİLEREK ONANMASINA,\nPeşin alınan temyiz karar harcının istek hâlinde ilgiliye iadesine,\nDosyanın İlk Derece Mahkemesine ",
+          "skor": 0.8723,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13206",
+          "metin_ozet": "oranına göre hesaplanan 3.098,64 TL'nin davalılardan müştereken ve müteselsilen tahsili ile davacıya verilmesine,\" ibarelerinin  yazılmasına,\nMahkeme kararının, hüküm fıkrasının (5) numaralı bendine iki ayrı alt bent eklenmek suretiyle; “Davalılardan ... kendisini vekille temsil ettirdiğinden, karar",
+          "metin": "oranına göre hesaplanan 3.098,64 TL'nin davalılardan müştereken ve müteselsilen tahsili ile davacıya verilmesine,\" ibarelerinin  yazılmasına,\nMahkeme kararının, hüküm fıkrasının (5) numaralı bendine iki ayrı alt bent eklenmek suretiyle; “Davalılardan ... kendisini vekille temsil ettirdiğinden, karar tarihinde yürürlükte bulunan Avukatlık Asgari Ücret Tarifesi gereğince hesaplanan 2.131,15 TL vekâlet ücretinin davacıdan alınarak davalıya verilmesine,\" ve \"davalılardan ... tarafından yapılan toplam 396,95 TL yargılama giderinin kabul ve ret oranına göre 1,98 TL'sinin davacıdan alınarak davalılardan ...'ya verilmesine\"  alt bentlerinin yazılması suretiyle DÜZELTİLEREK ONANMASINA,\nPeşin alınan temyiz karar harçlarının istek hâlinde ilgililere iadesine,\nDosyanın Mahkemesine gönderilmesine,\n08.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8705,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Is Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1358,
+      "ortalama_kaynak_skor": 0.873,
+      "kaynak_sayisi": 5,
+      "message_id": "a3869427-7d3e-4d51-8c56-934883f5c48e",
+      "conversation_id": "8f617f74-5e45-4fa8-82d7-ddf21bd05b77",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 9.9,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Delil tespiti nasıl yapılır, hangi durumlarda başvurulur?",
+      "cevap": "Delil tespiti, henüz dava açılmamış veya açılmış olan bir davada, taraflardan birinin, ileride açacağı davada veya görülmekte olan davada ileri süreceği bir vakıanın tespiti amacıyla keşif yapılması, bilirkişi incelemesi yaptırılması ya da tanık ifadelerinin alınması gibi işlemlerin yapılmasını talep etmesidir. \n\nDelil tespiti, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 400. maddesinde düzenlenmiştir. Bu maddeye göre, delil tespiti istenebilmesi için hukuki yararın varlığı gerekir. Kanunda açıkça öngörülen hâller dışında, delilin hemen tespit edilmemesi hâlinde kaybolacağı yahut ileri sürülmesinin önemli ölçüde zorlaşacağı ihtimal dahilinde bulunuyorsa hukuki yarar var sayılır.\n\nDelil tespiti talebi, dilekçeyle yapılır ve dilekçede tespiti istenen vakıa, tanıklara veya bilirkişilere sorulması istenen sorular, delillerin kaybolacağı veya gösterilmesinde zorlukla karşılaşılacağı kuşkusunu uyandıran sebepler ile aleyhine delil tespiti istenen kişinin ad, soyad ve adresi yer alır. Mahkeme tarafından belirlenen tespit giderleri avans olarak ödenmedikçe sonraki işlemler yapılmaz.\n\nDelil tespiti, acele hâllerde de yapılabilir. Bu durumda, karşı tarafa tebligat yapılmaksızın da delil tespiti yapılabilir. Tespitin yapılmasından sonra, tespit dilekçesi, tespit kararı, tespit tutanağı ve varsa bilirkişi raporunun bir örneği mahkemece kendiliğinden diğer tarafa tebliğ olunur.\n\nDelil tespiti, idari dava açtıktan sonra da yapılabilir. 2577 Sayılı İdari Yargılama Usulü Kanunu'nun 58. maddesine göre, taraflar, idari dava açtıktan sonra bu davalara ilişkin delillerin tespitini ancak davaya bakan Danıştay, idare ve vergi mahkemelerinden isteyebilirler.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 402",
+          "metin_ozet": "MADDE 402- (1) Delil tespiti talebi dilekçeyle yapılır. Dilekçede tespiti istenen vakıa,\ntanıklara veya bilirkişilere sorulması istenen sorular, delillerin kaybolacağı veya\ngösterilmesinde zorlukla karşılaşılacağı kuşkusunu uyandıran sebepler ile aleyhine delil tespiti\nistenen kişinin ad, soyad ve a",
+          "metin": "MADDE 402- (1) Delil tespiti talebi dilekçeyle yapılır. Dilekçede tespiti istenen vakıa,\ntanıklara veya bilirkişilere sorulması istenen sorular, delillerin kaybolacağı veya\ngösterilmesinde zorlukla karşılaşılacağı kuşkusunu uyandıran sebepler ile aleyhine delil tespiti\nistenen kişinin ad, soyad ve adresi yer alır. Tespit talebinde bulunan, durum ve koşulların imkân\nvermemesi nedeniyle, aleyhine tespit yapılacak kişiyi gösteremiyorsa talebi geçerli sayılır.\n(2) Mahkeme tarafından belirlenen tespit giderleri avans olarak ödenmedikçe sonraki\nişlemler yapılmaz.\n(3) Tespit talebi mahkemece haklı bulunursa karar, dilekçeyle birlikte karşı tarafa\ntebliğ edilir. Kararda ayrıca, delil tespitinin nasıl ve ne zaman yapılacağı, tespitin icrası\nesnasında karşı tarafın da hazır bulunabileceği, varsa itiraz ve ilave soruların bir hafta içinde\nbildirilmesi gerektiği belirtilir.\n(4) (Ek:22/7/2020-7251/44 md.) Tespitin yapılmasından sonra, tespit tutanağı ve\nvarsa bilirkişi raporunun bir örneği mahkemece karşı tarafa resen tebliğ olunur.\nAcele hâllerde tespit",
+          "skor": 0.8815,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 403",
+          "metin_ozet": "MADDE 403- (1) Talep sahibinin haklarının korunması bakımından zorunluluk\nbulunan hâllerde, karşı tarafa tebligat yapılmaksızın da delil tespiti yapılabilir. Tespitin\nyapılmasından sonra, tespit dilekçesi, tespit kararı, tespit tutanağı ve varsa bilirkişi raporunun\nbir örneği mahkemece kendiliğinden",
+          "metin": "MADDE 403- (1) Talep sahibinin haklarının korunması bakımından zorunluluk\nbulunan hâllerde, karşı tarafa tebligat yapılmaksızın da delil tespiti yapılabilir. Tespitin\nyapılmasından sonra, tespit dilekçesi, tespit kararı, tespit tutanağı ve varsa bilirkişi raporunun\nbir örneği mahkemece kendiliğinden diğer tarafa tebliğ olunur. Karşı taraf tebliğden itibaren\nbir hafta içinde delil tespiti kararına itiraz edebilir.\nDelil tespiti kararında uygulanacak hükümler",
+          "skor": 0.8802,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 400",
+          "metin_ozet": "MADDE 400- (1) Taraflardan her biri, görülmekte olan bir davada henüz inceleme\nsırası gelmemiş yahut ileride açacağı davada ileri süreceği bir vakıanın tespiti amacıyla keşif\nyapılması, bilirkişi incelemesi yaptırılması ya da tanık ifadelerinin alınması gibi işlemlerin\nyapılmasını talep edebilir.\n(2",
+          "metin": "MADDE 400- (1) Taraflardan her biri, görülmekte olan bir davada henüz inceleme\nsırası gelmemiş yahut ileride açacağı davada ileri süreceği bir vakıanın tespiti amacıyla keşif\nyapılması, bilirkişi incelemesi yaptırılması ya da tanık ifadelerinin alınması gibi işlemlerin\nyapılmasını talep edebilir.\n(2) Delil tespiti istenebilmesi için hukuki yararın varlığı gerekir. Kanunda açıkça\nöngörülen hâller dışında, delilin hemen tespit edilmemesi hâlinde kaybolacağı yahut ileri\nsürülmesinin önemli ölçüde zorlaşacağı ihtimal dâhilinde bulunuyorsa hukuki yarar var sayılır.\nGörev ve yetki",
+          "skor": 0.8738,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 401",
+          "metin_ozet": "MADDE 401- (1) Henüz dava açılmamış olan hâllerde delil tespiti, esas hakkındaki\ndavaya bakacak olan mahkemeden veya üzerinde keşif yahut bilirkişi incelemesi yapılacak olan\nşeyin bulunduğu veya tanık olarak dinlenilecek kişinin oturduğu yer sulh mahkemesinden istenir.\n(2) Noterlerin, 18/1/1972 tari",
+          "metin": "MADDE 401- (1) Henüz dava açılmamış olan hâllerde delil tespiti, esas hakkındaki\ndavaya bakacak olan mahkemeden veya üzerinde keşif yahut bilirkişi incelemesi yapılacak olan\nşeyin bulunduğu veya tanık olarak dinlenilecek kişinin oturduğu yer sulh mahkemesinden istenir.\n(2) Noterlerin, 18/1/1972 tarihli ve 1512 sayılı Noterlik Kanunu uyarınca yapacağı\nvakıa tespitine ilişkin hükümler saklıdır.\n(3) Esas hakkında açılan davada, delil tespiti yapan mahkemenin yetkisiz ve görevsiz\nolduğu ileri sürülemez.\n(4) Dava açıldıktan sonra yapılan her türlü delil tespiti talebi hakkında sadece davanın\ngörülmekte olduğu mahkeme yetkili ve görevlidir.\nDelil tespiti talebi ve karar",
+          "skor": 0.869,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 58",
+          "metin_ozet": "Madde 58 – 1. Taraflar, idari dava açtıktan sonra bu davalara ilişkin delillerin tespitini\nancak davaya bakan Danıştay, idare ve vergi mahkemelerinden isteyebilirler.\n2. Davaya bakan Danıştay, İdare ve Vergi Mahkemeleri istemi uygun gördüğü takdirde\nüyelerden birini bu işle görevlendirebileceği gibi",
+          "metin": "Madde 58 – 1. Taraflar, idari dava açtıktan sonra bu davalara ilişkin delillerin tespitini\nancak davaya bakan Danıştay, idare ve vergi mahkemelerinden isteyebilirler.\n2. Davaya bakan Danıştay, İdare ve Vergi Mahkemeleri istemi uygun gördüğü takdirde\nüyelerden birini bu işle görevlendirebileceği gibi, tespitin mahalli idari veya adli yargı mercilerince\nyaptırılmasına da karar verebilir.\n3. Delillerin tespiti istemi, ivedilikle karara bağlanır.\nYol giderleri, tazminat ve gündelikler:",
+          "skor": 0.8608,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1865,
+      "ortalama_kaynak_skor": 0.8731,
+      "kaynak_sayisi": 5,
+      "message_id": "e43ef395-0be5-4943-8d64-180e955a6bae",
+      "conversation_id": "abb476ff-3400-4c7c-bd0f-611c76ebc009",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.88,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Uzlaştırma nedir, ceza davalarında nasıl işler, avantajları nelerdir?",
+      "cevap": "Uzlaştırma, ceza davalarında tarafların anlaşması yoluyla uyuşmazlığın çözülmesini sağlayan bir yöntemdir. Ceza Muhakemesi Kanunu'nun 253. maddesinde düzenlenen uzlaştırma, suçun mağduru ile sanık arasında bir uzlaşı sağlanmasına yönelik bir uygulamadır.\n\nUzlaştırma işleminde, mağdur ve sanık, bir uzlaştırma bürosu veya bir hakim tarafından belirlenen bir uzlaştırmacı aracılığıyla görüşürler. Uzlaştırmacı, tarafların anlaşmasını sağlamak amacıyla arabuluculuk yapar. Eğer taraflar arasında bir anlaşma sağlanırsa, bu anlaşma mahkeme tarafından onaylanır ve ceza davası düşer.\n\nUzlaştırmanın avantajları şunlardır:\n\n1. **Sürecin hızlanması**: Uzlaştırma, ceza davalarının uzun sürmesi sorununu ortadan kaldırabilir. Uzlaştırma yoluyla uyuşmazlık kısa sürede çözülebilir.\n2. **Maddi külfetin azalması**: Uzlaştırma, tarafların mahkeme masraflarını ve avukat ücretlerini azaltabilir.\n3. **Psikolojik rahatlık**: Uzlaştırma, tarafların birbirleriyle yüz yüze gelerek anlaşmalarını sağlar. Bu, özellikle mağdur için psikolojik olarak rahatlatıcı olabilir.\n4. **Toplumsal uzlaşma**: Uzlaştırma, toplumda uzlaşmayı teşvik eder ve suçun mağduru ile sanık arasında bir uzlaşı sağlanmasına yardımcı olur.\n\nAncak, uzlaştırma her durumda mümkün olmayabilir. Özellikle ağır suçlarda veya kamu düzenini etkileyen suçlarda uzlaştırma uygulanmayabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/3773",
+          "metin_ozet": "k güvenliğini tehlikeye sokma suçundan kaynaklanan bir zarar ve bunun giderilmesinde yarışan haklar söz konusu olmadığı gibi ceza yargılamasının beklenmesiyle hukuk davası bakımından elde edilecek bir yarar da bulunmamaktadır. Aksi takdirde kişinin tamamen kendi kusuruyla ölümünden, diğer taraf aley",
+          "metin": "k güvenliğini tehlikeye sokma suçundan kaynaklanan bir zarar ve bunun giderilmesinde yarışan haklar söz konusu olmadığı gibi ceza yargılamasının beklenmesiyle hukuk davası bakımından elde edilecek bir yarar da bulunmamaktadır. Aksi takdirde kişinin tamamen kendi kusuruyla ölümünden, diğer taraf aleyhine sonuç çıkarılmış olur ki kanun koyucunun amacının bu olmadığı açıktır.\nÖte yandan uzamış zamanaşımının benimsenmesinde kanun koyucunun bir diğer amacı da ceza ve hukuk yargılaması arasındaki paralelliği sağlamak ve ceza yargılaması için öngörülmüş zamanaşımı süresince suçtan zarar görenin hakkını arama imkânını kaybetmesini önlemektir. Böylece esasen; hukuki belirlilik ve öngörülebilirlik, hukuki güvenlik, yargı kararlarındaki istikrar ve yargıya güven tesis edilmektedir. Buna karşılık kişinin tamamen kendi kusuruyla ölümüne neden olma eyleminden doğan zarar ile trafik güvenliğini tehlikeye sokma suçu arasında böyle bir bağlantı kurulabilmesi de mümkün değildir.\nYukarıda açıklandığı üzere somut olayda tazminat davası, cezayı gerektiren bir fiilden doğmadığı için uzamış (ceza) zamanaşımı süresinin uygulanabilmesi mümkün değildir. Dolayısıyla zamanaşımı süresinin, 2918 sayılı Kanun’un",
+          "skor": 0.8285,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8140",
+          "metin_ozet": "ar gözetilmek suretiyle) sonucuna göre karar verilmesi gerekirken eksik incelemeyle yazılı şekilde karar verilmesi doğru görülmemiştir.\n3. 2918 sayılı Karayolları Trafik Kanunu’nun 87 nci maddesinin birinci fıkrası yollamasıyla 6098 sayılı Türk Borçlar Kanunu’nun (TBK) 51 inci maddesi uyarınca hatır",
+          "metin": "ar gözetilmek suretiyle) sonucuna göre karar verilmesi gerekirken eksik incelemeyle yazılı şekilde karar verilmesi doğru görülmemiştir.\n3. 2918 sayılı Karayolları Trafik Kanunu’nun 87 nci maddesinin birinci fıkrası yollamasıyla 6098 sayılı Türk Borçlar Kanunu’nun (TBK) 51 inci maddesi uyarınca hatır için karşılıksız yolcu taşıma veya aracı kullandırmada genel hükümlere göre tazminattan uygun bir indirim yapılması, doktrinde ve Yargıtay içtihatlarında benimsenmiş ve yerleşmiştir.\nHatır için yolcu taşıma veya aracı kullandırmadan söz edebilmek için, ölen veya yaralananın bir menfaat karşılığı olmaksızın taşınması veya aracın kullanılması, diğer bir deyişle taşıma veya kullanmada ölen veya yaralananın menfaatinin bulunması gerekir. Bu nedenle taşıma veya kullanmada işletenin veya eylemlerinden sorumlu olduğu kişilerin bir menfaatinin bulunması hâlinde hatır taşımasından söz edilemez. Bu bakımdan hatır ilişkisinin değerlendirilmesinde taşıma veya kullanmanın kimin menfaatine olduğunun belirlenmesi önemlidir. Taşıma veya kullandırma, ekonomik yarar için olabileceği gibi ortak toplumsal değerler nedeniyle de olabilir. Ancak yakın akrabaların ve eşin taşınmasında bir menfaatten söz edilem",
+          "skor": 0.8236,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2664",
+          "metin_ozet": "e yapılan ödemeler tazminatı belirlemede bir indirim nedeni olarak gösterilmediği gibi Yargıtay uygulamaları ile artık yerleşik ... geldiği üzere borcu söndüren bir nitelik taşımaktadır.\nHatır için yolcu taşıma veya aracı kullandırmadan söz edebilmek için, ölen veya yaralananın bir menfaat karşılığı",
+          "metin": "e yapılan ödemeler tazminatı belirlemede bir indirim nedeni olarak gösterilmediği gibi Yargıtay uygulamaları ile artık yerleşik ... geldiği üzere borcu söndüren bir nitelik taşımaktadır.\nHatır için yolcu taşıma veya aracı kullandırmadan söz edebilmek için, ölen veya yaralananın bir menfaat karşılığı olmaksızın taşınması veya aracın kullanılması, diğer bir deyişle taşıma veya kullanmada ölen veya yaralananın menfaatinin bulunması gerekir. Bu nedenle taşıma veya kullanmada işletenin veya eylemlerinden sorumlu olduğu kişilerin bir menfaatinin bulunması hâlinde hatır taşımasından söz edilemez. Bu bakımdan hatır ilişkisinin değerlendirilmesinde taşıma veya kullanmanın kimin menfaatine olduğunun belirlenmesi önemlidir. Taşıma veya kullandırma, ekonomik yarar için olabileceği gibi ortak toplumsal değerler nedeniyle de olabilir. Ancak yakın akrabaların ve eşin taşınmasında bir menfaatten söz edilemeyeceği için hatır için taşımadan da bahsedilemez. Hâkim, gerekçesini kararında tartışmak ve nedenlerini göstermek koşuluyla tazminattan mutlaka indirim yapmak zorunda da değildir.\nSomut olayda, davacı yolcu konumundadır. Soruşturma dosyasındaki ifade tutanaklarına göre davacı tarafından sürücünü",
+          "skor": 0.8234,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7240",
+          "metin_ozet": "verişli, ayrıntılı ve gerekçeli rapor alınıp sonucuna göre karar verilmesi gerekirken eksik inceleme ile yazılı şekilde karar verilmesi doğru değildir.\n3. 2918 sayılı Karayolları Trafik Kanunu’nun 87 nci maddesinin birinci fıkrası yollamasıyla 6098 sayılı Türk Borçlar Kanunu’nun (TBK) 51 inci maddes",
+          "metin": "verişli, ayrıntılı ve gerekçeli rapor alınıp sonucuna göre karar verilmesi gerekirken eksik inceleme ile yazılı şekilde karar verilmesi doğru değildir.\n3. 2918 sayılı Karayolları Trafik Kanunu’nun 87 nci maddesinin birinci fıkrası yollamasıyla 6098 sayılı Türk Borçlar Kanunu’nun (TBK) 51 inci maddesi uyarınca hatır için karşılıksız yolcu taşıma veya aracı kullandırmada genel hükümlere göre tazminattan uygun bir indirim yapılması, doktrinde ve Yargıtay içtihatlarında benimsenmiş ve yerleşmiştir.\nHatır için yolcu taşıma veya aracı kullandırmadan söz edebilmek için, ölen veya yaralananın bir menfaat karşılığı olmaksızın taşınması veya aracın kullanılması, diğer bir deyişle taşıma veya kullanmada ölen veya yaralananın menfaatinin bulunması gerekir. Bu nedenle taşıma veya kullanmada işletenin veya eylemlerinden sorumlu olduğu kişilerin bir menfaatinin bulunması hâlinde hatır taşımasından söz edilemez. Bu bakımdan hatır ilişkisinin değerlendirilmesinde taşıma veya kullanmanın kimin menfaatine olduğunun belirlenmesi önemlidir. Taşıma veya kullandırma, ekonomik yarar için olabileceği gibi ortak toplumsal değerler nedeniyle de olabilir. Ancak yakın akrabaların ve eşin taşınmasında bir menfa",
+          "skor": 0.8228,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5460",
+          "metin_ozet": " ölçüsüz bir sınırlama da değildir. Zira usulden ret kararları maddi anlamda kesin hüküm teşkil etmediğinden, ilgili eksiklik giderilerek söz konusu davanın, doğru bir şekilde yeniden açılması mümkündür.\nKanun’daki özel hukuki yararı göz ardı ederek bir tarafın mahkemeye erişim hakkını korumak gerek",
+          "metin": " ölçüsüz bir sınırlama da değildir. Zira usulden ret kararları maddi anlamda kesin hüküm teşkil etmediğinden, ilgili eksiklik giderilerek söz konusu davanın, doğru bir şekilde yeniden açılması mümkündür.\nKanun’daki özel hukuki yararı göz ardı ederek bir tarafın mahkemeye erişim hakkını korumak gerekçesiyle diğer taraf aleyhine sonuç doğuracak şekilde dengenin bozulması, silahların eşitliği, savunma hakkı ve hukuki dinlenilme hakkının ihlal edilmesine de yol açacaktır. Zira belirsiz alacak davasında davacıya henüz somutlaştırıp tam belirtmediği bir alacağı için dava açma imkânı sağlanarak hak arama ve mahkemeye erişimde avantaj sağlanmıştır. Karşı taraf aslında dava açılırken tam olarak bilmediği bir talep sonucu için savunma yapmak durumunda bırakılmaktadır. İşte bu sebeple kanun koyucu davacıya tanınan bu avantaj ve imkânı, özel bir dava şartına bağlamış ve sınırlandırmıştır.\nHukuk sistemimiz, davanın usulden reddedilmesi nedeniyle alacağın zamanaşımına uğraması durumunda, davacının mağduriyetini önleyecek bir hukuki çareye de yer vermiştir. 6098 sayılı Türk Borçlar Kanunu'nun (6098 sayılı Kanun) “Davanın reddinde ek süre” kenar başlıklı 158. maddesine göre “Dava veya def’i; mahke",
+          "skor": 0.8226,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1544,
+      "ortalama_kaynak_skor": 0.8242,
+      "kaynak_sayisi": 5,
+      "message_id": "3453cf4d-ded2-40e8-8d07-7656f401d84c",
+      "conversation_id": "199aa39c-da1d-4d9d-82d4-5bc5832f1dfd",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.91,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

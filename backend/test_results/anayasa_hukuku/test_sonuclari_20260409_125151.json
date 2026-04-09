@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-09T12:53:53.328518+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 4.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/anayasa_hukuku/test_sonuclari_20260409_125151.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 121.7,
+    "ortalama_sure_sn": 10.14,
+    "kategori_dagilimi": {
+      "Anayasa Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 6.14,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 1336.0,
+        "ortalama_kaynak_skor": 0.8462
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Anayasa Mahkemesi'ne bireysel başvuru nasıl yapılır, süresi ne kadardır?",
+      "cevap": "Anayasa Mahkemesi'ne bireysel başvuru, 6216 sayılı Anayasa Mahkemesinin Kuruluşu ve Yargılama Usulleri Hakkında Kanun'un 46. maddesinde düzenlenmiştir. Buna göre, Anayasa Mahkemesi'ne bireysel başvuru, temel hak ve özgürlüklerine ilişkin bir ihlal iddiasının bulunması halinde yapılabilir.\n\nBireysel başvuru süresi, ihlal iddiasına konu olan mahkeme kararının tebliğ tarihinden itibaren 30 gündür. Bu süre içinde Anayasa Mahkemesi'ne başvurulmaması halinde, bireysel başvuru hakkı kaybedilir.\n\nAnayasa Mahkemesi'ne bireysel başvuru, yazılı olarak yapılır ve başvuru dilekçesinde aşağıdaki bilgiler bulunmalıdır:\n\n* Başvurucunun kimlik bilgileri\n* İhlal iddiasına konu olan mahkeme kararı\n* İhlal iddiasının dayandığı nedenler\n* Talep edilen sonuç\n\nBireysel başvuru dilekçesi, Anayasa Mahkemesi'ne doğrudan veya posta yoluyla gönderilebilir.\n\nKaynaklar:\n- [Kaynak 1] 9. Hukuk Dairesi - 2025/1700\n- [Kaynak 2] 9. Hukuk Dairesi - 2024/14507\n- [Kaynak 3] 9. Hukuk Dairesi - 2024/13291\n- [Kaynak 4] 9. Hukuk Dairesi - 2025/5460\n- [Kaynak 5] 9. Hukuk Dairesi - 2025/5461\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1700",
+          "metin_ozet": " davalı vekilince temyiz yoluna başvurulduğu, buna göre temyizin süresinde yapılmadığı gerekçesiyle temyiz dilekçesinin süre yönünden reddine karar verilmiştir.\nIV. ANAYASA MAHKEMESİ KARARI VE  İHLAL KARARINDAN SONRAKİ YARGILAMA SÜRECİ\nA. Bireysel Başvuru ve Anayasa Mahkemesi Kararı\nKesinleşen karar",
+          "metin": " davalı vekilince temyiz yoluna başvurulduğu, buna göre temyizin süresinde yapılmadığı gerekçesiyle temyiz dilekçesinin süre yönünden reddine karar verilmiştir.\nIV. ANAYASA MAHKEMESİ KARARI VE  İHLAL KARARINDAN SONRAKİ YARGILAMA SÜRECİ\nA. Bireysel Başvuru ve Anayasa Mahkemesi Kararı\nKesinleşen karara karşı davalı tarafın Anayasa Mahkemesine bireysel başvuruda bulunması üzerine Anayasa Mahkemesinin 2019/5507 Başvuru numaralı ve 23.11.2022 tarihli kararı ile; mahkeme kararlarının hüküm kısmında kanun yolu ve süresinin belirtilmesi zorunluluğunun tarafların karara karşı öngörülen kanun yolunu etkili ve işlevsel bir şekilde kullanmaları açısından önem arz ettiği, Bölge Adliye Mahkemesi kararının başvurucuya tebliğ edildiği, karar tarihi itibarıyla yürürlükte bulunan yasal düzenleme gereği temyiz yoluna başvurma süresi kararın tebliğinden itibaren sekiz gün olmasına rağmen Bölge Adliye Mahkemesinin gerekçeli kararında temyiz yoluna başvuru süresinin kararın tebliğinden itibaren iki hafta olarak gösterildiği; başvurucunun, istinaf kararlarında kendisine tanınan ve kararın tebliğinden itibaren başladığı belirtilen iki haftalık süreye güvenerek hareket ettiği, kanun yoluna başvuru süresini",
+          "skor": 0.8764,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14507",
+          "metin_ozet": "e ifade etmek gerekir ki belirtilen usul kurallarının yorumlanması derece mahkemelerinin ve içtihat mahkemesi olan Yargıtayın görev alanına girmektedir. Çünkü bireysel başvuru, Anayasa Mahkemesinin bir temel hak ihlali iddiasını sadece Anayasa ve temel haklar açısından incelemesine olanak sağlayan b",
+          "metin": "e ifade etmek gerekir ki belirtilen usul kurallarının yorumlanması derece mahkemelerinin ve içtihat mahkemesi olan Yargıtayın görev alanına girmektedir. Çünkü bireysel başvuru, Anayasa Mahkemesinin bir temel hak ihlali iddiasını sadece Anayasa ve temel haklar açısından incelemesine olanak sağlayan bir hukuki çaredir. Anayasa’nın 148 inci maddesinin dördüncü fıkrasında ve 6216 sayılı Anayasa Mahkemesinin Kuruluşu ve Yargılama Usulleri Hakkında Kanun’un 49 uncu maddesinin altıncı fıkrasında belirtildiği üzere, kanun yolu denetiminde gözetilmesi gereken hususlarda inceleme yapılamaz. Bu nedenle bir yargılamada usul meseleleri hakkında karar verilmesi, maddi vakıaların ortaya konması ve değerlendirilmesi, hukuk kurallarının yorumlanması ve somut uyuşmazlığa uygulanması Anayasa Mahkemesinin yetkisi dışında kalmaktadır.\n6. Anayasa Mahkemesinin ... ... başvurusuna ilişkin kararında yaptığı değerlendirmeler, esasen münhasıran kanun yolunda gözetilmesi gereken hususlar olup bireysel başvuru yolunda riayet edilmesi gereken inceleme kapsamında değildir (... ... ..., Anayasa Mahkemesi’ne Bireysel Başvuru ve Kararların Medenî Usûl Hukukuna Etkileri, İstanbul, 2022, s.389 vd. ve özellikle s.393,",
+          "skor": 0.8624,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13291",
+          "metin_ozet": "EMYİZ\nA. Temyiz Yoluna Başvuranlar\nBölge Adliye Mahkemesinin yukarıda belirtilen kararına karşı süresi içinde davalı vekili temyiz isteminde bulunmuştur.\nB. Yargıtay Kararı\nDairemizin  11.12.2018 tarihli ve  2018/10097  Esas,  2018/22940  Karar sayılı ilâmı ile; İlk Derece Mahkemesi karar tarihinin ",
+          "metin": "EMYİZ\nA. Temyiz Yoluna Başvuranlar\nBölge Adliye Mahkemesinin yukarıda belirtilen kararına karşı süresi içinde davalı vekili temyiz isteminde bulunmuştur.\nB. Yargıtay Kararı\nDairemizin  11.12.2018 tarihli ve  2018/10097  Esas,  2018/22940  Karar sayılı ilâmı ile; İlk Derece Mahkemesi karar tarihinin 19.04.2017 olduğu, karar tarihinde yürürlükte olan 5521 sayılı İş Mahkemeleri Kanunu’nun 8 inci maddesinin üçüncü fıkrası uyarınca temyiz süresinin gerekçeli kararın taraflara tebliğinden itibaren sekiz gün olduğu, gerekçeli kararın davalı vekiline 11.10.2018 tarihinde tebliğ edildiği, ancak  davalı vekilince sekiz günlük temyiz süresi geçtikten sonra 25.10.2018 tarihinde karara karşı temyiz yoluna başvurulduğu, buna göre temyizin süresinde yapılmadığı gerekçesiyle davalının temyiz dilekçesinin süre yönünden reddine karar verilmiştir.\nC. Bireysel Başvuru\nKesinleşen karara karşı davalı taraf Anayasa Mahkemesine bireysel başvuruda bulunmuştur.\nD. Anayasa Mahkemesi Kararı\n1. Anayasa Mahkemesinin 2018/26811 başvuru numaralı ve 13.01.2022 tarihli kararı ile; Mahkeme kararlarının hüküm kısmında kanun yolu ve süresinin belirtilmesi zorunluluğunun, tarafların karara karşı öngörülen kanun yolunu ",
+          "skor": 0.8615,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5460",
+          "metin_ozet": "tiğe uygun şekilde yorumlanması gerektiği açıktır. Bununla birlikte öncelikle ifade etmek gerekir ki belirtilen usul kurallarının yorumlanması derece mahkemelerinin ve içtihat mahkemesi olan Yargıtayın görev alanına girmektedir. Çünkü bireysel başvuru, Anayasa Mahkemesinin bir temel hak ihlali iddia",
+          "metin": "tiğe uygun şekilde yorumlanması gerektiği açıktır. Bununla birlikte öncelikle ifade etmek gerekir ki belirtilen usul kurallarının yorumlanması derece mahkemelerinin ve içtihat mahkemesi olan Yargıtayın görev alanına girmektedir. Çünkü bireysel başvuru, Anayasa Mahkemesinin bir temel hak ihlali iddiasını sadece Anayasa ve temel haklar açısından incelemesine olanak sağlayan bir hukuki çaredir. 2709 sayılı Türkiye Cumhuriyeti Anayasası’nın (Anayasa) 148/4 hükmünde ve 6216 sayılı Anayasa Mahkemesinin Kuruluşu ve Yargılama Usulleri Hakkında Kanun’un 49/6 hükmünde belirtildiği üzere, kanun yolu denetiminde gözetilmesi gereken hususlarda inceleme yapılamaz. Bu nedenle bir yargılamada usul meseleleri hakkında karar verilmesi, maddi vakıaların ortaya konması ve değerlendirilmesi, hukuk kurallarının yorumlanması ve somut uyuşmazlığa uygulanması Anayasa Mahkemesinin yetkisi dışında kalmaktadır.\nAnayasa Mahkemesinin ... ... başvurusuna ilişkin kararında yaptığı değerlendirmeler, esasen münhasıran kanun yolunda gözetilmesi gereken hususlar olup bireysel başvuru yolunda riayet edilmesi gereken inceleme kapsamında değildir (... ... ..., Anayasa Mahkemesi’ne Bireysel Başvuru ve Kararların Medenî U",
+          "skor": 0.8591,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5461",
+          "metin_ozet": "nem arz etmektedir. Bu bağlamda belirtilen usul kurallarının Kanun’un amacı ve benimsediği sistematiğe uygun şekilde yorumlanması gerektiği açıktır. Bununla birlikte öncelikle ifade etmek gerekir ki belirtilen usul kurallarının yorumlanması derece mahkemelerinin ve içtihat mahkemesi olan Yargıtayın ",
+          "metin": "nem arz etmektedir. Bu bağlamda belirtilen usul kurallarının Kanun’un amacı ve benimsediği sistematiğe uygun şekilde yorumlanması gerektiği açıktır. Bununla birlikte öncelikle ifade etmek gerekir ki belirtilen usul kurallarının yorumlanması derece mahkemelerinin ve içtihat mahkemesi olan Yargıtayın görev alanına girmektedir. Çünkü bireysel başvuru, Anayasa Mahkemesinin bir temel hak ihlali iddiasını sadece Anayasa ve temel haklar açısından incelemesine olanak sağlayan bir hukuki çaredir. 2709 sayılı Türkiye Cumhuriyeti Anayasası’nın (Anayasa) 148/4 hükmünde ve 6216 sayılı Anayasa Mahkemesinin Kuruluşu ve Yargılama Usulleri Hakkında Kanun’un 49/6 hükmünde belirtildiği üzere, kanun yolu denetiminde gözetilmesi gereken hususlarda inceleme yapılamaz. Bu nedenle bir yargılamada usul meseleleri hakkında karar verilmesi, maddi vakıaların ortaya konması ve değerlendirilmesi, hukuk kurallarının yorumlanması ve somut uyuşmazlığa uygulanması Anayasa Mahkemesinin yetkisi dışında kalmaktadır.\nAnayasa Mahkemesinin ... Avcı başvurusuna ilişkin kararında yaptığı değerlendirmeler, esasen münhasıran kanun yolunda gözetilmesi gereken hususlar olup bireysel başvuru yolunda riayet edilmesi gereken ince",
+          "skor": 0.8576,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1268,
+      "ortalama_kaynak_skor": 0.8634,
+      "kaynak_sayisi": 5,
+      "message_id": "6e7601ff-4fd0-47b1-ad07-a83e5347d4dc",
+      "conversation_id": "57a80ec6-cd47-4938-972f-b43dcd8e70d9",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 36.88,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Temel hak ve özgürlükler nelerdir, Anayasa'da nasıl güvence altındadır?",
+      "cevap": "Temel hak ve özgürlükler, bireylerin temel gereksinimlerini karşılamalarına ve toplum içinde özgürce yaşayabilmelerine olanak tanıyan haklardır. Türkiye Cumhuriyeti Anayasası, bu hak ve özgürlükleri güvence altına almakta ve korumaktadır.\n\nAnayasa'nın 12. maddesine göre, \"Herkes, dil, ırk, renk, cinsiyet, siyasi düşünce, felsefi inanç, din, mezhep ve benzeri sebeplerle ayırım gözetilmeksizin, kanunen tabi olduğu işlemlerden eşitlik ve adalet ilkelerine uygun olarak yararlanırlar.\" Bu madde, eşitlik ilkesini vurgulamaktadır.\n\nAnayasa'nın 17. maddesine göre, \"Herkes, yaşama, maddi ve manevi varlığını koruma ve geliştirme hakkına sahiptir.\" Bu madde, yaşam hakkını güvence altına almaktadır.\n\nAnayasa'nın 19. maddesine göre, \"Herkes, kişi özgürlüğü ve güvenliği hakkına sahiptir.\" Bu madde, kişi özgürlüğü ve güvenliğini güvence altına almaktadır.\n\nAnayasa'nın 23. maddesine göre, \"Herkes, yerleşme ve seyahat özgürlüğü hakkına sahiptir.\" Bu madde, yerleşme ve seyahat özgürlüğünü güvence altına almaktadır.\n\nAnayasa'nın 25. maddesine göre, \"Herkes, düşünce ve kanaat özgürlüğü hakkına sahiptir.\" Bu madde, düşünce ve kanaat özgürlüğünü güvence altına almaktadır.\n\nAnayasa'nın 26. maddesine göre, \"Herkes, ifade özgürlüğü hakkına sahiptir.\" Bu madde, ifade özgürlüğünü güvence altına almaktadır.\n\nAnayasa'nın 65. maddesine göre, \"Devlet, sosyal ve ekonomik alanlarda Anayasa ile belirlenen görevlerini, bu görevlerin amaçlarına uygun öncelikleri gözeterek malî kaynaklarının yeterliliği ölçüsünde yerine getirir.\" Bu madde, devletin sosyal ve ekonomik görevlerini vurgulamaktadır.\n\nBu maddeler, temel hak ve özgürlüklerin Anayasa'da nasıl güvence altına alındığını göstermektedir. Ancak, bu konuyla ilgili daha detaylı bilgi için Anayasa'nın ilgili maddelerine bakılması gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 106 - Fıkra 2",
+          "metin_ozet": "61 ilâ 64 üncü maddeleri, 66 ilâ 71 inci maddeleri, 72 nci maddesinin birinci, ikinci ve üçüncü fıkraları, 73 ilâ 80 inci maddeleri, 82 ilâ 88 inci maddeleri, 90 ilâ 100 üncü maddeleri, 102 nci maddesi, 104 ilâ 124 üncü maddeleri, 127 ilâ 129 uncu maddeleri, 131 ilâ 135 inci maddeleri, ek 2 ilâ ek 4",
+          "metin": "61 ilâ 64 üncü maddeleri, 66 ilâ 71 inci maddeleri, 72 nci maddesinin birinci, ikinci ve üçüncü fıkraları, 73 ilâ 80 inci maddeleri, 82 ilâ 88 inci maddeleri, 90 ilâ 100 üncü maddeleri, 102 nci maddesi, 104 ilâ 124 üncü maddeleri, 127 ilâ 129 uncu maddeleri, 131 ilâ 135 inci maddeleri, ek 2 ilâ ek 4 üncü maddeleri, ek 8 ve ek 9 uncu maddeleri, ek 11 inci maddesi, ek 13 ilâ ek 19 uncu maddeleri, ek 21 ilâ ek 23 üncü maddeleri, ek 25 ilâ ek 27 nci maddeleri, ek 29 ve ek 30 uncu maddeleri, ek 31 inci maddesinin (a) ve (b) bentleri, ek 32 ilâ ek 39 uncu maddeleri, ek 46 ila ek 49 uncu maddeleri, ek 56 ve ek 57 nci maddeleri, ek 59 uncu maddesi, ek 67 ilâ ek 70 inci maddeleri, ek 72 ilâ ek 76 ncı maddeleri, ek 78 inci maddesi, ek 80 inci maddesi, geçici 8 inci maddesi, geçici 15 inci maddesi, geçici 16 ncı maddesi, geçici 54 üncü, geçici 65 inci, geçici 85 inci, geçici 86 ncı, geçici 88 inci, geçici 96 ilâ geçici 98 inci, geçici 103 üncü, geçici 104 üncü, geçici 109 ilâ geçici 113 üncü, geçici 115 ilâ geçici 118 inci, geçici 120 nci, geçici 139 ilâ geçici 140 ıncı, geçici 146 ncı, geçici 147 nci, geçici 150 ilâ geçici 151 inci, geçici 153 üncü, geçici 157 nci, geçici 159 uncu,",
+          "skor": 0.8494,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 66",
+          "metin_ozet": "GEÇİCİ MADDE 66- (Ek: 4/4/2015-6645/59 md.) (Mülga:16/11/2022-7421/19 md.)",
+          "metin": "GEÇİCİ MADDE 66- (Ek: 4/4/2015-6645/59 md.) (Mülga:16/11/2022-7421/19 md.)",
+          "skor": 0.8426,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 103 - Fıkra 5",
+          "metin_ozet": "YEDİNCİ KISIM Yürürlükten Kaldırılan, Değiştirilen, Son ve Geçici Hükümler BİRİNCİ BÖLÜM Diğer kanunlardaki atıflar",
+          "metin": "YEDİNCİ KISIM Yürürlükten Kaldırılan, Değiştirilen, Son ve Geçici Hükümler BİRİNCİ BÖLÜM Diğer kanunlardaki atıflar",
+          "skor": 0.8373,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 65",
+          "metin_ozet": "Madde 65 – (Değişik: 3/10/2001-4709/22 md.)\nDevlet, sosyal ve ekonomik alanlarda Anayasa ile belirlenen görevlerini, bu görevlerin\namaçlarına uygun öncelikleri gözeterek malî kaynaklarının yeterliliği ölçüsünde yerine getirir.\nDÖRDÜNCÜ BÖLÜM\nSiyasi Haklar ve Ödevler\nI. Türk vatandaşlığı",
+          "metin": "Madde 65 – (Değişik: 3/10/2001-4709/22 md.)\nDevlet, sosyal ve ekonomik alanlarda Anayasa ile belirlenen görevlerini, bu görevlerin\namaçlarına uygun öncelikleri gözeterek malî kaynaklarının yeterliliği ölçüsünde yerine getirir.\nDÖRDÜNCÜ BÖLÜM\nSiyasi Haklar ve Ödevler\nI. Türk vatandaşlığı",
+          "skor": 0.8372,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6306 Sayılı Afet Riski Altındaki Alanların Dönüştürülmesi Hakkında Kanun - Madde 11",
+          "metin_ozet": "MADDE 11- (20/7/1966 tarihli ve 775 sayılı Kanun ile ilgili olup yerine işlenmiştir.)",
+          "metin": "MADDE 11- (20/7/1966 tarihli ve 775 sayılı Kanun ile ilgili olup yerine işlenmiştir.)",
+          "skor": 0.8362,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6306&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1994,
+      "ortalama_kaynak_skor": 0.8405,
+      "kaynak_sayisi": 5,
+      "message_id": "7986cea6-ece7-4686-8ccb-8bde6b80a62d",
+      "conversation_id": "2094039a-9042-437f-827e-9c7970038b07",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.52,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "İfade özgürlüğünün sınırları nedir, suç teşkil eden ifadeler nelerdir?",
+      "cevap": "İfade özgürlüğünün sınırları, Anayasa'nın 26. maddesinde belirtilen \"başkalarının şöhret ve itibarının korunması\" gibi nedenlerle belirlenir. Buna göre, bir kişinin ifade özgürlüğü, başkalarının haklarını ihlal etmemelidir. İfade özgürlüğüne getirilecek sınırlamaların, demokratik bir toplumda zorlayıcı bir toplumsal ihtiyacın karşılanması amacına yönelik, ölçülü, orantılı ve istisnai nitelikte olması gerekir.\n\nSuç teşkil eden ifadeler, başkalarının şöhret ve itibarını zedeleyen, onlara karşı hakaret veya iftira içeren ifadelerdir. Örneğin, bir kişinin başka bir kişi hakkında yalan veya iftira içeren ifadeler kullanması, onun şöhret ve itibarını zedeleyebilir ve suç teşkil edebilir.\n\nMahkemeler, ifade özgürlüğü ile başkalarının hakları arasında makul bir denge kurmaya çalışırlar. Bu denge, her somut olayın koşullarına göre belirlenir. İfade özgürlüğüne yapılan bir müdahale, zorunlu bir toplumsal ihtiyacı karşılamıyorsa ya da orantılı değilse, demokratik toplum düzeninin gereklerine uygun bir müdahale olarak değerlendirilemez.\n\nİfade özgürlüğünün sınırları, Avrupa İnsan Hakları Mahkemesi kararlarında da belirlenmiştir. Mahkeme, ifade özgürlüğünün, demokratik bir toplumun vazgeçilmez esasını ve bu toplumun gelişiminin ve her bireyin kendini gerçekleştirmesinin temel koşulunu oluşturduğunu belirtmiştir. Mahkeme, ayrıca, ifade özgürlüğüne yapılan sınırlamaların dar yorumlanması gerektiğini ve herhangi bir sınırlama gereksiniminin ikna edici bir biçimde ortaya koyulması gerektiğini vurgulamıştır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6962",
+          "metin_ozet": "ı da ihtiva ettiğini belirten Anayasa'nın 12 nci maddesinin ikinci fıkrasından doğan bir zorunluluktur (AYM; Fatih Taş, B. No: 2013/1461, 12.11.2014). Bu itibarla, Anayasa'nın 26 ıncı maddesinin ikinci fıkrasına göre ifade özgürlüğünün sınırlandırılma nedenlerinden biri de başkalarının şöhret ve iti",
+          "metin": "ı da ihtiva ettiğini belirten Anayasa'nın 12 nci maddesinin ikinci fıkrasından doğan bir zorunluluktur (AYM; Fatih Taş, B. No: 2013/1461, 12.11.2014). Bu itibarla, Anayasa'nın 26 ıncı maddesinin ikinci fıkrasına göre ifade özgürlüğünün sınırlandırılma nedenlerinden biri de başkalarının şöhret ve itibarının korunmasıdır. Davalının söylediği sözlerin, ifade özgürlüğünün sınırlarını aştığını tespit ederken mahkemece ortaya konulan gerekçenin, bu özgürlüğü sınırlamak için yeterli ve ilgili olmasının yanında, ifade özgürlüğüne getirilecek sınırlamanın, demokratik bir toplumda zorlayıcı bir toplumsal ihtiyacın karşılanması amacına yönelik, ölçülü, orantılı ve istisnai nitelikte olması gerekir. Buna göre, ifade özgürlüğüne yapılan bir müdahale, zorunlu bir toplumsal ihtiyacı karşılamıyorsa ya da zorunlu bir toplumsal ihtiyacı karşılamakla birlikte orantılı değilse, demokratik toplum düzeninin gereklerine uygun bir müdahale olarak değerlendirilemez.\nBu tür davalarda mahkemece yapılması gereken; kamuya mal olmuş kişilerin şöhret ve itibarı ile ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somut olay bakımından  şu  hus",
+          "skor": 0.8679,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 262",
+          "metin_ozet": "MADDE 262- (1) Tarafların, tanığın sözünü kesmeleri, söz veya hareketle onu övmeleri\nveya tahkir etmeleri yasaktır. Buna aykırı davranan taraf veya vekili, hâkimin uyarısına rağmen\ndavranışını devam ettirecek olursa, 79 veya 151 inci maddeler uyarınca işlem yapılır.\nTercüman ve bilirkişi kullanılmas",
+          "metin": "MADDE 262- (1) Tarafların, tanığın sözünü kesmeleri, söz veya hareketle onu övmeleri\nveya tahkir etmeleri yasaktır. Buna aykırı davranan taraf veya vekili, hâkimin uyarısına rağmen\ndavranışını devam ettirecek olursa, 79 veya 151 inci maddeler uyarınca işlem yapılır.\nTercüman ve bilirkişi kullanılması",
+          "skor": 0.8636,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/10181",
+          "metin_ozet": "ve 48876/08 başvuru numaralı kararında “İfade özgürlüğünün, demokratik bir toplumun vazgeçilmez esasını ve bu toplumun gelişiminin ve her bireyin kendini gerçekleştirmesinin temel koşulunu oluşturduğunu, 10. maddenin 2. fıkrası hükümleri saklı kalmak kaydıyla ifade özgürlüğünün sadece kabul edilen, ",
+          "metin": "ve 48876/08 başvuru numaralı kararında “İfade özgürlüğünün, demokratik bir toplumun vazgeçilmez esasını ve bu toplumun gelişiminin ve her bireyin kendini gerçekleştirmesinin temel koşulunu oluşturduğunu, 10. maddenin 2. fıkrası hükümleri saklı kalmak kaydıyla ifade özgürlüğünün sadece kabul edilen, zararsız ya da farklı olan “bilgi” ya da “düşünceler” için değil ama ayrıca hoşa gitmeyen, sarsıcı ya da rahatsız edici olanlar için de geçerli olduğunu, bunların, “demokratik toplumun” onlarsız olamayacağı çoğulculuğun, hoşgörünün ve açık fikirliliğin gereği olduğunu, 10. maddede açıklandığı gibi bu özgürlüğe yapılan sınırlamaların her halde dar yorumlanması gerektiğini ve herhangi bir sınırlama gereksiniminin ikna edici bir biçimde ortaya koyulması gerektiğinin...” ifade edildiğinin, tüm bu açıklamalar ışığında paylaşımda geçen söz ve ifadelerin, davacının kişilik haklarına saldırı oluşturmayacağının anlaşılmasına göre temyizen incelenen karar usul ve kanuna uygun olup davacı vekili tarafından temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeplerle;\nDavacı vekilinin tüm temyiz itirazlarının reddi ile temyiz olu",
+          "skor": 0.8624,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9808",
+          "metin_ozet": "in ve her bireyin kendini gerçekleştirmesinin temel koşulunu oluşturduğunu, 10. maddenin 2. fıkrası hükümleri saklı kalmak kaydıyla ifade özgürlüğünün sadece kabul edilen, zararsız ya da farklı olan “bilgi” ya da “düşünceler” için değil ama ayrıca hoşa gitmeyen, sarsıcı ya da rahatsız edici olanlar ",
+          "metin": "in ve her bireyin kendini gerçekleştirmesinin temel koşulunu oluşturduğunu, 10. maddenin 2. fıkrası hükümleri saklı kalmak kaydıyla ifade özgürlüğünün sadece kabul edilen, zararsız ya da farklı olan “bilgi” ya da “düşünceler” için değil ama ayrıca hoşa gitmeyen, sarsıcı ya da rahatsız edici olanlar için de geçerli olduğunu, bunların, “demokratik toplumun” onlarsız olamayacağı çoğulculuğun, hoşgörünün ve açık fikirliliğin gereği olduğunu, 10. maddede açıklandığı gibi bu özgürlüğe yapılan sınırlamaların her halde dar yorumlanması gerektiğini ve herhangi bir sınırlama gereksiniminin ikna edici bir biçimde ortaya koyulması gerektiğinin...” ifade edildiği; tüm bu açıklamalar ışığında köşe yazılarında geçen söz ve ifadelerin, davacının kişilik haklarına saldırı oluşturmayacağının anlaşılmasına göre temyizen incelenen karar usul ve kanuna uygun olup davacı vekili tarafından temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeplerle;\nDavacı vekilinin tüm temyiz itirazlarının reddi ile temyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370 inci maddesinin birinci fıkrası uyarınca ONANMASINA,\nAşağıda ya",
+          "skor": 0.8623,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9812",
+          "metin_ozet": "dirmede yetkili ve aynı zamanda sorumlu olduğu, haberin basın ve ifade özgürlüğü kapsamında kaldığı, Avrupa İnsan Hakları Mahkemesi 22 Nisan 2013 tarihli ve 48876/08 başvuru numaralı kararında “İfade özgürlüğünün, demokratik bir toplumun vazgeçilmez esasını ve bu toplumun gelişiminin ve her bireyin ",
+          "metin": "dirmede yetkili ve aynı zamanda sorumlu olduğu, haberin basın ve ifade özgürlüğü kapsamında kaldığı, Avrupa İnsan Hakları Mahkemesi 22 Nisan 2013 tarihli ve 48876/08 başvuru numaralı kararında “İfade özgürlüğünün, demokratik bir toplumun vazgeçilmez esasını ve bu toplumun gelişiminin ve her bireyin kendini gerçekleştirmesinin temel koşulunu oluşturduğunu, 10. maddenin 2. fıkrası hükümleri saklı kalmak kaydıyla ifade özgürlüğünün sadece kabul edilen, zararsız ya da farklı olan “bilgi” ya da “düşünceler” için değil ama ayrıca hoşa gitmeyen, sarsıcı ya da rahatsız edici olanlar için de geçerli olduğunu, bunların, “demokratik toplumun” onlarsız olamayacağı çoğulculuğun, hoşgörünün ve açık fikirliliğin gereği olduğunu, 10. maddede açıklandığı gibi bu özgürlüğe yapılan sınırlamaların her halde dar yorumlanması gerektiğini ve herhangi bir sınırlama gereksiniminin ikna edici bir biçimde ortaya koyulması gerektiğinin...” ifade edildiği; tüm bu açıklamalar ışığında dava konusu haberde geçen söz ve ifadelerin, davacıların kişilik haklarına saldırı oluşturmayacağı anlaşıldığından, temyizen incelenen karar usul ve kanuna uygun olup davacılar vekili tarafından temyiz dilekçesinde ileri sürülen n",
+          "skor": 0.8622,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1719,
+      "ortalama_kaynak_skor": 0.8637,
+      "kaynak_sayisi": 5,
+      "message_id": "15805cd5-1a54-4db2-ae90-5c98d6f8e24c",
+      "conversation_id": "bef1b9af-dbe7-4305-8a9b-e96b56e5d7ed",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.23,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Kişinin dokunulmazlığı hakkı nedir, üst ve ev arama koşulları nelerdir?",
+      "cevap": "Kişinin dokunulmazlığı hakkı, Anayasa'nın 17. maddesinde düzenlenmiştir. Bu maddeye göre, herkesin dokunulmazlığı, maddi ve manevi varlığı koruma altına alınmıştır. Üst ve ev arama koşulları ise, Anayasa'nın 20. maddesinde düzenlenmiştir. Bu maddeye göre, herkesin konutunda ve özel hayatında dokunulmazlık hakkı vardır. Evde veya özel hayatında yapılan aramalar, ancak hâkim kararı ile veya gecikmesinde sakınca bulunan hallerde, kanunla yetkili kılınmış mercilerin yazılı emri ile yapılabilir.\n\nAyrıca, 4. Hukuk Dairesi - 2024/7929 sayılı kararında, kişilik haklarına saldırı olmadığı belirtilmiştir. Ancak, bu kararın içeriği tam olarak verilmemiştir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7200",
+          "metin_ozet": ")... olan davalı tarafından, partisinin 09.10.2018, 16.10.2018, 30.10.2018, 06.11.2018 tarihli grup toplantılarında ve 01.11.2018 tarihinde ... Kanalında canlı yayınlanan \"...\" isimli programda sarf edilen söz ve ifadeler nedeniyle davacının kişilik haklarının saldırıya uğradığı iddiası ile manevi t",
+          "metin": ")... olan davalı tarafından, partisinin 09.10.2018, 16.10.2018, 30.10.2018, 06.11.2018 tarihli grup toplantılarında ve 01.11.2018 tarihinde ... Kanalında canlı yayınlanan \"...\" isimli programda sarf edilen söz ve ifadeler nedeniyle davacının kişilik haklarının saldırıya uğradığı iddiası ile manevi tazminat ve kararın yayınlanması talebine ilişkindir.\nUyuşmazlığın çözümü açısından öncelikle konuyla ilgili kavram ve yasal düzenlemelerin irdelenmesinde yarar vardır.\nAnayasa’nın 13. maddesinin ilgili kısmı şöyledir:\n\"Temel hak ve hürriyetler, özlerine dokunulmaksızın yalnızca Anayasanın ilgili maddelerinde belirtilen sebeplere bağlı olarak ve ancak kanunla sınırlanabilir. Bu sınırlamalar, ... demokratik toplum düzeninin ... gereklerine ve ölçülülük ilkesine aykırı olamaz.\"\nAnayasa'nın 26 ncı maddesi şöyledir:\n\"Herkes, düşünce ve kanaatlerini söz, yazı, resim veya başka yollarla tek başına veya toplu olarak açıklama ve yayma hakkına sahiptir. Bu hürriyet resmî makamların müdahalesi olmaksızın haber veya fikir almak ya da vermek serbestliğini de kapsar. ... Bu hürriyetlerin kullanılması, ... başkalarının şöhret veya haklarının, özel ve aile hayatlarının ... korunması ... amaçlarıyla sını",
+          "skor": 0.8432,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6959",
+          "metin_ozet": "lmeye çalışıldığını, siyasetçiler yönünden ifade özgürlüğünün geniş yorumlanması gerekmekle beraber sınırsız olmadığını, olgusal temel bulunmaksızın haksız şekilde suç isnat edildiğini, müvekkilinin kişilik haklarının saldırıya uğradığını, verilen kararın usul ve yasaya aykırı olduğunu belirtmiştir.",
+          "metin": "lmeye çalışıldığını, siyasetçiler yönünden ifade özgürlüğünün geniş yorumlanması gerekmekle beraber sınırsız olmadığını, olgusal temel bulunmaksızın haksız şekilde suç isnat edildiğini, müvekkilinin kişilik haklarının saldırıya uğradığını, verilen kararın usul ve yasaya aykırı olduğunu belirtmiştir.\nC. Gerekçe\n1. Uyuşmazlık ve Hukuki Nitelendirme\nUyuşmazlık; davalının FOX TV Televizyon Kanalı'nda 19.11.2018 tarihinde ve TBMM Genel Kurulu'nda 17.12.2018 tarihinde sarf etmiş olduğu söz ve ifadeler nedeniyle davacının kişilik haklarının saldırıya uğradığı iddiası ile manevi tazminat, kınama ve kınama kararının yayınlanması istemlerine ilişkindir.\n2. İlgili Hukuk\n6100 sayılı Hukuk Muhakemeleri Kanunu'nun (6100 sayılı Kanun) 369 uncu maddesinin birinci fıkrası ile 370 ve 371 inci maddeleri,  Türkiye Cumhuriyeti Anayasa'sının 13, 26, 28 inci maddeleri, 6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58  inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun 24 ve 25 inci maddeleri, Avrupa İnsan Hakları Sözleşmesi’nin 10 uncu maddesi.\n3. Değerlendirme\nUyuşmazlığın çözümü açısından öncelikle konuyla ilgili kavram ve yasal düzenlemelerin irdelenmesinde yarar vardır.\nAnayasa'nın 26 ncı maddesi şöyledi",
+          "skor": 0.8411,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7929",
+          "metin_ozet": "mesi gerektiğini, kişilik haklarına saldırı olmadığını, verilen kararın usul ve yasaya aykırı olduğunu belirtmiştir.\nC. Gerekçe\n1. Uyuşmazlık ve Hukuki Nitelendirme\nUyuşmazlık; 02.03.2005 tarihinde \"www.sabah.com.tr\" de yayınlanan haberin \"unutulma hakkı\" kapsamında yayından kaldırılması istemine il",
+          "metin": "mesi gerektiğini, kişilik haklarına saldırı olmadığını, verilen kararın usul ve yasaya aykırı olduğunu belirtmiştir.\nC. Gerekçe\n1. Uyuşmazlık ve Hukuki Nitelendirme\nUyuşmazlık; 02.03.2005 tarihinde \"www.sabah.com.tr\" de yayınlanan haberin \"unutulma hakkı\" kapsamında yayından kaldırılması istemine ilişkindir.\n2. İlgili Hukuk\n6100 sayılı Hukuk Muhakemeleri Kanunu'nun (6100 sayılı Kanun) 369 uncu maddesinin birinci fıkrası ile 370 ve 371 inci maddeleri, Türkiye Cumhuriyeti Anayasası'nın 17 nci maddesi,  6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58 inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun 24 ve 25 inci maddeleri.\n3. Değerlendirme\nBölge Adliye Mahkemelerinin nihai kararlarının bozulması 6100 sayılı Kanun'un 371 inci maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTMK'nın \"Kişiliğin korunması\" kısım başlıklı 24 üncü maddesi şöyledir:\n“Hukuka aykırı olarak kişilik hakkına saldırılan kimse, hakimden, saldırıda bulunanlara karşı korunmasını isteyebilir. Kişilik hakkı zedelenen kimsenin rızası, daha üstün nitelikte özel veya kamusal yarar ya da kanunun verdiği yetkinin kullanılması sebeplerinden biriyle haklı kılınmadıkça, kişilik haklarına yapılan her saldırı hu",
+          "skor": 0.835,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15863",
+          "metin_ozet": "uyuşmazlık bulunduğu gerekçesiyle uyuşmazlığın giderilmesi için dosyanın Yargıtaya gönderilmesine karar verilmiştir.\nIII.  UYUŞMAZLIĞIN GİDERİLMESİ İSTEMİNE KONU KARARLAR\nA. Adana Bölge Adliye Mahkemesi 7. Hukuk Dairesinin 18.07.2024 Tarihli ve 2023/1008 Esas, 2024/1287  Karar  Sayılı Kararı\nBölge A",
+          "metin": "uyuşmazlık bulunduğu gerekçesiyle uyuşmazlığın giderilmesi için dosyanın Yargıtaya gönderilmesine karar verilmiştir.\nIII.  UYUŞMAZLIĞIN GİDERİLMESİ İSTEMİNE KONU KARARLAR\nA. Adana Bölge Adliye Mahkemesi 7. Hukuk Dairesinin 18.07.2024 Tarihli ve 2023/1008 Esas, 2024/1287  Karar  Sayılı Kararı\nBölge Adliye Mahkemesinin yukarıda tarih ve sayısı belirtilen kararı ile; davalı ... ... AŞ tarafından sunulan sözleşmeler ve dosya içeriğine göre davalı ... ... AŞ'nin depoculuk, temizlik, güvenlik, hammaliye işlerini ... Ltd. Şti.ne verdiği, bu Şirketin de ihale ile üstlendiği işlerin bir kısmını davalı ... Ltd. Şti.ne verdiği, taraflar arasında yapılan sözleşmelere göre davalı ... ... AŞ  ile davalı ... Ltd. Şti.  arasında asıl işveren alt işveren ilişkisinin bulunduğu, ayrıca davalı ... ... AŞ ile dava dışı ... Ltd. Şti. arasında da asıl işveren alt işveren ilişkisi bulunduğundan ... Ltd. Şti. ile davalı ... Ltd. Şti. arasındaki alt işverenlik sözleşmesi kapsamında ... Ltd. Şti.nin davacı yönünden asıl işveren konumunda bulunduğu, davacının 09.09.2019-02.06.2022 tarihleri arasında davalı ... ... AŞ'ye ait işyerinde dava dışı ... Ltd. Şti.nden alınan iş kapsamında davalı ... Ltd. Şti. işçisi",
+          "skor": 0.8326,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14507",
+          "metin_ozet": "a ödevinin de uygulama alanı bulamayacağını belirtmiştir (.... des ... ...., 20.10.2015, ...). Söz konusu kararda, dava şartı eksikliğinin bulunduğu davaların, bu nedenle reddedilmesinin usul ekonomisine aykırı olduğu gerekçesiyle Avrupa İnsan Hakları Sözleşmesi’nin 6 ncı maddesi ve İsviçre Federal ",
+          "metin": "a ödevinin de uygulama alanı bulamayacağını belirtmiştir (.... des ... ...., 20.10.2015, ...). Söz konusu kararda, dava şartı eksikliğinin bulunduğu davaların, bu nedenle reddedilmesinin usul ekonomisine aykırı olduğu gerekçesiyle Avrupa İnsan Hakları Sözleşmesi’nin 6 ncı maddesi ve İsviçre Federal Anayasası’nın 29 uncu maddesine dayanılamayacağı ifade edilmiştir. Keza İsviçre Federal Mahkemesi de 2020 yılında verdiği bir kararında, şartları bulunmadığı hâlde açılan belirsiz alacak davasında, hâkimin davayı aydınlatma ödevine dayalı olarak tarafın talebinin düzeltilmesine imkân veremeyeceğini, bunun silahların eşitliği ilkesine aykırı olduğunu belirtmiş; ayrıca taraf adına doğru bir hukuki himaye talebi formüle etmenin, mahkemenin görevi olmadığını ifade etmiştir (İsviçre Federal Mahkemesi, 15.06.2020, 4A_502/2019).\n33. Uyuşmazlığı mahkeme önüne taşıyabilmek ve etkili bir şekilde karara bağlanmasını isteyebilmek anlamına gelen mahkemeye erişim hakkına, Anayasa’nın 13 üncü maddesi uyarınca kanunla sınırlamalar getirilebilecek olmakla birlikte, bu sınırlamaların Anayasa’nın sözüne ve ruhuna aykırı olmaması, demokratik toplum düzeninin ve lâik Cumhuriyet’in gereklerine uygun olması, h",
+          "skor": 0.8313,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 859,
+      "ortalama_kaynak_skor": 0.8366,
+      "kaynak_sayisi": 5,
+      "message_id": "f3c19bdf-f7de-4f1f-8a02-04cacc1cfc67",
+      "conversation_id": "8e10ca8c-1103-4624-8c6b-82ef17215b3a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.15,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Konut dokunulmazlığı hakkı nedir, ev sahibinin izni olmadan arama yapılabilir mi?",
+      "cevap": "Konut dokunulmazlığı hakkı, Türkiye Cumhuriyeti Anayasası'nın 21. maddesinde düzenlenmiştir. Bu maddeye göre, kimsenin konutuna dokunulamaz. Millî güvenlik, kamu düzeni, suç işlenmesinin önlenmesi, genel sağlık ve genel ahlâkın korunması veya başkalarının hak ve özgürlüklerinin korunması sebeplerinden biri veya birkaçına bağlı olarak usulüne göre verilmiş hâkim kararı olmadıkça; yine bu sebeplere bağlı olarak gecikmesinde sakınca bulunan hallerde de kanunla yetkili kılınmış merciin yazılı emri bulunmadıkça; kimsenin konutuna girilemez, arama yapılamaz ve buradaki eşyaya el konulamaz.\n\nYani, ev sahibinin izni olmadan arama yapılamaz. Ancak, yukarıda belirtilen durumlarda hâkim kararı veya yetkili merciin yazılı emri ile konutta arama yapılabilir. Ayrıca, hâkimin kararı yirmidört saat içinde görevli hâkimin onayına sunulur ve hâkim, kararını el koymadan itibaren kırksekiz saat içinde açıklar; aksi halde, el koyma kendiliğinden kalkar.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/775",
+          "metin_ozet": "nlenmiş, 751 ile 761. maddelerinde de yine malikin yapması ve katlanması gereken hususlar belirtilmiştir. TMK’nun 738. maddesiyle, 737. maddeye benzer daha özel bir düzenleme getirilmiştir. Söz konusu madde hükmüne göre \"Malik, kazı ve yapı yaparken komşu taşınmazlara, onların topraklarını sarsmak v",
+          "metin": "nlenmiş, 751 ile 761. maddelerinde de yine malikin yapması ve katlanması gereken hususlar belirtilmiştir. TMK’nun 738. maddesiyle, 737. maddeye benzer daha özel bir düzenleme getirilmiştir. Söz konusu madde hükmüne göre \"Malik, kazı ve yapı yaparken komşu taşınmazlara, onların topraklarını sarsmak veya tehlikeye düşürmek ya da üzerlerindeki tesisleri etkilemek suretiyle zarar vermekten kaçınmak zorundadır. Komşuluk hukuku kurallarına aykırı yapılar hakkında taşkın yapılara ilişkin hükümler uygulanır.” Bir kimsenin kendi taşınmazında yaptığı hafriyat veya inşaat nedeniyle komşusunun taşınmazına bir zarar vermiş veya onu zarara maruz bırakmışsa, bu zararın hoşgörü sınırlarını aşıp aşmadığını aramaya gerek yoktur. Komşuluk hukukundan kaynaklanan el atmanın önlenmesi, eski hale getirilmesi ve tazminat davalarında davalının kusurlu olması aranmaz. Davalının kusurlu olup olmaması, kasıtlı hareket edip etmemesi, bu tür davalarda etkili değildir. Yeter ki, davalının eylemi ile davacının zararı arasında illiyet bağı bulunsun. Komşu taşınmaza yönelen müdahaleden dolayı zarar gören kişi, taşınmazın maliki olmak zorunda değildir. Bu kimseler taşınmaz üzerinde sınırlı ayni hak veya şahsi bir ha",
+          "skor": 0.8344,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 737",
+          "metin_ozet": "Madde 737- Herkes, taşınmaz mülkiyetinden doğan yetkileri kullanırken ve özellikle\nişletme faaliyetini sürdürürken, komşularını olumsuz şekilde etkileyecek taşkınlıktan kaçınmakla\nyükümlüdür.\nÖzellikle, taşınmazın durumuna, niteliğine ve yerel âdete göre komşular arasında hoş\ngörülebilecek dereceyi ",
+          "metin": "Madde 737- Herkes, taşınmaz mülkiyetinden doğan yetkileri kullanırken ve özellikle\nişletme faaliyetini sürdürürken, komşularını olumsuz şekilde etkileyecek taşkınlıktan kaçınmakla\nyükümlüdür.\nÖzellikle, taşınmazın durumuna, niteliğine ve yerel âdete göre komşular arasında hoş\ngörülebilecek dereceyi aşan duman, buğu, kurum, toz, koku çıkartarak, gürültü veya sarsıntı\nyaparak rahatsızlık vermek yasaktır.\nYerel âdete uygun ve kaçınılmaz taşkınlıklardan doğan denkleştirmeye ilişkin haklar saklıdır.\n2. Kazı ve yapılar\na. Kural",
+          "skor": 0.8336,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 21",
+          "metin_ozet": "Madde 21 – (Değişik: 3/10/2001-4709/6 md.)\nKimsenin konutuna dokunulamaz. Millî güvenlik, kamu düzeni, suç işlenmesinin önlenmesi,\ngenel sağlık ve genel ahlâkın korunması veya başkalarının hak ve özgürlüklerinin korunması\nsebeplerinden biri veya birkaçına bağlı olarak usulüne göre verilmiş hâkim kar",
+          "metin": "Madde 21 – (Değişik: 3/10/2001-4709/6 md.)\nKimsenin konutuna dokunulamaz. Millî güvenlik, kamu düzeni, suç işlenmesinin önlenmesi,\ngenel sağlık ve genel ahlâkın korunması veya başkalarının hak ve özgürlüklerinin korunması\nsebeplerinden biri veya birkaçına bağlı olarak usulüne göre verilmiş hâkim kararı olmadıkça; yine bu\nsebeplere bağlı olarak gecikmesinde sakınca bulunan hallerde de kanunla yetkili kılınmış merciin\nyazılı emri bulunmadıkça; kimsenin konutuna girilemez, arama yapılamaz ve buradaki eşyaya el\nkonulamaz. Yetkili merciin kararı yirmidört saat içinde görevli hâkimin onayına sunulur. Hâkim,\nkararını el koymadan itibaren kırksekiz saat içinde açıklar; aksi halde, el koyma kendiliğinden kalkar.\n7\nC. Haberleşme hürriyeti",
+          "skor": 0.8335,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/9821",
+          "metin_ozet": "ki kira kaybı nedeniyle açılan davanın reddine karar verildiği, ancak Yargıtay 15. Hukuk Dairesinin 01.07.2019 tarihli karar düzeltme talebi üzerine verdiği kararda, 2009/409 Esas sayılı dava dosyasındaki olgular kesin delil niteliğinde olduğundan onama ilamı kaldırılarak hükmün davacı yararına bozu",
+          "metin": "ki kira kaybı nedeniyle açılan davanın reddine karar verildiği, ancak Yargıtay 15. Hukuk Dairesinin 01.07.2019 tarihli karar düzeltme talebi üzerine verdiği kararda, 2009/409 Esas sayılı dava dosyasındaki olgular kesin delil niteliğinde olduğundan onama ilamı kaldırılarak hükmün davacı yararına bozulduğu ve davanın kabulünün zorunlu olduğunun bildirildiği, işbu dava dosyasında ise bu kez aynı daireyi alan yeni malik ... hakkında 13.04/2009-01.02.2012 tarihleri arasında farklı bir dönem için kira kaybı istenmiş olup bu davalının da kötüniyetli ve muvazaalı olarak daireyi satın aldığını ve yine muvazaalı olarak daireyi almakla davalının yine kötüniyetli olarak inşaatın yapımına engel olduğunu, bu kez yeni malik tarafından muvafakat verilmediğinden inşaatın tamamlanamadığını iddia ederek kira kaybından oluşan maddi tazminat talep edildiği, İstanbul Anadolu 18. Asliye Hukuk Mahkemesinin 2010/79 Esas- 2013/169 Karar sayılı dosyasında ise davalılar ... ve ... aleyhine davacı ... tarafından işbu davanın davalısı ...'nın 9 nolu daireyi muvazaalı olarak eski malik ...'dan satın aldığı, davalı ...'ın taraflar arasındaki taahhütnameye rağmen edimini yerine getirmeyerek bu daireyi davalı ...'y",
+          "skor": 0.8305,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 11",
+          "metin_ozet": "MADDE 11- (1) Malın ayıplı olduğunun anlaşılması durumunda tüketici;\na) Satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme,\nb) Satılanı alıkoyup ayıp oranında satış bedelinden indirim isteme,\nc) Aşırı bir masraf gerektirmediği takdirde, bütün masrafları satıcıya ait olmak üzere\nsatıla",
+          "metin": "MADDE 11- (1) Malın ayıplı olduğunun anlaşılması durumunda tüketici;\na) Satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme,\nb) Satılanı alıkoyup ayıp oranında satış bedelinden indirim isteme,\nc) Aşırı bir masraf gerektirmediği takdirde, bütün masrafları satıcıya ait olmak üzere\nsatılanın ücretsiz onarılmasını isteme,\nç) İmkân varsa, satılanın ayıpsız bir misli ile değiştirilmesini isteme,\nseçimlik haklarından birini kullanabilir. Satıcı, tüketicinin tercih ettiği bu talebi yerine\ngetirmekle yükümlüdür.\n(2) Ücretsiz onarım veya malın ayıpsız misli ile değiştirilmesi hakları üretici veya\nithalatçıya karşı da kullanılabilir. Bu fıkradaki hakların yerine getirilmesi konusunda satıcı,\nüretici ve ithalatçı müteselsilen sorumludur. Üretici veya ithalatçı, malın kendisi tarafından\npiyasaya sürülmesinden sonra ayıbın doğduğunu ispat ettiği takdirde sorumlu tutulmaz.\n(3) Ücretsiz onarım veya malın ayıpsız misli ile değiştirilmesinin satıcı için orantısız\ngüçlükleri beraberinde getirecek olması hâlinde tüketici, sözleşmeden dönme veya ayıp\noranında bedelden indirim haklarından birini kullanabilir. Orantısızlığın tayininde malın\nayıpsız değeri, ayıbın önemi ve diğer seçimlik haklara başvurmanın tüketici açısından sorun\nteşkil edip etmeyeceği gibi hususlar dikkate alınır.\n(4) Ücretsiz onarım veya malın ayıpsız misli ile değiştirilmesi haklarından birinin\nseçilmesi durumunda bu talebin satıcıya, üreticiye veya ithalatçıya yöneltilmesinden itibaren\nazami otuz iş günü, konut ve tatil amaçlı taşınmazlarda ise altmış iş günü içinde yerine\ngetirilmesi zorunludur. Ancak, bu Kanunun 58 inci maddesi uyarınca çıkarılan yönetmelik eki\nlistede yer alan mallara ilişkin, tüketicinin ücretsiz onarım talebi, yönetmelikte belirlenen\nazami tamir süresi içinde yerine getirilir. Aksi hâlde tüketici diğer seçimlik haklarını\nkullanmakta serbesttir.\n(5) Tüketicinin sözleşmeden dönme veya ayıp oranında bedelden indirim hakkını\nseçtiği durumlarda, ödemiş olduğu bedelin tümü veya bedelden yapılan indirim tutarı derhâl\ntüketiciye iade edilir.\n(6) Seçimlik hakların kullanılması nedeniyle ortaya çıkan tüm masraflar, tüketicinin\nseçtiği hakkı yerine getiren tarafça karşılanır. Tüketici bu seçimlik haklarından biri ile birlikte\n11/1/2011 tarihli ve 6098 sayılı Türk Borçlar Kanunu hükümleri uyarınca tazminat da talep\nedebilir.\nZamanaşımı",
+          "skor": 0.8287,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Kira Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1150,
+      "ortalama_kaynak_skor": 0.8321,
+      "kaynak_sayisi": 5,
+      "message_id": "d8dbf89c-a21e-4dc8-9d05-73a392c0e9f6",
+      "conversation_id": "d9ab1f46-bec2-46cf-9f56-02fee434fd80",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.68,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Toplantı ve gösteri yürüyüşü düzenleme hakkı nasıl kullanılır, izin gerekli mi?",
+      "cevap": "Toplantı ve gösteri yürüyüşü düzenleme hakkı, Anayasa'nın 34. maddesinde düzenlenen bir haktır. Bu hak, kişilerin düşüncelerini ifade etmek ve topluca görüşlerini açıklamak amacıyla toplantı ve gösteri yürüyüşü düzenleme özgürlüğüdür.\n\nToplantı ve gösteri yürüyüşü düzenleme hakkı, bazı sınırlamalara tabi tutulabilir. Ancak bu sınırlamaların Anayasa'nın sözüne ve ruhuna aykırı olmaması, demokratik toplum düzeninin ve laik Cumhuriyet'in gereklerine uygun olması, hakkın özünü zedelememesi, meşru bir amaç taşıması, açık ve ölçülü olması gerekir (Kaynak 2).\n\nToplantı ve gösteri yürüyüşü düzenleme hakkı için izin gerekli midir? Toplantı ve gösteri yürüyüşü düzenleme hakkı, genel olarak izin gerektirmez. Ancak, bazı durumlarda izin alınması gerekebilir. Örneğin, toplantı ve gösteri yürüyüşü, kamu düzenini bozabilecek veya başkalarının haklarını ihlal edebilecek şekilde düzenleniyorsa, izin alınması gerekebilir.\n\nAncak, toplantı ve gösteri yürüyüşü düzenleme hakkı, keyfi olarak sınırlanamaz. İzin alınması gerektiği durumlarda, izin verilmesi veya verilmemesi, objektif ve ölçülü bir şekilde değerlendirilmelidir. Aksi takdirde, toplantı ve gösteri yürüyüşü düzenleme hakkı ihlal edilmiş olur.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5522",
+          "metin_ozet": " hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi sırasıyla;\n“...6325 sayılı Kanun'un 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ve avukatları ile arabulucunun birlikte imzaladıkları anlaşma belgesinin, icra edileb",
+          "metin": " hâlinde, üzerinde anlaşılan hususlar hakkında taraflarca dava açılamaz.” şeklindedir.\nYukarıya alınan maddelerin gerekçesi sırasıyla;\n“...6325 sayılı Kanun'un 18 inci maddesine eklenen dördüncü fıkra ile, taraflar ve avukatları ile arabulucunun birlikte imzaladıkları anlaşma belgesinin, icra edilebilirlik şerhi aranmaksızın ilâm niteliğinde belge sayılacağı hükme bağlanmaktadır. Bu düzenleme yapılırken 19.03.1969 tarihli ve 1136 sayılı Avukatlık Kanunu'nun 'Uzlaşma sağlama' başlıklı 35/A maddesi dikkate alınmaktadır. Zira bu maddede 'Avukatlar dava açılmadan veya dava açılmış olup da henüz duruşma başlamadan önce kendilerine intikal eden iş ve davalarda, tarafların kendi iradeleriyle istem sonucu elde edebilecekleri konulara inhisar etmek kaydıyla, müvekkilleriyle birlikte karşı tarafı uzlaşmaya davet edebilirler. Karşı taraf bu davete icabet eder ve uzlaşma sağlanırsa, uzlaşma konusunu, yerini, tarihini, karşılıklı yerine getirmeleri gereken hususları içeren tutanak, avukatlar ile müvekkilleri tarafından birlikte imza altına alınır. Bu tutanaklar 9/6/1932 tarihli ve 2004 sayılı İcra ve İflas Kanununun 38 inci maddesi anlamında ilâm niteliğindedir.' hükmü yer almaktadır. ...”\n“...",
+          "skor": 0.8186,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5460",
+          "metin_ozet": "ar getirilebilecek olmakla birlikte, bu sınırlamaların Anayasa’nın sözüne ve ruhuna aykırı olmaması, demokratik toplum düzeninin ve lâik Cumhuriyet’in gereklerine uygun olması, hakkın özünü zedelememesi, meşru bir amaç taşıması, açık ve ölçülü olması gerekir (Anayasa Mahkemesi, ... Tatar, B. No:2014",
+          "metin": "ar getirilebilecek olmakla birlikte, bu sınırlamaların Anayasa’nın sözüne ve ruhuna aykırı olmaması, demokratik toplum düzeninin ve lâik Cumhuriyet’in gereklerine uygun olması, hakkın özünü zedelememesi, meşru bir amaç taşıması, açık ve ölçülü olması gerekir (Anayasa Mahkemesi, ... Tatar, B. No:2014/819, 09.06.2016, § 37 vd.; Anayasa Mahkemesi, Bişar Yusufoğlu, B. No:2018/2784,  10.02.2021, § 30  vd.). Avrupa İnsan Hakları Mahkemesi de mahkemeye erişim hakkının mutlak olmadığına vurgu yapmakta ve belli esaslara uygun hareket edilmesi kaydıyla sınırlanabileceğini belirtmektedir: “Mahkeme, mahkemeye erişim hakkının mutlak olmadığını ve birtakım sınırlamalara maruz kalabileceğini; mahkemeye erişim hakkı, doğası gereği Devlet tarafından toplumun ve bireylerin ihtiyaçları ve kaynaklarına göre yer ve zaman açısından değişebilen düzenlemelerin yapılmasını gerektirdiğinden bu kısıtlamalara izin verildiğini yineler. Uygulanan sınırlamalar, söz konusu hakkın özünü bozacak bir biçimde veya kapsamda bireyin mahkemeye erişimini kısıtlamamalıdır. İlaveten, bir sınırlama meşru bir amaca hizmet etmediği ve kullanılan araçlar ile ulaşılmak istenen amaç arasında makul bir orantılılık ilişkisi olmadı",
+          "skor": 0.8184,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7557",
+          "metin_ozet": "rlardan değildir. Bu tür özellikler, ancak yardımcı ve destekleyici ölçüt olarak kullanılabilir (Gaye Baycık, \"İş İlişkisinin Kurulması, Hükümleri ve İşin Düzenlenmesi Açısından Yargıtay'ın 2016 Yılı Kararlarının Değerlendirilmesi\", Yayımlanmamış Tebliğ, s.7).\nAynı şekilde kişinin Sosyal Güvenlik Ku",
+          "metin": "rlardan değildir. Bu tür özellikler, ancak yardımcı ve destekleyici ölçüt olarak kullanılabilir (Gaye Baycık, \"İş İlişkisinin Kurulması, Hükümleri ve İşin Düzenlenmesi Açısından Yargıtay'ın 2016 Yılı Kararlarının Değerlendirilmesi\", Yayımlanmamış Tebliğ, s.7).\nAynı şekilde kişinin Sosyal Güvenlik Kurumuna (SGK) 4/1(a)'lı olarak bildiriminin yapılmış olması, aradaki ilişkinin iş sözleşmesi olarak nitelendirilmesi için yeterli değildir. Aradaki ilişkinin iş sözleşmesine dayanmamasına rağmen yapılan SGK bildiriminin gerçeğe aykırı olduğunun tespiti hâlinde  SGK tarafından iptal edilmesi mümkündür.\n4857 sayılı Kanun'un 4/1-(ı)  hükmü uyarınca, \"507 sayılı Esnaf ve Sanatkarlar Kanununun 2. maddesinin tarifine uygun üç kişinin çalıştığı işyerlerinde bu kanun hükümleri uygulanmaz\".\n507 sayılı Kanun'un 2. maddesinde \"İster gezici olsun ister bir dükkan veya bir sokağın belli yerinde sabit bulunsunlar ticari sermayesi ile birlikte vücut çalışmalarına dayanan ve geliri o yer ve gelenek ve teamülüne nazaran tacir niteliğini kazanmasını icap ettirmeyecek miktarda sınırlı olan ve bu bakımdan ticaret sicili ve dolayısıyla ticaret ve sanayi odasına kayıtları gerekmeyen, ayni niteliğe (sermaye uns",
+          "skor": 0.8182,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5546",
+          "metin_ozet": "an incelemede; ... Şirketine ait ........................................  sicil  numaralı işyerlerinde halka açık restoran hizmeti verildiğini, ............................... ve ...................... sicil  numaralı işyerlerinde halka açık kafeterya hizmeti verildiğini, .....................sicil",
+          "metin": "an incelemede; ... Şirketine ait ........................................  sicil  numaralı işyerlerinde halka açık restoran hizmeti verildiğini, ............................... ve ...................... sicil  numaralı işyerlerinde halka açık kafeterya hizmeti verildiğini, .....................sicil numaralı işyerinde personel ile halka açık olarak öğle yemeği hizmeti ile açık alanda düğün, nişan vb. organizasyon hizmeti verildiğini, ................. sicil  numaralı işyerinde belediye personeli ile halka açık olarak öğle yemeği ve kantin hizmeti verildiğini, ..................sicil  numaralı işyerinde halka açık restoran ve kafeterya hizmeti verildiğini, ayrıca düğün, nişan gibi organizasyonların yapıldığını, ..............Sosyal Güvenlik Kurumu (SGK) sicil  numaralı işyerinde işverenliğe ait işyerinde düzenlenen düğün ve organizasyonlar ile kafe ve restoran işyerleri için pasta, kurabiye, tatlı imalatı yapıldığını,  .................sicil  numaralı  işyerinde restoran işyerlerinin et ürünlerinin hazırlandığı,........... ve ..................sicil numaralı işyerlerinde kültürpark, mesire alanları işletmeciliği yapıldığını, bu nedenle yürütülen faaliyetlerin İşkolları Yönetmeliği'n",
+          "skor": 0.8176,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14612",
+          "metin_ozet": "iz yoluna başvurulamaz.\nTemyiz dilekçesinin reddine ilişkin Bölge Adliye Mahkemesince verilen ek karar yukarıda belirtilen yasal düzenlemelere uygun olduğundan temyiz isteminin reddi ile söz konusu kararın onanması gerekir.\nKARAR\nAçıklanan sebeple;\nBölge Adliye Mahkemesince verilen 25.09.2024 tarihl",
+          "metin": "iz yoluna başvurulamaz.\nTemyiz dilekçesinin reddine ilişkin Bölge Adliye Mahkemesince verilen ek karar yukarıda belirtilen yasal düzenlemelere uygun olduğundan temyiz isteminin reddi ile söz konusu kararın onanması gerekir.\nKARAR\nAçıklanan sebeple;\nBölge Adliye Mahkemesince verilen 25.09.2024 tarihli ek kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n06.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8165,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Is Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1404,
+      "ortalama_kaynak_skor": 0.8179,
+      "kaynak_sayisi": 5,
+      "message_id": "f73e40ec-e226-4071-ba07-b359512579ef",
+      "conversation_id": "c96ec125-6038-4c9f-989f-a5d4a486cb60",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Dernek kurma hakkı nedir, dernek kurmak için hangi şartlar gerekir?",
+      "cevap": "Dernek kurma hakkı, 4721 Sayılı Türk Medeni Kanunu'nun 56. maddesinde düzenlenmiştir. Bu maddeye göre, dernekler, gerçek veya tüzel en az yedi kişinin kazanç paylaşma dışında belirli ve ortak bir amacı gerçekleştirmek üzere, bilgi ve çalışmalarını sürekli olarak birleştirmek suretiyle oluşturdukları, tüzel kişiliğe sahip kişi topluluklarıdır. Dernek kurma hakkı, önceden izin almaksızın herkes tarafından kullanılabilir. Ancak, dernek kurucularının fiil ehliyetine sahip olması gerekir.\n\nDernek kurmak için gereken şartlar, 4721 Sayılı Türk Medeni Kanunu'nun 57. maddesinde belirtilmiştir. Bu maddeye göre, dernek kurucularının fiil ehliyetine sahip olması gerekir. Ayrıca, dernek kuruluşu için en az yedi gerçek veya tüzel kişinin bir araya gelmesi gerekmektedir.\n\nYabancı gerçek kişilerin dernek kurma hakkı, 4721 Sayılı Türk Medeni Kanunu'nun 93. maddesinde düzenlenmiştir. Bu maddeye göre, Türkiye'de yerleşme hakkına sahip olan yabancı gerçek kişiler, dernek kurabilirler veya kurulmuş derneklere üye olabilirler.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 56",
+          "metin_ozet": "Madde 56- Dernekler, gerçek veya tüzel en az yedi kişinin kazanç paylaşma dışında\nbelirli ve ortak bir amacı gerçekleştirmek üzere, bilgi ve çalışmalarını sürekli olarak birleştirmek\nsuretiyle oluşturdukları, tüzel kişiliğe sahip kişi topluluklarıdır.3\nHukuka veya ahlâka aykırı amaçlarla dernek kuru",
+          "metin": "Madde 56- Dernekler, gerçek veya tüzel en az yedi kişinin kazanç paylaşma dışında\nbelirli ve ortak bir amacı gerçekleştirmek üzere, bilgi ve çalışmalarını sürekli olarak birleştirmek\nsuretiyle oluşturdukları, tüzel kişiliğe sahip kişi topluluklarıdır.3\nHukuka veya ahlâka aykırı amaçlarla dernek kurulamaz.\nII. Dernek kurma hakkı",
+          "skor": 0.8889,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 93",
+          "metin_ozet": "Madde 93- Türkiye'de yerleşme hakkına sahip olan yabancı gerçek kişiler, (...)10 dernek\nkurabilirler veya kurulmuş derneklere üye olabilirler.\nOnursal üyelik için bu koşul aranmaz.\nF. Derneklerin örgütlenmesi\nI. Şube açmaları\n1. Kuruluşu",
+          "metin": "Madde 93- Türkiye'de yerleşme hakkına sahip olan yabancı gerçek kişiler, (...)10 dernek\nkurabilirler veya kurulmuş derneklere üye olabilirler.\nOnursal üyelik için bu koşul aranmaz.\nF. Derneklerin örgütlenmesi\nI. Şube açmaları\n1. Kuruluşu",
+          "skor": 0.8886,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 57",
+          "metin_ozet": "Madde 57- Herkes, önceden izin almaksızın dernek kurma hakkına sahiptir.\nDernek kurucularının fiil ehliyetine sahip olması gerekir.\n3 30/7/2003 tarihli ve 4963 sayılı Kanunun 31 inci maddesiyle bu fıkrada geçen “en az yedi gerçek\nkişinin” ibaresi, “gerçek veya tüzel en az yedi kişinin” olarak değişt",
+          "metin": "Madde 57- Herkes, önceden izin almaksızın dernek kurma hakkına sahiptir.\nDernek kurucularının fiil ehliyetine sahip olması gerekir.\n3 30/7/2003 tarihli ve 4963 sayılı Kanunun 31 inci maddesiyle bu fıkrada geçen “en az yedi gerçek\nkişinin” ibaresi, “gerçek veya tüzel en az yedi kişinin” olarak değiştirilmiştir.\nIII. Tüzük",
+          "skor": 0.8749,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 94",
+          "metin_ozet": "Madde 94- Dernekler, gerekli görülen yerlerde genel kurul kararıyla şube açabilirler. Bu\namaçla dernek yönetim kurulunca yetki verilen en az üç kişilik kurucular kurulu, şube açılacak\nyerin en büyük mülkî amirine şube kuruluş bildirimini ve gerekli belgeleri verir.\n(Mülga ikinci fıkra: 30/7/2003-496",
+          "metin": "Madde 94- Dernekler, gerekli görülen yerlerde genel kurul kararıyla şube açabilirler. Bu\namaçla dernek yönetim kurulunca yetki verilen en az üç kişilik kurucular kurulu, şube açılacak\nyerin en büyük mülkî amirine şube kuruluş bildirimini ve gerekli belgeleri verir.\n(Mülga ikinci fıkra: 30/7/2003-4963/35 md.)\nŞube kuruluş bildiriminin içeriği ve gerekli belgeler, yönetmelikte gösterilir.\n2. Şubenin organları ve uygulanacak hükümler\n9 4/11/2004 tarihli ve 5253 sayılı Kanunun 38 inci maddesiyle bu maddede yer alan “uluslararası alanda\nişbirliği yapılmasında yarar görülen hallerde ve karşılıklı olmak koşuluyla” madde metninden\nçıkarılmıştır.\n10 4/11/2004 tarihli ve 5253 sayılı Kanunun 38 inci maddesiyle bu maddede yer alan “karşılıklı olmak\nkoşuluyla” ibaresi madde metninden çıkarılmıştır.",
+          "skor": 0.8695,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 62",
+          "metin_ozet": "Madde 62- (Değişik: 4/11/2004-5253/38 md.)\nDernekler, 60 ıncı maddenin son fıkrası gereğince yapılan yazılı bildirimi izleyen altı ay\niçinde ilk genel kurul toplantılarını yapmak ve zorunlu organlarını oluşturmakla yükümlüdürler.\n4 4/11/2004 tarihli ve 5253 sayılı Kanunun 38 inci maddesiyle bu fıkra",
+          "metin": "Madde 62- (Değişik: 4/11/2004-5253/38 md.)\nDernekler, 60 ıncı maddenin son fıkrası gereğince yapılan yazılı bildirimi izleyen altı ay\niçinde ilk genel kurul toplantılarını yapmak ve zorunlu organlarını oluşturmakla yükümlüdürler.\n4 4/11/2004 tarihli ve 5253 sayılı Kanunun 38 inci maddesiyle bu fıkrada yer alan, ”yerleşim yeri,\nkurucuları” ibaresi, madde metninden çıkarılmıştır.\nB. Üyelik\nI. Kazanılması\n1. Kural",
+          "skor": 0.869,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1224,
+      "ortalama_kaynak_skor": 0.8782,
+      "kaynak_sayisi": 5,
+      "message_id": "73b59886-1ad0-4fbf-a017-76714a9e753d",
+      "conversation_id": "297ef22d-0906-411f-a97e-3f4e18253a21",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.35,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Basın özgürlüğü nedir, gazetecilerin kaynak gizliliği hakkı var mı?",
+      "cevap": "Basın özgürlüğü, bireylerin düşüncelerini, fikirlerini ve haberleri özgürce ifade etme ve yayma hakkını ifade eder. Bu hak, Türkiye Cumhuriyeti Anayasası'nın 28. maddesinde güvence altına alınmıştır. Anayasa'nın 28. maddesine göre, \"Basın özgürlüğü, basın araçlarının devlet eliyle veya tekelleştirilerek topluma haber ve düşüncelerin aktarılmasına engel olunamaz.\"\n\nGazetecilerin kaynak gizliliği hakkı da basın özgürlüğü kapsamında önemli bir yer tutar. Kaynak gizliliği, gazetecilerin haber kaynaklarını gizli tutma hakkını ifade eder. Bu hak, gazetecilerin haber toplama ve yayma özgürlüğünü güvence altına almaya yönelik bir koruma sağlar.\n\nAncak, verilen kaynaklar basın özgürlüğü ve kaynak gizliliği hakkı ile ilgili yeterli bilgi sağlamamaktadır. Kaynaklar, daha çok Yargıtay kararlarına ilişkin bilgiler içermektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8195",
+          "metin_ozet": "yiz olunan İtiraz Hakem Heyeti kararının ONANMASINA, Aşağıda yazılı  temyiz harcının temyiz eden davacıya yükletilmesine,\nDosyanın mahkemeye gönderilmesine,25.09.2024  tarihinde oy birliğiyle karar verildi.",
+          "metin": "yiz olunan İtiraz Hakem Heyeti kararının ONANMASINA, Aşağıda yazılı  temyiz harcının temyiz eden davacıya yükletilmesine,\nDosyanın mahkemeye gönderilmesine,25.09.2024  tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8322,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15326",
+          "metin_ozet": "n yazılması suretiyle DÜZELTİLEREK ONANMASINA,\nAşağıda yazılı temyiz giderlerinin temyiz  eden davalılara yükletilmesine,\nDosyanın Mahkemesine gönderilmesine,\n27.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "n yazılması suretiyle DÜZELTİLEREK ONANMASINA,\nAşağıda yazılı temyiz giderlerinin temyiz  eden davalılara yükletilmesine,\nDosyanın Mahkemesine gönderilmesine,\n27.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8314,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/12104",
+          "metin_ozet": "ine,\nDosyanın  mahkemeye gönderilmesine,\n09.09.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ine,\nDosyanın  mahkemeye gönderilmesine,\n09.09.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8312,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8212",
+          "metin_ozet": "ine, Dosyanın İtiraz Hakem Heyetine iletilmek üzere mahkemeye gönderilmesine,26.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ine, Dosyanın İtiraz Hakem Heyetine iletilmek üzere mahkemeye gönderilmesine,26.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8312,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/12586",
+          "metin_ozet": " karar verilmesi gerekmiştir.\nKARAR\nAçıklanan sebeple;\nDosyanın YARGITAY HUKUK GENEL KURULUNA GÖNDERİLMESİNE,\n17.09.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": " karar verilmesi gerekmiştir.\nKARAR\nAçıklanan sebeple;\nDosyanın YARGITAY HUKUK GENEL KURULUNA GÖNDERİLMESİNE,\n17.09.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.8297,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Is Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1030,
+      "ortalama_kaynak_skor": 0.8311,
+      "kaynak_sayisi": 5,
+      "message_id": "a4213d35-b608-49d3-823d-c953b2f5f6a6",
+      "conversation_id": "ccb555d2-5581-42c2-9c6d-6d38741cde50",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.89,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Din ve vicdan özgürlüğü kapsamı nedir, ibadet özgürlüğü Anayasa'da nasıl düzenlenmiştir?",
+      "cevap": "Din ve vicdan özgürlüğü, bireylerin dinlerini seçme, değiştirme ve ibadet etme hakkını içerir. Türkiye Cumhuriyeti Anayasası'nın 24. maddesinde, din ve vicdan özgürlüğü düzenlenmiştir. Bu maddeye göre, herkes vicdan, dini inanç ve kanaat hürriyetine sahiptir. İbadet, dini ayin ve törenler serbesttir, ancak 14. madde hükümlerine aykırı olmamak şartıyla. Ayrıca, kimse ibadete, dini ayin ve törenlere katılmaya, dini inanç ve kanaatlerini açıklamaya zorlanamaz; dini inanç ve kanaatlerinden dolayı kınanamaz ve suçlanamaz.\n\nAnayasa'nın 24. maddesi, din eğitim ve öğretimi konusunda da düzenlemeler içerir. Buna göre, din kültürü ve ahlak öğretimi ilk ve ortaöğretim kurumlarında okutulan zorunlu dersler arasında yer alır. Bunun dışındaki din eğitim ve öğretimi ancak, kişilerin kendi isteğine, küçüklerin de kanuni temsilcisinin talebine bağlıdır.\n\nAyrıca, Anayasa'nın 13. ve 26. maddeleri, düşünce ve kanaat hürriyeti ile basın hürriyeti konularında düzenlemeler içerir. Bu maddelere göre, temel hak ve hürriyetler, özlerine dokunulmaksızın yalnızca Anayasanın ilgili maddelerinde belirtilen sebeplere bağlı olarak ve ancak kanunla sınırlanabilir. Herkes, düşünce ve kanaatlerini söz, yazı, resim veya başka yollarla tek başına veya toplu olarak açıklama ve yayma hakkına sahiptir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 24",
+          "metin_ozet": "Madde 24 – Herkes, vicdan, dini inanç ve kanaat hürriyetine sahiptir.\n14 üncü madde hükümlerine aykırı olmamak şartıyla ibadet, dini ayin ve törenler serbesttir.\nKimse, ibadete, dini ayin ve törenlere katılmaya, dini inanç ve kanaatlerini açıklamaya\nzorlanamaz; dini inanç ve kanaatlerinden dolayı kı",
+          "metin": "Madde 24 – Herkes, vicdan, dini inanç ve kanaat hürriyetine sahiptir.\n14 üncü madde hükümlerine aykırı olmamak şartıyla ibadet, dini ayin ve törenler serbesttir.\nKimse, ibadete, dini ayin ve törenlere katılmaya, dini inanç ve kanaatlerini açıklamaya\nzorlanamaz; dini inanç ve kanaatlerinden dolayı kınanamaz ve suçlanamaz.\nDin ve ahlak eğitim ve öğretimi Devletin gözetim ve denetimi altında yapılır. Din kültürü ve\nahlak öğretimi ilk ve ortaöğretim kurumlarında okutulan zorunlu dersler arasında yer alır. Bunun\ndışındaki din eğitim ve öğretimi ancak, kişilerin kendi isteğine, küçüklerin de kanuni temsilcisinin\ntalebine bağlıdır.\nKimse, Devletin sosyal, ekonomik, siyasi veya hukuki temel düzenini kısmen de olsa, din\nkurallarına dayandırma veya siyasi veya kişisel çıkar yahut nüfuz sağlama amacıyla her ne suretle\nolursa olsun dini veya din duygularını yahut dince kutsal sayılan şeyleri istismar edemez ve kötüye\nkullanamaz.\nVII. Düşünce ve kanaat hürriyeti",
+          "skor": 0.8673,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4904 Sayılı Türkiye İş Kurumu Kanunu - Madde 24",
+          "metin_ozet": "Madde 24- (657 sayılı Devlet Memurları Kanunu ile ilgili olup, yerlerine işlenmiştir.)",
+          "metin": "Madde 24- (657 sayılı Devlet Memurları Kanunu ile ilgili olup, yerlerine işlenmiştir.)",
+          "skor": 0.8609,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4904&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6961",
+          "metin_ozet": "u maddesinin ikinci fıkrası, Türkiye Cumhuriyeti Anayasa'sının 13, 25, 26 ncı maddeleri, 6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58  inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun 24 ve 25 inci maddeleri, Avrupa İnsan Hakları Sözleşmesi’nin 10 uncu maddesi.\n3. Değerlendirme\nUyuşmazlığın çözümü",
+          "metin": "u maddesinin ikinci fıkrası, Türkiye Cumhuriyeti Anayasa'sının 13, 25, 26 ncı maddeleri, 6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58  inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun 24 ve 25 inci maddeleri, Avrupa İnsan Hakları Sözleşmesi’nin 10 uncu maddesi.\n3. Değerlendirme\nUyuşmazlığın çözümü açısından öncelikle konuyla ilgili kavram ve yasal düzenlemelerin irdelenmesinde yarar vardır.\nAnayasa’nın 13. maddesinin ilgili kısmı şöyledir:\n\"Temel hak ve hürriyetler, özlerine dokunulmaksızın yalnızca Anayasanın ilgili maddelerinde belirtilen sebeplere bağlı olarak ve ancak kanunla sınırlanabilir. Bu sınırlamalar, ... demokratik toplum düzeninin ... gereklerine ve ölçülülük ilkesine aykırı olamaz.\"\nAnayasa'nın 26 ncı maddesi şöyledir:\n\"Herkes, düşünce ve kanaatlerini söz, yazı, resim veya başka yollarla tek başına veya toplu olarak açıklama ve yayma hakkına sahiptir. Bu hürriyet resmî makamların müdahalesi olmaksızın haber veya fikir almak ya da vermek serbestliğini de kapsar. ... Bu hürriyetlerin kullanılması, ... başkalarının şöhret veya haklarının, özel ve aile hayatlarının ... korunması ... amaçlarıyla sınırlanabilir....\"\nAnayasa'nın \"Basın hürriyeti\" başlıklı 28. maddesinin il",
+          "skor": 0.8583,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6284 Sayılı Ailenin Korunması ve Kadına Karşı Şiddetin Önlenmesine Dair Kanun - Madde 24",
+          "metin_ozet": "MADDE 24 – (1) Bu Kanun yayımı tarihinde yürürlüğe girer.\nYürütme",
+          "metin": "MADDE 24 – (1) Bu Kanun yayımı tarihinde yürürlüğe girer.\nYürütme",
+          "skor": 0.8508,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6284&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6962",
+          "metin_ozet": "nunu'nun (1086 sayılı Kanun)  428 inci maddesi, 438 inci maddesinin yedi, sekiz ve dokuzuncu fıkraları ile 439 uncu maddesinin ikinci fıkrası, Türkiye Cumhuriyeti Anayasa'sının 13, 25, 26 ncı maddeleri, 6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58  inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun ",
+          "metin": "nunu'nun (1086 sayılı Kanun)  428 inci maddesi, 438 inci maddesinin yedi, sekiz ve dokuzuncu fıkraları ile 439 uncu maddesinin ikinci fıkrası, Türkiye Cumhuriyeti Anayasa'sının 13, 25, 26 ncı maddeleri, 6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58  inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun 24 ve 25 inci maddeleri, Avrupa İnsan Hakları Sözleşmesi’nin 10 uncu maddesi.\n3. Değerlendirme\nUyuşmazlığın çözümü açısından öncelikle konuyla ilgili kavram ve yasal düzenlemelerin irdelenmesinde yarar vardır.\nAnayasa’nın 13. maddesinin ilgili kısmı şöyledir:\n\"Temel hak ve hürriyetler, özlerine dokunulmaksızın yalnızca Anayasanın ilgili maddelerinde belirtilen sebeplere bağlı olarak ve ancak kanunla sınırlanabilir. Bu sınırlamalar, ... demokratik toplum düzeninin ... gereklerine ve ölçülülük ilkesine aykırı olamaz.\"\nAnayasa'nın 26 ncı maddesi şöyledir:\n\"Herkes, düşünce ve kanaatlerini söz, yazı, resim veya başka yollarla tek başına veya toplu olarak açıklama ve yayma hakkına sahiptir. Bu hürriyet resmî makamların müdahalesi olmaksızın haber veya fikir almak ya da vermek serbestliğini de kapsar. ... Bu hürriyetlerin kullanılması, ... başkalarının şöhret veya haklarının, özel ve aile hayat",
+          "skor": 0.8506,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1487,
+      "ortalama_kaynak_skor": 0.8576,
+      "kaynak_sayisi": 5,
+      "message_id": "6b5d6a37-aed7-41d0-baa7-4893728283b5",
+      "conversation_id": "6781341c-9584-406a-9f3a-3d66c51d21d1",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.27,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Olağanüstü hal döneminde hangi temel haklar kısıtlanabilir?",
+      "cevap": "Olağanüstü hal döneminde, milletlerarası hukuktan doğan yükümlülükler ihlal edilmemek kaydıyla, durumun gerektirdiği ölçüde temel hak ve hürriyetlerin kullanımı kısmen veya tamamen durdurulabilir veya bunlar için Anayasada öngörülen güvencelere aykırı tedbirler alınabilir. Ancak, bu durumun gerektirdiği ölçüde ve ölçülülük ilkesine uygun olarak yapılması gerekmektedir.\n\nTemel hak ve hürriyetlerin kısıtlanabilmesi için, Anayasada öngörülen güvencelere aykırı tedbirlerin alınması gerekmektedir. Bu tedbirler, ancak kanunla sınırlanabilir ve demokratik toplum düzeninin gereklerine ve ölçülülük ilkesine aykırı olamaz.\n\nOlağanüstü hal döneminde kısıtlanabilecek temel haklar arasında, düşünce ve kanaat özgürlüğü, basın hürriyeti, toplantı ve gösteri yürüyüşü özgürlüğü gibi haklar yer alabilir. Ancak, bu hakların kısıtlanması, ancak durumun gerektirdiği ölçüde ve ölçülülük ilkesine uygun olarak yapılabilir.\n\nÖrneğin, Anayasa'nın 15. maddesi, savaş, seferberlik veya olağanüstü hallerde, milletlerarası hukuktan doğan yükümlülükler ihlal edilmemek kaydıyla, temel hak ve hürriyetlerin kısıtlanabileceğini öngörmektedir. Ancak, bu kısıtlamalar, ancak kanunla sınırlanabilir ve demokratik toplum düzeninin gereklerine ve ölçülülük ilkesine aykırı olamaz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 119",
+          "metin_ozet": "Madde 119 – (Değişik: 21/1/2017-6771/12 md.)\nCumhurbaşkanı; savaş, savaşı gerektirecek bir durumun başgöstermesi, seferberlik,\nayaklanma, vatan veya Cumhuriyete karşı kuvvetli ve eylemli bir kalkışma, ülkenin ve milletin\nbölünmezliğini içten veya dıştan tehlikeye düşüren şiddet hareketlerinin yaygın",
+          "metin": "Madde 119 – (Değişik: 21/1/2017-6771/12 md.)\nCumhurbaşkanı; savaş, savaşı gerektirecek bir durumun başgöstermesi, seferberlik,\nayaklanma, vatan veya Cumhuriyete karşı kuvvetli ve eylemli bir kalkışma, ülkenin ve milletin\nbölünmezliğini içten veya dıştan tehlikeye düşüren şiddet hareketlerinin yaygınlaşması, anayasal\ndüzeni veya temel hak ve hürriyetleri ortadan kaldırmaya yönelik yaygın şiddet hareketlerinin ortaya\nçıkması, şiddet olayları nedeniyle kamu düzeninin ciddî şekilde bozulması, tabiî afet veya tehlikeli\nsalgın hastalık ya da ağır ekonomik bunalımın ortaya çıkması hallerinde yurdun tamamında veya bir\nbölgesinde, süresi altı ayı geçmemek üzere olağanüstü hal ilan edebilir.\nOlağanüstü hal ilanı kararı, verildiği gün Resmî Gazetede yayımlanır ve aynı gün Türkiye\nBüyük Millet Meclisinin onayına sunulur.\nTürkiye Büyük Millet Meclisi tatilde ise derhal toplantıya çağırılır; Meclis gerekli gördüğü\ntakdirde olağanüstü halin süresini kısaltabilir, uzatabilir veya olağanüstü hali kaldırabilir.\nCumhurbaşkanının talebiyle Türkiye Büyük Millet Meclisi her defasında dört ayı geçmemek\nüzere süreyi uzatabilir. Savaş hallerinde bu dört aylık süre aranmaz.\nOlağanüstü hallerde vatandaşlar için getirilecek para, mal ve çalışma yükümlülükleri ile 15\ninci maddedeki ilkeler doğrultusunda temel hak ve hürriyetlerin nasıl sınırlanacağı veya geçici olarak\ndurdurulacağı, hangi hükümlerin uygulanacağı ve işlemlerin nasıl yürütüleceği kanunla düzenlenir.\nOlağanüstü hallerde Cumhurbaşkanı, olağanüstü halin gerekli kıldığı konularda, 104 üncü\nmaddenin onyedinci fıkrasının ikinci cümlesinde belirtilen sınırlamalara tabi olmaksızın\nCumhurbaşkanlığı kararnamesi çıkarabilir. Kanun hükmündeki bu kararnameler Resmî Gazetede\nyayımlanır, aynı gün Meclis onayına sunulur.\nSavaş ve mücbir sebeplerle Türkiye Büyük Millet Meclisinin toplanamaması hâli hariç olmak\nüzere; olağanüstü hal sırasında çıkarılan Cumhurbaşkanlığı kararnameleri üç ay içinde Türkiye Büyük\n61 21/1/2017 tarihli ve 6771 sayılı Kanunun 16 ncı maddesiyle, bu fıkrada yer alan “Başbakanın” ibaresi\n“Cumhurbaşkanı yardımcısının” şeklinde değiştirilmiştir.\n62 21/1/2017 tarihli ve 6771 sayılı Kanunun 16 ncı maddesiyle, bu fıkrada yer alan “kanunla” ibaresi\n“Cumhurbaşkanlığı kararnamesiyle” şeklinde değiştirilmiştir.\n63 21/1/2017 tarihli ve 6771 sayılı Kanunun 12 nci maddesiyle, “III. Olağanüstü yönetim usulleri” şeklindeki\nmadde kenar başlığı metne işlendiği şekilde değiştirilmiştir.\n64 21/1/2017 tarihli ve 6771 sayılı Kanunun 12 nci maddesiyle, bu maddenin “A. Olağanüstü haller” olan kenar\nbaşlığı metinden çıkarılmıştır.\n65 21/1/2017 tarihli ve 6771 sayılı Kanunun 12 nci maddesiyle, bu maddenin “1. Tabii afet ve ağır ekonomik\nbunalım sebebiyle olağanüstü hal ilanı” olan kenar başlığı metinden çıkarılmıştır.\n39\nMillet Meclisinde görüşülür ve karara bağlanır. Aksi halde olağanüstü hallerde çıkarılan\nCumhurbaşkanlığı kararnamesi kendiliğinden yürürlükten kalkar.\n2. Şiddet olaylarının yaygınlaşması ve kamu düzeninin ciddi şekilde bozulması sebepleriyle\nolağanüstü hal ilanı",
+          "skor": 0.855,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 16",
+          "metin_ozet": "Madde 16 – Temel hak ve hürriyetler, yabancılar için, milletlerarası hukuka uygun olarak\nkanunla sınırlanabilir.\nİKİNCİ BÖLÜM\nKişinin Hakları ve Ödevleri\nI. Kişinin dokunulmazlığı, maddi ve manevi varlığı",
+          "metin": "Madde 16 – Temel hak ve hürriyetler, yabancılar için, milletlerarası hukuka uygun olarak\nkanunla sınırlanabilir.\nİKİNCİ BÖLÜM\nKişinin Hakları ve Ödevleri\nI. Kişinin dokunulmazlığı, maddi ve manevi varlığı",
+          "skor": 0.8538,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 15",
+          "metin_ozet": "Madde 15 – Savaş, seferberlik (…)10 veya olağanüstü hallerde, milletlerarası hukuktan doğan\nyükümlülükler ihlal edilmemek kaydıyla, durumun gerektirdiği ölçüde temel hak ve hürriyetlerin\nkullanılması kısmen veya tamamen durdurulabilir veya bunlar için Anayasada öngörülen güvencelere\naykırı tedbirler",
+          "metin": "Madde 15 – Savaş, seferberlik (…)10 veya olağanüstü hallerde, milletlerarası hukuktan doğan\nyükümlülükler ihlal edilmemek kaydıyla, durumun gerektirdiği ölçüde temel hak ve hürriyetlerin\nkullanılması kısmen veya tamamen durdurulabilir veya bunlar için Anayasada öngörülen güvencelere\naykırı tedbirler alınabilir.\nBirinci fıkrada belirlenen durumlarda da, savaş hukukuna uygun fiiller sonucu meydana gelen\nölümler (…)11 dışında, kişinin yaşama hakkına, maddi ve manevi varlığının bütünlüğüne\ndokunulamaz; kimse din, vicdan, düşünce ve kanaatlerini açıklamaya zorlanamaz ve bunlardan dolayı\nsuçlanamaz; suç ve cezalar geçmişe yürütülemez; suçluluğu mahkeme kararı ile saptanıncaya kadar\nkimse suçlu sayılamaz.\nV. Yabancıların durumu",
+          "skor": 0.8488,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 13",
+          "metin_ozet": "Madde 13 – (Değişik: 3/10/2001-4709/2 md.)\nTemel hak ve hürriyetler, özlerine dokunulmaksızın yalnızca Anayasanın ilgili maddelerinde\nbelirtilen sebeplere bağlı olarak ve ancak kanunla sınırlanabilir. Bu sınırlamalar, Anayasanın sözüne\nve ruhuna, demokratik toplum düzeninin ve lâik Cumhuriyetin gere",
+          "metin": "Madde 13 – (Değişik: 3/10/2001-4709/2 md.)\nTemel hak ve hürriyetler, özlerine dokunulmaksızın yalnızca Anayasanın ilgili maddelerinde\nbelirtilen sebeplere bağlı olarak ve ancak kanunla sınırlanabilir. Bu sınırlamalar, Anayasanın sözüne\nve ruhuna, demokratik toplum düzeninin ve lâik Cumhuriyetin gereklerine ve ölçülülük ilkesine aykırı\nolamaz.\nIII. Temel hak ve hürriyetlerin kötüye kullanılamaması",
+          "skor": 0.8464,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6961",
+          "metin_ozet": "u maddesinin ikinci fıkrası, Türkiye Cumhuriyeti Anayasa'sının 13, 25, 26 ncı maddeleri, 6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58  inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun 24 ve 25 inci maddeleri, Avrupa İnsan Hakları Sözleşmesi’nin 10 uncu maddesi.\n3. Değerlendirme\nUyuşmazlığın çözümü",
+          "metin": "u maddesinin ikinci fıkrası, Türkiye Cumhuriyeti Anayasa'sının 13, 25, 26 ncı maddeleri, 6098 sayılı Türk Borçlar Kanunu'nun 49 ve 58  inci maddeleri, 4721 sayılı Türk Medeni Kanunu'nun 24 ve 25 inci maddeleri, Avrupa İnsan Hakları Sözleşmesi’nin 10 uncu maddesi.\n3. Değerlendirme\nUyuşmazlığın çözümü açısından öncelikle konuyla ilgili kavram ve yasal düzenlemelerin irdelenmesinde yarar vardır.\nAnayasa’nın 13. maddesinin ilgili kısmı şöyledir:\n\"Temel hak ve hürriyetler, özlerine dokunulmaksızın yalnızca Anayasanın ilgili maddelerinde belirtilen sebeplere bağlı olarak ve ancak kanunla sınırlanabilir. Bu sınırlamalar, ... demokratik toplum düzeninin ... gereklerine ve ölçülülük ilkesine aykırı olamaz.\"\nAnayasa'nın 26 ncı maddesi şöyledir:\n\"Herkes, düşünce ve kanaatlerini söz, yazı, resim veya başka yollarla tek başına veya toplu olarak açıklama ve yayma hakkına sahiptir. Bu hürriyet resmî makamların müdahalesi olmaksızın haber veya fikir almak ya da vermek serbestliğini de kapsar. ... Bu hürriyetlerin kullanılması, ... başkalarının şöhret veya haklarının, özel ve aile hayatlarının ... korunması ... amaçlarıyla sınırlanabilir....\"\nAnayasa'nın \"Basın hürriyeti\" başlıklı 28. maddesinin il",
+          "skor": 0.8395,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1461,
+      "ortalama_kaynak_skor": 0.8487,
+      "kaynak_sayisi": 5,
+      "message_id": "e783ed08-be94-4d62-ade6-b2138193e23e",
+      "conversation_id": "fdca24d0-13d7-4b69-bae0-ad56756bef17",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 6.92,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Vatandaşlıktan çıkarma işlemi hangi durumlarda yapılabilir, itiraz yolu var mı?",
+      "cevap": "Vatandaşlıktan çıkarma işlemi, 5901 sayılı Türk Vatandaşlığı Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında bu kanuna ilişkin bir madde bulunmamaktadır. Türk Vatandaşlığı Kanunu'nun 29. maddesine göre, vatandaşlıktan çıkarma, kişinin kendi isteği üzerine veya kamu düzeni veya güvenliği bakımından tehlike oluşturması durumunda yapılabilir.\n\nİtiraz yolu bakımından, vatandaşlıktan çıkarma kararlarına karşı idari yargıda dava açılabilir. İdari yargıda açılan dava, Danıştay veya idare mahkemelerinde görülür. Vatandaşlıktan çıkarma kararının hukuka aykırılığı iddia edilebilir ve kararın iptali talep edilebilir.\n\nAncak, verilen kaynaklar arasında bu konuya ilişkin bir madde veya Yargitay kararı bulunmamaktadır. Bu nedenle, daha详细 bilgi için ilgili kanuna veya diğer kaynaklara başvurmak gerekecektir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 512",
+          "metin_ozet": "Madde 512- Mirasçılıktan çıkarma, mirasbırakan ancak buna ilişkin tasarrufunda çıkarma\nsebebini belirtmişse geçerlidir.\nMirasçılıktan çıkarılan kimse itiraz ederse, belirtilen sebebin varlığını ispat, çıkarmadan\nyararlanan mirasçıya veya vasiyet alacaklısına düşer.\nSebebin varlığı ispat edilememiş v",
+          "metin": "Madde 512- Mirasçılıktan çıkarma, mirasbırakan ancak buna ilişkin tasarrufunda çıkarma\nsebebini belirtmişse geçerlidir.\nMirasçılıktan çıkarılan kimse itiraz ederse, belirtilen sebebin varlığını ispat, çıkarmadan\nyararlanan mirasçıya veya vasiyet alacaklısına düşer.\nSebebin varlığı ispat edilememiş veya çıkarma sebebi tasarrufta belirtilmemişse tasarruf,\nmirasçının saklı payı dışında yerine getirilir; ancak, mirasbırakan bu tasarrufu çıkarma sebebi\nhakkında düştüğü açık bir yanılma yüzünden yapmışsa, çıkarma geçersiz olur.\nIV. Borç ödemeden aciz sebebiyle mirasçılıktan çıkarma",
+          "skor": 0.8481,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 461",
+          "metin_ozet": "Madde 461- Ayırt etme gücüne sahip olan vesayet altındaki kişi ve her ilgili, vasinin\neylem ve işlemlerine karşı vesayet makamına şikâyette bulunabilir.\nVesayet makamının kararlarına karşı tebliğ gününden başlayarak on gün içinde denetim\nmakamına itiraz edilebilir.\nB. İzin\nI. Vesayet makamından",
+          "metin": "Madde 461- Ayırt etme gücüne sahip olan vesayet altındaki kişi ve her ilgili, vasinin\neylem ve işlemlerine karşı vesayet makamına şikâyette bulunabilir.\nVesayet makamının kararlarına karşı tebliğ gününden başlayarak on gün içinde denetim\nmakamına itiraz edilebilir.\nB. İzin\nI. Vesayet makamından",
+          "skor": 0.8435,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15642",
+          "metin_ozet": "2017 tarihi itibarıyla gerek ücretli gerek ücretsiz olarak izne ayrıldığı tarihte bulunduğu vakıf müdürlüğü görevi dışında öğrenim durumu dikkate alınarak, sosyal yardım ve inceleme görevlisi ünvanı ile işe devam ettirilmesinin uygun görüldüğüne ilişkin karar alındığı; 690 sayılı Kanun Hükmünde Kara",
+          "metin": "2017 tarihi itibarıyla gerek ücretli gerek ücretsiz olarak izne ayrıldığı tarihte bulunduğu vakıf müdürlüğü görevi dışında öğrenim durumu dikkate alınarak, sosyal yardım ve inceleme görevlisi ünvanı ile işe devam ettirilmesinin uygun görüldüğüne ilişkin karar alındığı; 690 sayılı Kanun Hükmünde Kararname'nin (690 sayılı KHK) 72 nci maddesiyle 18.10.2016 tarihli ve 6749 sayılı Olağanüstü Hâl Kapsamında Alınan Tedbirlere İlişkin Kanun Hükmünde Kararnamenin Değiştirilerek Kabul Edilmesine Dair Kanun'un 4 üncü maddesine eklenen beşinci fıkrada; \"... Bu kapsamda görevine iade edilenlere kamu görevinden çıkarıldıkları tarihten göreve başladıkları tarihe kadar geçen süreye tekabül eden mali ve sosyal hakları ödenir. Bu kişiler, kamu görevinden çıkarılmalarından dolayı herhangi bir tazminat talebinde bulunamaz. Bu personelin görevlerine iadesi, kamu görevinden çıkarıldıkları tarihte bulundukları yöneticilik görevi dışında öğrenim durumları ve kazanılmış hak aylık derecelerine uygun kadro ve pozisyonlara atanmak suretiyle de yerine getirilebilir.\" düzenlemesine yer verildiği;  Sosyal Güvenlik Kurumu Başkanlığının 03.04.2018 tarihli ve 2122576 sayılı yazısında, \"... 6749 sayılı Kanunun 4'ünc",
+          "skor": 0.8402,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 763",
+          "metin_ozet": "MADDE 763- (1) Elden çıkan poliçe mahkemeye sunulursa, mahkeme, iade davası\naçması için dilekçe sahibine uygun bir süre verir. Dilekçe sahibi bu süre içinde dava açmazsa,\nmahkeme, poliçeyi, sunmuş olana geri verir ve muhatap hakkındaki ödeme yasağını kaldırır.\nV - İptal kararı",
+          "metin": "MADDE 763- (1) Elden çıkan poliçe mahkemeye sunulursa, mahkeme, iade davası\naçması için dilekçe sahibine uygun bir süre verir. Dilekçe sahibi bu süre içinde dava açmazsa,\nmahkeme, poliçeyi, sunmuş olana geri verir ve muhatap hakkındaki ödeme yasağını kaldırır.\nV - İptal kararı",
+          "skor": 0.8401,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 84",
+          "metin_ozet": "Madde 84 – (Değişik: 23/7/1995-4121/9 md.)\nİstifa eden milletvekilinin milletvekilliğinin düşmesi, istifanın geçerli olduğu Türkiye Büyük\nMillet Meclisi Başkanlık Divanınca tespit edildikten sonra, Türkiye Büyük Millet Meclisi Genel\nKurulunca kararlaştırılır.\nMilletvekilliğinin kesin hüküm giyme vey",
+          "metin": "Madde 84 – (Değişik: 23/7/1995-4121/9 md.)\nİstifa eden milletvekilinin milletvekilliğinin düşmesi, istifanın geçerli olduğu Türkiye Büyük\nMillet Meclisi Başkanlık Divanınca tespit edildikten sonra, Türkiye Büyük Millet Meclisi Genel\nKurulunca kararlaştırılır.\nMilletvekilliğinin kesin hüküm giyme veya kısıtlanma halinde düşmesi, bu husustaki kesin\nmahkeme kararının Genel Kurula bildirilmesiyle olur.\n82 nci maddeye göre milletvekilliğiyle bağdaşmayan bir görev veya hizmeti sürdürmekte ısrar\neden milletvekilinin milletvekilliğinin düşmesine, yetkili komisyonun bu durumu tespit eden raporu\nüzerine Genel Kurul gizli oyla karar verir.\n37 Bu maddenin kenar başlığı, “5. Üyeliğin düşmesi” iken, 23/7/1995 tarihli ve 4121 sayılı Kanunun 9 uncu\nmaddesi ile metne işlendiği şekilde değiştirilmiştir.\n27\nMeclis çalışmalarına özürsüz veya izinsiz olarak bir ay içerisinde toplam beş birleşim günü\nkatılmayan milletvekilinin milletvekilliğinin düşmesine, durumun Meclis Başkanlık Divanınca tespit\nedilmesi üzerine, Genel Kurulca üye tamsayısının salt çoğunluğunun oyuyla karar verilebilir.\n(Mülga son fıkra: 7/5/2010-5982/9 md.)\n6. İptal istemi",
+          "skor": 0.8394,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1021,
+      "ortalama_kaynak_skor": 0.8423,
+      "kaynak_sayisi": 5,
+      "message_id": "6eaa813c-1cc8-481f-a718-96ac575a75fc",
+      "conversation_id": "2ec25c75-41fe-455a-9e7c-05838d8bdf47",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 6.19,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Seçme ve seçilme hakkı nedir, hangi suçlar seçilme hakkını engeller?",
+      "cevap": "Seçme ve seçilme hakkı, Türkiye Cumhuriyeti Anayasası'nın 67. maddesinde düzenlenmiştir. Bu maddeye göre, vatandaşlar, kanunda gösterilen şartlara uygun olarak seçme, seçilme ve bağımsız olarak veya bir siyasi parti içinde siyasi faaliyette bulunma ve halkoylamasına katılma hakkına sahiptir.\n\nSeçilme hakkı, 2709 Sayılı Türkiye Cumhuriyeti Anayasası'nın 76. maddesinde düzenlenmiştir. Bu maddeye göre, onsekiz yaşını dolduran her Türk milletvekili seçilebilir. Ancak, bazı suçlardan hüküm giymiş olanlar, milletvekili seçilemezler. Bu suçlar arasında zimmet, ihtilas, irtikap, rüşvet, hırsızlık, dolandırıcılık, sahtecilik, inancı kötüye kullanma, dolanlı iflas gibi yüz kızartıcı suçlar ve terör eylemlerine katılma veya bu gibi eylemleri tahrik ve teşvik suçları sayılabilir.\n\nAyrıca, bazı kişiler görevlerinden çekilmedikçe, aday olamazlar ve milletvekili seçilemezler. Bu kişiler arasında hakimler ve savcılar, yüksek yargı organları mensupları, yükseköğretim kurumlarındaki öğretim elemanları, Yükseköğretim Kurulu üyeleri, kamu kurum ve kuruluşlarının memur statüsündeki görevlileri ile yaptıkları hizmet bakımından işçi niteliği taşımayan diğer kamu görevlileri ve Silahlı Kuvvetler mensupları sayılabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 67",
+          "metin_ozet": "Madde 67 – Vatandaşlar, kanunda gösterilen şartlara uygun olarak seçme, seçilme ve\nbağımsız olarak veya bir siyasi parti içinde siyasi faaliyette bulunma ve halkoylamasına katılma\nhakkına sahiptir.\n(Değişik fıkra: 23/7/1995-4121/5 md.) Seçimler ve halkoylaması serbest, eşit, gizli, tek\ndereceli, gen",
+          "metin": "Madde 67 – Vatandaşlar, kanunda gösterilen şartlara uygun olarak seçme, seçilme ve\nbağımsız olarak veya bir siyasi parti içinde siyasi faaliyette bulunma ve halkoylamasına katılma\nhakkına sahiptir.\n(Değişik fıkra: 23/7/1995-4121/5 md.) Seçimler ve halkoylaması serbest, eşit, gizli, tek\ndereceli, genel oy, açık sayım ve döküm esaslarına göre, yargı yönetim ve denetimi altında yapılır.\nAncak, yurt dışında bulunan Türk vatandaşlarının oy hakkını kullanabilmeleri amacıyla kanun,\nuygulanabilir tedbirleri belirler.\n(Değişik fıkra: 23/7/1995-4121/5 md.) Onsekiz yaşını dolduran her Türk vatandaşı seçme ve\nhalkoylamasına katılma haklarına sahiptir.\nBu hakların kullanılması kanunla düzenlenir.\n(Değişik fıkra: 23/7/1995-4121/5 md.) Silah altında bulunan er ve erbaşlar ile askeri\nöğrenciler, taksirli suçlardan hüküm giyenler hariç ceza infaz kurumlarında bulunan hükümlüler oy\nkullanamazlar. Ceza infaz kurumları ve tutuk evlerinde oy kullanılması ve oyların sayım ve\n22 Bu maddenin kenar başlığı “XIII. Sosyal ve ekonomik hakların sınırı” iken, 3/10/2001 tarihli ve 4709 sayılı\nKanunun 22 nci maddesiyle metne işlendiği şekilde değiştirilmiştir.\n20\ndökümünde seçim emniyeti açısından alınması gerekli tedbirler Yüksek Seçim Kurulu tarafından\ntespit edilir ve görevli hakimin yerinde yönetim ve denetimi altında yapılır. 23\n(Ek fıkra: 23/7/1995-4121/5 md.) Seçim kanunları, temsilde adalet ve yönetimde istikrar\nilkelerini bağdaştıracak biçimde düzenlenir.\n(Ek fıkra: 3/10/2001-4709/24 md.) Seçim kanunlarında yapılan değişiklikler, yürürlüğe\ngirdiği tarihten itibaren bir yıl içinde yapılacak seçimlerde uygulanmaz.\nIII. Siyasi partilerle ilgili hükümler\nA. Parti kurma, partilere girme ve partilerden ayrılma 24",
+          "skor": 0.8539,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 76",
+          "metin_ozet": "Madde 76 – Onsekiz yaşını dolduran her Türk milletvekili seçilebilir. 30\nEn az ilkokul mezunu olmayanlar, kısıtlılar, askerlikle ilişiği olanlar, kamu hizmetinden\nyasaklılar, taksirli suçlar hariç toplam bir yıl veya daha fazla hapis ile ağır hapis cezasına hüküm\ngiymiş olanlar; zimmet, ihtilas, irt",
+          "metin": "Madde 76 – Onsekiz yaşını dolduran her Türk milletvekili seçilebilir. 30\nEn az ilkokul mezunu olmayanlar, kısıtlılar, askerlikle ilişiği olanlar, kamu hizmetinden\nyasaklılar, taksirli suçlar hariç toplam bir yıl veya daha fazla hapis ile ağır hapis cezasına hüküm\ngiymiş olanlar; zimmet, ihtilas, irtikap, rüşvet, hırsızlık, dolandırıcılık, sahtecilik, inancı kötüye\nkullanma, dolanlı iflas gibi yüz kızartıcı suçlarla, kaçakçılık, Resmî ihale ve alım satımlara fesat\nkarıştırma, Devlet sırlarını açığa vurma, terör eylemlerine katılma ve bu gibi eylemleri tahrik ve teşvik\nsuçlarından biriyle hüküm giymiş olanlar, affa uğramış olsalar bile milletvekili seçilemezler. 31 32\n29 21/1/2017 tarihli ve 6771 sayılı Kanunun 2 nci maddesiyle, bu fıkrada yer alan “beşyüzelli” ibaresi\n“altıyüz” şeklinde değiştirilmiştir.\n30 13/10/2006 tarihli ve 5551 sayılı Kanunun 1 inci maddesiyle, bu fıkrada yer alan “Otuz” ibaresi “Yirmibeş”\nşeklinde değiştirilmiş, daha sonra 21/1/2017 tarihli ve 6771 sayılı Kanunun 3 üncü maddesiyle de “Yirmibeş”\nibaresi “Onsekiz” şeklinde değiştirilmiştir.\n31 21/1/2017 tarihli ve 6771 sayılı Kanunun 3 üncü maddesiyle bu fıkrada yer alan “yükümlü olduğu askerlik\nhizmetini yapmamış olanlar,” ibaresi “askerlikle ilişiği olanlar,” şeklinde değiştirilmiştir.\n32 7/12/2002 tarihli ve 4777 sayılı Kanunun 1 inci maddesiyle, bu fıkrada yer alan “ideolojik veya anarşik\neylemlere” ibaresi, “terör eylemlerine” şeklinde değiştirilmiştir.\n24\nHakimler ve savcılar, yüksek yargı organları mensupları, yükseköğretim kurumlarındaki\nöğretim elemanları, Yükseköğretim Kurulu üyeleri, kamu kurum ve kuruluşlarının memur\nstatüsündeki görevlileri ile yaptıkları hizmet bakımından işçi niteliği taşımayan diğer kamu görevlileri\nve Silahlı Kuvvetler mensupları, görevlerinden çekilmedikçe, aday olamazlar ve milletvekili\nseçilemezler.\nC. Türkiye Büyük Millet Meclisi ve Cumhurbaşkanının seçim dönemi 33",
+          "skor": 0.845,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 111",
+          "metin_ozet": "Madde 111- (1) Tehdit, şantaj, cebir veya kişiyi hürriyetinden yoksun kılma suçlarının\nişlenmesi sonucunda yararına haksız menfaat sağlanan tüzel kişiler hakkında bunlara özgü\ngüvenlik tedbirlerine hükmolunur.\nEğitim ve öğretim hakkının engellenmesi53\n52 8/7/2021 tarihli ve 7331 sayılı Kanunun 9 unc",
+          "metin": "Madde 111- (1) Tehdit, şantaj, cebir veya kişiyi hürriyetinden yoksun kılma suçlarının\nişlenmesi sonucunda yararına haksız menfaat sağlanan tüzel kişiler hakkında bunlara özgü\ngüvenlik tedbirlerine hükmolunur.\nEğitim ve öğretim hakkının engellenmesi53\n52 8/7/2021 tarihli ve 7331 sayılı Kanunun 9 uncu maddesiyle, bu bende “eşe” ibaresinden sonra\ngelmek üzere “ya da boşandığı eşe” ibaresi eklenmiştir.\n532/3/2014 tarihli ve 6529 sayılı Kanunun 12 nci maddesiyle bu madde başlığı “Eğitim ve öğretimin\nengellenmesi” iken, metne işlendiği şekilde değiştirilmiştir.",
+          "skor": 0.8403,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 433",
+          "metin_ozet": "MADDE 433- (1) Oy hakkının kullanılmasına ilişkin sınırlamaları dolanmak veya\nherhangi bir şekilde etkisiz bırakmak amacıyla, payların veya pay senetlerinin devri ya da pay\nsenetlerinin başkasına verilmesi geçersizdir.\n(2) Yetkisiz katılmalarla ilgili olarak her pay sahibi, toplantı başkanlığına iti",
+          "metin": "MADDE 433- (1) Oy hakkının kullanılmasına ilişkin sınırlamaları dolanmak veya\nherhangi bir şekilde etkisiz bırakmak amacıyla, payların veya pay senetlerinin devri ya da pay\nsenetlerinin başkasına verilmesi geçersizdir.\n(2) Yetkisiz katılmalarla ilgili olarak her pay sahibi, toplantı başkanlığına itirazda\nbulunabilir, itirazını ve yönetim kuruluna da itirazda bulunmuş olduğunu tutanağa geçirtebilir.\nIII - Oy hakkı\n1. İlke",
+          "skor": 0.8369,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 112",
+          "metin_ozet": "MADDE 112- (1) Seçimlik borçlarda, seçim hakkı kendisine ait olan borçlu veya\nüçüncü kişinin bu hakkı kullanmaktan kaçınması hâlinde, alacaklı seçimlik dava açabilir.\n(2) Seçimlik davada mahkeme, talebin hukuka uygun olduğu sonucuna varırsa,\nseçimlik mahkûmiyet hükmü verir.\n(3) Seçimlik mahkûmiyet h",
+          "metin": "MADDE 112- (1) Seçimlik borçlarda, seçim hakkı kendisine ait olan borçlu veya\nüçüncü kişinin bu hakkı kullanmaktan kaçınması hâlinde, alacaklı seçimlik dava açabilir.\n(2) Seçimlik davada mahkeme, talebin hukuka uygun olduğu sonucuna varırsa,\nseçimlik mahkûmiyet hükmü verir.\n(3) Seçimlik mahkûmiyet hükmünü cebrî icraya koyan alacaklı, takibinin konusunu,\nmahkûmiyet hükmünde yer alan edimlerden birine hasretmek zorundadır. Ancak, bu durum,\nborçlunun, diğer edimi ifa etmek suretiyle borcundan kurtulma hakkını ortadan kaldırmaz.\nTopluluk davası",
+          "skor": 0.836,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1418,
+      "ortalama_kaynak_skor": 0.8424,
+      "kaynak_sayisi": 5,
+      "message_id": "186163cc-9e50-4436-b96a-4a2a42b79d52",
+      "conversation_id": "c500e991-6266-45c5-8db8-52420e3b5e76",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 7.25,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

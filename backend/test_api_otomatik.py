@@ -35,15 +35,44 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 API_URL = "http://127.0.0.1:8000"
 SORULAR_DOSYASI = os.path.join(os.path.dirname(__file__), "test_sorular.json")
-CIKTI_DOSYASI = os.path.join(
-    os.path.dirname(__file__),
-    "test_results",
-    f"test_sonuclari_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
-)
 BEKLEME_SN = 4          # Sorular arası bekleme (saniye)
 MAX_RETRY = 3           # 429 alındığında deneme sayısı
 TIMEOUT_SN = 60.0       # Her istek için timeout
 MAX_KAYNAK = 5          # /ask max_kaynak parametresi
+
+
+def cikti_yolu_belirle(sorular: dict, cikti_param: str | None = None) -> str:
+    """
+    Çıktı dosya yolunu belirle.
+
+    Mantık:
+    1. --cikti parametresi verilmişse → onu kullan
+    2. Tek kategori varsa → test_results/{klasor_ad}/test_sonuclari_...
+    3. Çok kategori varsa → test_results/test_sonuclari_...
+    """
+    if cikti_param:
+        return cikti_param
+
+    # Tek kategori mi?
+    if len(sorular) == 1:
+        kategori_adi = next(iter(sorular.keys()))
+        # Klasör adını türet (küçük harf, boşluk → _, türkçe → ing)
+        klasor_adi = kategori_adi.lower()
+        turkce_map = {"ş": "s", "ı": "i", "ğ": "g", "ü": "u", "ö": "o", "ç": "c", " ": "_"}
+        for tr, en in turkce_map.items():
+            klasor_adi = klasor_adi.replace(tr, en)
+        klasor_adi = klasor_adi.replace("i̇", "i")  # özel durum
+
+        cikti_klasor = os.path.join(os.path.dirname(__file__), "test_results", klasor_adi)
+        os.makedirs(cikti_klasor, exist_ok=True)
+        return os.path.join(cikti_klasor, f"test_sonuclari_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+
+    # Çoklu kategori → genel klasör
+    return os.path.join(
+        os.path.dirname(__file__),
+        "test_results",
+        f"test_sonuclari_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+    )
 
 
 def sorulari_yuk(dosya_yolu: str) -> dict[str, list[str]]:
@@ -165,13 +194,43 @@ def test_calistir(
                 kategori_ozet[kategori]["basarili"] += 1
                 kategori_ozet[kategori]["sureler"].append(elapsed)
 
+                # --- Yeni metrikler ---
+                cevap = yanit.get("yanit", "")
+                kaynaklar = yanit.get("kaynaklar", [])
+                kategori_tespit = yanit.get("kategori", "")
+
+                # 1) Kategori doğruluğu
+                kategori_dogru = kategori_tespit.strip().lower() == kategori.strip().lower()
+
+                # 2) Cevap uzunluğu (karakter)
+                cevap_uzunluk = len(cevap)
+
+                # 3) Ortalama kaynak skoru
+                ort_kaynak_skor = 0.0
+                if kaynaklar:
+                    skorlar = [k.get("skor", 0) for k in kaynaklar]
+                    ort_kaynak_skor = round(sum(skorlar) / len(skorlar), 4)
+
+                # Kategori özetine yeni metrikleri ekle
+                kategori_ozet[kategori].setdefault("kategori_dogru", 0)
+                kategori_ozet[kategori].setdefault("cevap_uzunluklar", [])
+                kategori_ozet[kategori].setdefault("kaynak_skorlari", [])
+                if kategori_dogru:
+                    kategori_ozet[kategori]["kategori_dogru"] += 1
+                kategori_ozet[kategori]["cevap_uzunluklar"].append(cevap_uzunluk)
+                kategori_ozet[kategori]["kaynak_skorlari"].append(ort_kaynak_skor)
+
                 sonuclar.append({
                     "sira": idx,
                     "kategori_beklenen": kategori,
                     "soru": soru,
-                    "cevap": yanit.get("yanit", ""),
-                    "kaynaklar": yanit.get("kaynaklar", []),
-                    "kategori_tespit": yanit.get("kategori", ""),
+                    "cevap": cevap,
+                    "kaynaklar": kaynaklar,
+                    "kategori_tespit": kategori_tespit,
+                    "kategori_dogru": kategori_dogru,
+                    "cevap_uzunluk": cevap_uzunluk,
+                    "ortalama_kaynak_skor": ort_kaynak_skor,
+                    "kaynak_sayisi": len(kaynaklar),
                     "message_id": yanit.get("message_id"),
                     "conversation_id": yanit.get("conversation_id"),
                     "uyari": yanit.get("uyari", ""),
@@ -179,7 +238,10 @@ def test_calistir(
                     "basarili": True,
                     "hata": None,
                 })
-                print(f"[{idx:3d}/{toplam}] [{kategori:25s}] ✅ {elapsed:.1f}s")
+                print(f"[{idx:3d}/{toplam}] [{kategori:25s}] ✅ {elapsed:.1f}s | "
+                      f"kat={'✅' if kategori_dogru else '❌'} "
+                      f"cevap={cevap_uzunluk}chr "
+                      f"skor={ort_kaynak_skor:.3f}")
             else:
                 basarisiz += 1
                 kategori_ozet[kategori]["basarisiz"] += 1
@@ -213,12 +275,21 @@ def test_calistir(
     for kat, veri in kategori_ozet.items():
         sureler = veri["sureler"]
         ortalama_sure = round(sum(sureler) / len(sureler), 2) if sureler else 0
+
+        # Yeni metrikler
+        cevap_uzunluklar = veri.get("cevap_uzunluklar", [])
+        kaynak_skorlari = veri.get("kaynak_skorlari", [])
+        kategori_dogru = veri.get("kategori_dogru", 0)
+
         ozet_kategori[kat] = {
             "toplam": veri["toplam"],
             "basarili": veri["basarili"],
             "basarisiz": veri["basarisiz"],
             "basari_orani": round(veri["basarili"] / veri["toplam"] * 100, 1) if veri["toplam"] else 0,
             "ortalama_sure_sn": ortalama_sure,
+            "kategori_dogruluk_orani": round(kategori_dogru / veri["basarili"] * 100, 1) if veri["basarili"] else 0,
+            "ortalama_cevap_uzunluk": round(sum(cevap_uzunluklar) / len(cevap_uzunluklar), 0) if cevap_uzunluklar else 0,
+            "ortalama_kaynak_skor": round(sum(kaynak_skorlari) / len(kaynak_skorlari), 4) if kaynak_skorlari else 0,
         }
 
     sonuc_paket = {
@@ -229,6 +300,7 @@ def test_calistir(
             "kategori_sayisi": len(sorular),
             "rate_limit_bekleme_sn": bekleme_sn,
             "max_retry": MAX_RETRY,
+            "cikti_dosyasi": cikti_yolu,
         },
         "ozet": {
             "toplam": toplam,
@@ -268,17 +340,22 @@ def ozet_yazdir(sonuc: dict) -> None:
     print("-" * 70)
     print("KATEGORİ DAĞILIMI")
     print("-" * 70)
-    print(f"  {'Kategori':<25s} {'Toplam':>6s} {'Başarılı':>8s} {'Oran':>7s} {'Ort.Süre':>8s}")
-    print(f"  {'-'*25} {'-'*6} {'-'*8} {'-'*7} {'-'*8}")
+    print(f"  {'Kategori':<25s} {'Toplam':>6s} {'Başarılı':>8s} {'Oran':>7s} "
+          f"{'Kat.Doğru':>9s} {'Ort.Uzunluk':>11s} {'Ort.Skor':>8s} {'Ort.Süre':>8s}")
+    print(f"  {'-'*25} {'-'*6} {'-'*8} {'-'*7} {'-'*9} {'-'*11} {'-'*8} {'-'*8}")
 
     for kat, veri in ozet["kategori_dagilimi"].items():
         print(
             f"  {kat:<25s} {veri['toplam']:>6d} {veri['basarili']:>8d} "
-            f"%{veri['basari_orani']:>5.1f} {veri['ortalama_sure_sn']:>6.1f}s"
+            f"%{veri['basari_orani']:>5.1f} "
+            f"%{veri['kategori_dogruluk_orani']:>6.1f} "
+            f"{veri['ortalama_cevap_uzunluk']:>9.0f}chr "
+            f"{veri['ortalama_kaynak_skor']:>6.3f} "
+            f"{veri['ortalama_sure_sn']:>6.1f}s"
         )
 
     print()
-    print(f"📁 Sonuçlar kaydedildi: {CIKTI_DOSYASI}")
+    print(f"📁 Sonuçlar kaydedildi: {sonuc['test_meta']['cikti_dosyasi']}")
     print("=" * 70)
 
 
@@ -294,8 +371,8 @@ def main():
     )
     parser.add_argument(
         "--cikti",
-        default=CIKTI_DOSYASI,
-        help="Çıktı JSON dosya yolu",
+        default=None,
+        help="Çıktı JSON dosya yolu (belirtilmezse otomatik: test_results/{kategori}/)",
     )
     parser.add_argument(
         "--api-url",
@@ -322,8 +399,11 @@ def main():
     # Soruları yükle
     sorular = sorulari_yuk(args.sorular)
 
+    # Çıktı yolunu belirle (otomatik kategori bazlı)
+    cikti_yolu = cikti_yolu_belirle(sorular, args.cikti)
+
     # Testi çalıştır
-    sonuc = test_calistir(sorular, args.api_url, args.bekleme, args.cikti)
+    sonuc = test_calistir(sorular, args.api_url, args.bekleme, cikti_yolu)
 
     # Özet yazdır
     ozet_yazdir(sonuc)

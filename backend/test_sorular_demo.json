@@ -6,26 +6,12 @@
     "İşveren mobbing yaparsa ne yapabilirim?",
     "Yıllık izin hakkım kaç gün?"
   ],
-  "Kira Hukuku": [
-    "Kiracı kira bedelini ödemezse ev sahibi ne yapabilir?",
-    "Ev sahibi kirayı ne kadar artırabilir?",
-    "Kira sözleşmesi kaç yıl için yapılır?",
-    "Depozito ne zaman iade edilir?",
-    "Kiracı evi tahliye etmek zorunda kalırsa ne yapmalı?"
-  ],
-  "Tüketici Hukuku": [
-    "Ayıplı bir ürün aldım, iade edebilir miyim?",
-    "Online alışverişte cayma hakkı nedir?",
-    "Garanti süresi ne kadardır?",
-    "Peşin fiyatına taksitli satış yasal mı?",
-    "Tüketici hakem heyetine nasıl başvurulur?"
-  ],
-  "Aile Hukuku": [
-    "Boşanma davası nasıl açılır?",
-    "Velayet hakkı kime verilir?",
-    "Nafaka ödeme yükümlülüğü ne zaman sona erer?",
-    "Evlilik sırasında edinilen mallar nasıl paylaşılır?",
-    "Miras payı nasıl belirlenir?"
+  "Medeni Hukuk": [
+    "Miras payı nasıl belirlenir?",
+    "Vasi tayini nasıl yapılır?",
+    "Vasilik müessesesi nedir?",
+    "Evlilik birliğinin mal rejimi nedir?",
+    "Miras reddi nasıl yapılır?"
   ],
   "Ceza Hukuku": [
     "Hırsızlık suçunun cezası ne kadardır?",
@@ -34,19 +20,33 @@
     "Dolandırıcılık cezası nedir?",
     "Gözaltı süresi ne kadardır?"
   ],
-  "İdare Hukuku": [
-    "İdari işleme karşı iptal davası nasıl açılır?",
-    "Belediye ruhsat vermezse ne yapılabilir?",
-    "Memura verilen disiplin cezasına nasıl itiraz edilir?",
-    "Kamulaştırma bedeli nasıl belirlenir?",
-    "Yürütmeyi durdurma kararı nedir?"
-  ],
   "Ticaret Hukuku": [
     "Limited şirket nasıl kurulur?",
     "İflas davası nasıl açılır?",
     "Konkordato nedir, nasıl talep edilir?",
     "Ticari senet ne demektir?",
-    "İcra takibi nasıl başlatılır?"
+    "Anonim şirketin yönetim organları nelerdir?"
+  ],
+  "Tüketici Hukuku": [
+    "Ayıplı bir ürün aldım, iade edebilir miyim?",
+    "Online alışverişte cayma hakkı nedir?",
+    "Garanti süresi ne kadardır?",
+    "Peşin fiyatına taksitli satış yasal mı?",
+    "Tüketici hakem heyetine nasıl başvurulur?"
+  ],
+  "Taşınmaz Mülk": [
+    "Tapu almak için gerekli şartlar nelerdir?",
+    "Gayrimenkul vergisi nasıl hesaplanır?",
+    "İmar planı değiştirilirse mülk sahibinin hakkı ne olur?",
+    "Kamulaştırma bedeli nasıl belirlenir?",
+    "Sınır aşan inşaat yapıldığında ne yapılmalı?"
+  ],
+  "İdare Hukuku": [
+    "İdari işleme karşı iptal davası nasıl açılır?",
+    "Belediye ruhsat vermezse ne yapılabilir?",
+    "Memura verilen disiplin cezasına nasıl itiraz edilir?",
+    "Yürütmeyi durdurma kararı nedir?",
+    "İdarenin işlemleri iptal ettirilir mi?"
   ],
   "Vergi Hukuku": [
     "Gelir vergisi beyannamesi ne zaman verilir?",
@@ -62,11 +62,39 @@
     "SGK borcu nasıl yapılandırılır?",
     "Askerlik borçlanması nasıl yapılır?"
   ],
-  "Genel Hukuk": [
-    "Arabuluculuk nedir, zorunlu mu?",
+  "Fikri Mülkiyet": [
+    "Telif hakkı nedir, nasıl korunur?",
+    "Patent başvurusu nasıl yapılır?",
+    "Marka tescili ne işe yarar?",
+    "Fikri mülkiyet ihlaline karşı ne yapılabilir?",
+    "Eser sahibinin hakları nelerdir?"
+  ],
+  "Bilişim Hukuku": [
+    "Kişisel verilerin korunması hakkı nedir?",
+    "İnternet üzerinden suç işlenirse ne olur?",
+    "E-imza yasal geçerliliği var mı?",
+    "KVKK kapsamında veri ihlali bildirimi nasıl yapılır?",
+    "Siber suçlara nerede şikayet edilir?"
+  ],
+  "Anayasa Hukuku": [
+    "Temel hak ve özgürlükler nelerdir?",
+    "Anayasa Mahkemesi'ne bireysel başvuru nasıl yapılır?",
+    "İfade özgürlüğünün sınırları nelerdir?",
+    "Anayasal haklar ihlal edilirse ne yapılabilir?",
+    "Kanunların anayasaya uygunluk denetimi nasıl yapılır?"
+  ],
+  "Usul Hukuku": [
     "Dava açma süresi ne kadardır?",
-    "Hak düşürücü süre nedir?",
-    "Zamanaşımı ne demektir?",
-    "Yargılama süreci ne kadar sürer?"
+    "Arabuluculuk nedir, zorunlu mu?",
+    "İcra takibi nasıl başlatılır?",
+    "Tebligat nedir, nasıl yapılır?",
+    "Hak düşürücü süre nedir?"
+  ],
+  "Diğer": [
+    "Trafik cezasına nasıl itiraz edilir?",
+    "Dernek kurma şartları nelerdir?",
+    "Dilekçe hakkı nedir?",
+    "Noter işlemleri nasıl yapılır?",
+    "Yabancıların Türkiye'de çalışma izni nasıl alınır?"
   ]
 }

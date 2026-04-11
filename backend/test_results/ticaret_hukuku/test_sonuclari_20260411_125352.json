@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-11T12:55:28.152225+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 6.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/ticaret_hukuku/test_sonuclari_20260411_125352.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 96.0,
+    "ortalama_sure_sn": 8.0,
+    "kategori_dagilimi": {
+      "Ticaret Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 2.0,
+        "kategori_dogruluk_orani": 66.7,
+        "ortalama_cevap_uzunluk": 1076.0,
+        "ortalama_kaynak_skor": 0.0553
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Şirket kuruluşu için hangi temel belgeler gerekir?",
+      "cevap": "Şirket kuruluşu için gerekli olan temel belgeler, şirket türüne göre değişebilir. Ancak genel olarak aşağıdaki belgeler gerekir:\n\n- Şirket sözleşmesi veya esas sözleşmesi\n- Şirketin ticaret unvanı ve adresi\n- Şirketin amaç ve konusu\n- Şirketin sermayesi ve pay sahipleri\n- Şirketin yönetim şekli ve yetkilileri\n\nBu bilgiler, Ticaret Sicili Kanunu ve ilgili mevzuata göre düzenlenmelidir. Ancak, verilen kaynaklar şirket kuruluşu ile ilgili temel belgeler hakkında yeterli bilgi sağlamamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.1051,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 4",
+          "metin_ozet": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "metin": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "skor": 0.0937,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/16205",
+          "metin_ozet": "rliğiyle karar verildi.",
+          "metin": "rliğiyle karar verildi.",
+          "skor": 0.0914,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/8112",
+          "metin_ozet": "rliğiyle karar verildi.",
+          "metin": "rliğiyle karar verildi.",
+          "skor": 0.0914,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8145",
+          "metin_ozet": "rliğiyle karar verildi.",
+          "metin": "rliğiyle karar verildi.",
+          "skor": 0.0914,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 698,
+      "ortalama_kaynak_skor": 0.0946,
+      "kaynak_sayisi": 5,
+      "message_id": "4af933c7-fb0e-4fbd-9c7e-8a3382d8217f",
+      "conversation_id": "179ef87e-f5c6-4fdb-b0c4-0f11621f0421",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.61,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Limited şirket ile anonim şirket arasındaki temel farklar nelerdir?",
+      "cevap": "Limited şirket ve anonim şirket, Türk Ticaret Kanunu'nda düzenlenen iki farklı türdeki şirketlerdir. Bu şirketlerin arasındaki temel farklar aşağıdaki gibidir:\n\n1. **Kuruluş**: Limited şirket, en az bir gerçek veya tüzel kişi tarafından kurulabilir ve sermaye en az 10.000 TL'dir. Anonim şirket ise en az beş gerçek veya tüzel kişi tarafından kurulabilir ve sermaye en az 50.000 TL'dir.\n\n2. **Sermaye Yapısı**: Limited şirketin sermayesi, ortakların taahhüt ettiği ve şirketin kuruluş aşamasında ödenen sermayeden oluşur. Anonim şirketin sermayesi ise hisse senetlerinin satışından oluşur ve şirketin sermayesi hisse senetlerinin toplam değerine eşittir.\n\n3. **Yönetim**: Limited şirketin yönetimi, ortaklar tarafından seçilen müdür veya müdürler tarafından yürütülür. Anonim şirketin yönetimi ise genel kurul, yönetim kurulu ve denetim kurulundan oluşur.\n\n4. **Sorumluluk**: Limited şirket ortaklarının sorumluluğu, taahhüt ettikleri sermaye ile sınırlıdır. Anonim şirket ortaklarının sorumluluğu ise hisse senetlerinin değerine eşittir.\n\n5. **Hisse Devri**: Limited şirketin hisse devri, şirketin diğer ortaklarının onayına tabi olup, şirketin iç işleyişini etkileyebilir. Anonim şirketin hisse senetlerinin devri ise daha serbesttir ve şirketin iç işleyişini doğrudan etkilemez.\n\nBu farklılıklar, şirketlerin kuruluş, yönetim ve işleyişini etkileyen önemli hususlardır. Ancak, bu konuda daha detaylı bilgi için Türk Ticaret Kanunu ve ilgili mevzuata bakılması gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6899",
+          "metin_ozet": "rihinde oy birliğiyle karar verildi.",
+          "metin": "rihinde oy birliğiyle karar verildi.",
+          "skor": 0.08,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/6628",
+          "metin_ozet": "rihinde oy birliğiyle karar verildi.",
+          "metin": "rihinde oy birliğiyle karar verildi.",
+          "skor": 0.08,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13186",
+          "metin_ozet": "rihinde oy birliğiyle karar verildi.",
+          "metin": "rihinde oy birliğiyle karar verildi.",
+          "skor": 0.08,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/12549",
+          "metin_ozet": "oğunluğun (2 numaralı bentteki) bozma kararına katılmıyoruz.",
+          "metin": "oğunluğun (2 numaralı bentteki) bozma kararına katılmıyoruz.",
+          "skor": 0.0795,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14278",
+          "metin_ozet": "liğiyle karar verildi.",
+          "metin": "liğiyle karar verildi.",
+          "skor": 0.0789,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1681,
+      "ortalama_kaynak_skor": 0.0797,
+      "kaynak_sayisi": 5,
+      "message_id": "e2e45da7-5097-4f83-a726-9e4183ba8805",
+      "conversation_id": "30ac147d-d8bf-40e6-90ed-55596d0333ff",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.37,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Ortaklar şirket borçlarından hangi ölçüde sorumludur?",
+      "cevap": "Ortakların şirket borçlarından sorumlulukları, şirketin türüne göre değişebilir. Ancak, verilen kaynaklarda bu konuya ilişkin bir bilgi bulunmamaktadır. Türk Ticaret Kanunu'nda ortakların sorumluluğuna ilişkin hükümler yer almaktadır, ancak bu kaynaklar arasında değildir.\n\nTürk Ticaret Kanunu'nun 134. maddesine göre, kolektif şirket ortakları, şirket borçlarından müteselsilen ve sınırsız olarak sorumludurlar. Limited şirket ortakları ise, şirket borçlarından sadece taahhüt ettikleri sermaye payları oranında sorumludurlar. Anonim şirket ortakları da, şirket borçlarından sadece taahhüt ettikleri sermaye payları oranında sorumludurlar.\n\nAncak, bu bilgiler verilen kaynaklarda yer almamaktadır. Bu nedenle, ortakların şirket borçlarından sorumlulukları hakkında daha详lı bilgi için ilgili kanun maddelerine başvurmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6698 Sayılı Kişisel Verilerin Korunması Kanunu - Madde 26",
+          "metin_ozet": "MADDE 26- (1) Kurumda, Kişisel Verileri Koruma Uzmanı ve Kişisel Verileri\nKoruma Uzman Yardımcısı istihdam edilebilir. Bunlardan 657 sayılı Kanunun ek 41 inci\nmaddesi çerçevesinde Kişisel Verileri Koruma Uzmanı kadrosuna atananlara bir defaya\nmahsus olmak üzere bir derece yükseltilmesi uygulanır.\nPe",
+          "metin": "MADDE 26- (1) Kurumda, Kişisel Verileri Koruma Uzmanı ve Kişisel Verileri\nKoruma Uzman Yardımcısı istihdam edilebilir. Bunlardan 657 sayılı Kanunun ek 41 inci\nmaddesi çerçevesinde Kişisel Verileri Koruma Uzmanı kadrosuna atananlara bir defaya\nmahsus olmak üzere bir derece yükseltilmesi uygulanır.\nPersonele ve özlük haklarına ilişkin hükümler",
+          "skor": 0.0855,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6698&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 71",
+          "metin_ozet": "Madde 71– Kamu hizmetine girenlerin mal bildiriminde bulunmaları ve bu bildirimlerin\ntekrarlanma süreleri kanunla düzenlenir. Yasama ve yürütme organlarında görev alanlar, bundan\nistisna edilemez.\nV. Vatan hizmeti",
+          "metin": "Madde 71– Kamu hizmetine girenlerin mal bildiriminde bulunmaları ve bu bildirimlerin\ntekrarlanma süreleri kanunla düzenlenir. Yasama ve yürütme organlarında görev alanlar, bundan\nistisna edilemez.\nV. Vatan hizmeti",
+          "skor": 0.0834,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 431",
+          "metin_ozet": "MADDE 431- Taraflardan her birinin, belirsiz süreli sözleşmeyi fesih sürelerine uyarak feshetme hakkı vardır.",
+          "metin": "MADDE 431- Taraflardan her birinin, belirsiz süreli sözleşmeyi fesih sürelerine uyarak feshetme hakkı vardır.",
+          "skor": 0.0822,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5253 Sayılı Dernekler Kanunu - Madde 31",
+          "metin_ozet": "Madde 31- Dernekler, defterlerinde ve kayıtlarında ve Türkiye Cumhuriyetinin resmi\nkurumlarıyla yazışmalarında Türkçe kullanırlar.\nALTINCI BÖLÜM\nCeza Hükümleri\nCeza hükümleri",
+          "metin": "Madde 31- Dernekler, defterlerinde ve kayıtlarında ve Türkiye Cumhuriyetinin resmi\nkurumlarıyla yazışmalarında Türkçe kullanırlar.\nALTINCI BÖLÜM\nCeza Hükümleri\nCeza hükümleri",
+          "skor": 0.0793,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5253&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 760",
+          "metin_ozet": "Madde 760- Özel mülkiyete tâbi arazide bulunan kaynak, kuyu veya derelerden\nkomşuların ve diğer kişilerin su içme, su alma veya hayvan sulama ya da benzer yollarla\nyararlanmaları özel kanun hükümlerine tâbidir. Özel kanun hükmü yoksa yerel âdet uygulanır.\nV. Zorunlu su",
+          "metin": "Madde 760- Özel mülkiyete tâbi arazide bulunan kaynak, kuyu veya derelerden\nkomşuların ve diğer kişilerin su içme, su alma veya hayvan sulama ya da benzer yollarla\nyararlanmaları özel kanun hükümlerine tâbidir. Özel kanun hükmü yoksa yerel âdet uygulanır.\nV. Zorunlu su",
+          "skor": 0.079,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1032,
+      "ortalama_kaynak_skor": 0.0819,
+      "kaynak_sayisi": 5,
+      "message_id": "16d87af7-3177-4a4b-8c0f-ffd54e0e580b",
+      "conversation_id": "140d0e54-0022-406d-9e17-702ab23fa912",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.79,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Çek karşılıksız çıkarsa hangi hukuki ve cezai sonuçlar doğar?",
+      "cevap": "Çek karşılıksız çıkması durumunda, hem hukuki hem de cezai sonuçlar doğabilir. \n\nHukuki sonuçlar açısından, çekin karşılıksız çıkması durumunda, çek hamili, çekin ödenmemesi nedeniyle zarara uğramış olur. Çek hamili, çekin ödenmemesi nedeniyle uğradığı zararı, çekin düzenleyicisinden talep edebilir. Ayrıca, çekin ödenmemesi nedeniyle doğan faiz ve diğer giderleri de talep edebilir.\n\nCezai sonuçlar açısından, 5941 sayılı Çek Kanunu'nun 5. maddesine göre, çekin karşılıksız çıkması, suç teşkil eder. Çekin karşılıksız çıkması durumunda, çekin düzenleyicisi, 1 yıldan 5 yıla kadar hapis cezası ile cezalandırılabilir. Ayrıca, çekin düzenleyicisi, çekin ödenmemesi nedeniyle doğan zararı da tazmin etmekle yükümlüdür.\n\nAncak, verilen kaynaklar, çek karşılıksız çıkması durumunda doğan hukuki ve cezai sonuçlar hakkında yeterli bilgi vermemektedir. Bu nedenle, daha详lı bilgi için, ilgili kanun ve yönetmeliklere başvurmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.0338,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3619",
+          "metin_ozet": "mesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "mesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0276,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3620",
+          "metin_ozet": "mesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "mesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0276,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3622",
+          "metin_ozet": "mesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "mesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0276,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2290",
+          "metin_ozet": "usul ve kanuna uygun olup davacı ve davalı DHMİ Genel Müdürlüğü vekilleri tarafından temyiz dilekçelerinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uya",
+          "metin": "usul ve kanuna uygun olup davacı ve davalı DHMİ Genel Müdürlüğü vekilleri tarafından temyiz dilekçelerinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nAşağıda yazılı temyiz giderinin temyiz edenlere yükletilmesine,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğin Bölge Adliye Mahkemesine gönderilmesine,\n04.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0246,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1133,
+      "ortalama_kaynak_skor": 0.0282,
+      "kaynak_sayisi": 5,
+      "message_id": "bc32c6a7-ad15-4657-834d-10a0fc362a86",
+      "conversation_id": "9b989cd4-c5f6-458d-a825-a576fd69cdac",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.75,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Bono ve poliçe arasındaki farklar nelerdir?",
+      "cevap": "Bono ve poliçe, her ikisi de ticari işlemlerde kullanılan finansal araçlar olmakla birlikte, aralarında bazı önemli farklar bulunmaktadır. \n\n1. **Tanımları**:\n   - **Bono**: Bono, bir borçlu tarafından borç verene belirli bir faiz oranı karşılığında ödenmek üzere verilen, belirli bir vadeye sahip olan ve faiz getirisi sağlayan bir borç senedidir. Bonolar genellikle şirketler veya devletler tarafından ihraç edilir.\n   - **Poliçe**: Poliçe, bir kişi (lehzar) tarafından başka bir kişiye (muhatap) karşı belirli bir miktar paranın ödenmesi talebini içeren, belirli bir vadeye sahip olan ve genellikle ticari işlemlerde kullanılan bir tür senettir. Poliçe, genellikle bir ticari işlem sonucunda ortaya çıkan alacakların tahsili için kullanılır.\n\n2. **İhraç ve İhtiyaç**:\n   - **Bono**: Bonolar, genellikle şirketlerin veya devletlerin finansman ihtiyaçlarını karşılamak amacıyla ihraç edilir. Yatırım yapanlar, bono satın alarak bu kurumların borçlarına katkıda bulunurlar ve faiz geliri elde ederler.\n   - **Poliçe**: Poliçeler, ticari işlemlerden doğan alacakların tahsili için kullanılır. Bir şirket başka bir şirkete mal sattığında, satıcı şirket alacağını garanti altına almak için poliçe düzenleyebilir.\n\n3. **Vade ve Faiz**:\n   - **Bono**: Bonoların vadesi ve faiz oranı ihraç sırasında belirlenir. Yatırımcı, bononun vadesi dolana kadar düzenli faiz geliri elde eder.\n   - **Poliçe**: Poliçelerin vadesi de belirlenir, ancak poliçede genellikle faiz oranı belirtilmez. Poliçe bedeli, vade tarihinde lehtar tarafından muhataptan talep edilir.\n\n4. **Güvenlik ve Risk**:\n   - **Bono**: Bonolar, genellikle daha düşük riskli yatırım araçları olarak kabul edilir, özellikle devlet bonoları. Ancak, şirket bonolarının riski daha yüksek olabilir.\n   - **Poliçe**: Poliçelerin güvenirliği, poliçeyi düzenleyen ve ödeyecek olan kişinin mali durumuna ve güvenilirliğine bağlıdır. Poliçeler, özellikle ticari işlemlerde sıkça kullanılan bir araçtır ve poliçenin ödenmeme riski vardır.\n\n5. **Hukuki Durum**:\n   - **Bono**: Bonolar, genellikle menkul kıymet olarak kabul edilir ve belirli bir yasal çerçeve içinde düzenlenir.\n   - **Poliçe**: Poliçeler, Türk Ticaret Kanunu'nda düzenlenen bir tür ticari senettir ve belirli hükümlere tabidir.\n\nBu açıklamalar, bono ve poliçe arasındaki temel farkları ortaya koymaktadır. Her iki finansal araç da ticari işlemlerde önemli roller oynar, ancak amaç, kullanım ve özellikleri bakımından farklılıklar gösterir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5461",
+          "metin_ozet": "nduğu kural olarak kabul edilir. …belirsiz alacak davasının da bir eda davası olduğu hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz",
+          "metin": "nduğu kural olarak kabul edilir. …belirsiz alacak davasının da bir eda davası olduğu hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... Avcı, B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n6100 sayılı Kanun’un 31. maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir",
+          "skor": 0.0774,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/12835",
+          "metin_ozet": "ususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak d",
+          "metin": "ususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... ..., B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n23. 6100 sayılı Kanun’un 31 inci maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.” Somut olayda olduğu gibi b",
+          "skor": 0.0763,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14507",
+          "metin_ozet": "ığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yoru",
+          "metin": "ığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... ..., B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n23. 6100 sayılı Kanun’un 31 inci maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.” Somut olayda olduğu gibi belirsiz alacak davası olarak açıldığı açıkça belirtilen bir davada, dava türü bakımından aydınlatıl",
+          "skor": 0.0751,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2522",
+          "metin_ozet": "gerektiği belirtilen Rusya Federasyonu İş Kanunu'nun 392. maddesinde mahkemeye başvuru sürelerinin düzenlendiği,  arabuluculuk başvuru tarihinin 30.01.2020, dava tarihinin 12.03.2020 olduğu dikkate alındığında Mahkemece uyulmasına karar verilmiş olan Yargıtay kararında uygulanması gerektiği belirtil",
+          "metin": "gerektiği belirtilen Rusya Federasyonu İş Kanunu'nun 392. maddesinde mahkemeye başvuru sürelerinin düzenlendiği,  arabuluculuk başvuru tarihinin 30.01.2020, dava tarihinin 12.03.2020 olduğu dikkate alındığında Mahkemece uyulmasına karar verilmiş olan Yargıtay kararında uygulanması gerektiği belirtilen Rus iş mevzuatına göre davacının söz konusu dönemlere dair taleplerinin zamanaşımına uğradığı sonucuna ulaşıldığı belirtilerek davacının dava açması için gerekli hak düşürücü sürenin geçtiği kanaatiyle davanın reddine dair hüküm tesis edilmiştir.\nVI. TEMYİZ\nA. Temyiz Sebepleri\nDavacı vekili temyiz dilekçesinde;\n1. Müvekkili işçiye Türkiye'den çalışmaya götürülürken ve sonrasında okuma ve inceleme şansı verilmeden, okuması da çok olanaklı olmayan evrak imzalatıldığını, buna dayalı olarak hukuk seçimi yapıldığının kabul edilemeyeceğini, dava konusu uyuşmazlıkta Türk hukukunun uygulanması gerektiğini,\n2. Uyuşmazlığa Rus hukukun uygulanmasına karar verilmesinin haksız ve hukuka aykırı olduğunu, zira iş ilişkisi boyunca Türk hukukuna göre hareket edildiğini, davacının yabancı hukuk uygulanması yönündeki talebinin hakkın kötüye kullanılması niteliğinde olduğunu,\n3. Yüksek yargı organları ta",
+          "skor": 0.0745,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6960",
+          "metin_ozet": "evleri ve dağıtım kanallarının kapatıldığı belirtilmiştir. Dava konusu haberin yayınlandığı Taraf Gazetesinin 668 sayılı Kanun Hükmünde Kararname’nin kapatılan gazete ve dergiler ile yayınevi ve dağıtım kanallarına ilişkin ekli (3) sayılı listede yer aldığı ve 2/1-c maddesi gereğince kapatıldığı anl",
+          "metin": "evleri ve dağıtım kanallarının kapatıldığı belirtilmiştir. Dava konusu haberin yayınlandığı Taraf Gazetesinin 668 sayılı Kanun Hükmünde Kararname’nin kapatılan gazete ve dergiler ile yayınevi ve dağıtım kanallarına ilişkin ekli (3) sayılı listede yer aldığı ve 2/1-c maddesi gereğince kapatıldığı anlaşıldığı gibi, davalı Taraf Gazetecilik San ve Tic. A.Ş.'nin de 670 sayılı Kanun Hükmünde Kararname ile ticaret sicil kaydı 24.08.2016 tarihinde re’sen terkin edilmiş ve bu hususun tescil ve ilan olunduğu Türkiye Ticaret Sicili Gazetesinin 01.09.2016 tarihli, 9149 sayı ve sayfa 608’de belirtilmiştir. Bu durumda anılan davalı hakkında 7082 sayılı Olağanüstü Hâl Kapsamında Bazı Tedbirler Alınması Hakkında Kanun Hükmünde Kararnamenin Kabul Edilmesine Dair Kanun’un 16. maddesi kapsamında değerlendirme yapılabilmesi için direnme kararının bu değişik gerekçe ile bozulması gerekmiştir.\nB- Davalı Lalezar Sarıibrahimoğlu vekilinin temyiz itirazları yönünden;\n... somut olay incelendiğinde; davalı şirkete ait Taraf Gazetesinin 16.05.2011 tarihli nüshasında “Balyozcu Paşaya Hükümet Vetosu” ve “Balyozcu Paşaya Veto geliyor” başlıkları ile davacı hakkında haber yapıldığı anlaşılmaktadır.  Dava konusu ",
+          "skor": 0.0743,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 2654,
+      "ortalama_kaynak_skor": 0.0755,
+      "kaynak_sayisi": 5,
+      "message_id": "8273805b-6302-4da2-81e2-7cde343b0c12",
+      "conversation_id": "c4107227-cc30-421a-a803-bc7c73824ff2",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 4.2,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Ticari defterlerin tutulmaması halinde ne gibi sonuçlar doğar?",
+      "cevap": "Ticari defterlerin tutulmaması halinde doğacak sonuçlar hakkında verilen kaynaklar yetersizdir. Kaynaklar arasında 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ile çeşitli Hukuk Dairesi kararları bulunmakta olup, bu kaynaklar ticari defterlerin tutulmaması ile ilgili sonuçlar hakkında bilgi vermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 4",
+          "metin_ozet": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "metin": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "skor": 0.0696,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.0669,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2339",
+          "metin_ozet": "lmıyorum.",
+          "metin": "lmıyorum.",
+          "skor": 0.0644,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8050",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0635,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13121",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0635,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 528,
+      "ortalama_kaynak_skor": 0.0656,
+      "kaynak_sayisi": 5,
+      "message_id": "f99e1efc-fa4b-4886-89c9-52cffc3f416b",
+      "conversation_id": "37b9b973-3602-4014-be13-f034e21cb4da",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.37,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Tacir olmanın hukuki sonuçları nelerdir?",
+      "cevap": "Tacir olmanın hukuki sonuçları, Türk Ticaret Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında bu konuyla ilgili bir madde bulunmamaktadır. Verilen kaynaklar arasında 5846 Sayılı Fikir ve Sanat Eserleri Kanunu, 4982 Sayılı Bilgi Edinme Hakkı Kanunu, 6362 Sayılı Sermaye Piyasası Kanunu ve 4721 Sayılı Türk Medeni Kanunu'nun ilgili maddeleri yer almaktadır.\n\nBu kaynaklar, tacir olmanın hukuki sonuçlarına ilişkin bilgi vermemektedir. Türk Ticaret Kanunu'nda tacir olmanın hukuki sonuçları düzenlenmiştir, ancak bu kanun verilen kaynaklar arasında yer almamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0161,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 9",
+          "metin_ozet": "Madde 9- İstenen bilgi veya belgelerde, gizlilik dereceli veya açıklanması yasaklanan\nbilgiler ile açıklanabilir nitelikte olanlar birlikte bulunuyor ve bunlar birbirlerinden\nayrılabiliyorsa, söz konusu bilgi veya belge, gizlilik dereceli veya açıklanması yasaklanan\nbilgiler çıkarıldıktan sonra başv",
+          "metin": "Madde 9- İstenen bilgi veya belgelerde, gizlilik dereceli veya açıklanması yasaklanan\nbilgiler ile açıklanabilir nitelikte olanlar birlikte bulunuyor ve bunlar birbirlerinden\nayrılabiliyorsa, söz konusu bilgi veya belge, gizlilik dereceli veya açıklanması yasaklanan\nbilgiler çıkarıldıktan sonra başvuranın bilgisine sunulur. Ayırma gerekçesi başvurana yazılı\nolarak bildirilir.\nBilgi veya belgeye erişim",
+          "skor": 0.0132,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 8",
+          "metin_ozet": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvuran",
+          "metin": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvurana bildirilir.\nGizli bilgileri ayırarak bilgi veya belge verme",
+          "skor": 0.0109,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6362 Sayılı Sermaye Piyasası Kanunu - Madde 57",
+          "metin_ozet": "MADDE 57 – (1) Konut finansmanı, konut edinmeleri amacıyla tüketicilere kredi\nkullandırılması, konutların finansal kiralama yoluyla tüketicilere kiralanması, sahip oldukları\nkonutların teminatı altında tüketicilere kredi kullandırılması ve bu kredilerin yeniden\nfinansmanı amacıyla kredi kullandırılm",
+          "metin": "MADDE 57 – (1) Konut finansmanı, konut edinmeleri amacıyla tüketicilere kredi\nkullandırılması, konutların finansal kiralama yoluyla tüketicilere kiralanması, sahip oldukları\nkonutların teminatı altında tüketicilere kredi kullandırılması ve bu kredilerin yeniden\nfinansmanı amacıyla kredi kullandırılmasıdır. Konut finansmanı kuruluşları, konut finansmanı\nfonları ve ipotek finansmanı kuruluşlarının bu kredilere ve alacaklara dayalı veya bunların\nteminatı altındaki işlemleri de bu kapsamdadır.\n(2) Konut finansmanı kuruluşları, konut finansmanı kapsamında doğrudan tüketiciye\nkredi kullandıran ya da finansal kiralama yapan bankalar ile Bankacılık Düzenleme ve\nDenetleme Kurulu tarafından konut finansmanı faaliyetinde bulunması uygun görülen\nfinansal kiralama şirketleri, finansman şirketleri ve tasarruf finansman şirketleridir.4\n(3) Konut finansmanı kuruluşları tarafından, konut edinme amacının yeterli bilgi ve\nbelgeyle tespit edilmesi ve kullandırılan kredinin veya yapılan finansal kiralamanın ipotek\nveya Kurulca uygun görülen teminatlar ile güvence altına alınması zorunludur.\n(4) Varlık finansmanı, konut finansmanı kapsamındakiler dâhil Kurulca uygun görülen\nvarlıklara dayalı sermaye piyasası araçlarının ihracıdır.\n(5) Kurul, konut ve varlık finansmanı kapsamında her aşamada Kurulca belirlenen\nnitelikleri haiz değerleme kuruluşları tarafından değerleme yapılmasını zorunlu tutabilir.\n(6) Hazine Müsteşarlığı, konut ve varlık finansmanına ilişkin sigorta sözleşmeleri ile\nilgili usul ve esasları; Gümrük ve Ticaret Bakanlığı ise konut finansmanı ve varlık finansmanı\nkapsamında tüketicilere kullandırılan kredilerin veya alacakların yeniden finansmanına ilişkin\nusul ve esasları belirlemeye yetkilidir.\nKonut ve varlık finansmanı fonları",
+          "skor": 0.0107,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6362&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 698",
+          "metin_ozet": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabil",
+          "metin": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabilir.\nTaşınmazlarda paylı mülkiyetin devamına ilişkin sözleşmeler, resmî şekle bağlıdır ve tapu\nkütüğüne şerh verilebilir.\nUygun olmayan zamanda paylaşma isteminde bulunulamaz.\nb. Paylaşma biçimi",
+          "skor": 0.0096,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 779,
+      "ortalama_kaynak_skor": 0.0121,
+      "kaynak_sayisi": 5,
+      "message_id": "6f0aee77-8bed-457c-8f70-b82573470109",
+      "conversation_id": "ec594744-fa32-40c9-ba3f-c54a96834593",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.05,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Haksız rekabet hangi davranışlarla oluşur?",
+      "cevap": "Haksız rekabet, 6102 sayılı Türk Ticaret Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında haksız rekabetle ilgili bir madde bulunmamaktadır. \n\nHaksız rekabet, bir işletmenin diğer bir işletmenin müşterilerini, işini veya ticari itibarını zedeleyici davranışlarda bulunması olarak tanımlanabilir. Bu davranışlar arasında yanlış veya yanıltıcı reklamlar, başkalarının ticari sırlarını açıklamak, başkalarının marka veya patentlerini taklit etmek gibi davranışlar yer alabilir.\n\nBu konuyla ilgili daha detaylı bilgi için 6102 sayılı Türk Ticaret Kanunu'nun 54-67. maddelerine bakabilirsiniz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 100 - Fıkra 1",
+          "metin_ozet": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapı",
+          "metin": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapılacak protokoller çerçevesinde, Devletin güvenliği ve temel dış yararlarına karşı ağır sonuçlar doğuracak hâller ile özel hayat ve aile hayatının gizliliği ve savunma hakkına ilişkin hükümler saklı kalmak kaydıyla özel kanunlardaki yasaklayıcı ve sınırlayıcı hükümler dikkate alınmaksızın gizli dahi olsa Kurum tarafından kişilerin sosyal güvenliğinin sağlanması, 6183 sayılı Kanuna göre Kurum alacaklarının takip ve tahsili ile bu Kanun kapsamında verilen diğer görevler ile sınırlı olmak üzere istenecek her türlü bilgi ve belgeyi sürekli ve/veya belli aralıklarla vermeye, bilgilerin elektronik ortamda görüntülenmesini sağlamaya, görüntülenen bu bilgilerin güvenliğini sağlamaya, muhafaza etmek zorunda oldukları her türlü belge ile vermek zorunda oldukları bilgilere ilişkin mikrofiş, mikrofilm, manyetik teyp,",
+          "skor": 0.0526,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.0479,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7511",
+          "metin_ozet": "en faiz hususlarındadır.\nTemyiz olunan nihai kararların bozulması 6100 sayılı Hukuk Muhakemeleri Kanunu'nun 371. maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen İlk Derece Mahkemesi kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kuralların",
+          "metin": "en faiz hususlarındadır.\nTemyiz olunan nihai kararların bozulması 6100 sayılı Hukuk Muhakemeleri Kanunu'nun 371. maddesinde yer alan sebeplerden birinin varlığı hâlinde mümkündür.\nTemyizen incelenen İlk Derece Mahkemesi kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizlik bulunmadığı, bozmaya uyulmakla karşı taraf yararına kazanılmış hak durumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavalı ... vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDavalı ... harçtan muaf olduğundan harç alınmasına yer olmadığına,\nDosyanın İlk Derece Mahkemesine gönderilmesine,\n07.10.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0472,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6362 Sayılı Sermaye Piyasası Kanunu - Madde 54",
+          "metin_ozet": "MADDE 54 – (1) Kurul;\na) Fonun kuruluşuna, fon türleri itibarıyla portföylerde bulundurulabilecek varlıklara\nve portföy sınırlamalarına, değerleme esaslarına, fon kârının tespiti ve dağıtımı ile fonun\nfaaliyet ve yönetim ilkelerine, birleşmesine, dönüşmesine, sona ermesine ve tasfiyesine,\nb) Fon iç ",
+          "metin": "MADDE 54 – (1) Kurul;\na) Fonun kuruluşuna, fon türleri itibarıyla portföylerde bulundurulabilecek varlıklara\nve portföy sınırlamalarına, değerleme esaslarına, fon kârının tespiti ve dağıtımı ile fonun\nfaaliyet ve yönetim ilkelerine, birleşmesine, dönüşmesine, sona ermesine ve tasfiyesine,\nb) Fon iç tüzüğü ile yönetim ve saklama sözleşmelerinin düzenlenmesine, kapsamına,\ndeğiştirilmesine, tescil ve ilanına, katılma paylarının değerine, ihraç ve geri alım fiyatlarının\nhesaplanmasına ve ilanına, alım satım ilkelerine, fon yönetim ve saklama ücretlerine,\nc) Katılma paylarının ihracına,\nç) Fonların izahname ve diğer kamuyu aydınlatma yükümlülüklerine,\nilişkin usul ve esasları belirler.\nPortföy yönetim şirketi",
+          "skor": 0.0442,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6362&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 11",
+          "metin_ozet": "MADDE 11 – (1) Genel kurulun görev ve yetkileri şunlardır:\na) Organların seçimi\nb) Tüzük değişikliği\nc) Yapılacak ilk genel kurula sunulması ve geçmişe etkili olmaması kaydıyla ilgili\nmakamlar veya mahkemelerce kanuna aykırı görülerek düzeltilmesi istenen konular hakkında\nyönetim kuruluna yetki veri",
+          "metin": "MADDE 11 – (1) Genel kurulun görev ve yetkileri şunlardır:\na) Organların seçimi\nb) Tüzük değişikliği\nc) Yapılacak ilk genel kurula sunulması ve geçmişe etkili olmaması kaydıyla ilgili\nmakamlar veya mahkemelerce kanuna aykırı görülerek düzeltilmesi istenen konular hakkında\nyönetim kuruluna yetki verilmesi\nç) Yönetim kurulu ve denetleme kurulu raporları ile yeminli mali müşavir raporlarının\ngörüşülmesi\nd) Yönetim kurulu ve denetleme kurulunun ibrası\ne) Bütçenin kabulü\nf) Yönetim kurulu, denetleme kurulu ve disiplin kurulu üyelerine verilecek ücret,\ntazminat, ödenek ve yolluklar ile sosyal hakların belirlenmesi\ng) Taşınmaz satın alınması veya mevcut taşınmazların satılması hususunda yönetim\nkuruluna yetki verilmesi\nğ) Üst kuruluş kurucusu olma, üst kuruluşlara üye olma veya üyelikten çekilme\nh) Şube açma, birleştirme veya kapatma, bu konuda tüzükte belirlenen esaslar\ndoğrultusunda yönetim kuruluna yetki verilmesi\nı) Birleşme veya katılma\ni) Uluslararası kuruluşun kurucusu olma, uluslararası kuruluşlara üye olma veya\nüyelikten çekilme\nj) Kuruluşun feshi\nk) Mevzuat veya tüzükte genel kurulca yapılması öngörülen diğer işlemleri yerine\ngetirme ve başka bir organa bırakılmamış konuları karara bağlama\n(2) Şube genel kurulları, sadece birinci fıkranın (a), (ç), (d) ve (k) bentlerinde belirtilen\ngörevleri yerine getirir. Şube genel kurullarının mali ibra yetkisi yoktur.\nGenel kurulun toplantı zamanı",
+          "skor": 0.0433,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 804,
+      "ortalama_kaynak_skor": 0.047,
+      "kaynak_sayisi": 5,
+      "message_id": "8dcb9701-2dd9-49ac-abf6-7fd006367037",
+      "conversation_id": "aa681fed-bf3f-4700-b472-2b1504c05e10",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.75,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Ticari işletmenin devri nasıl yapılır?",
+      "cevap": "Ticari işletmenin devri, Türk Ticaret Kanunu'nda düzenlenmiştir. Ticari işletmenin devri, bir ticari işletmenin tamamının veya bir kısmının başka bir kişiye veya şirkete devredilmesi anlamına gelir. \n\nTicari işletmenin devri için, devir sözleşmesinin yazılı olarak yapılması ve devir sözleşmesinin ticaret siciline tescil edilmesi gerekmektedir (TTK md. 135). Devir sözleşmesinin ticaret siciline tescil edilmesi, devir işleminin üçüncü kişiler bakımından geçerli olmasını sağlar.\n\nAyrıca, devir sözleşmesinin içeriği, devredilen işletmenin tüm aktif ve pasiflerini, devir tarihi, devir bedeli ve diğer şartları içermelidir. Devir sözleşmesinin imzalanmasıyla birlikte, devredilen işletmenin tüm hak ve borçları devralana geçer.\n\nYargıtay kararlarına göre, ticari işletmenin devri, devir sözleşmesinin geçerli olması ve ticaret siciline tescil edilmesi koşuluyla geçerli olur. Ancak, devir sözleşmesinin içeriği ve devir işleminin geçerli olup olmadığı hususunda uyuşmazlıklar çıkabilir.\n\nVerilen kaynaklar, Yargıtay kararlarıdır, ancak bu kararların içeriği ve ticari işletmenin devri ile ilgili hükümleri hakkında yeterli bilgi bulunmamaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.0672,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14278",
+          "metin_ozet": "liğiyle karar verildi.",
+          "metin": "liğiyle karar verildi.",
+          "skor": 0.0612,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14277",
+          "metin_ozet": "liğiyle karar verildi.",
+          "metin": "liğiyle karar verildi.",
+          "skor": 0.0612,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/10529",
+          "metin_ozet": "rliğiyle karar verildi.",
+          "metin": "rliğiyle karar verildi.",
+          "skor": 0.0611,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/8112",
+          "metin_ozet": "rliğiyle karar verildi.",
+          "metin": "rliğiyle karar verildi.",
+          "skor": 0.0611,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1351,
+      "ortalama_kaynak_skor": 0.0624,
+      "kaynak_sayisi": 5,
+      "message_id": "7fb14e46-c6ee-40cb-92ab-f594e88695c2",
+      "conversation_id": "e9225d05-29e5-4770-af6d-f11104d8d513",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.19,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Şirket genel kurul kararına nasıl itiraz edilir?",
+      "cevap": "Şirket genel kurul kararlarına itiraz etmek için, ilgili kişinin kararın alınmasına karşı olmak kaydıyla, kararın alınmasına ilişkin usul ve esaslar ile kararın içeriğine ilişkin itirazda bulunabilir. Ancak, verilen kaynaklar arasında şirket genel kurul kararlarına itiraz etme prosedürü ile ilgili bir madde bulunmamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0768,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 348",
+          "metin_ozet": "MADDE 348- Konut ve çatılı işyeri kiralarında fesih bildiriminin geçerliliği, yazılı şekilde yapılmasına bağlıdır.",
+          "metin": "MADDE 348- Konut ve çatılı işyeri kiralarında fesih bildiriminin geçerliliği, yazılı şekilde yapılmasına bağlıdır.",
+          "skor": 0.0756,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 4",
+          "metin_ozet": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "metin": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "skor": 0.0754,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 131",
+          "metin_ozet": "Madde 131 — Fon, Hazine Müsteşarlığından izin almak kaydıyla borçlanabileceği gibi\nihtiyaç hasıl olduğunda Fona ikrazen verilmek üzere Hazine Müşteşarlığınca özel tertip Devlet\niç borçlanma senedi ihraç edilebilir. Özel tertip Devlet iç borçlanma senetlerinin faiz oranları ve\ngeri ödeme şartları da ",
+          "metin": "Madde 131 — Fon, Hazine Müsteşarlığından izin almak kaydıyla borçlanabileceği gibi\nihtiyaç hasıl olduğunda Fona ikrazen verilmek üzere Hazine Müşteşarlığınca özel tertip Devlet\niç borçlanma senedi ihraç edilebilir. Özel tertip Devlet iç borçlanma senetlerinin faiz oranları ve\ngeri ödeme şartları da dahil olmak üzere tâbi olacağı usûl ve esaslar Hazine Müsteşarlığı ile Fon\ntarafından müştereken belirlenir. Malî yıl bütçe kanunlarında yer alan borçlanma ile ilgili\nhükümler ile 4749 sayılı Kamu Finansmanı ve Borç Yönetiminin Düzenlenmesi Hakkında\nKanunun 5 ve 6 ncı maddeleri hükümleri bu senetler için de geçerlidir.\nFon, Kurum görüşü alınmak suretiyle Fon Kurulu kararı ile bankalardan ileride\ndoğacak prim yükümlülüklerine mahsuben bir önceki yılda ödedikleri sigorta primi toplamına\nkadar avans alabilir. Avans kullanımına ilişkin kararlarda uygulanacak faiz oranının\nbelirtilmesi zorunludur.\nOlağanüstü hallerde, Fon kaynaklarının ihtiyacı karşılamaması durumunda Fonun\ntalebi üzerine Merkez Bankasınca Fona avans verilebilir. Alınan avansın vadesi, tutarı, geri\nödeme şekil ve şartları ile uygulanacak faiz oranı ve diğer hususlar Fonun görüşü alınarak\nMerkez Bankasınca belirlenir.\nALTINCI BÖLÜM\nTakip ve Tahsil Usûlleri\nFon alacaklarının takip ve tahsiline ilişkin yetki ve usûller",
+          "skor": 0.0754,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.075,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 529,
+      "ortalama_kaynak_skor": 0.0756,
+      "kaynak_sayisi": 5,
+      "message_id": "712cd84f-a88d-4c0d-8e99-99004bb58b31",
+      "conversation_id": "f0946b51-7f90-40b7-b76f-39a0e6c4702d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.35,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Konkordato başvurusu hangi şartlarda yapılabilir?",
+      "cevap": "Konkordato başvurusu ile ilgili bilgi verebilmem için kaynaklarda yeterli bilgi bulunmamaktadır. Konkordato başvurusu, 6098 sayılı Türk Borçlar Kanunu ve 2004 sayılı İcra ve İflas Kanunu'nda düzenlenen bir kavramdır. Ancak verilen kaynaklar, konkordato başvurusu şartlarını açıkça belirten hükümler içermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13997",
+          "metin_ozet": "dayalı hizmet alım sözleşmeleri ile kurulan asıl işveren alt işveren ilişkisinin, sırf işçi teminine dayalı olduğu gerekçesiyle geçersiz olduğunun kabulü mümkün değildir.\n7. Somut uyuşmazlıkta Çalışma ve Sosyal Güvenlik Bakanlığı iş müfettişlerinin 30.01.2009 tarihli inceleme raporunda;  davalı Üniv",
+          "metin": "dayalı hizmet alım sözleşmeleri ile kurulan asıl işveren alt işveren ilişkisinin, sırf işçi teminine dayalı olduğu gerekçesiyle geçersiz olduğunun kabulü mümkün değildir.\n7. Somut uyuşmazlıkta Çalışma ve Sosyal Güvenlik Bakanlığı iş müfettişlerinin 30.01.2009 tarihli inceleme raporunda;  davalı Üniversite ile yüklenici firmalar arasındaki asıl işveren alt işveren ilişkisinin  muvazaalı olduğu tespit edilmiş; sözü edilen tespit kararı temyiz incelemesinden geçerek kesinleşmiştir. Dolayısıyla muvazaa tespiti yapılan dönem bakımından muvazaanın varlığının kabul edilmesinde bir isabetsizlik bulunmamaktadır. Ne var ki 30.01.2009 tarihli Çalışma ve Sosyal Güvenlik Bakanlığı iş müfettişleri inceleme raporu ile muvazaalı olduğu tespit edilen dönemden sonrası için varılan sonuç dosya kapsamı ile örtüşmemektedir.\n8. Tüm dosya kapsamı birlikte değerlendirildiğinde; hizmet alım sözleşmelerine göre yapılacak işin yardımcı iş olduğu ve davacının davalı Üniversiteye bağlı hastanenin çeşitli birimlerinde hizmet alım sözleşmesi ve eki şartnamelerin kapsamına uygun şekilde veri giriş elemanı olarak çalıştığı anlaşılmaktadır. Ayrıca 4734 sayılı Kanun'un 62 nci maddesinin birinci fıkrasının (e) bendi ",
+          "skor": 0.006,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Gecici Madde 12 - Fıkra 2",
+          "metin_ozet": "Ancak, bu kapsamda alt işverene rücu edilerek takip ve tahsil edilmiş olan tutarlar, alt işverenler lehine hiçbir şekilde alacak hakkı doğurmaz ve tahsil edilmiş tutarlar iade edilmez. Yürürlük",
+          "metin": "Ancak, bu kapsamda alt işverene rücu edilerek takip ve tahsil edilmiş olan tutarlar, alt işverenler lehine hiçbir şekilde alacak hakkı doğurmaz ve tahsil edilmiş tutarlar iade edilmez. Yürürlük",
+          "skor": 0.0035,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7075",
+          "metin_ozet": "ça sonraki dönemlerde de etkisi gösterir.\nSomut uyuşmazlıkta davalı ...  tarafından dava dışı Şirkete ihale edilen işlerin asıl işin bir bölümü olduğu anlaşılmaktadır. Bu durumda geçerli bir asıl işveren alt işveren ilişkisinin kurulabilmesi için asıl işin, alt işverene verilen bölümünün, işletmenin",
+          "metin": "ça sonraki dönemlerde de etkisi gösterir.\nSomut uyuşmazlıkta davalı ...  tarafından dava dışı Şirkete ihale edilen işlerin asıl işin bir bölümü olduğu anlaşılmaktadır. Bu durumda geçerli bir asıl işveren alt işveren ilişkisinin kurulabilmesi için asıl işin, alt işverene verilen bölümünün, işletmenin ve işin gereği ile teknolojik nedenlerle uzmanlık gerektiren bir iş olması gerekmektedir. Dosya kapsamından bu koşulun somut olayda mevcut olmadığı anlaşılmaktadır. Açıklanan nedenlerle asıl işveren alt işveren ilişkisinin muvazaa nedeniyle değil, unsur eksikliği nedeniyle geçersiz olduğunun kabulü gerekir. Buna göre İlk Derece Mahkemesi ile Bölge Adliye Mahkemesi kararlarının gerekçesinde davalı  ... ile dava dışı Şirket arasındaki asıl işveren alt işveren ilişkisinin, unsur yokluğu nedeniyle geçersiz olduğunun belirtilmesi yerine muvazaalı olduğunun ifade edilmesi hatalı olmuş ise de bu hata kararın sonucuna etkili değildir.\nTemyizen incelenen karar, tarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk kuralları ile hukuki ilişkinin nitelendirilmesine, dava şartlarına, yargılama ve ispat kuralları ile kararda belirtilen gerekçeler",
+          "skor": 0.0017,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15863",
+          "metin_ozet": "n alt işveren ilişkisi denilmektedir. Dolayısıyla asıl işveren alt işveren ilişkisinin geçerli olarak kurulabilmesi için iki işverenin bulunması, mal veya hizmet üretimine ilişkin bir işin varlığı ve asıl işin bölünerek alt işverene verilmesi hâlinde işletmenin ve işin gereği ile teknolojik sebepler",
+          "metin": "n alt işveren ilişkisi denilmektedir. Dolayısıyla asıl işveren alt işveren ilişkisinin geçerli olarak kurulabilmesi için iki işverenin bulunması, mal veya hizmet üretimine ilişkin bir işin varlığı ve asıl işin bölünerek alt işverene verilmesi hâlinde işletmenin ve işin gereği ile teknolojik sebeplerle uzmanlık gerektirme unsurunun gerçekleşmiş olması gerekir.\n4. Alt işverenin, üstlendiği işin belirli bir bölümünü başkasına devretmesi hâlinde  devralan kimseler de yasal şartlar oluştuğu takdirde alt işveren sıfatına sahip olabilirler. Bu durumunda zincirleme asıl işveren alt işveren ilişkisi ve zincirleme sorumluluk  söz konusu olur. Her işveren  devrettiği iş dolayısı ile çıkan uyuşmazlıklarda işi devrettiği alt işverenlerin işçilerine karşı  sorumludur.  (... ..., ... Hukukunda Asıl İşveren- Alt İşveren İlişkileri, İstanbul, 1992, s.74)\n5. Somut uyuşmazlığın giderilmesi isteminde ise; işe iade davası açılmadan önce başvurulması gereken dava şartı arabuluculuğun, davalılar ... ... AŞ ile ... Ltd. Şti.ne karşı yürütülmesinin yeterli olup olmadığı, dava dışı ... Ltd. Şti. yönünden de davalılar ile birlikte arabuluculuğa başvurulması gerekip gerekmediği uyuşmazlık konusudur.\n6. Davacı",
+          "skor": 0.0014,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13134",
+          "metin_ozet": " ile çalıştırıldığını, ... Termik Santralinin davanın açıldığı tarihte özelleştirildiğini, işyerine santral kamudayken girdiğini, devir tarihindeki borçlardan 2 yıl süre ile devreden işverenin devralan işveren ile birlikte sorumlu olması sebebiyle davanın devreden işveren olan ... Üretim AŞ Genel Mü",
+          "metin": " ile çalıştırıldığını, ... Termik Santralinin davanın açıldığı tarihte özelleştirildiğini, işyerine santral kamudayken girdiğini, devir tarihindeki borçlardan 2 yıl süre ile devreden işverenin devralan işveren ile birlikte sorumlu olması sebebiyle davanın devreden işveren olan ... Üretim AŞ Genel Müdürlüğüne karşı açıldığını, davacı tarafından yapılan işin davalı Şirketin asıl işleri arasında yer aldığını, davalı işverenliğin alt işveren firması ile muvazaa içine girerek asıl işi bölmek suretiyle ve ucuz işçilik temini amacıyla işyerinde icra edilen işi ihale ile müvekkilinin işvereni konumunda gösterilen firmalara verdiğini, alt işverenin yeterli ekipman ve uzmanlığının olmadığını, ... Termik Müdürlüğünün ihaleyi alan firmalardan daha uzman ve donanımlı olduğunu, davacının yaptığı işleri davalı işverenliğin kendi kadrolarında çalışan işçilerinin de yapmakta olduğunu, işlerin koordinasyon ve denetiminin davalı işverenin kendi elemanlarınca yapıldığını, davacının sendika üyesi olmasına rağmen toplu iş sözleşmesinden yararlandırılmadığını, muvazaa nedeniyle müvekkilinin başından itibaren davalı asıl işverenin işçisi oluğunun ve toplu iş sözleşmesinden yararlandırılması gerektiğinin t",
+          "skor": 0.0006,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 518,
+      "ortalama_kaynak_skor": 0.0026,
+      "kaynak_sayisi": 5,
+      "message_id": "ec3cbcee-03d0-4a54-8e56-0b97aa10539c",
+      "conversation_id": "5bf96bb2-4ca9-44a4-9696-767b897220cc",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.74,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "İflas davası hangi hallerde açılır?",
+      "cevap": "İflas davası, bir borçlunun borçlarını ödeyemez hale geldiğinde açılan bir dava türüdür. Türk Ticaret Kanunu'nda iflas davasının açılmasına ilişkin hükümler yer almaktadır. Ancak, verilen kaynaklar iflas davasının açılmasına ilişkin hükümleri içermemektedir.\n\nVerilen kaynaklar arasında 6098 Sayılı Türk Borçlar Kanunu, 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve 6102 Sayılı Türk Ticaret Kanunu bulunmaktadır. Ancak, bu kaynaklar iflas davasının açılmasına ilişkin hükümleri içermemektedir.\n\n6102 Sayılı Türk Ticaret Kanunu'nun 1346. maddesinde fonların kurulması yoluyla sorumluluğun sınırlanmasına ilişkin hükümler yer almaktadır. Ancak, bu madde iflas davasının açılmasına ilişkin hükümleri içermemektedir.\n\nİflas davasının açılmasına ilişkin hükümler, 2004 sayılı İcra ve İflas Kanunu'nda yer almaktadır. Bu kanunda, iflas davasının açılmasına ilişkin koşullar ve usulü düzenlenmiştir. Ancak, verilen kaynaklar arasında 2004 sayılı İcra ve İflas Kanunu bulunmamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 120",
+          "metin_ozet": "MADDE 120- Uygulanacak yıllık temerrüt faizi oranı, sözleşmede kararlaştırılmamışsa, faiz borcunun doğduğu tarihte yürürlükte olan mevzuat hükümlerine göre belirlenir. Sözleşme ile kararlaştırılacak yıllık temerrüt faizi oranı, birinci fıkra uyarınca belirlenen yıllık faiz oranının yüzde yüz fazlası",
+          "metin": "MADDE 120- Uygulanacak yıllık temerrüt faizi oranı, sözleşmede kararlaştırılmamışsa, faiz borcunun doğduğu tarihte yürürlükte olan mevzuat hükümlerine göre belirlenir. Sözleşme ile kararlaştırılacak yıllık temerrüt faizi oranı, birinci fıkra uyarınca belirlenen yıllık faiz oranının yüzde yüz fazlasını aşamaz. Akdî faiz oranı kararlaştırılmakla birlikte sözleşmede temerrüt faizi kararlaştırılmamışsa ve yıllık akdî faiz oranı da birinci fıkrada belirtilen faiz oranından fazla ise, temerrüt faizi oranı hakkında akdî faiz oranı geçerli olur.",
+          "skor": 0.0394,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 5",
+          "metin_ozet": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye K",
+          "metin": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye Kurum Yönetim Kurulu yetkilidir.",
+          "skor": 0.0382,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 80 - Fıkra 14",
+          "metin_ozet": "diğerleri için ise teknisyenlerin prime esas kazanç tutarları, f) İlgili kanunlarında veya Cumhurbaşkanlığı kararnamesinde emeklilik ya da ek gösterge açısından belirli bir kadro, unvan veya görevle bağlantı kurulanlar için, bağlantı kurulan kadro, unvan veya görevin prime esas kazanç tutarı, [134] ",
+          "metin": "diğerleri için ise teknisyenlerin prime esas kazanç tutarları, f) İlgili kanunlarında veya Cumhurbaşkanlığı kararnamesinde emeklilik ya da ek gösterge açısından belirli bir kadro, unvan veya görevle bağlantı kurulanlar için, bağlantı kurulan kadro, unvan veya görevin prime esas kazanç tutarı, [134] g) Bu fıkranın (a) ilâ (f) bentleri kapsamı dışında kalan sigortalılar için atandıkları görev itibarıyla 657 sayılı Kanuna göre girebilecekleri sınıflardaki benzer görevlerin aynı kadro, unvan, tahsil ve derecesi için belirlenen prime esas kazanç tutarları, esas alınır.",
+          "skor": 0.0379,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0377,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1346",
+          "metin_ozet": "MADDE 1346- (1) 1976 veya 1992 tarihli sözleşmeler uyarınca kurulan fonlar,\nyalnız, haklarında sınırlı sorumluluk ileri sürülebilecek olan alacakların ödenmesinde\nkullanılabilir. Fon kurulması yoluyla sorumluluğunu sınırlayan kişinin diğer alacaklıları,\nhiçbir şekilde bu fonlara başvuramaz. Fonların",
+          "metin": "MADDE 1346- (1) 1976 veya 1992 tarihli sözleşmeler uyarınca kurulan fonlar,\nyalnız, haklarında sınırlı sorumluluk ileri sürülebilecek olan alacakların ödenmesinde\nkullanılabilir. Fon kurulması yoluyla sorumluluğunu sınırlayan kişinin diğer alacaklıları,\nhiçbir şekilde bu fonlara başvuramaz. Fonların paylaştırılmasından sonra bir bakiye kalırsa,\nfonu kuran kişinin diğer alacaklıları, bu bakiyeyi takip edebilir.\nVII - Faiz",
+          "skor": 0.0371,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1200,
+      "ortalama_kaynak_skor": 0.0381,
+      "kaynak_sayisi": 5,
+      "message_id": "ecfec34a-1506-4a5f-b669-cf044713b947",
+      "conversation_id": "85684c03-a856-41a4-b53c-53d95ff7106b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.8,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-11T12:52:38.389171+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 6.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/ceza_hukuku/test_sonuclari_20260411_125103.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 94.6,
+    "ortalama_sure_sn": 7.89,
+    "kategori_dagilimi": {
+      "Ceza Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 1.89,
+        "kategori_dogruluk_orani": 91.7,
+        "ortalama_cevap_uzunluk": 1013.0,
+        "ortalama_kaynak_skor": 0.034
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Hakaret suçu hangi söz ve davranışlarla oluşur?",
+      "cevap": "Hakaret suçu, Türk Ceza Kanunu'nda (TCK) düzenlenen bir suçtur. TCK'nın 125. maddesine göre, bir kişiye karşı onur, şeref ve saygınlığını rencide edecek söz ve davranışlarda bulunmak suretiyle işlenen suç hakaret suçu olarak tanımlanır.\n\nHakaret suçu, sözlü veya yazılı olarak işlenebilir. Sözlü hakaret, bir kişiye karşı yüzüne karşı veya absence olarak söylenen sözlerle işlenir. Yazılı hakaret ise, bir kişiye karşı mektup, e-posta, sosyal medya gibi araçlarla işlenir.\n\nHakaret suçu, aşağıdaki söz ve davranışlarla oluşabilir:\n\n* Bir kişiye karşı küfür veya ağır sözler söylemek\n* Bir kişiye karşı onur, şeref ve saygınlığını rencide edecek sözler söylemek\n* Bir kişiye karşı aşağılayıcı veya küçük düşürücü davranışlarda bulunmak\n* Bir kişiye karşı tehdit veya hakaret içerikli mesajlar göndermek\n\nAncak, hakaret suçu oluşması için, söz veya davranışın onur, şeref ve saygınlığı rencide edecek nitelikte olması gerekir. Ayrıca, hakaret suçu, ancak mağdurun şikayeti üzerine soruşturulabilir.\n\nVerilen kaynaklar, hakaret suçu ile ilgili bilgi vermemektedir. Hakaret suçu ile ilgili daha detaylı bilgi için, Türk Ceza Kanunu'nun ilgili maddelerine bakılması gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 78",
+          "metin_ozet": "Madde 78 – (Değişik: 3/7/1940-3890/1 md.)\n(Değişik birinci fıkra:22/7/2020-7251/49 md.) Ödeme emrindeki müddet geçtikten\nve borçlu itiraz etmiş ise itirazı kaldırıldıktan sonra mal beyanını beklemeksizin alacaklı,\nhaciz konmasını isteyebilir. Ancak, alacaklı dilerse haciz talebinde bulunmaksızın Ulu",
+          "metin": "Madde 78 – (Değişik: 3/7/1940-3890/1 md.)\n(Değişik birinci fıkra:22/7/2020-7251/49 md.) Ödeme emrindeki müddet geçtikten\nve borçlu itiraz etmiş ise itirazı kaldırıldıktan sonra mal beyanını beklemeksizin alacaklı,\nhaciz konmasını isteyebilir. Ancak, alacaklı dilerse haciz talebinde bulunmaksızın Ulusal\nYargı Ağı Bilişim Sistemi üzerinden, bu sisteme entegre bilişim sistemleri vasıtasıyla\nborçlunun mal, hak veya alacağını sorgulayabilir. Sorgulama sonunda Ulusal Yargı Ağı\nBilişim Sistemi, varsa borçlunun mal, hak veya alacağının mahiyeti ve detayı hakkında bilgi\nverir ve bu durumda sistem üzerinden de haciz talep edilebilir. Bu takdirde icra dairesi, tespit\nedilen mal, hak veya alacağı elektronik ortamda haczeder. Sorgulama sonunda edinilen\nbilgiler hukuka aykırı olarak paylaşılamaz. Sorgulama ve haciz işlemlerinin yürütülebilmesi\niçin kamu kurum veya kuruluşları ile 19/10/2005 tarihli ve 5411 sayılı Bankacılık Kanununun\n3 üncü maddesinde tanımlanan kredi kuruluşları ve finansal kuruluşlar, Ulusal Yargı Ağı\nBilişim Sistemi ile kendi sistemleri arasında entegrasyonu sağlar. Sorgulamanın tür, kapsam\nve sınırı ile diğer hususlar Adalet Bakanlığınca yürürlüğe konulan yönetmelikle belirlenir.\n(Değişik:6/6/1985-3222/9 md.) Haciz istemek hakkı, ödeme emrinin tebliği tarihinden\nitibaren bir sene geçmekle düşer. İtiraz veya dava halinde bunların vukuundan hükmün\nkatileşmesine kadar veya alacaklıyla borçlunun icra dairesinde taksit sözleşmeleri yapmaları\nhalinde taksit sözleşmesinin ihlaline kadar geçen zaman hesaba katılmaz.\nAlacaklı isterse, haciz talebinin vukuuna dair bir vesika verilir. Bu vesika hiç bir harç\nve resme tabi değildir.\nHaciz talebi kanuni müddet içinde yapılmaz veya geri alındıktan sonra bu müddet\niçinde yenilenmezse dosya muameleden kaldırılır.\nYeniden haciz istemek, alacaklı tarafından vukubulan yenileme talebinin borçluya\ntebliğine mütevakkıftır. İlama müstenit olmayan takiplerde yenileme talebi üzerine yeniden\nharc alınır. Yenileme masraf ve harcları borçluya tahmil edilmez.\n2 – Hacze başlama müddeti:",
+          "skor": 0.0414,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 27",
+          "metin_ozet": "Madde 27 – Herkes, bilim ve sanatı serbestçe öğrenme ve öğretme, açıklama, yayma ve bu\nalanlarda her türlü araştırma hakkına sahiptir.\nYayma hakkı, Anayasanın 1 inci, 2 nci ve 3 üncü maddeleri hükümlerinin değiştirilmesini\nsağlamak amacıyla kullanılamaz.\nBu madde hükmü yabancı yayınların ülkeye girm",
+          "metin": "Madde 27 – Herkes, bilim ve sanatı serbestçe öğrenme ve öğretme, açıklama, yayma ve bu\nalanlarda her türlü araştırma hakkına sahiptir.\nYayma hakkı, Anayasanın 1 inci, 2 nci ve 3 üncü maddeleri hükümlerinin değiştirilmesini\nsağlamak amacıyla kullanılamaz.\nBu madde hükmü yabancı yayınların ülkeye girmesi ve dağıtımının kanunla düzenlenmesine\nengel değildir.\nX. Basın ve yayımla ilgili hükümler\nA. Basın hürriyeti",
+          "skor": 0.0362,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 116",
+          "metin_ozet": "Madde 116- Amacın gerçekleşmesi olanaksız hâle geldiği ve değiştirilmesine de olanak\nbulunmadığı takdirde, vakıf kendiliğinden sona erer ve mahkeme kararıyla sicilden silinir.\nYasak amaç güttüğü veya yasak faaliyetlerde bulunduğu sonradan anlaşılan veya amacı\nsonradan yasaklanan vakfın amacının deği",
+          "metin": "Madde 116- Amacın gerçekleşmesi olanaksız hâle geldiği ve değiştirilmesine de olanak\nbulunmadığı takdirde, vakıf kendiliğinden sona erer ve mahkeme kararıyla sicilden silinir.\nYasak amaç güttüğü veya yasak faaliyetlerde bulunduğu sonradan anlaşılan veya amacı\nsonradan yasaklanan vakfın amacının değiştirilmesine olanak bulunmazsa; vakıf, denetim\nmakamının ya da Cumhuriyet savcısının başvurusu üzerine duruşma yapılarak dağıtılır.\nJ. Diğer hükümler",
+          "skor": 0.0324,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0314,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 32",
+          "metin_ozet": "Madde 32- Ölüm tehlikesi içinde kaybolan veya kendisinden uzun zamandan beri haber\nalınamayan bir kimsenin ölümü hakkında kuvvetli olasılık varsa, hakları bu ölüme bağlı olanların\nbaşvurusu üzerine mahkeme bu kişinin gaipliğine karar verebilir.\nYetkili mahkeme, kişinin Türkiye'deki son yerleşim yeri",
+          "metin": "Madde 32- Ölüm tehlikesi içinde kaybolan veya kendisinden uzun zamandan beri haber\nalınamayan bir kimsenin ölümü hakkında kuvvetli olasılık varsa, hakları bu ölüme bağlı olanların\nbaşvurusu üzerine mahkeme bu kişinin gaipliğine karar verebilir.\nYetkili mahkeme, kişinin Türkiye'deki son yerleşim yeri; eğer Türkiye'de hiç yerleşmemişse\nnüfus sicilinde kayıtlı olduğu yer; böyle bir kayıt da yoksa anasının veya babasının kayıtlı bulunduğu\nyer mahkemesidir.\n2. Yargılama usulü",
+          "skor": 0.0298,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1373,
+      "ortalama_kaynak_skor": 0.0342,
+      "kaynak_sayisi": 5,
+      "message_id": "5ac4a189-ea1c-4473-bf59-815632bffce8",
+      "conversation_id": "526708c6-199f-4460-80f5-f3e1e248daa7",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.56,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Tehdit suçu ile şantaj suçu arasındaki fark nedir?",
+      "cevap": "Tehdit suçu ve şantaj suçu, Türk Ceza Kanunu'nda düzenlenen iki ayrı suçtur. Tehdit suçu, bir kişiyi belirli bir davranışa yönlendirmek veya onu bir davranıştan vazgeçirmek amacıyla, kendisinin veya bir başkasının hayatına, vücut veya cinsel dokunulmazlığına yönelik bir saldırı gerçekleştireceği veya malvarlığına zarar vereceği şeklinde bir tehlike yaratarak korkutma davranışını ifade eder (TCK md. 106). Şantaj suçu ise, bir kişinin, bir gerçeği açıklamakla tehdit ederek, menfaat sağlamak veya bir kimseyi belirli bir davranışa yönlendirmek amacıyla, bu kişinin veya bir başkasının şeref veya malvarlığını zarar altına sokabilecek bir gerçeği açıklamakla tehdit etmesini ifade eder (TCK md. 107).\n\nBu iki suç arasındaki temel fark, tehdidin niteliği ve amaçlarındadır. Tehdit suçu, genellikle fiziksel zarar veya saldırı tehdidi içerirken, şantaj suçu, bir gerçeği açıklamakla tehdit etmeyi içerir. Ayrıca, şantaj suçu genellikle menfaat sağlamak veya bir kişiyi belirli bir davranışa yönlendirmek amacıyla gerçekleştirilirken, tehdit suçu daha geniş bir amaç yelpazesine sahip olabilir.\n\nKaynaklar:\n- Türk Ceza Kanunu (TCK) md. 106, 107\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/15668",
+          "metin_ozet": "A. Bozma Kararı\nBölge Adliye Mahkemesinin yukarıda belirtilen kararına karşı süresi içinde davacı vekili temyiz isteminde bulunmuştur.\nDairemizin 11.12.2023  tarihli ve  2021/22528 Esas, 2023/13278 Karar sayılı ilamı ile; \"...Davacının dosyaya sunulu evraklardan olay sonrası hastaneye başvurduğu, 09",
+          "metin": "A. Bozma Kararı\nBölge Adliye Mahkemesinin yukarıda belirtilen kararına karşı süresi içinde davacı vekili temyiz isteminde bulunmuştur.\nDairemizin 11.12.2023  tarihli ve  2021/22528 Esas, 2023/13278 Karar sayılı ilamı ile; \"...Davacının dosyaya sunulu evraklardan olay sonrası hastaneye başvurduğu, 09.11.2012 tarihli hastaneye başvuru evraklarında yaralanmasının trafik kazası sonucu oluştuğunun yazılı olduğu görülmüştür. Her ne kadar olayda kusur ispatı konusunda tam bir kanaate varılamamış ise de davacının yaralanmasının trafik kazasından kaynaklandığı anlaşılmakla, haksız fiil neticesi oluşan zarar ve tazminatın belirlenmesine ilişkin 6098 sayılı Türk Borçlar Kanunu' nun 50...  inci maddeleri dikkate alınarak ve davacının yaralanması, yaralanmanın niteliği ve olayın oluş biçimi gözetilerek yeniden kusur incelemesi yaptırılıp davacının talebi hakkında bu inceleme sonucuna göre karar verilmesi gerekirken eksik inceleme ile karar verilmesi hatalıdır.\" gerekçesi ile karar bozularak dosya kararı veren İlk Derece Mahkemesine gönderilmiştir.\nB. İlk Derece Mahkemesince Verilen Direnme Kararı\nİlk Derece Mahkemesinin yukarıda tarih ve sayısı belirtilen kararı ile \"...bu nedenlerle davacının ",
+          "skor": 0.0321,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7570",
+          "metin_ozet": " kusur atfedilemeyeceği gerekçesiyle  sigortalı araç sürücüsünün tam kusurlu olduğu kabul edilerek yapılan hesaplamaya itibar edildiği anlaşılmaktadır.\nŞu durumda, İtiraz Hakem Heyetince dava konusu trafik kazasına ilişkin ceza soruşturma dosyası da dosya arasına alınarak tüm deliller değerlendirilm",
+          "metin": " kusur atfedilemeyeceği gerekçesiyle  sigortalı araç sürücüsünün tam kusurlu olduğu kabul edilerek yapılan hesaplamaya itibar edildiği anlaşılmaktadır.\nŞu durumda, İtiraz Hakem Heyetince dava konusu trafik kazasına ilişkin ceza soruşturma dosyası da dosya arasına alınarak tüm deliller değerlendirilmek suretiyle tarafların olaydaki kusur oranlarının tespiti için üniversite öğretim üyelerinden veya Karayolları Genel Müdürlüğünde görevli fen heyetinden seçilecek uzman bilirkişilerden denetime elverişli, ayrıntılı ve gerekçeli rapor alınıp sonucuna göre karar verilmesi gerekirken eksik inceleme ile yazılı şekilde karar verilmesi doğru değildir.\nb)6098 sayılı Türk Borçlar Kanunu’nun (TBK) 52 nci maddesi uyarınca zarar gören, zararı doğuran fiile razı olmuş veya zararın doğmasında ya da artmasında etkili olmuş yahut tazminat yükümlüsünün durumunu ağırlaştırmış (müterafik kusur hâli söz konusu) ise hâkim, tazminatı indirebilir veya tamamen kaldırabilir. Müterafik kusura ilişkin savunma bir def’i olmadığından bu yönde bir savunma olmasa da resen dikkate alınması gerekir.\n2918 sayılı Karayolları Trafik Kanunu’nun 78 inci ve Karayolları Trafik Yönetmeliği’nin 150 nci  \"Sürücülerin ve Yolcula",
+          "skor": 0.0283,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/14431",
+          "metin_ozet": "munu ağırlaştırmış (müterafik kusur hâli söz konusu) ise hâkim, tazminatı indirebilir veya tamamen kaldırabilir. Müterafik kusura ilişkin savunma bir def'i olmadığından bu yönde bir savunma olmasa da resen dikkate alınması gerekir.\n2918 sayılı Kanun'un 78. ve Karayolları Trafik Yönetmeliği'nin 150. ",
+          "metin": "munu ağırlaştırmış (müterafik kusur hâli söz konusu) ise hâkim, tazminatı indirebilir veya tamamen kaldırabilir. Müterafik kusura ilişkin savunma bir def'i olmadığından bu yönde bir savunma olmasa da resen dikkate alınması gerekir.\n2918 sayılı Kanun'un 78. ve Karayolları Trafik Yönetmeliği'nin 150. maddesi uyarınca emniyet kemeri takılması zorunluluğu bulunan araçlardan biri de otomobildir.\nDavacının emniyet kemeri takmaması nedeniyle zararın artmasında katkısının bulunduğu, dolayısıyla müterafik kusur indirimi yapılması gerektiğine dair davalının savunması İtiraz Hakem Heyetince kabul edilmemiştir.\nDavaya konu olay nedeniyle yürütülen ceza soruşturmasında olay sonrasına ilişkin olarak görgü sahibi olan tanıklarca davacının araç içerisinde olmadığını gördüklerinde kaza mahalline baktıklarını ve davacının aracın birkaç metre ilerisinde yarı baygın halde olduğunun  beyan edildiği görülmüş ve yine davacıya ait  06.05.2022 tarihli genel adli muayene formunda davacının araçtan fırladığının ifade edildiği görülmüştür.\nSomut olayda; yolcu konumunda olan davacının trafik kazası sonucu yaralandığı ve emniyet kemeri takmadığı hususu olaya ilişkin olarak yürütülen ceza soruşturmasında alınan ",
+          "skor": 0.0282,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9760",
+          "metin_ozet": "2019/40-2020/40 sayılı kararı sonrasında %1,8 teknik faizin uygulanma imkanı olmamasına, davacı tarafından yapılan başvurusunun usulüne uygun olmasına, davacının kask takmaması ile yaralanması arasında illiyet bağı olmamasına ve temyiz olunan kararda belirtilen gerekçelere göre davacı vekilinin tüm,",
+          "metin": "2019/40-2020/40 sayılı kararı sonrasında %1,8 teknik faizin uygulanma imkanı olmamasına, davacı tarafından yapılan başvurusunun usulüne uygun olmasına, davacının kask takmaması ile yaralanması arasında illiyet bağı olmamasına ve temyiz olunan kararda belirtilen gerekçelere göre davacı vekilinin tüm, davalı vekilinin aşağıdaki bendin kapsamı dışındaki temyiz itirazları yerinde görülmemiştir.\n2. 6100 sayılı Hukuk Muhakemeleri Kanunu’nun 266 ve devamı maddeleri gereğince, çözümü özel veya teknik bilgiyi gerektiren hâllerde bilirkişinin oy ve görüşünün alınmasına karar verilir.\nSomut olayda, trafik kazasında tarafların kusur oranlarının belirlenmesi için kusur raporu alınmadan, kazaya ilişkin kaza tespit tutanağında yer alan belirlemeye göre yapılan hesaplamaya itibar edildiği anlaşılmaktadır.\nŞu durumda, İtiraz Hakem Heyetince dava konusu trafik kazasına ilişkin varsa ceza soruşturma dosyası da dosya arasına alınarak tüm deliller değerlendirilmek suretiyle tarafların olaydaki kusur oranlarının tespiti için üniversite öğretim üyelerinden seçilecek uzman bilirkişilerden denetime elverişli, ayrıntılı ve gerekçeli rapor alınıp sonucuna göre karar verilmesi gerekirken eksik inceleme ile ya",
+          "skor": 0.0235,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/11005",
+          "metin_ozet": "n mevzuata uygun düzenlenmesine göre, davalı vekilinin aşağıdaki bentlerin kapsamı dışında kalan temyiz itirazları yerinde görülmemiştir.\n2. 6098 sayılı Türk Borçlar Kanunu’nun (TBK) 52 nci maddesi uyarınca zarar gören, zararı doğuran fiile razı olmuş veya zararın doğmasında ya da artmasında etkili ",
+          "metin": "n mevzuata uygun düzenlenmesine göre, davalı vekilinin aşağıdaki bentlerin kapsamı dışında kalan temyiz itirazları yerinde görülmemiştir.\n2. 6098 sayılı Türk Borçlar Kanunu’nun (TBK) 52 nci maddesi uyarınca zarar gören, zararı doğuran fiile razı olmuş veya zararın doğmasında ya da artmasında etkili olmuş yahut tazminat yükümlüsünün durumunu ağırlaştırmış (müterafik kusur hâli söz konusu) ise hâkim tazminatı indirebilir veya tamamen kaldırabilir.\nSomut olayda; kaza tespit tutanağında davacı yolcu ...'in emniyet kemerinin takılı olup olmadığı hususunun belirsiz olduğu belirtilmişse de; dava konusu kaza sonrası davacının tedavisinin yapıldığı Abant İzzet Baysal Üniversitesi İzzet Baysal Eğitim ve Araştırma Hastanesi'nin 04.05.2021 tarihli epikriz raporunun dördüncü sayfasında muayene bulguları başlığı altında yer alan \"dün akşam araç içi trafik kazası geçiren hasta sağ kolunu ve başının sağ yanını çarptığını ifade ediyor, emniyet kemerinin takılı olmadığını ifade ediyor.\" şeklindeki kayıttan kaza anında davacının emniyet kemerinin takılı olmadığı anlaşılmaktadır.\nBu itibarla; TBK’nın 52 nci maddesi gereğince Dairemizin yerleşik uygulamasına göre %20 oranında müterafik kusur indirimi y",
+          "skor": 0.0233,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1346,
+      "ortalama_kaynak_skor": 0.0271,
+      "kaynak_sayisi": 5,
+      "message_id": "8396bedc-5b0b-4c10-905a-ce79f8313565",
+      "conversation_id": "23efc633-ceac-4ca7-9092-107e08681a29",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.43,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Kasten yaralama suçunda şikayet süresi ne kadardır?",
+      "cevap": "Kasten yaralama suçunda şikayet süresi, Türk Ceza Kanunu'nda düzenlenen şikayet sürelerine göre belirlenir. Ancak, verilen kaynaklar arasında bu konuya ilişkin bir bilgi bulunmamaktadır. Türk Ceza Kanunu'nda, kasten yaralama suçunda şikayet süresi 6 ay olarak belirlenmiştir. Ancak, bu bilgi verilen kaynaklarda yer almamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 122",
+          "metin_ozet": "Madde 122 — Fon, bu Kanun ve ilgili diğer mevzuatla verilenler dışında aşağıdaki\ngörevleri yapar ve yetkileri kullanır:\na) Fon Kurulu kararlarının uygulanmasını sağlamak.\nb) Fonun insan kaynakları politikalarını belirlemek.\nc) Yurt içi ve yurt dışı muadil kurumların katıldığı uluslararası malî, ikti",
+          "metin": "Madde 122 — Fon, bu Kanun ve ilgili diğer mevzuatla verilenler dışında aşağıdaki\ngörevleri yapar ve yetkileri kullanır:\na) Fon Kurulu kararlarının uygulanmasını sağlamak.\nb) Fonun insan kaynakları politikalarını belirlemek.\nc) Yurt içi ve yurt dışı muadil kurumların katıldığı uluslararası malî, iktisadî ve\nmeslekî teşekküllere üye olmak, görev alanına giren hususlarda yabancı ülkelerin yetkili\nmercileri ile mutabakat zaptı imzalamak.\nd) Kanunlarla verilen diğer görevleri yapmak.\nFon, Fon Kurulu kararıyla bu Kanunun uygulanmasına ilişkin yönetmelikler ve\ntebliğler çıkarmaya yetkilidir.\nFon, sigorta kapsamındaki mevduat ve katılım fonu üzerinden prim hesaplanmasına\nesas teşkil edecek gerekli bilgilerin gönderilmesini ve bu primlerin belirlediği esaslara göre\nyatırılıp yatırılmadığının denetlenmesini Kurumdan istemeye yetkilidir. Kurum, makul bir\nsüre içerisinde, Fon tarafından istenen bilgileri temin etmek ve/veya denetimi yapmakla\nyükümlüdür.\n51 Anayasa Mahkemesi’nin 22/3/2007 tarihli ve E.: 2005/139, K.: 2007/33 sayılı Kararı ile; bu fıkrada\nyer alan“... nitelikleri ile ...” ibaresi iptal edilmiştir.\nFon, her türlü faaliyetinde, kuruluş kanununda verilen yetkiler saklı kalmak kaydıyla,\nkalkınma plânı ve programlarda yer alan ilke, strateji ve politikalara uyar.52\nFonun hazırlayacağı düzenleme taslakları en az yedi gün süreyle Fonun internet\nsayfası başta olmak üzere uygun vasıtalarla kamuoyunun bilgisine sunulur.\nKamu kurum ve kuruluşları, Kanun ve Cumhurbaşkanlığı Kararnameleriyle\nbelirlenmiş görev alanlarında Fona gerekli yardımı sağlamakla yükümlüdür.53\nFonun bilgi ve belge isteme yetkisi",
+          "skor": 0.0079,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1341",
+          "metin_ozet": "MADDE 1341- (1) 1976 tarihli Sözleşmede belirlenen sorumluluk sınırları,\nkılavuzlara doğrudan yöneltilen bütün istemler için toplam 1.500 Özel Çekme Hakkıdır.\n(2) 1992 tarihli Sorumluluk Sözleşmesinin III üncü maddesinin beşinci paragrafına\ngöre malik tarafından kılavuza yöneltilebilecek rücu isteml",
+          "metin": "MADDE 1341- (1) 1976 tarihli Sözleşmede belirlenen sorumluluk sınırları,\nkılavuzlara doğrudan yöneltilen bütün istemler için toplam 1.500 Özel Çekme Hakkıdır.\n(2) 1992 tarihli Sorumluluk Sözleşmesinin III üncü maddesinin beşinci paragrafına\ngöre malik tarafından kılavuza yöneltilebilecek rücu istemlerinde sorumluluk sınırı toplam\n1.500 Özel Çekme Hakkıdır.\n(3) Bu maddenin uygulamasında kılavuz terimi, gemide veya herhangi başka bir\nyerden gemiye kılavuzluk hizmeti veren kişiyi veya kişileri ve bu kişi veya kişilerin\nfiillerinden sorumlu olan bütün gerçek ve tüzel kişileri kapsar.\nII - Kişisel sorumlulukta fon kurulması",
+          "skor": 0.0069,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1300",
+          "metin_ozet": "MADDE 1300- (1) Kaptan, aracın kurtarılması için malik adına kurtarma sözleşmesi\nyapmaya yetkilidir. Bu yetkinin kapsamına, yetkili mahkemeyi veya tahkimi kararlaştırmak\nda girer.\n(2) Aracın maliki ve kaptanı, araçta bulunan şeylerin malikleri adına kurtarma\nsözleşmesi yapmaya yetkilidir. Bu yetkini",
+          "metin": "MADDE 1300- (1) Kaptan, aracın kurtarılması için malik adına kurtarma sözleşmesi\nyapmaya yetkilidir. Bu yetkinin kapsamına, yetkili mahkemeyi veya tahkimi kararlaştırmak\nda girer.\n(2) Aracın maliki ve kaptanı, araçta bulunan şeylerin malikleri adına kurtarma\nsözleşmesi yapmaya yetkilidir. Bu yetkinin kapsamına, yetkili mahkemeyi veya tahkimi\nkararlaştırmak da girer.\n2. Sözleşmenin uyarlanması veya iptali",
+          "skor": 0.0034,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 318",
+          "metin_ozet": "Madde 318- Evlât edinme esasa ilişkin diğer noksanlıklardan biriyle sakatsa, Cumhuriyet\nsavcısı veya her ilgili evlâtlık ilişkisinin kaldırılmasını isteyebilir.\nNoksanlıklar bu arada ortadan kalkmış veya sadece usule ilişkin olup ilişkinin kaldırılması\nevlâtlığın menfaatini ağır biçimde zedeleyecek ",
+          "metin": "Madde 318- Evlât edinme esasa ilişkin diğer noksanlıklardan biriyle sakatsa, Cumhuriyet\nsavcısı veya her ilgili evlâtlık ilişkisinin kaldırılmasını isteyebilir.\nNoksanlıklar bu arada ortadan kalkmış veya sadece usule ilişkin olup ilişkinin kaldırılması\nevlâtlığın menfaatini ağır biçimde zedeleyecek olursa, bu yola gidilemez.\nII. Hak düşürücü süre",
+          "skor": 0.0018,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 203",
+          "metin_ozet": "Madde 203- Mal rejimi sözleşmesi, evlenmeden önce veya sonra yapılabilir. Taraflar,\nistedikleri mal rejimini ancak kanunda yazılı sınırlar içinde seçebilir, kaldırabilir veya değiştirebilirler.\nII. Sözleşme ehliyeti",
+          "metin": "Madde 203- Mal rejimi sözleşmesi, evlenmeden önce veya sonra yapılabilir. Taraflar,\nistedikleri mal rejimini ancak kanunda yazılı sınırlar içinde seçebilir, kaldırabilir veya değiştirebilirler.\nII. Sözleşme ehliyeti",
+          "skor": 0.001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 533,
+      "ortalama_kaynak_skor": 0.0042,
+      "kaynak_sayisi": 5,
+      "message_id": "92841592-9b5c-4139-b9cb-09ec3977aeb3",
+      "conversation_id": "29df6cf9-54d6-4f3b-8873-60cd79b43a11",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.23,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Taksirle yaralama ve taksirle ölüme neden olma suçlarında ceza nasıl belirlenir?",
+      "cevap": "Taksirle yaralama ve taksirle ölüme neden olma suçlarında ceza, Türk Ceza Kanunu'nun (TCK) ilgili maddelerine göre belirlenir. TCK'nın 85. maddesine göre, taksirle yaralama suçu, bir yıldan üç yıla kadar hapis cezası ile cezalandırılır. TCK'nın 83. maddesine göre, taksirle ölüme neden olma suçu, iki yıldan altı yıla kadar hapis cezası ile cezalandırılır.\n\nCeza belirlenirken, suçun işlenmesindeki kusurun ağırlığı, yaralanan veya ölen kişinin sayısı, suçun işlenmesindeki diğer koşullar gibi faktörler dikkate alınır. Ayrıca, mahkeme, suçun işlenmesindeki kusurun ağırlığına göre, cezanın indirilmesine veya artırılmasına karar verebilir.\n\nVerilen kaynaklar, taksirle yaralama ve taksirle ölüme neden olma suçlarında ceza belirlenmesine ilişkin doğrudan bir bilgi içermemektedir. Bu nedenle, daha详lı bilgi için ilgili kanun maddeleri ve Yargıtay kararlarına başvurmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/578",
+          "metin_ozet": "angi bir düzenleme bulunmamaktadır.\nHükme esas alınan raporda; davacının vücut yüzeyinin % 10'unu kaplayan skar bulunduğu tespit edildiğine ve yeterli açıklama da bulunduğuna göre raporun anılan mevzuata ve usule uygun olduğu, yeniden maluliyet raporu alınmasına gerek bulunmadığı görüşünde olduğumda",
+          "metin": "angi bir düzenleme bulunmamaktadır.\nHükme esas alınan raporda; davacının vücut yüzeyinin % 10'unu kaplayan skar bulunduğu tespit edildiğine ve yeterli açıklama da bulunduğuna göre raporun anılan mevzuata ve usule uygun olduğu, yeniden maluliyet raporu alınmasına gerek bulunmadığı görüşünde olduğumdan sayın çoğunluğun 2. bentteki bozma düşüncesine katılmıyorum.",
+          "skor": 0.0365,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8473",
+          "metin_ozet": "ve yasaya uygun olduğu ve onanması düşüncesinde olduğumuzdan, sayın çoğunluğun bozma yönündeki görüşüne katılmıyoruz.",
+          "metin": "ve yasaya uygun olduğu ve onanması düşüncesinde olduğumuzdan, sayın çoğunluğun bozma yönündeki görüşüne katılmıyoruz.",
+          "skor": 0.0352,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15646",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0294,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/8068",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0294,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7563",
+          "metin_ozet": "na gelmesinde herhangi bir kusuru da olmadığından ehliyetsizlik nedeniyle müterafik kusur indirimi yapılmasının doğru olmadığı görüşünde olduğumdan sayın çoğunluğun (2) ve (3) numaralı bentlerdeki bozma gerekçesine katılmıyorum.",
+          "metin": "na gelmesinde herhangi bir kusuru da olmadığından ehliyetsizlik nedeniyle müterafik kusur indirimi yapılmasının doğru olmadığı görüşünde olduğumdan sayın çoğunluğun (2) ve (3) numaralı bentlerdeki bozma gerekçesine katılmıyorum.",
+          "skor": 0.029,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1082,
+      "ortalama_kaynak_skor": 0.0319,
+      "kaynak_sayisi": 5,
+      "message_id": "7c30b5e1-2383-4331-80dd-16a789db5383",
+      "conversation_id": "4d7f75bd-482b-43ed-8d40-302f217a5709",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.86,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Hırsızlık suçu ile güveni kötüye kullanma suçu nasıl ayrılır?",
+      "cevap": "Hırsızlık suçu ve güveni kötüye kullanma suçu, Türk Ceza Kanunu'nda ayrı ayrı düzenlenmiştir. Hırsızlık suçu, TCK madde 141'de düzenlenmiştir ve bir kişinin, başkasına ait bir şeyi, sahibinin rızası olmadan ve hukuka aykırı olarak alma eylemini ifade eder. Güveni kötüye kullanma suçu ise, TCK madde 155'de düzenlenmiştir ve bir kişinin, kendisine verilen bir şeyi, sahibinin güvenini kötüye kullanarak, hukuka aykırı olarak kullanmasını veya elden çıkarmasını ifade eder.\n\nHırsızlık suçu ile güveni kötüye kullanma suçu arasındaki temel fark, eylemin niteliği ve failin positionudur. Hırsızlık suçu, genellikle bir kişinin, başkasına ait bir şeyi, sahibinin rızası olmadan ve hukuka aykırı olarak alma eylemini ifade eder. Güveni kötüye kullanma suçu ise, bir kişinin, kendisine verilen bir şeyi, sahibinin güvenini kötüye kullanarak, hukuka aykırı olarak kullanmasını veya elden çıkarmasını ifade eder.\n\nÖrneğin, bir kişinin, bir mağazadan bir ürün çalmak için girmesi ve ürünü sahibinin rızası olmadan almaya çalışması, hırsızlık suçu olarak değerlendirilir. Ancak, bir kişinin, bir arkadaşına ait bir aracı, arkadaşının rızası ile kullanmak için aldığı, ancak daha sonra aracı satmak veya elden çıkarmak için kullanması, güveni kötüye kullanma suçu olarak değerlendirilir.\n\nVerilen kaynaklar, bu konuya ilişkin değildir. Ancak, Türk Ceza Kanunu ve ilgili mevzuat, hırsızlık suçu ve güveni kötüye kullanma suçu arasındaki farkı açıklar.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 314",
+          "metin_ozet": "MADDE 314- (1) Sulh, hüküm kesinleşinceye kadar her zaman yapılabilir.\n(2) (Ek:22/7/2020-7251/30 md.) Sulh, hükmün verilmesinden sonra yapılmışsa,\ntaraflarca kanun yoluna başvurulmuş olsa dahi, dosya kanun yolu incelemesine gönderilmez\nve ilk derece mahkemesi veya bölge adliye mahkemesince sulh doğr",
+          "metin": "MADDE 314- (1) Sulh, hüküm kesinleşinceye kadar her zaman yapılabilir.\n(2) (Ek:22/7/2020-7251/30 md.) Sulh, hükmün verilmesinden sonra yapılmışsa,\ntaraflarca kanun yoluna başvurulmuş olsa dahi, dosya kanun yolu incelemesine gönderilmez\nve ilk derece mahkemesi veya bölge adliye mahkemesince sulh doğrultusunda ek karar verilir.\n(3) (Ek:22/7/2020-7251/30 md.) Sulh, dosyanın temyiz incelemesine gönderilmesinden\nsonra yapılmışsa, Yargıtay temyiz incelemesi yapmaksızın dosyayı sulh hususunda ek karar\nverilmek üzere hükmü veren mahkemeye gönderir.\nSulhun etkisi",
+          "skor": 0.0275,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 509",
+          "metin_ozet": "MADDE 509- Vekilin, kendi adına ve vekâlet veren hesabına gördüğü işlerden doğan üçüncü kişilerdeki alacağı, vekâlet verenin vekile karşı bütün borçlarını ifa ettiği anda, kendiliğinden vekâlet verene geçer. Vekilin iflası hâlinde vekâlet veren, bu alacağın kendisine geçmiş olduğunu iflas masasına k",
+          "metin": "MADDE 509- Vekilin, kendi adına ve vekâlet veren hesabına gördüğü işlerden doğan üçüncü kişilerdeki alacağı, vekâlet verenin vekile karşı bütün borçlarını ifa ettiği anda, kendiliğinden vekâlet verene geçer. Vekilin iflası hâlinde vekâlet veren, bu alacağın kendisine geçmiş olduğunu iflas masasına karşı da ileri sürebilir. Vekâlet veren, vekilin kendi adına ve vekâlet veren hesabına edinmiş olduğu taşınır eşyanın iflas masasından ayrılarak kendisine verilmesini isteyebilir. Vekilin sahip olduğu hapis hakkından iflas masası da yararlanır.",
+          "skor": 0.027,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4966",
+          "metin_ozet": "9.05.2025  tarihinde oy birliğiyle kesin olarak karar verildi.",
+          "metin": "9.05.2025  tarihinde oy birliğiyle kesin olarak karar verildi.",
+          "skor": 0.0253,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 74",
+          "metin_ozet": "MADDE 74- Hâkim, zarar verenin kusurunun olup olmadığı, ayırt etme gücünün bulunup bulunmadığı hakkında karar verirken, ceza hukukunun sorumlulukla ilgili hükümleriyle bağlı olmadığı gibi, ceza hâkimi tarafından verilen beraat kararıyla da bağlı değildir. Aynı şekilde, ceza hâkiminin kusurun değerle",
+          "metin": "MADDE 74- Hâkim, zarar verenin kusurunun olup olmadığı, ayırt etme gücünün bulunup bulunmadığı hakkında karar verirken, ceza hukukunun sorumlulukla ilgili hükümleriyle bağlı olmadığı gibi, ceza hâkimi tarafından verilen beraat kararıyla da bağlı değildir. Aynı şekilde, ceza hâkiminin kusurun değerlendirilmesine ve zararın belirlenmesine ilişkin kararı da, hukuk hâkimini bağlamaz.",
+          "skor": 0.0249,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7145",
+          "metin_ozet": "kemesine gönderilmesine,\n30.09.2025 tarihinde oy birliğiyle kesin olarak karar verildi.",
+          "metin": "kemesine gönderilmesine,\n30.09.2025 tarihinde oy birliğiyle kesin olarak karar verildi.",
+          "skor": 0.0237,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1643,
+      "ortalama_kaynak_skor": 0.0257,
+      "kaynak_sayisi": 5,
+      "message_id": "96340f59-52c4-48cc-aab6-79e6d0f18d08",
+      "conversation_id": "2b18b804-311a-4326-9d59-7d3c24642689",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.42,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Dolandırıcılık suçu hangi unsurlarla oluşur?",
+      "cevap": "Dolandırıcılık suçu, Türk Ceza Kanunu'nda (TCK) 157. maddede düzenlenmiştir. Bu maddeye göre, dolandırıcılık suçu, bir kişinin, başka bir kişiyi aldatarak veya kandırdıktan sonra, onun zararına olarak kendisine veya başkasına bir yarar sağlamasıyla oluşur.\n\nDolandırıcılık suçu, aşağıdaki unsurları içermelidir:\n\n1. Hile: Dolandırıcılık suçu, hileli davranışlarla oluşur. Hile, bir kişinin diğerini aldatmak veya kandırmak amacıyla yapılan davranışlardır.\n2. Aldatma veya Kandırma: Dolandırıcılık suçu, bir kişinin diğerini aldatması veya kandırmasıyla oluşur. Aldatma veya kandırma, bir kişinin diğerini yanlış veya eksik bilgi vererek veya gerçeği gizleyerek yanıltmasıdır.\n3. Zarar: Dolandırıcılık suçu, bir kişinin diğerinin zararına olarak oluşur. Zarar, bir kişinin malvarlığı veya diğer haklarının zedelenmesidir.\n4. Yarar: Dolandırıcılık suçu, bir kişinin diğerinin zararına olarak kendisine veya başkasına bir yarar sağlamasıyla oluşur. Yarar, bir kişinin malvarlığı veya diğer haklarının artırılmasıdır.\n\nVerilen kaynaklar, dolandırıcılık suçuyla ilgili değildir. Bu nedenle, dolandırıcılık suçuyla ilgili daha详lı bilgi için, Türk Ceza Kanunu'na (TCK) ve ilgili mevzuata başvurmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/10181",
+          "metin_ozet": "sadi kuruluş olduğunu, davalı milletvekili tarafından Twitter'da 22.11.2018 tarihinde yapılan paylaşımda kullanılan söz ve ifadelerle müvekkilinin güvenirliğinin ve saygınlığının zedelendiğini, müvekkili kurumun kişilik haklarının saldırıya uğradığını, ifade özgürlüğü ve eleştiri sınırlarının aşıldı",
+          "metin": "sadi kuruluş olduğunu, davalı milletvekili tarafından Twitter'da 22.11.2018 tarihinde yapılan paylaşımda kullanılan söz ve ifadelerle müvekkilinin güvenirliğinin ve saygınlığının zedelendiğini, müvekkili kurumun kişilik haklarının saldırıya uğradığını, ifade özgürlüğü ve eleştiri sınırlarının aşıldığını belirterek 100.000,00 TL manevi tazminatın 22.11.2018 tarihinden işleyecek yasal faizi ile beraber davalıdan tahsili isteminde bulunmuştur.\nII. CEVAP\nDavalı vekili cevap dilekçesinde; müvekkili tarafından yapılan paylaşımda kullanılan söz ve ifadelerin kamuoyunu bilgilendirmeye yönelik olduğunu, ifade özgürlüğü ve eleştiri sınırlarının aşılmadığını, seçim çalışmaları esnasında davacı kurumun kamu kaynaklarını kullandığı hususunun kamu yararı kapsamında dile getirildiğini, değer yargısı kapsamında siyasi değerlendirmelerde bulunduğunu, kişilik haklarına saldırı olmadığını belirterek davanın reddini istemiştir.\nIII. İLK DERECE MAHKEMESİ KARARI\nİlk Derece Mahkemesinin yukarıda tarih ve sayısı belirtilen kararı ile; davalı tarafından yapılan paylaşımda kullanılan söz ve ifadelerin eleştiri niteliğinde olduğu, eleştiride kullanılan dilin hoşa gitmeyen, sert, sarsıcı ya da rahatsız edici ",
+          "skor": 0.06,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 27",
+          "metin_ozet": "Madde 27 – Herkes, bilim ve sanatı serbestçe öğrenme ve öğretme, açıklama, yayma ve bu\nalanlarda her türlü araştırma hakkına sahiptir.\nYayma hakkı, Anayasanın 1 inci, 2 nci ve 3 üncü maddeleri hükümlerinin değiştirilmesini\nsağlamak amacıyla kullanılamaz.\nBu madde hükmü yabancı yayınların ülkeye girm",
+          "metin": "Madde 27 – Herkes, bilim ve sanatı serbestçe öğrenme ve öğretme, açıklama, yayma ve bu\nalanlarda her türlü araştırma hakkına sahiptir.\nYayma hakkı, Anayasanın 1 inci, 2 nci ve 3 üncü maddeleri hükümlerinin değiştirilmesini\nsağlamak amacıyla kullanılamaz.\nBu madde hükmü yabancı yayınların ülkeye girmesi ve dağıtımının kanunla düzenlenmesine\nengel değildir.\nX. Basın ve yayımla ilgili hükümler\nA. Basın hürriyeti",
+          "skor": 0.056,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 37",
+          "metin_ozet": "Madde 37 – (Değişik: 21/2/2001 - 4630/19 md.)\nHaber mahiyetinde olmak ve bilgilendirme kapsamını aşmamak kaydıyla, günlük\nhadiselere bağlı olarak fikir ve sanat eserlerinden bazı parçaların işaret, ses ve/veya görüntü\nnakline yarayan vasıtalara alınması mümkündür. Bu şekilde alınmış parçaların çoğal",
+          "metin": "Madde 37 – (Değişik: 21/2/2001 - 4630/19 md.)\nHaber mahiyetinde olmak ve bilgilendirme kapsamını aşmamak kaydıyla, günlük\nhadiselere bağlı olarak fikir ve sanat eserlerinden bazı parçaların işaret, ses ve/veya görüntü\nnakline yarayan vasıtalara alınması mümkündür. Bu şekilde alınmış parçaların çoğaltılması,\nyayılması, temsil edilmesi veya radyo ve televizyon gibi araçlarla yayınlanması serbesttir. Bu\nserbestlik, hak sahibinin hukuki menfaatlerine zarar verecek şekilde veya eserden normal\nyararlanmaya aykırı biçimde kullanılamaz.\nIII - Hususi menfaat mülahazasiyle:\n1. Şahsan kullanma:",
+          "skor": 0.0507,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 29",
+          "metin_ozet": "Madde 29 – Süreli veya süresiz yayın önceden izin alma ve mali teminat yatırma şartına\nbağlanamaz.\nSüreli yayın çıkarabilmek için kanunun gösterdiği bilgi ve belgelerin, kanunda belirtilen\nyetkili mercie verilmesi yeterlidir. Bu bilgi ve belgelerin kanuna aykırılığının tespiti halinde yetkili\nmerci,",
+          "metin": "Madde 29 – Süreli veya süresiz yayın önceden izin alma ve mali teminat yatırma şartına\nbağlanamaz.\nSüreli yayın çıkarabilmek için kanunun gösterdiği bilgi ve belgelerin, kanunda belirtilen\nyetkili mercie verilmesi yeterlidir. Bu bilgi ve belgelerin kanuna aykırılığının tespiti halinde yetkili\nmerci, yayının durdurulması için mahkemeye başvurur.\nSüreli yayınların çıkarılması, yayım şartları, mali kaynakları ve gazetecilik mesleği ile ilgili\nesaslar kanunla düzenlenir. Kanun, haber, düşünce ve kanaatlerin serbestçe yayımlanmasını\nengelleyici veya zorlaştırıcı siyasal, ekonomik, mali ve teknik şartlar koyamaz.\nSüreli yayınlar, Devletin ve diğer kamu tüzelkişilerinin veya bunlara bağlı kurumların araç ve\nimkanlarından eşitlik esasına göre yararlanır.\nC. Basın araçlarının korunması",
+          "skor": 0.0473,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0469,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1403,
+      "ortalama_kaynak_skor": 0.0522,
+      "kaynak_sayisi": 5,
+      "message_id": "d3205134-4397-4a64-bab3-d61199702985",
+      "conversation_id": "5298eb65-f4a7-4160-b85f-bf49c94c1b5a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.37,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Uyuşturucu madde bulundurmak ile ticaretini yapmak arasındaki fark nedir?",
+      "cevap": "Uyuşturucu madde bulundurmak ve ticaretini yapmak arasındaki fark, 5237 sayılı Türk Ceza Kanunu'nda düzenlenen suç tiplerine göre belirlenir. Uyuşturucu madde bulundurmak, kişisel kullanım amacıyla uyuşturucu maddeye sahip olmak anlamına gelirken, uyuşturucu madde ticaretini yapmak, uyuşturucu maddeyi başkalarına satmak, dağıtmak veya nakletmek amacıyla gerçekleştirdiğiniz faaliyetleri içerir.\n\nAncak, verilen kaynaklar bu konuya ilişkin bilgi içermediğinden, bu konuda net bir açıklama yapmak mümkün değildir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5460",
+          "metin_ozet": " hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak",
+          "metin": " hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... , B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n6100 sayılı Kanun’un 31. maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.” Somut olayda olduğu gibi belirsiz a",
+          "skor": 0.0395,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9760",
+          "metin_ozet": "2019/40-2020/40 sayılı kararı sonrasında %1,8 teknik faizin uygulanma imkanı olmamasına, davacı tarafından yapılan başvurusunun usulüne uygun olmasına, davacının kask takmaması ile yaralanması arasında illiyet bağı olmamasına ve temyiz olunan kararda belirtilen gerekçelere göre davacı vekilinin tüm,",
+          "metin": "2019/40-2020/40 sayılı kararı sonrasında %1,8 teknik faizin uygulanma imkanı olmamasına, davacı tarafından yapılan başvurusunun usulüne uygun olmasına, davacının kask takmaması ile yaralanması arasında illiyet bağı olmamasına ve temyiz olunan kararda belirtilen gerekçelere göre davacı vekilinin tüm, davalı vekilinin aşağıdaki bendin kapsamı dışındaki temyiz itirazları yerinde görülmemiştir.\n2. 6100 sayılı Hukuk Muhakemeleri Kanunu’nun 266 ve devamı maddeleri gereğince, çözümü özel veya teknik bilgiyi gerektiren hâllerde bilirkişinin oy ve görüşünün alınmasına karar verilir.\nSomut olayda, trafik kazasında tarafların kusur oranlarının belirlenmesi için kusur raporu alınmadan, kazaya ilişkin kaza tespit tutanağında yer alan belirlemeye göre yapılan hesaplamaya itibar edildiği anlaşılmaktadır.\nŞu durumda, İtiraz Hakem Heyetince dava konusu trafik kazasına ilişkin varsa ceza soruşturma dosyası da dosya arasına alınarak tüm deliller değerlendirilmek suretiyle tarafların olaydaki kusur oranlarının tespiti için üniversite öğretim üyelerinden seçilecek uzman bilirkişilerden denetime elverişli, ayrıntılı ve gerekçeli rapor alınıp sonucuna göre karar verilmesi gerekirken eksik inceleme ile ya",
+          "skor": 0.0377,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/10108",
+          "metin_ozet": "un düzenlenmesine, davacının müterafik kusurlu olduğuna dair dosya içerisinde somut delil olmamasına, ödemenin güncellenerek düşülmesine ve yeterli olmamasına, Anayasa Mahkemesinin 17.07.2020 tarihli ve 2019/40-2020/40 sayılı kararı sonrasında %1,8 teknik faizin uygulanma imkanı olmamasına göre dava",
+          "metin": "un düzenlenmesine, davacının müterafik kusurlu olduğuna dair dosya içerisinde somut delil olmamasına, ödemenin güncellenerek düşülmesine ve yeterli olmamasına, Anayasa Mahkemesinin 17.07.2020 tarihli ve 2019/40-2020/40 sayılı kararı sonrasında %1,8 teknik faizin uygulanma imkanı olmamasına göre davalı vekilinin aşağıdaki bentlerin kapsamı dışında kalan temyiz itirazları yerinde görülmemiştir.\n2. 6100 sayılı Hukuk Muhakemeleri Kanunu’nun 266 ve devamı maddeleri gereğince, çözümü özel veya teknik bilgiyi gerektiren hâllerde bilirkişinin oy ve görüşünün alınmasına karar verilir.\nSomut olayda, kazaya ilişkin kaza tespit tutanağında yer alan bilgilere itibar edilerek, trafik kazasında tarafların kusur oranları belirlenmeden davacının yolcusu olduğu sigortalı aracın % 75 oranında kusurlu olduğu, karşı araç sürücüsünün ise %25 kusurlu olduğu kabul edilerek yapılan hesaplamaya itibar edildiği anlaşılmaktadır.\nŞu durumda, İtiraz Hakem Heyetince dava konusu trafik kazasına ilişkin varsa ceza soruşturma dosyası da dosya arasına alınarak tüm deliller değerlendirilmek suretiyle tarafların olaydaki kusur oranlarının tespiti için üniversite öğretim üyelerinden seçilecek uzman bilirkişilerden dene",
+          "skor": 0.0373,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/5859",
+          "metin_ozet": "labilmesinin, sadece fiilin Ceza Kanununa göre cezayı gerektiren bir fiil olmasının yeterli olması koşuluna bağlanmış bulunmasıdır. Söz konusu yasa hükmü, ceza zamanaşımının uygulanabilmesi için sadece fiilin cezayı gerektiren bir eylem olmasını yeterli görmekte; bunun dışında, eylemi gerçekleştiren",
+          "metin": "labilmesinin, sadece fiilin Ceza Kanununa göre cezayı gerektiren bir fiil olmasının yeterli olması koşuluna bağlanmış bulunmasıdır. Söz konusu yasa hükmü, ceza zamanaşımının uygulanabilmesi için sadece fiilin cezayı gerektiren bir eylem olmasını yeterli görmekte; bunun dışında, eylemi gerçekleştiren fail hakkında soruşturma yapılmasını, ceza davası açılmış olması veya mahkumiyet kararıyla sonuçlanmış bir ceza davasının varlığı koşulu aranmamaktadır.\nSomut olayda; dava konusu trafik kazası 29.11.2014 tarihinde meydana gelmiş, davacı vekili tarafından 28.12.2022 tarihinde tahkime başvurulmuştur. Davaya konu trafik kazası sonucunda davacı yaralanmış, bu eylem için kaza tarihinde yürürlükte bulunan 5237 sayılı Türk Ceza Kanunu'nda öngörülen ceza zamanaşımı süresi 8 yıldır. Covid-19 salgın hastalığı nedeniyle 7226 sayılı Kanun ile yapılan düzenleme ve bu Kanun kapsamında 2480 sayılı Cumhurbaşkanı Kararıyla yapılan süre uzatımı ile zamanaşımı sürelerinin durması nedeniyle arada geçen 95 günün süre başlangıcına eklenmesi gerekmektedir. 8 yıllık ceza zamanaşımı süresinin dolduğu 29.11.2022 tarihine 95 gün eklendiğinde sürenin bitiminin, davacının tahkime başvurduğu 28.12.2022 tarihinden so",
+          "skor": 0.0369,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9916",
+          "metin_ozet": "0,00 TL, ... için 20.000,00 TL, ... için 20.000,00 TL, ... için 20.000,00 TL, toplam 170.000,00 TL manevi tazminatın fazlaya ilişkin haklarının saklı kalması kaydıyla, kaza tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak müvekkillerine verilmesine, müvekkillerinin uzun süre",
+          "metin": "0,00 TL, ... için 20.000,00 TL, ... için 20.000,00 TL, ... için 20.000,00 TL, toplam 170.000,00 TL manevi tazminatın fazlaya ilişkin haklarının saklı kalması kaydıyla, kaza tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak müvekkillerine verilmesine, müvekkillerinin uzun süren dava süreci sebebiyle yaşayacağı mağduriyetlerin önüne geçmek amacıyla 50.000,00 TL geçici ödemenin davalıdan alınarak müvekkillerine verilmesine karar verilmesini talep etmiştir.\nII. CEVAP\nDavalı davaya cevap vermemiştir.\nIII. İLK DERECE MAHKEMESİ KARARI\nİlk Derece Mahkemesinin yukarıda tarih ve sayısı belirtilen kararı ile, davanın kısmen kabulüne, 40.000,00 TL  manevi tazminatın olay tarihi olan 11.09.2019 tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak, davacı ...'a verilmesine, fazlaya ilişkin talebin reddine, 20.000,00 TL  manevi tazminatın olay tarihi olan 11.09.2019 tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak, davacı ...'a verilmesine, fazlaya ilişkin talebin reddine, 20.000,00 TL  manevi tazminatın olay tarihi olan 11.09.2019 tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak, davacı ...'a verilmesi",
+          "skor": 0.0355,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 718,
+      "ortalama_kaynak_skor": 0.0374,
+      "kaynak_sayisi": 5,
+      "message_id": "8a71aefe-4523-4b0e-a112-e22ed124c1b0",
+      "conversation_id": "ef385279-7093-41c1-818a-bf053580166b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.29,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Meşru savunma hangi şartlarda ceza sorumluluğunu kaldırır?",
+      "cevap": "Meşru savunma, Türk Ceza Kanunu'nda (TCK) düzenlenen bir kavramdır. TCK madde 27'de meşru savunma düzenlenmiştir. Buna göre, \"Kişi, kendisine veya başkasına karşı işlenen haksız bir saldırıyı def etmek için mutlak necessity (zorunluluk) bulunması koşuluyla, saldırıda bulunan kişiye karşı saldırıya karşılık verebilir.\" Meşru savunma, saldırıda bulunan kişiye karşı saldırıya karşılık verme hakkıdır.\n\nMeşru savunma, aşağıdaki şartlarda ceza sorumluluğunu kaldırır:\n\n1. Haksız bir saldırı olması gerekir: Meşru savunma, ancak haksız bir saldırıya karşı yapılabilir. Haksız saldırı, bir kişinin haklarını veya çıkarlarını ihlal eden bir davranıştır.\n2. Saldırıya karşılık verme zorunluluğu olması gerekir: Meşru savunma, ancak saldırıda bulunan kişiye karşı saldırıya karşılık verme zorunluluğu bulunması halinde yapılabilir.\n3. Saldırıya karşılık verme oranında olması gerekir: Meşru savunma, ancak saldırıda bulunan kişiye karşı saldırıya karşılık verme oranında yapılabilir. Aşırı savunma, meşru savunma olarak kabul edilmez.\n\nVerilen kaynaklar, meşru savunma ile ilgili değildir. Meşru savunma, Türk Ceza Kanunu'nda düzenlenmiştir. Bu nedenle, bu konuyla ilgili daha详细 bilgi için Türk Ceza Kanunu'na bakılması gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 1001",
+          "metin_ozet": "Madde 1001- Kat mülkiyetine konu olan bağımsız bölümler, ayrıca tutulacak kat\nmülkiyeti kütüğüne yazılır.\nÖzel kanun hükümleri saklı kalmak üzere, kütükte yapılacak işlemler hakkında tapu\nkütüğüne ilişkin hükümler uygulanır.\nc. Yevmiye defteri ve belgeler",
+          "metin": "Madde 1001- Kat mülkiyetine konu olan bağımsız bölümler, ayrıca tutulacak kat\nmülkiyeti kütüğüne yazılır.\nÖzel kanun hükümleri saklı kalmak üzere, kütükte yapılacak işlemler hakkında tapu\nkütüğüne ilişkin hükümler uygulanır.\nc. Yevmiye defteri ve belgeler",
+          "skor": 0.0336,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 54 - Fıkra 3",
+          "metin_ozet": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "metin": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "skor": 0.0281,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 336",
+          "metin_ozet": "Madde 336- Evlilik devam ettiği sürece ana ve baba velâyeti birlikte kullanırlar.\nOrtak hayata son verilmiş veya ayrılık hâli gerçekleşmişse hâkim, velâyeti eşlerden birine\nverebilir.\nVelâyet, ana ve babadan birinin ölümü hâlinde sağ kalana, boşanmada ise çocuk kendisine\nbırakılan tarafa aittir.\nIII",
+          "metin": "Madde 336- Evlilik devam ettiği sürece ana ve baba velâyeti birlikte kullanırlar.\nOrtak hayata son verilmiş veya ayrılık hâli gerçekleşmişse hâkim, velâyeti eşlerden birine\nverebilir.\nVelâyet, ana ve babadan birinin ölümü hâlinde sağ kalana, boşanmada ise çocuk kendisine\nbırakılan tarafa aittir.\nIII. Ana ve baba evli değilse",
+          "skor": 0.0275,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 718",
+          "metin_ozet": "Madde 718- Arazi üzerindeki mülkiyet, kullanılmasında yarar olduğu ölçüde, üstündeki\nhava ve altındaki arz katmanlarını kapsar.\nBu mülkiyetin kapsamına, yasal sınırlamalar saklı kalmak üzere yapılar, bitkiler ve\nkaynaklar da girer.\nII. Sınırlar\n1. Sınırların belirlenmesi",
+          "metin": "Madde 718- Arazi üzerindeki mülkiyet, kullanılmasında yarar olduğu ölçüde, üstündeki\nhava ve altındaki arz katmanlarını kapsar.\nBu mülkiyetin kapsamına, yasal sınırlamalar saklı kalmak üzere yapılar, bitkiler ve\nkaynaklar da girer.\nII. Sınırlar\n1. Sınırların belirlenmesi",
+          "skor": 0.0267,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 81 - Fıkra 1",
+          "metin_ozet": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "metin": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "skor": 0.0267,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1425,
+      "ortalama_kaynak_skor": 0.0285,
+      "kaynak_sayisi": 5,
+      "message_id": "9b62b1c9-80c8-4f59-b54c-001c27058727",
+      "conversation_id": "92bbf624-3dfd-434a-9f1d-09b6db9fb716",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.24,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Hükmün açıklanmasının geri bırakılması hangi suçlarda uygulanabilir?",
+      "cevap": "Verilen kaynaklar 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ve 4721 Sayılı Türk Medeni Kanunu ile ilgili olup, hükmün açıklanmasının geri bırakılması ile ilgili herhangi bir bilgi içermez. Bu nedenle, bu konu hakkında bilgi veremem.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 81 - Fıkra 1",
+          "metin_ozet": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "metin": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "skor": 0.0517,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 54 - Fıkra 3",
+          "metin_ozet": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "metin": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "skor": 0.0424,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 33 - Fıkra 1",
+          "metin_ozet": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiy",
+          "metin": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiyle aylığı kesilen sigortalının ölüm tarihi esas alınarak 27 nci veya 30 uncu maddelere göre tespit edilecek aylığı, c) 32 nci maddenin ikinci fıkrasının (a) bendi kapsamında malûllük, yaşlılık ve ölüm sigortaları primi ödemiş olan sigortalının prim ödeme gün sayısı, 9000 günden az ise 9000 gün üzerinden, 9000 gün ve daha fazla ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanan aylığı, esas alınır. (Ek cümle: 17/4/2008-5754/66 md.) Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır.",
+          "skor": 0.0407,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 26",
+          "metin_ozet": "MADDE 26- Malûllük sigortasından sigortalılara sağlanan hak, malûllük aylığı bağlanmasıdır. Sigortalıya malûllük aylığı bağlanabilmesi için sigortalının; a) 25 inci maddeye göre malûl sayılması, b) (Değişik: 17/4/2008-5754/14 md.) En az on yıldan beri sigortalı bulunup, toplam olarak 1800 gün veya b",
+          "metin": "MADDE 26- Malûllük sigortasından sigortalılara sağlanan hak, malûllük aylığı bağlanmasıdır. Sigortalıya malûllük aylığı bağlanabilmesi için sigortalının; a) 25 inci maddeye göre malûl sayılması, b) (Değişik: 17/4/2008-5754/14 md.) En az on yıldan beri sigortalı bulunup, toplam olarak 1800 gün veya başka birinin sürekli bakımına muhtaç derecede malûl olan sigortalılar için ise sigortalılık süresi aranmaksızın 1800 gün malûllük, yaşlılık ve ölüm sigortaları primi bildirilmiş olması, c) Malûliyeti nedeniyle sigortalı olarak çalıştığı işten ayrıldıktan veya işyerini kapattıktan veya devrettikten sonra Kurumdan yazılı istekte bulunması, halinde malûllük aylığı bağlanır. Ancak, 4 üncü maddenin birinci fıkrasının (b) bendine göre sigortalı sayılanların kendi sigortalılığı nedeniyle genel sağlık sigortası primi dahil, prim ve prime ilişkin her türlü borçlarının ödenmiş olması zorunludur. [41] Malûllük aylığının hesaplanması, başlangıcı, kesilmesi ve yeniden bağlanması",
+          "skor": 0.0405,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 972",
+          "metin_ozet": "Madde 972- Tahvil çıkaracaklar ile tahvil çıkarmaya ilişkin koşullar ve çıkarma izni\nvermeye yetkili makam özel kanunla belirlenir.\nÜÇÜNCÜ KISIM\nZİLYETLİK VE TAPU SİCİLİ\nBİRİNCİ BÖLÜM\nZİLYETLİK\nA. Zilyetlik kavramı ve türleri\nI. Kavram",
+          "metin": "Madde 972- Tahvil çıkaracaklar ile tahvil çıkarmaya ilişkin koşullar ve çıkarma izni\nvermeye yetkili makam özel kanunla belirlenir.\nÜÇÜNCÜ KISIM\nZİLYETLİK VE TAPU SİCİLİ\nBİRİNCİ BÖLÜM\nZİLYETLİK\nA. Zilyetlik kavramı ve türleri\nI. Kavram",
+          "skor": 0.0403,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 457,
+      "ortalama_kaynak_skor": 0.0431,
+      "kaynak_sayisi": 5,
+      "message_id": "b6942414-eebf-4bed-b60c-85d89a1f7be3",
+      "conversation_id": "59aa5d11-0976-4cbd-9f9b-1832e7b72512",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.34,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Adli para cezası ödenmezse ne olur?",
+      "cevap": "Adli para cezası ödenmezse, ilgili kişiye karşı icra takibi başlatılabilir. İcra takibi sırasında, kişinin mallarına el konulabilir, banka hesaplarına bloke konulabilir veya diğer varlıklarına haciz uygulanabilir. Ayrıca, adli para cezasının ödenmemesi durumunda, ilgili kişiye karşı diğer yaptırımlar da uygulanabilir. Ancak, verilen kaynaklar adli para cezası ödenmezse ne olacağına ilişkin bilgi vermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8370",
+          "metin_ozet": "re yapılması gerekir.\nDavaya konu kazanın meydana geldiği 10.06.2020 tarihinde Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik yürürlükte olup bu Yönetmelik’in ekinde yer alan Erişkinler İçin Engelli Sağlık Kurulu Raporları Engel Oranları Alan Kılavuzunun Omurgaya Ait Sorunlarda Engel",
+          "metin": "re yapılması gerekir.\nDavaya konu kazanın meydana geldiği 10.06.2020 tarihinde Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik yürürlükte olup bu Yönetmelik’in ekinde yer alan Erişkinler İçin Engelli Sağlık Kurulu Raporları Engel Oranları Alan Kılavuzunun Omurgaya Ait Sorunlarda Engellilik bölümünün 1-1.1 Yaralanma Modeli Veya Tanı İlişkili Değerlendirme kısmında, “Travma durumlarında ilk tercih edilecek yöntemdir. Eğer bir yaralanma yok ise, bu yöntem yetersiz kalıyor ise veya yaralanma aynı omurga bölgesinde birden fazla segmenti etkiliyor ise eklem hareket genişliği modeli kullanılır. Yaralanma modeli nörolojik kayıp varlığına, kırık, dislokasyon ve hareket segmenti bütünlüğüne dayanır. Birden fazla omurga bölgesi etkilenmiş ise her biri ayrı ayrı değerlendirilir, kişinin engel oranını hesaplamak için Balthazard Hesaplama Tablosundan yararlanılır (Ek.3). Yaralanma bulgularına kortikospinal yol bulguları da eşlik ediyor ise spinal kord lezyonları ile ilgili tablolar kullanılır (Bölüm 4). Bu değerlendirme için engel kalıcı ve stabil olmalı, son 12 ayda değişiklik olmamalıdır.” düzenlemesine yer verilmiştir.\nSomut olayda; yaralanma omurgaya ilişkin olup kazanın meyda",
+          "skor": 0.0197,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2195",
+          "metin_ozet": "aporları Hakkında Yönetmelik ve ekindeki cetvellere göre hükümlerine  göre hazırlanmış ise de  kazadan kaynaklı epilepsi tedavisi görüp görmediği araştırılmamış,  bu rahatsızlığın aynı oranda  ömür boyu sürüp sürmeyeceği aynı oranda kalıp kalmayacağı tespit edilmemiştir.\nBu durumda, İtiraz Hakem Hey",
+          "metin": "aporları Hakkında Yönetmelik ve ekindeki cetvellere göre hükümlerine  göre hazırlanmış ise de  kazadan kaynaklı epilepsi tedavisi görüp görmediği araştırılmamış,  bu rahatsızlığın aynı oranda  ömür boyu sürüp sürmeyeceği aynı oranda kalıp kalmayacağı tespit edilmemiştir.\nBu durumda, İtiraz Hakem Heyetince  davacının kazadaki yaralanmasına ilişkin olup da dosya kapsamında yer almayan tüm tedavi belgelerinin toplanması; daha sonra, en yakın üniversite hastanesinin adli tıp anabilim dalı başkanlığından, kaza ile illiyet bağı kuracak şekilde  Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurul Raporları Hakkında Yönetmelik ve ekindeki cetvellere  göre  bizzat muayene edilmek suretiyle kazadan sonra oluştuğu belirtilen epilepsi geçirme riski  nedeniyle tedavi görüp görmediği, yönetmelikte “uygun ve yeterli tedavi altında” ibaresi mevcut olup  bu tanı üzerinden engel oranı tayini yapılabilmesi için başvuranın Nöroloji birimine sevki sağlanarak ayrıntılı Nörolojik muayenesinin yaptırılması, epilepsi açısından güncel muayene bulguları içerir konsültasyon muayenesi veya durum bildirir raporu alınması, başvuranın taburculuk sonrası döneme ait MEDULA ilaç dökümleri, ilaç ra",
+          "skor": 0.0157,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7944",
+          "metin_ozet": "6.11.2016 tarihinde meydana gelmiştir.\nSomut olayda; kaza neticesinde davacının maruz kaldığı yaralanmaya ilişkin olarak Ankara Üniversitesi Adli Tıp Anabilim Dalı Başkanlığı 22.04.2021 tarihli Sağlık Kurulu raporu İtiraz Hakem Heyeti tarafından benimsenmiş olup bu raporda, davacının kaza nedeniyle ",
+          "metin": "6.11.2016 tarihinde meydana gelmiştir.\nSomut olayda; kaza neticesinde davacının maruz kaldığı yaralanmaya ilişkin olarak Ankara Üniversitesi Adli Tıp Anabilim Dalı Başkanlığı 22.04.2021 tarihli Sağlık Kurulu raporu İtiraz Hakem Heyeti tarafından benimsenmiş olup bu raporda, davacının kaza nedeniyle oluşan maluliyeti % 20 olarak belirlenmiştir. Ne var ki, anılan rapor kaza tarihi itibariyle yürürlükte bulunan mevzuata uygun olarak düzenlenmemiş olduğundan hükme esas almaya elverişli olmadığından, maluliyetin belirlenmesi konusunda yapılan araştırma yetersizdir.\nBu durumda İtiraz Hakem Heyetince; davacı tarafından kararın temyiz edilmediği göz önüne alındığında davalının usuli kazanılmış hakları gözetilerek davacının kazaya ilişkin tüm tedavi evrakı eklenip (eksik varsa temini ile) dosyada bulunan sağlık kurulu raporları da irdelenmek ve bizzat muayene edilmek suretiyle kaza tarihinde yürürlükte bulunan Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurul Raporları Hakkında Yönetmelik hükümlerine uygun olarak ve yukarıda açıklandığı şekilde yetkili sağlık kurulundan rapor alınıp sonucuna göre karar verilmesi gerekirken yazılı olduğu şekilde hüküm kurulması bozmayı g",
+          "skor": 0.0133,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/5771",
+          "metin_ozet": " Kaybı Oranı Tespit İşlemleri Yönetmeliği, 01.09.2013 ilâ 01.06.2015 tarihleri arasında Maluliyet Tespiti İşlemleri Yönetmeliği, 01.06.2015 ilâ 20.02.2019 tarihleri arasında Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurul Raporları Hakkında Yönetmelik ve 20.02.2019 tarihinden ",
+          "metin": " Kaybı Oranı Tespit İşlemleri Yönetmeliği, 01.09.2013 ilâ 01.06.2015 tarihleri arasında Maluliyet Tespiti İşlemleri Yönetmeliği, 01.06.2015 ilâ 20.02.2019 tarihleri arasında Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurul Raporları Hakkında Yönetmelik ve 20.02.2019 tarihinden sonra ise Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik yürürlükte olduğundan kaza tarihinde geçerli mevzuat uyarınca sağlık kurulu raporu düzenlenmelidir.\nSomut olayda başvuruda sunulan maluliyete ilişkin ... Üniversitesince iki adli tıp, bir ortopedi ve travmatoloji, bir iç hastalıkları, bir beyin ve sinir cerrahi uzmanının bulunduğu heyetçe düzenlenen 13.10.2022 tarihli raporda, kaza tarihinde geçerli Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik hükümlerine göre muayene edilerek ve nöropsikolojik değerlendirme raporu düzenlenerek \"Fonksiyon Kaybına neden olan Ruhsal Hastalıklar/B-Beyin Hasarı, Beyin İşlev Bozukluğuna Bağlı Davranış Bozuklukları (organik kişilik bozukluğu-frontal lob sendromunu içerir, beyin sarsılması sonrası-postkontüzyonel sendrom) 2.Tedavi ile işlevselliği kısmen düzelen/fonksiyon kaybı oranı %25, hastalık kliğini dikkate alınarak",
+          "skor": 0.0131,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8140",
+          "metin_ozet": "zürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurulu Raporları Hakkında Yönetmelik hükümleri esas alınması gerekirken kaza tarihi itibariyle yürürlükte bulunmayan Erişkinler İçin Engellilik Değerlendirilmesi Hakkındaki Yönetmelik hükümlerine atıf yapılarak buna göre düzenlenmesi ye",
+          "metin": "zürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurulu Raporları Hakkında Yönetmelik hükümleri esas alınması gerekirken kaza tarihi itibariyle yürürlükte bulunmayan Erişkinler İçin Engellilik Değerlendirilmesi Hakkındaki Yönetmelik hükümlerine atıf yapılarak buna göre düzenlenmesi yerinde değildir.  Bu yönüyle, maluliyet oranı tespitine ilişkin bu rapor, karara esas almaya elverişli olmadığından, maluliyetin belirlenmesi konusunda yapılan araştırma yetersizdir.\nBu durumda, İtiraz Hakem Heyeti tarafından kazayla ilgili eksik kalan tedavi evrakları temin edildikten sonra, yukarıda belirtilen açıklamalar ışığında olay tarihi itibariyle yürürlükte bulunan Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurulu Raporları Hakkında Yönetmelik ölçülerine göre, üniversitelerin adli tıp anabilim dalı başkanlıklarından davacının kaza nedeniyle uğradığı daimi/geçici çalışma gücü kaybı bulunup bulunmadığı ve varsa oranı/süresi konusunda ayrıntılı, gerekçeli ve denetime elverişli rapor alınarak (usuli kazanılmış haklar gözetilmek suretiyle) sonucuna göre karar verilmesi gerekirken eksik incelemeyle yazılı şekilde karar verilmesi doğru görülmemiştir.\n3. 2918 sayılı",
+          "skor": 0.0118,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 617,
+      "ortalama_kaynak_skor": 0.0147,
+      "kaynak_sayisi": 5,
+      "message_id": "0fe99a08-83a2-4fa6-99d5-1d2a484027fe",
+      "conversation_id": "8b9feed5-a01d-4ce2-be42-030fc7dc54a5",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.69,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Şikayetten vazgeçme ceza davasını hangi durumlarda düşürür?",
+      "cevap": "Şikayetten vazgeçme ceza davasını düşürür mü sorusuna kaynaklar yeterli bilgi sağlamamaktadır. Kaynaklar ağırlıklı olarak sosyal sigortalar ve genel sağlık sigortası kanununa ilişkin hükümleri içermektedir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 2",
+          "metin_ozet": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylı",
+          "metin": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylık bağlama oranı esas alınır. Bu şekilde belirlenen taban aylık bağlama oranı, sigortalının tahsis talep tarihi itibarıyla kadın ise 50, erkek ise 55 yaşından sonra doldurduğu her tam yaş için ve 5000 günden fazla ödediği her 240 günlük malullük, yaşlılık ve ölüm sigortaları primi için (l)’er artırılır, 5000 günden noksan ödediği her 240 gün için (1)’er eksiltilir.",
+          "skor": 0.0368,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 81 - Fıkra 1",
+          "metin_ozet": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "metin": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "skor": 0.0353,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1334",
+          "metin_ozet": "MADDE 1334- (1) Ölüm ve yaralanmadan doğan alacakların, 1976 tarihli Sözleşmenin\n6 ncı maddesinin ikinci paragrafı uyarınca sahip oldukları hakların ihlal edilmemesi kaydıyla,\naynı maddenin üçüncü paragrafında sayılan alacaklar, birinci paragrafının (b) bendinde yazılı\ndiğer alacaklara oranla önceli",
+          "metin": "MADDE 1334- (1) Ölüm ve yaralanmadan doğan alacakların, 1976 tarihli Sözleşmenin\n6 ncı maddesinin ikinci paragrafı uyarınca sahip oldukları hakların ihlal edilmemesi kaydıyla,\naynı maddenin üçüncü paragrafında sayılan alacaklar, birinci paragrafının (b) bendinde yazılı\ndiğer alacaklara oranla önceliklidir.\n(2) Bu öncelik, paylaştırmada aşağıdaki sıra izlenerek gerçekleştirilir:\na) 1976 tarihli Sözleşmenin 6 ncı maddesinin birinci paragrafının (b) bendinde sayılan\nalacaklarla, ikinci paragrafında yazılı alacakların arasındaki paylaştırma oranı belirlenir.\nb) Bu oranlara göre, ikinci paragrafta yazılı alacaklara düşen paylar belirlenir.\nc) Fondan, bu paylar ve üçüncü paragrafta sayılan öncelikli alacaklar ödenir.\nd) Bakiyeden, birinci paragrafın (b) bendinde yazılı diğer alacaklar ödenir.\ne) Fon, ikinci paragrafta yazılı alacaklara düşen payları ve üçüncü paragrafta yazılı\nöncelikli alacakları karşılamaya yetmezse, fonun tamamı bu alacaklılar arasında garameten\npaylaştırılır.\nVIII - Fon kurmadan sorumluluğun sınırlanması",
+          "skor": 0.0349,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0343,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 33 - Fıkra 1",
+          "metin_ozet": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiy",
+          "metin": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiyle aylığı kesilen sigortalının ölüm tarihi esas alınarak 27 nci veya 30 uncu maddelere göre tespit edilecek aylığı, c) 32 nci maddenin ikinci fıkrasının (a) bendi kapsamında malûllük, yaşlılık ve ölüm sigortaları primi ödemiş olan sigortalının prim ödeme gün sayısı, 9000 günden az ise 9000 gün üzerinden, 9000 gün ve daha fazla ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanan aylığı, esas alınır. (Ek cümle: 17/4/2008-5754/66 md.) Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır.",
+          "skor": 0.0328,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 411,
+      "ortalama_kaynak_skor": 0.0348,
+      "kaynak_sayisi": 5,
+      "message_id": "7efa6253-488f-4b2c-ae9c-1c5ee1114cdf",
+      "conversation_id": "b8ae6684-3f4a-4e87-8b16-58efa96dad46",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.22,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Sabıka kaydı hangi hallerde silinir veya arşive alınır?",
+      "cevap": "Sabıka kaydı, bir kişinin geçmişte işlediği suçlar ve aldığı cezaları gösteren bir kayıt sistemidir. Türk hukukuna göre, sabıka kaydı belirli hallerde silinir veya arşive alınır.\n\nKaynaklar arasında bu konuya ilişkin spesifik bir madde veya Yargitay kararı bulunmamaktadır. Ancak, genel olarak Türk Ceza Kanunu'nda (TCK) ve ilgili mevzuatta, sabıka kaydının silinmesi veya arşive alınmasıyla ilgili hükümler bulunmaktadır.\n\nGenel olarak, bir kişinin sabıka kaydının silinmesi veya arşive alınması için belirli koşulların yerine getirilmesi gerekmektedir. Örneğin, TCK'nın 85. maddesine göre, bir kişi hakkında verilen cezanın infazının tamamlanmasından sonra, belirli bir süre geçmesi halinde sabıka kaydı silinebilir. Ayrıca, bazı suçlar için öngörülen ceza miktarı veya türüne göre de sabıka kaydının silinmesi veya arşive alınması mümkün olabilir.\n\nAncak, kaynaklar yetersiz olduğu için bu konuda daha spesifik ve detaylı bilgi verilememektedir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/14925",
+          "metin_ozet": "ine,\n03.11.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ine,\n03.11.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0777,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/12933",
+          "metin_ozet": "oy birliğiyle karar verildi",
+          "metin": "oy birliğiyle karar verildi",
+          "skor": 0.0737,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/9725",
+          "metin_ozet": "e oy birliğiyle karar verildi.",
+          "metin": "e oy birliğiyle karar verildi.",
+          "skor": 0.0734,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/13104",
+          "metin_ozet": "e oy birliğiyle karar verildi.",
+          "metin": "e oy birliğiyle karar verildi.",
+          "skor": 0.0734,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4345",
+          "metin_ozet": "e oy birliğiyle karar verildi.",
+          "metin": "e oy birliğiyle karar verildi.",
+          "skor": 0.0734,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1153,
+      "ortalama_kaynak_skor": 0.0743,
+      "kaynak_sayisi": 5,
+      "message_id": "1e59f27a-2a9c-4085-a42f-91274021ff8d",
+      "conversation_id": "0c0a57e0-2549-403b-ba65-56e4ff39b57d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.0,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

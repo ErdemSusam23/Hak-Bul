@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-11T12:47:08.538235+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 6.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/medeni_hukuk/test_sonuclari_20260411_124517.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 110.6,
+    "ortalama_sure_sn": 9.22,
+    "kategori_dagilimi": {
+      "Medeni Hukuk": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 3.22,
+        "kategori_dogruluk_orani": 58.3,
+        "ortalama_cevap_uzunluk": 1140.0,
+        "ortalama_kaynak_skor": 0.039
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Boşanma davası hangi sebeplerle açılabilir?",
+      "cevap": "Boşanma davası, Türk Medeni Kanunu'nda belirtilen sebeplerle açılabilir. Ancak, verilen kaynaklar arasında boşanma davasına ilişkin bir madde veya hüküm bulunmamaktadır. Türk Medeni Kanunu'nun 161. maddesinde boşanma sebepleri düzenlenmiştir, ancak bu madde verilen kaynaklarda yer almamaktadır.\n\nVerilen kaynaklar, çoğunlukla 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ile ilgili hükümleri içermektedir. Bu nedenle, boşanma davasına ilişkin bilgi verilmesi için yeterli kaynak bulunmamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bi",
+          "metin": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bilimsel görüşlerden ve yargı kararlarından yararlanır. Kanun’un bu açık hükmü karşısında hâkimin hukuk yaratması için öncelikle bir boşluğun varlığı gerekir. Boşluk kavramı bakımından en önemli nokta ise hangi koşulların varlığı hâlinde bir boşluğun bulunduğu sorusuna verilecek yanıttır.\nHukukta boşluk, pozitif hukukun bir meseleyi düzenlemesi gerekirken kendi normatif düzenine aykırı olarak düzenlememiş olmasıdır ( Sururi Aktaş, \"Pozitif Hukukta Boşluk Kavramı\", Erzincan Binali Yıldırım Üniversitesi Hukuk Fakültesi Dergisi, C.XIV, S.1-2, 2010, s.10). Daha kısa bir tanıma göre kanun boşluğu, gerekli kanuni düzenlemenin yapılmamış olmasıdır (Çiğdem Kırca, \"Örtülü (Gizli) Boşluk ve Bu Boşluğun Doldurulması Yöntemi Olarak Amaca Uygun Sınırlama (Teleologische Reduktion)\", AÜHFD, C.50, S.1, 2001, s.91). Diğer taraftan kanun koyucunun bilinçli olarak sustuğu hâllerde bir boşluktan söz edilemez.",
+          "skor": 0.0261,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 81 - Fıkra 1",
+          "metin_ozet": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "metin": "MADDE 81- Bu Kanun gereğince alınacak sigorta prim oranları aşağıdaki şekildedir: [136] a) Malûllük, yaşlılık ve ölüm sigortaları prim oranı, sigortalının prime esas kazancının %21’idir.",
+          "skor": 0.0245,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 80 - Fıkra 9",
+          "metin_ozet": "Beyanda bulunmayan sigortalıların aylık prime esas kazancı, prime esas günlük kazanç alt sınırının otuz katı olarak belirlenir. b) (Mülga: 4/4/2015-6645/46 md.) c) 4 üncü maddenin birinci fıkrasının (b) bendi kapsamında sigortalı sayılmayı gerektirecek birden fazla durumun söz konusu olması halinde,",
+          "metin": "Beyanda bulunmayan sigortalıların aylık prime esas kazancı, prime esas günlük kazanç alt sınırının otuz katı olarak belirlenir. b) (Mülga: 4/4/2015-6645/46 md.) c) 4 üncü maddenin birinci fıkrasının (b) bendi kapsamında sigortalı sayılmayı gerektirecek birden fazla durumun söz konusu olması halinde, bu fıkranın (a) ve (b) bentlerinde belirtilen esaslara göre tek beyanda bulunulur. d) (Ek: 17/4/2017-KHK-690/45 md.; Aynen kabul: 1/2/2018-7077/41 md.) 4 üncü maddenin birinci fıkrasının (b) bendi kapsamındaki muhtar sigortalılarının aylık prime esas kazançları, günlük prime esas kazanç alt sınırının otuz katıdır.",
+          "skor": 0.024,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 25 - Fıkra 2",
+          "metin_ozet": "Ancak, sigortalı olarak ilk defa çalışmaya başladığı tarihten önce sigortalının çalışma gücünün %60'ını veya vazifesini yapamayacak derecede meslekte kazanma gücünü kaybettiği önceden veya sonradan tespit edilirse, sigortalı bu hastalık veya engelliliği sebebiyle malûllük aylığından yararlanamaz. [3",
+          "metin": "Ancak, sigortalı olarak ilk defa çalışmaya başladığı tarihten önce sigortalının çalışma gücünün %60'ını veya vazifesini yapamayacak derecede meslekte kazanma gücünü kaybettiği önceden veya sonradan tespit edilirse, sigortalı bu hastalık veya engelliliği sebebiyle malûllük aylığından yararlanamaz. [38] Yedek subay, yedek astsubay veya erbaş ve er olarak ya da talim, manevra, seferberlik veya harp dolayısıyla görevleri ile ilgileri kesilmeksizin silâh altına alındıkları dönemde malûl olup, bu malûllükleri asıl görevlerini veya işlerini yapmaya mani olmayanlar hakkında, bu hastalık veya engellilik hâlleri sebebiyle malûllük sigortasına ilişkin hükümler uygulanmaz. [39] [40] 4 üncü maddenin birinci fıkrasının (c) bendi kapsamındaki sigortalıların yazılı talepleri halinde, haklarında bu madde hükümleri uygulanmaksızın malûllüklerinin mani olmadığı başka vazife veya sınıflara nakil suretiyle tayinleri yapılmak üzere istifa etmiş sayılırlar. Bunların, istifa etmiş sayıldıktan sonra dahi, bu Kanun hükümlerinin uygulanmasını isteme hakları mahfuzdur.",
+          "skor": 0.0216,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 94 - Fıkra 2",
+          "metin_ozet": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , ",
+          "metin": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , malullük aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar ile aylık veya gelir bağlanan ve çalışma gücünün en az %60’ını yitiren malûl çocukların kontrol muayenesine tâbi tutulmasını talep edebilir. [174] Kurumca yaptırılan kontrol muayenesinde veya sigortalının isteği üzerine ya da işe alıştırma sonunda yapılan muayenesinde yeniden tespit edilecek malullük durumuna göre, malullük aylığı veya sürekli iş göremezlik geliri, yeni malullük durumuna esas tutulan raporun tarihini takip eden ödeme dönemi başından başlanarak artırılır, azaltılır veya kesilir. Çalışma gücünün en az %60’ını yitiren malûl çocuklara bağlanmış bulunan gelir ve aylıklar, kontrol muayenesi sonunda tespit edilecek malullük durumuna göre, rapor tarihinden sonraki ödeme dönemi başından itibaren kesilir.",
+          "skor": 0.0213,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 718,
+      "ortalama_kaynak_skor": 0.0235,
+      "kaynak_sayisi": 5,
+      "message_id": "ec11a971-14b0-491c-9b57-bf07fd7fa2bd",
+      "conversation_id": "02a2cc2d-0f5b-4dde-9855-4f691519aa66",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.28,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Anlaşmalı boşanma için hangi şartların birlikte sağlanması gerekir?",
+      "cevap": "Anlaşmalı boşanma için gereken şartlar Türk Medeni Kanunu'nda düzenlenmiştir. Anlaşmalı boşanma, eşlerin birbirleriyle anlaşarak evlilik birliğini sonlandırmasıdır. Türk Medeni Kanunu'nun 166. maddesine göre, eşlerin birlikte başvuruları ve anlaşmaları halinde, evlilik birliği sonlandırılabilir. Ancak, bu başvuruda eşlerin birbirleriyle anlaşmış olmaları ve evlilik birliğinin sonlandırılması konusunda mutabık kalmaları gerekir.\n\nEşlerin anlaşmalı boşanma için birlikte sağlaması gereken şartlar şunlardır:\n1. Eşlerin birbirleriyle anlaşmış olmaları: Eşlerin evlilik birliğini sonlandırması konusunda anlaşmış olmaları gerekir.\n2. Eşlerin birlikte başvuruda bulunmaları: Eşlerin birlikte mahkemeye başvuruda bulunmaları ve boşanma talebinde bulunmaları gerekir.\n3. Eşlerin evlilik birliğinin sonlandırılması konusunda mutabık kalmaları: Eşlerin evlilik birliğinin sonlandırılması konusunda mutabık kalmaları ve bu konuda anlaşmış olmaları gerekir.\n\nBu şartlar birlikte sağlandığında, eşler anlaşmalı boşanma yoluyla evlilik birliğini sonlandırabilirler. Ancak, bu konuda herhangi bir sorun veya anlaşmazlık çıkması halinde, mahkeme eşlerin talebini değerlendirecek ve gerekli kararları verecektir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Geçici Madde 8",
+          "metin_ozet": "Geçici Madde 8 — Bu Kanunun yayımı tarihinden önce Kuruma yarışma ve yeterlilik\nsınavıyla alınmış; avukat (Kurum uzman yardımcısı) ve Kurum uzman yardımcıları, bankacılık\nuzman yardımcısı olarak atanır. Kurumda yeterlik sınavını geçerek avukat (Kurum Uzmanı) ve\nKurum Uzmanı unvanını kazanmış olanlar",
+          "metin": "Geçici Madde 8 — Bu Kanunun yayımı tarihinden önce Kuruma yarışma ve yeterlilik\nsınavıyla alınmış; avukat (Kurum uzman yardımcısı) ve Kurum uzman yardımcıları, bankacılık\nuzman yardımcısı olarak atanır. Kurumda yeterlik sınavını geçerek avukat (Kurum Uzmanı) ve\nKurum Uzmanı unvanını kazanmış olanlar bankacılık uzmanlığına atanır. Bunların Kurumda\nçalıştıkları süreler bankacılık uzman yardımcılığı ve bankacılık uzmanlığında geçmiş sayılır.\nBu Kanunun yayımı tarihinde Bankacılık Düzenleme ve Denetleme Kurumunda görev\nyapan personelden; Kurum Uzmanı olarak görev yapmış ve geldikleri kurumlarda mesleğe\nözel yarışma sınavıyla alınmış ve yeterlik sınavında başarılı görülerek uzman, müfettiş ve\nbenzeri unvanlarda görev yapmış olanlar ile en az doktora derecesine sahip olanlar bankacılık\nuzmanlığına atanmış sayılırlar. Bunların geldikleri kurumlarda uzman, müfettiş ve benzeri\nunvanlarda ve Bankacılık Düzenleme ve Denetleme Kurumunda çalıştıkları süreler bankacılık\nuzmanlığında geçmiş sayılır. Bu Kanunun yayımı tarihinden önce başka kurumlardan naklen\natanmış bankalar yeminli murakıp ve yardımcılarının geldikleri kurumlarda çalıştıkları süreler\nKurumda geçmiş sayılır.\nBu maddenin birinci ve ikinci fıkrasında zikredilen Kurum uzmanları dışında kalan\nKurum uzmanları ve avukatlar aynı kadro unvanlarıyla görevlerine devam ederler. Bu\nkadrolara bir daha atama yapılmaz. Bu kişiler görevde kaldıkları sürece bankacılık\nuzmanlarının aylık, malî, sosyal ve emeklilik haklarından aynen yararlanırlar.",
+          "skor": 0.0071,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bi",
+          "metin": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bilimsel görüşlerden ve yargı kararlarından yararlanır. Kanun’un bu açık hükmü karşısında hâkimin hukuk yaratması için öncelikle bir boşluğun varlığı gerekir. Boşluk kavramı bakımından en önemli nokta ise hangi koşulların varlığı hâlinde bir boşluğun bulunduğu sorusuna verilecek yanıttır.\nHukukta boşluk, pozitif hukukun bir meseleyi düzenlemesi gerekirken kendi normatif düzenine aykırı olarak düzenlememiş olmasıdır ( Sururi Aktaş, \"Pozitif Hukukta Boşluk Kavramı\", Erzincan Binali Yıldırım Üniversitesi Hukuk Fakültesi Dergisi, C.XIV, S.1-2, 2010, s.10). Daha kısa bir tanıma göre kanun boşluğu, gerekli kanuni düzenlemenin yapılmamış olmasıdır (Çiğdem Kırca, \"Örtülü (Gizli) Boşluk ve Bu Boşluğun Doldurulması Yöntemi Olarak Amaca Uygun Sınırlama (Teleologische Reduktion)\", AÜHFD, C.50, S.1, 2001, s.91). Diğer taraftan kanun koyucunun bilinçli olarak sustuğu hâllerde bir boşluktan söz edilemez.",
+          "skor": 0.0069,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Geçici Madde 9",
+          "metin_ozet": "Geçici Madde 9 — Bu Kanunun yürürlüğe girdiği tarihteki Hazine Müsteşarlığının\n3226 sayılı Finansal Kiralama Kanunu hükümleri ile 90 sayılı Ödünç Para Verme İşleri\nHakkında Kanun Hükmünde Kararnamenin ikrazatçılık dışındaki hükümlerinin uygulanmasıyla\nilgili personeli, muvafakatları alınmak kaydıyla",
+          "metin": "Geçici Madde 9 — Bu Kanunun yürürlüğe girdiği tarihteki Hazine Müsteşarlığının\n3226 sayılı Finansal Kiralama Kanunu hükümleri ile 90 sayılı Ödünç Para Verme İşleri\nHakkında Kanun Hükmünde Kararnamenin ikrazatçılık dışındaki hükümlerinin uygulanmasıyla\nilgili personeli, muvafakatları alınmak kaydıyla ve 1.1.2006 tarihine kadar talep etmeleri\nhâlinde Kuruma naklen atanır. Kanun yürürlüğe girdiği tarihte, Müsteşarlığın ilgili\npersonelinden yurt dışı teşkilatında görev yapan veya uluslararası kuruluşlarda görevli bulunan,\nlisans üstü eğitim nedeniyle yurt dışında bulunan veya askerlik ya da sair nedenlerle ücretsiz\nizinli olanların naklen atanma hakları saklıdır. Süresi içinde kullanılmayan haklar geçersiz olur.\nHazine Müsteşarlığından naklen atanacak ilgili personelden, yaş şartı dışındaki şartları\ntaşıyan ve Kurulca belirlenecek usûl ve esaslara göre en az üç yıllık hizmeti bulunanlar\nbankacılık uzmanı, üç yıldan az hizmeti olanlar bankacılık uzman yardımcısı olarak atanır.\nBunların geldikleri kurumda çalıştıkları süreler bankacılık uzman ve uzman yardımcılığında\ngeçmiş sayılır. Naklen atanan personelden Müsteşarlığa karşı mecburi hizmet yükümlülüğü\nbulunanların Kurumda geçirdikleri süreler bu yükümlülüklerin ifasında dikkate alınır.\nBu maddenin birinci fıkrası hükmüne göre Hazine Müsteşarlığından naklen ataması\nyapılan personelin kadroları hiçbir işleme gerek kalmaksızın iptal edilerek, 190 sayılı Kanun\nHükmünde Kararnameye ekli cetvelin Hazine Müsteşarlığına ait bölümünden çıkartılmış\nsayılır.\nKurum veya Fon personeli iken Fonda veya Kurumda geçici olarak görevlendirilen\npersonel, bu Kanunun yayımı tarihinden itibaren üç ay içerisinde kurumlarına iade\nedilmemeleri hâlinde bulundukları Kurumda veya Fonda durumlarına uygun kadro veya\npozisyonlara atanırlar. Bunlara ödenecek farklar hakkında geçici 20 nci maddenin ikinci\nfıkrası hükümleri uygulanır.",
+          "skor": 0.0044,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5461",
+          "metin_ozet": "amaya yer vermeyecek kadar açık ve nettir. Buna göre  sadece talep sonucunu belirleyemeyen kişinin bu dava türünde korunma ihtiyacından ve dolayısıyla hukuki yararından söz edilebilir. Başka bir anlatımla talep sonucunu belirleyebilen kişinin, bu dava türünde korunma ihtiyacı bulunmadığından, böyle ",
+          "metin": "amaya yer vermeyecek kadar açık ve nettir. Buna göre  sadece talep sonucunu belirleyemeyen kişinin bu dava türünde korunma ihtiyacından ve dolayısıyla hukuki yararından söz edilebilir. Başka bir anlatımla talep sonucunu belirleyebilen kişinin, bu dava türünde korunma ihtiyacı bulunmadığından, böyle bir dava açmakta hukuki yararı yoktur.\nNitekim 6100 sayılı Kanun’un 107/1 hükmüne göre davanın koşullarından biri olarak davacı “hukuki ilişkiyi … belirtmek suretiyle belirsiz alacak davası açabilir.” Doktrinde de Türk hukukunda mehaz İsviçre hukukundan farklı olarak, belirsiz alacak davası açan davacının hukuki ilişkiyi göstermesinin zorunlu kılınmasının, belirli alacaklar için de belirsiz alacak davası açılmasının engellenmesi amacını taşıdığı ifade edilmektedir (Simil, s.238-239). Davacının hukuki ilişkiyi ortaya koyması, belirsiz alacak davası açmasında hukuki yararının bulunup bulunmadığını belirler. Çünkü alacağın miktarı belirli ise veya belirlenebilir nitelikte ise davacının belirsiz alacak davası açmasında hukuki yararı bulunmamaktadır.\nEda davalarında hukuki yararın varlığı asıldır. Ancak şüphe hâlinde eda davalarında da hukuki yararın mevcut olup olmadığı inceleme konusu yapıl",
+          "skor": 0.0042,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 31",
+          "metin_ozet": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsa",
+          "metin": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsağlığın korunması sebepleri dışında, halkın bu araçlarla haber almasını, düşünce ve kanaatlere\nulaşmasını ve kamuoyunun serbestçe oluşmasını engelleyici kayıtlar koyamaz.\nE. Düzeltme ve cevap hakkı",
+          "skor": 0.0014,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1404,
+      "ortalama_kaynak_skor": 0.0048,
+      "kaynak_sayisi": 5,
+      "message_id": "fa0f6c04-0ee0-4885-b5c3-1db0794cdfe0",
+      "conversation_id": "018a94e4-84e2-4d5c-95fd-33c312294f3c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.28,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Velayet davasında hakim hangi ölçütlere göre karar verir?",
+      "cevap": "Velayet davasında hakim, çocuğun yüksek yararını göz önünde bulundurarak karar verir. Hakim, çocuğun fiziksel, duygusal ve psikolojik ihtiyaçlarını dikkate alır ve çocuğun çıkarlarını korumak için gerekli kararları alır.\n\nHakim, aşağıdaki ölçütlere göre karar verir:\n\n* Çocuğun yaşını, sağlık durumunu, eğitimini ve diğer özel ihtiyaçlarını dikkate alır.\n* Çocuğun her iki ebeveyniyle olan ilişkisini değerlendirir.\n* Ebeveynlerin çocuğun bakımını ve eğitimini üstlenebilecek yetenek ve olanaklarını değerlendirir.\n* Çocuğun istek ve tercihlerini dikkate alır (çocuğun yaşı ve olgunluğu dikkate alınarak).\n* Çocuğun diğer aile üyeleriyle olan ilişkisini değerlendirir.\n\nHakim, bu ölçütlere göre karar verirken, çocuğun yüksek yararını korumak için gerekli olan kararı alır. Velayet davalarında, hakimlerin kararları genellikle aşağıdaki seçeneklerden birini içerir:\n\n* Velayetin bir ebeveyne verilmesi\n* Velayetin paylaşımlı olarak belirlenmesi\n* Çocuğun bir ebeveyne bırakılması ve diğer ebeveynin ziyaret hakkı tanınması\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0655,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 94 - Fıkra 2",
+          "metin_ozet": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , ",
+          "metin": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , malullük aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar ile aylık veya gelir bağlanan ve çalışma gücünün en az %60’ını yitiren malûl çocukların kontrol muayenesine tâbi tutulmasını talep edebilir. [174] Kurumca yaptırılan kontrol muayenesinde veya sigortalının isteği üzerine ya da işe alıştırma sonunda yapılan muayenesinde yeniden tespit edilecek malullük durumuna göre, malullük aylığı veya sürekli iş göremezlik geliri, yeni malullük durumuna esas tutulan raporun tarihini takip eden ödeme dönemi başından başlanarak artırılır, azaltılır veya kesilir. Çalışma gücünün en az %60’ını yitiren malûl çocuklara bağlanmış bulunan gelir ve aylıklar, kontrol muayenesi sonunda tespit edilecek malullük durumuna göre, rapor tarihinden sonraki ödeme dönemi başından itibaren kesilir.",
+          "skor": 0.0564,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 33 - Fıkra 1",
+          "metin_ozet": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiy",
+          "metin": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiyle aylığı kesilen sigortalının ölüm tarihi esas alınarak 27 nci veya 30 uncu maddelere göre tespit edilecek aylığı, c) 32 nci maddenin ikinci fıkrasının (a) bendi kapsamında malûllük, yaşlılık ve ölüm sigortaları primi ödemiş olan sigortalının prim ödeme gün sayısı, 9000 günden az ise 9000 gün üzerinden, 9000 gün ve daha fazla ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanan aylığı, esas alınır. (Ek cümle: 17/4/2008-5754/66 md.) Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır.",
+          "skor": 0.0561,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8162",
+          "metin_ozet": "2015 ilâ 20.02.2019 tarihleri arasında Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurul Raporları Hakkında Yönetmelik ve 20.02.2019 tarihinden sonra ise Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik yürürlükte olduğundan kaza tarihinde geçerli mevzuat uyarınca ",
+          "metin": "2015 ilâ 20.02.2019 tarihleri arasında Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurul Raporları Hakkında Yönetmelik ve 20.02.2019 tarihinden sonra ise Erişkinler İçin Engellilik Değerlendirmesi Hakkında Yönetmelik yürürlükte olduğundan kaza tarihinde geçerli mevzuat uyarınca sağlık kurulu raporu düzenlenmelidir. Eldeki davada kaza, 27.11.2018  tarihinde meydana gelmiştir.\nBu durumda İtiraz Hakem Heyetince; davacı tarafından kararın temyiz edilmediği göz önüne alındığında davalının usuli kazanılmış hakları gözetilerek davacının kazaya ilişkin tüm tedavi evrakı eklenip (eksik varsa temini ile) dosyada bulunan sağlık kurulu raporları da irdelenmek ve bizzat muayene edilmek suretiyle kaza tarihinde yürürlükte bulunan  Özürlülük Ölçütü, Sınıflandırması ve Özürlülere Verilecek Sağlık Kurul Raporları Hakkında Yönetmelik hükümlerine uygun olarak ve yukarıda açıklandığı şekilde yetkili sağlık kurulundan rapor alınıp sonucuna göre karar verilmesi gerekirken yazılı olduğu şekilde hüküm kurulması bozmayı gerektirmiştir.\n3. 5684 sayılı Sigortacılık Kanunu'nun 30/17 nci, Sigortacılıkta Tahkime İlişkin Yönetmelik’in 16/13 üncü Avukatlık Asgarî Ücret Tarifesi'nin (AAÜT) 17/",
+          "skor": 0.0555,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 26",
+          "metin_ozet": "MADDE 26- Malûllük sigortasından sigortalılara sağlanan hak, malûllük aylığı bağlanmasıdır. Sigortalıya malûllük aylığı bağlanabilmesi için sigortalının; a) 25 inci maddeye göre malûl sayılması, b) (Değişik: 17/4/2008-5754/14 md.) En az on yıldan beri sigortalı bulunup, toplam olarak 1800 gün veya b",
+          "metin": "MADDE 26- Malûllük sigortasından sigortalılara sağlanan hak, malûllük aylığı bağlanmasıdır. Sigortalıya malûllük aylığı bağlanabilmesi için sigortalının; a) 25 inci maddeye göre malûl sayılması, b) (Değişik: 17/4/2008-5754/14 md.) En az on yıldan beri sigortalı bulunup, toplam olarak 1800 gün veya başka birinin sürekli bakımına muhtaç derecede malûl olan sigortalılar için ise sigortalılık süresi aranmaksızın 1800 gün malûllük, yaşlılık ve ölüm sigortaları primi bildirilmiş olması, c) Malûliyeti nedeniyle sigortalı olarak çalıştığı işten ayrıldıktan veya işyerini kapattıktan veya devrettikten sonra Kurumdan yazılı istekte bulunması, halinde malûllük aylığı bağlanır. Ancak, 4 üncü maddenin birinci fıkrasının (b) bendine göre sigortalı sayılanların kendi sigortalılığı nedeniyle genel sağlık sigortası primi dahil, prim ve prime ilişkin her türlü borçlarının ödenmiş olması zorunludur. [41] Malûllük aylığının hesaplanması, başlangıcı, kesilmesi ve yeniden bağlanması",
+          "skor": 0.0547,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1226,
+      "ortalama_kaynak_skor": 0.0576,
+      "kaynak_sayisi": 5,
+      "message_id": "7a211f3f-3b26-4f7b-a325-11f944b642ac",
+      "conversation_id": "b7388e87-50c5-4e5c-a60b-9fc4c1c3190b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.28,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Nafaka türleri nelerdir ve hangi durumlarda talep edilebilir?",
+      "cevap": "Nafaka türleri ve talep edilebileceği durumlar, Türk Medeni Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında nafaka türleri ve talep edilebileceği durumlar hakkında bilgi bulunmamaktadır. Türk Medeni Kanunu'nun 175. maddesine göre, boşanma davası açılması halinde, eşlerden birinin diğerine nafaka ödenmesine karar verilebilir. Ayrıca, Türk Medeni Kanunu'nun 328. maddesine göre, çocuğun bakım ve eğitim giderlerini karşılamak amacıyla, diğer eşten nafaka talep edilebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 183",
+          "metin_ozet": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırıl",
+          "metin": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırılmış bulunduğu savunmasını ileri süremez.",
+          "skor": 0.0652,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 384",
+          "metin_ozet": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "metin": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "skor": 0.0541,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 191",
+          "metin_ozet": "MADDE 191- Alacak, bir edim karşılığında devredilmişse devreden, devir sırasında alacağın varlığını ve borçlunun ödeme gücüne sahip olduğunu garanti etmiş olur. Alacak bir edim karşılığı olmaksızın devredilmiş ya da kanun gereğince başkasına geçmişse, devreden veya önceki alacaklı, alacağın varlığın",
+          "metin": "MADDE 191- Alacak, bir edim karşılığında devredilmişse devreden, devir sırasında alacağın varlığını ve borçlunun ödeme gücüne sahip olduğunu garanti etmiş olur. Alacak bir edim karşılığı olmaksızın devredilmiş ya da kanun gereğince başkasına geçmişse, devreden veya önceki alacaklı, alacağın varlığından ve borçlunun ödeme gücünden sorumlu değildir.",
+          "skor": 0.0534,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 463",
+          "metin_ozet": "MADDE 463- (1) Genel kurul, yeni çıkarılan tahviller veya benzeri borçlanma\naraçları nedeniyle, şirketten veya topluluk şirketlerinden alacaklı olanlara veya çalışanlara,\nesas sözleşmede değiştirme veya alım haklarını kullanmak yoluyla yeni payları edinmek\nhakkı sağlamak suretiyle, sermayenin şarta ",
+          "metin": "MADDE 463- (1) Genel kurul, yeni çıkarılan tahviller veya benzeri borçlanma\naraçları nedeniyle, şirketten veya topluluk şirketlerinden alacaklı olanlara veya çalışanlara,\nesas sözleşmede değiştirme veya alım haklarını kullanmak yoluyla yeni payları edinmek\nhakkı sağlamak suretiyle, sermayenin şarta bağlı artırılmasına karar verebilir.\n(2) Sermaye, değiştirme veya alım hakkı kullanıldığı ve sermaye borcu takas veya\nödeme yoluyla yerine getirildiği anda ve ölçüde kendiliğinden artar.\n2. Sınırlar",
+          "skor": 0.0526,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 32",
+          "metin_ozet": "MADDE 32- (1) Yargılamayı, hâkim sevk ve idare eder; yargılama düzeninin\nbozulmaması için gerekli her türlü tedbiri alır.\n(2) Okunamayan veya uygunsuz yahut ilgisiz olan dilekçenin yeniden düzenlenmesi\niçin uygun bir süre verilir ve bu dilekçe dosyada kalır. Verilen süre içinde yeni bir dilekçe\ndüze",
+          "metin": "MADDE 32- (1) Yargılamayı, hâkim sevk ve idare eder; yargılama düzeninin\nbozulmaması için gerekli her türlü tedbiri alır.\n(2) Okunamayan veya uygunsuz yahut ilgisiz olan dilekçenin yeniden düzenlenmesi\niçin uygun bir süre verilir ve bu dilekçe dosyada kalır. Verilen süre içinde yeni bir dilekçe\ndüzenlenmezse, tekrar süre verilemez.\nHukukun uygulanması",
+          "skor": 0.0525,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 689,
+      "ortalama_kaynak_skor": 0.0556,
+      "kaynak_sayisi": 5,
+      "message_id": "7f92ff46-a95f-4d82-9da0-c8ac5d8e08e2",
+      "conversation_id": "5536b18d-2367-46d1-bf1e-286a745cf83a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.5,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Mal paylaşımı boşanmadan sonra nasıl yapılır?",
+      "cevap": "Mal paylaşımı boşanmadan sonra, Türk Medeni Kanunu'nun 206. maddesine göre yapılabilir. Bu maddeye göre, haklı bir sebep varsa, hâkim eşlerden birinin istemi üzerine mevcut mal rejiminin mal ayrılığına dönüşmesine karar verebilir. Haklı sebep olarak kabul edilen haller arasında, diğer eşin malvarlığının borca batık veya ortaklıktaki payının haczedilmiş olması, diğer eşin ortaklığın malları üzerinde bir tasarruf işleminin yapılması için gereken rızasını haklı bir sebep olmadan esirgemesi, diğer eşin istemde bulunan eşe malvarlığı, geliri, borçları veya ortaklık malları hakkında bilgi vermekten kaçınması ve diğer eşin sürekli olarak ayırt etme gücünden yoksun olması gibi durumlar sayılabilir.\n\nEşlerden biri, mal paylaşımının yapılmasını istiyorsa, mahkemeye başvurarak mal ayrılığına geçilmesini talep edebilir. Mahkeme, eşlerin malvarlıklarını ve diğer koşulları dikkate alarak mal paylaşımının nasıl yapılacağına karar verecektir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bi",
+          "metin": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bilimsel görüşlerden ve yargı kararlarından yararlanır. Kanun’un bu açık hükmü karşısında hâkimin hukuk yaratması için öncelikle bir boşluğun varlığı gerekir. Boşluk kavramı bakımından en önemli nokta ise hangi koşulların varlığı hâlinde bir boşluğun bulunduğu sorusuna verilecek yanıttır.\nHukukta boşluk, pozitif hukukun bir meseleyi düzenlemesi gerekirken kendi normatif düzenine aykırı olarak düzenlememiş olmasıdır ( Sururi Aktaş, \"Pozitif Hukukta Boşluk Kavramı\", Erzincan Binali Yıldırım Üniversitesi Hukuk Fakültesi Dergisi, C.XIV, S.1-2, 2010, s.10). Daha kısa bir tanıma göre kanun boşluğu, gerekli kanuni düzenlemenin yapılmamış olmasıdır (Çiğdem Kırca, \"Örtülü (Gizli) Boşluk ve Bu Boşluğun Doldurulması Yöntemi Olarak Amaca Uygun Sınırlama (Teleologische Reduktion)\", AÜHFD, C.50, S.1, 2001, s.91). Diğer taraftan kanun koyucunun bilinçli olarak sustuğu hâllerde bir boşluktan söz edilemez.",
+          "skor": 0.0202,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 206",
+          "metin_ozet": "Madde 206- Haklı bir sebep varsa hâkim, eşlerden birinin istemi üzerine, mevcut mal\nrejiminin mal ayrılığına dönüşmesine karar verebilir.\nÖzellikle aşağıdaki hâllerde haklı bir sebebin varlığı kabul edilir:\n1. Diğer eşe ait malvarlığının borca batık veya ortaklıktaki payının haczedilmiş olması,\n2. D",
+          "metin": "Madde 206- Haklı bir sebep varsa hâkim, eşlerden birinin istemi üzerine, mevcut mal\nrejiminin mal ayrılığına dönüşmesine karar verebilir.\nÖzellikle aşağıdaki hâllerde haklı bir sebebin varlığı kabul edilir:\n1. Diğer eşe ait malvarlığının borca batık veya ortaklıktaki payının haczedilmiş olması,\n2. Diğer eşin, istemde bulunanın veya ortaklığın menfaatlerini tehlikeye düşürmüş olması,\n3. Diğer eşin, ortaklığın malları üzerinde bir tasarruf işleminin yapılması için gereken\nrızasını haklı bir sebep olmadan esirgemesi,\n4. Diğer eşin, istemde bulunan eşe malvarlığı, geliri, borçları veya ortaklık malları hakkında\nbilgi vermekten kaçınması,\n5. Diğer eşin sürekli olarak ayırt etme gücünden yoksun olması.\nEşlerden biri ayırt etme gücünden sürekli olarak yoksun ise, onun yasal temsilcisi de bu\nsebebe dayanarak mal ayrılığına karar verilmesini isteyebilir.\n2. Yetki",
+          "skor": 0.0108,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/12688",
+          "metin_ozet": "Başka bir anlatımla böyle bir durumda bireyin hakkının varlığı dava sürecinde olgusal bir gerçeklik olarak da tespit edilmesine rağmen bu gerçeklik bizzat o hakkın teslimi amacıyla başvurulan yargı mercii tarafından yok sayılmış, görmezden gelinmiş olur. Kişinin maddi hukuka göre sahip olduğu bir ha",
+          "metin": "Başka bir anlatımla böyle bir durumda bireyin hakkının varlığı dava sürecinde olgusal bir gerçeklik olarak da tespit edilmesine rağmen bu gerçeklik bizzat o hakkın teslimi amacıyla başvurulan yargı mercii tarafından yok sayılmış, görmezden gelinmiş olur. Kişinin maddi hukuka göre sahip olduğu bir hakkın dava vasıtasıyla elde edilmesi bir yana salt usuli gerekçelerle yargı kararıyla görmezden gelinmesi ise dava açma kavramının temel mantığıyla bağdaşmadığı gibi dava açılmasını anlamsız hâle getirir ve karşı tarafın gerçekte sahibi olmadığı bir hakkı usuli uygulamalar sayesinde elde etmesi gibi hakkaniyetsiz bir sonuca yol açabilir (benzer yöndeki değerlendirme için bkz. ... Özgan ve Şule Özgan, § 70)\". 7. 6100 sayılı Hukuk Muhakemeleri Kanunu’nun yürürlüğe girmesi üzerine usulü müktesep hakkın yeniden kavram olarak değerlendirilmesi gerekir. Zira kanunun kısmi dava başlığı taşıyan 109 uncu maddesinin son fıkrasında açıkça “Dava açılırken, talep konusunun kalan kısmından açıkça feragat edilmiş olması hâli dışında, kısmi dava açılması, talep konusunun geri kalan kısmından feragat edildiği anlamına gelmez.” düzenlemesine yer verilmiştir. Görüldüğü gibi kısmi miktar talep eden davacı, fazlaya ilişkin haklarını saklı tutmadığı ve açıkça da bakiye kısmından feragat etmedikçe geri kalan kısmını ek dava(veya ıslah) yolu ile edebilmektedir.",
+          "skor": 0.0091,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/10023",
+          "metin_ozet": "Başka bir anlatımla böyle bir durumda bireyin hakkının varlığı dava sürecinde olgusal bir gerçeklik olarak da tespit edilmesine rağmen bu gerçeklik bizzat o hakkın teslimi amacıyla başvurulan yargı mercii tarafından yok sayılmış, görmezden gelinmiş olur. Kişinin maddi hukuka göre sahip olduğu bir ha",
+          "metin": "Başka bir anlatımla böyle bir durumda bireyin hakkının varlığı dava sürecinde olgusal bir gerçeklik olarak da tespit edilmesine rağmen bu gerçeklik bizzat o hakkın teslimi amacıyla başvurulan yargı mercii tarafından yok sayılmış, görmezden gelinmiş olur. Kişinin maddi hukuka göre sahip olduğu bir hakkın dava vasıtasıyla elde edilmesi bir yana salt usuli gerekçelerle yargı kararıyla görmezden gelinmesi ise dava açma kavramının temel mantığıyla bağdaşmadığı gibi dava açılmasını anlamsız hâle getirir ve karşı tarafın gerçekte sahibi olmadığı bir ... usuli uygulamalar sayesinde elde etmesi gibi hakkaniyetsiz bir sonuca yol açabilir (benzer yöndeki değerlendirme için bkz. ... Özgan ve Şule Özgan, § 70)\". 5. Diğer taraftan 6100 sayılı Hukuk Muhakemeleri Kanunu’nun yürürlüğe girmesi üzerine usulü müktesep hakkın yeniden kavram olarak değerlendirilmesi gerekir. Zira Kanun'un kısmi dava başlığı taşıyan 109. maddesinin son fıkrasında açıkça “Dava açılırken, talep konusunun kalan kısmından açıkça feragat edilmiş olması hâli dışında, kısmi dava açılması, talep konusunun geri kalan kısmından feragat edildiği anlamına gelmez.” düzenlemesine yer verilmiştir. Görüldüğü gibi kısmi miktar talep eden davacı, fazlaya ilişkin haklarını saklı tutmadığı ve açıkça da bakiye kısmından feragat etmedikçe geri kalan kısmını ek dava(veya ıslah) yolu ile edebilmektedir.",
+          "skor": 0.0088,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 1",
+          "metin_ozet": "Madde 1 – Bu Kanunun amacı, karayollarında, can ve mal güvenliği yönünden trafik\ndüzenini sağlamak ve trafik güvenliğini ilgilendiren tüm konularda alınacak önlemleri belirlemektir.\nKapsam:",
+          "metin": "Madde 1 – Bu Kanunun amacı, karayollarında, can ve mal güvenliği yönünden trafik\ndüzenini sağlamak ve trafik güvenliğini ilgilendiren tüm konularda alınacak önlemleri belirlemektir.\nKapsam:",
+          "skor": 0.0083,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1144,
+      "ortalama_kaynak_skor": 0.0114,
+      "kaynak_sayisi": 5,
+      "message_id": "c1ef6b42-afb0-4dd8-beaa-49b2fc71be98",
+      "conversation_id": "31cb9529-82d7-4a5a-ae50-19f53d508759",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.93,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Babalık davası hangi hallerde açılır ve nasıl ispat edilir?",
+      "cevap": "Babalık davası, bir kişinin bir çocuğun biyolojik babası olduğunu iddia ederek, bu çocuğun babalığını yasal olarak tanıtmak amacıyla açılan bir davadır. Türk hukukuna göre, babalık davası, Medeni Kanun'un 282. maddesinde düzenlenmiştir. Bu maddeye göre, bir kişi, bir çocuğun biyolojik babası olduğunu iddia ederek, babalık davası açabilir.\n\nBabalık davası, aşağıdaki hallerde açılabilir:\n\n1. Çocuk, evlilik dışında doğmuşsa ve biyolojik babası, çocuğun doğum belgesine kaydedilmemişse.\n2. Çocuk, evlilik içinde doğmuşsa, ancak biyolojik babası, çocuğun doğum belgesine kaydedilen kişiyle aynı kişi değilse.\n\nBabalık davası, aşağıdaki şekilde ispat edilebilir:\n\n1. Kan testi: Kan testi, biyolojik babalıkın en yaygın ve kesin bir şekilde ispat edilen yöntemidir. Kan testi, çocuğun ve iddia edilen babanın kan örneklerinin karşılaştırılmasıyla yapılır.\n2. Tanık ifadeleri: Tanık ifadeleri, babalık davasında delil olarak kullanılabilir. Örneğin, çocuğun annesi veya diğer tanıklar, çocuğun biyolojik babasının kim olduğunu bildiklerini beyan edebilirler.\n3. Belgeler: Belgeler, babalık davasında delil olarak kullanılabilir. Örneğin, çocuğun doğum belgesi, evlilik cüzdanı veya diğer resmi belgeler, babalık davasında delil olarak kullanılabilir.\n\nBabalık davası, aile mahkemesinde açılır ve dava, çocuğun menfaatine göre sonuçlandırılır. Mahkeme, babalık davasında, çocuğun menfaatini göz önünde bulundurarak, delilleri değerlendirir ve karar verir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 13",
+          "metin_ozet": "Madde 13- Bilgi edinme istemi (…)1 reddedilen başvuru sahibi, yargı yoluna\nbaşvurmadan önce kararın tebliğinden itibaren onbeş gün içinde Kurula itiraz edebilir. Kurul,\nbu konudaki kararını otuz iş günü içinde verir. Kurum ve kuruluşlar, Kurulun istediği her\ntürlü bilgi veya belgeyi onbeş iş günü iç",
+          "metin": "Madde 13- Bilgi edinme istemi (…)1 reddedilen başvuru sahibi, yargı yoluna\nbaşvurmadan önce kararın tebliğinden itibaren onbeş gün içinde Kurula itiraz edebilir. Kurul,\nbu konudaki kararını otuz iş günü içinde verir. Kurum ve kuruluşlar, Kurulun istediği her\ntürlü bilgi veya belgeyi onbeş iş günü içinde vermekle yükümlüdürler.\nKurula itiraz, başvuru sahibinin idarî yargıya başvurma süresini durdurur.\nBilgi Edinme Değerlendirme Kurulu23",
+          "skor": 0.0746,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Geçici Madde 8",
+          "metin_ozet": "Geçici Madde 8 — Bu Kanunun yayımı tarihinden önce Kuruma yarışma ve yeterlilik\nsınavıyla alınmış; avukat (Kurum uzman yardımcısı) ve Kurum uzman yardımcıları, bankacılık\nuzman yardımcısı olarak atanır. Kurumda yeterlik sınavını geçerek avukat (Kurum Uzmanı) ve\nKurum Uzmanı unvanını kazanmış olanlar",
+          "metin": "Geçici Madde 8 — Bu Kanunun yayımı tarihinden önce Kuruma yarışma ve yeterlilik\nsınavıyla alınmış; avukat (Kurum uzman yardımcısı) ve Kurum uzman yardımcıları, bankacılık\nuzman yardımcısı olarak atanır. Kurumda yeterlik sınavını geçerek avukat (Kurum Uzmanı) ve\nKurum Uzmanı unvanını kazanmış olanlar bankacılık uzmanlığına atanır. Bunların Kurumda\nçalıştıkları süreler bankacılık uzman yardımcılığı ve bankacılık uzmanlığında geçmiş sayılır.\nBu Kanunun yayımı tarihinde Bankacılık Düzenleme ve Denetleme Kurumunda görev\nyapan personelden; Kurum Uzmanı olarak görev yapmış ve geldikleri kurumlarda mesleğe\nözel yarışma sınavıyla alınmış ve yeterlik sınavında başarılı görülerek uzman, müfettiş ve\nbenzeri unvanlarda görev yapmış olanlar ile en az doktora derecesine sahip olanlar bankacılık\nuzmanlığına atanmış sayılırlar. Bunların geldikleri kurumlarda uzman, müfettiş ve benzeri\nunvanlarda ve Bankacılık Düzenleme ve Denetleme Kurumunda çalıştıkları süreler bankacılık\nuzmanlığında geçmiş sayılır. Bu Kanunun yayımı tarihinden önce başka kurumlardan naklen\natanmış bankalar yeminli murakıp ve yardımcılarının geldikleri kurumlarda çalıştıkları süreler\nKurumda geçmiş sayılır.\nBu maddenin birinci ve ikinci fıkrasında zikredilen Kurum uzmanları dışında kalan\nKurum uzmanları ve avukatlar aynı kadro unvanlarıyla görevlerine devam ederler. Bu\nkadrolara bir daha atama yapılmaz. Bu kişiler görevde kaldıkları sürece bankacılık\nuzmanlarının aylık, malî, sosyal ve emeklilik haklarından aynen yararlanırlar.",
+          "skor": 0.0721,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bi",
+          "metin": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bilimsel görüşlerden ve yargı kararlarından yararlanır. Kanun’un bu açık hükmü karşısında hâkimin hukuk yaratması için öncelikle bir boşluğun varlığı gerekir. Boşluk kavramı bakımından en önemli nokta ise hangi koşulların varlığı hâlinde bir boşluğun bulunduğu sorusuna verilecek yanıttır.\nHukukta boşluk, pozitif hukukun bir meseleyi düzenlemesi gerekirken kendi normatif düzenine aykırı olarak düzenlememiş olmasıdır ( Sururi Aktaş, \"Pozitif Hukukta Boşluk Kavramı\", Erzincan Binali Yıldırım Üniversitesi Hukuk Fakültesi Dergisi, C.XIV, S.1-2, 2010, s.10). Daha kısa bir tanıma göre kanun boşluğu, gerekli kanuni düzenlemenin yapılmamış olmasıdır (Çiğdem Kırca, \"Örtülü (Gizli) Boşluk ve Bu Boşluğun Doldurulması Yöntemi Olarak Amaca Uygun Sınırlama (Teleologische Reduktion)\", AÜHFD, C.50, S.1, 2001, s.91). Diğer taraftan kanun koyucunun bilinçli olarak sustuğu hâllerde bir boşluktan söz edilemez.",
+          "skor": 0.072,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 114",
+          "metin_ozet": "MADDE 114- (1) Acente, kurulan işlem yerine getirildiği anda ve ölçüde ücrete hak\nkazanır. Taraflar bu kuralı acentelik sözleşmesiyle değiştirebilir; ancak müvekkil işlemi\nyerine getirince, acente, izleyen ayın son günü istenebilecek uygun bir avansa hak kazanır.\nHer hâlde acente, üçüncü kişi kurula",
+          "metin": "MADDE 114- (1) Acente, kurulan işlem yerine getirildiği anda ve ölçüde ücrete hak\nkazanır. Taraflar bu kuralı acentelik sözleşmesiyle değiştirebilir; ancak müvekkil işlemi\nyerine getirince, acente, izleyen ayın son günü istenebilecek uygun bir avansa hak kazanır.\nHer hâlde acente, üçüncü kişi kurulan işlemi yerine getirdiği anda ve ölçüde ücrete hak\nkazanır.\n(2) Üçüncü kişinin işlemi yerine getirmeyeceği kesinleşirse, acentenin ücret hakkı\ndüşer; ödenmiş tutarlar geri verilir.\n(3) Aracılık edilen sözleşmeyi müvekkilin kısmen veya tamamen yahut öngörüldüğü\nşekliyle yerine getirmeyeceği kesinleşse bile, acente ücret isteyebilir. Müvekkile yüklenemeyen\nsebeplerle sözleşmenin yerine getirilemediği hâlde ve ölçüde acentenin ücret hakkı düşer.\n3. Ücretin miktarı",
+          "skor": 0.0695,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 134",
+          "metin_ozet": "MADDE 134- Çeşitli kalemlerin bir cari hesaba sadece kaydedilmiş olması, borcun yenilenmiş olduğu anlamına gelmez. Ancak, hesabın kesilmiş ve hesap sonucu diğer tarafça kabul edilmiş olması durumunda, borç yenilenmiş olur. Kalemlerden birinin güvencesi varsa, aksi kararlaştırılmadıkça, hesap kesilip",
+          "metin": "MADDE 134- Çeşitli kalemlerin bir cari hesaba sadece kaydedilmiş olması, borcun yenilenmiş olduğu anlamına gelmez. Ancak, hesabın kesilmiş ve hesap sonucu diğer tarafça kabul edilmiş olması durumunda, borç yenilenmiş olur. Kalemlerden birinin güvencesi varsa, aksi kararlaştırılmadıkça, hesap kesilip sonucun kabul edilmiş olması, güvenceyi sona erdirmez.",
+          "skor": 0.069,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1654,
+      "ortalama_kaynak_skor": 0.0714,
+      "kaynak_sayisi": 5,
+      "message_id": "1bb3ec9c-a7be-44e3-bce4-cc9859f62275",
+      "conversation_id": "1b57f3b3-7f63-40a0-ab21-995ece5b1c12",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.76,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Evlat edinme şartları nelerdir ve süreç nasıl işler?",
+      "cevap": "Evlat edinme süreci, Türk Medeni Kanunu'nda (TMK) düzenlenen bir kurum olup, bir kişinin başka bir kişinin çocuğunu kendi çocuğu gibi kabul etmesi ve ona karşı yasal bir ebeveynlik ilişkisi kurmasıdır. Evlat edinme şartları ve süreci şu şekilde özetlenebilir:\n\n1. **Yaş Şartı**: Evlat edinmek isteyen kişinin en az 30 yaşında olması gerekir. Ancak, eşlerin birlikte evlat edinmek istemeleri halinde, bu yaş şartı 25 yaşa kadar düşebilir.\n2. **Evlilik Şartı**: Evlat edinmek isteyen kişiler evli olmalıdır. Ancak, eşlerden birinin diğerinin çocuğunu evlat edinmesi mümkündür.\n3. **Sağlık Şartı**: Evlat edinmek isteyen kişilerin fiziksel ve ruhsal sağlıklarının iyi olması gerekir.\n4. **Ekonomik Şart**: Evlat edinmek isteyen kişilerin ekonomik durumlarının çocuğu yetiştirip bakımını üstlenebilecek düzeyde olması gerekir.\n\nEvlat edinme süreci şu şekilde işler:\n\n1. **Başvuru**: Evlat edinmek isteyen kişiler, yetkili makamlara (mahkeme veya sosyal hizmetler müdürlüğü) başvurur.\n2. **İnceleme**: Başvurunun ardından, evlat edinmek isteyen kişilerin sosyal, ekonomik ve sağlık durumları incelenir.\n3. **Çocuk Seçimi**: İnceleme sonucunda, evlat edinmek isteyen kişilerle uygun bir çocuk eşleştirilir.\n4. **Deneme Süreci**: Evlat edinmek isteyen kişiler, çocuğu belirli bir süre (genellikle 6 ay) deneme amacıyla yanlarında bulundurur.\n5. **Mahkeme Kararı**: Deneme süresi sonunda, mahkeme tarafından evlat edinme kararı verilir.\n\nBu süreç, her durumda aynı şekilde işlemez ve özel durumlar dikkate alınarak farklılık gösterebilir. Evlat edinme süreci, çocukların ve evlat edinmek isteyen kişilerin haklarını korumak amacıyla düzenlenmiştir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bi",
+          "metin": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bilimsel görüşlerden ve yargı kararlarından yararlanır. Kanun’un bu açık hükmü karşısında hâkimin hukuk yaratması için öncelikle bir boşluğun varlığı gerekir. Boşluk kavramı bakımından en önemli nokta ise hangi koşulların varlığı hâlinde bir boşluğun bulunduğu sorusuna verilecek yanıttır.\nHukukta boşluk, pozitif hukukun bir meseleyi düzenlemesi gerekirken kendi normatif düzenine aykırı olarak düzenlememiş olmasıdır ( Sururi Aktaş, \"Pozitif Hukukta Boşluk Kavramı\", Erzincan Binali Yıldırım Üniversitesi Hukuk Fakültesi Dergisi, C.XIV, S.1-2, 2010, s.10). Daha kısa bir tanıma göre kanun boşluğu, gerekli kanuni düzenlemenin yapılmamış olmasıdır (Çiğdem Kırca, \"Örtülü (Gizli) Boşluk ve Bu Boşluğun Doldurulması Yöntemi Olarak Amaca Uygun Sınırlama (Teleologische Reduktion)\", AÜHFD, C.50, S.1, 2001, s.91). Diğer taraftan kanun koyucunun bilinçli olarak sustuğu hâllerde bir boşluktan söz edilemez.",
+          "skor": 0.0171,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/9525",
+          "metin_ozet": "nda, ifade özgürlüğüne getirilecek sınırlamanın, demokratik bir toplumda zorlayıcı bir toplumsal ihtiyacın karşılanması amacına yönelik, ölçülü, orantılı ve istisnai nitelikte olması gerekir. Buna göre, ifade özgürlüğüne yapılan bir müdahale, zorunlu bir toplumsal ihtiyacı karşılamıyorsa ya da zorun",
+          "metin": "nda, ifade özgürlüğüne getirilecek sınırlamanın, demokratik bir toplumda zorlayıcı bir toplumsal ihtiyacın karşılanması amacına yönelik, ölçülü, orantılı ve istisnai nitelikte olması gerekir. Buna göre, ifade özgürlüğüne yapılan bir müdahale, zorunlu bir toplumsal ihtiyacı karşılamıyorsa ya da zorunlu bir toplumsal ihtiyacı karşılamakla birlikte orantılı değilse, demokratik toplum düzeninin gereklerine uygun bir müdahale olarak değerlendirilemez.\nBu tür davalarda mahkemece yapılması gereken; kamuya mal olmuş kişilerin şöhret ve itibarı ile ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve etkileri, ilgili kişinin daha önceki davranışları, bilgilerin elde edilme koşulları ve gerçekliği ile uygulanan yaptırımın niteliği.\nTarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk ku",
+          "skor": 0.0119,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14507",
+          "metin_ozet": "yokluğu nedeniyle davanın usulden reddine karar verilmesi, dava hakkının ortadan kaldırılması ve dolayısıyla mahkemeye erişim hakkının ihlali anlamında yorumlanamaz. Çünkü  özel dava şartı (hukuki yarar) yokluğu nedeniyle usulden reddedilen dava, yukarıda belirtilen kanuni düzenleme uyarınca açılmam",
+          "metin": "yokluğu nedeniyle davanın usulden reddine karar verilmesi, dava hakkının ortadan kaldırılması ve dolayısıyla mahkemeye erişim hakkının ihlali anlamında yorumlanamaz. Çünkü  özel dava şartı (hukuki yarar) yokluğu nedeniyle usulden reddedilen dava, yukarıda belirtilen kanuni düzenleme uyarınca açılmaması gereken bir davadır. Başka bir anlatımla yanlış açılmış bir davadır. Yanlış dava açanın mahkemeye erişim hakkının kısıtlandığından söz edilemez.  Anayasa’nın 36 ncı maddesinde belirtildiği üzere “Herkes, meşru vasıta ve yollardan faydalanmak suretiyle yargı mercileri önünde davacı veya davalı olarak iddia ve savunma ile adil yargılanma hakkına sahiptir.” Buna göre  ancak usulüne uygun açılan bir dava söz konusu olduğunda, mahkemeye erişim hakkından söz edilebilir.\n28. Davanın hukuki yarar eksikliği nedeniyle usulden reddedilmesi hâlinde, mahkemeye erişim hakkı sınırlandırılmaktadır; ancak bu sınırlama, davalının adil yargılanma hakkının (silahların eşitliği ilkesi boyutuyla) korunmasına yönelik meşru bir amaç taşır ve ölçüsüz bir sınırlama da değildir. Zira usulden ret kararları maddi anlamda kesin hüküm teşkil etmediğinden, ilgili eksiklik giderilerek söz konusu davanın, doğru bir ş",
+          "skor": 0.0099,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5080",
+          "metin_ozet": "gulayarak, görüşmek ve müzakerelerde bulunmak aracılığıyla tarafları bir araya getiren, onların birbirlerini anlamalarını ve bu suretle çözümlerini kendilerinin üretmesini sağlamak için aralarında iletişim sürecinin kurulmasını gerçekleştiren, uzmanlık eğimi almış olan tarafsız ve bağımsız bir üçünc",
+          "metin": "gulayarak, görüşmek ve müzakerelerde bulunmak aracılığıyla tarafları bir araya getiren, onların birbirlerini anlamalarını ve bu suretle çözümlerini kendilerinin üretmesini sağlamak için aralarında iletişim sürecinin kurulmasını gerçekleştiren, uzmanlık eğimi almış olan tarafsız ve bağımsız bir üçüncü kişinin katılımıyla ve ihtiyari olarak yürütülen uyuşmazlık çözüm yöntemidir.\n6325 sayılı Kanun'un 8. maddesi gereği “Arabulucu, tarafların her biri ile ayrı ayrı veya birlikte görüşebilir ve iletişim kurabilir.”. Aynı Kanun'un 15. maddesinin 1, 2 ve 3. fıkralarına göre “Arabulucu, seçildikten sonra tarafları en kısa sürede ilk toplantıya davet eder. Taraflar, emredici hukuk kurallarına aykırı olmamak kaydıyla arabuluculuk usulünü serbestçe kararlaştırabilirler. Taraflarca kararlaştırılmamışsa arabulucu, uyuşmazlığın niteliğini, tarafların isteklerini ve uyuşmazlığın hızlı bir şekilde çözümlenmesi için gereken usul ve esasları göz önüne alarak arabuluculuk faaliyetini yürütür.” Hukuk Uyuşmazlıklarında Arabuluculuk Kanunu Yönetmeliği’nin (Yönetmelik) 10/1 hükmüne göre ise “Arabulucu, tarafların her biri ile ayrı ayrı veya birlikte görüşebilir. Bu amaçla her türlü iletişim aracını kullan",
+          "skor": 0.0089,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6959",
+          "metin_ozet": ". Bu gereklilik, temel hak ve hürriyetlerin; kişinin topluma, ailesine ve diğer kişilere karşı ödev ve sorumluluklarını da ihtiva ettiğini belirten Anayasa'nın 12 nci maddesinin ikinci fıkrasından doğan bir zorunluluktur (AYM; Fatih Taş, B. No: 2013/1461, 12/11/2014). Bu itibarla, Anayasa'nın 26 ncı",
+          "metin": ". Bu gereklilik, temel hak ve hürriyetlerin; kişinin topluma, ailesine ve diğer kişilere karşı ödev ve sorumluluklarını da ihtiva ettiğini belirten Anayasa'nın 12 nci maddesinin ikinci fıkrasından doğan bir zorunluluktur (AYM; Fatih Taş, B. No: 2013/1461, 12/11/2014). Bu itibarla, Anayasa'nın 26 ncı maddesinin ikinci fıkrasına göre ifade özgürlüğünün sınırlandırılma nedenlerinden biri de başkalarının şöhret ve itibarının korunmasıdır.\nDavalının söylediği sözlerin, ifade özgürlüğünün sınırlarını aştığını tespit ederken mahkemece ortaya konulan gerekçenin, bu özgürlüğü sınırlamak için yeterli ve ilgili olmasının yanında, ifade özgürlüğüne getirilecek sınırlamanın, demokratik bir toplumda zorlayıcı bir toplumsal ihtiyacın karşılanması amacına yönelik, ölçülü, orantılı ve istisnai nitelikte olması gerekir. Buna göre, ifade özgürlüğüne yapılan bir müdahale, zorunlu bir toplumsal ihtiyacı karşılamıyorsa ya da zorunlu bir toplumsal ihtiyacı karşılamakla birlikte orantılı değilse, demokratik toplum düzeninin gereklerine uygun bir müdahale olarak değerlendirilemez. Bunu ancak davanın bütününe bakarak anlayabiliriz.\nBu tür davalarda mahkemece yapılması gereken; kamuya mal olmuş kişilerin şöh",
+          "skor": 0.0069,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1844,
+      "ortalama_kaynak_skor": 0.0109,
+      "kaynak_sayisi": 5,
+      "message_id": "c1ae007f-cfe2-4e2c-a8f1-2a378cd0605a",
+      "conversation_id": "0ed7c731-3564-431b-ad40-f5dae0b9f972",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.94,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Kişinin gaipliğine hangi durumlarda karar verilir?",
+      "cevap": "Kişinin gaipliğine ilişkin hükümler, Türk Medeni Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında gaipliğe ilişkin bir madde bulunmamaktadır. Türk Medeni Kanunu'nun 32. maddesinde, gaipliğe ilişkin hükümler düzenlenmiştir. Buna göre, bir kişinin ölümünün kesin olarak bilinmemesi durumunda, gaipliğine karar verilebilir.\n\nGaipliğe karar verilebilecek durumlar arasında, kişinin uzun süre haber alınamaması, savaş veya doğal afet gibi olaylar sırasında kaybolması, deniz veya hava taşıtlarının kaybolması gibi durumlar sayılabilir. Ancak, bu konuda daha详lı bilgi için, Türk Medeni Kanunu'nun ilgili maddelerine bakmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 996",
+          "metin_ozet": "Madde 996- Kazandırıcı zamanaşımından yararlanma hakkına sahip olan zilyet, zilyetliği\nkendisine devreden aynı yetkiye sahip idiyse onun zilyetlik süresini kendi süresine ekleyebilir.\nİKİNCİ BÖLÜM\nTAPU SİCİLİ\nA. Kurulması\nI. Sicil bakımından\n1. Genel olarak",
+          "metin": "Madde 996- Kazandırıcı zamanaşımından yararlanma hakkına sahip olan zilyet, zilyetliği\nkendisine devreden aynı yetkiye sahip idiyse onun zilyetlik süresini kendi süresine ekleyebilir.\nİKİNCİ BÖLÜM\nTAPU SİCİLİ\nA. Kurulması\nI. Sicil bakımından\n1. Genel olarak",
+          "skor": 0.0077,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 38",
+          "metin_ozet": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerin",
+          "metin": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerinden konsolide finansal raporların düzenlenmesine\nilişkin olarak istenecek her türlü bilgi ve belgeyi ilgili ana ortaklığa vermekle yükümlüdür.\nFinansal raporların imzalanması, sunulması, ilânı ve denetimi",
+          "skor": 0.0045,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 698",
+          "metin_ozet": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabil",
+          "metin": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabilir.\nTaşınmazlarda paylı mülkiyetin devamına ilişkin sözleşmeler, resmî şekle bağlıdır ve tapu\nkütüğüne şerh verilebilir.\nUygun olmayan zamanda paylaşma isteminde bulunulamaz.\nb. Paylaşma biçimi",
+          "skor": 0.0034,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 94 - Fıkra 2",
+          "metin_ozet": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , ",
+          "metin": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , malullük aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar ile aylık veya gelir bağlanan ve çalışma gücünün en az %60’ını yitiren malûl çocukların kontrol muayenesine tâbi tutulmasını talep edebilir. [174] Kurumca yaptırılan kontrol muayenesinde veya sigortalının isteği üzerine ya da işe alıştırma sonunda yapılan muayenesinde yeniden tespit edilecek malullük durumuna göre, malullük aylığı veya sürekli iş göremezlik geliri, yeni malullük durumuna esas tutulan raporun tarihini takip eden ödeme dönemi başından başlanarak artırılır, azaltılır veya kesilir. Çalışma gücünün en az %60’ını yitiren malûl çocuklara bağlanmış bulunan gelir ve aylıklar, kontrol muayenesi sonunda tespit edilecek malullük durumuna göre, rapor tarihinden sonraki ödeme dönemi başından itibaren kesilir.",
+          "skor": 0.0017,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0016,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 841,
+      "ortalama_kaynak_skor": 0.0038,
+      "kaynak_sayisi": 5,
+      "message_id": "4e749867-8bb5-4cb8-8faa-638daae245c8",
+      "conversation_id": "0397233b-76e0-458f-9077-cf7bfa360e5b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.77,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Vesayet altına alma kararı hangi durumlarda verilir?",
+      "cevap": "Vesayet altına alma kararı, bir kişinin kendi işlerini yönetme yeteneğinden yoksun olduğu durumlarda verilir. Bu durum, genellikle akıl hastalığı, zihinsel engellilik, yaşlılık veya benzeri nedenlerle ortaya çıkabilir. Vesayet altına alma kararı, mahkeme tarafından verilir ve kişinin malvarlığı ve şahsi işlerinin yönetimi için bir vasi atanmasını sağlar.\n\nAncak, verilen kaynaklar vesayet altına alma kararını düzenleyen hükümleri içermemektedir. Vesayet altına alma kararı, Türk Medeni Kanunu'nda düzenlenmiştir. Türk Medeni Kanunu'nun 405. maddesine göre, \"Akıl hastalığı veya akıl zayıflığı sebebiyle işlerini gerektiği şekilde yönetmekten aciz olan kişi, kendisi veya yasal temsilcisi tarafından bir sözleşme yapıldığında veya bir tasarruf yapıldığında, mahkeme tarafından vesayet altına alınabilir.\"\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0193,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 38 - Fıkra 3",
+          "metin_ozet": "(Ek fıkra: 17/4/2008-5754/24 md.) Vazife malûllüğü aylığı almakta iken, çalışmaya başlamaları nedeniyle haklarında uzun vadeli sigorta hükümleri uygulananlar için malûllük, yaşlılık ve ölüm aylığı bağlanmasında veya toptan ödeme yapılmasında esas alınacak sigortalılık süresi, prim ödeme gün sayısı v",
+          "metin": "(Ek fıkra: 17/4/2008-5754/24 md.) Vazife malûllüğü aylığı almakta iken, çalışmaya başlamaları nedeniyle haklarında uzun vadeli sigorta hükümleri uygulananlar için malûllük, yaşlılık ve ölüm aylığı bağlanmasında veya toptan ödeme yapılmasında esas alınacak sigortalılık süresi, prim ödeme gün sayısı ve prime esas kazancın hesaplanmasında, vazife malûllüğü aylığı bağlandığı tarihten önceki süreler dikkate alınmaz. Uzun vadeli sigorta kolları bakımından üçüncü kişinin sorumluluğu [52]",
+          "skor": 0.0179,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 54 - Fıkra 3",
+          "metin_ozet": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "metin": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "skor": 0.0177,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 94 - Fıkra 2",
+          "metin_ozet": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , ",
+          "metin": "Malûllük , vazife malullüğü aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar, malullük durumlarında artma veya başka birinin sürekli bakımına muhtaç olduğunu ileri sürerek aylık ve gelirlerinde değişiklik yapılmasını isteyebilecekleri gibi; Kurum da harp malullüğü, vazife malullüğü , malullük aylığı veya sürekli iş göremezlik geliri bağlanmış sigortalılar ile aylık veya gelir bağlanan ve çalışma gücünün en az %60’ını yitiren malûl çocukların kontrol muayenesine tâbi tutulmasını talep edebilir. [174] Kurumca yaptırılan kontrol muayenesinde veya sigortalının isteği üzerine ya da işe alıştırma sonunda yapılan muayenesinde yeniden tespit edilecek malullük durumuna göre, malullük aylığı veya sürekli iş göremezlik geliri, yeni malullük durumuna esas tutulan raporun tarihini takip eden ödeme dönemi başından başlanarak artırılır, azaltılır veya kesilir. Çalışma gücünün en az %60’ını yitiren malûl çocuklara bağlanmış bulunan gelir ve aylıklar, kontrol muayenesi sonunda tespit edilecek malullük durumuna göre, rapor tarihinden sonraki ödeme dönemi başından itibaren kesilir.",
+          "skor": 0.0172,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.0146,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1010,
+      "ortalama_kaynak_skor": 0.0173,
+      "kaynak_sayisi": 5,
+      "message_id": "7e173f33-a236-4c2c-8940-5a51cea0cad7",
+      "conversation_id": "3b7a00c7-1cda-4b56-ab29-4f731408ae1b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.78,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Ad ve soyadı değişikliği davası nasıl açılır?",
+      "cevap": "Ad ve soyadı değişikliği davası, 4721 sayılı Türk Medeni Kanunu'nun 27. maddesine göre açılır. Bu maddeye göre, ad ve soyadı değiştirme talebi, kişinin yerleşim yeri mahkemesine yapılan bir dilekçe ile yapılır. Dilekçede, ad ve soyadı değiştirme nedenleri belirtilmelidir.\n\nDavayı açmak için, aşağıdaki belgelerin mahkemeye sunulması gerekir:\n\n* Nüfus cüzdanı\n* Kimlik belgesi\n* Ad ve soyadı değiştirme talebinin gerekçesini belirten bir dilekçe\n\nMahkeme, ad ve soyadı değiştirme talebini değerlendirir ve gerekli gördüğü takdirde, ilgili kişilerin görüşlerini alır. Mahkeme, ad ve soyadı değiştirme talebini kabul veya reddeder.\n\nAd ve soyadı değişikliği davası, Medeni Kanun'da düzenlenen bir konudur. Ancak, bu konuda özel bir düzenleme bulunmadığından, genel hükümler uygulanır. Mahkeme, karar verirken, 6100 sayılı Hukuk Muhakemeleri Kanunu'nun ilgili hükümlerini dikkate alır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bi",
+          "metin": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bilimsel görüşlerden ve yargı kararlarından yararlanır. Kanun’un bu açık hükmü karşısında hâkimin hukuk yaratması için öncelikle bir boşluğun varlığı gerekir. Boşluk kavramı bakımından en önemli nokta ise hangi koşulların varlığı hâlinde bir boşluğun bulunduğu sorusuna verilecek yanıttır.\nHukukta boşluk, pozitif hukukun bir meseleyi düzenlemesi gerekirken kendi normatif düzenine aykırı olarak düzenlememiş olmasıdır ( Sururi Aktaş, \"Pozitif Hukukta Boşluk Kavramı\", Erzincan Binali Yıldırım Üniversitesi Hukuk Fakültesi Dergisi, C.XIV, S.1-2, 2010, s.10). Daha kısa bir tanıma göre kanun boşluğu, gerekli kanuni düzenlemenin yapılmamış olmasıdır (Çiğdem Kırca, \"Örtülü (Gizli) Boşluk ve Bu Boşluğun Doldurulması Yöntemi Olarak Amaca Uygun Sınırlama (Teleologische Reduktion)\", AÜHFD, C.50, S.1, 2001, s.91). Diğer taraftan kanun koyucunun bilinçli olarak sustuğu hâllerde bir boşluktan söz edilemez.",
+          "skor": 0.0434,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Geçici Madde 3",
+          "metin_ozet": "Geçici Madde 3 – Anayasaya göre yapılacak ilk milletvekili genel seçimi sonucunda Türkiye\nBüyük Millet Meclisi toplanıp, Başkanlık Divanını oluşturması ile birlikte:\n61\na) 27 Ekim 1980 gün ve 2324 sayılı Anayasa Düzeni Hakkında Kanun,\nb) 12 Aralık 1980 gün ve 2356 sayılı Milli Güvenlik Konseyi Hakkı",
+          "metin": "Geçici Madde 3 – Anayasaya göre yapılacak ilk milletvekili genel seçimi sonucunda Türkiye\nBüyük Millet Meclisi toplanıp, Başkanlık Divanını oluşturması ile birlikte:\n61\na) 27 Ekim 1980 gün ve 2324 sayılı Anayasa Düzeni Hakkında Kanun,\nb) 12 Aralık 1980 gün ve 2356 sayılı Milli Güvenlik Konseyi Hakkında Kanun,\nc) 29 Haziran 1981 gün ve 2485 sayılı Kurucu Meclis Hakkında Kanun,\nYürürlükten kalkar ve Milli Güvenlik Konseyi ile Danışma Meclisinin hukuki varlıkları sona erer.",
+          "skor": 0.043,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 207",
+          "metin_ozet": "MADDE 207- (1) Senetteki çıkıntı, kazıntı veya silinti ayrıca onanmamışsa, inkâr hâlinde\ngöz önünde tutulmaz. Bu tür çıkıntı, kazıntı veya silinti mahkemece senedin geçerliliğine ve\nanlamına etkili olacak nitelikte görülürse, senet kısmen veya tamamen hükümsüz sayılabilir.\nYazı veya imza inkârı",
+          "metin": "MADDE 207- (1) Senetteki çıkıntı, kazıntı veya silinti ayrıca onanmamışsa, inkâr hâlinde\ngöz önünde tutulmaz. Bu tür çıkıntı, kazıntı veya silinti mahkemece senedin geçerliliğine ve\nanlamına etkili olacak nitelikte görülürse, senet kısmen veya tamamen hükümsüz sayılabilir.\nYazı veya imza inkârı",
+          "skor": 0.0378,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4730",
+          "metin_ozet": "dir ki, bu görüşe de katılmak mümkün değildir. Şöyle ki; yukarıda da izah olunduğu üzere anlaşma tutanağının hukuken varlığını sürdürdüğü herhangi bir zaman dilimi içerisinde kanundan kaynaklanan dava açma yasağı nedeniyle anlaşma tutanağının konusu olan hususların dava konusu edilmesi mümkün değild",
+          "metin": "dir ki, bu görüşe de katılmak mümkün değildir. Şöyle ki; yukarıda da izah olunduğu üzere anlaşma tutanağının hukuken varlığını sürdürdüğü herhangi bir zaman dilimi içerisinde kanundan kaynaklanan dava açma yasağı nedeniyle anlaşma tutanağının konusu olan hususların dava konusu edilmesi mümkün değildir. İlgili kanun hükmü bu durumu açıkça ve yoruma imkan bırakmayacak netlikte düzenlemiştir. Meseleyi bir örnek üzerinden açıklamak gerekirse örneğin, arabuluculuk anlaşma tutanağına bağlanmış kıdem tazminatı bakımından, hem arabuluculuk anlaşma tutanağının irade fesadı nedeniyle iptali ve hem de bakiye kıdem tazminatının tahsili talepli davada, anlaşma tutanağının konusu kıdem tazminatının dava edildiği tarih nedir? Hiç kuşkusuz anlaşma tutanağının iptalinin istendiği tarihtir. Peki bu tarih itibarıyla arabuluculuk anlaşma tutanağı hukuken geçersiz midir? Yine hiç kuşkusuz henüz iptal edilip bu yöndeki karar kesinleşmediği için arabuluculuk anlaşma tutanağı hukuken geçerliliğini devam ettirmektedir. Peki arabuluculuk anlaşma tutanağı hukuken geçerliyken anlaşma tutanağına konu husus dava konusu edilebilir mi? 6325 sayılı Kanun'un 18/5 hükmündeki  açık ve kesin emredici düzenleme nedeniy",
+          "skor": 0.0353,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 6 - Fıkra 2",
+          "metin_ozet": "Bu Kanunun yürürlük tarihi itibarıyla 506 sayılı Sosyal Sigortalar Kanununun mülga 86 ncı maddesine göre malullük, yaşlılık ve ölüm sigortaları bakımından topluluk sigortasına devam edenler, bu Kanunun 4 üncü maddesi kapsamında durumları değerlendirilerek, durumlarına uyan bent kapsamında sigortalı ",
+          "metin": "Bu Kanunun yürürlük tarihi itibarıyla 506 sayılı Sosyal Sigortalar Kanununun mülga 86 ncı maddesine göre malullük, yaşlılık ve ölüm sigortaları bakımından topluluk sigortasına devam edenler, bu Kanunun 4 üncü maddesi kapsamında durumları değerlendirilerek, durumlarına uyan bent kapsamında sigortalı sayılırlar. Bunların kendileri veya işverenleri tarafından verilmesi gereken belgeler en geç üç ay içinde Kuruma verilmek zorundadır. 506 sayılı Sosyal Sigortalar Kanununun mülga 96 ncı maddesinin ikinci fıkrasına göre Sosyal Sigortalar Kurumuna devir olan sandıklardan 23/1/1968 tarihli ve 991 sayılı Kanunun geçici 2 nci maddesine göre bağlanmış emekli, adi malullük veya vazife malullük aylıkları ile 23/1/1968 tarihli ve 991 sayılı Kanunun geçici 1 inci maddesinin birinci fıkrasına göre Kurumca bağlanan aylıklarla dul ve yetim aylıkları (aylık alan tek kişi de olsa) toplamı, net asgarî ücretin %70’inden aşağı olamaz.",
+          "skor": 0.0345,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1086,
+      "ortalama_kaynak_skor": 0.0388,
+      "kaynak_sayisi": 5,
+      "message_id": "5e2c48e1-8412-4c2f-b405-cba4f094b9a2",
+      "conversation_id": "63925bb0-5663-499d-95f1-46b25147db75",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.23,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Mirasçılık belgesi nasıl alınır ve ne işe yarar?",
+      "cevap": "Mirasçılık belgesi, bir kişinin mirasçı olduğunu kanıtlayan resmi bir belgedir. Bu belge, genellikle mirasçılık durumunu kanıtlamak için kullanılır. Mirasçılık belgesi almak için, ilgili kişinin ölüm tarihinden itibaren belirli bir süre içinde (genellikle 6 ay veya 1 yıl) noter veya sulh hukuk mahkemesine başvurmak gerekir.\n\nMirasçılık belgesi, mirasçılık durumunu kanıtlayan bir belge olduğu için, mirasçılıkla ilgili işlemlerde kullanılır. Örneğin, mirasçılık belgesi, mirasçıların mirasçı olduklarını kanıtlamak için kullanılır. Ayrıca, mirasçılık belgesi, bankalarda veya diğer finansal kurumlarda hesap açmak, mirasçıların haklarını kullanmak veya diğer resmi işlemlerde gerekli olabilir.\n\nVerilen kaynaklar, mirasçılık belgesi ile ilgili具体 bir bilgi sağlamamaktadır. Ancak, genel olarak mirasçılık belgesinin önemini ve kullanım alanlarını açıklamak mümkündür.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8500",
+          "metin_ozet": "rın bu yönden  re'sen bozulmasına” yönündeki  görüşüne katılmıyoruz.",
+          "metin": "rın bu yönden  re'sen bozulmasına” yönündeki  görüşüne katılmıyoruz.",
+          "skor": 0.1256,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3625",
+          "metin_ozet": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.1236,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3624",
+          "metin_ozet": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.1236,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.121,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/11250",
+          "metin_ozet": "ı gerektiği kanaatinde olduğumdan, sayın çoğunluğun (2) nolu bentteki görüşüne katılmıyorum.",
+          "metin": "ı gerektiği kanaatinde olduğumdan, sayın çoğunluğun (2) nolu bentteki görüşüne katılmıyorum.",
+          "skor": 0.1196,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1072,
+      "ortalama_kaynak_skor": 0.1227,
+      "kaynak_sayisi": 5,
+      "message_id": "c91086dd-b6c4-4d05-bec3-82c7c249604d",
+      "conversation_id": "7c112f31-1bc2-4e63-b943-dd94f5093d20",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.02,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Tenkis davası hangi durumlarda açılır?",
+      "cevap": "Tenkis davası, genellikle miras hukuku ile ilgili olarak açılan bir dava türüdür. Mirasçılık sıfatının iptali veya miras payının azaltılması talebi ile açılan davalara \"tenkis davası\" denir. Bu dava, mirasçılık sıfatının iptali veya miras payının azaltılması talebi ile açılır.\n\nTenkis davası, genellikle aşağıdaki durumlarda açılır:\n\n1. Mirasçılık sıfatının iptali: Mirasçılık sıfatının iptali talebi ile açılan davalarda, davalı mirasçılık sıfatını kaybetmiş veya mirasçılık sıfatını kazanmamış olabilir.\n2. Miras payının azaltılması: Miras payının azaltılması talebi ile açılan davalarda, davalı miras payının azaltılması talep edilebilir.\n\nTenkis davası, Türk Medeni Kanunu'nun ilgili hükümlerine göre açılır. Ancak, verilen kaynaklar bu konuya ilişkin yeterli bilgi sağlamamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 18",
+          "metin_ozet": "Madde 18 – (Değişik: 21/2/2001 - 4630/11 md.)\nMali hakları kullanma yetkisi münhasıran eser sahibine aittir.\nAralarındaki özel sözleşmeden veya işin mahiyetinden aksi anlaşılmadıkça; memur,\nhizmetli ve işçilerin işlerini görürken meydana getirdikleri eserler üzerindeki haklar bunları\nçalıştıran veya",
+          "metin": "Madde 18 – (Değişik: 21/2/2001 - 4630/11 md.)\nMali hakları kullanma yetkisi münhasıran eser sahibine aittir.\nAralarındaki özel sözleşmeden veya işin mahiyetinden aksi anlaşılmadıkça; memur,\nhizmetli ve işçilerin işlerini görürken meydana getirdikleri eserler üzerindeki haklar bunları\nçalıştıran veya tayin edenlerce kullanılır. Tüzel kişilerin uzuvları hakkında da bu kural\nuygulanır.\nBir eserin yapımcısı veya yayımcısı, ancak eserin sahibi ile yapacağı sözleşmeye göre\nmali hakları kullanabilir.\nb) Hakları kullanabilecek kimseler:",
+          "skor": 0.0547,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 837",
+          "metin_ozet": "Madde 837- Başkasının arazisinde bulunan kaynak üzerinde irtifak hakkı, bu arazinin\nmalikini suyun alınmasına ve akıtılmasına katlanmakla yükümlü kılar.\nBu hak, aksi kararlaştırılmış olmadıkça, başkasına devredilebilir ve mirasçıya geçer.\nKaynak hakkı, bağımsız nitelikte ve en az otuz yıl için kurul",
+          "metin": "Madde 837- Başkasının arazisinde bulunan kaynak üzerinde irtifak hakkı, bu arazinin\nmalikini suyun alınmasına ve akıtılmasına katlanmakla yükümlü kılar.\nBu hak, aksi kararlaştırılmış olmadıkça, başkasına devredilebilir ve mirasçıya geçer.\nKaynak hakkı, bağımsız nitelikte ve en az otuz yıl için kurulmuş ise tapu kütüğüne\ntaşınmaz olarak kaydedilebilir.\nE. Diğer irtifak hakları",
+          "skor": 0.0501,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 827",
+          "metin_ozet": "Madde 827- Üst hakkının içerik ve kapsamıyla ilgili olarak resmî senette yer alan,\nözellikle yapının konumuna, şekline, niteliğine, boyutlarına, özgülenme amacına ve üzerinde yapı\nbulunmayan alandan faydalanmaya ilişkin sözleşme kayıtları herkes için bağlayıcıdır.\nIII. Sona ermenin sonuçları\n1. Yapı",
+          "metin": "Madde 827- Üst hakkının içerik ve kapsamıyla ilgili olarak resmî senette yer alan,\nözellikle yapının konumuna, şekline, niteliğine, boyutlarına, özgülenme amacına ve üzerinde yapı\nbulunmayan alandan faydalanmaya ilişkin sözleşme kayıtları herkes için bağlayıcıdır.\nIII. Sona ermenin sonuçları\n1. Yapı mülkiyetinin malike geçmesi",
+          "skor": 0.049,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 27",
+          "metin_ozet": "Madde 27 – Herkes, bilim ve sanatı serbestçe öğrenme ve öğretme, açıklama, yayma ve bu\nalanlarda her türlü araştırma hakkına sahiptir.\nYayma hakkı, Anayasanın 1 inci, 2 nci ve 3 üncü maddeleri hükümlerinin değiştirilmesini\nsağlamak amacıyla kullanılamaz.\nBu madde hükmü yabancı yayınların ülkeye girm",
+          "metin": "Madde 27 – Herkes, bilim ve sanatı serbestçe öğrenme ve öğretme, açıklama, yayma ve bu\nalanlarda her türlü araştırma hakkına sahiptir.\nYayma hakkı, Anayasanın 1 inci, 2 nci ve 3 üncü maddeleri hükümlerinin değiştirilmesini\nsağlamak amacıyla kullanılamaz.\nBu madde hükmü yabancı yayınların ülkeye girmesi ve dağıtımının kanunla düzenlenmesine\nengel değildir.\nX. Basın ve yayımla ilgili hükümler\nA. Basın hürriyeti",
+          "skor": 0.0476,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 82",
+          "metin_ozet": "Madde 82 – (Değişik: 18/2/1965-538/46 md.)\nAşağıdaki şeyler haczolunamaz:\n1. Devlet malları ile mahsus kanunlarında haczi caiz olmadığı gösterilen mallar,\n2. (Değişik: 2/7/2012-6352/16 md.) Ekonomik faaliyeti, sermayesinden ziyade bedenî\nçalışmasına dayanan borçlunun mesleğini sürdürebilmesi için ge",
+          "metin": "Madde 82 – (Değişik: 18/2/1965-538/46 md.)\nAşağıdaki şeyler haczolunamaz:\n1. Devlet malları ile mahsus kanunlarında haczi caiz olmadığı gösterilen mallar,\n2. (Değişik: 2/7/2012-6352/16 md.) Ekonomik faaliyeti, sermayesinden ziyade bedenî\nçalışmasına dayanan borçlunun mesleğini sürdürebilmesi için gerekli olan her türlü eşya,\n3. (Değişik: 2/7/2012-6352/16 md.) Para, kıymetli evrak, altın, gümüş, değerli taş,\nantika veya süs eşyası gibi kıymetli şeyler hariç olmak üzere, borçlu ve aynı çatı altında\nyaşayan aile bireylerine ait kişisel eşya ile ailenin ortak kullanımına hizmet eden tüm ev\neşyası,36\n4. Borçlu çiftçi ise kendisinin ve ailesinin geçimi için zaruri olan arazi ve çift\nhayvanları ve nakil vasıtaları ve diğer eklenti ve ziraat aletleri; değilse, sanat ve mesleki için\nlüzumlu olan alat ve edevat ve kitapları ve arabacı, kayıkçı, hamal gibi küçük nakliye\nerbabının geçimlerini temin eden nakil vasıtaları,\n5. Borçlu ve ailesinin idareleri için lüzumlu ise borçlunun tercih edeceği bir süt veren\nmandası veya ineği veyahut üç keçi veya koyunu ve bunların üç aylık yem ve yataklıkları,\n6. Borçlunun ve ailesinin iki aylık yiyecek ve yakacakları ve borçlu çiftçi ise gelecek\nmahsül için lazım olan tohumluğu,\n7. Borçlu bağ, bahçe veya meyva veya sebze yetiştiricisi ise kendisinin ve ailesinin\ngeçimi için zaruri olan bağ bahçe ve bu sanat için lüzumlu bulunan alat ve edevat,\nGeçimi hayvan yetiştirmeye münhasır olan borçlunun kendisi ve ailesinin maişetleri\niçin zaruri olan miktarı ve bu hayvanların üç aylık yem ve yataklıkları,\n36 28/3/2023 tarihli ve 7445 sayılı Kanunun 2 nci maddesiyle bu bentte yer alan “bireyleri için lüzumlu eşya;\naynı amaçla kullanılan eşyanın birden fazla olması durumunda bunlardan biri” ibaresi “bireylerine ait kişisel\neşya ile ailenin ortak kullanımına hizmet eden tüm ev eşyası” şeklinde değiştirilmiştir.\n8. Borçlar Kanununun 510 uncu maddesi mucibince haczolunmamak üzere tesis\nedilmiş olan kaydı hayatla iratlar,\n9. Memleketin ordu ve zabıta hizmetlerinde malül olanlara bağlanan emeklilik\nmaaşları ile bu hizmetlerden birinin ifası sebebiyle ailelerine bağlanan maaşlar ve ordunun\nhava ve denizaltı mensuplarına verilen uçuş ve dalış tazminat ve ikramiyeleri,\nAskeri malüllerle, şehit yetimlerine verilen terfi zammı ve 1485 numaralı kanun\nhükmüne göre verilen inhisar beyiye hisseleri,\n10. Bir muavenet sandığı veya cemiyeti tarafından hastalık, zaruret ve ölüm gibi\nhallerde bağlanan maaşlar,\n11. Vücut veya sıhhat üzerine ika edilen zararlar için tazminat olarak mutazarrırın\nkendisine veya ailesine toptan veya irat şeklinde verilen veya verilmesi lazım gelen paralar,\n12. (Değişik: 2/7/2012-6352/16 md.) Borçlunun haline münasip evi,\n13. (Ek: 2/7/2012-6352/16 md.) Öğrenci bursları.\nMedeni Kanunun 807 nci maddesi hükmü saklıdır. 2, 4, 5, 7 ve 12 numaralı\nbendlerdeki istisna, borcun bu eşya bedelinden doğmaması haline munhasırdır.37\n(Ek fıkra: 2/7/2012-6352/16 md.) Birinci fıkranın (2), (4), (7) ve (12) numaralı\nbentlerinde sayılan malların kıymetinin fazla olması durumunda, bedelinden haline münasip\nbir kısmı, ihtiyacını karşılayabilmesi amacıyla borçluya bırakılmak üzere haczedilerek satılır.\n(Ek fıkra: 2/7/2012-6352/16 md.) İcra memuru, haczi talep edilen mal veya hakların\nhaczinin caiz olup olmadığını değerlendirir ve talebin kabulüne veya reddine karar verir.\nKısmen haczi caiz olan şeyler:",
+          "skor": 0.0475,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 991,
+      "ortalama_kaynak_skor": 0.0498,
+      "kaynak_sayisi": 5,
+      "message_id": "42c316b1-0bf5-466b-9938-85f922a42630",
+      "conversation_id": "072e561a-8a36-47d4-b5bd-1858523ad755",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.85,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

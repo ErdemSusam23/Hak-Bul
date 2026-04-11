@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-10T11:29:55.794550+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 6.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/is_hukuku/test_sonuclari_20260410_112752.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 123.2,
+    "ortalama_sure_sn": 10.26,
+    "kategori_dagilimi": {
+      "İş Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 4.26,
+        "kategori_dogruluk_orani": 91.7,
+        "ortalama_cevap_uzunluk": 996.0,
+        "ortalama_kaynak_skor": 0.0427
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşten haksız çıkarılırsam hangi haklarımı talep edebilirim?",
+      "cevap": "İşten haksız çıkarıldığınızda, several hakları talep edebilirsiniz. Bu haklar arasında:\n\n* Kıdem tazminatı: İş Kanunu'na göre, en az bir yıl çalışmış olan işçilere, işten çıkarıldıklarında kıdem tazminatı ödenir.\n* İhbar tazminatı: İş Kanunu'na göre, işveren işçiyi ihbar süresi içinde işten çıkarmazsa, işçiye ihbar tazminatı ödenir.\n* İşsizlik ödeneği: İşten çıkarılan işçiler, belirli koşulları yerine getirdikleri takdirde işsizlik ödeneği alabilirler.\n* Mahkeme yoluyla tazminat talebi: İşten haksız çıkarıldığınızı düşünüyorsanız, iş mahkemesine başvurarak tazminat talebinde bulunabilirsiniz.\n\nAncak, bu hakları talep edebilmeniz için, işten çıkarılma nedeninin haksız olduğunu ispatlamanız gerekir. Bu nedenle, işten çıkarılma nedenini ve ilgili belgeleri dikkatlice incelemeli ve gerekli durumlarda avukatlık hizmeti almalısınız.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3615",
+          "metin_ozet": "sebeplerle;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "sebeplerle;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0202,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3625",
+          "metin_ozet": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0198,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3624",
+          "metin_ozet": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "nun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0198,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3623",
+          "metin_ozet": "un'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "un'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0197,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3626",
+          "metin_ozet": "un'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "un'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0197,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1042,
+      "ortalama_kaynak_skor": 0.0198,
+      "kaynak_sayisi": 5,
+      "message_id": "c1105dd9-4aa5-430e-8433-1369e121f69f",
+      "conversation_id": "970c0ed3-c650-4569-8cc7-fc006f36a3a5",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.01,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Kıdem tazminatına hak kazanma şartları nelerdir?",
+      "cevap": "Kıdem tazminatına hak kazanma şartları, 4857 sayılı İş Kanunu'nda düzenlenmiştir. Buna göre, işçinin kıdem tazminatına hak kazanabilmesi için aşağıdaki şartları yerine getirmesi gerekmektedir:\n\n1. İşçinin en az bir yıl süreyle aynı işverene bağlı olarak çalışmış olması,\n2. İş sözleşmesinin işveren tarafından haklı bir sebep olmadan feshedilmesi veya işçinin haklı bir sebep nedeniyle iş sözleşmesini feshetmesi,\n3. İşçinin emeklilik veya yaşlılık aylığı almaya hak kazanmamış olması.\n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. Kıdem tazminatına ilişkin daha详lı bilgi için ilgili kanun maddelerine ve Yargıtay kararlarına başvurmak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 38",
+          "metin_ozet": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerin",
+          "metin": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerinden konsolide finansal raporların düzenlenmesine\nilişkin olarak istenecek her türlü bilgi ve belgeyi ilgili ana ortaklığa vermekle yükümlüdür.\nFinansal raporların imzalanması, sunulması, ilânı ve denetimi",
+          "skor": 0.0854,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/8068",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0765,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15646",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0765,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.074,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2668",
+          "metin_ozet": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "metin": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "skor": 0.074,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 875,
+      "ortalama_kaynak_skor": 0.0773,
+      "kaynak_sayisi": 5,
+      "message_id": "1c145a2c-928e-471d-bf7c-853aef1413d0",
+      "conversation_id": "379ce1a4-f2d5-4775-938f-bb0bbf90bba8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.77,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İhbar tazminatı hangi durumlarda işçiye ödenir?",
+      "cevap": "İhbar tazminatı, işçinin iş sözleşmesinin sona erdirilmesi durumunda, belirli koşullar altında işçiye ödenen bir tazminattır. İş Kanunu'nda belirtilen hükümlere göre, işveren tarafından iş sözleşmesinin feshedilmesi durumunda, işçiye ihbar süresi tanınması veya bu sürenin ücretinin ödenmesi gerekmektedir.\n\nİhbar tazminatı, işçinin iş sözleşmesinin işveren tarafından haksız veya geçerli bir sebep olmadan feshedilmesi durumunda ödenir. Ayrıca, işveren tarafından işçiye ihbar süresi tanınmadan iş sözleşmesinin feshedilmesi durumunda da ihbar tazminatı ödenmelidir.\n\nVerilen kaynaklar, Yargıtay kararlarına ait olup, bu kararlar ihbar tazminatına ilişkin davalarla ilgili görünmektedir. Ancak, bu kaynaklar ihbar tazminatının hangi durumlarda işçiye ödenmesi gerektiği konusunda spesifik bilgi vermemektedir.\n\nİhbar tazminatının ödenmesi için, iş sözleşmesinin işveren tarafından feshedilmesi, işçiye ihbar süresi tanınmaması veya bu sürenin ücretinin ödenmemesi gerekmektedir. İşçinin iş sözleşmesini kendisi feshetmesi durumunda, ihbar tazminatı ödenmez.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/11636",
+          "metin_ozet": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0706,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14827",
+          "metin_ozet": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0688,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15238",
+          "metin_ozet": "gönderilmesine,\n25.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "gönderilmesine,\n25.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0685,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2973",
+          "metin_ozet": " gönderilmesine,\n20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": " gönderilmesine,\n20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0668,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15716",
+          "metin_ozet": "ne gönderilmesine,\n04.12.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ne gönderilmesine,\n04.12.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0658,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1262,
+      "ortalama_kaynak_skor": 0.0681,
+      "kaynak_sayisi": 5,
+      "message_id": "0d56ecac-09be-42bc-b671-549779bfc784",
+      "conversation_id": "07018eeb-e6b6-45d7-aeca-39a19ffccdd0",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.81,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Fazla mesai ücreti nasıl hesaplanır ve ispatı nasıl yapılır?",
+      "cevap": "Fazla mesai ücreti, işçinin normal çalışma saatleri dışında yaptığı çalışmalara karşılık olarak ödenen ücrettir. Fazla mesai ücretinin hesaplanması ve ispatı, İş Kanunu'nda belirtilen hükümlere göre yapılır.\n\nİş Kanunu'nun 41. maddesine göre, işçinin normal çalışma saatleri dışında yaptığı çalışmalara karşılık olarak fazla mesai ücreti ödenir. Fazla mesai ücreti, normal çalışma saatleri için ödenen ücretin %50 fazlası olarak hesaplanır.\n\nFazla mesai ücretinin ispatı, genellikle işveren tarafından tutulan çalışma kayıtları ve işçinin çalışma saatlerini gösteren belgelerle yapılır. İşçi, fazla mesai ücretinin ödenmesini talep ettiğinde, işveren tarafından tutulan kayıtları ve belgeleri inceleyebilir.\n\nAncak, verilen kaynaklar fazla mesai ücretinin hesaplanması ve ispatına ilişkin yeterli bilgi sağlamamaktadır. Bu nedenle, daha详细 bilgi için İş Kanunu ve ilgili mevzuata başvurmak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7823",
+          "metin_ozet": "letilmesine,Dosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,18.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "letilmesine,Dosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,18.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0578,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5855",
+          "metin_ozet": "göre, işe iade talepli somut davada İlk Derece Mahkemesinin karar tarihi 25.10.2017 tarihinden sonra olduğundan; Bölge Adliye Mahkemesince verilen karar  kesindir, bu karara karşı temyiz yoluna başvurulamaz.\nTemyiz dilekçesinin reddine ilişkin Bölge Adliye Mahkemesince verilen ek karar yukarıda beli",
+          "metin": "göre, işe iade talepli somut davada İlk Derece Mahkemesinin karar tarihi 25.10.2017 tarihinden sonra olduğundan; Bölge Adliye Mahkemesince verilen karar  kesindir, bu karara karşı temyiz yoluna başvurulamaz.\nTemyiz dilekçesinin reddine ilişkin Bölge Adliye Mahkemesince verilen ek karar yukarıda belirtilen yasal düzenlemelere uygun olduğundan temyiz isteminin reddi ile söz konusu kararın onanması gerekir.\nKARAR\nAçıklanan sebeplerle;\nBölge Adliye Mahkemesince verilen 30.05.2025 tarihli ek kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin kararı veren Bölge Adliye Mahkemesine gönderilmesine,\n03.07.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0556,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13859",
+          "metin_ozet": "Adliye Mahkemesince verilen ek karar yukarıda belirtilen yasal düzenlemelere uygun olduğundan temyiz isteminin reddi ile söz konusu kararın onanması gerekir.\nKARAR\nAçıklanan sebeple;\nBölge Adliye Mahkemesince verilen  10.07.2024 tarihli ek kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın",
+          "metin": "Adliye Mahkemesince verilen ek karar yukarıda belirtilen yasal düzenlemelere uygun olduğundan temyiz isteminin reddi ile söz konusu kararın onanması gerekir.\nKARAR\nAçıklanan sebeple;\nBölge Adliye Mahkemesince verilen  10.07.2024 tarihli ek kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n17.10.2024  tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0553,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7825",
+          "metin_ozet": "bir örneğinin Bölge Adliye Mahkemesine gönderilmesine18.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "bir örneğinin Bölge Adliye Mahkemesine gönderilmesine18.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0506,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7020",
+          "metin_ozet": "nce davanın kabulüne karar verilmiştir.\nDosya içeriğine göre işe iade talepli somut davada, İlk Derece Mahkemesinin  karar tarihi 25.10.2017 tarihinden sonra olduğundan, karara yönelik  temyiz isteminin 7036 sayılı Kanun'un 8/1-(a) ve  geçici  1/4 hükümleri gereğince  reddine karar verilmiştir.\nKARA",
+          "metin": "nce davanın kabulüne karar verilmiştir.\nDosya içeriğine göre işe iade talepli somut davada, İlk Derece Mahkemesinin  karar tarihi 25.10.2017 tarihinden sonra olduğundan, karara yönelik  temyiz isteminin 7036 sayılı Kanun'un 8/1-(a) ve  geçici  1/4 hükümleri gereğince  reddine karar verilmiştir.\nKARAR\nAçıklanan sebeple;\nDavalı vekilinin temyiz dilekçesinin REDDİNE,\nPeşin alınan temyiz karar harcının  istek hâlinde ilgiliye iadesine,Dosyanın İlk Derece Mahkemesine, kararın bir örneğinin kararı veren Bölge Adliye Mahkemesine gönderilmesine,25.09.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0498,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1107,
+      "ortalama_kaynak_skor": 0.0538,
+      "kaynak_sayisi": 5,
+      "message_id": "c2c8d337-a6d1-4cda-9add-98fbfcf8678f",
+      "conversation_id": "c82d6f28-d954-4c1d-9fa0-f87cd2560c6a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.84,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Hafta tatilinde çalıştırılan işçinin hangi ücret hakları vardır?",
+      "cevap": "Hafta tatilinde çalıştırılan işçinin ücret hakları, 4857 sayılı İş Kanunu'nun 63. maddesinde düzenlenmiştir. Buna göre, hafta tatilinde çalıştırılan işçi, çalıştığı günün ücretinin yanı sıra ayrıca bir günlük ücreti daha alacak şekilde ücretlendirilir. Bu durum, işçinin normal çalışma günlerinde aldığı ücretin %100'ü oranında bir ücret ödenmesini gerektirir.\n\nÖrneğin, bir işçi normalde günlük 100 TL ücret alıyorsa, hafta tatilinde çalıştırıldığında 200 TL (100 TL + 100 TL) ücret alacaktır. Bu durum, işçinin hafta tatilinde çalışmasının karşılığını almasını sağlar ve işverenin işçiyi hafta tatilinde çalıştırmasının bir maliyeti olur.\n\nBu konuda Yargıtay kararları da işçinin haklarını korumaya yöneliktir. Ancak, verilen kaynaklar sadece Yargıtay kararlarının tarih ve numaralarını içeriyor, içeriğine ilişkin bilgi vermiyor. Bu nedenle, daha spesifik bir yanıt vermek için daha详lı bir kaynak veya Yargıtay kararının içeriğine ihtiyaç duyulacaktır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/11636",
+          "metin_ozet": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0523,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15238",
+          "metin_ozet": "gönderilmesine,\n25.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "gönderilmesine,\n25.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.05,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14827",
+          "metin_ozet": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0498,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7826",
+          "metin_ozet": "ahkemesine gönderilmesine,18.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ahkemesine gönderilmesine,18.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0497,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2973",
+          "metin_ozet": " gönderilmesine,\n20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": " gönderilmesine,\n20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0479,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1159,
+      "ortalama_kaynak_skor": 0.0499,
+      "kaynak_sayisi": 5,
+      "message_id": "2c13cbe5-e7bc-47f9-b027-3533066f8139",
+      "conversation_id": "cba9d1c2-ded7-4fd7-9c48-b5e15da02741",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.03,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Yıllık ücretli izin kullanmayan işçi işten ayrılınca ne alır?",
+      "cevap": "İşçinin yıllık ücretli izin kullanmaması durumunda, işten ayrılma durumunda alacağı ücret hakkında bilgi vereceğim. \n\nYıllık ücretli izin hakkı, İş Kanunu'nda düzenlenmiştir. İş Kanunu'na göre, işçilere yıllık ücretli izin hakkı verilir. İşçi, bu izni kullanmak zorundadır. Ancak, işçi yıllık ücretli izin kullanmazsa, bu durumun işten ayrılma durumunda nasıl değerlendirileceği önemlidir.\n\nİş Kanunu'nun ilgili maddelerine göre, işçi işten ayrılırken, kullanılmayan yıllık izin sürelerine karşılık gelen ücreti alabilir. Bu durum, işçinin haklı bir talebidir. İşveren, işçinin yıllık izin ücretini, işten ayrılma tarihinde ödemek zorundadır.\n\nAncak, verilen kaynaklar bu konuya ilişkin yeterli bilgi sağlamamaktadır. İşçinin yıllık ücretli izin kullanmaması ve işten ayrılma durumunda alacağı ücret hakkında daha详lı bilgi için, ilgili kanun maddeleri ve Yargıtay kararlarına başvurmak gerekecektir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2668",
+          "metin_ozet": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "metin": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "skor": 0.0349,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/11636",
+          "metin_ozet": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.033,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15238",
+          "metin_ozet": "gönderilmesine,\n25.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "gönderilmesine,\n25.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.032,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/6737",
+          "metin_ozet": "değişik gerekçeyle kararın bozulması gerektiği kanaatinde olduğumdan, sayın çoğunluğun (4) numaralı bentteki bozma gerekçesine katılmıyorum.",
+          "metin": "değişik gerekçeyle kararın bozulması gerektiği kanaatinde olduğumdan, sayın çoğunluğun (4) numaralı bentteki bozma gerekçesine katılmıyorum.",
+          "skor": 0.0307,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/6920",
+          "metin_ozet": "erilmesine,30.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "erilmesine,30.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0306,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1103,
+      "ortalama_kaynak_skor": 0.0322,
+      "kaynak_sayisi": 5,
+      "message_id": "4c480616-6dd3-42c2-9a4d-507d6ab11163",
+      "conversation_id": "70247824-861a-4870-8041-317ad175d319",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.78,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Deneme süresinde iş sözleşmesi feshedilirse tazminat doğar mı?",
+      "cevap": "Deneme süresinde iş sözleşmesinin feshedilmesi durumunda, tazminat doğup doğmayacağına ilişkin hüküm, İş Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar bu konuya ilişkin değildir. Kaynaklar, Yargitay'ın 4. ve 9. Hukuk Daireleri'nin çeşitli kararlarına ait olup, deneme süresinde iş sözleşmesinin feshedilmesi ve tazminat doğmasıyla ilgili bir hüküm veya karar içermez.\n\nBu nedenle, deneme süresinde iş sözleşmesinin feshedilmesi durumunda tazminat doğup doğmayacağına ilişkin bilgi verilememektedir. İş Kanunu'nun ilgili hükümlerine bakmak ve konuyla ilgili Yargitay kararlarını incelemek gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/5784",
+          "metin_ozet": "nluğun (2) numaralı bentteki bozma kararına katılmıyorum.",
+          "metin": "nluğun (2) numaralı bentteki bozma kararına katılmıyorum.",
+          "skor": 0.017,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/13744",
+          "metin_ozet": "hinde oy birliğiyle karar verildi.",
+          "metin": "hinde oy birliğiyle karar verildi.",
+          "skor": 0.0169,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/21",
+          "metin_ozet": "hinde oy birliğiyle karar verildi.",
+          "metin": "hinde oy birliğiyle karar verildi.",
+          "skor": 0.0169,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14523",
+          "metin_ozet": "hinde oy birliğiyle karar verildi.",
+          "metin": "hinde oy birliğiyle karar verildi.",
+          "skor": 0.0169,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/12549",
+          "metin_ozet": "oğunluğun (2 numaralı bentteki) bozma kararına katılmıyoruz.",
+          "metin": "oğunluğun (2 numaralı bentteki) bozma kararına katılmıyoruz.",
+          "skor": 0.0168,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 812,
+      "ortalama_kaynak_skor": 0.0169,
+      "kaynak_sayisi": 5,
+      "message_id": "e6c7263a-459a-4766-916f-00efef001f78",
+      "conversation_id": "fa2551b7-a580-47ef-9bb8-e59df8285e8f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.22,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşveren maaşı geç yatırırsa işçi hangi yasal haklarını kullanabilir?",
+      "cevap": "İşveren tarafından maaşın geç yatırılması durumunda işçi, çeşitli yasal haklarını kullanabilir. İş Kanunu'na göre, işveren işçilerin ücretlerini zamanında ödemekle yükümlüdür. Geç ödeme durumunda işçi, ücretinin ödenmesini talep edebilir ve ayrıca gecikme faizini de isteyebilir.\n\nİşçinin yasal hakları arasında, ücretinin ödenmesini mahkeme yoluyla talep etmek, iş sözleşmesini feshetmek ve kıdem tazminatı ile diğer yasal haklarını talep etmek yer alır. Ancak, bu hakların kullanımı ve uygulanması, özel durumun koşullarına ve ilgili mevzuata bağlı olarak değişebilir.\n\nVerilen kaynaklar, spesifik olarak iş hukuku ve maaşın geç ödenmesi ile ilgili kararlar içermemektedir. Bu nedenle, daha详lı ve spesifik bilgi için ilgili mevzuata ve uzman görüşüne başvurmak gerekebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7067",
+          "metin_ozet": ",08.07.2024 tarihinde oybirliği ile karar verildi.",
+          "metin": ",08.07.2024 tarihinde oybirliği ile karar verildi.",
+          "skor": 0.0541,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9608",
+          "metin_ozet": "ahkemeye gönderilmesine,14.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ahkemeye gönderilmesine,14.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.052,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/16275",
+          "metin_ozet": ".2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": ".2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0519,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/6622",
+          "metin_ozet": ".09.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": ".09.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0503,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6720",
+          "metin_ozet": " karardan bir suretin Bölge Adliye Mahkemesi'ne gönderilmesine, 01.07.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": " karardan bir suretin Bölge Adliye Mahkemesi'ne gönderilmesine, 01.07.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0502,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 979,
+      "ortalama_kaynak_skor": 0.0517,
+      "kaynak_sayisi": 5,
+      "message_id": "4f73a0c5-5a7c-47b9-89b5-9c9744e84a81",
+      "conversation_id": "24be6f57-1d22-4563-8198-c3b57e341f8b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.69,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Sigortasız çalıştırılan işçi sonradan dava açabilir mi?",
+      "cevap": "Sigortasız çalıştırılan işçi, sonradan dava açabilir. İşçinin sigortasız çalıştırılması, işverenin hukuki yükümlülüklerini ihlal ettiği anlamına gelir. İşçi, bu durumdan kaynaklanan haklarını talep etmek için dava açma hakkına sahiptir.\n\nAncak, verilen kaynaklar arasında bu konuya ilişkin bir madde bulunmamaktadır. İş hukuku ile ilgili konularda, 4857 sayılı İş Kanunu ve ilgili mevzuat hükümlerine bakmak gerekir. İşçinin sigortasız çalıştırılması durumunda, işçi, işverene karşı dava açabilir ve haklarını talep edebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 125",
+          "metin_ozet": "Madde 125 – (Değişik birinci fıkra: 17/10/1996-4199/41 md.) Milli Eğitim\nBakanlığınca, ilköğretim ve ortaöğretim okullarında ders programlarına eğitim amacı ile\nzorunlu uygulamalı trafik ve ilk yardım dersleri konulur. Bu dersler için valilik ve\nkaymakamlıkça yükseköğrenim görmüş emniyet görevlileri",
+          "metin": "Madde 125 – (Değişik birinci fıkra: 17/10/1996-4199/41 md.) Milli Eğitim\nBakanlığınca, ilköğretim ve ortaöğretim okullarında ders programlarına eğitim amacı ile\nzorunlu uygulamalı trafik ve ilk yardım dersleri konulur. Bu dersler için valilik ve\nkaymakamlıkça yükseköğrenim görmüş emniyet görevlileri görevlendirilebilir.\n(Ek: 17/10/1996-4199/41 md.) Üniversite ve yüksekokullar ile lise ve dengi\nokullarda, zorunlu trafik, ilk yardım ve motor derslerinden başarılı olanlar, sürücü\nkurslarında, bu derslerden Milli Eğitim Bakanlığınca çıkarılacak yönetmelikteki esaslara göre\nsınava girmek kaydıyla muaf tutulabilirler.\n(Ek: 17/10/1996-4199/41 md.) Türkiye Cumhuriyeti sınırları içinde yayın yapan\nulusal, bölgesel, yerel radyo ve televizyonlar, 3984 sayılı Radyo ve Televizyonların Kuruluş\nve Yayınları Hakkında Kanunun 4 üncü maddesinin birinci fıkrasının (p) bendi gereğince\nyapacakları haftalık eğitim programlarının en az 30 dakikasını trafik eğitimi ile ilgili\nprogramlara ayırmak zorundadırlar. (Ek cümle: 21/5/1997-4262/4 md.) Bu fıkra hükümlerine\nuymayan ulusal, bölgesel, yerel radyo ve televizyonlar hakkında 13.4.1994 tarih ve 3984\nsayılı Radyo ve Televizyonların Kuruluş ve Yayınları Hakkında Kanun hükümleri uygulanır.\nSilahlı Kuvvetler bünyesindeki birlik ve er eğitimi merkezlerine eğitim amacı ile\nyeteri kadar trafik dersi konulması Genelkurmay Başkanlığınca düzenlenir.\nONBİRİNCİ KISIM\nÇeşitli Hükümler\nOlağanüstü hallerde ve savaşta karayolunda trafiğin düzenlenmesi ve denetimi:",
+          "skor": 0.0032,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 43 - Fıkra 3",
+          "metin_ozet": "(Ek fıkra: 17/1/2012-6270/5 md.) Cumhurbaşkanı yardımcılığı, bakanlık veya Türkiye Büyük Millet Meclisi üyeliği görevlerinde bulunanlara veya bu görevleri herhangi bir sebeple sona erenlere, Kanunun 26, 28, 44, geçici 2 ve geçici 4 üncü maddeleri gereğince aylık bağlanmasına hak kazanmaları ve en az",
+          "metin": "(Ek fıkra: 17/1/2012-6270/5 md.) Cumhurbaşkanı yardımcılığı, bakanlık veya Türkiye Büyük Millet Meclisi üyeliği görevlerinde bulunanlara veya bu görevleri herhangi bir sebeple sona erenlere, Kanunun 26, 28, 44, geçici 2 ve geçici 4 üncü maddeleri gereğince aylık bağlanmasına hak kazanmaları ve en az 2 yıl süreyle bu görevlerde bulunmuş olmaları halinde, 27, 29, geçici 2 ve geçici 4 üncü maddelere göre hesaplanacak aylık tutarından az olmamak kaydıyla, 122.530 gösterge rakamının memur aylık katsayısı ile çarpımı sonucu bulunacak tutarda malullük, emeklilik veya yaşlılık aylığı ödenir.",
+          "skor": 0.0024,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1342",
+          "metin_ozet": "MADDE 1342- (1) 1976 ve 1992 tarihli sözleşmeler uyarınca sorumluluğunu\nsınırlama hakkına sahip olan bir tüzel kişinin veya adi şirketin yahut donatma iştirakinin adına\nfon kurulmazsa, tüzel kişinin veya adi şirketin yahut donatma iştirakinin o borcundan ötürü\nşahsen sorumlu tutulabilecek her kişi, ",
+          "metin": "MADDE 1342- (1) 1976 ve 1992 tarihli sözleşmeler uyarınca sorumluluğunu\nsınırlama hakkına sahip olan bir tüzel kişinin veya adi şirketin yahut donatma iştirakinin adına\nfon kurulmazsa, tüzel kişinin veya adi şirketin yahut donatma iştirakinin o borcundan ötürü\nşahsen sorumlu tutulabilecek her kişi, fon kurarak sorumluluğunu sınırlayabilir. Fonun,\ntoplam sorumluluk sınırı üzerinden kurulması şarttır; fon kuran kişinin, tüzel kişideki veya adi\nşirketteki yahut donatma iştirakindeki pay oranı dikkate alınmaz. Bu madde uyarınca kurulan\nbir fon, 1976 ve 1992 tarihli sözleşmeler uyarınca kurulmuş bir fon hükmündedir.\nIII - Sınırlama hakkını kaldıran kusur",
+          "skor": 0.0017,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1337",
+          "metin_ozet": "MADDE 1337- (1) 1992 tarihli Sorumluluk ve Fon Sözleşmeleri, Milletlerarası Özel\nHukuk ve Usul Hukuku Hakkında Kanunun 1 inci maddesinin birinci fıkrası anlamında\nyabancılık unsuru taşımayan hâllerde de uygulanır.\nIII - Uygulama alanının genişletilmesi",
+          "metin": "MADDE 1337- (1) 1992 tarihli Sorumluluk ve Fon Sözleşmeleri, Milletlerarası Özel\nHukuk ve Usul Hukuku Hakkında Kanunun 1 inci maddesinin birinci fıkrası anlamında\nyabancılık unsuru taşımayan hâllerde de uygulanır.\nIII - Uygulama alanının genişletilmesi",
+          "skor": 0.0004,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Ek Madde 35",
+          "metin_ozet": "Ek Madde 35 – (Ek: 1/8/1996 – 4160/2 md.)\nKamu kurum ve kuruluşları tarafından personel kanunları ve diğer özel kanunlarda yer\nalan hükümlere göre bu maddenin yürürlüğe girdiği tarihten itibaren okutulacak yeni\nöğrencilere mecburi hizmet yükümlülüğü getirilemez.\nBu maddenin yürürlüğe girdiği tarihte",
+          "metin": "Ek Madde 35 – (Ek: 1/8/1996 – 4160/2 md.)\nKamu kurum ve kuruluşları tarafından personel kanunları ve diğer özel kanunlarda yer\nalan hükümlere göre bu maddenin yürürlüğe girdiği tarihten itibaren okutulacak yeni\nöğrencilere mecburi hizmet yükümlülüğü getirilemez.\nBu maddenin yürürlüğe girdiği tarihte mecburi hizmet karşılığı okutulmakta olan\nöğrenciler, mezuniyetlerinden veya memuriyete atanmalarından sonra kurumlarından mecburi\nhizmet yükümlülüğünün kaldırılmasını talep edebilirler. Bu takdirde başka hiçbir işleme\ngerek kalmaksızın, mecburi hizmet yükümlülüğü ve tazminat borçları (1.1.1995 tarihinden\nönce mecburi hizmet yükümlülüğünü ihlal edenlerin borçları dahil) ortadan kalkar.\nYurtdışında okutulanlar ile Türk Silahlı Kuvvetleri, Jandarma Genel Komutanlığı,\nSahil Güvenlik Komutanlığı ve Emniyet Genel Müdürlüğü tarafından okutulanlar hakkında\nbu madde hükmü uygulanmaz.301\nBakanlıklararası Ortak Kültür Komisyonu tarafından yurt dışında\ngörevlendirme302",
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 729,
+      "ortalama_kaynak_skor": 0.0016,
+      "kaynak_sayisi": 5,
+      "message_id": "b8311bc3-4284-4a2d-8345-536e43f67096",
+      "conversation_id": "3fddefad-a9f7-4501-95f7-cffba0054411",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 3.27,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Mobbinge uğrayan işçi hangi delillerle hak arayabilir?",
+      "cevap": "Mobbinge uğrayan işçi, hak arayabilmek için çeşitli delilleri toplamak ve sunmak zorundadır. Bu deliller arasında işyerinde yaşanan olayların kayıtları, tanık ifadeleri, işveren veya diğer çalışanlarla yapılan yazışmalar, sağlık raporları ve benzeri belgeler bulunabilir.\n\nÖrneğin, işçi mobbinge uğradığını iddia ettiği olayların tarihlerini, saatlerini ve detaylarını bir deftere kaydetmeli ve bu olayları gören veya duyan tanıkların ifadelerini almalıdır. Ayrıca, işveren veya diğer çalışanlarla yapılan yazışmaları, e-postaları ve mesajları saklamalıdır.\n\nSağlık raporları da önemli delillerdir. İşçi, mobbing nedeniyle psikolojik veya fiziksel olarak etkilenmişse, bu durumun sağlık raporlarıyla belirlenmesi gerekir. İşçi, bu raporları doktor veya psikologlardan alabilir.\n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. Mobbinge uğrayan işçi, delillerini topladıktan sonra, iş mahkemesine başvurabilir ve tazminat davası açabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2025/11851",
+          "metin_ozet": "Davalılar avukatı yararına takdir edilen 28.000,00 TL duruşma avukatlık parasının davacılara yükletilmesine,\nDosyanın İlk Derece Mahkemesine, bozma kararının bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,15.09.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "Davalılar avukatı yararına takdir edilen 28.000,00 TL duruşma avukatlık parasının davacılara yükletilmesine,\nDosyanın İlk Derece Mahkemesine, bozma kararının bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,15.09.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0436,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2964",
+          "metin_ozet": "esine gönderilmesine, 20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "esine gönderilmesine, 20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0432,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2973",
+          "metin_ozet": " gönderilmesine,\n20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": " gönderilmesine,\n20.03.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0422,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15716",
+          "metin_ozet": "ne gönderilmesine,\n04.12.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ne gönderilmesine,\n04.12.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0419,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "birliğiyle karar verildi.",
+          "metin": "birliğiyle karar verildi.",
+          "skor": 0.0413,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1159,
+      "ortalama_kaynak_skor": 0.0424,
+      "kaynak_sayisi": 5,
+      "message_id": "2170cbdf-a046-47e6-8838-e2da8471ce37",
+      "conversation_id": "a456a2ff-a71f-4c4d-9fe8-9fac16229d7c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.85,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İş kazası geçiren işçinin işverene karşı hangi tazminat hakları vardır?",
+      "cevap": "İş kazası geçiren işçi, işverene karşı çeşitli tazminat haklarına sahiptir. Bu haklar, iş kazasının niteliğine ve sonuçlarına göre değişebilir. İşçinin işverene karşı talep edebileceği tazminat hakları arasında maddi ve manevi tazminat yer alabilir.\n\nMaddi tazminat, işçinin iş kazası nedeniyle uğradığı maddi zararların karşılanması amacıyla talep edilebilir. Bu kapsamda, işçinin tedavi giderleri, iş göremezlik süresi boyunca kaybettiği kazançlar ve diğer ilgili giderler için tazminat talep edilebilir.\n\nManevi tazminat ise, işçinin iş kazası nedeniyle uğradığı manevi zararların karşılanması amacıyla talep edilebilir. Bu kapsamda, işçinin iş kazası nedeniyle yaşadığı acı, çektiği ızdırap ve diğer manevi zararlar için tazminat talep edilebilir.\n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. İş kazası ve tazminat hakları ile ilgili daha详lı bilgi için ilgili kanun maddeleri ve Yargıtay kararlarına başvurmak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/12549",
+          "metin_ozet": "oğunluğun (2 numaralı bentteki) bozma kararına katılmıyoruz.",
+          "metin": "oğunluğun (2 numaralı bentteki) bozma kararına katılmıyoruz.",
+          "skor": 0.0823,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/5784",
+          "metin_ozet": "nluğun (2) numaralı bentteki bozma kararına katılmıyorum.",
+          "metin": "nluğun (2) numaralı bentteki bozma kararına katılmıyorum.",
+          "skor": 0.0804,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 431",
+          "metin_ozet": "MADDE 431- Taraflardan her birinin, belirsiz süreli sözleşmeyi fesih sürelerine uyarak feshetme hakkı vardır.",
+          "metin": "MADDE 431- Taraflardan her birinin, belirsiz süreli sözleşmeyi fesih sürelerine uyarak feshetme hakkı vardır.",
+          "skor": 0.0782,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/3364",
+          "metin_ozet": "ar verilmesi gerekçesi ile Sayın Çoğunluğun bozma kararına katılmıyorum.",
+          "metin": "ar verilmesi gerekçesi ile Sayın Çoğunluğun bozma kararına katılmıyorum.",
+          "skor": 0.0758,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7683",
+          "metin_ozet": "anan bu sebeplerle kararın düzelterek onanması görüşüne iştirak etmiyorum.",
+          "metin": "anan bu sebeplerle kararın düzelterek onanması görüşüne iştirak etmiyorum.",
+          "skor": 0.0742,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1154,
+      "ortalama_kaynak_skor": 0.0782,
+      "kaynak_sayisi": 5,
+      "message_id": "c9d451fb-c66e-4e10-8660-735503583981",
+      "conversation_id": "03fe2913-a10b-41c8-b9a8-ca0a76c7283f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 3.32,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşe iade davası hangi şartlarda açılır ve süresi nedir?",
+      "cevap": "İşe iade davası, 4857 sayılı İş Kanunu'nun 21. maddesinde düzenlenmiştir. Bu maddeye göre, işveren tarafından haksız olarak işten çıkarılan işçi, işe iade davası açabilir. İşe iade davası, işten çıkarılma tarihinden itibaren 1 ay içinde açılmalıdır.\n\nAncak, verilen kaynaklar işe iade davası ile ilgili bilgi içermediğinden, bu konuda ayrıntılı bilgi verememekteyim.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 80 - Fıkra 14",
+          "metin_ozet": "diğerleri için ise teknisyenlerin prime esas kazanç tutarları, f) İlgili kanunlarında veya Cumhurbaşkanlığı kararnamesinde emeklilik ya da ek gösterge açısından belirli bir kadro, unvan veya görevle bağlantı kurulanlar için, bağlantı kurulan kadro, unvan veya görevin prime esas kazanç tutarı, [134] ",
+          "metin": "diğerleri için ise teknisyenlerin prime esas kazanç tutarları, f) İlgili kanunlarında veya Cumhurbaşkanlığı kararnamesinde emeklilik ya da ek gösterge açısından belirli bir kadro, unvan veya görevle bağlantı kurulanlar için, bağlantı kurulan kadro, unvan veya görevin prime esas kazanç tutarı, [134] g) Bu fıkranın (a) ilâ (f) bentleri kapsamı dışında kalan sigortalılar için atandıkları görev itibarıyla 657 sayılı Kanuna göre girebilecekleri sınıflardaki benzer görevlerin aynı kadro, unvan, tahsil ve derecesi için belirlenen prime esas kazanç tutarları, esas alınır.",
+          "skor": 0.0237,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1341",
+          "metin_ozet": "MADDE 1341- (1) 1976 tarihli Sözleşmede belirlenen sorumluluk sınırları,\nkılavuzlara doğrudan yöneltilen bütün istemler için toplam 1.500 Özel Çekme Hakkıdır.\n(2) 1992 tarihli Sorumluluk Sözleşmesinin III üncü maddesinin beşinci paragrafına\ngöre malik tarafından kılavuza yöneltilebilecek rücu isteml",
+          "metin": "MADDE 1341- (1) 1976 tarihli Sözleşmede belirlenen sorumluluk sınırları,\nkılavuzlara doğrudan yöneltilen bütün istemler için toplam 1.500 Özel Çekme Hakkıdır.\n(2) 1992 tarihli Sorumluluk Sözleşmesinin III üncü maddesinin beşinci paragrafına\ngöre malik tarafından kılavuza yöneltilebilecek rücu istemlerinde sorumluluk sınırı toplam\n1.500 Özel Çekme Hakkıdır.\n(3) Bu maddenin uygulamasında kılavuz terimi, gemide veya herhangi başka bir\nyerden gemiye kılavuzluk hizmeti veren kişiyi veya kişileri ve bu kişi veya kişilerin\nfiillerinden sorumlu olan bütün gerçek ve tüzel kişileri kapsar.\nII - Kişisel sorumlulukta fon kurulması",
+          "skor": 0.0224,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0212,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1346",
+          "metin_ozet": "MADDE 1346- (1) 1976 veya 1992 tarihli sözleşmeler uyarınca kurulan fonlar,\nyalnız, haklarında sınırlı sorumluluk ileri sürülebilecek olan alacakların ödenmesinde\nkullanılabilir. Fon kurulması yoluyla sorumluluğunu sınırlayan kişinin diğer alacaklıları,\nhiçbir şekilde bu fonlara başvuramaz. Fonların",
+          "metin": "MADDE 1346- (1) 1976 veya 1992 tarihli sözleşmeler uyarınca kurulan fonlar,\nyalnız, haklarında sınırlı sorumluluk ileri sürülebilecek olan alacakların ödenmesinde\nkullanılabilir. Fon kurulması yoluyla sorumluluğunu sınırlayan kişinin diğer alacaklıları,\nhiçbir şekilde bu fonlara başvuramaz. Fonların paylaştırılmasından sonra bir bakiye kalırsa,\nfonu kuran kişinin diğer alacaklıları, bu bakiyeyi takip edebilir.\nVII - Faiz",
+          "skor": 0.0192,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 5",
+          "metin_ozet": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye K",
+          "metin": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye Kurum Yönetim Kurulu yetkilidir.",
+          "skor": 0.0182,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 570,
+      "ortalama_kaynak_skor": 0.0209,
+      "kaynak_sayisi": 5,
+      "message_id": "e1b629ea-cc4d-4f11-b5ff-99e33813b7be",
+      "conversation_id": "8aafe519-7e1f-4e9e-a7cf-5300793dc7e6",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 11.57,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

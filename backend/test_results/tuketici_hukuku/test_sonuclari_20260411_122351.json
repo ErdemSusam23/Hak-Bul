@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-11T12:26:52.527551+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 12.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/tuketici_hukuku/test_sonuclari_20260411_122351.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 181.1,
+    "ortalama_sure_sn": 15.09,
+    "kategori_dagilimi": {
+      "Tuketici Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 3.09,
+        "kategori_dogruluk_orani": 91.7,
+        "ortalama_cevap_uzunluk": 949.0,
+        "ortalama_kaynak_skor": 0.0617
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tüketici kimdir? Tanımını yapınız.",
+      "cevap": "Tüketici, 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da tanımlanan ve tüketici olarak kabul edilen kişidir. Kanunda tüketici, \"ticari veya mesleki olmayan amaçlarla hareket eden gerçek veya tüzel kişi\" olarak tanımlanmıştır (6502 sayılı Kanun, m. 3/1-a).\n\nBu tanıma göre, tüketici, mal veya hizmet satın alırken ticari veya mesleki amaçlar gütmeyen kişidir. Diğer bir ifadeyle, tüketici, kişisel veya ailevi ihtiyaçlarını karşılamak amacıyla mal veya hizmet satın alan kişidir.\n\nÖrneğin, bir kişi, evinde kullanmak üzere bir televizyon satın alıyorsa, bu kişi tüketici olarak kabul edilir. Ancak, aynı kişi, televizyonu ticari amaçlarla satın alıyorsa, tüketici olarak kabul edilmez.\n\nTüketici tanımına, gerçek kişiler ve tüzel kişiler de dahildir. Örneğin, bir dernek veya vakıf, tüketici olarak kabul edilebilir.\n\nBu konu ile ilgili herhangi bir dava açılması durumunda, \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8234",
+          "metin_ozet": " olarak görev yaparken haksız olarak iş akdinin sona erdirildiğini, buna ilişkin idari yargı sürecinin akabinde idari işlemin iptali ile görevine iadesine karar verildiğini, mahkeme kararı ile görevine iade edilmesine rağmen www.yenişafak.com internet haber sitesinde ve  www.haber7.com'da 15.10.2018",
+          "metin": " olarak görev yaparken haksız olarak iş akdinin sona erdirildiğini, buna ilişkin idari yargı sürecinin akabinde idari işlemin iptali ile görevine iadesine karar verildiğini, mahkeme kararı ile görevine iade edilmesine rağmen www.yenişafak.com internet haber sitesinde ve  www.haber7.com'da 15.10.2018 tarihinde hukuka aykırı haberlerin yayınlandığını, bu yayınlar ile müvekkilinin kişilik haklarının saldırıya uğradığını; imtiyaz sahibi, eser sahibi ve yazı işleri müdürü olan davalıların zarardan sorumlu olduğunu belirterek 30.000,00 TL manevi tazminatın haksız fiil tarihinden işleyecek yasal faizi ile beraber davalılardan müştereken ve müteselsilen tahsili, kararın yayınlanması, saldırıya son verilmesi, yayınlara erişimin engellenmesi isteminde bulunmuştur.\nII. CEVAP\nDavalılar ..., ... ve Yeni Şafak Gazetecilik A.Ş. vekili cevap dilekçesinde; sorumlu yazı işleri müdürü olan müvekkili ...'e husumet yöneltilemeyeceğini, basının somut gerçekliği araştırma görevinin olmadığını, haberin güncel ve görünür gerçeğe uygun olduğunu, yayının basın ve ifade özgürlüğü kapsamında değerlendirilmesi gerektiğini, talep edilen manevi tazminat miktarının fahiş olduğunu belirterek davanın reddini istemiş",
+          "skor": 0.0582,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/10181",
+          "metin_ozet": "sadi kuruluş olduğunu, davalı milletvekili tarafından Twitter'da 22.11.2018 tarihinde yapılan paylaşımda kullanılan söz ve ifadelerle müvekkilinin güvenirliğinin ve saygınlığının zedelendiğini, müvekkili kurumun kişilik haklarının saldırıya uğradığını, ifade özgürlüğü ve eleştiri sınırlarının aşıldı",
+          "metin": "sadi kuruluş olduğunu, davalı milletvekili tarafından Twitter'da 22.11.2018 tarihinde yapılan paylaşımda kullanılan söz ve ifadelerle müvekkilinin güvenirliğinin ve saygınlığının zedelendiğini, müvekkili kurumun kişilik haklarının saldırıya uğradığını, ifade özgürlüğü ve eleştiri sınırlarının aşıldığını belirterek 100.000,00 TL manevi tazminatın 22.11.2018 tarihinden işleyecek yasal faizi ile beraber davalıdan tahsili isteminde bulunmuştur.\nII. CEVAP\nDavalı vekili cevap dilekçesinde; müvekkili tarafından yapılan paylaşımda kullanılan söz ve ifadelerin kamuoyunu bilgilendirmeye yönelik olduğunu, ifade özgürlüğü ve eleştiri sınırlarının aşılmadığını, seçim çalışmaları esnasında davacı kurumun kamu kaynaklarını kullandığı hususunun kamu yararı kapsamında dile getirildiğini, değer yargısı kapsamında siyasi değerlendirmelerde bulunduğunu, kişilik haklarına saldırı olmadığını belirterek davanın reddini istemiştir.\nIII. İLK DERECE MAHKEMESİ KARARI\nİlk Derece Mahkemesinin yukarıda tarih ve sayısı belirtilen kararı ile; davalı tarafından yapılan paylaşımda kullanılan söz ve ifadelerin eleştiri niteliğinde olduğu, eleştiride kullanılan dilin hoşa gitmeyen, sert, sarsıcı ya da rahatsız edici ",
+          "skor": 0.0574,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7464",
+          "metin_ozet": "ere, manevi tazminatın amacı, zarar görenin kişilik değerlerinde ve bedensel bütünlüğünün iradesi dışında ihlali hallerinde meydana gelen eksilmenin (manevi zararın) giderilmesi, tazmin ve telafi edilmesidir. Manevi zarar, haksız eylemin sonucunda, uğranılan kişilik değerlerindeki azalmanın karşılığ",
+          "metin": "ere, manevi tazminatın amacı, zarar görenin kişilik değerlerinde ve bedensel bütünlüğünün iradesi dışında ihlali hallerinde meydana gelen eksilmenin (manevi zararın) giderilmesi, tazmin ve telafi edilmesidir. Manevi zarar, haksız eylemin sonucunda, uğranılan kişilik değerlerindeki azalmanın karşılığı olması ve zarar gören tarafından da takdir ve tayin  edilebilir bulunması nedeniyle birden fazla bölümler halinde istenemez. Bizzat yaşanan acı ve elemin karşılığı olduğu için, haksız eylemin meydana geldiği anda gerçekleşir. Acı ve elemin bölünerek bir kısmının açılacak kısmi dava ile, kalanının açılacak başka bir davada talep  edilmesinin manevi  tazminatın özüne ve işlevine aykırılık oluşturacağından; manevi tazminat davasının, \"manevi  tazminatın bölünemezliği\" kuralına aykırı bir biçimde kısmi veya belirsiz alacak davası olarak açılması da mümkün değildir. Yukarıdaki bilgiler ışığında somut olayda; davacı vekili dava dilekçesinde davalılar ...ve ...'den 35.000,00 TL, diğer davalılar Muammer ve ...'den 35.000,00 TL toplamda 70.000,00 TL manevi tazminatın tahsilini talep etmiş, Mahkemece 17.500,00 TL manevi tazminatın davalılar ... ve ...'dan, 8.750,00 TL manevi tazminattan ise dava",
+          "skor": 0.0566,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/6646",
+          "metin_ozet": "yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açı",
+          "metin": "yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine karar verilmiştir. V. TEMYİZ\nA.",
+          "skor": 0.0551,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2023/10565",
+          "metin_ozet": "İş Mahkemesi'nin 2020/258 Esas - 2022/96 Karar sayılı kararının kaldırılmasına;\n1-Davanın kısmen kabul, kısmen reddi ile\na)Davacı ... yönünden 164.588,30 TL maddi tazminat ile takdiren 70.000,00 TL manevi tazminatın murisin vefat tarihi olan 16.06.2012 tarihinden itibaren işleyecek yasal faizi ile b",
+          "metin": "İş Mahkemesi'nin 2020/258 Esas - 2022/96 Karar sayılı kararının kaldırılmasına;\n1-Davanın kısmen kabul, kısmen reddi ile\na)Davacı ... yönünden 164.588,30 TL maddi tazminat ile takdiren 70.000,00 TL manevi tazminatın murisin vefat tarihi olan 16.06.2012 tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak davacıya verilmesine, fazlaya ilişkin manevi tazminat talebinin reddine,\nb)Davacı Merve Yiğit yönünden 54.824,30 TL maddi tazminat ile takdiren 50.000,00 TL manevi tazminatın murisin vefat tarihi olan 16.06.2012 tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak davacıya verilmesine, fazlaya ilişkin manevi tazminat talebinin reddine,\nc)Davacı ... yönünden takdiren 50.000,00 TL manevi tazminatın murisin vefat tarihi olan 16.06.2012 tarihinden itibaren işleyecek yasal faizi ile birlikte davalıdan alınarak davacıya verilmesine, fazlaya ilişkin manevi tazminat talebi ile maddi tazminat talebinin reddine,\" karar verilmiştir. V. TEMYİZ\nA. Temyiz Yoluna Başvuranlar\nBölge Adliye Mahkemesinin yukarıda belirtilen kararına karşı süresi içinde davacılar ve davalı vekilleri temyiz isteminde bulunmuştur. B. Temyiz Sebepleri\n1.Davacılar vekili temyiz dilekçesinde özetle; kusurun %100 davalı kusuru olarak esas alınması gerekirken %20 müteveffaya kusur verilmesinin hatalı olduğunu, hüküm altına alınan manevi tazminatların az olduğunu beyanla kararın bozulmasını talep etmiştir.",
+          "skor": 0.0549,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1082,
+      "ortalama_kaynak_skor": 0.0564,
+      "kaynak_sayisi": 5,
+      "message_id": "185ee218-206b-4ab7-a689-b6497b9f33aa",
+      "conversation_id": "00ee9a21-cbbd-4135-a90e-1075d7fc4137",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.1,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Ayıplı mal nedir?",
+      "cevap": "Ayıplı mal, Türk hukukunda bir malın sözleşmede belirtilen veya sözleşmede öngörülen özelliklere uymaması durumunu ifade eder. Ancak, verilen kaynaklar arasında ayıplı mal tanımını veya ilgili hükümleri içeren bir madde bulunmamaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 14",
+          "metin_ozet": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "metin": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "skor": 0.0922,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0851,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 49",
+          "metin_ozet": "Madde 49- (1) Süreli hapis cezası, kanunda aksi belirtilmeyen hallerde bir aydan az,\nyirmi yıldan fazla olamaz.\n(2) Hükmedilen bir yıl veya daha az süreli hapis cezası, kısa süreli hapis cezasıdır.\nKısa süreli hapis cezasına seçenek yaptırımlar",
+          "metin": "Madde 49- (1) Süreli hapis cezası, kanunda aksi belirtilmeyen hallerde bir aydan az,\nyirmi yıldan fazla olamaz.\n(2) Hükmedilen bir yıl veya daha az süreli hapis cezası, kısa süreli hapis cezasıdır.\nKısa süreli hapis cezasına seçenek yaptırımlar",
+          "skor": 0.0802,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 31",
+          "metin_ozet": "MADDE 31- (1) Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda,\nmaddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara\naçıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.\nYargılamanın sevk ve idaresi",
+          "metin": "MADDE 31- (1) Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda,\nmaddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara\naçıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.\nYargılamanın sevk ve idaresi",
+          "skor": 0.0801,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 308",
+          "metin_ozet": "Madde 308- Evlât edinilenin, evlât edinenden en az onsekiz yaş küçük olması şarttır.\nAyırt etme gücüne sahip olan küçük, rızası olmadıkça evlât edinilemez.\nVesayet altındaki küçük, ayırt etme gücüne sahip olup olmadığına bakılmaksızın vesayet\ndairelerinin izniyle evlât edinilebilir.\nV. Ana ve babanı",
+          "metin": "Madde 308- Evlât edinilenin, evlât edinenden en az onsekiz yaş küçük olması şarttır.\nAyırt etme gücüne sahip olan küçük, rızası olmadıkça evlât edinilemez.\nVesayet altındaki küçük, ayırt etme gücüne sahip olup olmadığına bakılmaksızın vesayet\ndairelerinin izniyle evlât edinilebilir.\nV. Ana ve babanın rızası\n1. Şekil",
+          "skor": 0.08,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 441,
+      "ortalama_kaynak_skor": 0.0835,
+      "kaynak_sayisi": 5,
+      "message_id": "46bc88c1-9727-4fb2-a69b-82b7d2826bd5",
+      "conversation_id": "fc158cca-9417-4915-a41d-2b3cb6b2478f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.15,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Ayıplı hizmet nedir?",
+      "cevap": "Ayıplı hizmet, 6098 sayılı Türk Borçlar Kanunu'nda düzenlenen bir kavramdır. Ancak, verilen kaynaklar arasında ayıplı hizmetle ilgili bir madde bulunmamaktadır. Türk Borçlar Kanunu'nun 474. maddesinde ayıplı hizmetler hakkında bilgi verilmektedir. Bu maddeye göre, \"Hizmet sözleşmesi, esaslı unsurları itibariyle bir eser sözleşmesinin hükümlerine tabi olacak şekilde kurulmuşsa, aksi açıkça kararlaştırılmış olmadıkça, hizmet borçlusunun edimleri ayıplı olup olmadığı, eser sözleşmesine ilişkin hükümlere göre belirlenir.\"\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 14",
+          "metin_ozet": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "metin": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "skor": 0.0529,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.0435,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "metin": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "skor": 0.0426,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 33",
+          "metin_ozet": "MADDE 33- (1) Hâkim, Türk hukukunu resen uygular.\nÜÇÜNCÜ BÖLÜM\nHâkimin Yasaklılığı, Reddi ve Hukuki Sorumluluğu\nBİRİNCİ AYIRIM\nHâkimin Davaya Bakmaktan Yasaklılığı ve Reddi\nYasaklılık sebepleri",
+          "metin": "MADDE 33- (1) Hâkim, Türk hukukunu resen uygular.\nÜÇÜNCÜ BÖLÜM\nHâkimin Yasaklılığı, Reddi ve Hukuki Sorumluluğu\nBİRİNCİ AYIRIM\nHâkimin Davaya Bakmaktan Yasaklılığı ve Reddi\nYasaklılık sebepleri",
+          "skor": 0.0416,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 141",
+          "metin_ozet": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "metin": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "skor": 0.041,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 727,
+      "ortalama_kaynak_skor": 0.0443,
+      "kaynak_sayisi": 5,
+      "message_id": "98f74673-cc55-416c-a602-c4c46ba8746b",
+      "conversation_id": "875f93bf-afc5-4ca1-8d0e-078572a0c612",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.74,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tüketicinin seçimlik hakları nelerdir?",
+      "cevap": "Tüketicinin seçimlik hakları, 6098 sayılı Türk Borçlar Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar bu konuya doğrudan değinmemektedir. Türk Borçlar Kanunu'nun ilgili maddeleri incelendiğinde, özellikle 384. ve 80. maddelerin, ödünç verme ve zenginleşme konularına ilişkin hükümler içerdiği görülmektedir.\n\nTüketicinin seçimlik hakları, genellikle 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da düzenlenmiştir. Bu kanun, tüketici sözleşmeleri, tüketici hakları ve sorumlulukları gibi konuları düzenlemektedir. Ancak, verilen kaynaklar bu kanuna veya tüketicinin seçimlik haklarına ilişkin hükümlere doğrudan değinmemektedir.\n\nVerilen kaynaklar, daha çok hukuki uyuşmazlıkların çözümü, usuli kazanılmış hak kavramı ve yargılama süreci ile ilgili kararlar içermektedir. Bu nedenle, tüketicinin seçimlik hakları hakkında yeterli bilgi vermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/7904",
+          "metin_ozet": "Sürekli iş göremezlik oranının değişmesi nasıl usulü kazanılmış hak teşkil etmiyor ve bu konuda bozma gerekçesi yerinde ise de, usulü kazanılmış hak oluşacağı gerekçesi ile TRH 2010 yaşam tablosunun uygulanmaması ve işlemiş devrenin çekilmemesi yönündeki bozma gerekçesine katılınmamıştır.",
+          "metin": "Sürekli iş göremezlik oranının değişmesi nasıl usulü kazanılmış hak teşkil etmiyor ve bu konuda bozma gerekçesi yerinde ise de, usulü kazanılmış hak oluşacağı gerekçesi ile TRH 2010 yaşam tablosunun uygulanmaması ve işlemiş devrenin çekilmemesi yönündeki bozma gerekçesine katılınmamıştır.",
+          "skor": 0.0506,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 384",
+          "metin_ozet": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "metin": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "skor": 0.0501,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 80",
+          "metin_ozet": "MADDE 80- Zenginleşen iyiniyetli ise, yaptığı zorunlu ve yararlı giderleri, geri verme isteminde bulunandan isteyebilir. Zenginleşen iyiniyetli değilse, zorunlu giderlerinin ve yararlı giderlerinden sadece geri verme zamanında mevcut olan değer artışının ödenmesini isteyebilir. Zenginleşen, iyiniyet",
+          "metin": "MADDE 80- Zenginleşen iyiniyetli ise, yaptığı zorunlu ve yararlı giderleri, geri verme isteminde bulunandan isteyebilir. Zenginleşen iyiniyetli değilse, zorunlu giderlerinin ve yararlı giderlerinden sadece geri verme zamanında mevcut olan değer artışının ödenmesini isteyebilir. Zenginleşen, iyiniyetli olup olmadığına bakılmaksızın, diğer giderlerinin ödenmesini isteyemez. Ancak, kendisine karşılık önerilmezse, o şey ile birleştirdiği ve zararsızca ayrılması mümkün bulunan eklemeleri geri vermeden önce ayırıp alabilir.",
+          "skor": 0.0483,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/9646",
+          "metin_ozet": "KARAR\nAçıklanan sebeplerle;\n1.Davacı vekilinin hükmedilen manevi tazminatlara yönelik temyiz isteminin miktardan REDDİNE,\n2.Davacı vekilinin hükmedilen maddi tazminatlara yönelik temyiz itirazlarının reddine, Bölge Adliye Mahkemesince verilen kararın 6100 sayılı Kanun'un 370 nci maddesinin birinci f",
+          "metin": "KARAR\nAçıklanan sebeplerle;\n1.Davacı vekilinin hükmedilen manevi tazminatlara yönelik temyiz isteminin miktardan REDDİNE,\n2.Davacı vekilinin hükmedilen maddi tazminatlara yönelik temyiz itirazlarının reddine, Bölge Adliye Mahkemesince verilen kararın 6100 sayılı Kanun'un 370 nci maddesinin birinci fıkrası uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, karardan bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\nÜye ...'ın muhalefetine karşı, Başkan ... ve Üyeler ..., ... ve ...'ün oyları ve oyçokluğuyla\n08.10.2024 tarihinde karar verildi. KARŞI OY\nI. Temel Uyuşmazlık:\n1. Çoğunluk ile aradaki temel uyuşmazlık “ilk derece mahkemesinin hüküm altına aldığı maddi ve manevi tazminatın davacı tarafından kusur ve manevi tazminatın azlığı nedeni ile istinaf etmesi üzerine Bölge Adliye Mahkemesince kaldırma ve geri gönderilmesinden sonra maddi tazminata esas ücretin asgari ücret oranlarındaki artışların ilk derece mahkemesince istinaf edilmemesi nedeni ile dikkate alınmamasının davalı yararına lehine usulü kazanılmış hak oluşturup oluşturmayacağı, buna göre yeniden değerlemenin son karar tarihine yakın tazminata esas değerlere taşınıp taşınmayacağı” noktasında toplanmaktadır. II. Karşı oy gerekçesi:\n2. Belirtmek gerekir ki Sayın ...’inde değindiği gibi “Yargıtay tarafından neredeyse mutlak olarak, doktrinde de ağırlıklı olarak kabul edilen usuli müktesep hak kavramının kanuni bir kurum olmadığını, yargı kararları ile kabul edildiğini ortaya koymak gerekir.",
+          "skor": 0.0458,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/1147",
+          "metin_ozet": "Çoğunluk ile aradaki temel uyuşmazlık “İlk Derece Mahkemesinin hüküm altına aldığı maddi tazminatı davacının istinaf etmemesi nedeni ile davalının istinafı nedeni ile Bölge Adliye Mahkemesince geri gönderilmesinden sonra maddi tazminata esas ücretin asgari ücret oranlarındaki artış dikkate alınarak ",
+          "metin": "Çoğunluk ile aradaki temel uyuşmazlık “İlk Derece Mahkemesinin hüküm altına aldığı maddi tazminatı davacının istinaf etmemesi nedeni ile davalının istinafı nedeni ile Bölge Adliye Mahkemesince geri gönderilmesinden sonra maddi tazminata esas ücretin asgari ücret oranlarındaki artış dikkate alınarak İlk Derece Mahkemesinin değiştirmesinin davalı yararına lehine usulü kazanılmış hak olup olmayacağı, buna göre yeniden değerlemenin son karar tarihine yakın tazminata esas değerlere taşınıp taşınmayacağı” noktasında toplanmaktadır. II. Karşı oy gerekçesi:\n2. Belirtmek gerekir ki Sayın...’inde değindiği gibi “Yargıtay tarafından neredeyse mutlak olarak, doktrinde de ağırlıklı olarak kabul edilen usuli müktesep hak kavramının kanuni bir kurum olmadığını, yargı kararları ile kabul edildiğini ortaya koymak gerekir. Usuli müktesep hak, bugün neredeyse usuli her sorunda, her derde deva bir kurum olarak gündeme gelmekte, sadece kanun yolunda değil, yargılamanın farklı kesitlerinde kullanılmaktadır. Bu kurumun kabul edilebilirliğinin tartışması bir yana, bu kadar geniş bir uygulama alanı bulması doğru değildir. Ayrıca usuli müktesep hak, usuli sorunları çözmeye gerçek anlamda da elverişli değildir. Nitekim, önceleri çok sınırlı kabul edilen usuli müktesep hakkında kapsamı genişlemiş, ancak bu genişlemenin sakıncaları ortaya çıktıkça Yargıtay, usuli müktesep hakka her geçen gün … birçok istisna da kabul etmiştir.",
+          "skor": 0.0457,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1062,
+      "ortalama_kaynak_skor": 0.0481,
+      "kaynak_sayisi": 5,
+      "message_id": "579f467c-99b1-45cd-8455-1cfe3f984ff7",
+      "conversation_id": "91c4d9d4-78db-48be-bbc2-a2f96c5a3fea",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.06,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Garanti belgesi zorunluluğu hangi ürünlerde vardır?",
+      "cevap": "Verilen kaynaklar, çoğunlukla Yargitay kararlarına atıfta bulunmakta ve belirli davalara ilişkin görüş ve kararları içermektedir. Bu kaynaklar, garanti belgesi zorunluluğu hakkında doğrudan bilgi sağlamamaktadır.\n\nAncak, genel olarak bakıldığında, garanti belgesi zorunluluğu Türkiye'de Tüketicinin Korunması Hakkında Kanun ve ilgili yönetmeliklerle düzenlenmektedir. Bu kanun ve yönetmeliklere göre, belirli ürünler için garanti belgesi zorunluluğu bulunmaktadır. Örneğin, beyaz eşya, elektronik cihazlar, mobilya gibi ürünler için garanti belgesi zorunluluğu olabilir.\n\nVerilen kaynaklar yetersiz olduğu için, bu konuda daha详lı bilgi verilememektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.0998,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.0988,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 4",
+          "metin_ozet": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "metin": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "skor": 0.0976,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2668",
+          "metin_ozet": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "metin": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "skor": 0.0869,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7200",
+          "metin_ozet": "üne üstünlük tanınması gerektiği düşüncesinde olduğumdan istemin tümden reddi yerine bazı konuşmalar yönünden hükmedilen manevi tazminatın onanması kararına iştirak edemiyorum.",
+          "metin": "üne üstünlük tanınması gerektiği düşüncesinde olduğumdan istemin tümden reddi yerine bazı konuşmalar yönünden hükmedilen manevi tazminatın onanması kararına iştirak edemiyorum.",
+          "skor": 0.0862,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 857,
+      "ortalama_kaynak_skor": 0.0939,
+      "kaynak_sayisi": 5,
+      "message_id": "13257ebc-8f42-4498-8f5d-fc8e0ffb764e",
+      "conversation_id": "714e0fa7-c417-4d23-a855-e6b5cb85c1a8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.61,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Mesafeli sözleşme nedir?",
+      "cevap": "Mesafeli sözleşme, 6098 Sayılı Türk Borçlar Kanunu'nda açıkça tanımlanmamıştır. Ancak, 6502 Sayılı Tüketicinin Korunması Hakkında Kanun'da mesafeli sözleşmeler düzenlenmiştir. Bu kanun kapsamında, mesafeli sözleşme, \"Satıcı veya sağlayıcı ile tüketici arasında, tüketiciye bir hizmet sunulması veya bir malın teslim edilmesi amacıyla, taraflar fiziksel olarak karşı karşıya gelmeksizin, uzaktan iletişim araçlarının kullanılması suretiyle kurulan sözleşmedir\" şeklinde tanımlanmıştır.\n\nVerilen kaynaklar arasında mesafeli sözleşmeye ilişkin bir madde bulunmamaktadır. Bu nedenle, mesafeli sözleşmenin tanımını ve hükümlerini 6502 Sayılı Tüketicinin Korunması Hakkında Kanun'dan öğrenmek mümkündür.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 28",
+          "metin_ozet": "MADDE 28- Bir sözleşmede karşılıklı edimler arasında açık bir oransızlık varsa, bu oransızlık, zarar görenin zor durumda kalmasından veya düşüncesizliğinden ya da deneyimsizliğinden yararlanılmak suretiyle gerçekleştirildiği takdirde, zarar gören, durumun özelliğine göre ya sözleşme ile bağlı olmadı",
+          "metin": "MADDE 28- Bir sözleşmede karşılıklı edimler arasında açık bir oransızlık varsa, bu oransızlık, zarar görenin zor durumda kalmasından veya düşüncesizliğinden ya da deneyimsizliğinden yararlanılmak suretiyle gerçekleştirildiği takdirde, zarar gören, durumun özelliğine göre ya sözleşme ile bağlı olmadığını diğer tarafa bildirerek ediminin geri verilmesini ya da sözleşmeye bağlı kalarak edimler arasındaki oransızlığın giderilmesini isteyebilir. Zarar gören bu hakkını, düşüncesizlik veya deneyimsizliğini öğrendiği; zor durumda kalmada ise, bu durumun ortadan kalktığı tarihten başlayarak bir yıl ve her hâlde sözleşmenin kurulduğu tarihten başlayarak beş yıl içinde kullanabilir.",
+          "skor": 0.068,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 123",
+          "metin_ozet": "Madde 123 – Taşınmazlar, satış talebinden nihayet üç ay içinde icra dairesi tarafından\naçık artırma ile satılır.50\nArtırma şartları:\n1 – Şartname:51",
+          "metin": "Madde 123 – Taşınmazlar, satış talebinden nihayet üç ay içinde icra dairesi tarafından\naçık artırma ile satılır.50\nArtırma şartları:\n1 – Şartname:51",
+          "skor": 0.0639,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.0607,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 30",
+          "metin_ozet": "MADDE 30- Sözleşme kurulurken esaslı yanılmaya düşen taraf, sözleşme ile bağlı olmaz.",
+          "metin": "MADDE 30- Sözleşme kurulurken esaslı yanılmaya düşen taraf, sözleşme ile bağlı olmaz.",
+          "skor": 0.0573,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 331",
+          "metin_ozet": "MADDE 331- Taraflardan her biri, kira ilişkisinin devamını kendisi için çekilmez hâle getiren önemli sebeplerin varlığı durumunda, sözleşmeyi yasal fesih bildirim süresine uyarak her zaman feshedebilir. Hâkim, durum ve koşulları göz önünde tutarak, olağanüstü fesih bildiriminin parasal sonuçlarını k",
+          "metin": "MADDE 331- Taraflardan her biri, kira ilişkisinin devamını kendisi için çekilmez hâle getiren önemli sebeplerin varlığı durumunda, sözleşmeyi yasal fesih bildirim süresine uyarak her zaman feshedebilir. Hâkim, durum ve koşulları göz önünde tutarak, olağanüstü fesih bildiriminin parasal sonuçlarını karara bağlar.",
+          "skor": 0.0554,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 901,
+      "ortalama_kaynak_skor": 0.0611,
+      "kaynak_sayisi": 5,
+      "message_id": "a18ab948-649f-4cf3-ae25-53ba6c3c51c1",
+      "conversation_id": "629f726f-0b52-4681-8b60-6a370fea2288",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.85,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Cayma hakkı nedir? Süresi ne kadardır?",
+      "cevap": "Cayma hakkı, bir sözleşmeden veya işlemden vazgeçme hakkıdır. Bu hak, özellikle tüketici hukukunda önemli bir yer tutar. Cayma hakkı, tüketicilerin aldıkları mal veya hizmetleri belirli bir süre içinde iade etme veya sözleşmeden vazgeçme hakkı verir.\n\nTürk hukukunda cayma hakkı, 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da düzenlenmiştir. Ancak, bu kanun maddesi kaynaklarda yer almamaktadır. Buna göre, cayma hakkı süresi genellikle 14 gündür. Tüketici, malı teslim aldığı veya hizmetin ifasına başlandığı tarihten itibaren 14 gün içinde cayma hakkını kullanabilir.\n\nKaynaklarda yer alan kanun maddeleri, cayma hakkı ile doğrudan ilgili değildir. Örneğin, 5846 sayılı Fikir ve Sanat Eserleri Kanunu, eserlerin çoğaltılması ve yayılması ile ilgili hükümler içerir. 4982 sayılı Bilgi Edinme Hakkı Kanunu, bilgi edinme başvuruları ile ilgili hükümler içerir. 6098 sayılı Türk Borçlar Kanunu, yayım sözleşmesinin geçerliliği ile ilgili hükümler içerir. 6100 sayılı Hukuk Muhakemeleri Kanunu, hâkimin reddi ile ilgili hükümler içerir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0447,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 8",
+          "metin_ozet": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvuran",
+          "metin": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvurana bildirilir.\nGizli bilgileri ayırarak bilgi veya belge verme",
+          "skor": 0.0439,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7563",
+          "metin_ozet": "na gelmesinde herhangi bir kusuru da olmadığından ehliyetsizlik nedeniyle müterafik kusur indirimi yapılmasının doğru olmadığı görüşünde olduğumdan sayın çoğunluğun (2) ve (3) numaralı bentlerdeki bozma gerekçesine katılmıyorum.",
+          "metin": "na gelmesinde herhangi bir kusuru da olmadığından ehliyetsizlik nedeniyle müterafik kusur indirimi yapılmasının doğru olmadığı görüşünde olduğumdan sayın çoğunluğun (2) ve (3) numaralı bentlerdeki bozma gerekçesine katılmıyorum.",
+          "skor": 0.0407,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 488",
+          "metin_ozet": "MADDE 488- Yayım sözleşmesinin geçerliliği, yazılı şekilde yapılmış olmasına bağlıdır.",
+          "metin": "MADDE 488- Yayım sözleşmesinin geçerliliği, yazılı şekilde yapılmış olmasına bağlıdır.",
+          "skor": 0.0401,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 37",
+          "metin_ozet": "MADDE 37- (1) Hâkim, reddini gerektiren sebeplerden biri varken bizzat çekilmezse,\niki taraftan biri ret talebinde bulununcaya kadar davaya bakabilir.\nRet usulü",
+          "metin": "MADDE 37- (1) Hâkim, reddini gerektiren sebeplerden biri varken bizzat çekilmezse,\niki taraftan biri ret talebinde bulununcaya kadar davaya bakabilir.\nRet usulü",
+          "skor": 0.0393,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1243,
+      "ortalama_kaynak_skor": 0.0417,
+      "kaynak_sayisi": 5,
+      "message_id": "12a3c052-573b-48b9-97d2-0e4172b23d7c",
+      "conversation_id": "539d796c-cb32-4099-94a2-70ab33b95202",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.02,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tüketici hakem heyeti nedir?",
+      "cevap": "Tüketici hakem heyeti, tüketici ile satıcı veya sağlayıcı arasında çıkan uyuşmazlıkları çözümlemek amacıyla kurulan bir kuruludur. Bu kurul, tüketici sorunları hakkında başvuruları inceleyerek, taraflar arasında uzlaşma sağlamak veya kararlar vermekle görevlidir.\n\nTüketici hakem heyetlerinin görev ve yetkileri, 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da düzenlenmiştir. Bu kanun uyarınca, tüketici hakem heyetlerinin görevleri arasında tüketici başvurularını incelemek, taraflar arasında uzlaşma sağlamak, kararlar vermek ve tüketici haklarını korumak yer almaktadır.\n\nTüketici hakem heyetlerine başvurular, genellikle il veya ilçe tüketici hakem heyetlerine yapılır. Başvuruların değerlendirilmesi ve kararların verilmesi, tüketici hakem heyetlerinin görev ve yetkilerine göre gerçekleştirilir.\n\nAncak, verilen kaynaklar arasında tüketici hakem heyeti ile ilgili bir bilgi bulunmamaktadır. Bu nedenle, daha详细 bilgi için ilgili kanun ve yönetmeliklere başvurmak gerekecektir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "Yargıtay 21. Hukuk Dairesi - 2024/11450",
+          "metin_ozet": "Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketine karşı açmış olduğu maddi tazminat davasının KABULÜ İLE\n1-270.616,01 TL’nin kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tar",
+          "metin": "Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketine karşı açmış olduğu maddi tazminat davasının KABULÜ İLE\n1-270.616,01 TL’nin kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketinden alınarak davacı ...’e verilmesine, fazlaya ilişkin istemin REDDİNE,\nC-Davacıların davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketine karşı açmış olduğu manevi tazminat davasının ayrı ayrı KISMEN KABULÜ İLE KISMEN REDDİNE,\n1-40.000 TL manevi tazminatın kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketinden alınarak davacı ...’e verilmesine, fazlaya ilişkin talebin REDDİNE,\n2-10.000 TL manevi tazminatın kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketinden alınarak davacı ...’e verilmesine, fazlaya ilişkin talebin REDDİNE,\n3-7.500 TL manevi tazminatın kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ...",
+          "skor": 0.1018,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/11409",
+          "metin_ozet": "yönünden 78.010,34-TL maddi; 60.000,00-TL manevi tazminatın kaza tarihi olan 10.03.2017 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müşterek ve müteselsilen tahsili ile davacı yana ödenmesine, fazlaya ilişkin talebin reddine,\n2-Davacı ... yönünden 62.076,04-TL maddi; 60.000,0",
+          "metin": "yönünden 78.010,34-TL maddi; 60.000,00-TL manevi tazminatın kaza tarihi olan 10.03.2017 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müşterek ve müteselsilen tahsili ile davacı yana ödenmesine, fazlaya ilişkin talebin reddine,\n2-Davacı ... yönünden 62.076,04-TL maddi; 60.000,00-TL manevi tazminatın kaza tarihi olan 10.03.2017 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müşterek ve müteselsilen tahsili ile davacı yana ödenmesine, fazlaya ilişkin talebin reddine,\n3-4.641,00-TL cenaze gideri ve 238,69-TL geçici iş göremezlik gelirinin dava tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müşterek ve müteselsilen tahsili ile davacılardan Necla ve ...'ya ödenmesine,\n4-Davacı ... yönünden 3.000,00-TL manevi tazminatın kaza tarihi olan 10.03.2017 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müşterek ve müteselsilen tahsili ile davacı yana ödenmesine, fazlaya ilişkin talebin reddine,\n5-Davacı ... yönünden 3.000,00-TL manevi tazminatın kaza tarihi olan 10.03.2017 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müşterek ve müteselsilen tahsili ile davacı yana ödenmesine, fazlaya ilişkin talebin reddine,\n6-Davacı ... yönünden 3.000,00-TL manevi tazminatın kaza tarihi olan 10.03.2017 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müşterek ve müteselsilen tahsili ile davacı yana ödenmesine, fazlaya ilişkin talebin reddine,\n7-Davacı ...",
+          "skor": 0.0946,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/6646",
+          "metin_ozet": "yönünden açılan maddi tazminat davasının kısmen kabulüne, 45.903,87 TL destekten yoksun kalma tazminatının kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, da",
+          "metin": "yönünden açılan maddi tazminat davasının kısmen kabulüne, 45.903,87 TL destekten yoksun kalma tazminatının kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan maddi tazminat davasının kısmen kabulüne, 91.082,56 TL destekten yoksun kalma tazminatının kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 35,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 35,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ...",
+          "skor": 0.0939,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2025/5258",
+          "metin_ozet": "İLK DERECE MAHKEMESİ KARARI\nİlk Derece Mahkemesinin yukarıda tarih ve sayısı belirtilen kararında özetle; \"...Davanın kısmen kabulü ile\n1-444.212,58 TL maddi tazminatın (destekten yoksun kalma tazminatı) kaza tarihi olan 01.12.2015 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan ",
+          "metin": "İLK DERECE MAHKEMESİ KARARI\nİlk Derece Mahkemesinin yukarıda tarih ve sayısı belirtilen kararında özetle; \"...Davanın kısmen kabulü ile\n1-444.212,58 TL maddi tazminatın (destekten yoksun kalma tazminatı) kaza tarihi olan 01.12.2015 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müştereken ve müteselsilen tahsili ile davacı ...'e ödenmesine,\n2-7.514,33 TL maddi tazminatın ( destekten yoksun kalma tazminatı) kaza tarihi olan 01.12.2015 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müştereken ve müteselsilen tahsili ile davacı ...'a ödenmesine,\n3-25.000,00 TL manevi tazminatın kaza tarihi olan 01.12.2015 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müştereken ve müteselsilen tahsili ile davacı ...'e ödenmesine, fazlaya ilişkin istemin reddine,\n4-15.000,00 TL manevi tazminatın kaza tarihi olan 01.12.2015 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müştereken ve müteselsilen tahsili ile davacı ...'a ödenmesine, fazlaya ilişkin istemin reddine,\n5-15.000,00 TL manevi tazminatın kaza tarihi olan 01.12.2015 tarihinden itibaren işleyecek yasal faizi ile birlikte davalılardan müştereken ve müteselsilen tahsili ile davacı ...'a ödenmesine, fazlaya ilişkin istemin reddine,...\" şeklinde karar vermiştir. IV.",
+          "skor": 0.0897,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9653",
+          "metin_ozet": "di.",
+          "metin": "di.",
+          "skor": 0.0896,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1190,
+      "ortalama_kaynak_skor": 0.0939,
+      "kaynak_sayisi": 5,
+      "message_id": "22e7370f-9607-4ba4-804f-927786870719",
+      "conversation_id": "37ad3669-1d4e-4e9e-b1c4-d5d039c08142",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.93,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tüketici mahkemesi ile hakem heyeti farkı nedir?",
+      "cevap": "Tüketici mahkemesi ve hakem heyeti, tüketici uyuşmazlıklarını çözümlemek amacıyla kurulan iki ayrı mercidir. \n\nTüketici mahkemesi, adli yargı sistemi içinde yer alan ve tüketici uyuşmazlıklarını çözümlemek amacıyla kurulan bir mahkemedir. Tüketici mahkemesi, tüketici ile satıcı veya sağlayıcı arasında çıkan uyuşmazlıkları çözümlemek amacıyla görev yapar. \n\nHakem heyeti ise, tüketici uyuşmazlıklarını çözümlemek amacıyla kurulan idari bir mercidir. Hakem heyeti, tüketici ile satıcı veya sağlayıcı arasında çıkan uyuşmazlıkları çözümlemek amacıyla görev yapar. Hakem heyeti kararları, taraflar için bağlayıcıdır, ancak mahkeme kararı gibi değildir.\n\nTüketici mahkemesi ve hakem heyeti arasındaki temel fark, mahkemenin adli yargı sistemi içinde yer alması ve hakem heyetinin idari bir merci olmasıdır. Ayrıca, mahkeme kararları daha geniş bir yargı yetkisine sahiptir ve daha resmi bir prosedürü takip ederken, hakem heyeti kararları daha hızlı ve daha az formalite ile verilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/6646",
+          "metin_ozet": "yönünden açılan maddi tazminat davasının kısmen kabulüne, 45.903,87 TL destekten yoksun kalma tazminatının kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, da",
+          "metin": "yönünden açılan maddi tazminat davasının kısmen kabulüne, 45.903,87 TL destekten yoksun kalma tazminatının kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan maddi tazminat davasının kısmen kabulüne, 91.082,56 TL destekten yoksun kalma tazminatının kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 35,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 35,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ... yönünden açılan manevi tazminat davasının kısmen kabulüne, 5,000 TL manevi tazminatın kaza tarihi olan 06.12.2015 tarihinden itibaren işleyecek yasal faiziyle birlikte davalılardan müştereken ve müteselsilen alınarak davacı tarafa verilmesine, fazlaya ilişkin talebin reddine, davacı ...",
+          "skor": 0.069,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 37",
+          "metin_ozet": "MADDE 37- (1) Tüketici, vadesi gelmemiş bir veya birden çok taksit ödemesinde\nbulunabileceği gibi, konut finansmanı borcunun tamamını erken ödeyebilir. Bu hâllerde,\nkonut finansmanı kuruluşu, erken ödenen miktara göre gerekli tüm faiz ve diğer maliyet\nunsurlarına ilişkin indirim yapmakla yükümlüdür.",
+          "metin": "MADDE 37- (1) Tüketici, vadesi gelmemiş bir veya birden çok taksit ödemesinde\nbulunabileceği gibi, konut finansmanı borcunun tamamını erken ödeyebilir. Bu hâllerde,\nkonut finansmanı kuruluşu, erken ödenen miktara göre gerekli tüm faiz ve diğer maliyet\nunsurlarına ilişkin indirim yapmakla yükümlüdür.\n(2) Faiz oranının sabit olarak belirlenmesi hâlinde, sözleşmede yer verilmek suretiyle,\nbir ya da birden fazla ödemenin vadesinden önce yapılması durumunda, konut finansmanı\nkuruluşu tarafından tüketiciden erken ödeme tazminatı talep edilebilir. Erken ödeme tazminatı\ngerekli faiz indirimi yapılarak hesaplanan ve tüketici tarafından konut finansmanı kuruluşuna\nerken ödenen tutarın kalan vadesi otuz altı ayı aşmayan kredilerde yüzde birini, kalan vadesi\notuz altı ayı aşan kredilerde ise yüzde ikisini geçemez. Oranların değişken olarak belirlenmesi\nhâlinde tüketiciden erken ödeme tazminatı talep edilemez.\nSigorta, yan finansal ürün ve hizmet sunumu",
+          "skor": 0.0677,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/12558",
+          "metin_ozet": " ömür sürelerinin belirlenmesinde TRH 2010 Yaşam Tablosu’nun kullanılmasının uygun olacağına karar verilmiştir.\nÖte yandan Anayasa Mahkemesi'nin 17.07.2020 tarihli ve 2019/40 Esas, 2020/40 Karar sayılı kararıyla 2918 sayılı Karayolları Trafik Kanunu’nun 90 ıncı maddesindeki Zorunlu Mali Mesuliyet Si",
+          "metin": " ömür sürelerinin belirlenmesinde TRH 2010 Yaşam Tablosu’nun kullanılmasının uygun olacağına karar verilmiştir.\nÖte yandan Anayasa Mahkemesi'nin 17.07.2020 tarihli ve 2019/40 Esas, 2020/40 Karar sayılı kararıyla 2918 sayılı Karayolları Trafik Kanunu’nun 90 ıncı maddesindeki Zorunlu Mali Mesuliyet Sigortası (ZMMS) Genel Şartlar’a yapılan atıf hükmü iptal edilmiştir. Söz konusu iptal kararı sonrası, ZMSS Genel Şartlar ve ekindeki cetvellerle getirilen ve iş gücü kaybı tazminatının hesaplanmasında uygulama alanı bulan %1,8 teknik faiz ile devre başı ödemeli belirli süreli rant formülünün uygulanması artık mümkün değildir. Tazminatın, %1,8 teknik faiz uygulanmadan, Yargıtay'ın yerleşik uygulamaları ile kabul edilen Progresif Rant Formülü kullanılarak hesaplanması gerekir.\nSomut olayda; davacının hak kazanabileceği destekten yoksun kalma tazminatının hesaplanması için alınan 22.03.2022  tarihli  aktüer raporunda; TRH 2010 Yaşam Tablosu ve  progresif rant esasına göre ve davalının davadan önceki ödemesinin güncellenerek düşülmesi suretiyle  tazminat belirlenmiş, davacı bu hesaba göre dava değerini artırmış , Uyuşmazlık Hakem Heyetince işbu rapor hükme esas alınarak davanın kabulüne karar",
+          "skor": 0.0677,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/11920",
+          "metin_ozet": "e; bakıcı gideri olarak ödenecek bedelin net asgari ücret üzerinden belirlenmesine ilişkin hesaplama doğru değildir. Davacı ...’un bakıcı gideri için yapılacak hesaplamanın, kaza tarihinde yürürlükte olan brüt asgari ücret tutarı üzerinden yapılması gerektiği dikkate alınarak bu konuda bilirkişiden ",
+          "metin": "e; bakıcı gideri olarak ödenecek bedelin net asgari ücret üzerinden belirlenmesine ilişkin hesaplama doğru değildir. Davacı ...’un bakıcı gideri için yapılacak hesaplamanın, kaza tarihinde yürürlükte olan brüt asgari ücret tutarı üzerinden yapılması gerektiği dikkate alınarak bu konuda bilirkişiden ek rapor alınıp sonucuna göre karar verilmesi gerekirken, yazılı şekilde karar verilmesi isabetli değildir.... 6098 sayılı TBK.'nın 56. maddesi hükmüne göre, hakimin özel halleri göz önünde tutarak manevi zarar adı ile hak sahibine verilmesine karar vereceği bir para tutarı adalete uygun olmalıdır. Manevi tazminat, zarara uğrayanda, manevi huzuru gerçekleştirecek ve tazminata benzer bir fonksiyonu da olan özgün bir nitelik taşır. Manevi tazminat bir ceza olmadığı gibi, mamelek hukukuna ilişkin zararın karşılanmasını da amaç edinmemiştir. Zarar görenin zenginleşmemesi,  zarar  sorumlusunun  da  fakirleşmemesi  gerekmektedir. Takdir edilecek miktarın, mevcut halde elde edilmek istenen tatmin duygusunun etkisine ulaşmak için gerekli olan kadar olmalıdır. 22.06.1966 günlü ve 7/7 sayılı İçtihadı Birleştirme Kararı’nın gerekçesinde de takdir edilecek manevi tazminatın tutarını etkileyecek özel",
+          "skor": 0.0677,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "Yargıtay 21. Hukuk Dairesi - 2024/11450",
+          "metin_ozet": "Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketine karşı açmış olduğu maddi tazminat davasının KABULÜ İLE\n1-270.616,01 TL’nin kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tar",
+          "metin": "Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketine karşı açmış olduğu maddi tazminat davasının KABULÜ İLE\n1-270.616,01 TL’nin kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketinden alınarak davacı ...’e verilmesine, fazlaya ilişkin istemin REDDİNE,\nC-Davacıların davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketine karşı açmış olduğu manevi tazminat davasının ayrı ayrı KISMEN KABULÜ İLE KISMEN REDDİNE,\n1-40.000 TL manevi tazminatın kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketinden alınarak davacı ...’e verilmesine, fazlaya ilişkin talebin REDDİNE,\n2-10.000 TL manevi tazminatın kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ... Madencilik Hayvancılık Tarım Ürünleri Nakliyat Otomotiv Petrol Ürünleri Sanayi Ticaret Limited Şirketinden alınarak davacı ...’e verilmesine, fazlaya ilişkin talebin REDDİNE,\n3-7.500 TL manevi tazminatın kaza tarihi olan 28.02.2013 tarihinden itibaren işleyecek yasal faizi ile birlikte davalı ...",
+          "skor": 0.0676,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1184,
+      "ortalama_kaynak_skor": 0.0679,
+      "kaynak_sayisi": 5,
+      "message_id": "533436a1-cf9c-4ec2-a310-a2c84b26de17",
+      "conversation_id": "3b11b260-718c-455b-9efd-5e73bbac43db",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.99,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Haksız şart nedir?",
+      "cevap": "Haksız şart, bir sözleşmede yer alan ve bir tarafın diğer tarafa karşı haksız bir avantaj veya dezavantaj sağlayan hükümlerdir. Türk hukukunda, haksız şartlar genellikle tüketici sözleşmelerinde karşılaşılan bir kavramdır. Tüketicinin korunması amacıyla, haksız şartlar içeren sözleşmelerde, tüketici lehine hükümler uygulanabilir.\n\nAncak, verilen kaynaklar arasında haksız şart ile ilgili bir madde bulunmamaktadır. Bu nedenle, haksız şart kavramı hakkında daha详lı bilgi verilememektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0335,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 698",
+          "metin_ozet": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabil",
+          "metin": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabilir.\nTaşınmazlarda paylı mülkiyetin devamına ilişkin sözleşmeler, resmî şekle bağlıdır ve tapu\nkütüğüne şerh verilebilir.\nUygun olmayan zamanda paylaşma isteminde bulunulamaz.\nb. Paylaşma biçimi",
+          "skor": 0.0317,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.0276,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.0247,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 8",
+          "metin_ozet": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvuran",
+          "metin": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvurana bildirilir.\nGizli bilgileri ayırarak bilgi veya belge verme",
+          "skor": 0.0247,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 693,
+      "ortalama_kaynak_skor": 0.0284,
+      "kaynak_sayisi": 5,
+      "message_id": "e29fd350-c3dd-4a67-adfa-d61171658f95",
+      "conversation_id": "70051806-9ba8-453f-b501-b8eb66582973",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.25,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Satıcı ve sağlayıcının sorumluluğu nedir?",
+      "cevap": "Satıcı ve sağlayıcının sorumluluğu, tüketici hukuku kapsamında düzenlenmiştir. Ancak, verilen kaynaklar bu konuya ilişkin yeterli bilgi sağlamamaktadır. \n\nTüketici hukukuna ilişkin düzenlemeler, genellikle 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da yer almaktadır. Bu kanun, satıcı ve sağlayıcının sorumluluğuna ilişkin hükümler içermektedir. Örneğin, kanun, satıcı ve sağlayıcının tüketiciye karşı sorumluluğunu, özellikle hizmetlerin ve malların teslimi, garanti ve benzeri konularda düzenlemektedir.\n\nAncak, verilen kaynaklar arasında bu konuya ilişkin bir bilgi bulunmamaktadır. Kaynaklar, daha çok Yargıtay kararlarına ve Bilgi Edinme Hakkı Kanunu ile Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'na ilişkin hükümleri içermektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.0811,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.0742,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 8",
+          "metin_ozet": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvuran",
+          "metin": "Madde 8- Kurum ve kuruluşlarca yayımlanmış veya yayın, broşür, ilân ve benzeri\nyollarla kamuya açıklanmış bilgi veya belgeler, bilgi edinme başvurularına konu olamaz.\nAncak, yayımlanmış veya kamuya açıklanmış bilgi veya belgelerin ne şekilde, ne zaman ve\nnerede yayımlandığı veya açıklandığı başvurana bildirilir.\nGizli bilgileri ayırarak bilgi veya belge verme",
+          "skor": 0.0703,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 108 - Fıkra 2",
+          "metin_ozet": "d) Diğer hükümleri 2008 yılı Ekim ayı başında, yürürlüğe girer.",
+          "metin": "d) Diğer hükümleri 2008 yılı Ekim ayı başında, yürürlüğe girer.",
+          "skor": 0.0665,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2339",
+          "metin_ozet": "lmıyorum.",
+          "metin": "lmıyorum.",
+          "skor": 0.0663,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 955,
+      "ortalama_kaynak_skor": 0.0717,
+      "kaynak_sayisi": 5,
+      "message_id": "6c4aa8fe-b3b0-443f-9cf5-dbff547bb25f",
+      "conversation_id": "97456abc-0b64-48a9-862e-efb6079fd710",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.67,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tüketici kredisi nedir?",
+      "cevap": "Tüketici kredisi, bir tüketicinin belirli bir mal veya hizmetin satın alınmasına yönelik olarak bir kredi kuruluşundan aldığı borçtur. Bu krediler genellikle faizli olarak verilir ve tüketicinin belirli bir süre içinde geri ödemesi gerekir.\n\nVerilen kaynaklar arasında tüketici kredisi ile ilgili bir madde bulunmamaktadır. Ancak, 4721 Sayılı Türk Medeni Kanunu'nun 345. maddesinde, çocuğun borç altına girebilmesi için bir kayyımın katılmasına ve hâkimin onayına bağlı olduğu belirtilmiştir. Bu, tüketici kredisi ile doğrudan ilgili olmasa da, borç altına girme konusuna değinmektedir.\n\nTüketici kredisi ile ilgili daha详lı bilgi için ilgili kanun ve düzenlemelere bakmak gerekir. Örneğin, 6362 Sayılı Sermaye Piyasası Kanunu veya 5464 Sayılı Banka Kartları ve Kredili Kartlar Kanunu gibi kanunlar tüketici kredileri ile ilgili hükümler içerebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "metin": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "skor": 0.0519,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 37",
+          "metin_ozet": "MADDE 37- (1) Hâkim, reddini gerektiren sebeplerden biri varken bizzat çekilmezse,\niki taraftan biri ret talebinde bulununcaya kadar davaya bakabilir.\nRet usulü",
+          "metin": "MADDE 37- (1) Hâkim, reddini gerektiren sebeplerden biri varken bizzat çekilmezse,\niki taraftan biri ret talebinde bulununcaya kadar davaya bakabilir.\nRet usulü",
+          "skor": 0.0511,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 345",
+          "metin_ozet": "Madde 345- Çocuk ile ana veya baba arasında ya da ana ve babanın menfaatine olarak\nçocuk ile üçüncü kişi arasında yapılacak bir hukukî işlemle çocuğun borç altına girebilmesi, bir\nkayyımın katılmasına ve hâkimin onayına bağlıdır.\nC. Çocuğun korunması\nI. Koruma önlemleri",
+          "metin": "Madde 345- Çocuk ile ana veya baba arasında ya da ana ve babanın menfaatine olarak\nçocuk ile üçüncü kişi arasında yapılacak bir hukukî işlemle çocuğun borç altına girebilmesi, bir\nkayyımın katılmasına ve hâkimin onayına bağlıdır.\nC. Çocuğun korunması\nI. Koruma önlemleri",
+          "skor": 0.0508,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 309",
+          "metin_ozet": "Madde 309- Evlât edinme, küçüğün ana ve babasının rızasını gerektirir.\nRıza, küçüğün veya ana ve babasının oturdukları yer mahkemesinde sözlü veya yazılı\nolarak açıklanarak tutanağa geçirilir.\nVerilen rıza, evlât edinenlerin adları belirtilmemiş veya evlât edinenler henüz belirlenmemiş\nolsa dahi geç",
+          "metin": "Madde 309- Evlât edinme, küçüğün ana ve babasının rızasını gerektirir.\nRıza, küçüğün veya ana ve babasının oturdukları yer mahkemesinde sözlü veya yazılı\nolarak açıklanarak tutanağa geçirilir.\nVerilen rıza, evlât edinenlerin adları belirtilmemiş veya evlât edinenler henüz belirlenmemiş\nolsa dahi geçerlidir.\n2. Zamanı",
+          "skor": 0.0489,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 245",
+          "metin_ozet": "Madde 245- Belirli bir malın eşlerden birine ait olduğunu iddia eden kimse, iddiasını\nispat etmekle yükümlüdür.\nEşlerden hangisine ait olduğu ispat edilemeyen mallar onların paylı mülkiyetinde sayılır.\nB. Borçlardan sorumluluk",
+          "metin": "Madde 245- Belirli bir malın eşlerden birine ait olduğunu iddia eden kimse, iddiasını\nispat etmekle yükümlüdür.\nEşlerden hangisine ait olduğu ispat edilemeyen mallar onların paylı mülkiyetinde sayılır.\nB. Borçlardan sorumluluk",
+          "skor": 0.0479,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1052,
+      "ortalama_kaynak_skor": 0.0501,
+      "kaynak_sayisi": 5,
+      "message_id": "2824d504-c4da-44e5-b941-10d93d74e344",
+      "conversation_id": "24836e26-895e-409b-9e38-2c79adff3f4a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.71,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

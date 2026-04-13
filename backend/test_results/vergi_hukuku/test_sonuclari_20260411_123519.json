@@ -1,0 +1,651 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-11T12:38:54.510482+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 12.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/vergi_hukuku/test_sonuclari_20260411_123519.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 10,
+    "basarisiz": 2,
+    "basari_orani": 83.3,
+    "toplam_sure_sn": 215.1,
+    "ortalama_sure_sn": 17.93,
+    "kategori_dagilimi": {
+      "Vergi Hukuku": {
+        "toplam": 12,
+        "basarili": 10,
+        "basarisiz": 2,
+        "basari_orani": 83.3,
+        "ortalama_sure_sn": 7.0,
+        "kategori_dogruluk_orani": 70.0,
+        "ortalama_cevap_uzunluk": 1160.0,
+        "ortalama_kaynak_skor": 0.0811
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Verginin unsurları nelerdir?",
+      "cevap": "Verginin unsurları, Türk vergi hukukunda verginin oluşumunu ve hesaplanmasını belirleyen temel bileşenlerdir. Bu unsurlar, genellikle Vergi Usul Kanunu'nda (VUK) ve diğer ilgili vergi kanunlarında tanımlanmıştır. Verginin unsurları genel olarak aşağıdaki gibi sıralanabilir:\n\n1. **Vergi Konusu (Vergi Matrahı)**: Vergiye tabi olan değer veya miktar. Örneğin, gelir vergisinde gelir, kurumlar vergisinde kurum kazancı, katma değer vergisinde mal ve hizmetlerin teslimi veya ithalatı.\n2. **Vergi Oranı (Vergi Tarifesi)**: Vergi konusu üzerinden alınan verginin oranı. Vergi oranları kanunlarla belirlenir ve farklı vergi türleri için farklı oranlar uygulanabilir.\n3. **Vergi Dönemi**: Verginin hesaplandığı ve ödenmesi gereken süre. Vergi dönemleri yıllık, aylık, üç aylık gibi farklı süreler olabilir.\n4. **Vergi Yönetimi**: Vergilerin tahakkuk ettirilmesi, ödenmesi ve denetlenmesiyle ilgili işlemleri yürüten kurum veya makamlar. Türkiye'de Gelir İdaresi Başkanlığı, vergi yönetimini yürütür.\n\nBu soru için verilen kaynaklar (Kaynak 1-5) doğrudan verginin unsurlarıyla ilgili değildir. Kaynaklar, Fikir ve Sanat Eserleri Kanunu, Devlet Memurları Kanunu ve Türk Borçlar Kanunu'na ait maddeleri içerir. Dolayısıyla, bu kaynaklar verginin unsurlarının açıklanmasına doğrudan katkıda bulunmaz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.1016,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.096,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 41",
+          "metin_ozet": "MADDE 41- Başkası adına ve hesabına temsil kamu hukukundan doğmuşsa, temsil yetkisinin içeriği ve derecesi bu konudaki yasal hükümlere; temsil hukuksal bir işlemden doğmuşsa, temsil yetkisinin içeriği ve derecesi o hukuksal işleme göre belirlenir. Temsil yetkisi üçüncü kişilere bildirilmişse temsil ",
+          "metin": "MADDE 41- Başkası adına ve hesabına temsil kamu hukukundan doğmuşsa, temsil yetkisinin içeriği ve derecesi bu konudaki yasal hükümlere; temsil hukuksal bir işlemden doğmuşsa, temsil yetkisinin içeriği ve derecesi o hukuksal işleme göre belirlenir. Temsil yetkisi üçüncü kişilere bildirilmişse temsil yetkisinin içeriği ve derecesi, bu bildirime göre belirlenir.",
+          "skor": 0.096,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 389",
+          "metin_ozet": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "metin": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "skor": 0.0909,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 183",
+          "metin_ozet": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırıl",
+          "metin": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırılmış bulunduğu savunmasını ileri süremez.",
+          "skor": 0.0902,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1494,
+      "ortalama_kaynak_skor": 0.0949,
+      "kaynak_sayisi": 5,
+      "message_id": "b575e322-8161-47e3-b79c-7e2acb79ffcc",
+      "conversation_id": "29f00f88-f46d-4222-ba6a-bc680ffe4743",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.6,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi sorumlusu ile vergi mükellefi arasındaki fark nedir?",
+      "cevap": "Vergi sorumlusu ve vergi mükellefi arasındaki fark, Türk vergi hukukunda önemli bir konudur. Vergi mükellefi, vergi kanunlarına göre vergi ödemekle yükümlü olan gerçek veya tüzel kişidir. Diğer bir ifadeyle, vergi mükellefi, vergi yükümlülüğü altında bulunan kişidir.\n\nVergi sorumlusu ise, vergi kanunlarına göre verginin ödenmesinden sorumlu tutulan kişidir. Vergi sorumlusu, vergi mükellefinin yerine vergi ödemeni üstlenen veya vergi mükellefinin vergi yükümlülüğünü yerine getirmeyen durumlarda verginin ödenmesinden sorumlu olan kişidir.\n\nÖrneğin, bir işveren, çalışanlarının ücretlerinden vergi kesintisi yapmak ve bu vergileri devlet hesabına ödemekle yükümlüdür. Bu durumda, işveren vergi sorumlusu olarak kabul edilir. Eğer işveren, vergi kesintilerini zamanında ödemeyecek olursa, vergi dairesi işverene karşı vergi sorumlusu olarak hareket edebilir.\n\nBu konuyla ilgili olarak, vergi hukuku kaynaklarında vergi mükellefi ve vergi sorumlusu arasındaki farka ilişkin açıklamalar bulunmakla birlikte, verilen kaynaklar bu konuya ilişkin bilgi içermediğinden, daha详细 bilgi için ilgili vergi mevzuatına ve Türk vergi hukuku kaynaklarına başvurmak gerekecektir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6961",
+          "metin_ozet": "r bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve et",
+          "metin": "r bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve etkileri, ilgili kişinin daha önceki davranışları, bilgilerin elde edilme koşulları ve gerçekliği ile uygulanan yaptırımın niteliği (AYM; Kemal Kılıçdaroğlu (3), B. No: 2015/1220, 18/7/2018).\nDosya kapsamından, dava dışı Cumhurbaşkanı Recep Tayyip Erdoğan'ın Rize'de yapmış olduğu konuşmaya atfen dava konusu 11.05.2015 tarihli haberin yapıldığı, Cumhurbaşkanının konuşmasında davacının ismi geçmemiş ise de davacının Sözcü Gazetesinde 01.03.2013 tarihinde kaleme aldığı köşe yazısında, konuşmada ismi geçen kişinin kendisi olduğuna dair söz ve ifadelere yer verdiği, kamuoyunda da bu şekilde oluşan kanı üzerine dava konusu haberin yapıldığı, bu anlamda dava konusu haberin tarihi dikkate alındığında Dairemizin 25.12.2017 tarihli ve 2016/1499 E., 2017/8637 K. sayılı kararında da belirtildiği gibi haberin bu yazıdan esinlenerek kaleme alındığı, dava konusu yayının basın ve ifade özgürlüğü kapsamınd",
+          "skor": 0.0904,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2380",
+          "metin_ozet": "anlamda işletme, genel olarak, iktisadi bir amacın gerçekleştirilmesi için aynı işverene ait bir veya birden fazla işyerinin örgütlenmesi ile oluşmuş ünite olarak tanımlanabilirse de (Kübra ... Yenisey, s.32) toplu iş hukuku anlamında işletme kavramı farklı bir nitelik arz etmektedir. 6356 sayılı Ka",
+          "metin": "anlamda işletme, genel olarak, iktisadi bir amacın gerçekleştirilmesi için aynı işverene ait bir veya birden fazla işyerinin örgütlenmesi ile oluşmuş ünite olarak tanımlanabilirse de (Kübra ... Yenisey, s.32) toplu iş hukuku anlamında işletme kavramı farklı bir nitelik arz etmektedir. 6356 sayılı Kanun'un 2 ve 34. maddeleri birlikte değerlendirildiğinde; Kanun'daki işletme deyiminin, gerçek anlamdaki işletmeyle ilgisi bulunmadığı, “bir işverenin aynı işkolundaki birden çok işyerini” ifade etmek için kullanıldığı anlaşılmaktadır (... Canbolat, s.126). Bu itibarla bir toplu iş sözleşmesi birimi olarak işletme niteliğinin varlığını tespit için işveren kavramı en önemli  unsur olup ancak aynı işverene ait aynı işkolunda yer alan birden fazla işyeri, işletme olarak nitelendirilebilecektir.\nDosya kapsamındaki bilgi ve belgelere göre, yetki tespitine esas alınan ve Ankara'da yer alan işyeri Goethe-İnstitut /Alman Kültür Merkezi işverenine ait olduğu gibi (0023532) sicil numaralı İzmir'de yer alan işyeri ile (0680651) sicil numaralı İstanbul'da bulunan işyeri de aynı işverene ait olup işyerleri aynı işkolunda yer almaktadır. Yukarıda ayrıntılı olarak açıklandığı üzere, aynı işverene ait ay",
+          "skor": 0.0875,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6959",
+          "metin_ozet": "rak değerlendirilemez. Bunu ancak davanın bütününe bakarak anlayabiliriz.\nBu tür davalarda mahkemece yapılması gereken; kamuya mal olmuş kişilerin şöhret ve itibarı ile ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somut olay b",
+          "metin": "rak değerlendirilemez. Bunu ancak davanın bütününe bakarak anlayabiliriz.\nBu tür davalarda mahkemece yapılması gereken; kamuya mal olmuş kişilerin şöhret ve itibarı ile ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve etkileri, ilgili kişinin daha önceki davranışları, bilgilerin elde edilme koşulları ve gerçekliği ile uygulanan yaptırımın niteliği (AYM; Kemal Kılıçdaroğlu (3), B. No: 2015/1220, 18/7/2018).\nBu açıklamalar ışığında tarafların karşılıklı iddia ve savunmalarına, dayandıkları belgelere, uyuşmazlığa uygulanması gereken hukuk kuralları ile hukuki ilişkinin nitelendirilmesine, dava şartlarına, yargılama ve ispat kuralları ile kararda belirtilen gerekçelere; davalı tarafından, davacının bir takım ifadelerine cevaben 19.11.2018 tarihinde FOX TV'de yayınlanan röportajında kullanılan \" rezil\" kelimesinin davacının şahsına",
+          "skor": 0.0861,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6962",
+          "metin_ozet": " ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, topl",
+          "metin": " ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve etkileri, ilgili kişinin daha önceki davranışları, bilgilerin elde edilme koşulları ve gerçekliği ile uygulanan yaptırımın niteliği (AYM; Kemal Kılıçdaroğlu (3), B. No: 2015/1220, 18.7.2018).\nDosya kapsamından, dava dışı Cumhurbaşkanı Recep Tayyip Erdoğan'ın Rize'de yapmış olduğu konuşmaya atfen dava konusu 11.05.2015 tarihli haberin yapıldığı, Cumhurbaşkanının konuşmasında davacının ismi geçmemiş ise de davacının Sözcü Gazetesinde 01.03.2013 tarihinde kaleme aldığı köşe yazısında, konuşmada ismi geçen kişinin kendisi olduğuna dair söz ve ifadelere yer verdiği, kamuoyunda da bu şekilde oluşan kanı üzerine dava konusu haberin yapıldığı, bu anlamda dava konusu haberin tarihi dikkate alındığında Dairemizin 25.12.2017 tarihli ve 2016/7702 E., 2017/8639 K. sayılı kararında da belirt",
+          "skor": 0.0847,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2106",
+          "metin_ozet": "lup olmadığı yahut işletme niteliğinde olup olmadığı hususu duraksamaya yer vermeyecek şekilde tespit edilmediğinden, yapılan araştırma eksik  olup  hüküm kurmaya yeterli bulunmamaktadır.\nBu noktada bir toplu iş sözleşmesi ünitesi olarak işyeri ve işletme kavramlarının açıklanması faydalı olacaktır.",
+          "metin": "lup olmadığı yahut işletme niteliğinde olup olmadığı hususu duraksamaya yer vermeyecek şekilde tespit edilmediğinden, yapılan araştırma eksik  olup  hüküm kurmaya yeterli bulunmamaktadır.\nBu noktada bir toplu iş sözleşmesi ünitesi olarak işyeri ve işletme kavramlarının açıklanması faydalı olacaktır. 6356 sayılı Kanun'un 2/3 hükmünde işyeri kavramı yönünden 4857 sayılı İş Kanunu'na (4857 sayılı Kanun) atıf yapılmıştır. 4857 sayılı Kanun'un 2. maddesinin gerekçesinde işyeri, teknik bir amaca, diğer bir deyişle mal ve hizmet üretimine yönelik ve değişik unsurlardan meydana gelen bir birim olarak belirtilmiştir. İşyerinin sınırlarının saptanmasında işyerine bağlı yerler ile eklentiler ve araçların bir birim kapsamında oldukları belirtildikten sonra, özellikle bir işyerinin mal ve hizmet üretimi için ayrı bir alanı da kullanması hâlinde bunların tek işyeri mi yoksa birbirinden bağımsız işyerleri mi sayılacağı konusunda amaçta birlik yani aynı teknik amaca bağlı olarak üretimde bulunma, nitelik yönünden bağlılık ve yönetimde birlik yani aynı yönetim altında örgütlenmiş olma şartlarının aranacağı düzenlenmiştir. Öte yandan, teknolojik ve ekonomik gelişmeler doğrultusunda bir işyeri çerçev",
+          "skor": 0.082,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1369,
+      "ortalama_kaynak_skor": 0.0861,
+      "kaynak_sayisi": 5,
+      "message_id": "71ba2249-9ce1-4dba-8243-cc9d28118bfc",
+      "conversation_id": "bc695eab-cc6c-49ac-8474-19b5ddc80552",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.25,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi doğuran olay nedir?",
+      "cevap": "Vergi doğuran olay, bir vergi yükümlülüğünün ortaya çıkmasına neden olan olay veya durumdur. Ancak, verilen kaynaklar arasında vergi doğuran olay ile ilgili bir tanım veya açıklama bulunmamaktadır. Kaynaklar, daha çok sosyal sigortalar, bankacılık, devlet memurları ve fikir ve sanat eserleri ile ilgili konulara ilişkindir.\n\nBu nedenle, vergi doğuran olay ile ilgili bilgi verilememektedir. Vergi doğuran olay, Vergi Usul Kanunu veya diğer vergi kanunlarında tanımlanmıştır, ancak bu kaynaklar arasında bu bilgiye ulaşılamamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0903,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.0879,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 34",
+          "metin_ozet": "Madde 34 — Bu Kanun ve bu Kanuna istinaden çıkarılan düzenlemelerde öngörülen\ndeğerlemeler ve derecelendirmeler, Kurulca belirlenecek usûl ve esaslar çerçevesinde, değerleme\nve derecelendirme kuruluşlarına yaptırılır.\nDestek hizmeti kuruluşları",
+          "metin": "Madde 34 — Bu Kanun ve bu Kanuna istinaden çıkarılan düzenlemelerde öngörülen\ndeğerlemeler ve derecelendirmeler, Kurulca belirlenecek usûl ve esaslar çerçevesinde, değerleme\nve derecelendirme kuruluşlarına yaptırılır.\nDestek hizmeti kuruluşları",
+          "skor": 0.0834,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 100 - Fıkra 1",
+          "metin_ozet": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapı",
+          "metin": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapılacak protokoller çerçevesinde, Devletin güvenliği ve temel dış yararlarına karşı ağır sonuçlar doğuracak hâller ile özel hayat ve aile hayatının gizliliği ve savunma hakkına ilişkin hükümler saklı kalmak kaydıyla özel kanunlardaki yasaklayıcı ve sınırlayıcı hükümler dikkate alınmaksızın gizli dahi olsa Kurum tarafından kişilerin sosyal güvenliğinin sağlanması, 6183 sayılı Kanuna göre Kurum alacaklarının takip ve tahsili ile bu Kanun kapsamında verilen diğer görevler ile sınırlı olmak üzere istenecek her türlü bilgi ve belgeyi sürekli ve/veya belli aralıklarla vermeye, bilgilerin elektronik ortamda görüntülenmesini sağlamaya, görüntülenen bu bilgilerin güvenliğini sağlamaya, muhafaza etmek zorunda oldukları her türlü belge ile vermek zorunda oldukları bilgilere ilişkin mikrofiş, mikrofilm, manyetik teyp,",
+          "skor": 0.0819,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 16 - Fıkra 1",
+          "metin_ozet": "EK MADDE 16 – (Ek: 21/3/2018-7103/69 md.) Vakıflar tarafından kurulan yükseköğretim kurumları, okul aile birlikleri ile bu Kanunun 73 üncü maddesine göre Kurumun yurt içinde hizmet satın aldığı vakıf üniversiteleri ve özel sektör işyerleri; bu Kanun, 4447 sayılı Kanun, 4857 sayılı Kanun, 28/2/2008 t",
+          "metin": "EK MADDE 16 – (Ek: 21/3/2018-7103/69 md.) Vakıflar tarafından kurulan yükseköğretim kurumları, okul aile birlikleri ile bu Kanunun 73 üncü maddesine göre Kurumun yurt içinde hizmet satın aldığı vakıf üniversiteleri ve özel sektör işyerleri; bu Kanun, 4447 sayılı Kanun, 4857 sayılı Kanun, 28/2/2008 tarihli ve 5746 sayılı Araştırma, Geliştirme ve Tasarım Faaliyetlerinin Desteklenmesi Hakkında Kanun, 14/7/2004 tarihli ve 5225 sayılı Kültür Yatırımları ve Girişimlerini Teşvik Kanunu, 3294 sayılı Kanun, 2828 sayılı Kanun ve diğer kanunlarda yer alan prim teşviki, destek ve indirimlerinden yararlanır. Bu maddenin yürürlüğe girdiği tarihe kadar olan dönemlerde vakıflar tarafından kurulan yükseköğretim kurumları, okul aile birlikleri ve bu Kanunun 73 üncü maddesine göre Kurumun yurt içinde hizmet satın aldığı vakıf üniversiteleri ve özel sektör işyerleri tarafından, bu Kanun, 4447 sayılı Kanun, 4857 sayılı Kanun, 5746 sayılı Kanun, 5225 sayılı Kanun, 3294 sayılı Kanun ve 2828 sayılı Kanun uyarınca yararlanılan prim teşviki, destek ve indirimlerinden usulüne uygun olarak yararlanılmış sayılır.",
+          "skor": 0.0789,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 737,
+      "ortalama_kaynak_skor": 0.0845,
+      "kaynak_sayisi": 5,
+      "message_id": "aea4983d-3b37-4929-8698-005d2a4f825a",
+      "conversation_id": "bd60b759-49a2-4cbf-83a9-a426a0cd5e68",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.51,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi türleri nelerdir? (Gelir, servet, harcama)",
+      "cevap": "Vergi türleri, genellikle gelir, servet ve harcama vergileri olarak sınıflandırılır. \n\nGelir vergileri, bireylerin veya işletmelerin elde ettikleri gelirden alınan vergilerdir. Türkiye'de gelir vergisi, Gelir Vergisi Kanunu'na göre düzenlenmektedir. \n\nServet vergileri, bireylerin veya işletmelerin sahip oldukları servet üzerinden alınan vergilerdir. Türkiye'de servet vergisi, Vergi Usul Kanunu'na göre düzenlenmektedir. \n\nHarcama vergileri, bireylerin veya işletmelerin yaptıkları harcamalar üzerinden alınan vergilerdir. Türkiye'de harcama vergileri, Katma Değer Vergisi Kanunu'na göre düzenlenmektedir.\n\nAncak, verilen kaynaklar arasında vergi türleri ile ilgili bir bilgi bulunmamaktadır. Vergi türleri ile ilgili daha detaylı bilgi için Gelir Vergisi Kanunu, Vergi Usul Kanunu ve Katma Değer Vergisi Kanunu gibi ilgili kanunlara başvurmak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0924,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 16 - Fıkra 1",
+          "metin_ozet": "EK MADDE 16 – (Ek: 21/3/2018-7103/69 md.) Vakıflar tarafından kurulan yükseköğretim kurumları, okul aile birlikleri ile bu Kanunun 73 üncü maddesine göre Kurumun yurt içinde hizmet satın aldığı vakıf üniversiteleri ve özel sektör işyerleri; bu Kanun, 4447 sayılı Kanun, 4857 sayılı Kanun, 28/2/2008 t",
+          "metin": "EK MADDE 16 – (Ek: 21/3/2018-7103/69 md.) Vakıflar tarafından kurulan yükseköğretim kurumları, okul aile birlikleri ile bu Kanunun 73 üncü maddesine göre Kurumun yurt içinde hizmet satın aldığı vakıf üniversiteleri ve özel sektör işyerleri; bu Kanun, 4447 sayılı Kanun, 4857 sayılı Kanun, 28/2/2008 tarihli ve 5746 sayılı Araştırma, Geliştirme ve Tasarım Faaliyetlerinin Desteklenmesi Hakkında Kanun, 14/7/2004 tarihli ve 5225 sayılı Kültür Yatırımları ve Girişimlerini Teşvik Kanunu, 3294 sayılı Kanun, 2828 sayılı Kanun ve diğer kanunlarda yer alan prim teşviki, destek ve indirimlerinden yararlanır. Bu maddenin yürürlüğe girdiği tarihe kadar olan dönemlerde vakıflar tarafından kurulan yükseköğretim kurumları, okul aile birlikleri ve bu Kanunun 73 üncü maddesine göre Kurumun yurt içinde hizmet satın aldığı vakıf üniversiteleri ve özel sektör işyerleri tarafından, bu Kanun, 4447 sayılı Kanun, 4857 sayılı Kanun, 5746 sayılı Kanun, 5225 sayılı Kanun, 3294 sayılı Kanun ve 2828 sayılı Kanun uyarınca yararlanılan prim teşviki, destek ve indirimlerinden usulüne uygun olarak yararlanılmış sayılır.",
+          "skor": 0.0877,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 100 - Fıkra 1",
+          "metin_ozet": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapı",
+          "metin": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapılacak protokoller çerçevesinde, Devletin güvenliği ve temel dış yararlarına karşı ağır sonuçlar doğuracak hâller ile özel hayat ve aile hayatının gizliliği ve savunma hakkına ilişkin hükümler saklı kalmak kaydıyla özel kanunlardaki yasaklayıcı ve sınırlayıcı hükümler dikkate alınmaksızın gizli dahi olsa Kurum tarafından kişilerin sosyal güvenliğinin sağlanması, 6183 sayılı Kanuna göre Kurum alacaklarının takip ve tahsili ile bu Kanun kapsamında verilen diğer görevler ile sınırlı olmak üzere istenecek her türlü bilgi ve belgeyi sürekli ve/veya belli aralıklarla vermeye, bilgilerin elektronik ortamda görüntülenmesini sağlamaya, görüntülenen bu bilgilerin güvenliğini sağlamaya, muhafaza etmek zorunda oldukları her türlü belge ile vermek zorunda oldukları bilgilere ilişkin mikrofiş, mikrofilm, manyetik teyp,",
+          "skor": 0.0846,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 34",
+          "metin_ozet": "Madde 34 — Bu Kanun ve bu Kanuna istinaden çıkarılan düzenlemelerde öngörülen\ndeğerlemeler ve derecelendirmeler, Kurulca belirlenecek usûl ve esaslar çerçevesinde, değerleme\nve derecelendirme kuruluşlarına yaptırılır.\nDestek hizmeti kuruluşları",
+          "metin": "Madde 34 — Bu Kanun ve bu Kanuna istinaden çıkarılan düzenlemelerde öngörülen\ndeğerlemeler ve derecelendirmeler, Kurulca belirlenecek usûl ve esaslar çerçevesinde, değerleme\nve derecelendirme kuruluşlarına yaptırılır.\nDestek hizmeti kuruluşları",
+          "skor": 0.0804,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 31",
+          "metin_ozet": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsa",
+          "metin": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsağlığın korunması sebepleri dışında, halkın bu araçlarla haber almasını, düşünce ve kanaatlere\nulaşmasını ve kamuoyunun serbestçe oluşmasını engelleyici kayıtlar koyamaz.\nE. Düzeltme ve cevap hakkı",
+          "skor": 0.0768,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1064,
+      "ortalama_kaynak_skor": 0.0844,
+      "kaynak_sayisi": 5,
+      "message_id": "46f0e38d-1098-4f57-85c6-f488bef1bdc9",
+      "conversation_id": "a01d908e-1f2f-4113-82d1-ea79eeb5ab3e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.73,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergilendirme süreci aşamaları nelerdir?",
+      "cevap": "Vergilendirme süreci aşamaları hakkında verilen kaynaklar yetersizdir. Kaynaklar arasında vergi mevzuatına ilişkin herhangi bir bilgi bulunmamaktadır. Vergilendirme süreci aşamaları, genellikle Vergi Usul Kanunu ve diğer ilgili mevzuatta düzenlenmektedir. Ancak, verilen kaynaklar arasında bu konuya ilişkin herhangi bir bilgi bulunmamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0672,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 34",
+          "metin_ozet": "Madde 34 — Bu Kanun ve bu Kanuna istinaden çıkarılan düzenlemelerde öngörülen\ndeğerlemeler ve derecelendirmeler, Kurulca belirlenecek usûl ve esaslar çerçevesinde, değerleme\nve derecelendirme kuruluşlarına yaptırılır.\nDestek hizmeti kuruluşları",
+          "metin": "Madde 34 — Bu Kanun ve bu Kanuna istinaden çıkarılan düzenlemelerde öngörülen\ndeğerlemeler ve derecelendirmeler, Kurulca belirlenecek usûl ve esaslar çerçevesinde, değerleme\nve derecelendirme kuruluşlarına yaptırılır.\nDestek hizmeti kuruluşları",
+          "skor": 0.0632,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.0627,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 2 - Fıkra 2",
+          "metin_ozet": "bu Kanunun yürürlük tarihinden sonraki prim ödeme gün sayısına orantılı bölümü kadardır.",
+          "metin": "bu Kanunun yürürlük tarihinden sonraki prim ödeme gün sayısına orantılı bölümü kadardır.",
+          "skor": 0.0544,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 37",
+          "metin_ozet": "MADDE 37- (1) Hâkim, reddini gerektiren sebeplerden biri varken bizzat çekilmezse,\niki taraftan biri ret talebinde bulununcaya kadar davaya bakabilir.\nRet usulü",
+          "metin": "MADDE 37- (1) Hâkim, reddini gerektiren sebeplerden biri varken bizzat çekilmezse,\niki taraftan biri ret talebinde bulununcaya kadar davaya bakabilir.\nRet usulü",
+          "skor": 0.054,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 547,
+      "ortalama_kaynak_skor": 0.0603,
+      "kaynak_sayisi": 5,
+      "message_id": "99ae0286-29a9-40e4-9e5c-b640a45d2022",
+      "conversation_id": "b9a121d4-d710-46cc-a390-3e9454ab0237",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.31,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Tarh, tebliğ ve tahakkuk ne demektir?",
+      "cevap": "Tarh, tebliğ ve tahakkuk vergi hukukunda kullanılan terimlerdir. \n\n- Tarh: Vergi tarhi, vergi mükellefinin vergi dairesine verdiği bilgi ve belgeler esas alınarak, vergi dairesi tarafından yapılan vergi hesaplanması ve tahakkuk ettirilmesidir. \n- Tebliğ: Vergi tarhiyatının mükellefe bildirilmesine tebliğ denir. \n- Tahakkuk: Vergi tarhiyatının kesinleşerek ödenmesi gereken hale gelmesine tahakkuk denir.\n\nBu tanımlar, Türk vergi hukukuna göre yapılmıştır. Ancak, verilen kaynaklar bu tanımları desteklememektedir. Kaynaklar, daha çok iş hukuku ve asıl işveren-alt işveren ilişkileri ile ilgili kararları içermektedir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/1999",
+          "metin_ozet": "da tarafların hukuk seçimi konusunda anlaşmamış olmaları durumunda uyuşmazlığa uygulanacak olan hukukun Türk hukuku olarak zımnen seçilmiş olduğunun kabulü gerekir. Buna göre somut uyuşmazlığa Türk hukukunun uygulanmasında bir isabetsizlik bulunmamaktadır.\n1. Tarafların iddia, savunma ve dayandıklar",
+          "metin": "da tarafların hukuk seçimi konusunda anlaşmamış olmaları durumunda uyuşmazlığa uygulanacak olan hukukun Türk hukuku olarak zımnen seçilmiş olduğunun kabulü gerekir. Buna göre somut uyuşmazlığa Türk hukukunun uygulanmasında bir isabetsizlik bulunmamaktadır.\n1. Tarafların iddia, savunma ve dayandıkları belgelere, uyuşmazlığın hukuki nitelendirilmesi ile uygulanması gereken hukuk kurallarına, dava şartlarına, yargılamaya hâkim olan ilkelere, ispat kurallarına ve temyiz olunan kararda belirtilen gerekçelere göre davalı vekilinin aşağıdaki paragrafların kapsamı dışındaki temyiz itirazları yerinde görülmemiştir.\n2. Somut uyuşmazlığa Türk hukuku uygulanmıştır. 4857 sayılı İş Kanunu'nun 46. maddesine göre hafta tatili; yedi günlük bir zaman dilimi içinde kesintisiz en az yirmi dört saatlik dinlenmedir. Aynı Kanun'un 63. maddesinde genel bakımdan çalışma süresinin haftada en çok kırk beş saat olduğu nispi emredici şekilde düzenlenmiş; 41. maddesinde ise Kanun'da yazılı koşullar çerçevesinde, haftalık kırk beş saati aşan çalışmanın fazla çalışma olduğu belirtilmiştir.\nDavacı ile davalı işveren arasında imzalanan iş sözleşmesinin eki niteliğindeki bilgi formunda çalışma süresi \"30 gün*8 saat\"",
+          "skor": 0.0593,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7734",
+          "metin_ozet": "nceki ihale sözleşmelerinin muvazaalı olması, sonrakilerin de aynı şekilde muvazaaya dayandığını göstermez. Daha sonra yapılan sözleşmenin ayrıca muvazaa yönünden değerlendirmeye tâbi tutulması gerekir. Bu sebeple davalı tarafından yapılan sözleşmelerin muvazaalı olduğuna ilişkin kesinleşmiş yargı k",
+          "metin": "nceki ihale sözleşmelerinin muvazaalı olması, sonrakilerin de aynı şekilde muvazaaya dayandığını göstermez. Daha sonra yapılan sözleşmenin ayrıca muvazaa yönünden değerlendirmeye tâbi tutulması gerekir. Bu sebeple davalı tarafından yapılan sözleşmelerin muvazaalı olduğuna ilişkin kesinleşmiş yargı kararları sadece muvazaalı olduğu tespit edilen ihale dönemlerini bağlayacak olup önceki ve sonraki ihale dönemleri bakımından muvazaa araştırması yeniden yapılmalıdır. Bu duruma göre de kesinleşmiş muvazaa tespitine dayanılarak tespit döneminin dışında kalan ihale dönemleri için de herhangi bir inceleme yapılmaksızın muvazaanın kabul edilmesi doğru değildir.\nBu sebeple muvazaaya dayalı olduğu ileri sürülen asıl işveren alt işveren ilişkisinde, her ihale dönemi bakımından muvazaa olgusunun ayrı ayrı ispatı gerekirken asıl işveren alt işveren ilişkisinin unsur eksikliği nedeniyle geçersizliğinde her ihale dönemi bakımından ayrı ayrı geçersizliğin tespitine ihtiyaç yoktur. Çünkü unsur eksikliği nedeniyle geçerlilik şartlarının yokluğu, yeni bir durum ortaya çıkmadıkça sonraki dönemlerde de etkisini gösterir.\nSomut uyuşmazlıkta; İlk Derece Mahkemesince dava dışı şirketler ile davalı arasında",
+          "skor": 0.0586,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7733",
+          "metin_ozet": "nceki ihale sözleşmelerinin muvazaalı olması, sonrakilerin de aynı şekilde muvazaaya dayandığını göstermez. Daha sonra yapılan sözleşmenin ayrıca muvazaa yönünden değerlendirmeye tâbi tutulması gerekir. Bu sebeple davalı tarafından yapılan sözleşmelerin muvazaalı olduğuna ilişkin kesinleşmiş yargı k",
+          "metin": "nceki ihale sözleşmelerinin muvazaalı olması, sonrakilerin de aynı şekilde muvazaaya dayandığını göstermez. Daha sonra yapılan sözleşmenin ayrıca muvazaa yönünden değerlendirmeye tâbi tutulması gerekir. Bu sebeple davalı tarafından yapılan sözleşmelerin muvazaalı olduğuna ilişkin kesinleşmiş yargı kararları sadece muvazaalı olduğu tespit edilen ihale dönemlerini bağlayacak olup önceki ve sonraki ihale dönemleri bakımından muvazaa araştırması yeniden yapılmalıdır. Bu duruma göre de kesinleşmiş muvazaa tespitine dayanılarak tespit döneminin dışında kalan ihale dönemleri için de herhangi bir inceleme yapılmaksızın muvazaanın kabul edilmesi doğru değildir.\nBu sebeple muvazaaya dayalı olduğu ileri sürülen asıl işveren alt işveren ilişkisinde, her ihale dönemi bakımından muvazaa olgusunun ayrı ayrı ispatı gerekirken asıl işveren alt işveren ilişkisinin unsur eksikliği nedeniyle geçersizliğinde her ihale dönemi bakımından ayrı ayrı geçersizliğin tespitine ihtiyaç yoktur. Çünkü unsur eksikliği nedeniyle geçerlilik şartlarının yokluğu, yeni bir durum ortaya çıkmadıkça sonraki dönemlerde de etkisini gösterir.\nSomut uyuşmazlıkta; İlk Derece Mahkemesince dava dışı şirketler ile davalı arasında",
+          "skor": 0.0586,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/16027",
+          "metin_ozet": "ışma dönemi ile ilgili olarak söz konusu alacakların varlığına ilişkin kesinleşmiş mahkeme kararları gibi hususlar diğer delil ya da olgular olarak değerlendirilebilir.\n8. Somut uyuşmazlıkta, tanık anlatımlarından hareketle ayda iki hafta 6 gün 07.00-19.00, ayda iki hafta 6 gün 07.00-19.00 saatleri ",
+          "metin": "ışma dönemi ile ilgili olarak söz konusu alacakların varlığına ilişkin kesinleşmiş mahkeme kararları gibi hususlar diğer delil ya da olgular olarak değerlendirilebilir.\n8. Somut uyuşmazlıkta, tanık anlatımlarından hareketle ayda iki hafta 6 gün 07.00-19.00, ayda iki hafta 6 gün 07.00-19.00 saatleri arasında, 1 gün ise 07.00-17.00 saatleri çalışılarak haftalık ortalama 19 saat fazla çalışma yaptığı kabul edilerek alacak hesaplanmış ve hüküm altına alınmıştır.\n9. Fazla çalışmanın ispatı konusunda, dosya içerisinde işyerindeki çalışma düzenini gösterir işyeri kayıtları bulunmadığından davacının fazla çalışmalarının tanık beyanlarına göre kabulünde isabetsizlik bulunmamaktadır. Davacı tanığı R.B; bir hafta 6 diğer hafta 7 gün çalıştıklarını, normal çalışmanın sabah 07.00 akşam 18.00 arasında olduğunu, yedinci gün çalışmasının ise sabah 08.00 akşam 17.00 arasında olduğunu  beyan etmiş; diğer davacı tanığı E.G. ise normal çalışmanın haftanın 6 günü, sabah 07.00 akşam 19.00 saatleri arasında olduğunu, bu saatler haricinde haftada ortalama 16 saat fazladan çalıştırıldıklarını, on beş günde bir hafta tatili kullandıklarını, çalıştıkları hafta tatilinde de yine aynı saatlerde çalıştıklarını ",
+          "skor": 0.0566,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7264",
+          "metin_ozet": "rlilik şartlarının yokluğu, yeni bir durum ortaya çıkmadıkça sonraki dönemlerde de etkisi gösterir.\nSomut uyuşmazlıkta davalı ...  tarafından dava dışı Şirkete ihale edilen işlerin asıl işin bir bölümü olduğu anlaşılmaktadır. Bu durumda geçerli bir asıl işveren alt işveren ilişkisinin kurulabilmesi ",
+          "metin": "rlilik şartlarının yokluğu, yeni bir durum ortaya çıkmadıkça sonraki dönemlerde de etkisi gösterir.\nSomut uyuşmazlıkta davalı ...  tarafından dava dışı Şirkete ihale edilen işlerin asıl işin bir bölümü olduğu anlaşılmaktadır. Bu durumda geçerli bir asıl işveren alt işveren ilişkisinin kurulabilmesi için asıl işin, alt işverene verilen bölümünün, işletmenin ve işin gereği ile teknolojik nedenlerle uzmanlık gerektiren bir iş olması gerekmektedir. Dosya kapsamından bu koşulun somut olayda mevcut olmadığı anlaşılmaktadır. Açıklanan nedenlerle asıl işveren alt işveren ilişkisinin muvazaa nedeniyle değil, unsur eksikliği nedeniyle geçersiz olduğunun kabulü gerekir. Buna göre İlk Derece Mahkemesi ile Bölge Adliye Mahkemesi kararlarının gerekçesinde davalı  ... ile dava dışı Şirket arasındaki asıl işveren alt işveren ilişkisinin, unsur yokluğu nedeniyle geçersiz olduğunun belirtilmesi yerine muvazaalı olduğunun ifade edilmesi hatalı  ise de bu hata kararın sonucuna etkili değildir.\n1. Tarafların iddia, savunma ve dayandıkları belgelere, uyuşmazlığın hukuki nitelendirilmesi ile uygulanması gereken hukuk kurallarına, dava şartlarına, yargılamaya hâkim olan ilkelere, ispat kurallarına ve temy",
+          "skor": 0.0548,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 824,
+      "ortalama_kaynak_skor": 0.0576,
+      "kaynak_sayisi": 5,
+      "message_id": "0d5dbce4-4e33-423d-8ce7-44685c5a267d",
+      "conversation_id": "792fbdbf-03b4-43c4-81c3-cff7c322b842",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.85,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi hatası nedir? Türleri nelerdir?",
+      "cevap": "Vergi hatası, vergi mükelleflerinin vergi beyannamesinde veya vergi ödemesinde yaptığı yanlışlıklar veya eksikliklerdir. Vergi hataları çeşitli nedenlerle oluşabilir, örneğin yanlış vergi oranının uygulanması, yanlış vergi mükellefinin belirlenmesi, eksik veya yanlış vergi beyannamesi verilmesi gibi.\n\nVergi hatalarının türleri arasında şunlar sayılabilir:\n\n1. **Vergi beyan hatası**: Vergi mükelleflerinin vergi beyannamesinde yaptığı yanlışlıklar veya eksiklikler.\n2. **Vergi ödeme hatası**: Vergi mükelleflerinin vergi ödemesinde yaptığı yanlışlıklar veya eksiklikler.\n3. **Vergi oran hatası**: Yanlış vergi oranının uygulanması.\n4. **Vergi mükellef hatası**: Yanlış vergi mükellefinin belirlenmesi.\n\nVergi hatalarının düzeltilmesi için vergi mükelleflerinin ilgili vergi dairesine başvurması gerekir. Vergi hatalarının düzeltilmesi, vergi mükelleflerinin vergi borçlarını doğru şekilde ödemesini sağlar ve vergi cezaları veya faizlerden kaçınmasına yardımcı olur.\n\nKaynaklar:\n- 5846 Sayili Fikir ve Sanat Eserleri Kanunu\n- 6098 Sayılı Türk Borçlar Kanunu\n- 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu\n- 657 Sayılı Devlet Memurları Kanunu\n- 9. Hukuk Dairesi - 2025/5461\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.102,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 41",
+          "metin_ozet": "MADDE 41- Başkası adına ve hesabına temsil kamu hukukundan doğmuşsa, temsil yetkisinin içeriği ve derecesi bu konudaki yasal hükümlere; temsil hukuksal bir işlemden doğmuşsa, temsil yetkisinin içeriği ve derecesi o hukuksal işleme göre belirlenir. Temsil yetkisi üçüncü kişilere bildirilmişse temsil ",
+          "metin": "MADDE 41- Başkası adına ve hesabına temsil kamu hukukundan doğmuşsa, temsil yetkisinin içeriği ve derecesi bu konudaki yasal hükümlere; temsil hukuksal bir işlemden doğmuşsa, temsil yetkisinin içeriği ve derecesi o hukuksal işleme göre belirlenir. Temsil yetkisi üçüncü kişilere bildirilmişse temsil yetkisinin içeriği ve derecesi, bu bildirime göre belirlenir.",
+          "skor": 0.0992,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 100 - Fıkra 1",
+          "metin_ozet": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapı",
+          "metin": "MADDE 100- (Değişik: 17/4/2008-5754/59 md.) 5411 sayılı Bankacılık Kanunu kapsamındaki kuruluşlar, döner sermayeli kuruluşlar ile diğer gerçek ve tüzel kişiler doğrudan, münferit olarak bilgi ve belge istenmesi hariç olmak üzere kamu idareleri ile kanunla kurulan kurum ve kuruluşlar ise Kurumla yapılacak protokoller çerçevesinde, Devletin güvenliği ve temel dış yararlarına karşı ağır sonuçlar doğuracak hâller ile özel hayat ve aile hayatının gizliliği ve savunma hakkına ilişkin hükümler saklı kalmak kaydıyla özel kanunlardaki yasaklayıcı ve sınırlayıcı hükümler dikkate alınmaksızın gizli dahi olsa Kurum tarafından kişilerin sosyal güvenliğinin sağlanması, 6183 sayılı Kanuna göre Kurum alacaklarının takip ve tahsili ile bu Kanun kapsamında verilen diğer görevler ile sınırlı olmak üzere istenecek her türlü bilgi ve belgeyi sürekli ve/veya belli aralıklarla vermeye, bilgilerin elektronik ortamda görüntülenmesini sağlamaya, görüntülenen bu bilgilerin güvenliğini sağlamaya, muhafaza etmek zorunda oldukları her türlü belge ile vermek zorunda oldukları bilgilere ilişkin mikrofiş, mikrofilm, manyetik teyp,",
+          "skor": 0.0943,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.0926,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5461",
+          "metin_ozet": "nduğu kural olarak kabul edilir. …belirsiz alacak davasının da bir eda davası olduğu hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz",
+          "metin": "nduğu kural olarak kabul edilir. …belirsiz alacak davasının da bir eda davası olduğu hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... Avcı, B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n6100 sayılı Kanun’un 31. maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir",
+          "skor": 0.092,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1396,
+      "ortalama_kaynak_skor": 0.096,
+      "kaynak_sayisi": 5,
+      "message_id": "7c85d535-ff0f-4e5a-9039-2c14d5f97b66",
+      "conversation_id": "6e1d9184-702a-4505-9154-c887f1a44676",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.09,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi kaçakçılığı suçu nedir?",
+      "cevap": "Vergi kaçakçılığı suçu, 213 sayılı Vergi Usul Kanunu'nda düzenlenmiştir. Bu kanun uyarınca, vergi kaçakçılığı suçu, vergiye tabi olan kişiler tarafından verginin ödenmemesi veya eksik ödenmesi amacıyla yapılan fiilleri içermektedir. Vergi kaçakçılığı suçu, genellikle vergi ziyaı suçu, vergi kaçırma suçu ve sahte belge düzenleme suçu gibi farklı türlerde ortaya çıkabilir.\n\nVergi ziyaı suçu, Vergi Usul Kanunu'nun 341. maddesinde düzenlenmiştir. Bu maddeye göre, vergi ziyaı suçu, vergiye tabi olan kişiler tarafından verginin ödenmemesi veya eksik ödenmesi amacıyla yapılan fiilleri içermektedir. Vergi ziyaı suçu, genellikle vergi mükelleflerinin vergi beyannamelerini yanlış veya eksik doldurması, vergi ödemelerini geciktirmesi veya hiç ödememesi gibi durumlarda ortaya çıkabilir.\n\nVergi kaçırma suçu, Vergi Usul Kanunu'nun 359. maddesinde düzenlenmiştir. Bu maddeye göre, vergi kaçırma suçu, vergiye tabi olan kişiler tarafından verginin ödenmemesi veya eksik ödenmesi amacıyla yapılan fiilleri içermektedir. Vergi kaçırma suçu, genellikle vergi mükelleflerinin vergi ödemelerini kaçırması, vergi ödemelerini geciktirmesi veya hiç ödememesi gibi durumlarda ortaya çıkabilir.\n\nSahte belge düzenleme suçu, Vergi Usul Kanunu'nun 359. maddesinde düzenlenmiştir. Bu maddeye göre, sahte belge düzenleme suçu, vergiye tabi olan kişiler tarafından verginin ödenmemesi veya eksik ödenmesi amacıyla sahte belge düzenlenmesi veya kullanılması fiillerini içermektedir. Sahte belge düzenleme suçu, genellikle vergi mükelleflerinin sahte fatura, sahte gider pusulası veya sahte diğer belgeleri düzenleyerek veya kullanarak vergi kaçakçılığı yapması gibi durumlarda ortaya çıkabilir.\n\nVergi kaçakçılığı suçu, genellikle ağır cezai yaptırımlara tabi tutulmaktadır. Vergi kaçakçılığı suçu işleyen kişiler, hapis cezası, para cezası veya her iki ceza birlikte uygulanabilir. Ayrıca, vergi kaçakçılığı suçu işleyen kişiler, vergi mükellefiyetinden men edilebilir veya vergi mükellefiyetine ilişkin hakları kısıtlanabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5461",
+          "metin_ozet": "nduğu kural olarak kabul edilir. …belirsiz alacak davasının da bir eda davası olduğu hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz",
+          "metin": "nduğu kural olarak kabul edilir. …belirsiz alacak davasının da bir eda davası olduğu hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... Avcı, B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n6100 sayılı Kanun’un 31. maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir",
+          "skor": 0.0977,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6961",
+          "metin_ozet": "r bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve et",
+          "metin": "r bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve etkileri, ilgili kişinin daha önceki davranışları, bilgilerin elde edilme koşulları ve gerçekliği ile uygulanan yaptırımın niteliği (AYM; Kemal Kılıçdaroğlu (3), B. No: 2015/1220, 18/7/2018).\nDosya kapsamından, dava dışı Cumhurbaşkanı Recep Tayyip Erdoğan'ın Rize'de yapmış olduğu konuşmaya atfen dava konusu 11.05.2015 tarihli haberin yapıldığı, Cumhurbaşkanının konuşmasında davacının ismi geçmemiş ise de davacının Sözcü Gazetesinde 01.03.2013 tarihinde kaleme aldığı köşe yazısında, konuşmada ismi geçen kişinin kendisi olduğuna dair söz ve ifadelere yer verdiği, kamuoyunda da bu şekilde oluşan kanı üzerine dava konusu haberin yapıldığı, bu anlamda dava konusu haberin tarihi dikkate alındığında Dairemizin 25.12.2017 tarihli ve 2016/1499 E., 2017/8637 K. sayılı kararında da belirtildiği gibi haberin bu yazıdan esinlenerek kaleme alındığı, dava konusu yayının basın ve ifade özgürlüğü kapsamınd",
+          "skor": 0.0964,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5460",
+          "metin_ozet": " hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak",
+          "metin": " hususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... , B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n6100 sayılı Kanun’un 31. maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.” Somut olayda olduğu gibi belirsiz a",
+          "skor": 0.0942,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/12835",
+          "metin_ozet": "ususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak d",
+          "metin": "ususu gözetildiğinde bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... ..., B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n23. 6100 sayılı Kanun’un 31 inci maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.” Somut olayda olduğu gibi b",
+          "skor": 0.0941,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14507",
+          "metin_ozet": "ığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yoru",
+          "metin": "ığının söylenmesi güçtür. … Sonuç olarak, belirsiz alacak kapsamına girmediği değerlendirilen bir alacağın belirsiz alacak davasına konu edilmesinde hukuki yararın bulunmadığı yorumu -belirsiz alacak davasının da bir eda davası olduğu hususu dikkate alındığında- makul olarak öngörülebilecek bir yorum olarak değerlendirilmemiştir. …” (... ..., B. No: 2019/12190, 22.02.2022, § 47,51,53) şeklindeki değerlendirmelerine katılmak mümkün değildir. Anayasa Mahkemesinin belirsiz alacak davasına özgü özel hukuki yararı dikkate almadan, salt eda davası niteliğinden hareketle, belirsiz alacak davası açan kişinin hukuki yararının bulunduğuna yönelik değerlendirmesi davanın türüne uygun düşmemektedir. Çünkü belirsiz alacak davası, eda davası olmakla birlikte ayrı bir dava türü olarak kabul edilmiştir.\n23. 6100 sayılı Kanun’un 31 inci maddesine göre “Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir; soru sorabilir; delil gösterilmesini isteyebilir.” Somut olayda olduğu gibi belirsiz alacak davası olarak açıldığı açıkça belirtilen bir davada, dava türü bakımından aydınlatıl",
+          "skor": 0.094,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 2212,
+      "ortalama_kaynak_skor": 0.0953,
+      "kaynak_sayisi": 5,
+      "message_id": "b5926ba3-82c8-4ae4-8917-69ef74212950",
+      "conversation_id": "a6caf5d6-169c-4857-83a8-75afce8b6235",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.67,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi cezaları nelerdir?",
+      "cevap": "Vergi cezaları, vergi mükelleflerinin vergi kanunlarına aykırı davranışları nedeniyle uygulanan yaptırımlardır. Vergi cezaları, genellikle vergi kaçırma, vergi ziyaı veya usulsüzlük gibi durumlarda uygulanır.\n\nVergi cezaları, Vergi Usul Kanunu'nda düzenlenmiştir. Buna göre, vergi cezaları şunlardır:\n\n* Vergi ziyaı cezası: Vergi mükelleflerinin vergi kaçırma veya vergi ziyaı nedeniyle uygulanan ceza, kaçırılan veya ziya edilen verginin miktarına göre belirlenir.\n* Usulsüzlük cezası: Vergi mükelleflerinin vergi kanunlarına aykırı davranışları nedeniyle uygulanan ceza, usulsüzlüğün niteliğine göre belirlenir.\n\nAncak, verilen kaynaklar vergi cezaları ile ilgili bilgi içermediğinden, bu konuda daha详细 bilgi veremiyorum.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0812,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/6961",
+          "metin_ozet": "r bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve et",
+          "metin": "r bir somut olay bakımından  şu  hususları  göz  önüne almak gerekmektedir: Dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve etkileri, ilgili kişinin daha önceki davranışları, bilgilerin elde edilme koşulları ve gerçekliği ile uygulanan yaptırımın niteliği (AYM; Kemal Kılıçdaroğlu (3), B. No: 2015/1220, 18/7/2018).\nDosya kapsamından, dava dışı Cumhurbaşkanı Recep Tayyip Erdoğan'ın Rize'de yapmış olduğu konuşmaya atfen dava konusu 11.05.2015 tarihli haberin yapıldığı, Cumhurbaşkanının konuşmasında davacının ismi geçmemiş ise de davacının Sözcü Gazetesinde 01.03.2013 tarihinde kaleme aldığı köşe yazısında, konuşmada ismi geçen kişinin kendisi olduğuna dair söz ve ifadelere yer verdiği, kamuoyunda da bu şekilde oluşan kanı üzerine dava konusu haberin yapıldığı, bu anlamda dava konusu haberin tarihi dikkate alındığında Dairemizin 25.12.2017 tarihli ve 2016/1499 E., 2017/8637 K. sayılı kararında da belirtildiği gibi haberin bu yazıdan esinlenerek kaleme alındığı, dava konusu yayının basın ve ifade özgürlüğü kapsamınd",
+          "skor": 0.0763,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7701",
+          "metin_ozet": "eye erişim hakkını ihlal edebilir.\n5718 sayılı MÖHUK madde 48/1'e göre; “Türk mahkemesinde dava açan, davaya katılan veya icra takibinde bulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı gösterm",
+          "metin": "eye erişim hakkını ihlal edebilir.\n5718 sayılı MÖHUK madde 48/1'e göre; “Türk mahkemesinde dava açan, davaya katılan veya icra takibinde bulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı göstermek zorundadır”.\nÜlkemizin  taraf olduğu 1951 tarihli  Cenevre sözleşmesi 16 ncı maddesi  “1. Her mülteci, bütün Taraf Devletler’in topraklar üzerindeki hukuk mahkemelerine serbestçe ve kolayca başvurabilecektir. 2. Her mülteci, sürekli ikametgahının bulunduğu Taraf Devlette, adli yardım ve teminat akçesinden muafiyet dahil, mahkemelere müracaat bakımından vatandaş gibi muamele görecektir. 3. Her mülteci, sürekli ikametgahının bulunduğu ülkenin dışındaki  Taraf Devletlerde, o ülkelerin vatandaşlarına 2. fıkrada bahsedilen konular hakkında yapılan muamelenin aynından istifade edecektir.”  hükmünü içermektedir.\nNe varki ülkemize göç eden Suriyeli göçmenlerin  hukuksal statüleri, mülteci ve sığınmacı konumunda olmayıp “Geçici koruma statüsü'nde olduklarından MÖHUK 48/1 inci maddesinden doğrudan yararlanmaları mümkün değildir. Ancak bu kişiler AHİM kararlarında da sıkça yer alan “kırılgan gru",
+          "skor": 0.0735,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "10. Hukuk Dairesi - 2024/9655",
+          "metin_ozet": "arasında asıl işveren - alt işveren ilişkisi bulunmadığından müvekkili firmaya husumet yöneltilmesinin söz konusu olamayacağı, müvekkili şirketin olayda herhangi bir kusuru bulunmadığı gibi dava konusu kazanın meydana gelmesinde kötü tesadüf ve kaçınılmazlık faktörlerinin de etkili olduğu, davaya ko",
+          "metin": "arasında asıl işveren - alt işveren ilişkisi bulunmadığından müvekkili firmaya husumet yöneltilmesinin söz konusu olamayacağı, müvekkili şirketin olayda herhangi bir kusuru bulunmadığı gibi dava konusu kazanın meydana gelmesinde kötü tesadüf ve kaçınılmazlık faktörlerinin de etkili olduğu, davaya konu iş kazasında müvekkili şirketin herhangi bir kusuru bulunmadığı, iş anahtar tesliminin diğer davalı ...",
+          "skor": 0.0732,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7747",
+          "metin_ozet": "kını ihlal edebilir.\n5718 sayılı MÖHUK madde 48/1'e göre; “Türk Mahkemesi'nde dava açan, davaya katılan veya icra takibinde bulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı göstermek zorundadır",
+          "metin": "kını ihlal edebilir.\n5718 sayılı MÖHUK madde 48/1'e göre; “Türk Mahkemesi'nde dava açan, davaya katılan veya icra takibinde bulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı göstermek zorundadır”. Ülkemizin taraf olduğu 1951 tarihli Cenevre Sözleşmesi 16. maddesi;\n“1. Her mülteci, bütün Taraf Devletler’in topraklar üzerindeki hukuk mahkemelerine serbestçe ve kolayca başvurabilecektir.\n2. Her mülteci, sürekli ikametgahının bulunduğu Taraf Devlet'te, adli yardım ve teminat akçesinden muafiyet dahil, mahkemelere müracaat bakımından vatandaş gibi muamele görecektir.\n3. Her mülteci, sürekli ikametgahının bulunduğu ülkenin dışındaki Taraf Devletler'de, o ülkelerin vatandaşlarına 2. fıkrada bahsedilen konular hakkında yapılan muamelenin aynından istifade edecektir.”  hükmünü içermektedir.\nNe var ki ülkemize göç eden Suriyeli göçmenlerin hukuksal statüleri, mülteci ve sığınmacı konumunda olmayıp “Geçici koruma statüsün“ de olduklarından MÖHUK 48/1. maddesinden doğrudan yararlanmalarında mümkün değildir. Ancak bu kişiler AHİM kararlarında da sıkça yer alan “kırılgan grup“ olarak ifade e",
+          "skor": 0.0694,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 927,
+      "ortalama_kaynak_skor": 0.0747,
+      "kaynak_sayisi": 5,
+      "message_id": "855b5f83-f375-478d-b697-84482e47bbf9",
+      "conversation_id": "fd8081b1-e590-42b3-984e-7d510b4d7449",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.7,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Zamanaşımı nedir? Türleri nelerdir?",
+      "cevap": "",
+      "kaynaklar": [],
+      "kategori_tespit": "",
+      "message_id": null,
+      "conversation_id": null,
+      "uyari": "",
+      "yanit_suresi_sn": 0.6,
+      "basarili": false,
+      "hata": "HTTP 503: {\"detail\":{\"error\":\"upstream_unavailable\",\"detail\":\"Harici servis(ler)e su an erisilemiyor.\",\"retry_after\":30}}"
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi yargısında dava açma süresi ne kadardır?",
+      "cevap": "",
+      "kaynaklar": [],
+      "kategori_tespit": "",
+      "message_id": null,
+      "conversation_id": null,
+      "uyari": "",
+      "yanit_suresi_sn": 0.58,
+      "basarili": false,
+      "hata": "HTTP 503: {\"detail\":{\"error\":\"upstream_unavailable\",\"detail\":\"Harici servis(ler)e su an erisilemiyor.\",\"retry_after\":30}}"
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "İhtirazi kayıtla beyan ne demektir?",
+      "cevap": "İhtirazi kayıtla beyan, bir kişinin belirli bir konuda beyanda bulunırken, aynı zamanda belirli şartlar veya koşullar altında bu beyanın geçerli olacağını belirtmesidir. Bu, genellikle bir kişinin haklarını korumak veya gelecekteki olası sorunları önlemek amacıyla yapılır.\n\nÖrneğin, bir kişi bir sözleşmeyi imzalarken, \"ihtirazi kayıtla\" bir beyanda bulunabilir, yani sözleşmenin belirli şartları altında geçerli olacağını belirtir. Bu, sözleşmenin hükümlerine uyma zorunluluğunu sınırlayabilir veya belirli koşullar altında sözleşmeden çekilme hakkını saklı tutar.\n\nVerilen kaynaklar, Yargitay kararlarıdır, ancak bu kararların içeriği veya ihtirazi kayıtla beyana ilişkin具体 bir açıklama içermediği görülmektedir. Dolayısıyla, bu konuda daha详细 bilgi için ilgili hukuk mevzuatına veya uzman bir hukukçuya danışılması önerilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13121",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0773,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8050",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0773,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/14245",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0773,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13693",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0773,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3461",
+          "metin_ozet": "e karar verildi.",
+          "metin": "e karar verildi.",
+          "skor": 0.0761,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1031,
+      "ortalama_kaynak_skor": 0.0771,
+      "kaynak_sayisi": 5,
+      "message_id": "0e6f92f6-66ce-4b3d-a530-13055cb685ae",
+      "conversation_id": "ca5a1a5d-99ce-4b67-86ed-25a6c01b6506",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 52.25,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

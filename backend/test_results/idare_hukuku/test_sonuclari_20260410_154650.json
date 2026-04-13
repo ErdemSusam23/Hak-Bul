@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-10T15:48:50.144691+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/idare_hukuku/test_sonuclari_20260410_154650.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 119.7,
+    "ortalama_sure_sn": 9.97,
+    "kategori_dagilimi": {
+      "Idare Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 1.97,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 1027.0,
+        "ortalama_kaynak_skor": 0.0639
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Idari islemlere karsi iptal davasi nasil acilir?",
+      "cevap": "İdari işlemlere karşı iptal davası, idari yargıda idari işlemlerin hukuka uygunluğunu denetlemek amacıyla açılan bir dava türüdür. İdari işlemlere karşı iptal davası açabilmek için, idari işlemin tarafınızca öğrenildiği tarihten itibaren 60 gün içinde dava açma süresi bulunmaktadır.\n\nİdari işlemlere karşı iptal davası açmak için, aşağıdaki adımları takip edebilirsiniz:\n\n1. İdari işlemin öğrenilmesi: İdari işlemin tarafınızca öğrenildiği tarihi belirlemek önemlidir. Bu tarih, dava açma süresinin başlangıç tarihi olarak kabul edilir.\n2. Dava açma süresi: İdari işlemin öğrenildiği tarihten itibaren 60 gün içinde dava açma süresi bulunmaktadır. Bu süre içinde dava açılması zorunludur.\n3. Dava dilekçesi hazırlanması: İdari işlemlere karşı iptal davası açmak için, bir dava dilekçesi hazırlanmalıdır. Dava dilekçesinde, idari işlemin hukuka aykırılığına ilişkin gerekçeler belirtilmelidir.\n4. Dava dilekçesinin verilmesi: Dava dilekçesi, idari yargı mercilerine (Danıştay, Bölge İdare Mahkemeleri, İdare Mahkemeleri) verilir.\n5. Dava giderlerinin ödenmesi: Dava açılması için, dava giderleri ödenmelidir. Dava giderleri, dava dilekçesinin verildiği merci tarafından belirlenir.\n\nİdari işlemlere karşı iptal davası açarken, aşağıdaki hususlara dikkat edilmelidir:\n\n* İdari işlemin hukuka aykırılığına ilişkin gerekçeler belirtilmelidir.\n* Dava dilekçesinde, idari işlemin iptali talep edilmelidir.\n* Dava açma süresi içinde dava açılması zorunludur.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 5",
+          "metin_ozet": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye K",
+          "metin": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye Kurum Yönetim Kurulu yetkilidir.",
+          "skor": 0.0693,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0659,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 32",
+          "metin_ozet": "MADDE 32- (1) Konut finansmanı sözleşmesi, konut edinmeleri amacıyla;\ntüketicilere kredi kullandırılması, konutların finansal kiralama yoluyla tüketicilere\nkiralanması, sahip oldukları konutların teminatı altında tüketicilere kredi kullandırılması ve\nbu kredilerin yeniden finansmanı amacıyla kredi k",
+          "metin": "MADDE 32- (1) Konut finansmanı sözleşmesi, konut edinmeleri amacıyla;\ntüketicilere kredi kullandırılması, konutların finansal kiralama yoluyla tüketicilere\nkiralanması, sahip oldukları konutların teminatı altında tüketicilere kredi kullandırılması ve\nbu kredilerin yeniden finansmanı amacıyla kredi kullandırılmasına yönelik sözleşmedir.\n(2) Konut finansmanı sözleşmesi yazılı veya mesafeli olarak kurulmadıkça geçerli\nolmaz. Geçerli bir sözleşme yapmamış olan konut finansmanı kuruluşu, sonradan sözleşmenin\ngeçersizliğini tüketicinin aleyhine olacak şekilde ileri süremez.6\nSözleşme öncesi bilgilendirme yükümlülüğü",
+          "skor": 0.0635,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 80 - Fıkra 14",
+          "metin_ozet": "diğerleri için ise teknisyenlerin prime esas kazanç tutarları, f) İlgili kanunlarında veya Cumhurbaşkanlığı kararnamesinde emeklilik ya da ek gösterge açısından belirli bir kadro, unvan veya görevle bağlantı kurulanlar için, bağlantı kurulan kadro, unvan veya görevin prime esas kazanç tutarı, [134] ",
+          "metin": "diğerleri için ise teknisyenlerin prime esas kazanç tutarları, f) İlgili kanunlarında veya Cumhurbaşkanlığı kararnamesinde emeklilik ya da ek gösterge açısından belirli bir kadro, unvan veya görevle bağlantı kurulanlar için, bağlantı kurulan kadro, unvan veya görevin prime esas kazanç tutarı, [134] g) Bu fıkranın (a) ilâ (f) bentleri kapsamı dışında kalan sigortalılar için atandıkları görev itibarıyla 657 sayılı Kanuna göre girebilecekleri sınıflardaki benzer görevlerin aynı kadro, unvan, tahsil ve derecesi için belirlenen prime esas kazanç tutarları, esas alınır.",
+          "skor": 0.062,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 388",
+          "metin_ozet": "MADDE 388- Tüketim ödüncü sözleşmesinde faiz oranı belirlenmemişse, kural olarak ödünç alma zamanında ve yerinde o tür ödünçlerde geçerli olan faiz oranı uygulanır. Sözleşmede aksine bir hüküm yoksa, belirlenen faiz, yıllık olarak ödenir. Faizin anaparaya eklenerek birlikte yeniden faiz yürütülmesi ",
+          "metin": "MADDE 388- Tüketim ödüncü sözleşmesinde faiz oranı belirlenmemişse, kural olarak ödünç alma zamanında ve yerinde o tür ödünçlerde geçerli olan faiz oranı uygulanır. Sözleşmede aksine bir hüküm yoksa, belirlenen faiz, yıllık olarak ödenir. Faizin anaparaya eklenerek birlikte yeniden faiz yürütülmesi kararlaştırılamaz.",
+          "skor": 0.0601,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1656,
+      "ortalama_kaynak_skor": 0.0642,
+      "kaynak_sayisi": 5,
+      "message_id": "1a172c41-4246-4856-9fa6-518f4eed81f3",
+      "conversation_id": "9910fe8e-6534-4e03-a948-5b2b096c35fe",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.59,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Devlet memuru disiplin cezasina nasil itiraz eder?",
+      "cevap": "Devlet memurları disiplin cezasına karşı itirazlarını, cezanın tebliğ tarihinden itibaren 7 gün içinde ilgili disiplin kuruluna veya amirine yazılı olarak yapabilirler. İtiraz, disiplin kurulunun veya amirin kararını değiştirebilir veya aynı şekilde onaylayabilir. \n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. Devlet memurluğu ile ilgili disiplin cezası ve itiraz süreci, 657 sayılı Devlet Memurları Kanunu ve ilgili yönetmeliklerde düzenlenmiştir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4904",
+          "metin_ozet": " verildi.",
+          "metin": " verildi.",
+          "skor": 0.0168,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4905",
+          "metin_ozet": " verildi.",
+          "metin": " verildi.",
+          "skor": 0.0168,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/6062",
+          "metin_ozet": "arar verildi.",
+          "metin": "arar verildi.",
+          "skor": 0.0145,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/11636",
+          "metin_ozet": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": " gönderilmesine,26.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0142,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4346",
+          "metin_ozet": "gönderilmesine,\n13.05.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "gönderilmesine,\n13.05.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0139,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 676,
+      "ortalama_kaynak_skor": 0.0152,
+      "kaynak_sayisi": 5,
+      "message_id": "a3070dfe-9f69-47ad-be87-173f5cddd7df",
+      "conversation_id": "52e384f3-74a7-49d0-86aa-8e6cc6c3a6fb",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.42,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Kamulastirma isleminde deger tespitine itiraz edebilir miyim?",
+      "cevap": "Kamulaştırma işleminde değer tespitine itiraz etme hakkı bulunmaktadır. Ancak, bu hakka ilişkin düzenlemeler verilen kaynaklarda yer almamaktadır. Kamulaştırma işlemlerine ilişkin düzenlemeler genellikle 2942 sayılı Kamulaştırma Kanunu'nda yer almaktadır. Bu kanun kapsamında, kamulaştırma işleminde değer tespitine itiraz edilebileceği ve bu itirazın nasıl yapılacağı düzenlenmiştir.\n\nVerilen kaynaklar arasında kamulaştırma işlemlerine ilişkin bir madde bulunmamaktadır. Bu nedenle, kamulaştırma işleminde değer tespitine itiraz etme hakkı ve buna ilişkin prosedür hakkında bilgi verilememektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 186",
+          "metin_ozet": "Madde 186 – Hazarda eğitim ve manevra veya seferde muvazzaflık hizmeti dışında\nsilah altına alınan Devlet memurlarından, silah altına alınmazdan önce kadroları kaldırılanlar,\ngörevden uzaklaştırılanlar hakkında, silah altında bulundukları sürece aşağıdaki hükümler\nuygulanır:\nA) Bunlardan yedek subay",
+          "metin": "Madde 186 – Hazarda eğitim ve manevra veya seferde muvazzaflık hizmeti dışında\nsilah altına alınan Devlet memurlarından, silah altına alınmazdan önce kadroları kaldırılanlar,\ngörevden uzaklaştırılanlar hakkında, silah altında bulundukları sürece aşağıdaki hükümler\nuygulanır:\nA) Bunlardan yedek subay, yedek askeri memur veya yedek astsubay olanların rütbe\naylıklarının açık aylıklarından fazla veya eksik olmasına göre haklarında 183 ve 184 üncü\nmadde hükümleri uygulanır.\nB) (A) bendi dışında kalan ve rütbesiz memurlara kanuni hakları olan açık aylığının\nverilmesine devam olunur.\nKISIM - VI\nSosyal Haklar ve Yardımlar\nEmeklilik hakları:",
+          "skor": 0.0767,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 84",
+          "metin_ozet": "Madde 84 – (Değişik: 31/7/1970 - 1327/37 md.)\nMuvazzaf askerlik görevini yaptıktan sonra Devlet memurluğuna atananlar adaylık\nesaslarına tabi olurlar ve muvazzaf askerlikte geçen süreleri asaletlerinin tasdikinden sonra\nkademe ilerlemesi yapılmak ve sınav veya seçmeye tabi tutulmak suretiyle derece\n",
+          "metin": "Madde 84 – (Değişik: 31/7/1970 - 1327/37 md.)\nMuvazzaf askerlik görevini yaptıktan sonra Devlet memurluğuna atananlar adaylık\nesaslarına tabi olurlar ve muvazzaf askerlikte geçen süreleri asaletlerinin tasdikinden sonra\nkademe ilerlemesi yapılmak ve sınav veya seçmeye tabi tutulmak suretiyle derece\nyükseltilmesinde de değerlendirilir.\nSeferde veya talim ve manevra için hazarda silah altına alınanların askerlik\nsürelerinin kademe ve derece intibakları:",
+          "skor": 0.0766,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Ek Madde 8",
+          "metin_ozet": "Ek Madde 8- (Ek: 3/3/2004-5101/26 md.)\nBir veri tabanının içeriğinin oluşturulmasına, doğrulanmasına veya sunumuna nitelik\nve nicelik açısından esaslı bir nispet dahilinde yatırım yapan veri tabanı yapımcısı, ayrıca, veri\ntabanının içeriğinin önemli bir kısmının veya tamamının;\na) Herhangi bir araç ",
+          "metin": "Ek Madde 8- (Ek: 3/3/2004-5101/26 md.)\nBir veri tabanının içeriğinin oluşturulmasına, doğrulanmasına veya sunumuna nitelik\nve nicelik açısından esaslı bir nispet dahilinde yatırım yapan veri tabanı yapımcısı, ayrıca, veri\ntabanının içeriğinin önemli bir kısmının veya tamamının;\na) Herhangi bir araç ile herhangi bir şekilde sürekli veya geçici olarak başka bir\nortama aktarılması,\nb) Herhangi bir yolla dağıtılması, satılması, kiralanması veya topluma iletilmesi,\nHususlarında bu Kanunda sayılan istisnalar ile kamu güvenliği, idarî ve yargı\nişlemlerinin gerektirdiği istisnalar dışında izin vermek veya yasaklamak hakkına sahiptir.\nVeri tabanı yapımcısına sağlanan koruma aleniyet tarihinden itibaren onbeş yıldır.\nVeri tabanının içeriğinde esaslı bir değişiklik meydana getiren ve yeni bir yatırım\ngerektiren, nitelik ve nicelik açısından yapılan her türlü ekleme, çıkarma veya değişiklik\nsonucu bu yeni yatırımdan doğan veri tabanı kendi koruma koşullarına hak kazanır.\nBu maddede tanınmış hakları ihlâl edenler hakkında bu Kanunun 72 nci maddesinin\n(3) numaralı bendi hükümleri uygulanır.",
+          "skor": 0.0766,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6362 Sayılı Sermaye Piyasası Kanunu - Madde 82",
+          "metin_ozet": "MADDE 82 – (1) Kurul, yatırım kuruluşlarının sermaye piyasası faaliyetinden\nkaynaklanan nakit ödeme veya sermaye piyasası araçları teslim yükümlülüklerini yerine\ngetiremediğinin veya kısa sürede yerine getiremeyeceğinin tespit edilmesi hâlinde\nyatırımcıları tazmin kararı alır. Bu karar, durumun tesp",
+          "metin": "MADDE 82 – (1) Kurul, yatırım kuruluşlarının sermaye piyasası faaliyetinden\nkaynaklanan nakit ödeme veya sermaye piyasası araçları teslim yükümlülüklerini yerine\ngetiremediğinin veya kısa sürede yerine getiremeyeceğinin tespit edilmesi hâlinde\nyatırımcıları tazmin kararı alır. Bu karar, durumun tespitinden itibaren üç ay içinde alınır.\nKurulun, bu Kanun kapsamındaki tedbir yetkileri saklıdır.\n(2) Kurulca bankalar hakkında birinci fıkra uyarınca tazmin kararı verilebilmesi için\nBankacılık Düzenleme ve Denetleme Kurumunun görüşü alınır. Bankacılık mevzuatı uyarınca\nmevduat veya katılım fonu olarak kabul edilen nakit ödeme yükümlülüklerine, bu Kanunun\nyatırımcıların tazminine ilişkin hükümleri uygulanmaz.\nYatırımcı Tazmin Merkezi",
+          "skor": 0.0755,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6362&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.0753,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 803,
+      "ortalama_kaynak_skor": 0.0761,
+      "kaynak_sayisi": 5,
+      "message_id": "912d9fb7-f01d-48f3-9b4c-000e3609fde3",
+      "conversation_id": "9c2a6e3a-fbba-4b58-92fb-3c2acbe91ec7",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.99,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Idari yargi da dava acma suresi ne kadardir?",
+      "cevap": "İdari yargıda dava açma süresi, idari eylem veya işlemin öğrenilmesinden itibaren 60 gündür. Bu süre, idari eylem veya işlemin öğrenildiği tarihi izleyen günden başlayarak hesaplanır. \n\nAncak, verilen kaynaklar arasında idari yargıya ilişkin bir madde bulunmamaktadır. Bu nedenle, idari yargıya ilişkin bilgi verilmesi için daha spesifik bir kaynak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7838",
+          "metin_ozet": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bi",
+          "metin": "nunu’nun (4721 sayılı Kanun) 1. maddesine göre kanun, sözüyle ve özüyle değindiği bütün konularda uygulanır. Kanunda uygulanabilir bir hüküm yoksa, hâkim, örf ve âdet hukukuna göre, bu da yoksa kendisi kanun koyucu olsaydı nasıl bir kural koyacak idiyse ona göre karar verir. Hâkim, karar verirken bilimsel görüşlerden ve yargı kararlarından yararlanır. Kanun’un bu açık hükmü karşısında hâkimin hukuk yaratması için öncelikle bir boşluğun varlığı gerekir. Boşluk kavramı bakımından en önemli nokta ise hangi koşulların varlığı hâlinde bir boşluğun bulunduğu sorusuna verilecek yanıttır.\nHukukta boşluk, pozitif hukukun bir meseleyi düzenlemesi gerekirken kendi normatif düzenine aykırı olarak düzenlememiş olmasıdır ( Sururi Aktaş, \"Pozitif Hukukta Boşluk Kavramı\", Erzincan Binali Yıldırım Üniversitesi Hukuk Fakültesi Dergisi, C.XIV, S.1-2, 2010, s.10). Daha kısa bir tanıma göre kanun boşluğu, gerekli kanuni düzenlemenin yapılmamış olmasıdır (Çiğdem Kırca, \"Örtülü (Gizli) Boşluk ve Bu Boşluğun Doldurulması Yöntemi Olarak Amaca Uygun Sınırlama (Teleologische Reduktion)\", AÜHFD, C.50, S.1, 2001, s.91). Diğer taraftan kanun koyucunun bilinçli olarak sustuğu hâllerde bir boşluktan söz edilemez.",
+          "skor": 0.0566,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 122",
+          "metin_ozet": "Madde 122 — Fon, bu Kanun ve ilgili diğer mevzuatla verilenler dışında aşağıdaki\ngörevleri yapar ve yetkileri kullanır:\na) Fon Kurulu kararlarının uygulanmasını sağlamak.\nb) Fonun insan kaynakları politikalarını belirlemek.\nc) Yurt içi ve yurt dışı muadil kurumların katıldığı uluslararası malî, ikti",
+          "metin": "Madde 122 — Fon, bu Kanun ve ilgili diğer mevzuatla verilenler dışında aşağıdaki\ngörevleri yapar ve yetkileri kullanır:\na) Fon Kurulu kararlarının uygulanmasını sağlamak.\nb) Fonun insan kaynakları politikalarını belirlemek.\nc) Yurt içi ve yurt dışı muadil kurumların katıldığı uluslararası malî, iktisadî ve\nmeslekî teşekküllere üye olmak, görev alanına giren hususlarda yabancı ülkelerin yetkili\nmercileri ile mutabakat zaptı imzalamak.\nd) Kanunlarla verilen diğer görevleri yapmak.\nFon, Fon Kurulu kararıyla bu Kanunun uygulanmasına ilişkin yönetmelikler ve\ntebliğler çıkarmaya yetkilidir.\nFon, sigorta kapsamındaki mevduat ve katılım fonu üzerinden prim hesaplanmasına\nesas teşkil edecek gerekli bilgilerin gönderilmesini ve bu primlerin belirlediği esaslara göre\nyatırılıp yatırılmadığının denetlenmesini Kurumdan istemeye yetkilidir. Kurum, makul bir\nsüre içerisinde, Fon tarafından istenen bilgileri temin etmek ve/veya denetimi yapmakla\nyükümlüdür.\n51 Anayasa Mahkemesi’nin 22/3/2007 tarihli ve E.: 2005/139, K.: 2007/33 sayılı Kararı ile; bu fıkrada\nyer alan“... nitelikleri ile ...” ibaresi iptal edilmiştir.\nFon, her türlü faaliyetinde, kuruluş kanununda verilen yetkiler saklı kalmak kaydıyla,\nkalkınma plânı ve programlarda yer alan ilke, strateji ve politikalara uyar.52\nFonun hazırlayacağı düzenleme taslakları en az yedi gün süreyle Fonun internet\nsayfası başta olmak üzere uygun vasıtalarla kamuoyunun bilgisine sunulur.\nKamu kurum ve kuruluşları, Kanun ve Cumhurbaşkanlığı Kararnameleriyle\nbelirlenmiş görev alanlarında Fona gerekli yardımı sağlamakla yükümlüdür.53\nFonun bilgi ve belge isteme yetkisi",
+          "skor": 0.0564,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/5211",
+          "metin_ozet": " yeterli görmezse, bilirkişiden ek rapor isteyebileceği gibi gerçeğin ortaya çıkması için önceki bilirkişi veya yeniden seçeceği bilirkişi vasıtasıyla yeniden inceleme de yaptırabilir. Bilirkişi raporları arasındaki çelişki varsa hâkim çelişkiyi gidermeden karar veremez.\nDosyadaki bilgi ve belgelerd",
+          "metin": " yeterli görmezse, bilirkişiden ek rapor isteyebileceği gibi gerçeğin ortaya çıkması için önceki bilirkişi veya yeniden seçeceği bilirkişi vasıtasıyla yeniden inceleme de yaptırabilir. Bilirkişi raporları arasındaki çelişki varsa hâkim çelişkiyi gidermeden karar veremez.\nDosyadaki bilgi ve belgelerden özellikle mahkeme tarafından hükme esas alınan 28.05.2019 tarihli bilirkişi raporunda, tarafların kusur ve sorumlulukları yeterince incelenip değerlendirilmeksizin görüş bildirildiği, olay ve kusur dağılımını aydınlatmada yetersiz olduğu anlaşılmaktadır. Şöyle ki, dosyada  birbiriyle çelişkili raporlar bulunduğundan mahkemece çelişki giderilmek üzere yeniden alınan 28.05.2019 tarihli jeofizik mühendisi, jeoloji mühendisi ve inşaat mühendisinden oluşan üçlü bilirkişi kurulu raporunda kusur oranı belirlemenin uzmanlık alanları dışında olduğu belirtilmiştir. İlk Derece Mahkemesince de belirtilen raporda davacı ve davalı şirketin asli kusurlu olduğunun belirtildiği gerekçesiyle davalının %40 oranında kusuru olabileceği kabul edilerek hüküm oluşturulmuştur.\nŞu halde; mahkemece hükme esas alınan bilirkişi raporu yetersiz kaldığından konusunda uzman içlerinde jeoloji mühendisi, harita ve kad",
+          "skor": 0.0547,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6362 Sayılı Sermaye Piyasası Kanunu - Madde 19",
+          "metin_ozet": "MADDE 19 – (1) Halka açık ortaklıklar, kârlarını genel kurulları tarafından\nbelirlenecek kâr dağıtım politikaları çerçevesinde ve ilgili mevzuat hükümlerine uygun olarak\ndağıtırlar. Kurul halka açık ortaklıkların kâr dağıtımı politikalarına ilişkin olarak, benzer\nnitelikteki ortaklıklar bazında fark",
+          "metin": "MADDE 19 – (1) Halka açık ortaklıklar, kârlarını genel kurulları tarafından\nbelirlenecek kâr dağıtım politikaları çerçevesinde ve ilgili mevzuat hükümlerine uygun olarak\ndağıtırlar. Kurul halka açık ortaklıkların kâr dağıtımı politikalarına ilişkin olarak, benzer\nnitelikteki ortaklıklar bazında farklı esaslar belirleyebilir.\n(2) Kanunen ayrılması gereken yedek akçeler ve esas sözleşmede pay sahipleri için\nbelirlenen kâr payı ayrılmadıkça başka yedek akçe ayrılmasına, ertesi yıla kâr aktarılmasına\nve intifa senedi sahiplerine, yönetim kurulu üyelerine ve ortaklık çalışanlarına kârdan pay\ndağıtılmasına karar verilemeyeceği gibi, belirlenen kâr payı ödenmedikçe bu kişilere kârdan\npay dağıtılamaz.\n(3) Halka açık ortaklıklarda kâr payı, dağıtım tarihi itibarıyla mevcut payların tümüne,\nbunların ihraç ve iktisap tarihleri dikkate alınmaksızın eşit olarak dağıtılır.\n(4) Halka açık ortaklıkların sermaye artırımlarında, bedelsiz paylar artırım tarihindeki\nmevcut paylara dağıtılır.\n(5) Halka açık ortaklıklar tarafından bağış yapılabilmesi veya pay sahibi dışındaki\nkişilere kârdan pay dağıtılabilmesi için esas sözleşmede hüküm bulunması şarttır. Yapılacak\nbağışın sınırı halka açık ortaklık genel kurulunca belirlenir. Kurul, bağış tutarına üst sınır\ngetirmeye yetkilidir. Ortaklıkların ilgili mali yıl içinde yapmış olduğu bağışlar, dağıtılabilir\nkâr matrahına eklenir.\nKâr payı avansı",
+          "skor": 0.0526,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6362&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 194",
+          "metin_ozet": "Madde 194- Eşlerden biri, diğer eşin açık rızası bulunmadıkça, aile konutu ile ilgili kira\nsözleşmesini feshedemez, aile konutunu devredemez veya aile konutu üzerindeki hakları sınırlayamaz.\nRızayı sağlayamayan veya haklı bir sebep olmadan kendisine rıza verilmeyen eş, hâkimin\nmüdahalesini isteyebil",
+          "metin": "Madde 194- Eşlerden biri, diğer eşin açık rızası bulunmadıkça, aile konutu ile ilgili kira\nsözleşmesini feshedemez, aile konutunu devredemez veya aile konutu üzerindeki hakları sınırlayamaz.\nRızayı sağlayamayan veya haklı bir sebep olmadan kendisine rıza verilmeyen eş, hâkimin\nmüdahalesini isteyebilir.\nAile konutu olarak özgülenen taşınmaz malın maliki olmayan eş, tapu kütüğüne konutla\nilgili gerekli şerhin verilmesini tapu müdürlüğünden isteyebilir.15\nAile konutu eşlerden biri tarafından kira ile sağlanmışsa, sözleşmenin tarafı olmayan eş,\nkiralayana yapacağı bildirimle sözleşmenin tarafı hâline gelir ve bildirimde bulunan eş diğeri ile\nmüteselsilen sorumlu olur.\nE. Birliğin korunması\nI. Genel olarak",
+          "skor": 0.0524,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 567,
+      "ortalama_kaynak_skor": 0.0545,
+      "kaynak_sayisi": 5,
+      "message_id": "906c588c-cff1-4186-84a4-05961c49b013",
+      "conversation_id": "45726829-f267-4aa0-99ef-7e1d7997895c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.64,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Belediye encumen kararinin iptali icin nereye basvurulur?",
+      "cevap": "Belediye encümen kararının iptali için idari dava açılması gerekmektedir. Bu tür davalar idare mahkemelerinde veya vergi mahkemelerinde açılır. İdare mahkemesi, idari işlemler hakkında açılan davalara bakmakla görevlidir. \n\nİdari dava açmak için, belediye encümen kararının alınmasını takiben 60 günlük dava açma süresi içinde ilgili idare mahkemesine başvurmak gerekir. Dava açma süresi, kararın öğrenildiği tarihten itibaren başlar.\n\nDavanın açılabilmesi için, belediye encümen kararının hukuka aykırılık teşkil etmesi veya ilgili kişinin haklarını ihlal etmesi gerekir. Mahkeme, dava konusu kararın hukuka uygunluğunu inceleyerek karar verir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0777,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 2",
+          "metin_ozet": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylı",
+          "metin": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylık bağlama oranı esas alınır. Bu şekilde belirlenen taban aylık bağlama oranı, sigortalının tahsis talep tarihi itibarıyla kadın ise 50, erkek ise 55 yaşından sonra doldurduğu her tam yaş için ve 5000 günden fazla ödediği her 240 günlük malullük, yaşlılık ve ölüm sigortaları primi için (l)’er artırılır, 5000 günden noksan ödediği her 240 gün için (1)’er eksiltilir.",
+          "skor": 0.0733,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 347",
+          "metin_ozet": "MADDE 347- Konut ve çatılı işyeri kiralarında kiracı, belirli süreli sözleşmelerin süresinin bitiminden en az onbeş gün önce bildirimde bulunmadıkça, sözleşme aynı koşullarla bir yıl için uzatılmış sayılır. Kiraya veren, sözleşme süresinin bitimine dayanarak sözleşmeyi sona erdiremez. Ancak, on yıll",
+          "metin": "MADDE 347- Konut ve çatılı işyeri kiralarında kiracı, belirli süreli sözleşmelerin süresinin bitiminden en az onbeş gün önce bildirimde bulunmadıkça, sözleşme aynı koşullarla bir yıl için uzatılmış sayılır. Kiraya veren, sözleşme süresinin bitimine dayanarak sözleşmeyi sona erdiremez. Ancak, on yıllık uzama süresi sonunda kiraya veren, bu süreyi izleyen her uzama yılının bitiminden en az üç ay önce bildirimde bulunmak koşuluyla, herhangi bir sebep göstermeksizin sözleşmeye son verebilir. Belirsiz süreli kira sözleşmelerinde, kiracı her zaman, kiraya veren ise kiranın başlangıcından on yıl geçtikten sonra, genel hükümlere göre fesih bildirimiyle sözleşmeyi sona erdirebilirler. Genel hükümlere göre fesih hakkının kullanılabileceği durumlarda, kiraya veren veya kiracı sözleşmeyi sona erdirebilir. 2. Bildirimin geçerliliği a. Şekil",
+          "skor": 0.0712,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 54 - Fıkra 3",
+          "metin_ozet": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "metin": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "skor": 0.0709,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 5",
+          "metin_ozet": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye K",
+          "metin": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye Kurum Yönetim Kurulu yetkilidir.",
+          "skor": 0.0706,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 849,
+      "ortalama_kaynak_skor": 0.0727,
+      "kaynak_sayisi": 5,
+      "message_id": "e9bb99f8-bf5b-4f10-9b64-717557e3bb9f",
+      "conversation_id": "bedbc997-cde7-4a7d-acf7-f5b306fa6a52",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.87,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Kamu ihalelerine katilim sartlari nelerdir?",
+      "cevap": "Kamu ihalelerine katılım şartları, 4734 sayılı Kamu İhale Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında bu kanuna ilişkin bir madde bulunmamaktadır. \n\nVerilen kaynaklar arasında, fikir ve sanat eserleri, devlet memurları, Türk Borçlar Kanunu, Türkiye Cumhuriyeti Anayasası ve Hukuk Muhakemeleri Kanunu'na ilişkin maddeler bulunmaktadır. Ancak, bu kaynaklar kamu ihalelerine katılım şartları hakkında bilgi vermemektedir.\n\nKamu ihalelerine katılım şartları hakkında bilgi edinmek için, 4734 sayılı Kamu İhale Kanunu ve ilgili mevzuata bakılması gerekmektedir. Bu kanun, kamu ihalelerine ilişkin usul ve esasları düzenlemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0815,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.069,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 183",
+          "metin_ozet": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırıl",
+          "metin": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırılmış bulunduğu savunmasını ileri süremez.",
+          "skor": 0.0674,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 31",
+          "metin_ozet": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsa",
+          "metin": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsağlığın korunması sebepleri dışında, halkın bu araçlarla haber almasını, düşünce ve kanaatlere\nulaşmasını ve kamuoyunun serbestçe oluşmasını engelleyici kayıtlar koyamaz.\nE. Düzeltme ve cevap hakkı",
+          "skor": 0.067,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "metin": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "skor": 0.0659,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 846,
+      "ortalama_kaynak_skor": 0.0702,
+      "kaynak_sayisi": 5,
+      "message_id": "41bf1b46-3716-4327-865a-aed7853c525e",
+      "conversation_id": "a1a756e4-7827-479a-9152-1f317e67222e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.67,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Devlet memurunun gorev sirasinda verdigi zarardan sorumlulugu nedir?",
+      "cevap": "Devlet memurunun görevi sırasında verdiği zarardan sorumluluğu, genel olarak 657 sayılı Devlet Memurları Kanunu ve 5018 sayılı Kamu Mali Yönetimi ve Kontrol Kanunu'nda düzenlenen hükümler çerçevesinde değerlendirilir. \n\n657 sayılı Devlet Memurları Kanunu'nun 13. maddesine göre, memurlar, görevlerini yerine getirirken, görevlerinin gerektirdiği bilgi, beceri ve davranışa sahip olmak zorundadırlar. Aynı kanunun 12. maddesinde, memurların görevleri başında veya görevleri dışında, görevlerini yerine getirmeleri sırasında işledikleri suçlardan dolayı soruşturma ve kovuşturma yapılmasına ilişkin hükümler düzenlenmiştir.\n\n5018 sayılı Kamu Mali Yönetimi ve Kontrol Kanunu'nun 71. maddesine göre, kamu görevlilerinin, görevlerini yerine getirirken, kamu kaynaklarının etkili, ekonomik ve verimli bir şekilde kullanılmasından sorumludurlar. Aynı kanunun 72. maddesinde, kamu görevlilerinin, görevleri sırasında meydana gelen zararlardan dolayı, kusurları oranında sorumludurlar.\n\nAncak, verilen kaynaklar bu konuya ilişkin yeterli bilgi sağlamamaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2339",
+          "metin_ozet": "lmıyorum.",
+          "metin": "lmıyorum.",
+          "skor": 0.0734,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3483",
+          "metin_ozet": "şüne katılmamaktayız.",
+          "metin": "şüne katılmamaktayız.",
+          "skor": 0.0658,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 29 - Fıkra 3",
+          "metin_ozet": "Yaşlılık aylığının başlangıcı ve kesilmesi [47]",
+          "metin": "Yaşlılık aylığının başlangıcı ve kesilmesi [47]",
+          "skor": 0.065,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.0632,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15021",
+          "metin_ozet": "rildi.",
+          "metin": "rildi.",
+          "skor": 0.063,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1256,
+      "ortalama_kaynak_skor": 0.0661,
+      "kaynak_sayisi": 5,
+      "message_id": "99ce1e7f-0ec8-4620-b56a-3e1761f28229",
+      "conversation_id": "f97879f3-9082-41c1-a3b0-1980806d205d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.18,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Idari para cezasina itiraz sureci nasil isler?",
+      "cevap": "İdari para cezasına itiraz süreci, 5326 sayılı Kabahatler Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında bu kanuna ilişkin bir madde bulunmamaktadır. \n\nİdari para cezasına itiraz süreci genellikle şu şekilde işler: İdari para cezasına ilişkin karar, ilgili kişiye tebliğ edilir. Bu karara karşı, tebliğ tarihinden itibaren 15 gün içinde sulh ceza mahkemesine itiraz edilebilir. İtiraz, mahkeme tarafından değerlendirilir ve karar verilir.\n\nBu konuyla ilgili olarak, 5326 sayılı Kabahatler Kanunu'nun 27. maddesinde \"İdari para cezalarına karşı itiraz\" başlığı altında düzenleme yapılmıştır. Ancak, bu madde verilen kaynaklar arasında yer almamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 141",
+          "metin_ozet": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "metin": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "skor": 0.0822,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 129",
+          "metin_ozet": "MADDE 129- Kendi adına sözleşme yapan kişi, sözleşmeye üçüncü kişi yararına bir edim yükümlülüğü koydurmuşsa, edimin üçüncü kişiye ifa edilmesini isteyebilir. Üçüncü kişi veya üçüncü kişiye halef olanlar da, tarafların amacına veya örf ve âdete uygun düştüğü takdirde edimin ifasını isteyebilirler. B",
+          "metin": "MADDE 129- Kendi adına sözleşme yapan kişi, sözleşmeye üçüncü kişi yararına bir edim yükümlülüğü koydurmuşsa, edimin üçüncü kişiye ifa edilmesini isteyebilir. Üçüncü kişi veya üçüncü kişiye halef olanlar da, tarafların amacına veya örf ve âdete uygun düştüğü takdirde edimin ifasını isteyebilirler. Bu durumda, üçüncü kişi veya ona halef olanlar bu hakkı kullanmak istediklerini borçluya bildirdikten sonra, alacaklı borçluyu ibra edemeyeceği gibi, borcun nitelik ve kapsamını da değiştiremez.",
+          "skor": 0.0819,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 73",
+          "metin_ozet": "MADDE 73- Rücu istemi, tazminatın tamamının ödendiği ve birlikte sorumlu kişinin öğrenildiği tarihten başlayarak iki yılın ve her hâlde tazminatın tamamının ödendiği tarihten başlayarak on yılın geçmesiyle zamanaşımına uğrar. Tazminatın ödenmesi kendisinden istenilen kişi, durumu birlikte sorumlu ol",
+          "metin": "MADDE 73- Rücu istemi, tazminatın tamamının ödendiği ve birlikte sorumlu kişinin öğrenildiği tarihten başlayarak iki yılın ve her hâlde tazminatın tamamının ödendiği tarihten başlayarak on yılın geçmesiyle zamanaşımına uğrar. Tazminatın ödenmesi kendisinden istenilen kişi, durumu birlikte sorumlu olduğu kişilere bildirmek zorundadır. Aksi takdirde zamanaşımı, bu bildirimin dürüstlük kurallarına göre yapılabileceği tarihte işlemeye başlar.",
+          "skor": 0.081,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 700",
+          "metin_ozet": "Madde 700- Bir paydaşın kendi payı üzerinde intifa hakkı kurması hâlinde, diğer\npaydaşlardan biri intifa hakkının kurulduğunun kendisine tebliğinden başlayarak üç ay içinde\npaylaşma isteminde bulunursa; satış yoluyla paylaşmada intifa hakkı, buna ilişkin paya düşecek\nbedel üzerinde devam eder.\nII. E",
+          "metin": "Madde 700- Bir paydaşın kendi payı üzerinde intifa hakkı kurması hâlinde, diğer\npaydaşlardan biri intifa hakkının kurulduğunun kendisine tebliğinden başlayarak üç ay içinde\npaylaşma isteminde bulunursa; satış yoluyla paylaşmada intifa hakkı, buna ilişkin paya düşecek\nbedel üzerinde devam eder.\nII. Elbirliği mülkiyeti\n1. Kaynakları ve niteliği",
+          "skor": 0.0805,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 177",
+          "metin_ozet": "MADDE 177- Sözleşme yapılırken bir kimsenin vermiş olduğu bir miktar para, cayma parası olarak değil sözleşmenin yapıldığına kanıt olarak verilmiş sayılır. Aksine sözleşme veya yerel âdet olmadıkça, bağlanma parası esas alacaktan düşülür.",
+          "metin": "MADDE 177- Sözleşme yapılırken bir kimsenin vermiş olduğu bir miktar para, cayma parası olarak değil sözleşmenin yapıldığına kanıt olarak verilmiş sayılır. Aksine sözleşme veya yerel âdet olmadıkça, bağlanma parası esas alacaktan düşülür.",
+          "skor": 0.0802,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 869,
+      "ortalama_kaynak_skor": 0.0812,
+      "kaynak_sayisi": 5,
+      "message_id": "5f2dc8d4-9ba0-47ac-b36e-ab12da88be91",
+      "conversation_id": "098aa593-029b-48b6-90f9-3c6e8d3f32cc",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.67,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Imar planina karsi dava acilabilir mi?",
+      "cevap": "İmar planına karşı dava açılması mümkündür. İmar planının hukuka aykırılığı iddia edilirse, idari yargıda dava açılabilir. İdari yargıda, imar planının iptali istenebilir. \n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. İmar planına karşı dava açılmasıyla ilgili daha detaylı bilgi için ilgili kanun ve yönetmeliklere bakılması gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1341",
+          "metin_ozet": "MADDE 1341- (1) 1976 tarihli Sözleşmede belirlenen sorumluluk sınırları,\nkılavuzlara doğrudan yöneltilen bütün istemler için toplam 1.500 Özel Çekme Hakkıdır.\n(2) 1992 tarihli Sorumluluk Sözleşmesinin III üncü maddesinin beşinci paragrafına\ngöre malik tarafından kılavuza yöneltilebilecek rücu isteml",
+          "metin": "MADDE 1341- (1) 1976 tarihli Sözleşmede belirlenen sorumluluk sınırları,\nkılavuzlara doğrudan yöneltilen bütün istemler için toplam 1.500 Özel Çekme Hakkıdır.\n(2) 1992 tarihli Sorumluluk Sözleşmesinin III üncü maddesinin beşinci paragrafına\ngöre malik tarafından kılavuza yöneltilebilecek rücu istemlerinde sorumluluk sınırı toplam\n1.500 Özel Çekme Hakkıdır.\n(3) Bu maddenin uygulamasında kılavuz terimi, gemide veya herhangi başka bir\nyerden gemiye kılavuzluk hizmeti veren kişiyi veya kişileri ve bu kişi veya kişilerin\nfiillerinden sorumlu olan bütün gerçek ve tüzel kişileri kapsar.\nII - Kişisel sorumlulukta fon kurulması",
+          "skor": 0.0635,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1300",
+          "metin_ozet": "MADDE 1300- (1) Kaptan, aracın kurtarılması için malik adına kurtarma sözleşmesi\nyapmaya yetkilidir. Bu yetkinin kapsamına, yetkili mahkemeyi veya tahkimi kararlaştırmak\nda girer.\n(2) Aracın maliki ve kaptanı, araçta bulunan şeylerin malikleri adına kurtarma\nsözleşmesi yapmaya yetkilidir. Bu yetkini",
+          "metin": "MADDE 1300- (1) Kaptan, aracın kurtarılması için malik adına kurtarma sözleşmesi\nyapmaya yetkilidir. Bu yetkinin kapsamına, yetkili mahkemeyi veya tahkimi kararlaştırmak\nda girer.\n(2) Aracın maliki ve kaptanı, araçta bulunan şeylerin malikleri adına kurtarma\nsözleşmesi yapmaya yetkilidir. Bu yetkinin kapsamına, yetkili mahkemeyi veya tahkimi\nkararlaştırmak da girer.\n2. Sözleşmenin uyarlanması veya iptali",
+          "skor": 0.0592,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 837",
+          "metin_ozet": "Madde 837- Başkasının arazisinde bulunan kaynak üzerinde irtifak hakkı, bu arazinin\nmalikini suyun alınmasına ve akıtılmasına katlanmakla yükümlü kılar.\nBu hak, aksi kararlaştırılmış olmadıkça, başkasına devredilebilir ve mirasçıya geçer.\nKaynak hakkı, bağımsız nitelikte ve en az otuz yıl için kurul",
+          "metin": "Madde 837- Başkasının arazisinde bulunan kaynak üzerinde irtifak hakkı, bu arazinin\nmalikini suyun alınmasına ve akıtılmasına katlanmakla yükümlü kılar.\nBu hak, aksi kararlaştırılmış olmadıkça, başkasına devredilebilir ve mirasçıya geçer.\nKaynak hakkı, bağımsız nitelikte ve en az otuz yıl için kurulmuş ise tapu kütüğüne\ntaşınmaz olarak kaydedilebilir.\nE. Diğer irtifak hakları",
+          "skor": 0.0542,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 69 - Fıkra 3",
+          "metin_ozet": "Bu madde gereğince katılım payı alınmayacak sağlık hizmetlerini tek tek veya gruplandırarak tespite Kurum yetkilidir. Hizmet basamakları ve sevk zinciri [120]",
+          "metin": "Bu madde gereğince katılım payı alınmayacak sağlık hizmetlerini tek tek veya gruplandırarak tespite Kurum yetkilidir. Hizmet basamakları ve sevk zinciri [120]",
+          "skor": 0.0508,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 26",
+          "metin_ozet": "MADDE 26- Malûllük sigortasından sigortalılara sağlanan hak, malûllük aylığı bağlanmasıdır. Sigortalıya malûllük aylığı bağlanabilmesi için sigortalının; a) 25 inci maddeye göre malûl sayılması, b) (Değişik: 17/4/2008-5754/14 md.) En az on yıldan beri sigortalı bulunup, toplam olarak 1800 gün veya b",
+          "metin": "MADDE 26- Malûllük sigortasından sigortalılara sağlanan hak, malûllük aylığı bağlanmasıdır. Sigortalıya malûllük aylığı bağlanabilmesi için sigortalının; a) 25 inci maddeye göre malûl sayılması, b) (Değişik: 17/4/2008-5754/14 md.) En az on yıldan beri sigortalı bulunup, toplam olarak 1800 gün veya başka birinin sürekli bakımına muhtaç derecede malûl olan sigortalılar için ise sigortalılık süresi aranmaksızın 1800 gün malûllük, yaşlılık ve ölüm sigortaları primi bildirilmiş olması, c) Malûliyeti nedeniyle sigortalı olarak çalıştığı işten ayrıldıktan veya işyerini kapattıktan veya devrettikten sonra Kurumdan yazılı istekte bulunması, halinde malûllük aylığı bağlanır. Ancak, 4 üncü maddenin birinci fıkrasının (b) bendine göre sigortalı sayılanların kendi sigortalılığı nedeniyle genel sağlık sigortası primi dahil, prim ve prime ilişkin her türlü borçlarının ödenmiş olması zorunludur. [41] Malûllük aylığının hesaplanması, başlangıcı, kesilmesi ve yeniden bağlanması",
+          "skor": 0.0502,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 566,
+      "ortalama_kaynak_skor": 0.0556,
+      "kaynak_sayisi": 5,
+      "message_id": "bf62ad2f-2dad-47ac-af1c-a5a9988ba30b",
+      "conversation_id": "4955ddab-ad35-490f-966e-b9bcf9a96d75",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.34,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Kamu gorevlisinin suc islemesi halinde yargilama sureci nasil isler?",
+      "cevap": "Kamu görevlisinin suç işlemesi halinde yargılama süreci, genel olarak ceza yargılaması hükümlerine tabidir. Ancak, kamu görevlilerinin yargılanması bazı özel hükümlere tabi olabilir.\n\nÖncelikle, kamu görevlisinin suç işlemesi halinde, ilgili makamlar tarafından soruşturma başlatılır. Bu soruşturma, genellikle savcılık tarafından yürütülür. Savcılık, delilleri toplar ve suçun işlendiğine ilişkin yeterli şüphe oluştuğunda, kamu görevlisi hakkında iddianame düzenler.\n\nİddianamenin mahkeme tarafından kabul edilmesiyle, yargılama süreci başlar. Mahkeme, kamu görevlisinin suçlu olup olmadığını belirlemek için delilleri değerlendirir ve tanıkları dinler. Kamu görevlisi, suçsuz olduğunu kanıtlamak için savunma yapma hakkına sahiptir.\n\nYargılama sürecinde, mahkeme, kamu görevlisinin suçlu olduğuna karar verirse, ilgili kanun hükümlerine göre ceza verir. Ceza, hapis cezası, para cezası veya diğer türden cezalar olabilir.\n\nAncak, kamu görevlilerinin yargılanması bazı özel hükümlere tabi olabilir. Örneğin, bazı kamu görevlileri, görevleri nedeniyle özel koruma altına alınabilir veya yargılanmaları için özel izinler gerekebilir.\n\nVerilen kaynaklar, kamu görevlisinin suç işlemesi halinde yargılama sürecine ilişkin özel hükümler içermemektedir. Ancak, 4. Hukuk Dairesi - 2025/13481 sayılı karar, hâkimin tazminatın kapsamını ve ödenme biçimini belirlerken, durumun gereğini ve özellikle kusurun ağırlığını göz önüne alabileceğini belirtmektedir. Ayrıca, 4. Hukuk Dairesi - 2024/9840 sayılı karar, hukuk hakiminin kusurun bulunup bulunmadığı ve oranına ilişkin ceza mahkemesi kararı ile bağlı olmadığını, ancak kesinleşmiş olan maddi olgu ile bağlı olduğunu belirtmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/13481",
+          "metin_ozet": "ine göre; hâkim, tazminatın kapsamını ve ödenme biçimini, durumun gereğini ve özellikle kusurun ağırlığını göz önüne alarak belirler.\nTBK'nin 74 üncü maddesine göre; hâkim, zarar verenin kusurunun olup olmadığı, ayırt etme gücünün bulunup bulunmadığı hakkında karar verirken, ceza hukukunun sorumlulu",
+          "metin": "ine göre; hâkim, tazminatın kapsamını ve ödenme biçimini, durumun gereğini ve özellikle kusurun ağırlığını göz önüne alarak belirler.\nTBK'nin 74 üncü maddesine göre; hâkim, zarar verenin kusurunun olup olmadığı, ayırt etme gücünün bulunup bulunmadığı hakkında karar verirken, ceza hukukunun sorumlulukla ilgili hükümleriyle bağlı olmadığı gibi, ceza hâkimi tarafından verilen beraat kararıyla da bağlı değildir. Aynı şekilde, ceza hâkiminin kusurun değerlendirilmesine ve zararın belirlenmesine ilişkin kararı da, hukuk hâkimini bağlamaz.  Buna göre, hukuk hakimi kural olarak ceza hakiminin belirlediği kusur oranı ile bağlı değil ise de, kesinleşen maddi vaka ile bağlıdır. (H.G.K. 06.02.20 02... /19-16, 2002/47 sayılı kararı).\n6100 sayılı Hukuk Muhakemeleri Kanunu’nun 266 ve devamı maddeleri gereğince, çözümü özel veya teknik bilgiyi gerektiren hâllerde bilirkişinin oy ve görüşünün alınmasına karar verilir.\nSomut olayda davacının sevk ve idaresindeki araç ile davalıya sigortalı araç sürücüsünün karşılıklı kazasında davacı yaralanmıştır. Davalı ... meydana gelen zarardan sigortalının kusuru oranında sorumlu olup tazminatın belirlenmesinde kusur durumunun tespiti önemli yer tutmaktadır.\nSo",
+          "skor": 0.0591,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7563",
+          "metin_ozet": "na gelmesinde herhangi bir kusuru da olmadığından ehliyetsizlik nedeniyle müterafik kusur indirimi yapılmasının doğru olmadığı görüşünde olduğumdan sayın çoğunluğun (2) ve (3) numaralı bentlerdeki bozma gerekçesine katılmıyorum.",
+          "metin": "na gelmesinde herhangi bir kusuru da olmadığından ehliyetsizlik nedeniyle müterafik kusur indirimi yapılmasının doğru olmadığı görüşünde olduğumdan sayın çoğunluğun (2) ve (3) numaralı bentlerdeki bozma gerekçesine katılmıyorum.",
+          "skor": 0.0565,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2615",
+          "metin_ozet": "azı olmuş veya zararın doğmasında ya da artmasında etkili olmuş yahut tazminat yükümlüsünün durumunu ağırlaştırmış (müterafik kusur hâli söz konusu) ise hâkim, tazminatı indirebilir veya tamamen kaldırabilir. Müterafik kusura ilişkin savunma bir def’i olmadığından bu yönde bir savunma olmasa da rese",
+          "metin": "azı olmuş veya zararın doğmasında ya da artmasında etkili olmuş yahut tazminat yükümlüsünün durumunu ağırlaştırmış (müterafik kusur hâli söz konusu) ise hâkim, tazminatı indirebilir veya tamamen kaldırabilir. Müterafik kusura ilişkin savunma bir def’i olmadığından bu yönde bir savunma olmasa da resen dikkate alınması gerekir.\nSomut olayda;  kaza tespit tutanağında motosiklet sürücüsü olan davacının koruyucu başlık (kask) takıp takmadığı hususunun belirsiz olduğu belirtilmişse de;  kaza, davacının sürücüsü olduğu motosiklet ile davalıya sigortalı aracın çarpışması sonucu gerçekleşmiş, davacının yaralanması yüz bölgesinden olmuştur. Yaralanmanın niteliğine göre motosiklet sürücüsü olan davacının koruyucu başlık (kask) takmadığı hususu sabittir.\nBu itibarla; davacının  koruyucu başlık (kask) takmaması nedeniyle zararın oluşumunda veya artmasında katkısının bulunduğu gözetilerek 6098 sayılı Kanun'un 52 nci maddesi gereğince Dairemizin yerleşik uygulamasına göre %20 oranında müterafik kusur indirimi yapılmak suretiyle davalının sorumlu olduğu tazminat miktarının belirlenmesi gerekirken yazılı şekilde hüküm tesisi doğru görülmemiştir.\n4.5684 sayılı Kanun'un 30 uncu maddesinin (17) numara",
+          "skor": 0.0529,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/9840",
+          "metin_ozet": "reddine karar vermek gerekmiştir.\n2-818 sayılı Borçlar Kanunu'nun 53. maddesi (6098 sayılı Türk Borçlar Kanunu'nun 74. md.) gereğince; hukuk hakimi, kusurun bulunup bulunmadığı ve oranına ilişkin ceza mahkemesi kararı ile bağlı olmadığı gibi, kusura ilişkin saptamaya dayanan beraat kararı ile de bağ",
+          "metin": "reddine karar vermek gerekmiştir.\n2-818 sayılı Borçlar Kanunu'nun 53. maddesi (6098 sayılı Türk Borçlar Kanunu'nun 74. md.) gereğince; hukuk hakimi, kusurun bulunup bulunmadığı ve oranına ilişkin ceza mahkemesi kararı ile bağlı olmadığı gibi, kusura ilişkin saptamaya dayanan beraat kararı ile de bağlı değil ise de;  hukuk hakimi, ceza mahkemesince belirlenmiş ve kesinleşmiş olan maddi olgu ile bağlıdır.\nSomut olayda; ceza yargılamasında alınan ATK Trafik İhtisas Dairesi'nin 14.03.2013 tarihli raporuna göre; davacının yolcu olduğu araç sürücüsü dava dışı ... asli kusurlu, davalı ... minibüsün taşıyabileceği yükten fazla yük ve yolcu bindirdiği için lastik patlaması nedeniyle meydana gelen kazada asli kusurlu, karşı araç sürücüsü kusursuz bulunmuştur. Hukuk mahkemesince alınan ATK Trafik İhtisas Dairesi'nin 17.06.2013 tarihli raporuna göre; değerlendirme kısmında, davacının yolcu olduğu araç sürücüsü dava dışı ... hızını  aracın yük ve teknik özellikleriyle yol ve hava durumunun gerektirdiği şartlara uydurmadığından kusurlu olduğu, sonuç kısmında ise; davalı ... minibüsün taşıyabileceği yükten fazla yük ve yolcu bindirdiği için lastik patlaması nedeniyle meydana gelen kazada %100 kus",
+          "skor": 0.0494,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/4887",
+          "metin_ozet": "en şarampole yuvarlanma nedeniyle tek taraflı kaza meydana gelmiştir. İtiraz Hakem Heyetince olayın oluş şekline göre kazanın istiap haddinin aşılmasından kaynaklanıp kaynaklanmadığı hususunda alanında uzman bir bilirkişiden bilirkişi raporu alındıktan sonra sonucuna göre müterafik kusur durumunun d",
+          "metin": "en şarampole yuvarlanma nedeniyle tek taraflı kaza meydana gelmiştir. İtiraz Hakem Heyetince olayın oluş şekline göre kazanın istiap haddinin aşılmasından kaynaklanıp kaynaklanmadığı hususunda alanında uzman bir bilirkişiden bilirkişi raporu alındıktan sonra sonucuna göre müterafik kusur durumunun değerlendirilmesi gerektiği şeklindeki değişik gerekçeyle kararın bozulması gerektiği kanaatinde olduğumdan, sayın çoğunluğun (3) numaralı bentteki bozma gerekçesine katılmıyorum.",
+          "skor": 0.0494,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1881,
+      "ortalama_kaynak_skor": 0.0535,
+      "kaynak_sayisi": 5,
+      "message_id": "a83c5b8c-1a01-48ba-8850-90b66dabbe1a",
+      "conversation_id": "114b68aa-bf49-4008-a706-ce27ac43ea3c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 3.08,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Idari sozlesmelerde fesih kosullari nelerdir?",
+      "cevap": "İdari sözleşmelerde fesih koşulları, idari sözleşmelerin sona erme şartlarını belirleyen hükümlerdir. Türk hukukunda idari sözleşmeler, genellikle 4735 sayılı Kamu İhale Sözleşmeleri Kanunu veya 2886 sayılı Devlet İhale Kanunu kapsamında düzenlenir.\n\nAncak, verilen kaynaklar idari sözleşmelerde fesih koşulları hakkında yeterli bilgi sağlamamaktadır. 6098 sayılı Türk Borçlar Kanunu'nun 141. maddesi, üçüncü kişi yararına borçlanmaya ilişkin hükümleri içermektedir. 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 27. maddesinin 4. fıkrası, yaşlılık sigortasından sağlanan haklar ve yararlanma şartlarına ilişkindir. Yargıtay kararları (4. Hukuk Dairesi - 2025/2187, 9. Hukuk Dairesi - 2024/14277 ve 2024/14278) ise spesifik dava dosyalarına ilişkin kararları içermektedir.\n\nİdari sözleşmelerde fesih koşulları, genellikle sözleşmenin kendisinde veya ilgili mevzuatta belirtilir. Bu koşullar, sözleşmenin süresi, performansın eksikliği, tarafların yükümlülüklerini yerine getirmemesi gibi durumlara bağlı olabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.119,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14277",
+          "metin_ozet": "liğiyle karar verildi.",
+          "metin": "liğiyle karar verildi.",
+          "skor": 0.112,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14278",
+          "metin_ozet": "liğiyle karar verildi.",
+          "metin": "liğiyle karar verildi.",
+          "skor": 0.112,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 141",
+          "metin_ozet": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "metin": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "skor": 0.1087,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 4",
+          "metin_ozet": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "metin": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "skor": 0.1081,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1238,
+      "ortalama_kaynak_skor": 0.112,
+      "kaynak_sayisi": 5,
+      "message_id": "0c818bf5-7cf7-4b40-b96f-9f3f3b2890e6",
+      "conversation_id": "712badeb-88a3-4843-930c-56b6c7fc40ac",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.06,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Tam yargi davasinda tazminat nasil hesaplanir?",
+      "cevap": "Tam yargı davasında tazminat hesaplanması, davanın konusuna ve ilgili kanun hükümlerine göre değişebilir. Genel olarak, tazminat hesaplanırken mahkeme, davalının eylemlerinin veya ihmallerinin neden olduğu zararın miktarını belirler. Bu belirleme, genellikle uzman görüşlerine, delillere ve ilgili kanun maddelerine dayanır.\n\nÖrneğin, bir kişinin malvarlığına yapılan zararın tazminatı, zararın miktarının belirlenmesi ile hesaplanır. Mahkeme, bu amaçla bilirkişi raporları, uzman görüşleri ve diğer delilleri dikkate alır. Ayrıca, tazminat hesaplanırken, davalının kusurunun derecesi, zararın niteliği ve diğer ilgili faktörler de göz önünde bulundurulur.\n\nVerilen kaynaklar, tam yargı davasında tazminat hesaplanmasına ilişkin spesifik bir hüküm veya yöntemi içermemektedir. Ancak, Yargıtay kararları, mahkemelerin tazminat hesaplanırken objektif ve adil bir yaklaşım sergilemesi gerektiğini vurgulamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/12867",
+          "metin_ozet": "rumlu tutulması hatalı olmuştur.\nBu maddi ve hukuki olgular gözetilmeden yanılgılı değerlendirmeyle yazılı şekilde hüküm tesisi hatalı olup bozmayı gerektirmiştir.\nVII.KARAR\nAçıklanan sebeplerle;\nTemyiz olunan, İlk Derece Mahkemesi kararının BOZULMASINA,\nDosyanın İlk Derece Mahkemesine gönderilmesin",
+          "metin": "rumlu tutulması hatalı olmuştur.\nBu maddi ve hukuki olgular gözetilmeden yanılgılı değerlendirmeyle yazılı şekilde hüküm tesisi hatalı olup bozmayı gerektirmiştir.\nVII.KARAR\nAçıklanan sebeplerle;\nTemyiz olunan, İlk Derece Mahkemesi kararının BOZULMASINA,\nDosyanın İlk Derece Mahkemesine gönderilmesine,\n02.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0477,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13321",
+          "metin_ozet": "rumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavacı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul v",
+          "metin": "rumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavacı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine gönderilmesine,\n10.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0462,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4905",
+          "metin_ozet": " verildi.",
+          "metin": " verildi.",
+          "skor": 0.0447,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4904",
+          "metin_ozet": " verildi.",
+          "metin": " verildi.",
+          "skor": 0.0447,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7988",
+          "metin_ozet": "spat kuralları ile kararda belirtilen gerekçelere göre usul ve kanuna uygun olup davalı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan  sebeple;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370",
+          "metin": "spat kuralları ile kararda belirtilen gerekçelere göre usul ve kanuna uygun olup davalı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan  sebeple;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n16.10.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0444,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1114,
+      "ortalama_kaynak_skor": 0.0455,
+      "kaynak_sayisi": 5,
+      "message_id": "1921244b-413f-4f9a-ba4f-8c0b32e4ab81",
+      "conversation_id": "72ac5ba8-70bb-4a0b-98df-36db1fec6c6f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.15,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

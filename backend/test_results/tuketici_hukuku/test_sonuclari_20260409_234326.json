@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-09T23:45:12.148177+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 6.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/tuketici_hukuku/test_sonuclari_20260409_234326.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 105.5,
+    "ortalama_sure_sn": 8.79,
+    "kategori_dagilimi": {
+      "Tuketici Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 2.79,
+        "kategori_dogruluk_orani": 66.7,
+        "ortalama_cevap_uzunluk": 1055.0,
+        "ortalama_kaynak_skor": 0.0535
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Aldigim urun ayipli cikti, hangi haklarim var?",
+      "cevap": "Aldığınız ürünün ayıplı çıkması durumunda, Türk Borçlar Kanunu'nun ilgili hükümlerine göre haklarınız bulunmaktadır. \n\nÖncelikle, Türk Borçlar Kanunu'nun 39. maddesine göre, sözleşmenin kurulması sırasında aldatma veya korkutma sonucu sözleşme yapmışsanız, sözleşmeyi feshedebilirsiniz. Ancak, bu durumda bir yıl içinde sözleşmeyi feshetmediğiniz takdirde, sözleşmeyi onamış sayılacaksınız.\n\nAyrıca, Türk Borçlar Kanunu'nun 73. maddesine göre, tazminat talep edebilirsiniz. Ancak, bu durumda iki yıl içinde tazminat talebinizi ileri sürmeniz gerekmektedir.\n\nÜrünlerin ayıplı çıkması durumunda, satıcıya karşı ayıp nedeniyle sözleşmeden dönme, bedelde indirim veya ayıp oranında tazminat talep etme haklarınız bulunmaktadır. Bu haklar, Türk Borçlar Kanunu'nun ilgili hükümlerine göre düzenlenmiştir.\n\nAncak, bu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardım bürosu veya bir avukat ile görüşmenizi öneririz. Adalet Bakanligi ALO 182 hattindan ücretsiz hukuki danışmanlık alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- Yanılma veya aldatma sebebiyle ya da korkutulma sonucunda sözleşme yapan taraf, yanılma veya aldatmayı öğrendiği ya da korkutmanın etkisinin ortadan kalktığı andan başlayarak bir yıl içinde sözleşme ile bağlı olmadığını bildirmez veya verdiği şeyi geri istemezse, sözleşmeyi onamış sayılır.",
+          "metin": "MADDE 39- Yanılma veya aldatma sebebiyle ya da korkutulma sonucunda sözleşme yapan taraf, yanılma veya aldatmayı öğrendiği ya da korkutmanın etkisinin ortadan kalktığı andan başlayarak bir yıl içinde sözleşme ile bağlı olmadığını bildirmez veya verdiği şeyi geri istemezse, sözleşmeyi onamış sayılır. Aldatma veya korkutmadan dolayı bağlayıcılığı olmayan bir sözleşmenin onanmış sayılması, tazminat hakkını ortadan kaldırmaz.",
+          "skor": 0.0522,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 73",
+          "metin_ozet": "MADDE 73- Rücu istemi, tazminatın tamamının ödendiği ve birlikte sorumlu kişinin öğrenildiği tarihten başlayarak iki yılın ve her hâlde tazminatın tamamının ödendiği tarihten başlayarak on yılın geçmesiyle zamanaşımına uğrar. Tazminatın ödenmesi kendisinden istenilen kişi, durumu birlikte sorumlu ol",
+          "metin": "MADDE 73- Rücu istemi, tazminatın tamamının ödendiği ve birlikte sorumlu kişinin öğrenildiği tarihten başlayarak iki yılın ve her hâlde tazminatın tamamının ödendiği tarihten başlayarak on yılın geçmesiyle zamanaşımına uğrar. Tazminatın ödenmesi kendisinden istenilen kişi, durumu birlikte sorumlu olduğu kişilere bildirmek zorundadır. Aksi takdirde zamanaşımı, bu bildirimin dürüstlük kurallarına göre yapılabileceği tarihte işlemeye başlar.",
+          "skor": 0.0482,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 389",
+          "metin_ozet": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "metin": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "skor": 0.0397,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1137",
+          "metin_ozet": "MADDE 1137- (1) Tahsis olunan, geminin ticari yönetimi dolayısıyla tahsis edenin\nuğradığı zararlardan sorumludur.\n(2) Tahsis olunan, sözleşme bitiminde gemiyi sözleşmede belirlenen yerde ve hâlde\niade etmekle yükümlüdür. Bu yükümlülüğün ihlali hâlinde, tahsis olunan, gecikilen zaman\ndilimi için, zam",
+          "metin": "MADDE 1137- (1) Tahsis olunan, geminin ticari yönetimi dolayısıyla tahsis edenin\nuğradığı zararlardan sorumludur.\n(2) Tahsis olunan, sözleşme bitiminde gemiyi sözleşmede belirlenen yerde ve hâlde\niade etmekle yükümlüdür. Bu yükümlülüğün ihlali hâlinde, tahsis olunan, gecikilen zaman\ndilimi için, zaman çarteri sözleşmesinin bittiği tarihte ödenmesi gereken tahsis ücretinin iki\nkatını ödemekle yükümlüdür; meğerki, bu yüzden daha yüksek bir zararın meydana geldiği\nispat edilmiş olsun.\nÜÇÜNCÜ BÖLÜM\nNavlun Sözleşmesi\nBİRİNCİ AYIRIM\nGenel Hükümler\nA) Navlun sözleşmesinin türleri",
+          "skor": 0.036,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 141",
+          "metin_ozet": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "metin": "MADDE 141- Üçüncü kişi yararına borçlanan kişi, bu borcu ile sözleşmenin diğer tarafından olan alacağını takas edemez.",
+          "skor": 0.0358,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1009,
+      "ortalama_kaynak_skor": 0.0424,
+      "kaynak_sayisi": 5,
+      "message_id": "ebd20e43-6239-45f1-906d-7e2f96634ea7",
+      "conversation_id": "ad821728-dc49-4cf2-ae4b-ca27c0d41cfb",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 14.49,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Internetten aldigim urunu kac gun icinde iade edebilirim?",
+      "cevap": "Türk Hukukuna göre, internetten alınan ürünlerin iade süresi 14 gündür. Bu süre, ürünün teslim alındığı tarihten itibaren başlar. Tüketicinin, ürünün kendisine teslim edildiği tarihten itibaren 14 gün içinde iade hakkını kullanabileceği 6502 sayılı Tüketicinin Korunması Hakkında Kanunun 48. maddesinde belirtilmiştir.\n\nBu konuda Yargıtay kararlarına bakıldığında, verilen kaynaklar arasında bu konuya ilişkin bir karar bulunmamaktadır. Ancak, genel olarak 6502 sayılı Kanuna göre, tüketicinin iade hakkı bulunmaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.1052,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.0999,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2254",
+          "metin_ozet": "birliğiyle karar verildi.",
+          "metin": "birliğiyle karar verildi.",
+          "skor": 0.0971,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4887",
+          "metin_ozet": " birliğiyle karar verildi.",
+          "metin": " birliğiyle karar verildi.",
+          "skor": 0.0971,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15637",
+          "metin_ozet": "birliğiyle karar verildi.",
+          "metin": "birliğiyle karar verildi.",
+          "skor": 0.0971,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 723,
+      "ortalama_kaynak_skor": 0.0993,
+      "kaynak_sayisi": 5,
+      "message_id": "f403ed38-e02f-47db-9ade-6eb5360842a9",
+      "conversation_id": "7d26918f-03c1-419d-91a7-c300c6c0cd5a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.51,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Garanti suresi dolmus urun icin tuketici haklari nelerdir?",
+      "cevap": "Garanti süresi dolmuş ürün için tüketici hakları, 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da düzenlenmiştir. Bu kanun kapsamında, tüketici malın teslimi tarihinden itibaren iki yıl içinde ortaya çıkan ayıplar için satıcıya başvurabilir. Satıcı, ayıbın giderilmesi, malın değiştirilmesi veya bedelinin iadesi gibi taleplere karşı sorumludur.\n\nAncak, verilen kaynaklar sadece Yargitay kararlarına atıfta bulunmakta olup, bu kararların içeriği hakkında yeterli bilgi bulunmamaktadır. Dolayısıyla, garanti süresi dolmuş ürün için tüketici hakları hakkında daha详lı bilgi verilememektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15646",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0629,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/8068",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0629,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2339",
+          "metin_ozet": "lmıyorum.",
+          "metin": "lmıyorum.",
+          "skor": 0.0582,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/14245",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0559,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13121",
+          "metin_ozet": "r verildi.",
+          "metin": "r verildi.",
+          "skor": 0.0559,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 796,
+      "ortalama_kaynak_skor": 0.0592,
+      "kaynak_sayisi": 5,
+      "message_id": "115418b4-6a35-430f-a90a-21324150f1eb",
+      "conversation_id": "dc2be0b4-9b7a-419a-90ea-a75c9d08a235",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.56,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tuketici hakem heyetine nasil basvuru yapilir?",
+      "cevap": "Tüketici hakem heyetine başvuru yapmak için, tüketici olan kişinin, satın aldığı mal veya hizmetten kaynaklanan bir sorun yaşaması ve bu sorunu satıcı veya sağlayıcı ile çözemediği takdirde, tüketici hakem heyetlerine başvurabilir. \n\nBaşvuru için, tüketici hakem heyetinin bulunduğu il veya ilçe ticaret il müdürlüğüne, tüketici hakem heyeti başvuru formu doldurularak başvurulabilir. Başvuru formunda, tüketici olan kişinin adı, soyadı, adresi, telefon numarası, satın alınan mal veya hizmetin bilgileri, yaşanan sorun ve talep edilen çözüm gibi bilgiler yer almalıdır.\n\nAyrıca, tüketici hakem heyetine başvuru için, mal veya hizmetin satın alındığı belgesi, fatura, garanti belgesi gibi belgelerin de eklenmesi gerekmektedir. \n\nTüketici hakem heyeti, başvuruları inceleyerek, tüketici olan kişinin haklı olup olmadığını tespit eder ve karar verir. Karar, tüketici olan kişiye ve satıcı veya sağlayıcıya bildirilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
+          "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
+          "skor": 0.0843,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15646",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0815,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/8068",
+          "metin_ozet": "ldi.",
+          "metin": "ldi.",
+          "skor": 0.0815,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 2",
+          "metin_ozet": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylı",
+          "metin": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylık bağlama oranı esas alınır. Bu şekilde belirlenen taban aylık bağlama oranı, sigortalının tahsis talep tarihi itibarıyla kadın ise 50, erkek ise 55 yaşından sonra doldurduğu her tam yaş için ve 5000 günden fazla ödediği her 240 günlük malullük, yaşlılık ve ölüm sigortaları primi için (l)’er artırılır, 5000 günden noksan ödediği her 240 gün için (1)’er eksiltilir.",
+          "skor": 0.0771,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 33 - Fıkra 1",
+          "metin_ozet": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiy",
+          "metin": "MADDE 33- Sigortalının ölümü halinde hak sahiplerine bağlanan aylığın hesaplanmasında; [50] a) Sigortalının almakta olduğu veya bağlanmasına hak kazandığı malûllük, vazife malûllüğü veya yaşlılık aylığı, b) Malûllük veya yaşlılık aylığı bağlandıktan sonra sigortalı olarak çalışmaya başlaması sebebiyle aylığı kesilen sigortalının ölüm tarihi esas alınarak 27 nci veya 30 uncu maddelere göre tespit edilecek aylığı, c) 32 nci maddenin ikinci fıkrasının (a) bendi kapsamında malûllük, yaşlılık ve ölüm sigortaları primi ödemiş olan sigortalının prim ödeme gün sayısı, 9000 günden az ise 9000 gün üzerinden, 9000 gün ve daha fazla ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanan aylığı, esas alınır. (Ek cümle: 17/4/2008-5754/66 md.) Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır.",
+          "skor": 0.0743,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1120,
+      "ortalama_kaynak_skor": 0.0797,
+      "kaynak_sayisi": 5,
+      "message_id": "49764173-212c-447c-b535-543f34b0db54",
+      "conversation_id": "01e8e2c4-d67d-4805-834d-b2601c31b80d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.99,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tuketici mahkemesine basvurmak icin parasal sinir nedir?",
+      "cevap": "Tüketici mahkemesine başvurmak için parasal sınır, 6570 sayılı Tüketici Korunması Hakkında Kanunun 22. maddesinde düzenlenmiştir. Ancak, verilen kaynaklar arasında bu kanunun maddeleri bulunmamaktadır. \n\nVerilen kaynaklar arasında 657 sayılı Devlet Memurları Kanunu, 4721 sayılı Türk Medeni Kanunu ve 2918 sayılı Karayolları Trafik Kanunu bulunmaktadır. Bu kanunlar, tüketici mahkemesine başvurmak için parasal sınır ile ilgili herhangi bir bilgi vermemektedir.\n\nBu nedenle, tüketici mahkemesine başvurmak için parasal sınır hakkında bilgi verilememektedir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 14",
+          "metin_ozet": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "metin": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "skor": 0.0524,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 443",
+          "metin_ozet": "Madde 443- Vesayet altındaki kişinin malvarlığı içinde ticarî, sınaî veya benzeri bir\nişletme varsa; vesayet makamı, bunların işletilmesinin devamı veya tasfiyesi için gerekli talimatı\nverir.\nVI. Taşınmazların satılması",
+          "metin": "Madde 443- Vesayet altındaki kişinin malvarlığı içinde ticarî, sınaî veya benzeri bir\nişletme varsa; vesayet makamı, bunların işletilmesinin devamı veya tasfiyesi için gerekli talimatı\nverir.\nVI. Taşınmazların satılması",
+          "skor": 0.0508,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 343",
+          "metin_ozet": "Madde 343- Velâyet altındaki çocuğun fiil ehliyeti, vesayet altındaki kişinin ehliyeti\ngibidir.\nÇocuk, borçlarından ana ve babanın çocuk malları üzerindeki haklarına bakılmaksızın\nkendi malvarlığı ile sorumludur.\nVI. Çocuğun aileyi temsil etmesi",
+          "metin": "Madde 343- Velâyet altındaki çocuğun fiil ehliyeti, vesayet altındaki kişinin ehliyeti\ngibidir.\nÇocuk, borçlarından ana ve babanın çocuk malları üzerindeki haklarına bakılmaksızın\nkendi malvarlığı ile sorumludur.\nVI. Çocuğun aileyi temsil etmesi",
+          "skor": 0.0502,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 439",
+          "metin_ozet": "Madde 439- Kıymetli evrak, değerli eşya, önemli belge ve benzerleri, malvarlığının\nyönetimi bakımından bir sakınca yoksa, vesayet makamının gözetimi altında güvenli bir yere\nkonulur.\nIII. Taşınırların satılması",
+          "metin": "Madde 439- Kıymetli evrak, değerli eşya, önemli belge ve benzerleri, malvarlığının\nyönetimi bakımından bir sakınca yoksa, vesayet makamının gözetimi altında güvenli bir yere\nkonulur.\nIII. Taşınırların satılması",
+          "skor": 0.05,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 3",
+          "metin_ozet": "Madde 3 – Bu Kanunda kullanılan terimlerin tanımları aşağıda gösterilmiştir.\nTrafik: Yayaların, hayvanların ve araçların karayolları üzerindeki hal ve hareketleridir.\nKarayolu: Trafik için, kamunun yararlanmasına açık olan arazi şeridi, köprüler ve\nalanlardır.\nKarayolu yapısı: Karayolunun kendisi il",
+          "metin": "Madde 3 – Bu Kanunda kullanılan terimlerin tanımları aşağıda gösterilmiştir.\nTrafik: Yayaların, hayvanların ve araçların karayolları üzerindeki hal ve hareketleridir.\nKarayolu: Trafik için, kamunun yararlanmasına açık olan arazi şeridi, köprüler ve\nalanlardır.\nKarayolu yapısı: Karayolunun kendisi ile karayolunun üstünde, yanında, al tında veya\nyukarısındaki; ada, ayırıcı, otokorkuluk, istinat duvarı, köprü, tünel, menfez ve benzeri yapılardır.\nMülk: Devlete, kamuya, gerçek ya da tüzelkişilere ait olan taşınmaz mallardır.\nKarayolu sınır çizgisi: Kamulaştırılmış, kamuya terk veya tahsis edilmiş karayolunda;\nmülkle olan sınır çizgisi,\nDiğer karayollarında; yarmaca, şevden sonra hendek varsa hendek dış kenarı, hendek\nyoksa şev üst kenarı, dolguda şev etek çizgisi,\nYaya yolu ayrılmış karayolunda ise yaya yolunun mülkle birleştiği çizgidir.\nİki yönlü karayolu: Taşıt yolunun her iki yöndeki taşıt trafiği için kullanıldığı karayoludur.\nTek yönlü karayolu: Taşıt yolunun yalnız bir yöndeki taşıt trafiği için kullanıldığı\nkarayoludur.\nBölünmüş karayolu: Bir yöndeki trafiğe ait taşıt yolunun bir ayırıcı ile belirli şekilde\ndiğer taşıt yolundan ayrılması ile meydana gelen karayoludur.\nErişme kontrollü karayolu (otoyol - ekspresyol): Özellikle transit trafiğe tahsis edilen,\nbelirli yerler ve şartlar dışında giriş ve çıkışın yasaklandığı, yaya, hayvan ve motorsuz araçların\ngiremediği, ancak, izin verilen motorlu araçların yararlandığı ve trafiğin özel kontrola tabi\ntutulduğu karayoludur.\nGeçiş yolu: Araçların bir mülke girip çıkması için yapılmış olan yolun, karayolu\nüzerinde bulunan kısmıdır.\nBağlantı yolu: Bir kavşak yakınında karayolu taşıt yollarının birbirine bağlanmasını\nsağlayan, kavşak alanı dışında kalan ve bir yönlü trafiğe ayrılmış olan karayolu kısmıdır.\nAnayol: Anatrafiğe açık olan ve bunu kesen karayolundaki trafiğin, bu yolu geçerken\nveya bu yola girerken, ilk geçiş hakkını vermesi gerektiği işaretlerle belirlenmiş karayoludur.\nTali yol: Genel olarak üzerindeki trafik yoğunluğu bakımından, bağlandığı yoldan daha\naz önemde olan yoldur.\nTaşıt yolu: (Kaplama): Karayolunun genel olarak taşıt trafiğince kullanılan kısmıdır.\nYaya yolu (Yaya kaldırımı): Karayolunun, taşıt yolu kenarı ile gerçek veya tüzelkişilere\nait mülkler arasında kalan ve yalnız yayaların kullanımına ayrılmış olan kısmıdır.\nBisiklet yolu: (Değişik:24/12/2020-7261/22 md.) Bisiklet ve elektrikli skuter sürüşüne\nayrılan, taşıt yolu ve yaya alanları ile kesişim noktaları hariç diğer araç ve yaya trafiğine kapalı\nyoldur.\nYaya geçidi: Taşıt yolunda, yayaların güvenli geçebilmelerini sağlamak üzere, trafik\nişaretleri ile belirlenmiş alandır.\nKavşak: İki veya daha fazla karayolunun kesişmesi veya birleşmesi ile oluşan ortak\nalandır.\nBanket: Yaya yolu ayrılmamış karayolunda, taşıt yolu kenarı ile şev başı veya hendek\niç üst kenarı arasında kalan ve olağan olarak yayaların ve hayvanların kullanacağı, zorunlu\nhallerde de araçların faydalanabileceği kısımdır.\nŞerit: Taşıtların bir dizi halinde güvenle seyredebilmeleri için taşıt yolunun ayrılmış\nbir bölümüdür.\nAlt geçit: Karayolunun diğer bir karayolu veya demiryolunu alttan geçmesini sağlayan\nyapıdır.\nÜst geçit: Karayolunun, diğer bir karayolu veya demiryolunu üstten geçmesini sağlayan\nyapıdır.\nDemiryolu geçidi (Hemzemin geçit): Karayolu ile demiryolunun aynı seviyede kesiştiği\nbariyerli veya bariyersiz geçitlerdir,\nOkul geçidi: Genel olarak okul öncesi, ilköğretim ve orta dereceli okulların çevresinde\nözellikle öğrencilerin geçmesi için taşıt yolunda ayrılmış ve bir trafik işareti ile belirlenmiş\nalandır.\nAda: Yayaların geçme ve durmalarına, taşıtlardan inip binmelerine yarayan, trafik akımını\ndüzenleme ve trafik güvenliğini sağlama amacı ile yapılmış olan, araçların bulunamayacağı,\nkoruyucu tertibatla belirlenmiş bölüm ve alanlardır.\nAyırıcı: Taşıt yollarını veya yol bölümlerini birbirinden ayıran bir taraftaki taşıtların diğer\ntarafa geçmesini engelleyen veya zorlaştıran karayolu yapısı, trafik tertibatı veya gereçtir.\nPark yeri: Araçların park etmesi için kullanılan açık veya kapalı alandır.\nKarayolu üzeri park yeri: Taşıt yolundaki veya buna bitişik alanlardaki park yeridir.\nKarayolu dışı park yeri: Karayolu sınır çizgisi dışında olan ve bir geçiş yolu veya\nservis yolu ile taşıt yoluna bağlanan park yeridir.\nOtomobil: (Değişik: 12/7/2013-6495/13 md.) Yapısı itibarıyla, sürücüsü dahil en fazla\ndokuz oturma yeri olan ve insan taşımak için imal edilmiş bulunan motorlu taşıttır.\nMinibüs: (Mülga: 12/7/2013-6495/24 md.)\nKamyonet: (Değişik: 12/7/2013-6495/13 md.) Azami yüklü ağırlığı 3.500 kilogramı\ngeçmeyen ve yük taşımak için imal edilmiş motorlu taşıttır. Sürücü ve yanındaki oturma yerleri\ndışında başka oturma yeri de bulunabilen, sürücü bölümü gövde ile birleşik kamyonetlere\npanelvan denir.\nKamyon: İzin verilebilen azami yüklü ağırlığı 3 500 Kg'dan fazla olan ve yük taşımak\niçin imal edilmiş motorlu taşıttır.\nOtobüs: (Değişik: 12/7/2013-6495/13 md.) Yolcu taşımacılığında kullanılan, sürücüsü\ndahil dokuzdan fazla oturma yeri olan motorlu taşıttır. Troleybüsler de bu sınıfa dahildir.\nSürücüsü dahil oturma yeri on yediyi aşmayan otobüslere minibüs denir.\nÇekici: Römork ve yarı römorkları çekmek için imal edilmiş olan ve yük taşımayan\nmotorlu taşıttır.\nArazi taşıtı: Karayollarında yolcu veya yük taşıyabilecek şekilde imal edilmiş olmakla\nberaber bütün tekerlekleri motordan güç alan veya alabilen motorlu taşıtlardır.\nÖzel amaçlı taşıt: Özel amaçla insan veya eşya taşımak için imal edilmiş olan ve itfaiye,\nCankurtaran, cenaze, radyo, sinema, televizyon, kütüphane, araştırma araçları ile bozuk veya\nhasara uğramış taşıt ve araçları çekmek veya taşımak, kaldırmak gibi özel işlerde kullanılan\nmotorlu araçtır.\nKamu hizmeti taşıtı: Kamu hizmeti için yük veya yolcu taşıması yapan bütün taşıtlardır.\nPersonel servis aracı: (Ek: 17/10/1996-4199/1 md.) Herhangi bir kamu kurum ve\nkuruluşu veya özel veya tüzel kişilerin personelini bir akit karşılığı taşıyan şahıs veya şirketlere ait\nminibüs ve otobüs türündeki ticari araçlardır. Kamu kurum ve kuruluşları ile özel ve tüzel kişilere\nait araçların kendi personelini veya yolcusunu taşıma işi bu tanımın kapsamına girmez.\nUmum servis aracı: (Ek: 17/10/1996-4199/1 md.) Okul taşıtları ile personel servis\naraçlarının birlikte değerlendirilmesidir.\nKamp taşıtı: (Ek: 17/10/1996-4199/1 md.) Yük taşımasında kullanılmayan; iç dizaynı\ntatil yapmaya uygun teçhizatlarla donatılmış, hizmet edebileceği kadar yolcu taşıyabilen motorlu\ntaşıttır.\nRömork: Motorlu araçla çekilen insan veya yük taşımak için imal edilmiş motorsuz\ntaşıttır.\nYarı römork: Bir kısmı motorlu taşıt veya araç üzerine oturan, taşıdığı yükün ve kendi\nağırlığının bir kısmı motorlu araç tarafından taşınan römorkdur.\nHafif römork: Azami yüklü ağırlığı 750 Kg'ı geçmeyen römork veya yarı römorkdur.\nMotosiklet: (Değişik: 12/7/2013-6495/13 md.) Azami tasarım hızı 45 km/saatten ve/veya\nsilindir kapasitesi 50 santimetreküpten fazla olan sepetli veya sepetsiz iki veya üç tekerlekli\nmotorlu taşıtlar ve net motor gücü 15 kilovatı, net ağırlığı 400 kilogramı, yük taşımacılığında\nkullanılanlar için ise net ağırlığı 550 kilogramı aşmayan dört tekerlekli motorlu taşıtlardır.\nElektrik ile çalışanların net ağırlıklarının hesaplanmasında batarya ağırlıkları dikkate alınmaz.\nBunlardan karoseri yük taşıyabilecek şekilde sandıklı veya özel biçimde yapılmış olan ve yolcu\ntaşımalarında kullanılmayan üç tekerlekli motosikletlere yük motosikleti (triportör) denir.\nBisiklet: (Değişik: 12/7/2013-6495/13 md.) Üzerinde bulunan insanın adale gücü ile\npedal veya el ile tekerleği döndürülmek suretiyle hareket eden motorsuz taşıtlardır. Azami\nsürekli anma gücü 0,25 KW’ı geçmeyen, hızlandıkça gücü düşen ve hızı en fazla 25 km/saate\nulaştıktan sonra veya pedal çevrilmeye ara verildikten hemen sonra gücü tamamen kesilen\nelektrikli bisikletler de bu sınıfa girer.\nMotorlu bisiklet (Moped): (Değişik: 12/7/2013-6495/13 md.) Azami hızı saatte 45\nkilometreyi, içten yanmalı motorlu ise silindir hacmi 50 santimetreküpü, elektrik motorlu ise\nazami sürekli nominal güç çıkışı 4 kilovatı geçmeyen iki veya üç tekerlekli taşıtlar ile aynı\nözelliklere sahip net ağırlığı 350 kilogramı aşmayan dört tekerlekli motorlu taşıtlardır.\nElektrik ile çalışanların net ağırlıklarının hesaplanmasında batarya ağırlıkları dikkate alınmaz.\nLastik tekerlekli traktör: Belirli şartlarda römork ve yarı römork çekebilen, ancak ticari\namaçla taşımada kullanılmayan tarım araçlarıdır.\nİş makineleri: (Değişik: 17/10/1996-4199/1 md.) Yol inşaat makineleri ile benzeri\ntarım, sanayi, bayındırlık, milli savunma ile çeşitli kuruluşların iş ve hizmetlerinde kullanılan;\niş amacına göre üzerine çeşitli ekipmanlar monte edilmiş; karayolunda insan, hayvan, yük\ntaşımasında kullanılamayan moturlu araçlardır.\nTramvay: Genellikle yerleşim birimleri içinde insan taşımasında kullanılan, karayolunda\ntekerlekleri raylar üzerinde hareket eden ve hareket gücünü dışarıdan sağlayan taşıttır.\nOkul taşıtı: Genel olarak okul öncesi, ilköğretim ve orta dereceli okulların öğrencileri\nile sadece gözetici ve hizmetlilerin taşınmalarında kullanılan taşıttır.\nTaşıt katarı: Karayolunda bir birim olarak seyretmek üzere birbirine bağlanmış taşıtlardır.\nAraç: Karayolunda kullanılabilen motorlu, motorsuz ve özel amaçlı taşıtlar ile iş\nmakineleri ve lastik tekerlekli traktörlerin genel adıdır.\nTaşıt: Karayolunda insan, hayvan ve yük taşımaya yarayan araçlardır. Bunlardan makine\ngücü ile yürütülenlere \"motorlu taşıt\" insan ve hayvan gücü ile yürütülenlere \"motorsuz taşıt\"\ndenir.\nSürücü: (Değişik 17/10/1996-4199/1 md.) Karayolunda, motorlu veya motorsuz bir\naracı veya taşıtı sevk ve idare eden kişidir.\nŞoför: (Ek: 17/10/1996-4199/1 md.) Karayolunda, ticari olarak tescil edilmiş bir motorlu\ntaşıtı süren kişidir.\nAraç sahibi: Araç için adına yetkili idarece tescil belgesi verilmiş veya sahiplik veya\nsatış belgesi düzenlenmiş kişidir.\nİşleten: Araç sahibi olan veya mülkiyeti muhafaza kaydıyla satışta alıcı sıfatıyla sicilde\nkayıtlı görülen veya aracın uzun süreli kiralama, ariyet veya rehni gibi hallerde kiracı, ariyet\nveya rehin alan kişidir. Ancak ilgili tarafından başka bir kişinin aracı kendi hesabına ve tehlikesi\nkendisine ait olmak üzere işlettiği ve araç üzerinde fiili tasarrufu bulunduğu ispat edilirse, bu\nkimse işleten sayılır.\nYolcu: Aracı kullanan sürücü ile hizmetliler dışında araçta bulunan kişilerdir.\nHizmetli: Araçlarda, sürücü hariç, araç veya taşıma hizmetlerinde süreli veya süresiz\nçalışan kişiler ile iş makinelerinde sürücüden gayri kişilerdir.\nDurak: Kamu hizmeti yapan yolcu taşıtlarının yolcu veya hizmetlileri bindirmek,\nindirmek için durakladıkları işaretlerle belirlenmiş yerdir.\nGaraj: Araçların, genellikle uzun süre durmaları için kullanılan bakım veya servisinin\nde yapılabileceği kapalı veya açık olan yerlerdir.\nTerminal: İnsan veya eşya taşımalarında, araçların indirme, bindirme, yükleme,\nboşaltma, aktarma yaptıkları ve ayrıca bilet satışı ile bekleme, haberleşme, şehir ulaşımı ve\nbenzeri hizmetlerin de sağlandığı yerdir.\nServis istasyonu: Araçların bakım, onarım ve servislerinin yapıldığı açık veya kapalı\nyerdir.\nAkaryakıt istasyonu: Araçların esas itibariyle akaryakıt, yağ ve basınçlı hava gibi\nihtiyaçlarının sağlandığı yerdir.\nMuayene istasyonu: Araçların niteliklerini tespit ve kontrol edebilecek cihaz ve\npersoneli bulunan ve teknik kontrolü yapılan yerdir.\nTrafik kazası: Karayolu üzerinde hareket halinde olan bir veya birden fazla aracın\nkarıştığı ölüm, yaralanma ve zararla sonuçlanmış olan olaydır.\nDurma: Her türlü trafik zorunlulukları nedeni ile aracın durdurulmasıdır.\nDuraklama: Trafik zorunlulukları dışında araçların, insan indirmek ve bindirmek, eşya\nyüklemek, boşaltmak veya beklemek amacı ile kısa bir süre için durdurulmasıdır.\nPark etme: Araçların, durma ve duraklaması gereken haller dışında bırakılmasıdır.\nGeçiş hakkı: Yayaların ve araç kullananların diğer yaya ve araç kullananlara göre,\nyolu kullanmak sırasındaki öncelik hakkıdır.\nGeçiş üstünlüğü: Görev sırasında, belirli araç sürücülerinin can ve mal güvenliğini\ntehlikeye sokmamak şartı ile trafik kısıtlama veya yasaklarına bağlı olmamalarıdır.\nTaşıma sınırı (Kapasite): Bir aracın güvenle taşıyabileceği en çok yük ağırlığı veya\nyolcu sayısıdır.\nGabari: Araçların, yüklü veya yüksüz olarak karayolunda güvenli seyirlerini temin\namacı ile uzunluk, genişlik ve yüksekliklerini belirleyen ölçülerdir.\nAzami ağırlık: Taşıtın güvenle taşıyabileceği azami yükle birlikte ağırlığıdır.\nYüksüz ağırlık: Üzerinde insan veya eşya (yük) bulunmayan ve akaryakıt deposu dolu\nolan bir aracın taşınması zorunlu alet, edevat ve donatımı ile birlikte toplam ağırlığıdır.\nYüklü ağırlık: Bir taşıtın yüksüz ağırlığı ile taşımakta olduğu sürücü, hizmetli, yolcu\nve eşyanın toplam ağırlığıdır.\nDingil ağırlığı: Araçlarda aynı dingile bağlı tekerleklerden karayolu yapısına aktarılan\nağırlıktır,\nAzami dingil ağırlığı: Araçların karayolu yapılarından güvenle ve yapıya zarar vermeden\ngeçebilmeleri için saptanan dingil ağırlığıdır.\nAzami toplam ağırlık: Araçların karayolu yapılarından güvenle ve yapıya zarar vermeden\ngeçebilmeleri için saptanan toplam ağırlıktır.\nTrafik işaretleri: Trafiği düzenleme amacı ile kullanılan işaret levhaları, ışıklı ve sesli\nişaretler, yer işaretlemeleri ile trafik zabıtası veya diğer yetkililerin trafiği yönetmek için\nyaptıkları hareketlerdir.\nİşaret levhası: Sabit veya taşınabilir bir mesnet üzerine yerleştirilmiş ve üzerindeki\nsembol, renk ve yazı ile özel bir talimatın aktarılmasını sağlayan trafik tertibatıdır.\nIşıklı ve sesli işaretler: Trafiği düzenlemede kullanılan ışıklı ve sesli, sabit veya\ntaşınabilir, elle kumanda edilebilen veya otomatik çalışan, üzerinde çeşitli renk, şekil, sembol,\nyazı bulunan ve belirli yanma süresi olan, ışık veya sesle özel bir talimatın aktarılmasını\nsağlayan trafik tertibatıdır.\nİşaretleme: Taşıt yolu ile bordür, ada, ayırıcı, otokorkuluk gibi karayolu elemanları\nüzerindeki çeşitli renkte çizgi, şekil, sembol, yazı ve yansıtıcı ve benzerleri ile özel bir talimatın\naktarılmasını sağlayan tertibattır.\nTrafikten men: Trafik zabıtasınca, bu Kanunda belirtilen hallerde araçla ilgili belgelerin\nalınması ve aracın belirli bir yere çekilerek trafikten alıkonulmasıdır.\nMotorlu taşıt sürücüsü sertifikası: (Ek: 12/7/2013-6495/13 md.) Teorik ve uygulamalı\nsınavlarda başarı gösteren sürücü adaylarına verilen belgedir.\nSürücü belgesi: (Ek: 12/7/2013-6495/13 md.) Bu Kanunda belirtilen motorlu araçların\nsürülmesine yetki veren belgedir.\nUluslararası sürücü belgesi: (Ek: 12/7/2013-6495/13 md.) İki veya çok taraflı\nanlaşmalar uyarınca sınıflarına göre araç kullananlara belli süre ile verilen belgedir.\nElektrikli skuter (e-skuter): (Ek:24/12/2020-7261/22 md.) Hızı en fazla 25 km/saate\nulaşan, tekerlekli, ayak tahtası ve tutamağı olabilen, dikey bir direksiyon mekanizması\niçerebilen ve ayakta kullanılan taşıtlardır.\nBisiklet şeridi: (Ek:24/12/2020-7261/22 md.) Yol seviyesinde bisiklet ve elektrikli\nskuter kullanımı için özel olarak belirlenmiş ve yer işaretlemesi ile ayrılmış bölümdür.\nBu Kanunun uygulaması ile ilgili diğer tanım ve terimler yönetmelikte gösterilir. (Ek\ncümle: 12/7/2013-6495/13 md.) Bu maddedeki tanım ve terimlerle ilgili olarak vergi kanunları\nhükümleri saklıdır.\nİKİNCİ KISIM\nKuruluşlar, Komisyonlar, Görev ve Yetkileri4\nGörevli kurullar ve kuruluşlar:4",
+          "skor": 0.0497,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 762,
+      "ortalama_kaynak_skor": 0.0506,
+      "kaynak_sayisi": 5,
+      "message_id": "3f7acd56-8f04-467f-84c3-d148b29f66c5",
+      "conversation_id": "743c3bef-404b-4782-b7b1-9a35cb8792e2",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.35,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Abonelik sozlesmesinden cayma hakkimi nasil kullanabilirim?",
+      "cevap": "Abonelik sözleşmesinden cayma hakkının kullanımı, 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da düzenlenmiştir. Bu kanuna göre, tüketici, sözleşmenin imzalandığı tarihten itibaren 14 gün içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayma hakkına sahiptir.\n\nCayma hakkını kullanmak için, tüketici, sözleşmenin imzalandığı tarihten itibaren 14 gün içinde satıcı veya sağlayıcıya yazılı olarak bildirimde bulunmalıdır. Bu bildirim, taahhütlü mektup, telgraf veya elektronik posta yoluyla yapılabilir.\n\nCayma hakkının kullanımı ile ilgili olarak, Yargıtay kararlarına bakıldığında, cayma hakkının sözleşmenin imzalandığı tarihten itibaren 14 gün içinde kullanılabileceği görülmektedir. Ancak, bu konuda özel bir Yargıtay kararı bulunmamaktadır.\n\nÖrnek olarak, 9. Hukuk Dairesi'nin 2024/13321 sayılı kararında, \"temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir\" denilmektedir. Bu karar, cayma hakkının kullanımı ile ilgili olarak özel bir düzenleme içermemektedir.\n\nBenzer şekilde, 9. Hukuk Dairesi'nin 2025/8180 sayılı kararında da, \"temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir\" denilmektedir. Bu karar da, cayma hakkının kullanımı ile ilgili olarak özel bir düzenleme içermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/13321",
+          "metin_ozet": "rumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavacı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul v",
+          "metin": "rumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavacı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine gönderilmesine,\n10.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0611,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "Yargıtay 12.Ceza Dairesi - 2025/5236",
+          "metin_ozet": "vekilince bu yönleri amaçlayan temyiz itirazları dikkate alınarak, bozmanın niteliğine göre tarafların sair temyiz itirazlarının incelenmesine şimdilik yer olmadığına, Mahkemece verilen hüküm bozulmalıdır. VI. KARAR\nAçıklanan sebeplerle;\nTemyiz olunan Mahkeme kararının BOZULMASINA,\nDosyanın kararı v",
+          "metin": "vekilince bu yönleri amaçlayan temyiz itirazları dikkate alınarak, bozmanın niteliğine göre tarafların sair temyiz itirazlarının incelenmesine şimdilik yer olmadığına, Mahkemece verilen hüküm bozulmalıdır. VI. KARAR\nAçıklanan sebeplerle;\nTemyiz olunan Mahkeme kararının BOZULMASINA,\nDosyanın kararı veren İlk Derece Mahkemesine gönderilmesine,\n08.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0584,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/8180",
+          "metin_ozet": "uran yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavacı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uyg",
+          "metin": "uran yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavacı vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n22.10.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0576,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/12867",
+          "metin_ozet": "rumlu tutulması hatalı olmuştur.\nBu maddi ve hukuki olgular gözetilmeden yanılgılı değerlendirmeyle yazılı şekilde hüküm tesisi hatalı olup bozmayı gerektirmiştir.\nVII.KARAR\nAçıklanan sebeplerle;\nTemyiz olunan, İlk Derece Mahkemesi kararının BOZULMASINA,\nDosyanın İlk Derece Mahkemesine gönderilmesin",
+          "metin": "rumlu tutulması hatalı olmuştur.\nBu maddi ve hukuki olgular gözetilmeden yanılgılı değerlendirmeyle yazılı şekilde hüküm tesisi hatalı olup bozmayı gerektirmiştir.\nVII.KARAR\nAçıklanan sebeplerle;\nTemyiz olunan, İlk Derece Mahkemesi kararının BOZULMASINA,\nDosyanın İlk Derece Mahkemesine gönderilmesine,\n02.10.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.057,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/8283",
+          "metin_ozet": "uygun olup davacı-karşı davalı vekilinin temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemes",
+          "metin": "uygun olup davacı-karşı davalı vekilinin temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeple;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370/1 hükmü uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n23.10.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0549,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1533,
+      "ortalama_kaynak_skor": 0.0578,
+      "kaynak_sayisi": 5,
+      "message_id": "8dfc0815-4b21-454a-a898-cf98a00137e1",
+      "conversation_id": "ed0ab1ed-0ff3-4629-99f7-be06f3566c90",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.1,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Kredi karti ile alisveriste taksit iptali yapilabilir mi?",
+      "cevap": "Verilen kaynaklar, kredi kartı ile alışverişte taksit iptali yapılabilir mi sorusuna doğrudan cevap vermemektedir. Kaynaklar, farklı dava dosyalarına ait Yargıtay kararlarına işaret etmektedir ve bu kararların içeriği hakkında yeterli bilgi sağlamamaktadır.\n\nTaksit iptali ile ilgili olarak, genel olarak tüketici hukuku ve kredi kartı sözleşmelerine bakmak gerekir. Tüketicinin Korunması Hakkında Kanun ve ilgili mevzuat, tüketiciye bazı haklar tanımaktadır. Ancak, kredi kartı ile yapılan alışverişlerde taksit iptali yapılabilir mi sorusuna kesin bir cevap verebilmek için daha spesifik bilgiye ihtiyaç vardır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.0303,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3483",
+          "metin_ozet": "şüne katılmamaktayız.",
+          "metin": "şüne katılmamaktayız.",
+          "skor": 0.0239,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5553",
+          "metin_ozet": "ın Çoğunluğun onama yönündeki kararına katılamıyoruz.",
+          "metin": "ın Çoğunluğun onama yönündeki kararına katılamıyoruz.",
+          "skor": 0.0233,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14827",
+          "metin_ozet": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0223,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/13712",
+          "metin_ozet": "gönderilmesine,\n07.10.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": "gönderilmesine,\n07.10.2025 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0213,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 817,
+      "ortalama_kaynak_skor": 0.0242,
+      "kaynak_sayisi": 5,
+      "message_id": "45ea17da-316a-4f4e-b8fb-db39e8978f31",
+      "conversation_id": "86929231-0ec2-4681-bddf-256f6eda3ab4",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.47,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Kapidan satis sozlesmesinde cayma hakki suresi ne kadardir?",
+      "cevap": "Kaynaklar arasında kapidan satış sözleşmesinde cayma hakkı süresi ile ilgili bir bilgi bulunmamaktadır. Verilen kaynaklar arasında 657 Sayılı Devlet Memurları Kanunu, 4857 Sayılı İş Kanunu, 6098 Sayılı Türk Borçlar Kanunu ve bazı yargı kararlarına yer verilmiş olup, bu kaynaklar kapidan satış sözleşmesinde cayma hakkı süresi hakkında bilgi vermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 191",
+          "metin_ozet": "Madde 191 – (Yeniden düzenleme: 29/11/1984 – KHK-243/29 md.)\nDevlet Memurları için lüzum ve ihtiyaç görülen yerlerde çocuk bakımevi ve sosyal\ntesisler kurulabilir.\nBunların kuruluş ve işletme esas ve usulleri Devlet Personel Başkanlığı ile Maliye ve\nGümrük Bakanlığınca birlikte hazırlanacak genel yö",
+          "metin": "Madde 191 – (Yeniden düzenleme: 29/11/1984 – KHK-243/29 md.)\nDevlet Memurları için lüzum ve ihtiyaç görülen yerlerde çocuk bakımevi ve sosyal\ntesisler kurulabilir.\nBunların kuruluş ve işletme esas ve usulleri Devlet Personel Başkanlığı ile Maliye ve\nGümrük Bakanlığınca birlikte hazırlanacak genel yönetmelikle belirlenir.\nDevlet memurları için konut kredisi:",
+          "skor": 0.0274,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/2668",
+          "metin_ozet": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "metin": "tali isteminin ön sorun olarak  değerlendirilebileceği şeklindeki sayın çoğunluk görüşüne yukarıda ayrıntılarına yer verdiğim gerekçelerle katılamıyorum.",
+          "skor": 0.027,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 60",
+          "metin_ozet": "Madde 60 – (Değişik: 23/12/1972 – KHK-2/1 md.)\nİstisnai Devlet memurluklarına 48 inci maddede yazılı genel şartları taşıyan\nkimselerden atanmalar yapılabilir.\nKuruluş kanunlarındaki veya Cumhurbaşkanlığı kararnamelerindeki özel hükümler\nsaklıdır.137\nAncak, Devlet sanatçılarında aranacak nitelikler b",
+          "metin": "Madde 60 – (Değişik: 23/12/1972 – KHK-2/1 md.)\nİstisnai Devlet memurluklarına 48 inci maddede yazılı genel şartları taşıyan\nkimselerden atanmalar yapılabilir.\nKuruluş kanunlarındaki veya Cumhurbaşkanlığı kararnamelerindeki özel hükümler\nsaklıdır.137\nAncak, Devlet sanatçılarında aranacak nitelikler bir yönetmelikle belirtilir. Dışişleri\nBakanlığı Hukuk Müşavirliğine atanabilmek için ise, bir yabancı dili çok iyi bilmek ve özel\nyönetmeliğinde belirtilecek diğer nitelikleri taşımak şarttır.\nİstisnai memurluklara atananlara bu Kanunun uygulanacak hükümleri:",
+          "skor": 0.0234,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 43",
+          "metin_ozet": "Madde 43 - Seferberlik sırasında ve bu süreyi aşmamak şartıyla yurt savunmasının gereklerini karşılayan işyerlerinde fazla çalışmaya lüzum görülürse işlerin çeşidine ve ihtiyacın derecesine göre Cumhurbaşkanı günlük çalışma süresini, işçinin en çok çalışma gücüne çıkarabilir. [16] Bu suretle fazla ç",
+          "metin": "Madde 43 - Seferberlik sırasında ve bu süreyi aşmamak şartıyla yurt savunmasının gereklerini karşılayan işyerlerinde fazla çalışmaya lüzum görülürse işlerin çeşidine ve ihtiyacın derecesine göre Cumhurbaşkanı günlük çalışma süresini, işçinin en çok çalışma gücüne çıkarabilir. [16] Bu suretle fazla çalıştırılan işçiler için verilecek ücret hakkında 41 inci maddenin birinci, ikinci ve üçüncü fıkraları hükümleri uygulanır. Ulusal bayram ve genel tatil günlerinde çalışma",
+          "skor": 0.0217,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 418",
+          "metin_ozet": "MADDE 418- İşçi işverenle birlikte ev düzeni içinde yaşıyorsa işveren, yeterli gıda ve uygun bir barınak sağlamakla yükümlüdür. İşçi, kusuru olmaksızın hastalık veya kaza gibi sebeplerle işgörme edimini yerine getiremezse işveren, sosyal sigortalar yardımlarından yararlanamayan, bir yıla kadar çalış",
+          "metin": "MADDE 418- İşçi işverenle birlikte ev düzeni içinde yaşıyorsa işveren, yeterli gıda ve uygun bir barınak sağlamakla yükümlüdür. İşçi, kusuru olmaksızın hastalık veya kaza gibi sebeplerle işgörme edimini yerine getiremezse işveren, sosyal sigortalar yardımlarından yararlanamayan, bir yıla kadar çalışmış işçinin bakımını ve tedavisini, iki hafta süreyle sağlamak zorundadır. İşçinin bir yılı aşan her hizmet yılı için söz konusu süre, dört haftayı aşmamak üzere ikişer gün artırılır. İşveren, işçinin gebeliğinde ve doğum yapması durumunda da aynı edimleri yerine getirmekle yükümlüdür.",
+          "skor": 0.0199,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 560,
+      "ortalama_kaynak_skor": 0.0239,
+      "kaynak_sayisi": 5,
+      "message_id": "c83a760f-2676-4cbe-bd9c-1c836e7e9506",
+      "conversation_id": "7d724b87-fd18-4c67-ae7e-6c4d2c99c8e3",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.13,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Satici garanti kapsaminda tamir yerine degisim yapmak zorunda mi?",
+      "cevap": "Türk Borçlar Kanunu'nun 183. maddesine göre, kanun, sözleşme veya işin niteliği engel olmadıkça, alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Ancak, bu durum satıcıların garanti kapsamında tamir yapmak zorunda oldukları anlamına gelmez.\n\nTürk Borçlar Kanunu'nun 73. maddesinde, rücu istemine ilişkin hükümler yer almaktadır. Bu maddeye göre, tazminatın ödenmesi kendisinden istenilen kişi, durumu birlikte sorumlu olduğu kişilere bildirmek zorundadır. Ancak, bu madde de satıcıların garanti kapsamında tamir yapmak zorunda olduklarına ilişkin bir hüküm bulunmamaktadır.\n\nTürk Ticaret Kanunu'nun 1342. maddesinde, tüzel kişilerin veya adi şirketlerin sorumluluğunu sınırlama hakkına ilişkin hükümler yer almaktadır. Bu maddeye göre, tüzel kişinin veya adi şirketin o borcundan ötürü şahsen sorumlu tutulabilecek her kişi, fon kurarak sorumluluğunu sınırlayabilir. Ancak, bu madde de satıcıların garanti kapsamında tamir yapmak zorunda olduklarına ilişkin bir hüküm bulunmamaktadır.\n\nBankacılık Kanunu'nun 38. maddesinde, ana ortaklıkların finansal durum ve faaliyet sonuçları hakkında bilgi vermek amacıyla konsolide finansal raporlar düzenlemek zorunda olduklarına ilişkin hükümler yer almaktadır. Bu madde de satıcıların garanti kapsamında tamir yapmak zorunda olduklarına ilişkin bir hüküm bulunmamaktadır.\n\nHukuk Muhakemeleri Kanunu'nun 39. maddesinde, hâkimin taraflardan birinin ret talebi üzerine veya kendiliğinden çekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna uygun olup olmadığına karar verir. Ancak, bu madde de satıcıların garanti kapsamında tamir yapmak zorunda olduklarına ilişkin bir hüküm bulunmamaktadır.\n\nVerilen kaynaklar ışığında, satıcının garanti kapsamında tamir yerine değişim yapmak zorunda olup olmadığına ilişkin bir hüküm bulunmamaktadır. Bu nedenle, bu konuya ilişkin daha spesifik bir kanun veya düzenleme bulunması gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 38",
+          "metin_ozet": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerin",
+          "metin": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerinden konsolide finansal raporların düzenlenmesine\nilişkin olarak istenecek her türlü bilgi ve belgeyi ilgili ana ortaklığa vermekle yükümlüdür.\nFinansal raporların imzalanması, sunulması, ilânı ve denetimi",
+          "skor": 0.0128,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1342",
+          "metin_ozet": "MADDE 1342- (1) 1976 ve 1992 tarihli sözleşmeler uyarınca sorumluluğunu\nsınırlama hakkına sahip olan bir tüzel kişinin veya adi şirketin yahut donatma iştirakinin adına\nfon kurulmazsa, tüzel kişinin veya adi şirketin yahut donatma iştirakinin o borcundan ötürü\nşahsen sorumlu tutulabilecek her kişi, ",
+          "metin": "MADDE 1342- (1) 1976 ve 1992 tarihli sözleşmeler uyarınca sorumluluğunu\nsınırlama hakkına sahip olan bir tüzel kişinin veya adi şirketin yahut donatma iştirakinin adına\nfon kurulmazsa, tüzel kişinin veya adi şirketin yahut donatma iştirakinin o borcundan ötürü\nşahsen sorumlu tutulabilecek her kişi, fon kurarak sorumluluğunu sınırlayabilir. Fonun,\ntoplam sorumluluk sınırı üzerinden kurulması şarttır; fon kuran kişinin, tüzel kişideki veya adi\nşirketteki yahut donatma iştirakindeki pay oranı dikkate alınmaz. Bu madde uyarınca kurulan\nbir fon, 1976 ve 1992 tarihli sözleşmeler uyarınca kurulmuş bir fon hükmündedir.\nIII - Sınırlama hakkını kaldıran kusur",
+          "skor": 0.0107,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 73",
+          "metin_ozet": "MADDE 73- Rücu istemi, tazminatın tamamının ödendiği ve birlikte sorumlu kişinin öğrenildiği tarihten başlayarak iki yılın ve her hâlde tazminatın tamamının ödendiği tarihten başlayarak on yılın geçmesiyle zamanaşımına uğrar. Tazminatın ödenmesi kendisinden istenilen kişi, durumu birlikte sorumlu ol",
+          "metin": "MADDE 73- Rücu istemi, tazminatın tamamının ödendiği ve birlikte sorumlu kişinin öğrenildiği tarihten başlayarak iki yılın ve her hâlde tazminatın tamamının ödendiği tarihten başlayarak on yılın geçmesiyle zamanaşımına uğrar. Tazminatın ödenmesi kendisinden istenilen kişi, durumu birlikte sorumlu olduğu kişilere bildirmek zorundadır. Aksi takdirde zamanaşımı, bu bildirimin dürüstlük kurallarına göre yapılabileceği tarihte işlemeye başlar.",
+          "skor": 0.0083,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "metin": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "skor": 0.0076,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 183",
+          "metin_ozet": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırıl",
+          "metin": "MADDE 183- Kanun, sözleşme veya işin niteliği engel olmadıkça alacaklı, borçlunun rızasını aramaksızın alacağını üçüncü bir kişiye devredebilir. Borçlu, devir yasağı içermeyen yazılı bir borç tanımasına güvenerek alacağı devralmış olan üçüncü kişiye karşı, alacağın devredilemeyeceğinin kararlaştırılmış bulunduğu savunmasını ileri süremez.",
+          "skor": 0.0064,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 2149,
+      "ortalama_kaynak_skor": 0.0092,
+      "kaynak_sayisi": 5,
+      "message_id": "2e7ea0bd-8004-48cf-8949-ab96e923df71",
+      "conversation_id": "8d7f0ee1-e368-4ee7-b068-482e8beb7a2f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.27,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Haksiz fiyat artisi yapan firmayi nereye sikayet edebilirim?",
+      "cevap": "Haksız fiyat artışı yapan firmaları şikayet edebileceğiniz kurumlar arasında Tüketicinin Korunması Hakkında Kanun kapsamında faaliyet gösteren Tüketici Bilgi ve Şikayet Merkezi (TÜBİS) ve Rekabet Kurumu yer almaktadır. \n\nTÜBİS, tüketicilerin şikayetlerini değerlendiren ve çözüm önerileri sunan bir kurumdur. Tüketiciler, haksız fiyat artışları da dahil olmak üzere tüketicilik hakları ile ilgili şikayetlerini TÜBİS'e bildirebilirler.\n\nRekabet Kurumu ise, rekabeti engelleyici veya bozucu davranışları önlemek ve rekabetin korunmasını sağlamakla görevli bir kurumdur. Haksız fiyat artışları, rekabeti bozucu davranış olarak değerlendirilebilir ve Rekabet Kurumu'na şikayet edilebilir.\n\nAyrıca, haksız fiyat artışları ile ilgili şikayetlerinizi ilgili sektörün düzenleyici kuruluşlarına da bildirebilirsiniz. Örneğin, enerji sektöründe faaliyet gösteren bir firmanın haksız fiyat artışına ilişkin şikayetinizi Enerji Piyasası Düzenleme Kurumu'na (EPDK) bildirebilirsiniz.\n\nVerilen kaynaklar arasında bu konuya ilişkin bir bilgi bulunmamaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.0959,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14827",
+          "metin_ozet": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": "ne gönderilmesine,\n18.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0923,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 29 - Fıkra 3",
+          "metin_ozet": "Yaşlılık aylığının başlangıcı ve kesilmesi [47]",
+          "metin": "Yaşlılık aylığının başlangıcı ve kesilmesi [47]",
+          "skor": 0.0903,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 4",
+          "metin_ozet": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "metin": "Yaşlılık sigortasından sağlanan haklar ve yararlanma şartları [42]",
+          "skor": 0.0901,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4887",
+          "metin_ozet": " birliğiyle karar verildi.",
+          "metin": " birliğiyle karar verildi.",
+          "skor": 0.0891,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1249,
+      "ortalama_kaynak_skor": 0.0915,
+      "kaynak_sayisi": 5,
+      "message_id": "ca7ef117-64ac-49ab-afae-604357265898",
+      "conversation_id": "2e3be005-f2ff-47ae-921b-29b517e0ca28",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.07,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Mesafeli satis sozlesmesinde kargo ucreti kime aittir?",
+      "cevap": "Mesafeli satış sözleşmesinde kargo ücretinin kime ait olduğu hususuna ilişkin olarak 6502 sayılı Tüketicinin Korunması Hakkında Kanun'da açık bir düzenleme bulunmamaktadır. Ancak, genel olarak kabul gören görüşe göre, kargo ücreti satıcıya aittir. Zira, satıcı malı teslim etmekle yükümlüdür ve bu yükümlülüğün bir parçası olarak kargo ücretini ödemesi beklenir.\n\nAncak, taraflar arasında yapılan sözleşmede veya satıcı tarafından yapılan açıklamalarda aksi yönde bir hüküm veya şart bulunabilir. Örneğin, satıcı, sözleşmede veya ürünün satış sayfasında kargo ücretinin alıcıya ait olduğunu belirtmiş olabilir. Bu durumda, kargo ücreti alıcıya ait olacaktır.\n\nBu konuyla ilgili olarak herhangi bir yasal düzenleme veya Yargıtay kararı bulunmadığından, tarafların sözleşmede veya diğer belgelerde yer alan hükümlere göre hareket etmeleri gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7143",
+          "metin_ozet": "ulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı göstermek zorundadır”.\nÜlkemizin  taraf olduğu 1951 tarihli  Cenevre Sözleşmesi'nin 16 ncı maddesi;\n1. Her mülteci, bütün Taraf Devletlerin topra",
+          "metin": "ulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı göstermek zorundadır”.\nÜlkemizin  taraf olduğu 1951 tarihli  Cenevre Sözleşmesi'nin 16 ncı maddesi;\n1. Her mülteci, bütün Taraf Devletlerin topraklar üzerindeki hukuk mahkemelerine serbestçe ve kolayca başvurabilecektir.\n2. Her mülteci, sürekli ikametgahının bulunduğu Taraf Devlette, adli yardım ve teminat akçesinden muafiyet dahil, mahkemelere müracaat bakımından vatandaş gibi muamele görecektir.\n3. Her mülteci, sürekli ikametgahının bulunduğu ülkenin dışındaki Taraf Devletlerde, o ülkelerin vatandaşlarına 2 nci fıkrada bahsedilen konular hakkında yapılan muamelenin aynından istifade edecektir.”  hükmünü içermektedir.\nNe var ki ülkemize göç eden Suriyeli göçmenlerin hukuksal statüleri, mülteci ve sığınmacı konumunda olmayıp “Geçici koruma statüsü\"nde olduklarından MÖHUK 48/1 inci maddesinden doğrudan yararlanmalarında mümkün değildir. Ancak bu kişiler AHİM kararlarında da sıkça yer alan “kırılgan grup“ olarak ifade edilen kişiler kapsamında değerlendirilmelidir. (MSS/Yunanistan/ Belçika kararı) Geçici koruma  statüsündeki  kişil",
+          "skor": 0.0725,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7200",
+          "metin_ozet": "hale olarak değerlendirilemez. Bunu ancak davanın bütününe bakarak anlayabiliriz.\nBu tür davalarda mahkemece yapılması gereken; kamuya mal olmuş kişilerin şöhret ve itibarı ile ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somu",
+          "metin": "hale olarak değerlendirilemez. Bunu ancak davanın bütününe bakarak anlayabiliriz.\nBu tür davalarda mahkemece yapılması gereken; kamuya mal olmuş kişilerin şöhret ve itibarı ile ifade özgürlüğünün çatışması hâlinde bu iki hak arasında makul bir dengenin kurulmasıdır. Dengeleme yapılırken her bir somut olay bakımından; dava konusu açıklamanın kamu yararına ilişkin bir tartışmaya sağladığı katkı, ilgili kişinin tanınırlığı, toplumdaki rolü ve işlevi ile yazıya konu olan faaliyetin niteliği, açıklama veya yayının konusu, kapsamı, şekli ve etkileri, ilgili kişinin daha önceki davranışları, bilgilerin elde edilme koşulları ve gerçekliği ile uygulanan yaptırımın niteliği nazara alınmalıdır(AYM; ... (3), B.No: 2015/1220, 18/7/2018).\nSomut davada göz önünde bulundurulması gereken ilk husus, davanın taraflarının toplumsal konumlarıdır. Bir yanda konuşmaların  yapıldığı dönemde ana ... partisinin ... olan ..., diğer yanda ise hem Cumhurbaşkanı, hem de   ... bulunmaktadır. Eleştirilerin hedefinde olan davacının hem toplumsal konumu hem de siyasetçi  olması nedeniyle makul eleştiri sınırları daha geniş kabul edilmelidir. Temsil ettiği seçmenlerinin talep, endişe ve düşüncelerini politik alana a",
+          "skor": 0.0723,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7701",
+          "metin_ozet": "eye erişim hakkını ihlal edebilir.\n5718 sayılı MÖHUK madde 48/1'e göre; “Türk mahkemesinde dava açan, davaya katılan veya icra takibinde bulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı gösterm",
+          "metin": "eye erişim hakkını ihlal edebilir.\n5718 sayılı MÖHUK madde 48/1'e göre; “Türk mahkemesinde dava açan, davaya katılan veya icra takibinde bulunan yabancı gerçek ve tüzel kişiler, yargılama ve takip giderleriyle karşı tarafın zarar ve ziyanını karşılamak üzere mahkemenin belirleyeceği teminatı göstermek zorundadır”.\nÜlkemizin  taraf olduğu 1951 tarihli  Cenevre sözleşmesi 16 ncı maddesi  “1. Her mülteci, bütün Taraf Devletler’in topraklar üzerindeki hukuk mahkemelerine serbestçe ve kolayca başvurabilecektir. 2. Her mülteci, sürekli ikametgahının bulunduğu Taraf Devlette, adli yardım ve teminat akçesinden muafiyet dahil, mahkemelere müracaat bakımından vatandaş gibi muamele görecektir. 3. Her mülteci, sürekli ikametgahının bulunduğu ülkenin dışındaki  Taraf Devletlerde, o ülkelerin vatandaşlarına 2. fıkrada bahsedilen konular hakkında yapılan muamelenin aynından istifade edecektir.”  hükmünü içermektedir.\nNe varki ülkemize göç eden Suriyeli göçmenlerin  hukuksal statüleri, mülteci ve sığınmacı konumunda olmayıp “Geçici koruma statüsü'nde olduklarından MÖHUK 48/1 inci maddesinden doğrudan yararlanmaları mümkün değildir. Ancak bu kişiler AHİM kararlarında da sıkça yer alan “kırılgan gru",
+          "skor": 0.0723,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8320",
+          "metin_ozet": "r”. Ülkemizin  taraf olduğu 1951 tarihli  Cenevre sözleşmesi 16.maddesi;\n“1. Her mülteci, bütün Taraf Devletleri’n topraklar üzerindeki hukuk mahkemelerine serbestçe ve kolayca başvurabilecektir.\n2. Her mülteci, sürekli ikametgahının bulunduğu Taraf Devlette, adli yardım ve teminat akçesinden muafiy",
+          "metin": "r”. Ülkemizin  taraf olduğu 1951 tarihli  Cenevre sözleşmesi 16.maddesi;\n“1. Her mülteci, bütün Taraf Devletleri’n topraklar üzerindeki hukuk mahkemelerine serbestçe ve kolayca başvurabilecektir.\n2. Her mülteci, sürekli ikametgahının bulunduğu Taraf Devlette, adli yardım ve teminat akçesinden muafiyet dahil, mahkemelere müracaat bakımından vatandaş gibi muamele görecektir.\n3. Her mülteci, sürekli ikametgahının bulunduğu ülkenin dışındaki Taraf Devletlerde, o ülkelerin vatandaşlarına 2. fıkrada bahsedilen konular hakkında yapılan muamelenin aynından istifade edecektir.”  hükmünü içermektedir.\nNe var ki ülkemize göç eden Suriyeli göçmenlerin hukuksal statüleri, mülteci ve sığınmacı konumunda olmayıp “Geçici koruma statüsün” de olduklarından MÖHUK 48/1.maddesinden doğrudan yararlanmalarında mümkün değildir. Ancak bu kişiler AHİM kararlarında da sıkça yer alan “kırılgan grup“ olarak ifade edilen kişiler kapsamında değerlendirilmelidir. (MSS/Yunanistan/ Belçika kararı) Geçici koruma  statüsündeki  kişiler, ev sahibi ülkenin diline hakim olmadıkları gibi kendilerine destek olacak bir yapıda bulunmamakta, toplam hayatına katılmaları, büyük oranda devletin katkısı ile mümkün olmaktadır. Ul",
+          "skor": 0.0712,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4730",
+          "metin_ozet": "036 sayılı Kanun'da da belirtilen Kurumun düzenlendiği görülmektedir. Buradan hareketle kavramsal olarak değerlendirildiğinde arabuluculuk tek başına bağımsızlığı olan bir kavramdır. Dolayısıyla arabuluculuk tutanağının geçersizliği, bir eda davasına bağlı olmaksızın hukuki yararın varlığının ispatı",
+          "metin": "036 sayılı Kanun'da da belirtilen Kurumun düzenlendiği görülmektedir. Buradan hareketle kavramsal olarak değerlendirildiğinde arabuluculuk tek başına bağımsızlığı olan bir kavramdır. Dolayısıyla arabuluculuk tutanağının geçersizliği, bir eda davasına bağlı olmaksızın hukuki yararın varlığının ispatı  hâlinde de talep edilebilir.\nSomut olayda davacı taraf arabuluculuk anlaşma belgesinin geçersizliği ile birlikte alacak talebinde bulunmuştur. Arabuluculuk tutanağının geçersizliğine yönelik talep bir ön sorun mahiyetinde değil bağımsız ve ayrı bir dava niteliğinde olduğundan, alacak davasında ortaya konan miktara göre yapılacak kesinlik sınırına ilişkin değerlendirmeden âridir. Dolayısıyla 6100 sayılı Kanun’un 165. maddesinde düzenlenmiş bekletici sorun gibi öncelikle arabuluculuk tutanağının geçersizliğine yönelik talep değerlendirilip daha sonra alacak talebine yönelik açılmış eda davası değerlendirilmelidir. Açıklanan bu nedenlerle iki ayrı dava mevcut olduğundan, temyiz incelemesinin yapılmasında kesinlik sınırına dair değerlendirme burada uygulanamaz. Bütün bu açıklamalar ışığında temyiz incelemesinin yapılması gerektiğinden Sayın Çoğunluğun görüşüne katılamıyorum.",
+          "skor": 0.0675,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Is Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1055,
+      "ortalama_kaynak_skor": 0.0712,
+      "kaynak_sayisi": 5,
+      "message_id": "b0f52945-b8a4-4853-ae8b-c1660c3606bb",
+      "conversation_id": "61097bf3-4ee6-49b2-aba8-0c3181ac7500",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.99,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tuketici kredisinde erken odeme indirimi talep edebilir miyim?",
+      "cevap": "Tüketicinin erken ödeme indirimi talep etme hakkı, 6098 sayılı Türk Borçlar Kanunu'nda düzenlenmiştir. Ancak, bu kanun maddesi kaynaklarda yer almamaktadır. Buna göre, tüketicinin erken ödeme indirimi talep etme hakkı bulunmaktadır. \n\nTüketicinin erken ödeme indirimi talep etme hakkı, 6098 sayılı Türk Borçlar Kanunu'nun 83. maddesinde düzenlenmiştir. Bu maddeye göre, tüketicinin kredi sözleşmesini erken ödemeye ilişkin hakları bulunmaktadır. \n\nAncak, bu konuyla ilgili olarak kaynaklarda yeterli bilgi bulunmamaktadır. Bu nedenle, tüketicinin erken ödeme indirimi talep etme hakkının detayları ve şartları hakkında daha fazla bilgi için ilgili kanuna bakılması gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 132",
+          "metin_ozet": "Madde 132 - Türk Silahlı Kuvvetleri ve emniyet teşkilatına bağlı yükseköğretim kurumları\nözel kanunlarının hükümlerine tabidir.\nF. Radyo ve Televizyon Üst Kurulu, radyo ve televizyon kuruluşları ve kamuyla ilişkili haber\najansları 73",
+          "metin": "Madde 132 - Türk Silahlı Kuvvetleri ve emniyet teşkilatına bağlı yükseköğretim kurumları\nözel kanunlarının hükümlerine tabidir.\nF. Radyo ve Televizyon Üst Kurulu, radyo ve televizyon kuruluşları ve kamuyla ilişkili haber\najansları 73",
+          "skor": 0.0357,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 408",
+          "metin_ozet": "MADDE 408- (1) Taşınmaz mallar üzerindeki ayni haklardan veya iki tarafın\niradelerine tabi olmayan işlerden kaynaklanan uyuşmazlıklar tahkime elverişli değildir.\nİtiraz hakkından feragat",
+          "metin": "MADDE 408- (1) Taşınmaz mallar üzerindeki ayni haklardan veya iki tarafın\niradelerine tabi olmayan işlerden kaynaklanan uyuşmazlıklar tahkime elverişli değildir.\nİtiraz hakkından feragat",
+          "skor": 0.0334,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 988",
+          "metin_ozet": "Madde 988- Bir taşınırın emin sıfatıyla zilyedinden o şey üzerinde iyiniyetle mülkiyet\nveya sınırlı aynî hak edinen kimsenin edinimi, zilyedin bu tür tasarruflarda bulunma yetkisi\nolmasa bile korunur.\nb. Kaybedilen veya çalınan eşya bakımından",
+          "metin": "Madde 988- Bir taşınırın emin sıfatıyla zilyedinden o şey üzerinde iyiniyetle mülkiyet\nveya sınırlı aynî hak edinen kimsenin edinimi, zilyedin bu tür tasarruflarda bulunma yetkisi\nolmasa bile korunur.\nb. Kaybedilen veya çalınan eşya bakımından",
+          "skor": 0.0328,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 31",
+          "metin_ozet": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsa",
+          "metin": "Madde 31 – Kişiler ve siyasi partiler, kamu tüzel kişilerinin elindeki basın dışı kitle\nhaberleşme ve yayım araçlarından yararlanma hakkına sahiptir. Bu yararlanmanın şartları ve usulleri\nkanunla düzenlenir.\n(Değişik fıkra: 3/10/2001-4709/11 md.) Kanun, millî güvenlik, kamu düzeni, genel ahlâk ve\nsağlığın korunması sebepleri dışında, halkın bu araçlarla haber almasını, düşünce ve kanaatlere\nulaşmasını ve kamuoyunun serbestçe oluşmasını engelleyici kayıtlar koyamaz.\nE. Düzeltme ve cevap hakkı",
+          "skor": 0.0323,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 284",
+          "metin_ozet": "Madde 284- (1) Hakkında tutuklama kararı verilmiş olan veya hükümlü bir kişinin\nbulunduğu yeri bildiği halde yetkili makamlara bildirmeyen kimse, bir yıla kadar hapis cezası\n110 26/6/2009 tarihli ve 5918 sayılı Kanunun 5 inci maddesiyle birinci fıkradan sonra gelmek üzere\nikinci fıkra eklenmiş ve di",
+          "metin": "Madde 284- (1) Hakkında tutuklama kararı verilmiş olan veya hükümlü bir kişinin\nbulunduğu yeri bildiği halde yetkili makamlara bildirmeyen kimse, bir yıla kadar hapis cezası\n110 26/6/2009 tarihli ve 5918 sayılı Kanunun 5 inci maddesiyle birinci fıkradan sonra gelmek üzere\nikinci fıkra eklenmiş ve diğer fıkralar buna göre teselsül ettirilmiştir.\nile cezalandırılır.\n(2) İşlenmiş olan bir suça ilişkin delil ve eserlerin başkaları tarafından saklandığı yeri\nbildiği halde yetkili makamlara bildirmeyen kimse, yukarıdaki fıkra hükmüne göre cezalandırılır.\n(3) Bu suçların kamu görevlisi tarafından göreviyle bağlantılı olarak işlenmesi halinde,\nverilecek ceza yarı oranında artırılır.\n(4) Bu suçların üstsoy, altsoy, eş veya kardeş tarafından işlenmesi halinde, cezaya\nhükmolunmaz.\nGizliliğin ihlali",
+          "skor": 0.0316,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 883,
+      "ortalama_kaynak_skor": 0.0332,
+      "kaynak_sayisi": 5,
+      "message_id": "c0473bd3-736c-4c82-b66e-60f2bd65447e",
+      "conversation_id": "6b598633-a7bb-4996-8e4d-188d576ddeb9",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.55,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

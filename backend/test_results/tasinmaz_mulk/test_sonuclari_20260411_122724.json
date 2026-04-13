@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-11T12:30:12.400834+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 12.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "/app/test_results/tasinmaz_mulk/test_sonuclari_20260411_122724.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 168.0,
+    "ortalama_sure_sn": 14.0,
+    "kategori_dagilimi": {
+      "Tasinmaz Mulk": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 2.0,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 1200.0,
+        "ortalama_kaynak_skor": 0.0702
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Taşınmaz mülkiyeti nasıl kazanılır? Aslen ve devren kazanım farkı nedir?",
+      "cevap": "Taşınmaz mülkiyetinin kazanılması, Türk Medeni Kanunu'nda (TMK) düzenlenmiştir. Taşınmaz mülkiyeti, aslen veya devren kazanılabilir.\n\nAslen kazanım, bir taşınmazın hiç kimsenin mülkiyetinde olmaması veya devletin mülkiyetinde olması durumunda, bu taşınmazın ilk kez bir kişiye mülkiyetinin verilmesidir. Örneğin, devletin bir arazisini bir kişiye satması veya bağışlaması aslen kazanım örnekleridir.\n\nDevren kazanım ise, bir taşınmazın mevcut bir mülkiyetten başka bir kişiye geçmesidir. Bu, satış, bağış, miras veya diğer hukuki işlemler yoluyla olabilir. Örneğin, bir kişinin bir evi satın alması veya bir evi miras olarak alması devren kazanım örnekleridir.\n\nTürk Medeni Kanunu'nun 705. maddesine göre, \"Taşınmaz mülkiyeti, taşınmazın büsbütün veya kısmen başkalarına ait olmamasıyla kazanılabileceği gibi, başkasına ait taşınmazın satın alınması veya başka bir şekilde iktisabı suretiyle de kazanılabiliyor.\" Bu madde, aslen ve devren kazanımın temelini oluşturur.\n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. Daha detaylı bilgi için ilgili kanun maddeleri ve Yargıtay kararlarına başvurmak gerekebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4857",
+          "metin_ozet": "di.",
+          "metin": "di.",
+          "skor": 0.0712,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7077",
+          "metin_ozet": "di.",
+          "metin": "di.",
+          "skor": 0.0712,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/15355",
+          "metin_ozet": "kuki ilişkinin nitelendirilmesine, dava şartlarına yargılama ve ispat kuralları ile kararda belirtilen ve yukarıda açıklanan gerekçelere göre usul ve kanuna uygun olup davacı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçık",
+          "metin": "kuki ilişkinin nitelendirilmesine, dava şartlarına yargılama ve ispat kuralları ile kararda belirtilen ve yukarıda açıklanan gerekçelere göre usul ve kanuna uygun olup davacı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVI. KARAR\nAçıklanan sebeplerle;\nTemyiz olunan Bölge Adliye Mahkemesi kararının 6100 sayılı Kanun'un 370 inci maddesinin birinci fıkrası uyarınca ONANMASINA,\nDosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,\n27.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.07,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7279",
+          "metin_ozet": "e bir kısım alacaklardan yapılan indirimin %50 olarak uygulanması gerektiğini ileri sürmüştür.\nB. Değerlendirme ve Gerekçe\nUyuşmazlık, hüküm altına alınan alacakların ispat ve hesaplanması, ücretin brütleştirilmesi ve mahsuba ilişkindir.\n1. Tarafların iddia, savunma ve dayandıkları belgelere, uyuşma",
+          "metin": "e bir kısım alacaklardan yapılan indirimin %50 olarak uygulanması gerektiğini ileri sürmüştür.\nB. Değerlendirme ve Gerekçe\nUyuşmazlık, hüküm altına alınan alacakların ispat ve hesaplanması, ücretin brütleştirilmesi ve mahsuba ilişkindir.\n1. Tarafların iddia, savunma ve dayandıkları belgelere, uyuşmazlığın hukuki nitelendirilmesi ile uygulanması gereken hukuk kurallarına, dava şartlarına, yargılamaya hâkim olan ilkelere, ispat kurallarına ve temyiz olunan kararda belirtilen gerekçelere göre davalılar ... vekilinin aşağıdaki paragrafın kapsamı dışındaki temyiz itirazları yerinde görülmemiştir.\n2. Taraflar arasında davalı tarafından yapılan fazla ödemenin dikkate alınıp alınmayacağı hususunda uyuşmazlık bulunmaktadır.\n6098 sayılı Türk Borçlar Kanunu'nun (6098 sayılı Kanun) mahsubu düzenleyen 101 ve 102. maddeleri çerçevesinde öncelikle muacceliyet ve temerrüt kavramlarının açıklanmasını gerektirmektedir.\nMuacceliyet, alacaklının borçludan borçlanılan edimi talep ve dava edebilme yetkisidir. Borç muaccel olmadan borçlu temerrüdü söz konusu olmaz.\nTemerrüt, en kısa tanımıyla, alacaklı tarafından talep edilebilir (muaccel) hâle gelmiş bir borcun ifasındaki gecikmedir. Kural olarak, bu tü",
+          "skor": 0.0686,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4730",
+          "metin_ozet": "burada uygulanamaz. Bütün bu açıklamalar ışığında temyiz incelemesinin yapılması gerektiğinden Sayın Çoğunluğun görüşüne katılamıyorum.",
+          "metin": "burada uygulanamaz. Bütün bu açıklamalar ışığında temyiz incelemesinin yapılması gerektiğinden Sayın Çoğunluğun görüşüne katılamıyorum.",
+          "skor": 0.0683,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1333,
+      "ortalama_kaynak_skor": 0.0699,
+      "kaynak_sayisi": 5,
+      "message_id": "8d980725-ad2a-4bdc-8750-4b81581b4ac3",
+      "conversation_id": "749eb8ba-2de7-4d5f-b28e-c6e297a4178b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.51,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Tapu sicilinin aleniyeti ilkesi ne anlama gelir?",
+      "cevap": "Tapu sicilinin aleniyeti ilkesi, tapu sicilinin herkese açık ve ulaşılabilir olması anlamına gelir. Bu ilke, tapu sicilinin içeriğinin ve yapılan işlemlerin herkes tarafından erişilebileceğini ve incelenebileceğini ifade eder. Ancak, verilen kaynaklar arasında tapu sicilinin aleniyeti ilkesine ilişkin bir madde bulunmamaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 234",
+          "metin_ozet": "MADDE 234- (1) Okuma ve yazma bilen sağır veya dilsizler, yemin hakkındaki\nbeyanlarını yazıp imzalayarak yemin ederler.\n(2) Okuma ve yazma bilmeyen sağır veya dilsizler, işaretlerinden anlayan bir bilirkişi\naracılığıyla yemin ederler.\nHasta veya engellilerin mahkeme dışında yemini25",
+          "metin": "MADDE 234- (1) Okuma ve yazma bilen sağır veya dilsizler, yemin hakkındaki\nbeyanlarını yazıp imzalayarak yemin ederler.\n(2) Okuma ve yazma bilmeyen sağır veya dilsizler, işaretlerinden anlayan bir bilirkişi\naracılığıyla yemin ederler.\nHasta veya engellilerin mahkeme dışında yemini25",
+          "skor": 0.0721,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5070 Sayılı Elektronik İmza Kanunu - Madde 12",
+          "metin_ozet": "Madde 12- Elektronik sertifika hizmet sağlayıcısı;\na) Elektronik sertifika talep eden kişiden, elektronik sertifika vermek için gerekli\nbilgiler hariç bilgi talep edemez ve bu bilgileri kişinin rızası dışında elde edemez,\nb) Elektronik sertifika sahibinin izni olmaksızın sertifikayı üçüncü kişilerin",
+          "metin": "Madde 12- Elektronik sertifika hizmet sağlayıcısı;\na) Elektronik sertifika talep eden kişiden, elektronik sertifika vermek için gerekli\nbilgiler hariç bilgi talep edemez ve bu bilgileri kişinin rızası dışında elde edemez,\nb) Elektronik sertifika sahibinin izni olmaksızın sertifikayı üçüncü kişilerin ulaşabileceği\nortamlarda bulunduramaz,\nc) Elektronik sertifika talep eden kişinin yazılı rızası olmaksızın üçüncü kişilerin\nkişisel verileri elde etmesini engeller. Bu bilgileri sertifika sahibinin onayı olmaksızın üçüncü\nkişilere iletemez ve başka amaçlarla kullanamaz.\nHukukî sorumluluk",
+          "skor": 0.0715,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5070&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 974",
+          "metin_ozet": "Madde 974- Zilyet, bir sınırlı aynî hak veya bir kişisel hakkın kurulmasını ya da\nkullanılmasını sağlamak için şeyi başkasına teslim ederse, bunların ikisi de zilyet olur.\nBir şeyde malik sıfatıyla zilyet olan aslî zilyet, diğeri fer'î zilyettir.\n2. Dolaylı ve dolaysız zilyetlik",
+          "metin": "Madde 974- Zilyet, bir sınırlı aynî hak veya bir kişisel hakkın kurulmasını ya da\nkullanılmasını sağlamak için şeyi başkasına teslim ederse, bunların ikisi de zilyet olur.\nBir şeyde malik sıfatıyla zilyet olan aslî zilyet, diğeri fer'î zilyettir.\n2. Dolaylı ve dolaysız zilyetlik",
+          "skor": 0.0687,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 263",
+          "metin_ozet": "MADDE 263- (1) Tanık Türkçe bilmezse tercümanla dinlenir.\n(2) Tanık, sağır ve dilsiz olup okuma ve yazmayı biliyorsa, sorular kendisine yazılı\nolarak bildirilir ve cevapları yazdırılır; okuma ve yazma bilmediği takdirde, hâkim, kendisini\nişaret dilinden anlayan bilirkişi yardımıyla dinler.\nYalan yer",
+          "metin": "MADDE 263- (1) Tanık Türkçe bilmezse tercümanla dinlenir.\n(2) Tanık, sağır ve dilsiz olup okuma ve yazmayı biliyorsa, sorular kendisine yazılı\nolarak bildirilir ve cevapları yazdırılır; okuma ve yazma bilmediği takdirde, hâkim, kendisini\nişaret dilinden anlayan bilirkişi yardımıyla dinler.\nYalan yere veya menfaat temin ederek tanıklık edilmesi ve sonuçları",
+          "skor": 0.0674,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 129",
+          "metin_ozet": "MADDE 129- Kendi adına sözleşme yapan kişi, sözleşmeye üçüncü kişi yararına bir edim yükümlülüğü koydurmuşsa, edimin üçüncü kişiye ifa edilmesini isteyebilir. Üçüncü kişi veya üçüncü kişiye halef olanlar da, tarafların amacına veya örf ve âdete uygun düştüğü takdirde edimin ifasını isteyebilirler. B",
+          "metin": "MADDE 129- Kendi adına sözleşme yapan kişi, sözleşmeye üçüncü kişi yararına bir edim yükümlülüğü koydurmuşsa, edimin üçüncü kişiye ifa edilmesini isteyebilir. Üçüncü kişi veya üçüncü kişiye halef olanlar da, tarafların amacına veya örf ve âdete uygun düştüğü takdirde edimin ifasını isteyebilirler. Bu durumda, üçüncü kişi veya ona halef olanlar bu hakkı kullanmak istediklerini borçluya bildirdikten sonra, alacaklı borçluyu ibra edemeyeceği gibi, borcun nitelik ve kapsamını da değiştiremez.",
+          "skor": 0.0669,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 534,
+      "ortalama_kaynak_skor": 0.0693,
+      "kaynak_sayisi": 5,
+      "message_id": "a661bd3d-fd3f-424c-b315-3b3818cd2cb6",
+      "conversation_id": "902464f9-020c-42bd-a42a-d40fe781d7d9",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.04,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Tapu siciline güven ilkesi nedir? Hangi durumlarda korunmaz?",
+      "cevap": "Tapu siciline güven ilkesi, tapu sicilinin doğru ve güvenilir olduğunu varsayan bir ilkedir. Bu ilkeye göre, tapu siciline kayıtlı bilgiler doğru kabul edilir ve bu bilgilerle ilgili herhangi bir sorun ortaya çıktığında, iyi niyetle hareket eden kişiler korunur. \n\nAncak, tapu siciline güven ilkesi her durumda korunmaz. Özellikle, tapu siciline yapılan kayıtların hileli veya sahtekârlıkla yapıldığı durumlarda, bu ilke uygulanmaz. Ayrıca, tapu sicilindeki bilgilerle ilgili herhangi bir uyuşmazlık veya sorun ortaya çıktığında, mahkeme tarafından yapılan inceleme ve araştırma sonucunda, tapu siciline güven ilkesinin uygulanıp uygulanmayacağı belirlenir.\n\nVerilen kaynaklar arasında tapu siciline güven ilkesi ile ilgili bir madde bulunmamaktadır. Bu nedenle, bu konuda daha详lı bilgi verilememektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 542",
+          "metin_ozet": "MADDE 542- Komisyoncuya verilen malın satılamaması veya satış emrinden cayılması durumunda vekâlet veren, malı geri almakta ya da o malla ilgili başka işlem yapmakta aşırı ölçüde gecikirse komisyoncu, malı bulunduğu yer mahkemesinden karar alarak açık artırmayla sattırabilir. Ancak, mal borsada kayı",
+          "metin": "MADDE 542- Komisyoncuya verilen malın satılamaması veya satış emrinden cayılması durumunda vekâlet veren, malı geri almakta ya da o malla ilgili başka işlem yapmakta aşırı ölçüde gecikirse komisyoncu, malı bulunduğu yer mahkemesinden karar alarak açık artırmayla sattırabilir. Ancak, mal borsada kayıtlıysa veya piyasa fiyatı varsa ya da yapılacak masrafa oranla değeri azsa, hâkim satışın başka bir yolla yapılmasına da karar verebilir. Malın bulunduğu yerde vekâlet veren ya da temsilcisi hazır bulunmazsa, satış kararı vekâlet veren dinlenmeksizin de verilebilir. Malın hızla değer kaybetmesi hâli dışında, artırmanın yer ve zamanının mahkemece vekâlet verene bildirilmesi zorunludur.",
+          "skor": 0.0531,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 113",
+          "metin_ozet": "MADDE 113- Yapma borcu, borçlu tarafından ifa edilmediği takdirde alacaklı, masrafı borçluya ait olmak üzere edimin kendisi veya başkası tarafından ifasına izin verilmesini isteyebilir; her türlü giderim isteme hakkı saklıdır. Yapmama borcuna aykırı davranan borçlu, bu aykırı davranışının doğurduğu ",
+          "metin": "MADDE 113- Yapma borcu, borçlu tarafından ifa edilmediği takdirde alacaklı, masrafı borçluya ait olmak üzere edimin kendisi veya başkası tarafından ifasına izin verilmesini isteyebilir; her türlü giderim isteme hakkı saklıdır. Yapmama borcuna aykırı davranan borçlu, bu aykırı davranışının doğurduğu zararı gidermekle yükümlüdür. Alacaklı, ayrıca borca aykırı durumun ortadan kaldırılmasını veya bu konuda masrafı borçluya ait olmak üzere kendisinin yetkili kılınmasını isteyebilir.",
+          "skor": 0.0528,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 206",
+          "metin_ozet": "Madde 206- Haklı bir sebep varsa hâkim, eşlerden birinin istemi üzerine, mevcut mal\nrejiminin mal ayrılığına dönüşmesine karar verebilir.\nÖzellikle aşağıdaki hâllerde haklı bir sebebin varlığı kabul edilir:\n1. Diğer eşe ait malvarlığının borca batık veya ortaklıktaki payının haczedilmiş olması,\n2. D",
+          "metin": "Madde 206- Haklı bir sebep varsa hâkim, eşlerden birinin istemi üzerine, mevcut mal\nrejiminin mal ayrılığına dönüşmesine karar verebilir.\nÖzellikle aşağıdaki hâllerde haklı bir sebebin varlığı kabul edilir:\n1. Diğer eşe ait malvarlığının borca batık veya ortaklıktaki payının haczedilmiş olması,\n2. Diğer eşin, istemde bulunanın veya ortaklığın menfaatlerini tehlikeye düşürmüş olması,\n3. Diğer eşin, ortaklığın malları üzerinde bir tasarruf işleminin yapılması için gereken\nrızasını haklı bir sebep olmadan esirgemesi,\n4. Diğer eşin, istemde bulunan eşe malvarlığı, geliri, borçları veya ortaklık malları hakkında\nbilgi vermekten kaçınması,\n5. Diğer eşin sürekli olarak ayırt etme gücünden yoksun olması.\nEşlerden biri ayırt etme gücünden sürekli olarak yoksun ise, onun yasal temsilcisi de bu\nsebebe dayanarak mal ayrılığına karar verilmesini isteyebilir.\n2. Yetki",
+          "skor": 0.0523,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 114",
+          "metin_ozet": "Madde 114- Yönetim organı her takvim yılının ilk üç ayı içinde vakfın bir önceki yıla ait\nmalvarlığı durumunu ve çalışmalarını bir rapor hâlinde denetim makamına bildirir ve durumun\nuygun araçlarla yayımlanmasını sağlar.\nH. Faaliyetten geçici alıkoyma",
+          "metin": "Madde 114- Yönetim organı her takvim yılının ilk üç ayı içinde vakfın bir önceki yıla ait\nmalvarlığı durumunu ve çalışmalarını bir rapor hâlinde denetim makamına bildirir ve durumun\nuygun araçlarla yayımlanmasını sağlar.\nH. Faaliyetten geçici alıkoyma",
+          "skor": 0.0519,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 508",
+          "metin_ozet": "MADDE 508- Vekil, vekâlet verenin istemi üzerine yürüttüğü işin hesabını vermek ve vekâletle ilişkili olarak aldıklarını vekâlet verene vermekle yükümlüdür. Vekil, vekâlet verene tesliminde geciktiği paranın faizini de ödemekle yükümlüdür.",
+          "metin": "MADDE 508- Vekil, vekâlet verenin istemi üzerine yürüttüğü işin hesabını vermek ve vekâletle ilişkili olarak aldıklarını vekâlet verene vermekle yükümlüdür. Vekil, vekâlet verene tesliminde geciktiği paranın faizini de ödemekle yükümlüdür.",
+          "skor": 0.0503,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1008,
+      "ortalama_kaynak_skor": 0.0521,
+      "kaynak_sayisi": 5,
+      "message_id": "1a8fa09f-d397-4144-9d05-0c3c6566a86d",
+      "conversation_id": "6588a348-3868-49a4-b87f-b53f67b16dd6",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.78,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Zilyetlik nedir? Türleri nelerdir?",
+      "cevap": "Zilyetlik, bir malın fiilen elinde bulundurulması veya kontrol edilmesi durumudur. Türk hukukunda zilyetlik, Medeni Kanun'da düzenlenmiştir. Ancak, verilen kaynaklar arasında zilyetlik ile ilgili bir madde bulunmamaktadır.\n\nGenel olarak, zilyetlik türleri olarak aşağıdaki gibi sıralanabilir:\n\n1. **Hakiki zilyetlik**: Bir malın fiilen elinde bulundurulması veya kontrol edilmesi durumudur. Hakiki zilyet, malın sahibi veya malın sahibi adına hareket eden kişidir.\n2. **Kanuni zilyetlik**: Bir malın kanuni olarak elinde bulundurulması veya kontrol edilmesi durumudur. Kanuni zilyet, malın sahibi veya malın sahibi adına hareket eden kişi değildir, ancak kanuni olarak malın zilyedi olarak kabul edilir.\n\nBu konuyla ilgili daha详细 bilgi için, Medeni Kanun'un ilgili maddelerine bakılması gerekmektedir. Verilen kaynaklar, zilyetlik ile ilgili yeterli bilgi sağlamamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.0735,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 14",
+          "metin_ozet": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "metin": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "skor": 0.0677,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 139",
+          "metin_ozet": "MADDE 139- İki kişi, karşılıklı olarak bir miktar para veya özdeş diğer edimleri birbirine borçlu oldukları takdirde, her iki borç muaccel ise her biri alacağını borcuyla takas edebilir. Alacaklardan biri çekişmeli olsa bile takas ileri sürülebilir. Zamanaşımına uğramış bir alacağın takası, ancak ta",
+          "metin": "MADDE 139- İki kişi, karşılıklı olarak bir miktar para veya özdeş diğer edimleri birbirine borçlu oldukları takdirde, her iki borç muaccel ise her biri alacağını borcuyla takas edebilir. Alacaklardan biri çekişmeli olsa bile takas ileri sürülebilir. Zamanaşımına uğramış bir alacağın takası, ancak takas edilebileceği anda henüz zamanaşımına uğramamış olması koşuluyla ileri sürülebilir.",
+          "skor": 0.0662,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 384",
+          "metin_ozet": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "metin": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "skor": 0.0659,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 110",
+          "metin_ozet": "MADDE 110- (1) Acente, üçüncü kişilerin kabule yetkili olduğu beyanlarını,\nbölgesindeki piyasanın ve müşterilerin finansal durumunu, şartlarını, bunlarda meydana gelen\ndeğişiklikleri ve yapılan işlemlere ilişkin olarak müvekkilini ilgilendiren bütün hususları ona\nzamanında bildirmek zorundadır.\n(2) ",
+          "metin": "MADDE 110- (1) Acente, üçüncü kişilerin kabule yetkili olduğu beyanlarını,\nbölgesindeki piyasanın ve müşterilerin finansal durumunu, şartlarını, bunlarda meydana gelen\ndeğişiklikleri ve yapılan işlemlere ilişkin olarak müvekkilini ilgilendiren bütün hususları ona\nzamanında bildirmek zorundadır.\n(2) Acente, müvekkilin açık talimatı olmayan konularda, emir alıncaya kadar işlemi\ngeciktirebilir. Ancak, işin acele nitelik taşıması nedeniyle durum müvekkilinden talimat\nalmaya müsait olmazsa veya acente en yararlı şartlar çerçevesinde harekete yetkiliyse,\nbasiretli bir tacir gibi kendi görüşüne göre işlemi yapar.\nIII - Önlemler",
+          "skor": 0.0657,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1076,
+      "ortalama_kaynak_skor": 0.0678,
+      "kaynak_sayisi": 5,
+      "message_id": "dada5394-f54a-46b1-8598-a8fffa8211ab",
+      "conversation_id": "26d465f1-880a-4d8b-af06-206b875cba8a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.82,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "İrtifak hakkı nedir? Örnek veriniz.",
+      "cevap": "İrtifak hakkı, bir taşınmaz malikinin, kendi taşınmazı üzerinde veya komşu taşınmazlardan birinde, belirli bir hak veya yararlanma imkânı tanıyan bir hukuki durumdur. Bu hak, genellikle bir sözleşme veya kanunla kurulur ve taşınmazın malikine, belirli bir amaç veya faaliyet için diğer bir taşınmazı kullanma veya yararlanma hakkı verir.\n\nÖrneğin, bir kişi kendi arsası üzerinde bir bina inşa etmek ister, ancak komşu arsada bulunan bir yol veya geçit olmadan binaya ulaşımı mümkün değildir. Bu durumda, komşu arsa maliki, kendi arsası üzerinde bir irtifak hakkı tanıyabilir, böylece bina sahibi, komşu arsadan geçerek binaya ulaşabilir.\n\nİrtifak hakkı, Türk Medeni Kanunu'nun 748. maddesinde düzenlenmiştir. Bu maddeye göre, irtifak hakkı, bir taşınmaz malikinin, kendi taşınmazı üzerinde veya komşu taşınmazlardan birinde, belirli bir hak veya yararlanma imkânı tanıyan bir hukuki durumdur.\n\nVerilen kaynaklar arasında irtifak hakkı ile ilgili bir madde bulunmamaktadır. Ancak, Türk Medeni Kanunu'nun 748. maddesi, irtifak hakkı ile ilgili düzenleme içerir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 698",
+          "metin_ozet": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabil",
+          "metin": "Madde 698- Hukukî bir işlem gereğince veya paylı malın sürekli bir amaca özgülenmiş\nolması sebebiyle paylı mülkiyeti devam ettirme yükümlülüğü bulunmadıkça, paydaşlardan her\nbiri malın paylaşılmasını isteyebilir.\nPaylaşmayı isteme hakkı, hukukî bir işlemle en çok on yıllık süre ile sınırlandırılabilir.\nTaşınmazlarda paylı mülkiyetin devamına ilişkin sözleşmeler, resmî şekle bağlıdır ve tapu\nkütüğüne şerh verilebilir.\nUygun olmayan zamanda paylaşma isteminde bulunulamaz.\nb. Paylaşma biçimi",
+          "skor": 0.0919,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 384",
+          "metin_ozet": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "metin": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "skor": 0.0873,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 389",
+          "metin_ozet": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "metin": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "skor": 0.0864,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 102",
+          "metin_ozet": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinleri",
+          "metin": "Madde 102 – (Değişik: 31/7/1970 - 1327/46 md.)\nDevlet memurlarının yıllık izin süresi, hizmeti 1 yıldan on yıla kadar (On yıl dahil)\nolanlar için yirmi gün, hizmeti on yıldan fazla olanlar için 30 gündür. Zorunlu hallerde bu\nsürelere gidiş ve dönüş için en çok ikişer gün eklenebilir.\nYıllık izinlerin kullanılışı:",
+          "skor": 0.0808,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0807,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1263,
+      "ortalama_kaynak_skor": 0.0854,
+      "kaynak_sayisi": 5,
+      "message_id": "ca2979f0-a2b4-4285-95f3-28329368159c",
+      "conversation_id": "a0466bf6-907c-4726-a1da-2d9f26392ccf",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.1,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Üst hakkı ve intifa hakkı arasındaki farklar nelerdir?",
+      "cevap": "Üst hakkı ve intifa hakkı, Türk hukukunda iki ayrı kavramdır. \n\nÜst hakkı, bir taşınmazın üzerinde, başka bir kişi veya kuruluş tarafından inşa edilen bir yapıya ilişkin hakları ifade eder. Bu hak, genellikle bir sözleşme veya bir yargı kararı ile kurulur. Üst hakkı sahibi, taşınmazın üzerinde bulunan yapıyı kullanma ve yararlanma hakkına sahiptir, ancak taşınmazın mülkiyeti üst hakkı sahibine ait değildir.\n\nİntifa hakkı ise, bir taşınmazın veya bir malın kullanılma ve yararlanılma hakkını ifade eder. İntifa hakkı sahibi, taşınmazı veya malı kullanma, yararlanma ve ürünlerini toplama hakkına sahiptir, ancak mülkiyeti intifa hakkı sahibine ait değildir.\n\nÜst hakkı ve intifa hakkı arasındaki temel fark, üst hakkının genellikle bir yapıya ilişkin hakları ifade etmesi, intifa hakkının ise bir taşınmaz veya malın kullanılma ve yararlanılma hakkını ifade etmesidir. Ayrıca, üst hakkı genellikle bir sözleşme veya yargı kararı ile kurulurken, intifa hakkı genellikle bir sözleşme veya bir yargı kararı ile kurulabilir veya miras yoluyla elde edilebilir.\n\nVerilen kaynaklar, üst hakkı ve intifa hakkı arasındaki farklar hakkında yeterli bilgi sağlamamaktadır. Bu nedenle, bu konuya ilişkin daha detaylı bilgi için ilgili kanun maddeleri ve yargı kararlarına başvurmak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.092,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 384",
+          "metin_ozet": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "metin": "MADDE 384- Ödünç konusu, kullanım süresi ve hangi amaçla kullanılacağı belirlenmeden verilmişse, ödünç veren onu dilediği zaman geri isteyebilir.",
+          "skor": 0.0875,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 900",
+          "metin_ozet": "MADDE 900- (1) Eşyanın zıyaından veya hasara uğramasından doğan istem hakları,\n889 uncu maddenin birinci ve ikinci fıkralarından farklı olarak;\na) Eşyanın zıyaa veya hasara uğramış olduğu açıkça görülüyorsa, en geç teslimi izleyen\nüç iş günü içinde veya\nb) Zıyaın veya hasarın açıkça görünmemesi hâli",
+          "metin": "MADDE 900- (1) Eşyanın zıyaından veya hasara uğramasından doğan istem hakları,\n889 uncu maddenin birinci ve ikinci fıkralarından farklı olarak;\na) Eşyanın zıyaa veya hasara uğramış olduğu açıkça görülüyorsa, en geç teslimi izleyen\nüç iş günü içinde veya\nb) Zıyaın veya hasarın açıkça görünmemesi hâlinde en geç teslimi izleyen ondört gün\niçinde,\ntaşıyıcıya bildirilmemişse sona erer.\nH) Sorumluluğu sınırlama hakkının kaybı",
+          "skor": 0.0858,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1193",
+          "metin_ozet": "MADDE 1193- (1) Navlun, eşyanın ölçüsü, tartısı veya sayısı üzerine kararlaştırılmışsa,\ntereddüt hâlinde, navlun miktarı gönderilene teslim edilen eşyanın ölçü, tartı veya sayısına göre\nbelirlenir.\nb) Zaman üzerine navlun",
+          "metin": "MADDE 1193- (1) Navlun, eşyanın ölçüsü, tartısı veya sayısı üzerine kararlaştırılmışsa,\ntereddüt hâlinde, navlun miktarı gönderilene teslim edilen eşyanın ölçü, tartı veya sayısına göre\nbelirlenir.\nb) Zaman üzerine navlun",
+          "skor": 0.0852,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 765",
+          "metin_ozet": "Madde 765- Taksitle mal satan kimse, bu satımlara ilişkin özel hükümlere uymak\nkoşuluyla, mülkiyeti saklı tutma sözleşmesine dayanarak, sattığı malın geri verilmesini isteyebilir.\n3. Hükmen teslim",
+          "metin": "Madde 765- Taksitle mal satan kimse, bu satımlara ilişkin özel hükümlere uymak\nkoşuluyla, mülkiyeti saklı tutma sözleşmesine dayanarak, sattığı malın geri verilmesini isteyebilir.\n3. Hükmen teslim",
+          "skor": 0.0827,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1490,
+      "ortalama_kaynak_skor": 0.0866,
+      "kaynak_sayisi": 5,
+      "message_id": "8124d7f7-f28f-41f7-9655-214bba064123",
+      "conversation_id": "8a51ae7e-22d7-4d71-8cdb-93ff333cdf5c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.09,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Kat mülkiyeti nedir? Nasıl kurulur?",
+      "cevap": "Kat mülkiyeti, bir binanın veya bağımsız bölümün ortak mülkiyetine dayanan bir mülkiyet türüdür. Kat mülkiyetinin kurulması için, binanın veya bağımsız bölümün tapu siciline kaydedilmesi gerekir.\n\nKat Mülkiyeti Kanunu'na göre, kat mülkiyeti, bir binanın veya bağımsız bölümün ortak mülkiyetine dayanan bir mülkiyet türüdür. Kat mülkiyetinin kurulması için, binanın veya bağımsız bölümün tapu siciline kaydedilmesi gerekir. Kat mülkiyeti, binanın veya bağımsız bölümün ortak mülkiyetine dayandığı için, kat malikleri, binanın veya bağımsız bölümün ortak kullanım alanlarını ve ortak giderlerini paylaşmakla yükümlüdürler.\n\nKat mülkiyetinin kurulması için, aşağıdaki şartlar yerine getirilmelidir:\n\n1. Binanın veya bağımsız bölümün tapu siciline kaydedilmesi\n2. Kat mülkiyeti sözleşmesinin düzenlenmesi\n3. Kat mülkiyeti sözleşmesinin tapu siciline kaydedilmesi\n\nKat mülkiyeti sözleşmesi, binanın veya bağımsız bölümün ortak mülkiyetine dayanan bir sözleşme olup, kat malikleri arasındaki hak ve yükümlülükleri düzenler. Kat mülkiyeti sözleşmesi, tapu siciline kaydedilmesi ile birlikte, kat mülkiyeti kurulmuş olur.\n\nVerilen kaynaklar, kat mülkiyeti ile ilgili bilgi vermemektedir. Bu nedenle, kat mülkiyeti ile ilgili daha详lı bilgi için, ilgili kanun ve yönetmeliklere başvurmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/2187",
+          "metin_ozet": "ozma gerekçesine katılmıyorum.",
+          "metin": "ozma gerekçesine katılmıyorum.",
+          "skor": 0.1082,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14980",
+          "metin_ozet": "n onama yönündeki görüşüne katılamıyorum.",
+          "metin": "n onama yönündeki görüşüne katılamıyorum.",
+          "skor": 0.1048,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "metin": "MADDE 39- (1) Hâkim, taraflardan birinin ret talebi üzerine veya kendiliğinden\nçekilme yönünde görüş bildirirse, ret talebini incelemeye yetkili merci, bu çekilmenin kanuna\nuygun olup olmadığına karar verir.\nRet talebini incelemeye yetkili merci",
+          "skor": 0.1037,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14277",
+          "metin_ozet": "liğiyle karar verildi.",
+          "metin": "liğiyle karar verildi.",
+          "skor": 0.1027,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14278",
+          "metin_ozet": "liğiyle karar verildi.",
+          "metin": "liğiyle karar verildi.",
+          "skor": 0.1027,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1490,
+      "ortalama_kaynak_skor": 0.1044,
+      "kaynak_sayisi": 5,
+      "message_id": "056a072e-4446-46a4-8516-e375a335cc7f",
+      "conversation_id": "0682a099-ff99-4b3e-9ae9-2d779aec1ab8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.07,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Taşınmaz satış sözleşmesi hangi şekil şartına tabidir?",
+      "cevap": "Taşınmaz satış sözleşmesinin şekil şartına ilişkin olarak 6098 sayılı Türk Borçlar Kanunu'nda özel bir düzenleme bulunmamaktadır. Ancak, 4721 sayılı Türk Medeni Kanunu'nun 706. maddesinde, \"Taşınmaz satış sözleşmesinin geçerli olması için yazılı şekilde yapılması ve sözleşmenin taraf olduklarından birinin eline geçmesi gerekir.\" hükmü yer almaktadır.\n\nBu hükme göre, taşınmaz satış sözleşmesinin geçerli olması için yazılı şekilde yapılması ve sözleşmenin taraf olduklarından birinin eline geçmesi gerekir. Bu şekil şartı, sözleşmenin geçerliliğini etkileyen bir şarttır.\n\nKaynaklar arasında taşınmaz satış sözleşmesinin şekil şartına ilişkin özel bir düzenleme bulunmamaktadır. Ancak, Türk Medeni Kanunu'nun ilgili hükümlerine göre, taşınmaz satış sözleşmesinin yazılı şekilde yapılması ve sözleşmenin taraf olduklarından birinin eline geçmesi gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 28",
+          "metin_ozet": "MADDE 28- Bir sözleşmede karşılıklı edimler arasında açık bir oransızlık varsa, bu oransızlık, zarar görenin zor durumda kalmasından veya düşüncesizliğinden ya da deneyimsizliğinden yararlanılmak suretiyle gerçekleştirildiği takdirde, zarar gören, durumun özelliğine göre ya sözleşme ile bağlı olmadı",
+          "metin": "MADDE 28- Bir sözleşmede karşılıklı edimler arasında açık bir oransızlık varsa, bu oransızlık, zarar görenin zor durumda kalmasından veya düşüncesizliğinden ya da deneyimsizliğinden yararlanılmak suretiyle gerçekleştirildiği takdirde, zarar gören, durumun özelliğine göre ya sözleşme ile bağlı olmadığını diğer tarafa bildirerek ediminin geri verilmesini ya da sözleşmeye bağlı kalarak edimler arasındaki oransızlığın giderilmesini isteyebilir. Zarar gören bu hakkını, düşüncesizlik veya deneyimsizliğini öğrendiği; zor durumda kalmada ise, bu durumun ortadan kalktığı tarihten başlayarak bir yıl ve her hâlde sözleşmenin kurulduğu tarihten başlayarak beş yıl içinde kullanabilir.",
+          "skor": 0.0863,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 39",
+          "metin_ozet": "Madde 39 — Bankalar tarafından hazırlanan finansal raporlardan Kurulca\nbelirlenecek olanların, yönetim kurulu başkanı, denetim komitesi üyeleri, genel müdür ile\nfinansal raporlamadan sorumlu genel müdür yardımcısı ve ilgili birim müdürü veya bu\nunvanlara eşdeğer kişiler tarafından ad, soyad ve unvan",
+          "metin": "Madde 39 — Bankalar tarafından hazırlanan finansal raporlardan Kurulca\nbelirlenecek olanların, yönetim kurulu başkanı, denetim komitesi üyeleri, genel müdür ile\nfinansal raporlamadan sorumlu genel müdür yardımcısı ve ilgili birim müdürü veya bu\nunvanlara eşdeğer kişiler tarafından ad, soyad ve unvan belirtilmek suretiyle finansal\nraporlamaya ilişkin düzenlemelere ve muhasebe kayıtlarına uygun olduğu belirtilerek\nimzalanması zorunludur. İmza yükümlülüğü, Türkiye'de şube açmak suretiyle faaliyette\nbulunan bankalarda müdürler kurulu üyelerince yerine getirilir.\nBankaların genel kurullarına sunacağı yıllık finansal raporların bağımsız denetim\nkuruluşlarınca onaylanması şarttır.\nBankalar, düzenleyecekleri finansal raporlarını, Kurulun belirleyeceği usûl ve esaslar\nçerçevesinde ilgili mercilere sunmak ve ilân etmek zorundadırlar.\nYıllık faaliyet raporu",
+          "skor": 0.0773,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- Yanılma veya aldatma sebebiyle ya da korkutulma sonucunda sözleşme yapan taraf, yanılma veya aldatmayı öğrendiği ya da korkutmanın etkisinin ortadan kalktığı andan başlayarak bir yıl içinde sözleşme ile bağlı olmadığını bildirmez veya verdiği şeyi geri istemezse, sözleşmeyi onamış sayılır.",
+          "metin": "MADDE 39- Yanılma veya aldatma sebebiyle ya da korkutulma sonucunda sözleşme yapan taraf, yanılma veya aldatmayı öğrendiği ya da korkutmanın etkisinin ortadan kalktığı andan başlayarak bir yıl içinde sözleşme ile bağlı olmadığını bildirmez veya verdiği şeyi geri istemezse, sözleşmeyi onamış sayılır. Aldatma veya korkutmadan dolayı bağlayıcılığı olmayan bir sözleşmenin onanmış sayılması, tazminat hakkını ortadan kaldırmaz.",
+          "skor": 0.0754,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4857",
+          "metin_ozet": "di.",
+          "metin": "di.",
+          "skor": 0.0716,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7077",
+          "metin_ozet": "di.",
+          "metin": "di.",
+          "skor": 0.0716,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1059,
+      "ortalama_kaynak_skor": 0.0764,
+      "kaynak_sayisi": 5,
+      "message_id": "22564814-5c04-4bc4-a366-7ba89b0c2952",
+      "conversation_id": "5fce69b2-83ee-44d9-b503-f066e0c4feba",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.69,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Kamulaştırma nedir? Şartları nelerdir?",
+      "cevap": "Kamulaştırma, devletin veya kamu tüzel kişilerinin, kamu yararı amacıyla, özel mülkiyette bulunan taşınmaz malları satın alma veya bunlar üzerinde kamu yararı amacıyla irtifak hakkı tesis etme işlemlerini ifade eder. \n\nKamulaştırma işlemleri, 2942 sayılı Kamulaştırma Kanunu hükümlerine göre yürütülür. Bu kanuna göre, kamulaştırma için aşağıdaki şartlar aranır:\n\n1. Kamulaştırma, kamu yararı amacıyla yapılmalıdır.\n2. Kamulaştırma, kanunda belirtilen usul ve esaslara uygun olarak yapılmalıdır.\n3. Taşınmaz malın mülkiyetinin kamuya geçmesi veya üzerinde irtifak hakkı tesis edilmesi için, malik veya diğer hak sahiplerine uygun bir bedel ödenmelidir.\n\nKamulaştırma işlemleri, genellikle aşağıdaki aşamaları içerir:\n\n1. Kamulaştırma kararı: Kamulaştırma işleminin başlangıcında, ilgili kamu kuruluşu tarafından kamulaştırma kararı alınır.\n2. Taşınmaz malın değerinin belirlenmesi: Kamulaştırma kararı之后, taşınmaz malın değerinin belirlenmesi için bir bilirkişi heyeti görevlendirilir.\n3. Bedel ödenmesi: Taşınmaz malın değerinin belirlenmesinden sonra, malik veya diğer hak sahiplerine bedel ödenir.\n4. Taşınmaz malın kamuya geçmesi: Bedel ödenmesinden sonra, taşınmaz malın mülkiyeti kamuya geçer veya üzerinde irtifak hakkı tesis edilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0584,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 158",
+          "metin_ozet": "MADDE 158- Dava veya def’i; mahkemenin yetkili veya görevli olmaması ya da düzeltilebilecek bir yanlışlık yapılması yahut vaktinden önce açılmış olması nedeniyle reddedilmiş olup da o arada zamanaşımı veya hak düşürücü süre dolmuşsa, alacaklı altmış günlük ek süre içinde haklarını kullanabilir.",
+          "metin": "MADDE 158- Dava veya def’i; mahkemenin yetkili veya görevli olmaması ya da düzeltilebilecek bir yanlışlık yapılması yahut vaktinden önce açılmış olması nedeniyle reddedilmiş olup da o arada zamanaşımı veya hak düşürücü süre dolmuşsa, alacaklı altmış günlük ek süre içinde haklarını kullanabilir.",
+          "skor": 0.0477,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 14",
+          "metin_ozet": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "metin": "Madde 14 – Devlet memurları, kendileriyle, eşlerine ve velayetleri altındaki\nçocuklarına ait taşınır ve taşınmaz malları, alacak ve borçları hakkında, özel kanunda yazılı\nhükümler uyarınca, mal bildirimi verirler.\nBasına bilgi veya demeç verme:",
+          "skor": 0.0395,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 23",
+          "metin_ozet": "Madde 23 – Devlet memurları, bu kanunda gösterilen süre ve şartlarla izin hakkına\nsahiptirler.\nKovuşturma ve yargılama:",
+          "metin": "Madde 23 – Devlet memurları, bu kanunda gösterilen süre ve şartlarla izin hakkına\nsahiptirler.\nKovuşturma ve yargılama:",
+          "skor": 0.0391,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 66",
+          "metin_ozet": "Madde 66- Bu Kanun hükümlerine ilişkin değişiklikler, ancak bu Kanuna hüküm\neklenmek veya bu Kanunda değişiklik yapılmak suretiyle düzenlenir.\nEşik değerler ve parasal limitlerin güncellenmesi69",
+          "metin": "Madde 66- Bu Kanun hükümlerine ilişkin değişiklikler, ancak bu Kanuna hüküm\neklenmek veya bu Kanunda değişiklik yapılmak suretiyle düzenlenir.\nEşik değerler ve parasal limitlerin güncellenmesi69",
+          "skor": 0.0379,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1444,
+      "ortalama_kaynak_skor": 0.0445,
+      "kaynak_sayisi": 5,
+      "message_id": "ec48c824-feea-4eca-be8c-01506a7dc769",
+      "conversation_id": "f665bb99-3660-4302-b2c9-3ebfd24fece1",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.31,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "İmar uygulamaları mülkiyet hakkını nasıl sınırlar?",
+      "cevap": "İmar uygulamaları, mülkiyet hakkını çeşitli şekillerde sınırlayabilir. Öncelikle, imar planları ve düzenlemeleri, bir mülkün kullanımını ve gelişimini etkileyebilir. Örneğin, bir bölgeye ait imar planı, belirli bir mülke hangi tür yapıların inşa edilebileceğini veya hangi faaliyetlerin gerçekleştirilebileceğini belirleyebilir. Bu, mülk sahiplerinin mülklerini kullanma ve geliştirme özgürlüğünü sınırlayabilir.\n\nİmar uygulamaları ayrıca, kamulaştırma gibi süreçler yoluyla mülkiyet hakkını doğrudan etkileyebilir. Kamulaştırma, devletin veya kamu kurumlarının, kamu yararına yönelik projeler için özel mülklere el koymasıdır. Bu süreç, mülk sahiplerinin rızası olmadan mülklerinin elinden alınabileceği anlamına gelir.\n\nAyrıca, imar uygulamaları, mülk sahiplerinin mülklerini kullanma şeklini de etkileyebilir. Örneğin, bir bölgede belirli bir tür yapıya veya faaliyetlere izin verilmiyor olabilir veya belirli standartlara uymak zorunda olabilirler. Bu tür düzenlemeler, mülk sahiplerinin mülklerini kullanma ve geliştirme özgürlüğünü sınırlayabilir.\n\nVerilen kaynaklar, imar uygulamaları ve mülkiyet hakkı arasındaki ilişkiye doğrudan değinmemektedir. Ancak, genel olarak, imar uygulamalarının mülkiyet hakkını nasıl sınırlayabileceği konusunda bilgi verilebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4730",
+          "metin_ozet": "burada uygulanamaz. Bütün bu açıklamalar ışığında temyiz incelemesinin yapılması gerektiğinden Sayın Çoğunluğun görüşüne katılamıyorum.",
+          "metin": "burada uygulanamaz. Bütün bu açıklamalar ışığında temyiz incelemesinin yapılması gerektiğinden Sayın Çoğunluğun görüşüne katılamıyorum.",
+          "skor": 0.0825,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/5181",
+          "metin_ozet": "an ....... Dönem Toplu İş Sözleşmesi'nden yararlandığının kabulü gerektiğini, buna göre 30.05.2013 tarihinde toplu iş sözleşmesine göre çıplak yevmiyesi olan 56,39 TL'nin toplu iş sözleşmesi hükümleri gereğince artırılması gerekirken hükme dayanak raporda bunun dikkate alınmamasının hatalı olduğunu,",
+          "metin": "an ....... Dönem Toplu İş Sözleşmesi'nden yararlandığının kabulü gerektiğini, buna göre 30.05.2013 tarihinde toplu iş sözleşmesine göre çıplak yevmiyesi olan 56,39 TL'nin toplu iş sözleşmesi hükümleri gereğince artırılması gerekirken hükme dayanak raporda bunun dikkate alınmamasının hatalı olduğunu,\nb. Davalıya gönderilen ihtarname ile temerrüdün 13.09.2014 tarihinde gerçekleştiği gözetilerek kıdem tazminatı haricinde hüküm altına alınan alacaklara temerrüt tarihinden itibaren faiz işletilmesi gerekirken dava ve ıslah tarihininden faiz yürütülmesinin hatalı olduğunu ileri sürmüştür.\n2. Davalı vekili temyiz dilekçesinde;\na. Davanın öncelikle husumet yönünden reddinin gerektiğini,\nb. 31.05.2013 tarihinden önceki dönemde de hizmet alım sözleşmelerinin muvazaaya dayalı olmadığını, davalı İdarenin yalnızca ihale makamı olarak sorumluluğunun bulunduğunu,\nc. Davacı lehine alacak tespitini kabul etmediklerini,\nd. Faiz başlangıç tarihlerinin ve faiz türünün de hatalı olduğunu ileri sürmüştür.\nB. Değerlendirme ve Gerekçe\nDosya içeriğine, bozmanın mahiyeti ve kapsamına göre taraflar arasındaki uyuşmazlık; davacının kapsamında çalıştığı hizmet alım sözleşmelerinin muvazaalı olup olmadığı, buna",
+          "skor": 0.0825,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14446",
+          "metin_ozet": "r. Davalı vekilinin de  24.04.2024 tarihli beyan dilekçesinde söz konusu hesaplamayı yaptığı hususu göz önünde bulundurulduğunda, İlk Derece Mahkemesince, bozmaya konu tek alacak kalemi olan yemek yardımı alacağının 12.09.2019 tarihinden sonraki dönemle sınırlı olarak resen hesaplanması mümkün iken ",
+          "metin": "r. Davalı vekilinin de  24.04.2024 tarihli beyan dilekçesinde söz konusu hesaplamayı yaptığı hususu göz önünde bulundurulduğunda, İlk Derece Mahkemesince, bozmaya konu tek alacak kalemi olan yemek yardımı alacağının 12.09.2019 tarihinden sonraki dönemle sınırlı olarak resen hesaplanması mümkün iken dosyanın ek rapor için bilirkişiye gönderilmiş olması sonuca etkili olmamakla beraber eleştiri sebebi yapılmıştır.\n4. Temyizen incelenen İlk Derece Mahkemesi kararının bozmaya uygun olduğu, kararda ve kararın gerekçesinde hukuk kurallarının somut olaya uygulanmasında bir isabetsizlik  bulunmadığı, bozmaya uyulmakla karşı taraf yararına kazanılmış hak durumunu oluşturan yönlerin ise yeniden incelenmesine hukukça imkân bulunmadığı anlaşılmakla; temyiz dilekçesinde  ileri sürülen nedenler  kararın bozulmasını gerektirecek nitelikte görülmemiştir.\nVII. KARAR\nAçıklanan sebeple;\nDavalı ... vekilinin yerinde görülmeyen tüm temyiz itirazlarının reddi ile usul ve kanuna uygun olan kararın ONANMASINA,\nDavalı ... harçtan muaf olduğundan harç alınmasına yer olmadığına,\nDosyanın İlk Derece Mahkemesine gönderilmesine,\n04.11.2024 tarihinde oy birliğiyle karar verildi.",
+          "skor": 0.0814,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/4644",
+          "metin_ozet": " raporunda en az yüzde kırk oranında engelli olduğu belirtilen işçiler ile ağır engelli raporlu eşi veya bakmakla yükümlü olduğu birinci derece kan hısımları bulunan işçiler, engellilik durumundan kaynaklanan gerekçelere dayalı olarak Kurum içinde yer değiştirme talebinde bulunabilir.\n(2) Bu kapsamd",
+          "metin": " raporunda en az yüzde kırk oranında engelli olduğu belirtilen işçiler ile ağır engelli raporlu eşi veya bakmakla yükümlü olduğu birinci derece kan hısımları bulunan işçiler, engellilik durumundan kaynaklanan gerekçelere dayalı olarak Kurum içinde yer değiştirme talebinde bulunabilir.\n(2) Bu kapsamdaki talepler kamu Kurum ve kuruluşlarının kadro imkânları ve teşkilat yapıları dikkate alınarak karşılanır.\n(3) İşçinin kendisinin veya birlikte yaşadığı eşi ve bakmakla yükümlü olduğu çocuklarının engellilik durumunun tedavisi sebebiyle Kurum içinde yer değişikliği talep etmesi hâlinde, yer değiştirme suretiyle atama yapılacak yerin, işçinin ve bu fıkra kapsamındaki yakınlarının engellilik durumuna uygun olması esastır.\n(4) Engellilik durumu devam ettiği sürece Kurum ve kuruluşlarca isteği dışında işçinin görev yeri değiştirilmez. Engellilik durumu ortadan kalkan işçiler hakkında genel hükümler çerçevesinde işlem yapılır.\" düzenlemesine yer verilmiştir.\nYine davalı ... Destek Hizmetleri Genel Müdürlüğünün 12.02.2018 tarihli ve 2911983 sayılı “10 Nolu İş Kolundaki Sürekli İşçilerin Nakilleri” konulu Genelgesi ile davalı bünyesinde sürekli işçi pozisyonunda çalışan işçilerin nakil taleple",
+          "skor": 0.0806,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14447",
+          "metin_ozet": "unması hâlinde ek ücrete hükmedilmemesi yahut 700,00 TL ek bilirkişi ücretinin davadaki haklılık oranına göre orantılanmaksızın davacı üzerinde bırakılması talep edilmiştir.\n3. 6100 sayılı Kanun'un 266 ncı maddesine göre; genel bilgi veya tecrübeyle ya da hâkimlik mesleğinin gerektirdiği hukuki bilg",
+          "metin": "unması hâlinde ek ücrete hükmedilmemesi yahut 700,00 TL ek bilirkişi ücretinin davadaki haklılık oranına göre orantılanmaksızın davacı üzerinde bırakılması talep edilmiştir.\n3. 6100 sayılı Kanun'un 266 ncı maddesine göre; genel bilgi veya tecrübeyle ya da hâkimlik mesleğinin gerektirdiği hukuki bilgiyle çözümlenmesi mümkün olan konularda bilirkişiye başvurulamaz. İlâmın İlgili Hukuk  bölümünün (3) numaralı  paragrafında belirtilen Yönetmelik'in 5 inci maddesinin yedinci fıkrası uyarınca da, aynı konuda bir kez rapor alınması esas olup rapordaki eksiklik veya belirsizliğin giderilmesi için ek rapor istenebilecektir.\nSomut uyuşmazlıkta; İlk Derece Mahkemesi kararı yemek yardımı alacağının 12.09.2019 tarihinden sonraki dönemle sınırlı olarak hesaplanıp hüküm altına alınması gerektiği gerekçesiyle bozulmuştur. Bozma kararının kapsamı ve bozmadan önceki yargılama sırasında düzenlenen kök bilirkişi raporu içeriği dikkate alındığında, yeniden ek rapor almayı gerektirir bir eksik hesaplama ya da belirsizlik söz konusu değildir.  Davalı vekilinin de  24.04.2024 tarihli beyan dilekçesinde söz konusu hesaplamayı yaptığı hususu göz önünde bulundurulduğunda,  İlk Derece Mahkemesince, bozmaya ko",
+          "skor": 0.0797,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1471,
+      "ortalama_kaynak_skor": 0.0813,
+      "kaynak_sayisi": 5,
+      "message_id": "21a76db0-7909-488a-88aa-432c8ede55cb",
+      "conversation_id": "d44c5a6b-31b4-41c7-a80f-1ab89b9546de",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.51,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Haksız işgal (fuzuli şagil) nedir?",
+      "cevap": "Haksız işgal (fuzuli şagil), bir kişinin, başka bir kişinin mülkiyetinde veya zilyetliğinde bulunan taşınmazı, izinsiz ve haksız olarak işgal etmesidir. Bu durum, Türk hukukunda özellikle taşınmaz mülkiyeti ve zilyetlik haklarının ihlali olarak değerlendirilir.\n\nTürk Borçlar Kanunu'nda, kira sözleşmeleri ve kiracıların yükümlülükleri düzenlenir. Ancak, haksız işgal kavramı doğrudan bu kanun maddelerinde açıkça tanımlanmaz. Buna karşılık, kira sözleşmesinin sona ermesi ve kiracının taşınmazı boşaltma yükümlülüğü gibi konulara ilişkin hükümler mevcuttur (örneğin, Madde 300 ve Madde 353).\n\nHaksız işgalin hukuki sonuçları ve işgalin sona erdirilmesi için uygulanabilecek yollar, Türk hukukunun farklı alanlarını ilgilendirebilir. Örneğin, taşınmazın sahibi, haksız işgale son vermek için dava açabilir veya diğer hukuki yollara başvurabilir.\n\nVerilen kaynaklar, haksız işgal kavramının doğrudan tanımlanması veya açıklanması açısından yeterli değildir. Bu nedenle, daha详lı ve özel bir hukuki danışmanlık için ilgili kanun maddeleri ve yargı kararlarına başvurmak gerekebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardım bürosu veya bir avukat ile görüşmenizi öneririz. Adalet Bakanlığı ALO 182 hattından ücretsiz hukuki danışmanlık alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "metin": "Madde 31 – Resmen yayımlanan veya ilan olunan kanun, Cumhurbaşkanlığı\nkararnamesi, yönetmelik, tebliğ, genelge ve kazai kararların çoğaltılması, yayılması, işlenmesi\nveya her hangi bir suretle bunlardan faydalanma serbesttir.\n2. Nutuklar:",
+          "skor": 0.0648,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.0636,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 300",
+          "metin_ozet": "MADDE 300- Kira sözleşmesi, belirli ve belirli olmayan bir süre için yapılabilir. Kararlaştırılan sürenin geçmesiyle herhangi bir bildirim olmaksızın sona erecek kira sözleşmesi belirli sürelidir; diğer kira sözleşmeleri belirli olmayan bir süre için yapılmış sayılır.",
+          "metin": "MADDE 300- Kira sözleşmesi, belirli ve belirli olmayan bir süre için yapılabilir. Kararlaştırılan sürenin geçmesiyle herhangi bir bildirim olmaksızın sona erecek kira sözleşmesi belirli sürelidir; diğer kira sözleşmeleri belirli olmayan bir süre için yapılmış sayılır.",
+          "skor": 0.0584,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Ek Madde 8",
+          "metin_ozet": "Ek Madde 8- (Ek: 3/3/2004-5101/26 md.)\nBir veri tabanının içeriğinin oluşturulmasına, doğrulanmasına veya sunumuna nitelik\nve nicelik açısından esaslı bir nispet dahilinde yatırım yapan veri tabanı yapımcısı, ayrıca, veri\ntabanının içeriğinin önemli bir kısmının veya tamamının;\na) Herhangi bir araç ",
+          "metin": "Ek Madde 8- (Ek: 3/3/2004-5101/26 md.)\nBir veri tabanının içeriğinin oluşturulmasına, doğrulanmasına veya sunumuna nitelik\nve nicelik açısından esaslı bir nispet dahilinde yatırım yapan veri tabanı yapımcısı, ayrıca, veri\ntabanının içeriğinin önemli bir kısmının veya tamamının;\na) Herhangi bir araç ile herhangi bir şekilde sürekli veya geçici olarak başka bir\nortama aktarılması,\nb) Herhangi bir yolla dağıtılması, satılması, kiralanması veya topluma iletilmesi,\nHususlarında bu Kanunda sayılan istisnalar ile kamu güvenliği, idarî ve yargı\nişlemlerinin gerektirdiği istisnalar dışında izin vermek veya yasaklamak hakkına sahiptir.\nVeri tabanı yapımcısına sağlanan koruma aleniyet tarihinden itibaren onbeş yıldır.\nVeri tabanının içeriğinde esaslı bir değişiklik meydana getiren ve yeni bir yatırım\ngerektiren, nitelik ve nicelik açısından yapılan her türlü ekleme, çıkarma veya değişiklik\nsonucu bu yeni yatırımdan doğan veri tabanı kendi koruma koşullarına hak kazanır.\nBu maddede tanınmış hakları ihlâl edenler hakkında bu Kanunun 72 nci maddesinin\n(3) numaralı bendi hükümleri uygulanır.",
+          "skor": 0.0573,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 389",
+          "metin_ozet": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "metin": "MADDE 389- Ödünç alanın, ödünç konusunun teslimine ve ödünç verenin de bu şeyin teslim alınmasına ilişkin istemleri, diğer tarafın bu konuda temerrüde düşmesinden başlayarak altı ayın geçmesiyle zamanaşımına uğrar.",
+          "skor": 0.0553,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1283,
+      "ortalama_kaynak_skor": 0.0599,
+      "kaynak_sayisi": 5,
+      "message_id": "b1706d03-8d0a-4600-911c-1fb11cfdce75",
+      "conversation_id": "3b13e8db-c4d8-4f65-9218-031c4d0a83fc",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 2.25,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Tapu iptal ve tescil davası hangi durumlarda açılır?",
+      "cevap": "Tapu iptal ve tescil davası, genellikle tapu sicilinde yapılan hatalı veya haksız işlemler nedeniyle açılır. Bu dava, tapu sicilinde kayıtlı olan bir taşınmazın tapu kaydının iptal edilmesi ve yeni bir tapu kaydının yapılması amacıyla açılır.\n\nÖrneğin, bir kişinin taşınmazı haksız olarak başkası adına tapu siciline kaydedilmişse, bu kişinin tapu iptal ve tescil davası açma hakkı vardır. Aynı şekilde, bir taşınmazın tapu kaydında hata veya eksiklik varsa, bu hatanın düzeltilmesi amacıyla da tapu iptal ve tescil davası açılabilir.\n\nAncak, verilen kaynaklar bu konuya ilişkin yeterli bilgi sağlamamaktadır. Bu nedenle, tapu iptal ve tescil davasına ilişkin daha详lı bilgi için ilgili kanun maddelerine ve Yargıtay kararlarına başvurmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 5",
+          "metin_ozet": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye K",
+          "metin": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye Kurum Yönetim Kurulu yetkilidir.",
+          "skor": 0.0485,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 38",
+          "metin_ozet": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerin",
+          "metin": "Madde 38 — Ana ortaklık, finansal durum ve faaliyet sonuçları hakkında bir bütün\nolarak bilgi vermek amacıyla 37 nci maddeye istinaden Kurulca düzenlenen usûl ve esaslar\nçerçevesinde konsolide finansal raporlar düzenlemek zorundadır. Konsolide finansal rapor\nkapsamında bulunan kuruluşlar, kendilerinden konsolide finansal raporların düzenlenmesine\nilişkin olarak istenecek her türlü bilgi ve belgeyi ilgili ana ortaklığa vermekle yükümlüdür.\nFinansal raporların imzalanması, sunulması, ilânı ve denetimi",
+          "skor": 0.0474,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 351",
+          "metin_ozet": "MADDE 351- (Mülga: 26/6/2012-6335/43 md.)\nXIII - Kuruluştan önce pay taahhüdünün devri",
+          "metin": "MADDE 351- (Mülga: 26/6/2012-6335/43 md.)\nXIII - Kuruluştan önce pay taahhüdünün devri",
+          "skor": 0.0438,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 382",
+          "metin_ozet": "MADDE 382- Bir şeyi birlikte ödünç alanlar, ondan müteselsilen sorumlu olurlar.",
+          "metin": "MADDE 382- Bir şeyi birlikte ödünç alanlar, ondan müteselsilen sorumlu olurlar.",
+          "skor": 0.0412,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 130",
+          "metin_ozet": "Madde 130- Yeniden evlenmek isteyen kimse, önceki evliliğinin sona ermiş olduğunu\nispat etmek zorundadır.\nb. Gaiplik durumunda",
+          "metin": "Madde 130- Yeniden evlenmek isteyen kimse, önceki evliliğinin sona ermiş olduğunu\nispat etmek zorundadır.\nb. Gaiplik durumunda",
+          "skor": 0.0411,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 950,
+      "ortalama_kaynak_skor": 0.0444,
+      "kaynak_sayisi": 5,
+      "message_id": "3edca0ef-3bc3-423c-91c9-3796033fc458",
+      "conversation_id": "482e8eb0-0aab-43db-804a-98a61c2fa1b6",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.78,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

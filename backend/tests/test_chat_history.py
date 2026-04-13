@@ -141,3 +141,17 @@ def test_user_can_export_conversation_pdf() -> None:
     assert export_response.status_code == 200
     assert export_response.headers["content-type"].startswith("application/pdf")
     assert export_response.content.startswith(b"%PDF")
+
+
+def test_ask_rejects_too_long_question_with_structured_error() -> None:
+    response = client.post(
+        "/ask",
+        json={
+            "soru": "a" * 1001,
+            "max_kaynak": 3,
+        },
+    )
+    assert response.status_code == 422
+    payload = response.json()
+    assert payload["error"] == "question_too_long"
+    assert payload["max_length"] == 1000

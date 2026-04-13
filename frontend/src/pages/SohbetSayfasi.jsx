@@ -20,7 +20,7 @@ import SohbetMesaji from '../components/SohbetMesaji';
 import YukleniyorGostergesi from '../components/YukleniyorGostergesi';
 import DirekArama from '../components/DirekArama';
 import AuthModal from '../components/AuthModal';
-import { useChat } from '../hooks/useChat';
+import { MAX_QUESTION_LENGTH, useChat } from '../hooks/useChat';
 import { useTema } from '../context/TemaContext';
 import { useAuth } from '../context/AuthContext';
 import { useDil } from '../context/DilContext';
@@ -180,12 +180,15 @@ function ComposerPanel({
     setGirdi,
     secilenDosya,
     setSecilenDosya,
+    setFormHata,
     dosyaInputRef,
     klavyeIsle,
     yukleniyor,
     gonder,
 }) {
     const textareaRef = useRef(null);
+    const karakterSayisi = girdi.trim().length;
+    const limitAsildi = karakterSayisi > MAX_QUESTION_LENGTH;
 
     useEffect(() => {
         if (!textareaRef.current) return;
@@ -230,14 +233,27 @@ function ComposerPanel({
                     accept=".pdf"
                     className="hidden"
                     onChange={(e) => {
-                        if (e.target.files?.[0]) setSecilenDosya(e.target.files[0]);
+                        const file = e.target.files?.[0];
+                        if (!file) return;
+                        const pdfMi = file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
+                        if (!pdfMi) {
+                            setSecilenDosya(null);
+                            setFormHata(t('pdfOnlyWarning'));
+                            e.target.value = '';
+                            return;
+                        }
+                        setFormHata(null);
+                        setSecilenDosya(file);
                     }}
                 />
 
                 <textarea
                     ref={textareaRef}
                     value={girdi}
-                    onChange={(e) => setGirdi(e.target.value)}
+                    onChange={(e) => {
+                        setGirdi(e.target.value);
+                        setFormHata(null);
+                    }}
                     onKeyDown={klavyeIsle}
                     placeholder={t('soruPlaceholder')}
                     rows={compact ? 1 : 2}
@@ -273,24 +289,29 @@ function ComposerPanel({
                         </span>
                     </div>
 
-                    <button
-                        onClick={gonder}
-                        disabled={(!girdi.trim() && !secilenDosya) || yukleniyor}
-                        className="flex h-11 min-w-[52px] items-center justify-center rounded-full px-4 transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-40"
-                        style={{
-                            background: (girdi.trim() || secilenDosya) && !yukleniyor
-                                ? 'var(--tema-send-btn)'
-                                : 'var(--tema-soft-bg-subtle)',
-                            border: '1px solid var(--tema-border-card)',
-                        }}
-                        title={t('gonderTip')}
-                    >
-                        {yukleniyor ? (
-                            <RotateCcw size={16} className="animate-spin" style={{ color: 'var(--tema-accent)' }} />
-                        ) : (
-                            <Send size={16} style={{ color: girdi.trim() || secilenDosya ? 'var(--tema-send-icon)' : 'var(--tema-muted)' }} />
-                        )}
-                    </button>
+                    <div className="flex items-center gap-3">
+                        <span className="text-xs" style={{ color: limitAsildi ? 'var(--tema-danger-text)' : 'var(--tema-dimmer)' }}>
+                            {t('chatCharacterCount', { count: karakterSayisi })}
+                        </span>
+                        <button
+                            onClick={gonder}
+                            disabled={(!girdi.trim() && !secilenDosya) || yukleniyor || limitAsildi}
+                            className="flex h-11 min-w-[52px] items-center justify-center rounded-full px-4 transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-40"
+                            style={{
+                                background: (girdi.trim() || secilenDosya) && !yukleniyor && !limitAsildi
+                                    ? 'var(--tema-send-btn)'
+                                    : 'var(--tema-soft-bg-subtle)',
+                                border: '1px solid var(--tema-border-card)',
+                            }}
+                            title={t('gonderTip')}
+                        >
+                            {yukleniyor ? (
+                                <RotateCcw size={16} className="animate-spin" style={{ color: 'var(--tema-accent)' }} />
+                            ) : (
+                                <Send size={16} style={{ color: girdi.trim() || secilenDosya ? 'var(--tema-send-icon)' : 'var(--tema-muted)' }} />
+                            )}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -301,6 +322,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
     const [girdi, setGirdi] = useState('');
     const [secilenDosya, setSecilenDosya] = useState(null);
     const [authModalAcik, setAuthModalAcik] = useState(false);
+    const [formHata, setFormHata] = useState(null);
     const chatSonuRef = useRef(null);
     const dosyaInputRef = useRef(null);
     const sohbetIdRef = useRef(null);
@@ -338,6 +360,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
             sohbetiTemizle();
             setGirdi('');
             setSecilenDosya(null);
+            setFormHata(null);
             sohbetIdRef.current = null;
         }
     }, [temizleSinyali, sohbetiTemizle]);
@@ -349,9 +372,14 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
 
     const gonder = useCallback(async () => {
         if ((!girdi.trim() && !secilenDosya) || yukleniyor) return;
+        if (!secilenDosya && girdi.trim().length > MAX_QUESTION_LENGTH) {
+            setFormHata(t('maxQuestionLength'));
+            return;
+        }
 
         const metin = girdi;
         const dosya = secilenDosya;
+        setFormHata(null);
         setGirdi('');
         setSecilenDosya(null);
 
@@ -438,11 +466,18 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             setGirdi={setGirdi}
                             secilenDosya={secilenDosya}
                             setSecilenDosya={setSecilenDosya}
+                            setFormHata={setFormHata}
                             dosyaInputRef={dosyaInputRef}
                             klavyeIsle={klavyeIsle}
                             yukleniyor={yukleniyor}
                             gonder={gonder}
                         />
+
+                        {formHata && (
+                            <p className="mx-auto mt-3 max-w-[700px] text-sm" style={{ color: 'var(--tema-danger-text)' }}>
+                                {formHata}
+                            </p>
+                        )}
 
                         <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
                             {ornekSorular.map(({ soru, kategori, Ikon }) => (
@@ -497,11 +532,17 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                             setGirdi={setGirdi}
                             secilenDosya={secilenDosya}
                             setSecilenDosya={setSecilenDosya}
+                            setFormHata={setFormHata}
                             dosyaInputRef={dosyaInputRef}
                             klavyeIsle={klavyeIsle}
                             yukleniyor={yukleniyor}
                             gonder={gonder}
                         />
+                        {formHata && (
+                            <p className="mx-auto mt-3 max-w-4xl text-sm" style={{ color: 'var(--tema-danger-text)' }}>
+                                {formHata}
+                            </p>
+                        )}
                     </div>
                 </>
             )}

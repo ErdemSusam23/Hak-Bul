@@ -94,6 +94,18 @@ def test_analyze_invalid_pdf_returns_400() -> None:
     assert response.status_code == 400
 
 
+def test_analyze_rejects_non_pdf_with_structured_error() -> None:
+    response = client.post(
+        "/documents/analyze",
+        data={"soru": "Sorum nedir?"},
+        files={"dosya": ("image.png", b"png-data", "image/png")},
+    )
+
+    assert response.status_code == 400
+    assert response.json()["detail"]["error"] == "unsupported_file_type"
+    assert "application/pdf" in response.json()["detail"]["allowed_types"]
+
+
 def test_analyze_scanned_pdf_returns_400() -> None:
     with patch("routers.documents.pdf_metin_cikar", return_value="   "):
         response = client.post(

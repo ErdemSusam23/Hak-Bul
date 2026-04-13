@@ -16,6 +16,8 @@ export default function KarsilastirmaSayfasi() {
     const ref1 = useRef();
     const ref2 = useRef();
 
+    const pdfMi = (file) => file && (file.type === 'application/pdf' || /\.pdf$/i.test(file.name));
+
     const handleKarsilastir = async () => {
         if (!dosya1 || !dosya2) {
             setHata(t('compareNeedTwoFiles'));
@@ -35,8 +37,9 @@ export default function KarsilastirmaSayfasi() {
             setSonuc(data);
         } catch (err) {
             const detail = err?.response?.data?.detail;
+            const errorCode = detail?.error;
             const detailText = typeof detail === 'string' ? detail : detail?.detail;
-            setHata(detailText || t('compareFailed'));
+            setHata(errorCode === 'unsupported_file_type' ? t('unsupportedFileType') : (detailText || t('compareFailed')));
         } finally {
             setYukleniyor(false);
         }
@@ -54,7 +57,13 @@ export default function KarsilastirmaSayfasi() {
             onDrop={(e) => {
                 e.preventDefault();
                 const file = e.dataTransfer.files[0];
-                if (file?.type === 'application/pdf') setDosya(file);
+                if (!file) return;
+                if (!pdfMi(file)) {
+                    setHata(t('unsupportedFileType'));
+                    return;
+                }
+                setHata(null);
+                setDosya(file);
             }}
         >
             <input
@@ -62,7 +71,20 @@ export default function KarsilastirmaSayfasi() {
                 type="file"
                 accept=".pdf,application/pdf"
                 className="hidden"
-                onChange={(e) => setDosya(e.target.files[0] || null)}
+                onChange={(e) => {
+                    const file = e.target.files[0] || null;
+                    if (!file) {
+                        setDosya(null);
+                        return;
+                    }
+                    if (!pdfMi(file)) {
+                        setHata(t('unsupportedFileType'));
+                        e.target.value = '';
+                        return;
+                    }
+                    setHata(null);
+                    setDosya(file);
+                }}
             />
             {dosya ? (
                 <>

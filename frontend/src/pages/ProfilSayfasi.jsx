@@ -89,6 +89,10 @@ export default function ProfilSayfasi({ onGeri }) {
             setMesaj({ tip: 'hata', metin: t('passwordsMismatch') });
             return;
         }
+        if (yeniSifre && yeniSifre === mevcutSifre) {
+            setMesaj({ tip: 'hata', metin: t('samePasswordNotAllowed') });
+            return;
+        }
         if (!mevcutSifre) {
             setMesaj({ tip: 'hata', metin: t('currentPasswordPrompt') });
             return;
@@ -109,7 +113,9 @@ export default function ProfilSayfasi({ onGeri }) {
             setMesaj({ tip: 'basari', metin: t('profileUpdated') });
         } catch (err) {
             const status = err?.response?.status;
+            const errorCode = err?.response?.data?.detail?.error;
             const metin =
+                errorCode === 'same_password_not_allowed' ? t('samePasswordNotAllowed') :
                 status === 401 ? t('wrongCurrentPassword') :
                 status === 409 ? t('emailInUse') :
                 t('profileUpdateFailed');
@@ -242,7 +248,7 @@ export default function ProfilSayfasi({ onGeri }) {
                                                 autoComplete="new-password"
                                                 value={yeniSifre}
                                                 onChange={(e) => setYeniSifre(e.target.value)}
-                                                placeholder="En az 8 karakter"
+                                                placeholder={t('newPasswordPlaceholder')}
                                                 disabled={kaydetYukleniyor}
                                                 showToggle
                                                 onToggle={() => setShowSifre((value) => !value)}

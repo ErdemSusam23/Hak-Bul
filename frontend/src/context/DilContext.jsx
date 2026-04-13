@@ -17,8 +17,12 @@ export function DilProvider({ children }) {
         }
     }, []);
 
-    const t = useCallback((anahtar) => {
-        return DILLER[dil]?.[anahtar] ?? DILLER['tr'][anahtar] ?? anahtar;
+    const t = useCallback((anahtar, degiskenler = {}) => {
+        const sablon = DILLER[dil]?.[anahtar] ?? DILLER.tr[anahtar] ?? anahtar;
+        return Object.entries(degiskenler).reduce(
+            (metin, [key, value]) => metin.replaceAll(`{{${key}}}`, String(value)),
+            sablon,
+        );
     }, [dil]);
 
     return (

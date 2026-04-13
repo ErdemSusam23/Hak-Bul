@@ -30,6 +30,17 @@ router = APIRouter(prefix="/documents", tags=["documents"])
 IZIN_VERILEN_TIPLER = {"application/pdf", "application/x-pdf"}
 
 
+def _unsupported_file_type_error(language: str) -> HTTPException:
+    return HTTPException(
+        status_code=400,
+        detail={
+            "error": "unsupported_file_type",
+            "detail": pick_text(language, "Sadece PDF dosyalari kabul edilir", "Only PDF files are accepted"),
+            "allowed_types": sorted(IZIN_VERILEN_TIPLER),
+        },
+    )
+
+
 def _raise_generation_http_error(exc: RuntimeError) -> None:
     detail = str(exc)
     if "Groq" in detail:
@@ -61,10 +72,7 @@ async def dokuman_analiz_et(
     language = normalize_language(language)
 
     if dosya.content_type not in IZIN_VERILEN_TIPLER and not (dosya.filename or "").endswith(".pdf"):
-        raise HTTPException(
-            status_code=400,
-            detail=pick_text(language, "Sadece PDF dosyalari kabul edilir", "Only PDF files are accepted"),
-        )
+        raise _unsupported_file_type_error(language)
 
     pdf_baytlari = await dosya.read()
 
@@ -156,10 +164,7 @@ async def dokuman_karsilastir(
 
     for dosya in (dosya1, dosya2):
         if dosya.content_type not in IZIN_VERILEN_TIPLER and not (dosya.filename or "").endswith(".pdf"):
-            raise HTTPException(
-                status_code=400,
-                detail=pick_text(language, "Sadece PDF dosyalari kabul edilir", "Only PDF files are accepted"),
-            )
+            raise _unsupported_file_type_error(language)
 
     bayt1 = await dosya1.read()
     bayt2 = await dosya2.read()

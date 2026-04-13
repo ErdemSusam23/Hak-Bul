@@ -10,6 +10,7 @@ import json
 import httpx
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 from slowapi import Limiter
@@ -65,6 +66,24 @@ app.include_router(templates_router)
 app.include_router(forum_router)
 
 
+def _format_validation_error(request: Request, exc: RequestValidationError) -> JSONResponse | None:
+    if request.url.path in {"/ask", "/ask/stream"}:
+        for error in exc.errors():
+            if error.get("type") != "string_too_long":
+                continue
+            if "soru" not in error.get("loc", ()):
+                continue
+            return JSONResponse(
+                status_code=422,
+                content={
+                    "error": "question_too_long",
+                    "detail": "Soru en fazla 1000 karakter olabilir.",
+                    "max_length": 1000,
+                },
+            )
+    return None
+
+
 @app.exception_handler(RateLimitExceeded)
 async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
     return JSONResponse(
@@ -75,6 +94,14 @@ async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
             "retry_after": 60,
         },
     )
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error_handler(request: Request, exc: RequestValidationError):
+    formatted = _format_validation_error(request, exc)
+    if formatted is not None:
+        return formatted
+    return JSONResponse(status_code=422, content={"detail": exc.errors()})
 
 
 _pipeline = None

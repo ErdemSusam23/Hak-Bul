@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { X, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
 
-const SIFRE_KURALLARI = [
-    { test: (s) => s.length >= 8, label: 'En az 8 karakter' },
-    { test: (s) => /[A-Z]/.test(s), label: 'En az 1 büyük harf' },
-    { test: (s) => /[0-9]/.test(s), label: 'En az 1 rakam' },
-];
+import { useAuth } from '../context/AuthContext';
+import { useDil } from '../context/DilContext';
 
 export default function AuthModal({ onKapat }) {
     const { giris, kayit, yukleniyor } = useAuth();
+    const { t } = useDil();
     const [sekme, setSekme] = useState('giris');
     const [email, setEmail] = useState('');
     const [sifre, setSifre] = useState('');
@@ -17,6 +14,12 @@ export default function AuthModal({ onKapat }) {
     const [sifreGoster, setSifreGoster] = useState(false);
     const [hata, setHata] = useState('');
     const [basarili, setBasarili] = useState(false);
+
+    const sifreKurallari = [
+        { test: (value) => value.length >= 8, label: t('passwordRuleMin') },
+        { test: (value) => /[A-Z]/.test(value), label: t('passwordRuleUpper') },
+        { test: (value) => /[0-9]/.test(value), label: t('passwordRuleNumber') },
+    ];
 
     const temizle = (yeniSekme) => {
         setSekme(yeniSekme);
@@ -27,8 +30,8 @@ export default function AuthModal({ onKapat }) {
         setBasarili(false);
     };
 
-    const sifreGecerli = SIFRE_KURALLARI.every((k) => k.test(sifre));
-    const sifreslerEsit = sifre === sifreTekrar && sifreTekrar.length > 0;
+    const sifreGecerli = sifreKurallari.every((kural) => kural.test(sifre));
+    const sifrelerEsit = sifre === sifreTekrar && sifreTekrar.length > 0;
 
     const gonder = async (e) => {
         e.preventDefault();
@@ -45,12 +48,12 @@ export default function AuthModal({ onKapat }) {
         }
 
         if (!sifreGecerli) {
-            setHata('Şifre güvenlik gereksinimlerini karşılamıyor.');
+            setHata(t('authPasswordRulesFailed'));
             return;
         }
 
-        if (!sifreslerEsit) {
-            setHata('Şifreler eşleşmiyor.');
+        if (!sifrelerEsit) {
+            setHata(t('authPasswordsMismatch'));
             return;
         }
 
@@ -79,20 +82,20 @@ export default function AuthModal({ onKapat }) {
             >
                 <button
                     onClick={onKapat}
-                    className="absolute top-4 right-4 transition-colors hover:text-[var(--tema-text)]"
+                    className="absolute right-4 top-4 transition-colors hover:text-[var(--tema-text)]"
                     style={{ color: 'var(--tema-muted)' }}
                 >
                     <X size={18} />
                 </button>
 
                 <div className="mb-6 flex" style={{ borderBottom: '1px solid var(--tema-border)' }}>
-                    {['giris', 'kayit'].map((s) => (
+                    {['giris', 'kayit'].map((sekmeKey) => (
                         <button
-                            key={s}
-                            onClick={() => temizle(s)}
+                            key={sekmeKey}
+                            onClick={() => temizle(sekmeKey)}
                             className="flex-1 -mb-px border-b-2 py-2.5 text-sm font-medium transition-all hover:text-[var(--tema-text)]"
                             style={
-                                sekme === s
+                                sekme === sekmeKey
                                     ? {
                                         borderColor: 'var(--tema-accent)',
                                         color: 'var(--tema-accent)',
@@ -104,7 +107,7 @@ export default function AuthModal({ onKapat }) {
                                     }
                             }
                         >
-                            {s === 'giris' ? 'Giriş Yap' : 'Kayıt Ol'}
+                            {sekmeKey === 'giris' ? t('authLoginTab') : t('authRegisterTab')}
                         </button>
                     ))}
                 </div>
@@ -115,7 +118,7 @@ export default function AuthModal({ onKapat }) {
                         style={{ background: 'var(--tema-success-bg)', border: '1px solid var(--tema-success-border)' }}
                     >
                         <CheckCircle size={15} className="flex-shrink-0" style={{ color: 'var(--tema-success-text)' }} />
-                        <p className="text-sm" style={{ color: 'var(--tema-success-text)' }}>Hesap oluşturuldu. Giriş sekmesine geçiliyor...</p>
+                        <p className="text-sm" style={{ color: 'var(--tema-success-text)' }}>{t('authRegisterSuccess')}</p>
                     </div>
                 )}
 
@@ -132,7 +135,7 @@ export default function AuthModal({ onKapat }) {
                 <form onSubmit={gonder} className="space-y-4">
                     <div>
                         <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                            E-posta
+                            {t('authEmailLabel')}
                         </label>
                         <div className="relative">
                             <Mail
@@ -145,7 +148,7 @@ export default function AuthModal({ onKapat }) {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="ornek@email.com"
+                                placeholder={t('authEmailPlaceholder')}
                                 className="input-field w-full pl-9 text-sm"
                             />
                         </div>
@@ -153,7 +156,7 @@ export default function AuthModal({ onKapat }) {
 
                     <div>
                         <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                            Şifre
+                            {t('authPasswordLabel')}
                         </label>
                         <div className="relative">
                             <Lock
@@ -166,7 +169,7 @@ export default function AuthModal({ onKapat }) {
                                 required
                                 value={sifre}
                                 onChange={(e) => setSifre(e.target.value)}
-                                placeholder="••••••••"
+                                placeholder={t('authPasswordPlaceholder')}
                                 className="input-field w-full pl-9 pr-9 text-sm"
                             />
                             <button
@@ -181,17 +184,17 @@ export default function AuthModal({ onKapat }) {
 
                         {sekme === 'kayit' && sifre && (
                             <ul className="mt-1.5 space-y-0.5">
-                                {SIFRE_KURALLARI.map((k) => (
-                                    <li key={k.label} className="flex items-center gap-1.5">
+                                {sifreKurallari.map((kural) => (
+                                    <li key={kural.label} className="flex items-center gap-1.5">
                                         <CheckCircle
                                             size={11}
-                                            style={{ color: k.test(sifre) ? 'var(--tema-success-text)' : 'var(--tema-dimmer)' }}
+                                            style={{ color: kural.test(sifre) ? 'var(--tema-success-text)' : 'var(--tema-dimmer)' }}
                                         />
                                         <span
                                             className="text-xs"
-                                            style={{ color: k.test(sifre) ? 'var(--tema-success-text)' : 'var(--tema-dimmer)' }}
+                                            style={{ color: kural.test(sifre) ? 'var(--tema-success-text)' : 'var(--tema-dimmer)' }}
                                         >
-                                            {k.label}
+                                            {kural.label}
                                         </span>
                                     </li>
                                 ))}
@@ -202,7 +205,7 @@ export default function AuthModal({ onKapat }) {
                     {sekme === 'kayit' && (
                         <div>
                             <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                            Şifre Tekrar
+                                {t('authRepeatPasswordLabel')}
                             </label>
                             <div className="relative">
                                 <Lock
@@ -215,8 +218,8 @@ export default function AuthModal({ onKapat }) {
                                     required
                                     value={sifreTekrar}
                                     onChange={(e) => setSifreTekrar(e.target.value)}
-                                    placeholder="••••••••"
-                                    className={`input-field w-full pl-9 text-sm ${sifreTekrar && !sifreslerEsit ? 'border-red-500/40' : sifreTekrar && sifreslerEsit ? 'border-emerald-500/40' : ''}`}
+                                    placeholder={t('authPasswordPlaceholder')}
+                                    className={`input-field w-full pl-9 text-sm ${sifreTekrar && !sifrelerEsit ? 'border-red-500/40' : sifreTekrar && sifrelerEsit ? 'border-emerald-500/40' : ''}`}
                                 />
                             </div>
                         </div>
@@ -224,14 +227,14 @@ export default function AuthModal({ onKapat }) {
 
                     <button
                         type="submit"
-                        disabled={yukleniyor || !email || !sifre || (sekme === 'kayit' && (!sifreGecerli || !sifreslerEsit)) || basarili}
+                        disabled={yukleniyor || !email || !sifre || (sekme === 'kayit' && (!sifreGecerli || !sifrelerEsit)) || basarili}
                         className="mt-1 flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50"
                         style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
                     >
                         {yukleniyor ? (
-                            <><Loader2 size={16} className="animate-spin" />{sekme === 'giris' ? 'Giriş yapılıyor...' : 'Kayıt oluşturuluyor...'}</>
+                            <><Loader2 size={16} className="animate-spin" />{sekme === 'giris' ? t('authLoggingIn') : t('authRegistering')}</>
                         ) : (
-                            sekme === 'giris' ? 'Giriş Yap' : 'Kayıt Ol'
+                            sekme === 'giris' ? t('authLoginTab') : t('authRegisterTab')
                         )}
                     </button>
                 </form>

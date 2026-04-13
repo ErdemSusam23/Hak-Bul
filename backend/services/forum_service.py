@@ -9,6 +9,14 @@ from models.forum import ForumThread, ForumReply, ForumVote
 from models.user import User
 
 
+def _mask_email(email: str) -> str:
+    local_part, _, domain = email.partition("@")
+    if not domain:
+        return "***"
+    visible = local_part[:2]
+    return f"{visible}***@{domain}"
+
+
 def _thread_to_dict(db: Session, thread: ForumThread, user: User) -> dict:
     reply_count = (
         db.query(func.count(ForumReply.id))
@@ -29,7 +37,7 @@ def _thread_to_dict(db: Session, thread: ForumThread, user: User) -> dict:
         "category": thread.category,
         "is_locked": thread.is_locked,
         "user_id": thread.user_id,
-        "user_email": user.email,
+        "user_email": _mask_email(user.email),
         "reply_count": reply_count,
         "vote_score": vote_score,
         "created_at": thread.created_at.isoformat(),
@@ -50,7 +58,7 @@ def _reply_to_dict(db: Session, reply: ForumReply, user: User) -> dict:
         "content": reply.content,
         "is_verified": reply.is_verified,
         "user_id": reply.user_id,
-        "user_email": user.email,
+        "user_email": _mask_email(user.email),
         "user_role": user.role.value,
         "vote_score": vote_score,
         "created_at": reply.created_at.isoformat(),

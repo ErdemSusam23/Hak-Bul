@@ -143,6 +143,9 @@ def test_thread_detay_herkese_acik() -> None:
     data = resp.json()
     assert "thread" in data
     assert "replies" in data
+    assert data["thread"]["user_email"] != email
+    assert data["thread"]["user_email"].endswith("@test.com")
+    assert "***@" in data["thread"]["user_email"]
 
 
 def test_thread_guncelle_sadece_sahip() -> None:
@@ -246,6 +249,8 @@ def test_yanit_onay_sadece_lawyer() -> None:
     resp = client.patch(f"/forum/replies/{reply_id}/verify", params={"verified": True}, headers=_auth_header(lawyer_token))
     assert resp.status_code == 200
     assert resp.json()["is_verified"] is True
+    assert resp.json()["user_email"] != lawyer_email
+    assert "***@" in resp.json()["user_email"]
 
 
 # ─── Oy testleri ─────────────────────────────────────────────────────────────

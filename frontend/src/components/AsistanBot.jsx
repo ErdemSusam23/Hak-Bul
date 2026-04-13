@@ -143,6 +143,7 @@ export default function AsistanBot() {
     const [girdi, setGirdi] = useState('');
     const [mesajlar, setMesajlar] = useState([]);
     const [destekGoster, setDestekGoster] = useState(false);
+    const [gonderiliyor, setGonderiliyor] = useState(false);
     const mesajlarRef = useRef(null);
     const inputRef = useRef(null);
 
@@ -230,8 +231,10 @@ export default function AsistanBot() {
     };
 
     const gonder = () => {
+        if (gonderiliyor) return;
         const soru = girdi.trim();
         if (!soru) return;
+        setGonderiliyor(true);
 
         const exactMatch = eslesenSorular.find(
             (item) => normalizeText(item.question) === normalizedQuery,
@@ -239,30 +242,36 @@ export default function AsistanBot() {
 
         if (exactMatch) {
             soruSec(exactMatch);
+            requestAnimationFrame(() => setGonderiliyor(false));
             return;
         }
 
         if (eslesenSorular.length === 1) {
             soruSec(eslesenSorular[0]);
+            requestAnimationFrame(() => setGonderiliyor(false));
             return;
         }
 
         if (eslesenSorular.length > 1) {
+            setGirdi('');
             setDestekGoster(false);
             setMesajlar((prev) => [
                 ...prev,
                 { rol: 'kullanici', icerik: soru },
                 { rol: 'asistan', icerik: metinler.choosePrompt },
             ]);
+            requestAnimationFrame(() => setGonderiliyor(false));
             return;
         }
 
+        setGirdi('');
         setDestekGoster(true);
         setMesajlar((prev) => [
             ...prev,
             { rol: 'kullanici', icerik: soru },
             { rol: 'asistan', icerik: metinler.noMatch },
         ]);
+        requestAnimationFrame(() => setGonderiliyor(false));
     };
 
     const tusTakip = (e) => {
@@ -385,11 +394,11 @@ export default function AsistanBot() {
                             />
                             <button
                                 onClick={gonder}
-                                disabled={!girdi.trim()}
+                                disabled={!girdi.trim() || gonderiliyor}
                                 className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg transition-all"
                                 style={{
                                     background: girdi.trim() ? 'var(--tema-send-btn)' : 'var(--tema-card)',
-                                    opacity: girdi.trim() ? 1 : 0.45,
+                                    opacity: girdi.trim() && !gonderiliyor ? 1 : 0.45,
                                 }}
                             >
                                 <Search

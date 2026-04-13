@@ -1,22 +1,19 @@
 from datetime import datetime
 
-from fastapi import APIRouter, Cookie, Depends, HTTPException, Request, Response, status
+from fastapi import APIRouter, Body, Cookie, Depends, HTTPException, Request, Response, status
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 from sqlalchemy.orm import Session
 
-limiter = Limiter(key_func=get_remote_address)
-
-from config import settings
-
 from auth.dependencies import get_current_user
 from auth.jwt_service import TokenDecodeError, create_access_token, create_refresh_token, decode_token
 from auth.security import hash_password, hash_token, verify_password
+from config import settings
 from db.session import get_db
 from models.chat_history import ChatHistory
 from models.refresh_token import RefreshToken
-from models.user import User
 from models.shared_conversation import SharedConversation
+from models.user import User
 from schemas import (
     HesapSil,
     LoginRequest,
@@ -28,6 +25,8 @@ from schemas import (
     RegisterResponse,
     TokenPairResponse,
 )
+
+limiter = Limiter(key_func=get_remote_address)
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -86,8 +85,7 @@ def login(request: Request, body: LoginRequest, response: Response, db: Session 
     db.commit()
 
     _set_refresh_cookie(response, refresh_token)
-    # refresh_token is now httpOnly cookie; return empty string in body for security
-    return TokenPairResponse(access_token=access_token, refresh_token="", role=user.role.value)
+    return TokenPairResponse(id=user.id, access_token=access_token, refresh_token="", role=user.role.value)
 
 
 @router.post("/refresh", response_model=TokenPairResponse)
@@ -97,10 +95,9 @@ def refresh(
     refresh_token_cookie: str | None = Cookie(default=None, alias="refresh_token"),
     body: RefreshRequest | None = None,
 ):
-    # Cookie first, fall back to body for backward compat
     token_val = refresh_token_cookie or (body.refresh_token if body else None)
     if not token_val:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Refresh token bulunamadı.")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Refresh token bulunamad\u0131.")
     try:
         payload = decode_token(token_val)
     except TokenDecodeError as exc:
@@ -140,7 +137,7 @@ def refresh(
     db.commit()
 
     _set_refresh_cookie(response, new_refresh_token)
-    return TokenPairResponse(access_token=access_token, refresh_token="", role=user.role.value)
+    return TokenPairResponse(id=user.id, access_token=access_token, refresh_token="", role=user.role.value)
 
 
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
@@ -152,7 +149,7 @@ def logout(
 ):
     token_val = refresh_token_cookie or (body.refresh_token if body else None)
     if not token_val:
-        return  # Nothing to revoke
+        return
     try:
         payload = decode_token(token_val)
     except TokenDecodeError as exc:
@@ -180,18 +177,26 @@ def update_profile(
     current_user: User = Depends(get_current_user),
 ):
     if not verify_password(body.mevcut_sifre, current_user.password_hash):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Mevcut şifre hatalı.")
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Mevcut \u015fifre hatal\u0131.")
 
     should_revoke_tokens = False
 
     if body.email and body.email.lower() != current_user.email:
         existing = db.query(User).filter(User.email == body.email.lower()).first()
         if existing:
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Bu e-posta zaten kullanılıyor.")
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Bu e-posta zaten kullan\u0131l\u0131yor.")
         current_user.email = body.email.lower()
         should_revoke_tokens = True
 
     if body.yeni_sifre:
+        if verify_password(body.yeni_sifre, current_user.password_hash):
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail={
+                    "error": "same_password_not_allowed",
+                    "detail": "Yeni sifre mevcut sifre ile ayni olamaz.",
+                },
+            )
         current_user.password_hash = hash_password(body.yeni_sifre)
         should_revoke_tokens = True
 
@@ -209,25 +214,30 @@ def update_profile(
 @router.delete("/account", status_code=status.HTTP_204_NO_CONTENT)
 def delete_account(
     response: Response,
-    body: HesapSil,
+    body: HesapSil | None = Body(default=None),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    if not verify_password(body.mevcut_sifre, current_user.password_hash):
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Şifre hatalı.")
+    resolved_password = body.mevcut_sifre if body else None
+    if not resolved_password:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail={
+                "error": "current_password_required",
+                "detail": "Hesap silmek icin mevcut_sifre gereklidir.",
+            },
+        )
 
-    # Tüm refresh token'ları iptal et
+    if not verify_password(resolved_password, current_user.password_hash):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="\u015eifre hatal\u0131.")
+
     db.query(RefreshToken).filter(RefreshToken.user_id == current_user.id).update(
         {"revoked_at": datetime.utcnow()}, synchronize_session=False
     )
-    # Paylaşılan sohbetleri devre dışı bırak
     db.query(SharedConversation).filter(SharedConversation.user_id == current_user.id).update(
         {"is_active": False}, synchronize_session=False
     )
-    # Sohbet geçmişini sil
     db.query(ChatHistory).filter(ChatHistory.user_id == current_user.id).delete(synchronize_session=False)
-    # Kullanıcıyı pasif yap
     current_user.is_active = False
     db.commit()
     _clear_refresh_cookie(response)
-

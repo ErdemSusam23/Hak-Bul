@@ -299,7 +299,7 @@ export async function profilGuncelleAPI({ email, yeni_sifre, mevcut_sifre }) {
 
 export async function hesapSilAPI(mevcut_sifre) {
     if (MOCK_MODE) return;
-    await client.delete(`/auth/account?mevcut_sifre=${encodeURIComponent(mevcut_sifre)}`);
+    await client.delete('/auth/account', { data: { mevcut_sifre } });
 }
 
 // REST API ADMIN METOTLARI

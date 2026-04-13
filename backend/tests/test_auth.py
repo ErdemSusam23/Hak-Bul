@@ -97,3 +97,94 @@ def test_profile_email_change_revokes_refresh_tokens() -> None:
 
     refresh = client.post("/auth/refresh", cookies={"refresh_token": old_refresh_token})
     assert refresh.status_code == 401
+
+
+def test_profile_rejects_same_password() -> None:
+    access_token = client.post(
+        "/auth/login", json={"email": "test-new@example.com", "password": "strongpass123"}
+    ).json()["access_token"]
+
+    update = client.put(
+        "/auth/profile",
+        json={"yeni_sifre": "strongpass123", "mevcut_sifre": "strongpass123"},
+        headers={"Authorization": f"Bearer {access_token}"},
+    )
+    assert update.status_code == 400
+    assert update.json()["detail"]["error"] == "same_password_not_allowed"
+
+
+def test_delete_account_accepts_body_and_deactivates_user() -> None:
+    from models.user import User
+
+    register = client.post("/auth/register", json={"email": "delete-me@example.com", "password": "StrongPass123"})
+    assert register.status_code == 201
+    login = client.post("/auth/login", json={"email": "delete-me@example.com", "password": "StrongPass123"})
+    token = login.json()["access_token"]
+
+    response = client.delete(
+        "/auth/account",
+        json={"mevcut_sifre": "StrongPass123"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert response.status_code == 204
+
+    db = TestingSessionLocal()
+    try:
+        user = db.query(User).filter(User.email == "delete-me@example.com").first()
+        assert user is not None
+        assert user.is_active is False
+    finally:
+        db.close()
+
+    relogin = client.post("/auth/login", json={"email": "delete-me@example.com", "password": "StrongPass123"})
+    assert relogin.status_code == 401
+
+
+def test_delete_account_clears_chat_history_and_shared_conversations() -> None:
+    from models.chat_history import ChatHistory
+    from models.enums import MessageRole
+    from models.shared_conversation import SharedConversation
+    from models.user import User
+
+    register = client.post("/auth/register", json={"email": "cleanup@example.com", "password": "StrongPass123"})
+    assert register.status_code == 201
+    login = client.post("/auth/login", json={"email": "cleanup@example.com", "password": "StrongPass123"})
+    token = login.json()["access_token"]
+
+    db = TestingSessionLocal()
+    try:
+        user = db.query(User).filter(User.email == "cleanup@example.com").first()
+        assert user is not None
+        conversation_id = "00000000-0000-0000-0000-000000000123"
+        db.add(
+            ChatHistory(
+                user_id=user.id,
+                conversation_id=conversation_id,
+                role=MessageRole.USER,
+                content="Test conversation content",
+            )
+        )
+        share = SharedConversation(user_id=user.id, conversation_id=conversation_id)
+        db.add(share)
+        db.commit()
+        share_token = share.share_token
+    finally:
+        db.close()
+
+    response = client.delete(
+        "/auth/account",
+        json={"mevcut_sifre": "StrongPass123"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert response.status_code == 204
+
+    db = TestingSessionLocal()
+    try:
+        user = db.query(User).filter(User.email == "cleanup@example.com").first()
+        assert user is not None
+        assert db.query(ChatHistory).filter(ChatHistory.user_id == user.id).count() == 0
+        shared = db.query(SharedConversation).filter(SharedConversation.share_token == share_token).first()
+        assert shared is not None
+        assert shared.is_active is False
+    finally:
+        db.close()

@@ -33,6 +33,13 @@ export async function tokenYenile() {
     return data; // { access_token, token_type, role }
 }
 
+export async function oturumProfiliGetir(accessToken) {
+    const { data } = await authClient.get('/auth/profile', {
+        headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    return data;
+}
+
 // POST /auth/logout — uses httpOnly cookie automatically
 export async function cikisYap() {
     await authClient.post('/auth/logout');

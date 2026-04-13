@@ -2,7 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 import {
     ArrowLeft, Lock, Unlock, Trash2, CheckCircle, ThumbsUp, ThumbsDown, BadgeCheck,
 } from 'lucide-react';
+
 import { useAuth } from '../context/AuthContext';
+import { useDil } from '../context/DilContext';
 import {
     forumThreadDetayAPI,
     forumThreadSilAPI,
@@ -14,33 +16,34 @@ import {
     forumReplyOyAPI,
 } from '../api/client';
 
-function formatDate(iso) {
+function formatDate(iso, locale) {
     if (!iso) return '';
     const str = iso.endsWith('Z') || iso.includes('+') ? iso : `${iso}Z`;
-    return new Date(str).toLocaleDateString('tr-TR');
+    const dateLocale = locale === 'en' ? 'en-US' : 'tr-TR';
+    return new Date(str).toLocaleDateString(dateLocale);
 }
 
-function OyButonlari({ skor, onOy, disabled }) {
+function OyButonlari({ skor, onOy, disabled, t }) {
     return (
         <div className="flex items-center gap-1">
             <button
                 onClick={() => onOy(1)}
                 disabled={disabled}
-                className="p-1 rounded transition-colors hover:bg-green-500/10"
+                className="rounded p-1 transition-colors hover:bg-green-500/10"
                 style={{ color: 'var(--tema-muted)' }}
-                title="Beğen"
+                title={t('forumLike')}
             >
                 <ThumbsUp size={14} />
             </button>
-            <span className="text-xs font-medium w-6 text-center" style={{ color: skor >= 0 ? 'var(--tema-text2)' : '#f87171' }}>
+            <span className="w-6 text-center text-xs font-medium" style={{ color: skor >= 0 ? 'var(--tema-text2)' : '#f87171' }}>
                 {skor}
             </span>
             <button
                 onClick={() => onOy(-1)}
                 disabled={disabled}
-                className="p-1 rounded transition-colors hover:bg-red-500/10"
+                className="rounded p-1 transition-colors hover:bg-red-500/10"
                 style={{ color: 'var(--tema-muted)' }}
-                title="Beğenme"
+                title={t('forumDislike')}
             >
                 <ThumbsDown size={14} />
             </button>
@@ -50,6 +53,7 @@ function OyButonlari({ skor, onOy, disabled }) {
 
 export default function ForumBaslikSayfasi({ threadId, onGeri }) {
     const { kullanici } = useAuth();
+    const { t, dil } = useDil();
     const [detay, setDetay] = useState(null);
     const [yukleniyor, setYukleniyor] = useState(true);
     const [yanitMetin, setYanitMetin] = useState('');
@@ -64,7 +68,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
             const data = await forumThreadDetayAPI(threadId);
             setDetay(data);
         } catch (e) {
-            console.error('Thread yüklenemedi:', e);
+            console.error('Thread yuklenemedi:', e);
             setDetay(null);
         } finally {
             setYukleniyor(false);
@@ -76,12 +80,12 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
     }, [yukle]);
 
     const handleThreadSil = async () => {
-        if (!confirm('Bu başlığı silmek istediğinizden emin misiniz?')) return;
+        if (!confirm(t('forumDeleteConfirm'))) return;
         try {
             await forumThreadSilAPI(threadId);
             onGeri();
         } catch (e) {
-            alert(e.response?.data?.detail || 'Silinemedi.');
+            alert(e.response?.data?.detail || t('forumDeleteFailed'));
         }
     };
 
@@ -91,7 +95,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
             const guncellenen = await forumThreadKilitleAPI(threadId, yeniDurum);
             setDetay((prev) => ({ ...prev, thread: guncellenen }));
         } catch (e) {
-            alert(e.response?.data?.detail || 'İşlem başarısız.');
+            alert(e.response?.data?.detail || t('forumActionFailed'));
         }
     };
 
@@ -105,19 +109,19 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
             setDetay((prev) => ({ ...prev, replies: [...prev.replies, yeniYanit] }));
             setYanitMetin('');
         } catch (err) {
-            setHata(err.response?.data?.detail || 'Yanıt gönderilemedi.');
+            setHata(err.response?.data?.detail || t('forumReplySendFailed'));
         } finally {
             setYanitGonderiliyor(false);
         }
     };
 
     const handleYanitSil = async (replyId) => {
-        if (!confirm('Bu yanıtı silmek istediğinizden emin misiniz?')) return;
+        if (!confirm(t('forumReplyDeleteConfirm'))) return;
         try {
             await forumYanitSilAPI(replyId);
             setDetay((prev) => ({ ...prev, replies: prev.replies.filter((r) => r.id !== replyId) }));
         } catch (e) {
-            alert(e.response?.data?.detail || 'Silinemedi.');
+            alert(e.response?.data?.detail || t('forumDeleteFailed'));
         }
     };
 
@@ -129,7 +133,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
                 replies: prev.replies.map((r) => (r.id === replyId ? guncellenen : r)),
             }));
         } catch (e) {
-            alert(e.response?.data?.detail || 'İşlem başarısız.');
+            alert(e.response?.data?.detail || t('forumActionFailed'));
         }
     };
 
@@ -139,7 +143,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
             const { yeni_skor } = await forumThreadOyAPI(threadId, value);
             setDetay((prev) => ({ ...prev, thread: { ...prev.thread, vote_score: yeni_skor } }));
         } catch (e) {
-            console.error('Oy gönderilemedi:', e);
+            console.error('Oy gonderilemedi:', e);
         }
     };
 
@@ -152,82 +156,82 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
                 replies: prev.replies.map((r) => (r.id === replyId ? { ...r, vote_score: yeni_skor } : r)),
             }));
         } catch (e) {
-            console.error('Oy gönderilemedi:', e);
+            console.error('Oy gonderilemedi:', e);
         }
     };
 
     if (yukleniyor) {
         return (
-            <div className="flex-1 flex items-center justify-center">
-                <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Yükleniyor...</p>
+            <div className="flex flex-1 items-center justify-center">
+                <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>{t('forumLoading')}</p>
             </div>
         );
     }
 
     if (!detay) {
         return (
-            <div className="flex-1 flex flex-col items-center justify-center gap-3">
-                <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Başlık bulunamadı.</p>
-                <button onClick={onGeri} className="text-xs" style={{ color: 'var(--tema-accent)' }}>← Geri dön</button>
+            <div className="flex flex-1 flex-col items-center justify-center gap-3">
+                <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>{t('forumNotFound')}</p>
+                <button onClick={onGeri} className="text-xs" style={{ color: 'var(--tema-accent)' }}>{t('forumBack')}</button>
             </div>
         );
     }
 
     const { thread, replies } = detay;
-    const isOwner = kullanici && kullanici.email === thread.user_email;
+    const isOwner = kullanici && kullanici.id === thread.user_id;
 
     return (
-        <div className="flex-1 flex flex-col min-h-0 p-6 overflow-y-auto">
+        <div className="flex flex-1 flex-col min-h-0 overflow-y-auto p-6">
             <button
                 onClick={onGeri}
-                className="flex items-center gap-1 text-sm mb-4 self-start"
+                className="mb-4 self-start text-sm flex items-center gap-1"
                 style={{ color: 'var(--tema-muted)' }}
             >
-                <ArrowLeft size={14} /> Forum'a dön
+                <ArrowLeft size={14} /> {t('forumBackToList')}
             </button>
 
-            <div className="rounded-2xl p-5 mb-4" style={{ background: 'var(--tema-card)', border: '1px solid var(--tema-border)' }}>
-                <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-2">
-                            <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'var(--tema-surface)', color: 'var(--tema-accent)' }}>
+            <div className="mb-4 rounded-2xl p-5" style={{ background: 'var(--tema-card)', border: '1px solid var(--tema-border)' }}>
+                <div className="mb-3 flex items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                        <div className="mb-2 flex items-center gap-2">
+                            <span className="rounded-full px-2 py-0.5 text-xs" style={{ background: 'var(--tema-surface)', color: 'var(--tema-accent)' }}>
                                 {thread.category}
                             </span>
                             {thread.is_locked && (
                                 <span className="flex items-center gap-1 text-xs" style={{ color: 'var(--tema-muted)' }}>
-                                    <Lock size={12} /> Kilitli
+                                    <Lock size={12} /> {t('forumLocked')}
                                 </span>
                             )}
                         </div>
                         <h1 className="text-lg font-bold" style={{ color: 'var(--tema-text)' }}>{thread.title}</h1>
-                        <p className="text-xs mt-1" style={{ color: 'var(--tema-muted)' }}>
-                            {thread.user_email} · {formatDate(thread.created_at)}
+                        <p className="mt-1 text-xs" style={{ color: 'var(--tema-muted)' }}>
+                            {thread.user_email} {' | '} {formatDate(thread.created_at, dil)}
                         </p>
                     </div>
-                    <div className="flex items-center gap-2 flex-shrink-0">
-                        <OyButonlari skor={thread.vote_score} onOy={handleThreadOy} disabled={!kullanici} />
+                    <div className="flex flex-shrink-0 items-center gap-2">
+                        <OyButonlari skor={thread.vote_score} onOy={handleThreadOy} disabled={!kullanici} t={t} />
                         {isModerator && (
-                            <button onClick={handleKilitle} className="p-1.5 rounded-lg" style={{ color: 'var(--tema-muted)' }} title={thread.is_locked ? 'Kilidi Aç' : 'Kilitle'}>
+                            <button onClick={handleKilitle} className="rounded-lg p-1.5" style={{ color: 'var(--tema-muted)' }} title={thread.is_locked ? t('forumUnlock') : t('forumLock')}>
                                 {thread.is_locked ? <Unlock size={14} /> : <Lock size={14} />}
                             </button>
                         )}
                         {(isOwner || isModerator) && (
-                            <button onClick={handleThreadSil} className="p-1.5 rounded-lg hover:text-red-400" style={{ color: 'var(--tema-muted)' }} title="Sil">
+                            <button onClick={handleThreadSil} className="rounded-lg p-1.5 hover:text-red-400" style={{ color: 'var(--tema-muted)' }} title={t('forumDelete')}>
                                 <Trash2 size={14} />
                             </button>
                         )}
                     </div>
                 </div>
-                <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--tema-text2)' }}>{thread.content}</p>
+                <p className="whitespace-pre-wrap text-sm leading-relaxed" style={{ color: 'var(--tema-text2)' }}>{thread.content}</p>
             </div>
 
-            <h2 className="text-sm font-semibold mb-3" style={{ color: 'var(--tema-muted)' }}>
-                {replies.length} Yanıt
+            <h2 className="mb-3 text-sm font-semibold" style={{ color: 'var(--tema-muted)' }}>
+                {t('forumRepliesCount', { count: replies.length })}
             </h2>
 
-            <div className="flex flex-col gap-3 mb-6">
+            <div className="mb-6 flex flex-col gap-3">
                 {replies.map((reply) => {
-                    const isReplyOwner = kullanici && kullanici.email === reply.user_email;
+                    const isReplyOwner = kullanici && kullanici.id === reply.user_id;
                     return (
                         <div
                             key={reply.id}
@@ -237,28 +241,28 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
                                 border: `1px solid ${reply.is_verified ? 'rgba(34,197,94,0.3)' : 'var(--tema-border)'}`,
                             }}
                         >
-                            <div className="flex items-start justify-between gap-2 mb-2">
+                            <div className="mb-2 flex items-start justify-between gap-2">
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs font-medium" style={{ color: 'var(--tema-text2)' }}>{reply.user_email}</span>
                                     {reply.user_role === 'lawyer' && (
-                                        <span className="flex items-center gap-0.5 text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>
-                                            <BadgeCheck size={10} /> Avukat
+                                        <span className="flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-xs" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>
+                                            <BadgeCheck size={10} /> {t('forumLawyerBadge')}
                                         </span>
                                     )}
                                     {reply.is_verified && (
-                                        <span className="flex items-center gap-0.5 text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#4ade80' }}>
-                                            <CheckCircle size={10} /> Onaylı Cevap
+                                        <span className="flex items-center gap-0.5 rounded-full px-1.5 py-0.5 text-xs" style={{ background: 'rgba(34,197,94,0.15)', color: '#4ade80' }}>
+                                            <CheckCircle size={10} /> {t('forumVerifiedAnswer')}
                                         </span>
                                     )}
                                 </div>
                                 <div className="flex items-center gap-1">
-                                    <OyButonlari skor={reply.vote_score} onOy={(v) => handleReplyOy(reply.id, v)} disabled={!kullanici} />
+                                    <OyButonlari skor={reply.vote_score} onOy={(v) => handleReplyOy(reply.id, v)} disabled={!kullanici} t={t} />
                                     {isModerator && (
                                         <button
                                             onClick={() => handleYanitDogrula(reply.id, reply.is_verified)}
-                                            className="p-1 rounded"
+                                            className="rounded p-1"
                                             style={{ color: reply.is_verified ? '#4ade80' : 'var(--tema-muted)' }}
-                                            title={reply.is_verified ? 'Onayı Kaldır' : 'Onaylı İşaretle'}
+                                            title={reply.is_verified ? t('forumUnverify') : t('forumVerify')}
                                         >
                                             <CheckCircle size={14} />
                                         </button>
@@ -266,18 +270,18 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
                                     {(isReplyOwner || isModerator) && (
                                         <button
                                             onClick={() => handleYanitSil(reply.id)}
-                                            className="p-1 rounded hover:text-red-400"
+                                            className="rounded p-1 hover:text-red-400"
                                             style={{ color: 'var(--tema-muted)' }}
-                                            title="Sil"
+                                            title={t('forumDelete')}
                                         >
                                             <Trash2 size={14} />
                                         </button>
                                     )}
                                 </div>
                             </div>
-                            <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--tema-text2)' }}>{reply.content}</p>
-                            <p className="text-xs mt-2" style={{ color: 'var(--tema-dimmer)' }}>
-                                {formatDate(reply.created_at)}
+                            <p className="whitespace-pre-wrap text-sm leading-relaxed" style={{ color: 'var(--tema-text2)' }}>{reply.content}</p>
+                            <p className="mt-2 text-xs" style={{ color: 'var(--tema-dimmer)' }}>
+                                {formatDate(reply.created_at, dil)}
                             </p>
                         </div>
                     );
@@ -287,9 +291,9 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
             {kullanici && !thread.is_locked && (
                 <form onSubmit={handleYanitGonder} className="flex flex-col gap-2">
                     <textarea
-                        className="w-full rounded-xl px-3 py-2 text-sm outline-none resize-none"
+                        className="w-full resize-none rounded-xl px-3 py-2 text-sm outline-none"
                         style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)', minHeight: '80px' }}
-                        placeholder="Yanıtınızı yazın..."
+                        placeholder={t('forumReplyPlaceholder')}
                         value={yanitMetin}
                         onChange={(e) => setYanitMetin(e.target.value)}
                         required
@@ -299,23 +303,23 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
                     <button
                         type="submit"
                         disabled={yanitGonderiliyor}
-                        className="self-end px-4 py-2 rounded-xl text-sm font-medium"
+                        className="self-end rounded-xl px-4 py-2 text-sm font-medium"
                         style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)', opacity: yanitGonderiliyor ? 0.7 : 1 }}
                     >
-                        {yanitGonderiliyor ? 'Gönderiliyor...' : 'Yanıtla'}
+                        {yanitGonderiliyor ? t('forumReplySubmitting') : t('forumReplySubmit')}
                     </button>
                 </form>
             )}
 
             {!kullanici && (
-                <p className="text-sm text-center py-3" style={{ color: 'var(--tema-muted)' }}>
-                    Yanıt yazmak için giriş yapın.
+                <p className="py-3 text-center text-sm" style={{ color: 'var(--tema-muted)' }}>
+                    {t('forumLoginToReply')}
                 </p>
             )}
 
             {kullanici && thread.is_locked && (
-                <p className="text-sm text-center py-3" style={{ color: 'var(--tema-muted)' }}>
-                    Bu başlık kilitli, yeni yanıt yazılamaz.
+                <p className="py-3 text-center text-sm" style={{ color: 'var(--tema-muted)' }}>
+                    {t('forumThreadLockedMessage')}
                 </p>
             )}
         </div>

@@ -41,37 +41,49 @@ TIMEOUT_SN = 60.0       # Her istek için timeout
 MAX_KAYNAK = 5          # /ask max_kaynak parametresi
 
 
-def cikti_yolu_belirle(sorular: dict, cikti_param: str | None = None) -> str:
+def cikti_yolu_belirle(sorular: dict, cikti_param: str | None = None, sorular_yolu: str | None = None) -> str:
     """
     Çıktı dosya yolunu belirle.
 
     Mantık:
     1. --cikti parametresi verilmişse → onu kullan
-    2. Tek kategori varsa → test_results/{klasor_ad}/test_sonuclari_...
-    3. Çok kategori varsa → test_results/test_sonuclari_...
+    2. sorular_yolu numaralı klasör içeriyorsa (ör. test_sorular/01_is_hukuku/sorular.json)
+       → aynı numaralı klasörü test_results altında kullan: test_results/01_is_hukuku/
+    3. Tek kategori varsa → kategori adından klasör türet
+    4. Çok kategori varsa → test_results/ kök dizinine kaydet
     """
     if cikti_param:
         return cikti_param
 
-    # Tek kategori mi?
+    zaman_damgasi = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    # Sorular yolundan numaralı klasör adını çıkar (ör. "01_is_hukuku")
+    if sorular_yolu:
+        parts = Path(sorular_yolu).parts
+        for part in parts:
+            if part[:2].isdigit() and "_" in part:
+                cikti_klasor = os.path.join(os.path.dirname(__file__), "test_results", part)
+                os.makedirs(cikti_klasor, exist_ok=True)
+                return os.path.join(cikti_klasor, f"test_sonuclari_{zaman_damgasi}.json")
+
+    # Fallback: tek kategori → adından klasör türet
     if len(sorular) == 1:
         kategori_adi = next(iter(sorular.keys()))
-        # Klasör adını türet (küçük harf, boşluk → _, türkçe → ing)
         klasor_adi = kategori_adi.lower()
         turkce_map = {"ş": "s", "ı": "i", "ğ": "g", "ü": "u", "ö": "o", "ç": "c", " ": "_"}
         for tr, en in turkce_map.items():
             klasor_adi = klasor_adi.replace(tr, en)
-        klasor_adi = klasor_adi.replace("i̇", "i")  # özel durum
+        klasor_adi = klasor_adi.replace("i̇", "i")
 
         cikti_klasor = os.path.join(os.path.dirname(__file__), "test_results", klasor_adi)
         os.makedirs(cikti_klasor, exist_ok=True)
-        return os.path.join(cikti_klasor, f"test_sonuclari_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+        return os.path.join(cikti_klasor, f"test_sonuclari_{zaman_damgasi}.json")
 
     # Çoklu kategori → genel klasör
     return os.path.join(
         os.path.dirname(__file__),
         "test_results",
-        f"test_sonuclari_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+        f"test_sonuclari_{zaman_damgasi}.json",
     )
 
 
@@ -399,8 +411,8 @@ def main():
     # Soruları yükle
     sorular = sorulari_yuk(args.sorular)
 
-    # Çıktı yolunu belirle (otomatik kategori bazlı)
-    cikti_yolu = cikti_yolu_belirle(sorular, args.cikti)
+    # Çıktı yolunu belirle (numaralı klasör → otomatik kategori bazlı)
+    cikti_yolu = cikti_yolu_belirle(sorular, args.cikti, args.sorular)
 
     # Testi çalıştır
     sonuc = test_calistir(sorular, args.api_url, args.bekleme, cikti_yolu)

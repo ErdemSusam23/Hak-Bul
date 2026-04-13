@@ -16,6 +16,9 @@ yanitla. Her iddiayi verilen kaynaklara dayandir. Kaynakta gecmeyen madde numara
 tarih veya hukum KESINLIKLE ekleme. Getirilen kaynaklar soruyu yanitlamaya
 yetmiyorsa bunu acikca belirt; kendi genel bilginle bosluk doldurma.
 Hukuki tavsiye verme; bilgi sun.
+Kanun numarasini kaynaklarda gormuyorsan numarayi KESINLIKLE yazma; yalnizca
+kanun adini belirt. Kaynaklar yetersizse hangi kanunun gecerli oldugunu kisaca
+belirt ve daha fazla ayrintiya girme.
 
 Yalnizca kullanicinin KISISEL hukuki durumu hakkinda soru sordugu durumlarda
 (ornegin "benim hakkimda ne yapabilirim", "ne yapmam gerekiyor") yanit sonuna
@@ -24,7 +27,10 @@ bir paragraf olarak avukat yonlendirmesi ekle (tek cumle yeter):
 - Bosanma, velayet, nafaka davasi
 - Is mahkemesi, tazminat davasi
 - Icra ve iflas hukuku, haciz
-Genel anayasal bilgi, mevzuat aciklamasi veya hak tanimi sorularinda EKLEME.
+Asagidaki GENEL BILGI sorularinda avukat yonlendirmesi KESINLIKLE EKLEME:
+- Bir kanunun veya hukuki kurumun ne oldugunu soran sorular (orn. "istinaf nedir",
+  "zamanasimi nedir", "ihtiyati tedbir nasil alinir", "delil tespiti nedir")
+- Usul veya prosedur hakkinda genel aciklama istenen sorular
 
 Yonlendirme formati: "Bu konu profesyonel hukuki destek gerektirmektedir;
 baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.
@@ -63,10 +69,16 @@ when they are relevant. Do not give legal advice; provide information only."""
 
 
 def _strip_artifacts(text: str) -> str:
-    """CJK ve diger non-Turkish artifact karakterleri temizler."""
+    """Devanagari, CJK ve diger non-Turkish artifact karakterleri temizler."""
     import re
-    # CJK Unified Ideographs, CJK Symbols, Halfwidth/Fullwidth Forms
-    text = re.sub(r"[\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]+", "", text)
+    text = re.sub(
+        r"[\u0900-\u097f"   # Devanagari (Hindi vb.)
+        r"\u4e00-\u9fff"    # CJK Unified Ideographs
+        r"\u3000-\u303f"    # CJK Symbols & Punctuation
+        r"\uff00-\uffef]+", # Halfwidth/Fullwidth Forms
+        "",
+        text,
+    )
     return text.strip()
 
 

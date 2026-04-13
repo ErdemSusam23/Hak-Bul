@@ -149,19 +149,30 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
     ],
     "Usul Hukuku": [
         "arabuluculuk", "arabulucu", "zorunlu arabuluculuk",
+        "adli sicil", "adli sicil kaydi", "adli sicil silinme",
+        "hmk", "hukuk muhakemeleri", "cmk", "ceza muhakemesi",
+        "bolge adliye mahkemesi", "bam",
+        "istinaf dilekce", "temyiz dilekce",
+        "bilirkisi", "bilirkisi raporu",
+        "dava zamanasimi", "dava sarti", "dava acma kosul",
+        "yargilama usulu", "kararin kesinlesmesi", "kesinlesme",
+        "itiraz yolu", "kanun yollari",
+        "avukatlik zorunlulugu", "zorunlu temsil",
+        "hagb kosullari", "erteleme karari",
+        "icra mudurlugu", "harc",
         "icra takibi", "icra dairesi", "icra emri", "icra", "haciz",
         "zamanaşimi", "zamanasimi", "hak dusurucu sure", "dava acma suresi",
         "tebligat", "teblig", "ihtiyati tedbir", "tedbir karari",
         "gorevli mahkeme", "yetkili mahkeme",
         "istinaf", "temyiz", "yargitay", "danistay",
         "delil tespiti", "delil toplama", "bilirkişi", "bilirkişi raporu",
-        "yargilama gideri", "vekalet ucreti", "harç", "mahkeme harc",
+        "yargilama gideri", "yargilama giderleri", "vekalet ucreti", "harç", "mahkeme harc",
         "uzlastirma", "hagb", "hukmun aciklanmasinin geri birakilmesi",
         "dava sartı", "dava acma", "dava sureci",
     ],
     "Genel Hukuk": [
-        "hukuk", "hak", "kanun", "yasa", "yonetmelik",
-        "dava", "mahkeme", "dilekce", "dilekce hakki", "basvuru",
+        "yonetmelik",
+        "dilekce", "dilekce hakki", "basvuru",
         "trafik", "trafik cezasi", "trafik sigortasi", "trafik kazasi",
         "ikamet izni", "calisma izni", "vize", "deport", "deport karari",
         "aile birlesimi", "iltica", "multeci", "iltica basvuru",
@@ -181,11 +192,23 @@ _TR_TABLE = str.maketrans(
 
 
 def _normalize(text: str) -> str:
-    return text.lower().translate(_TR_TABLE)
+    # translate() önce: büyük Türkçe harfler (İ, Ğ vb.) ASCII'ye dönüşür,
+    # sonra lower() kalan ASCII büyük harfleri küçültür.
+    # lower()-first sırasında "İ".lower() = "i\u0307" (combining dot) üretir
+    # ve çeviri tablosuyla eşleşmez.
+    return text.translate(_TR_TABLE).lower()
 
 
 class SoruKategorilendiricisi:
     """Anahtar kelime frekansina gore soruyu hukuki kategoriye ayirir."""
+
+    def __init__(self) -> None:
+        # Keywordleri baslangiçta normalize et; böylece soru normalize
+        # edildiginde Türkçe karakterli keywordler de eslesir.
+        self._norm_keywords: dict[str, list[str]] = {
+            kat: [_normalize(k) for k in kelimeler]
+            for kat, kelimeler in KATEGORI_ANAHTAR_KELIMELERI.items()
+        }
 
     def kategorile(self, soru: str) -> str:
         norm = _normalize(soru)
@@ -193,7 +216,7 @@ class SoruKategorilendiricisi:
         en_iyi = VARSAYILAN_KATEGORI
         en_yuksek = 0
 
-        for kategori, kelimeler in KATEGORI_ANAHTAR_KELIMELERI.items():
+        for kategori, kelimeler in self._norm_keywords.items():
             puan = sum(1 for k in kelimeler if k in norm)
             # Eşit puanda Genel Hukuk yerine spesifik kategoriyi tercih et
             if puan > en_yuksek or (puan == en_yuksek and en_iyi == VARSAYILAN_KATEGORI and puan > 0):

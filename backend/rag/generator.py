@@ -12,16 +12,19 @@ _client: Groq | None = None
 
 GENERAL_SYSTEM_PROMPT_TR = """Sen bir Turk hukuku bilgi sistemisin. Sana verilen kanun
 maddeleri ve Yargitay kararlarini kaynak alarak kullanicinin sorusunu Turkce
-yanitla. Her iddiayi verilen kaynaklara dayandir. Eger kaynaklar yetersizse bunu
-acikca belirt. Hukuki tavsiye verme; bilgi sun.
+yanitla. Her iddiayi verilen kaynaklara dayandir. Kaynakta gecmeyen madde numarasi,
+tarih veya hukum KESINLIKLE ekleme. Getirilen kaynaklar soruyu yanitlamaya
+yetmiyorsa bunu acikca belirt; kendi genel bilginle bosluk doldurma.
+Hukuki tavsiye verme; bilgi sun.
 
-Eger kullanicinin sorusu su konulardan birini iceriyorsa yanit sonuna bir paragraf
-olarak avukat yonlendirmesi ekle (tek cumle yeter):
+Yalnizca kullanicinin KISISEL hukuki durumu hakkinda soru sordugu durumlarda
+(ornegin "benim hakkimda ne yapabilirim", "ne yapmam gerekiyor") yanit sonuna
+bir paragraf olarak avukat yonlendirmesi ekle (tek cumle yeter):
 - Ceza davasi, tutukluluk, gozalti, yargilama sureci
 - Bosanma, velayet, nafaka davasi
 - Is mahkemesi, tazminat davasi
 - Icra ve iflas hukuku, haciz
-- Multeciler, vatandaslik, oturma izni
+Genel anayasal bilgi, mevzuat aciklamasi veya hak tanimi sorularinda EKLEME.
 
 Yonlendirme formati: "Bu konu profesyonel hukuki destek gerektirmektedir;
 baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.
@@ -29,16 +32,19 @@ Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz." "
 
 GENERAL_SYSTEM_PROMPT_EN = """You are a Turkish law information system. Use only the
 provided statutes and Court of Cassation decisions as sources, but answer the user
-in English. Ground concrete claims in the supplied sources. If the sources are
-insufficient, say so clearly. Do not give legal advice; provide information only.
+in English. Ground concrete claims in the supplied sources. Do NOT include article
+numbers, dates, or provisions that do not appear in the given sources. If the
+sources are insufficient, say so clearly; do not fill gaps with your own knowledge.
+Do not give legal advice; provide information only.
 
-If the question falls into one of these areas, append one short paragraph advising
-the user to seek a lawyer:
+Append a lawyer referral paragraph ONLY when the user is asking about their OWN
+specific legal situation (e.g. "what can I do", "what should I do"):
 - Criminal proceedings, detention, custody, trial process
 - Divorce, custody, alimony
 - Labor court disputes and compensation lawsuits
 - Enforcement and bankruptcy matters, seizures
-- Refugees, citizenship, residence permits
+Do NOT add a referral for general constitutional information, legal definitions, or
+explanations of statutory provisions.
 
 Referral format: "This matter requires professional legal support; we recommend
 contacting your local bar association's legal aid office or a lawyer." """
@@ -54,6 +60,14 @@ context of Turkish law. Answer in English. Your first priority is the uploaded
 document text. Do not invent clauses, obligations, or risks that are not actually
 present in the document. If supporting legal sources are supplied, use them only
 when they are relevant. Do not give legal advice; provide information only."""
+
+
+def _strip_artifacts(text: str) -> str:
+    """CJK ve diger non-Turkish artifact karakterleri temizler."""
+    import re
+    # CJK Unified Ideographs, CJK Symbols, Halfwidth/Fullwidth Forms
+    text = re.sub(r"[\u4e00-\u9fff\u3000-\u303f\uff00-\uffef]+", "", text)
+    return text.strip()
 
 
 def _get_client() -> Groq:
@@ -251,7 +265,7 @@ def generate_answer(soru: str, chunks: list[dict], language: str = "tr") -> str:
             user_prompt=user_prompt,
             max_tokens=1000,
         )
-        return response.choices[0].message.content.strip()
+        return _strip_artifacts(response.choices[0].message.content.strip())
     except Exception as exc:
         raise RuntimeError(f"Groq yanit uretme hatasi: {exc}") from exc
 
@@ -288,7 +302,7 @@ def generate_answer_stream(soru: str, chunks: list[dict], language: str = "tr"):
         for chunk in stream:
             delta = chunk.choices[0].delta.content
             if delta:
-                yield delta
+                yield _strip_artifacts(delta)
     except Exception as exc:
         raise RuntimeError(f"Groq streaming hatasi: {exc}") from exc
 

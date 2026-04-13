@@ -110,7 +110,14 @@ LAW_HINT_KEYWORDS = {
     "6698": {"kvkk", "kisisel_veri", "veri_sorumlusu", "acik_riza",
              "veri_isleme", "unutulma", "veri_ihlali", "kurul"},
     "2709": {"anayasa", "temel_haklar", "ozgurluk", "esitlik", "secim",
-             "meclis", "cumhurbaskani", "yargı", "anayasa_mahkeme"},
+             "meclis", "cumhurbaskani", "yargi", "anayasa_mahkeme",
+             "bireysel", "basvuru", "temel", "hak", "ihlal"},
+    "2911": {"toplanti", "gosteri", "yuruyus", "goster", "toplanti_izin",
+             "miting", "toplanma"},
+    "5901": {"vatandaslik", "vatandas", "vatandasliktan", "tabiiyet",
+             "uyruk", "turk_vatandas"},
+    "5187": {"basin", "gazete", "gazetecilik", "yayin_organ", "kaynak_gizl",
+             "medya", "haber", "muhabir"},
     "193":  {"gelir_vergisi", "stopaj", "beyanname", "muhtasar", "sgk_prim",
              "vergi_dilimi", "istisna", "muafiyet", "kira_geliri"},
     "3065": {"kdv", "katma_deger", "vergi_iade", "ozel_matrah", "ihracat",
@@ -203,7 +210,15 @@ def _tokenize(text: str) -> list[str]:
 
 
 def _processed_dir() -> Path:
-    return Path(__file__).resolve().parents[1] / "data" / "processed"
+    base = Path(__file__).resolve().parents[1] / "data"
+    primary = base / "processed"
+    if primary.exists():
+        return primary
+    # En güncel backup dizinini kullan (processed/ yoksa)
+    backups = sorted(base.glob("processed_backup_*"), reverse=True)
+    if backups:
+        return backups[0]
+    return primary
 
 
 def _iter_local_paths() -> list[Path]:

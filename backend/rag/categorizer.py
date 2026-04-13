@@ -46,7 +46,7 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "darp", "yaralama", "cinayet", "sahtecilik",
         "suc duyurusu", "suclu", "suclama", "ceza davasi",
         "zimmet", "irtikap", "rusvet", "cinsel taciz", "cinsel saldiri",
-        "kisi ozgurlugu", "konut dokunulmazligi",
+        "kisi ozgurlugu",
         "uyusturucu", "uyusturucu kullanma",
         "kast", "taksir", "meşru savunma", "zorunluluk hali",
         "ceza kanunu", "tck", "5237",
@@ -132,16 +132,20 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "kisisel verilerin korunmasi", "acik riza", "veri sorumlusu",
     ],
     "Anayasa Hukuku": [
-        "anayasa", "anayasa mahkemesi", "aym", "bireysel basvuru",
-        "temel hak", "ozgurluk", "temel hak ve ozgurluk",
-        "ifade ozgurlugu", "basin ozgurlugu", "dusunce ozgurlugu",
-        "din ve vicdan", "ibadet ozgurlugu", "vicdan ozgurlugu",
-        "kisinin dokunulmazligi", "konut dokunulmazligi",
-        "toplanti ve gosteri yuruyusu", "toplanti hakki",
-        "secme ve secilme", "secilme hakki", "oy kullanma",
-        "vatandaslik", "vatandaslikten cikarma", "vatandaslik basvuru",
-        "olağanustu hal", "ohal", "sikayet yonetimi",
+        "anayasa", "anayasa mahkemesi", "aym", "bireysel basvuru", "bireysel basvur",
+        "temel hak", "temel hak ve ozgurluk", "anayasal hak", "hak ihlali",
+        "ozgurluk", "ifade ozgurl", "ifade ozgurlugu",
+        "basin", "basin ozgurl", "basin ozgurlugu", "basin kanun",
+        "dusunce ozgurl", "dusunce ozgurlugu",
+        "din ve vicdan", "din ozgurl", "ibadet", "ibadet ozgurlugu", "vicdan ozgurlugu",
+        "kisinin dokunulmazligi", "kisi dokunulmazligi", "konut dokunulmazligi",
+        "toplanti", "gosteri yuruyus", "toplanti ve gosteri yuruyusu", "toplanti hakki",
+        "secme ve secilme", "secilme hakki", "oy kullanma", "secim", "secim hakki", "oy hakki",
+        "vatandaslik", "vatandasliktan", "vatandaslik kazan", "vatandaslikten cikarma",
+        "tabiiyet",
+        "olaganustu hal", "ohal",
         "kanunun anayasaya uygunluk", "iptal karari", "cumhurbaskanligi kararnamesi",
+        "dernek kurma", "toplanma ozgurl",
     ],
     "Usul Hukuku": [
         "arabuluculuk", "arabulucu", "zorunlu arabuluculuk",
@@ -191,7 +195,8 @@ class SoruKategorilendiricisi:
 
         for kategori, kelimeler in KATEGORI_ANAHTAR_KELIMELERI.items():
             puan = sum(1 for k in kelimeler if k in norm)
-            if puan > en_yuksek:
+            # Eşit puanda Genel Hukuk yerine spesifik kategoriyi tercih et
+            if puan > en_yuksek or (puan == en_yuksek and en_iyi == VARSAYILAN_KATEGORI and puan > 0):
                 en_yuksek = puan
                 en_iyi = kategori
 

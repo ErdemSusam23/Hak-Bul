@@ -27,3 +27,15 @@ export function scoreToPercentage(skor) {
 
     return Math.max(0, Math.min(100, Math.round(numericScore * 100)));
 }
+
+export function getKaynakPreviewText(kaynak = {}) {
+    if (typeof kaynak.metin_ozet === 'string' && kaynak.metin_ozet.trim()) {
+        return kaynak.metin_ozet;
+    }
+
+    if (typeof kaynak.metin === 'string' && kaynak.metin.trim()) {
+        return kaynak.metin;
+    }
+
+    return '';
+}

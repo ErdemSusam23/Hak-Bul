@@ -1,6 +1,6 @@
 import { BookOpen, Gavel, ExternalLink, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { CHAT_TEXT_WRAP_STYLE, scoreToPercentage } from '../utils/chatUi';
+import { CHAT_TEXT_WRAP_STYLE, getKaynakPreviewText, scoreToPercentage } from '../utils/chatUi';
 
 const KAYNAK_TURU_KONFIG = {
     kanun: {
@@ -66,7 +66,7 @@ export default function KaynakKarti({ kaynak }) {
     const [acik, setAcik] = useState(false);
     const konfig = KAYNAK_TURU_KONFIG[kaynak.kaynak_turu] || KAYNAK_TURU_KONFIG.kanun;
     const { Ikon } = konfig;
-    const gosterilecekMetin = kaynak.metin || kaynak.metin_ozet;
+    const gosterilecekMetin = getKaynakPreviewText(kaynak);
 
     const linkAc = (e) => {
         e.stopPropagation();

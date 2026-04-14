@@ -71,3 +71,34 @@ def test_format_sources_batch_normalization_preserves_relative_order():
     assert all(0.0 <= s <= 1.0 for s in scores)
     # Göreli sıralama korunmuş
     assert scores[0] > scores[1] > scores[2]
+
+
+# ---------------------------------------------------------------------------
+# Generator sistem prompt — kaynak yoksa madde numarası üretme kuralı
+# ---------------------------------------------------------------------------
+
+from rag.generator import GENERAL_SYSTEM_PROMPT_TR, GENERAL_SYSTEM_PROMPT_EN
+
+
+def test_tr_prompt_kaynak_yoksa_madde_yazma_kurali():
+    """TR prompt, kaynaklarda geçmeyen madde numarası yazmayı yasaklamalı."""
+    assert "kaynaklarda gecmeyen hicbir madde numarasi yazma" in GENERAL_SYSTEM_PROMPT_TR.lower() or \
+           "kaynaklarda gecmeyen" in GENERAL_SYSTEM_PROMPT_TR.lower()
+
+
+def test_tr_prompt_kaynak_yoksa_ceza_siniri_yazma_kurali():
+    """TR prompt, kaynaklarda geçmeyen ceza sınırı yazmayı yasaklamalı."""
+    assert "ceza siniri" in GENERAL_SYSTEM_PROMPT_TR.lower() or \
+           "ay, yil" in GENERAL_SYSTEM_PROMPT_TR.lower() or \
+           "tl tutari" in GENERAL_SYSTEM_PROMPT_TR.lower()
+
+
+def test_tr_prompt_kaynak_karsilamiyor_formati():
+    """TR prompt, kaynak yetersizliği için yönlendirme formatı içermeli."""
+    assert "karsilamiyor" in GENERAL_SYSTEM_PROMPT_TR.lower()
+
+
+def test_en_prompt_no_article_number_rule():
+    """EN prompt must also prohibit article numbers not found in sources."""
+    prompt_lower = GENERAL_SYSTEM_PROMPT_EN.lower()
+    assert "article number" in prompt_lower or "article numbers" in prompt_lower

@@ -7,7 +7,7 @@ from config import settings
 from rag.categorizer import get_kategorilendirici
 from rag.generator import generate_answer
 from rag.query_rewriter import rewrite_query
-from rag.retriever import filter_by_score, retrieve_chunks
+from rag.retriever import filter_by_score, normalize_relevance_score, retrieve_chunks
 from services.language_service import informational_warning
 
 LAW_MEVZUAT_URLS: dict[str, str] = {
@@ -127,7 +127,7 @@ def _format_sources(chunks: list[dict]) -> list[dict]:
                 "baslik": baslik,
                 "metin_ozet": p.get("metin", "")[:300],
                 "metin": p.get("metin", ""),
-                "skor": round(c["skor"], 4),
+                "skor": normalize_relevance_score(c.get("skor", 0.0)),
                 "url": url,
             }
         )

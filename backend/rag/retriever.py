@@ -649,3 +649,12 @@ def filter_by_score(chunks: list[dict], threshold: float | None = None) -> list[
 
     sorted_chunks = sorted(chunks, key=lambda c: c["skor"], reverse=True)
     return sorted_chunks[: min(5, len(sorted_chunks))]
+
+
+def normalize_relevance_score(score: float) -> float:
+    try:
+        numeric_score = float(score)
+    except (TypeError, ValueError):
+        return 0.0
+
+    return round(max(0.0, min(1.0, numeric_score)), 4)

@@ -94,8 +94,7 @@ def _get_law_url(kanun_adi: str, madde_no: str = "") -> str | None:
 
 def _normalize_summary_text(text: str) -> str:
     cleaned = re.sub(r"\s+", " ", (text or "")).strip()
-    cleaned = re.sub(r"(?<=\D)\d{1,3}(?=\s)", "", cleaned)
-    return re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
 
 
 def _truncate_summary(text: str, max_chars: int = 280) -> str:

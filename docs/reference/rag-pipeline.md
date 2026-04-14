@@ -91,40 +91,37 @@ Tüm chunk'ların `max_skor < SCORE_THRESHOLD` ise sorgu `weak_queries` tablosun
 
 ### Adım 4 — Yanıt Üretme
 
-```python
-# rag/generator.py
+`rag/generator.py` — `GENERAL_SYSTEM_PROMPT_TR` / `GENERAL_SYSTEM_PROMPT_EN` sabitleri kullanılır.
 
-SYSTEM_PROMPT = """
-Sen bir Turk hukuku bilgi sistemisin. Sana verilen kanun maddeleri ve
-Yargitay kararlarini kaynak alarak kullanicinin sorusunu Turkce yanitla.
-Her iddiayi kaynak chunk'a dayandir. Eger verilen kaynaklardan yanit
-uretemiyorsan bunu acikca belirt. Hukuki tavsiye verme; bilgi sun.
+Sistem prompt'u üç katmandan oluşur:
 
-Eger kullanicinin sorusu su konulardan birini iceriyorsa yanit sonuna bir paragraf olarak
-avukat yonlendirmesi ekle:
-- Ceza davasi, tutukluluk, gozalti, yargilama sureci
-- Bosanma, velayet, nafaka davasi
-- Is mahkemesi, tazminat davasi
-- Icra ve iflas hukuku, haciz
-- Multeciler, vatandaslik, oturma izni
-"""
+**Katman 1 — Temel kural:** Yalnızca verilen kaynaklara dayan; kaynaklarda geçmeyen madde numarası, tarih veya hüküm ekleme. Kanun numarasını kaynakta görmüyorsan yazma; yalnızca kanun adını belirt.
 
-def generate_answer(soru: str, chunks: list[dict]) -> str:
-    context = build_context(chunks)
-    response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": f"Kaynaklar:\n{context}\n\nSoru: {soru}"}
-        ],
-        max_tokens=1000
-    )
-    return response.choices[0].message.content
-```
+**Katman 2 — Avukat yönlendirmesi (koşullu):** Yönlendirme yalnızca kullanıcının KİŞİSEL hukuki durumuyla ilgili soru sorduğu durumlarda (ör. "benim hakkımda ne yapabilirim") eklenir:
+- Ceza davası, tutukluluk, gözaltı, yargılama süreci
+- Boşanma, velayet, nafaka davası
+- İş mahkemesi, tazminat davası
+- İcra ve iflas hukuku, haciz
 
-**Avukat Yönlendirmesi:** Kritik konularda (ceza, boşanma, icra, tazminat, mültecilik) yanıt sonuna otomatik olarak "Adalet Bakanlığı ALO 182 hattından ücretsiz hukuki danışmanlık alabilirsiniz." paragrafı eklenir.
+Genel bilgi soruları ("istinaf nedir", "zamanaşımı nedir") için yönlendirme **eklenmez**.
+
+Format: "Adalet Bakanlığı ALO 182 hattından ücretsiz hukuki danışmanlık alabilirsiniz."
+
+**Katman 3 — Kaynak Yetersizliği Kuralları:** Kaynaklar soruyu karşılamıyorsa asla boşluk doldurma:
+- Kaynaklarda geçmeyen madde numarası ("m.X", "X. madde") yazma
+- Kaynaklarda geçmeyen ceza sınırı (ay, yıl, TL tutarı) yazma
+- Kaynaklar yetersizse: hangi kanunun geçerli olduğunu kısaca belirt, ALO 182'ye yönlendir
 
 **SSE Streaming:** `generate_answer_stream()` ile aynı Groq çağrısı token token yield edilir; `/ask/stream` endpoint'i bu fonksiyonu kullanır.
+
+### Adım 5 — Kaynak Özetleme (Source Summary)
+
+`pipeline._format_sources()` her chunk için `metin_ozet` alanı üretir. Sorguya göre en ilgili cümleler seçilir:
+
+- Metindeki cümleler sorgu token örtüşmesiyle puanlanır
+- Süreli sorularda ("süre nedir", "kaç gün") sayı içeren veya "iş günü / gün / ay / yıl" geçen cümleler ek puan alır
+- En yüksek puanlı 3 cümle seçilir, kaynak sırasıyla sıralanır, 280 karakter sınırına kesilir
+- `metin_ozet` API yanıtında chat kartlarında gösterilir; tam `metin` alanı frontend'e gönderilmez
 
 ---
 
@@ -172,7 +169,7 @@ backend/
 ├── config.py                # Environment variables (Settings sınıfı)
 ├── rag/
 │   ├── pipeline.py          # run_pipeline() — adımları zincirler
-│   ├── categorizer.py       # Keyword tabanlı kategori tespiti (8 kategori)
+│   ├── categorizer.py       # Keyword tabanlı kategori tespiti (14 kategori)
 │   ├── query_rewriter.py    # Groq llama-3.1-8b-instant ile sorgu optimizasyonu
 │   ├── retriever.py         # Qdrant Cloud araması; yerel JSON fallback
 │   └── generator.py         # Groq llama-3.3-70b-versatile ile yanıt üretimi

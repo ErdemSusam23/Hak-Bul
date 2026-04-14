@@ -29,26 +29,33 @@ Kod değişikliğini commit etmeden önce aşağıdaki tabloyu kontrol et. İlgi
 ```
 docs/
 ├── reference/       # Teknik referans — kodla birlikte güncellenir
-│   ├── api.md
-│   ├── database.md
-│   ├── rag-pipeline.md
-│   └── tech-spec.md
-├── guides/          # Geliştirici rehberleri
-│   └── env-setup.md
+├── guides/          # Kurulum / işletim rehberleri
+├── contributing/    # Katkı kuralları
 ├── architecture/    # Diyagramlar
-└── archive/         # Tamamlanmış belgeler — salt okunur
+├── audits/          # Audit raporları
+├── tests/           # Test raporları
+├── superpowers/     # Plan/spec dokümanları
+└── archive/         # Dondurulmuş belgeler — salt okunur
 ```
 
 ---
 
 ## Test
 
-Testler Docker üzerinden çalıştırılır, local `pip install` yapılmaz:
+Test çalıştırmadan önce kullanıcıya `local` mı `docker` mı istediğini sor. Varsayılan olarak Docker seçme.
 
 ```bash
-# Tüm testler
+# Tüm testler — Docker
 docker exec hak-bul-backend python -m pytest tests/ -q
 
-# Tek dosya
+# Tek dosya — Docker
 docker exec hak-bul-backend python -m pytest tests/test_feedback.py -v
+
+# Tüm testler — Local (backend/ klasöründe)
+python -m pytest tests/ -q
+
+# Tek dosya — Local (backend/ klasöründe)
+python -m pytest tests/test_feedback.py -v
 ```
+
+Local ortamda bağımlılıklar kurulu olmayabilir; komutu seçmeden önce tercih edilen ortamın hazır olduğunu doğrula.

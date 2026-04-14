@@ -1,30 +1,30 @@
 {
   "test_meta": {
-    "tarih": "2026-04-10T15:48:50.144691+00:00",
+    "tarih": "2026-04-09T23:48:43.589404+00:00",
     "api_url": "http://127.0.0.1:8000",
     "toplam_soru": 12,
     "kategori_sayisi": 1,
-    "rate_limit_bekleme_sn": 8.0,
+    "rate_limit_bekleme_sn": 6.0,
     "max_retry": 3,
-    "cikti_dosyasi": "/app/test_results/idare_hukuku/test_sonuclari_20260410_154650.json"
+    "cikti_dosyasi": "/app/test_results/07_idare_hukuku/test_sonuclari_20260409_234709.json"
   },
   "ozet": {
     "toplam": 12,
     "basarili": 12,
     "basarisiz": 0,
     "basari_orani": 100.0,
-    "toplam_sure_sn": 119.7,
-    "ortalama_sure_sn": 9.97,
+    "toplam_sure_sn": 94.5,
+    "ortalama_sure_sn": 7.87,
     "kategori_dagilimi": {
       "Idare Hukuku": {
         "toplam": 12,
         "basarili": 12,
         "basarisiz": 0,
         "basari_orani": 100.0,
-        "ortalama_sure_sn": 1.97,
-        "kategori_dogruluk_orani": 0.0,
-        "ortalama_cevap_uzunluk": 1027.0,
-        "ortalama_kaynak_skor": 0.0639
+        "ortalama_sure_sn": 1.87,
+        "kategori_dogruluk_orani": 66.7,
+        "ortalama_cevap_uzunluk": 1067.0,
+        "ortalama_kaynak_skor": 0.0645
       }
     }
   },
@@ -33,7 +33,7 @@
       "sira": 1,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Idari islemlere karsi iptal davasi nasil acilir?",
-      "cevap": "İdari işlemlere karşı iptal davası, idari yargıda idari işlemlerin hukuka uygunluğunu denetlemek amacıyla açılan bir dava türüdür. İdari işlemlere karşı iptal davası açabilmek için, idari işlemin tarafınızca öğrenildiği tarihten itibaren 60 gün içinde dava açma süresi bulunmaktadır.\n\nİdari işlemlere karşı iptal davası açmak için, aşağıdaki adımları takip edebilirsiniz:\n\n1. İdari işlemin öğrenilmesi: İdari işlemin tarafınızca öğrenildiği tarihi belirlemek önemlidir. Bu tarih, dava açma süresinin başlangıç tarihi olarak kabul edilir.\n2. Dava açma süresi: İdari işlemin öğrenildiği tarihten itibaren 60 gün içinde dava açma süresi bulunmaktadır. Bu süre içinde dava açılması zorunludur.\n3. Dava dilekçesi hazırlanması: İdari işlemlere karşı iptal davası açmak için, bir dava dilekçesi hazırlanmalıdır. Dava dilekçesinde, idari işlemin hukuka aykırılığına ilişkin gerekçeler belirtilmelidir.\n4. Dava dilekçesinin verilmesi: Dava dilekçesi, idari yargı mercilerine (Danıştay, Bölge İdare Mahkemeleri, İdare Mahkemeleri) verilir.\n5. Dava giderlerinin ödenmesi: Dava açılması için, dava giderleri ödenmelidir. Dava giderleri, dava dilekçesinin verildiği merci tarafından belirlenir.\n\nİdari işlemlere karşı iptal davası açarken, aşağıdaki hususlara dikkat edilmelidir:\n\n* İdari işlemin hukuka aykırılığına ilişkin gerekçeler belirtilmelidir.\n* Dava dilekçesinde, idari işlemin iptali talep edilmelidir.\n* Dava açma süresi içinde dava açılması zorunludur.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "İdari işlemlere karşı iptal davası açmak için, idari dava açma usulü ve esasları hakkında 2577 sayılı İdari Yargılama Usulü Kanunu hükümlerine başvurmak gerekir. Bu kanun, idari dava açma usulünü ve idari yargı mercilerinin görev ve yetkilerini düzenler.\n\nİptal davası, idari işlemlerin hukuka uygunluğunun denetimi amacıyla açılan bir dava türüdür. İdari işlemler, idare tarafından yapılan ve bireyleri etkileyen kararlar veya eylemlerdir. İptal davası, bu işlemlerin hukuka aykırılığını iddia edenler tarafından açılabilir.\n\nİptal davası açmak için, aşağıdaki koşulların yerine getirilmesi gerekir:\n\n1. İdari işlem: İptal davası, idari işlemlere karşı açılır. İdari işlem, idare tarafından yapılan ve bireyleri etkileyen bir karar veya eylemdir.\n2. Hukuka aykırılık: İdari işlem, hukuka aykırı olmalıdır. Hukuka aykırılık, idari işlemin kanuna, tüzüğe, yönetmeliklere veya diğer mevzuata aykırı olması anlamına gelir.\n3. Menfaat ihlali: İdari işlem, davacıların menfaatlerini ihlal etmelidir. Menfaat ihlali, idari işlemin davacının hak veya çıkarlarını zedelemesi anlamına gelir.\n4. Dava açma süresi: İptal davası, idari işlemin tebliğ tarihinden itibaren 60 gün içinde açılmalıdır.\n\nİptal davası açmak için, aşağıdaki belgelerin hazırlanması gerekir:\n\n1. Dava dilekçesi: Dava dilekçesi, idari işlemin hukuka aykırılığını ve menfaat ihlalini belirten bir belgedir.\n2. İdari işlem belgesi: İdari işlem belgesi, idari işlemin yapıldığını gösteren bir belgedir.\n3. Kimlik belgesi: Kimlik belgesi, davacının kimliğini gösteren bir belgedir.\n4. Vekâletname: Vekâletname, davacının avukatını temsil eden bir belgedir.\n\nİptal davası, idare mahkemesine veya vergi mahkemesine açılabilir. İdare mahkemesi, idari işlemlere karşı açılan davaları görüşürken, vergi mahkemesi, vergi ile ilgili idari işlemlere karşı açılan davaları görüşür.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "kanun",
@@ -76,15 +76,15 @@
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
         }
       ],
-      "kategori_tespit": "İdare Hukuku",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 1656,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 2034,
       "ortalama_kaynak_skor": 0.0642,
       "kaynak_sayisi": 5,
-      "message_id": "1a172c41-4246-4856-9fa6-518f4eed81f3",
-      "conversation_id": "9910fe8e-6534-4e03-a948-5b2b096c35fe",
+      "message_id": "36aaf978-ec8b-4c6a-b144-a039f83279e2",
+      "conversation_id": "028ca4c3-d5f6-47e5-8611-a26b978e881d",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 2.59,
+      "yanit_suresi_sn": 3.1,
       "basarili": true,
       "hata": null
     },
@@ -92,7 +92,7 @@
       "sira": 2,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Devlet memuru disiplin cezasina nasil itiraz eder?",
-      "cevap": "Devlet memurları disiplin cezasına karşı itirazlarını, cezanın tebliğ tarihinden itibaren 7 gün içinde ilgili disiplin kuruluna veya amirine yazılı olarak yapabilirler. İtiraz, disiplin kurulunun veya amirin kararını değiştirebilir veya aynı şekilde onaylayabilir. \n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. Devlet memurluğu ile ilgili disiplin cezası ve itiraz süreci, 657 sayılı Devlet Memurları Kanunu ve ilgili yönetmeliklerde düzenlenmiştir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "Devlet memurları disiplin cezalarına karşı itiraz edebilmektedir. Disiplin cezasına itiraz, genellikle ilgili disiplin kurulu veya üst makama yapılır. İtiraz süresi, disiplin cezasının tebliğ tarihinden itibaren genellikle 7-10 iş günüdür. İtirazda, disiplin cezasının hukuka aykırılığı veya cezaya esas alınan fiilin oluşmadığı gibi nedenler ileri sürülebilir.\n\nİtirazın değerlendirilmesi, ilgili disiplin kurulu veya üst makam tarafından yapılır. İtirazın reddedilmesi halinde, memurun idari dava açma hakkı bulunmaktadır. İdari dava, ilgili idare mahkemesine açılır ve disiplin cezasının hukuka aykırılığı veya cezaya esas alınan fiilin oluşmadığı gibi nedenler ileri sürülerek cezanın iptali talep edilebilir.\n\nVerilen kaynaklar, Yargıtay kararlarıdır ve disiplin cezalarına ilişkin itiraz ve dava süreçlerine ilişkin bilgi vermektedir. Ancak, bu kaynaklar spesifik olarak devlet memurlarının disiplin cezalarına itiraz süreçlerine ilişkin bilgi vermemektedir. Bu nedenle, daha spesifik ve güncel bilgi için ilgili mevzuata ve içtihatlara başvurmak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "yargitay_karari",
@@ -135,15 +135,15 @@
           "url": null
         }
       ],
-      "kategori_tespit": "İdare Hukuku",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 676,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1271,
       "ortalama_kaynak_skor": 0.0152,
       "kaynak_sayisi": 5,
-      "message_id": "a3070dfe-9f69-47ad-be87-173f5cddd7df",
-      "conversation_id": "52e384f3-74a7-49d0-86aa-8e6cc6c3a6fb",
+      "message_id": "b9c0b547-a8fa-41e1-94c0-bb69f2400c74",
+      "conversation_id": "33966081-a08f-4f14-9f69-88db7560ee31",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 1.42,
+      "yanit_suresi_sn": 2.18,
       "basarili": true,
       "hata": null
     },
@@ -151,7 +151,7 @@
       "sira": 3,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Kamulastirma isleminde deger tespitine itiraz edebilir miyim?",
-      "cevap": "Kamulaştırma işleminde değer tespitine itiraz etme hakkı bulunmaktadır. Ancak, bu hakka ilişkin düzenlemeler verilen kaynaklarda yer almamaktadır. Kamulaştırma işlemlerine ilişkin düzenlemeler genellikle 2942 sayılı Kamulaştırma Kanunu'nda yer almaktadır. Bu kanun kapsamında, kamulaştırma işleminde değer tespitine itiraz edilebileceği ve bu itirazın nasıl yapılacağı düzenlenmiştir.\n\nVerilen kaynaklar arasında kamulaştırma işlemlerine ilişkin bir madde bulunmamaktadır. Bu nedenle, kamulaştırma işleminde değer tespitine itiraz etme hakkı ve buna ilişkin prosedür hakkında bilgi verilememektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "Kamulaştırma işleminde değer tespitine itiraz etme hakkı bulunmaktadır. Ancak, verilen kaynaklar arasında kamulaştırma ile ilgili bir madde bulunmamaktadır. Kamulaştırma işlemleri genellikle 2942 sayılı Kamulaştırma Kanunu kapsamında düzenlenmektedir. Bu kanun kapsamında, kamulaştırma değerinin tespitine ilişkin olarak itiraz hakkı bulunmaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "kanun",
@@ -194,15 +194,15 @@
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
         }
       ],
-      "kategori_tespit": "Taşınmaz Mülk",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 803,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 552,
       "ortalama_kaynak_skor": 0.0761,
       "kaynak_sayisi": 5,
-      "message_id": "912d9fb7-f01d-48f3-9b4c-000e3609fde3",
-      "conversation_id": "9c2a6e3a-fbba-4b58-92fb-3c2acbe91ec7",
+      "message_id": "e9644df6-4744-4641-9a22-b86d20b156be",
+      "conversation_id": "1539ca77-93ba-48e6-a730-a1ff32a3b971",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 1.99,
+      "yanit_suresi_sn": 1.14,
       "basarili": true,
       "hata": null
     },
@@ -210,7 +210,7 @@
       "sira": 4,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Idari yargi da dava acma suresi ne kadardir?",
-      "cevap": "İdari yargıda dava açma süresi, idari eylem veya işlemin öğrenilmesinden itibaren 60 gündür. Bu süre, idari eylem veya işlemin öğrenildiği tarihi izleyen günden başlayarak hesaplanır. \n\nAncak, verilen kaynaklar arasında idari yargıya ilişkin bir madde bulunmamaktadır. Bu nedenle, idari yargıya ilişkin bilgi verilmesi için daha spesifik bir kaynak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "İdari yargı davalarında dava açma süresi, idari eylem veya işlemin öğrenilmesinden itibaren 60 gündür. Bu süre, 2577 sayılı İdari Yargılama Usulü Kanunu'nun 10. maddesinde belirtilmiştir. \n\nAncak, verilen kaynaklar arasında idari yargı davalarına ilişkin bir madde bulunmamaktadır. Bu nedenle, bu bilgi 2577 sayılı İdari Yargılama Usulü Kanunu'ndan alınmıştır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "yargitay_karari",
@@ -253,15 +253,15 @@
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
         }
       ],
-      "kategori_tespit": "Usul Hukuku",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 567,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 564,
       "ortalama_kaynak_skor": 0.0545,
       "kaynak_sayisi": 5,
-      "message_id": "906c588c-cff1-4186-84a4-05961c49b013",
-      "conversation_id": "45726829-f267-4aa0-99ef-7e1d7997895c",
+      "message_id": "25ec335e-b3af-4a52-8c17-9e97f8bfb8cc",
+      "conversation_id": "1936de0d-721c-410b-a2a7-13bcfb9bd3bc",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 1.64,
+      "yanit_suresi_sn": 1.54,
       "basarili": true,
       "hata": null
     },
@@ -269,22 +269,22 @@
       "sira": 5,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Belediye encumen kararinin iptali icin nereye basvurulur?",
-      "cevap": "Belediye encümen kararının iptali için idari dava açılması gerekmektedir. Bu tür davalar idare mahkemelerinde veya vergi mahkemelerinde açılır. İdare mahkemesi, idari işlemler hakkında açılan davalara bakmakla görevlidir. \n\nİdari dava açmak için, belediye encümen kararının alınmasını takiben 60 günlük dava açma süresi içinde ilgili idare mahkemesine başvurmak gerekir. Dava açma süresi, kararın öğrenildiği tarihten itibaren başlar.\n\nDavanın açılabilmesi için, belediye encümen kararının hukuka aykırılık teşkil etmesi veya ilgili kişinin haklarını ihlal etmesi gerekir. Mahkeme, dava konusu kararın hukuka uygunluğunu inceleyerek karar verir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "Belediye encümen kararının iptali için idari yargı mercilerine başvurmak gerekir. Bu konuda idari dava açmak mümkündür. İdari dava, idari eylem ve işlemlerin hukuka uygunluğunun denetlenmesini sağlayan bir yoldur. Belediye encümen kararının iptali için idari dava açmak isteyenler, kararın tebliğ tarihinden itibaren 60 gün içinde ilgili idare mahkemesine başvurabilirler.\n\nBu konuda kaynaklarda yeterli bilgi bulunmamaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 54 - Fıkra 3",
+          "metin_ozet": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "metin": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
+          "skor": 0.0815,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
         {
           "kaynak_turu": "kanun",
           "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
           "metin_ozet": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına mu",
           "metin": "MADDE 27- (Değişik: 17/4/2008-5754/15 md.) Malûllük aylığı; prim gün sayısı 9000 günden az olan sigortalılar için 9000 gün üzerinden, 9000 gün ve daha fazla olanlar için ise toplam prim ödeme gün sayısı üzerinden, 29 uncu madde hükümlerine göre hesaplanır. Sigortalı başka birinin sürekli bakımına muhtaç ise tespit edilen aylık bağlama oranı 10 puan artırılır. Ancak, 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için 9000 prim gün sayısı 7200 gün olarak uygulanır. Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların; a) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden önce ise yazılı istek tarihini, b) Malûl sayılmasına esas tutulan rapor tarihi yazılı istek tarihinden sonra ise rapor tarihini, c) 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında çalışmakta olanların ise, malûliyetleri sebebiyle görevlerinden ayrıldıkları tarihi, takip eden ay başından itibaren başlar.",
-          "skor": 0.0777,
-          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
-        },
-        {
-          "kaynak_turu": "kanun",
-          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 2",
-          "metin_ozet": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylı",
-          "metin": "Yaştan ve günden artırım ve eksiltme yapılmaz. b) Yaşlılık aylığında; gösterge tablosundan aylık hesaplanmış olan için %60, üst gösterge tablosundan aylık hesaplanmış olan için ise 1999 yılı Aralık ayında yürürlükte bulunan ve gösterge rakamına göre %59,9 ila %50 arasında belirlenmiş olan taban aylık bağlama oranı esas alınır. Bu şekilde belirlenen taban aylık bağlama oranı, sigortalının tahsis talep tarihi itibarıyla kadın ise 50, erkek ise 55 yaşından sonra doldurduğu her tam yaş için ve 5000 günden fazla ödediği her 240 günlük malullük, yaşlılık ve ölüm sigortaları primi için (l)’er artırılır, 5000 günden noksan ödediği her 240 gün için (1)’er eksiltilir.",
-          "skor": 0.0733,
+          "skor": 0.0803,
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
         },
         {
@@ -292,35 +292,35 @@
           "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 347",
           "metin_ozet": "MADDE 347- Konut ve çatılı işyeri kiralarında kiracı, belirli süreli sözleşmelerin süresinin bitiminden en az onbeş gün önce bildirimde bulunmadıkça, sözleşme aynı koşullarla bir yıl için uzatılmış sayılır. Kiraya veren, sözleşme süresinin bitimine dayanarak sözleşmeyi sona erdiremez. Ancak, on yıll",
           "metin": "MADDE 347- Konut ve çatılı işyeri kiralarında kiracı, belirli süreli sözleşmelerin süresinin bitiminden en az onbeş gün önce bildirimde bulunmadıkça, sözleşme aynı koşullarla bir yıl için uzatılmış sayılır. Kiraya veren, sözleşme süresinin bitimine dayanarak sözleşmeyi sona erdiremez. Ancak, on yıllık uzama süresi sonunda kiraya veren, bu süreyi izleyen her uzama yılının bitiminden en az üç ay önce bildirimde bulunmak koşuluyla, herhangi bir sebep göstermeksizin sözleşmeye son verebilir. Belirsiz süreli kira sözleşmelerinde, kiracı her zaman, kiraya veren ise kiranın başlangıcından on yıl geçtikten sonra, genel hükümlere göre fesih bildirimiyle sözleşmeyi sona erdirebilirler. Genel hükümlere göre fesih hakkının kullanılabileceği durumlarda, kiraya veren veya kiracı sözleşmeyi sona erdirebilir. 2. Bildirimin geçerliliği a. Şekil",
-          "skor": 0.0712,
+          "skor": 0.0799,
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
         },
         {
           "kaynak_turu": "kanun",
-          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 54 - Fıkra 3",
-          "metin_ozet": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
-          "metin": "eşitliği halinde ise iş kazası ve meslek hastalığından bağlanan gelirin tümü, malûllük, vazife malûllüğü veya yaşlılık aylığının yarısı bağlanır.",
-          "skor": 0.0709,
-          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 353",
+          "metin_ozet": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "metin": "MADDE 353- Kiraya veren, en geç davanın açılması için öngörülen sürede dava açacağını kiracıya yazılı olarak bildirmişse, dava açma süresi bir kira yılı için uzamış sayılır.",
+          "skor": 0.079,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
         },
         {
           "kaynak_turu": "kanun",
-          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 39 - Fıkra 5",
-          "metin_ozet": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye K",
-          "metin": "(8) Sözleşme aylıklarını 2000 yılı Ocak ayı başından sonra borçlanma yapmak suretiyle tam aylığa yükseltenler ile geçici 20 nci maddeye göre devir alınacak sandıklardan aylık alanlara devir tarihinden sonra bu madde hükümleri uygulanmaz. (9) Bu maddenin uygulanmasına ilişkin tereddütleri gidermeye Kurum Yönetim Kurulu yetkilidir.",
-          "skor": 0.0706,
-          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 351",
+          "metin_ozet": "MADDE 351- Kiralananı sonradan edinen kişi, onu kendisi, eşi, altsoyu, üstsoyu veya kanun gereği bakmakla yükümlü olduğu diğer kişiler için konut veya işyeri gereksinimi sebebiyle kullanma zorunluluğu varsa, edinme tarihinden başlayarak bir ay içinde durumu kiracıya yazılı olarak bildirmek koşuluyla",
+          "metin": "MADDE 351- Kiralananı sonradan edinen kişi, onu kendisi, eşi, altsoyu, üstsoyu veya kanun gereği bakmakla yükümlü olduğu diğer kişiler için konut veya işyeri gereksinimi sebebiyle kullanma zorunluluğu varsa, edinme tarihinden başlayarak bir ay içinde durumu kiracıya yazılı olarak bildirmek koşuluyla, kira sözleşmesini altı ay sonra açacağı bir davayla sona erdirebilir. Kiralananı sonradan edinen kişi, dilerse gereksinim sebebiyle sözleşmeyi sona erdirme hakkını, sözleşme süresinin bitiminden başlayarak bir ay içinde açacağı dava yoluyla da kullanabilir.",
+          "skor": 0.0788,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
         }
       ],
-      "kategori_tespit": "İdare Hukuku",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 849,
-      "ortalama_kaynak_skor": 0.0727,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 631,
+      "ortalama_kaynak_skor": 0.0799,
       "kaynak_sayisi": 5,
-      "message_id": "e9bb99f8-bf5b-4f10-9b64-717557e3bb9f",
-      "conversation_id": "bedbc997-cde7-4a7d-acf7-f5b306fa6a52",
+      "message_id": "92a904e2-5b59-42d9-a128-f25c706a2487",
+      "conversation_id": "8922f708-2cbd-422f-acc7-974cee92a902",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 1.87,
+      "yanit_suresi_sn": 1.48,
       "basarili": true,
       "hata": null
     },
@@ -328,7 +328,7 @@
       "sira": 6,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Kamu ihalelerine katilim sartlari nelerdir?",
-      "cevap": "Kamu ihalelerine katılım şartları, 4734 sayılı Kamu İhale Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında bu kanuna ilişkin bir madde bulunmamaktadır. \n\nVerilen kaynaklar arasında, fikir ve sanat eserleri, devlet memurları, Türk Borçlar Kanunu, Türkiye Cumhuriyeti Anayasası ve Hukuk Muhakemeleri Kanunu'na ilişkin maddeler bulunmaktadır. Ancak, bu kaynaklar kamu ihalelerine katılım şartları hakkında bilgi vermemektedir.\n\nKamu ihalelerine katılım şartları hakkında bilgi edinmek için, 4734 sayılı Kamu İhale Kanunu ve ilgili mevzuata bakılması gerekmektedir. Bu kanun, kamu ihalelerine ilişkin usul ve esasları düzenlemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "Kamu ihalelerine katılım şartları, 4734 sayılı Kamu İhale Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında bu kanuna ilişkin bir madde bulunmamaktadır. \n\nVerilen kaynaklar arasında, fikir ve sanat eserleri, devlet memurları, borçlar, anayasa ve hukuk muhakemeleri konularına ilişkin kanun maddeleri yer almaktadır. Kamu ihalelerine katılım şartları ile ilgili bilgi bulunmamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "kanun",
@@ -371,15 +371,15 @@
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
         }
       ],
-      "kategori_tespit": "İdare Hukuku",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 846,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 598,
       "ortalama_kaynak_skor": 0.0702,
       "kaynak_sayisi": 5,
-      "message_id": "41bf1b46-3716-4327-865a-aed7853c525e",
-      "conversation_id": "a1a756e4-7827-479a-9152-1f317e67222e",
+      "message_id": "a4a9b380-4f45-49ab-8eb1-96d227b2d49a",
+      "conversation_id": "998c0e09-d4e4-48f4-8ed6-73ed25bcccb2",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 1.67,
+      "yanit_suresi_sn": 1.41,
       "basarili": true,
       "hata": null
     },
@@ -387,7 +387,7 @@
       "sira": 7,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Devlet memurunun gorev sirasinda verdigi zarardan sorumlulugu nedir?",
-      "cevap": "Devlet memurunun görevi sırasında verdiği zarardan sorumluluğu, genel olarak 657 sayılı Devlet Memurları Kanunu ve 5018 sayılı Kamu Mali Yönetimi ve Kontrol Kanunu'nda düzenlenen hükümler çerçevesinde değerlendirilir. \n\n657 sayılı Devlet Memurları Kanunu'nun 13. maddesine göre, memurlar, görevlerini yerine getirirken, görevlerinin gerektirdiği bilgi, beceri ve davranışa sahip olmak zorundadırlar. Aynı kanunun 12. maddesinde, memurların görevleri başında veya görevleri dışında, görevlerini yerine getirmeleri sırasında işledikleri suçlardan dolayı soruşturma ve kovuşturma yapılmasına ilişkin hükümler düzenlenmiştir.\n\n5018 sayılı Kamu Mali Yönetimi ve Kontrol Kanunu'nun 71. maddesine göre, kamu görevlilerinin, görevlerini yerine getirirken, kamu kaynaklarının etkili, ekonomik ve verimli bir şekilde kullanılmasından sorumludurlar. Aynı kanunun 72. maddesinde, kamu görevlilerinin, görevleri sırasında meydana gelen zararlardan dolayı, kusurları oranında sorumludurlar.\n\nAncak, verilen kaynaklar bu konuya ilişkin yeterli bilgi sağlamamaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "Devlet memurunun görev sırasında verdiği zarardan sorumluluğu, genel olarak 657 sayılı Devlet Memurları Kanunu ve 5018 sayılı Kamu Mali Yönetimi ve Kontrol Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar bu konuya ilişkin yeterli bilgi sağlamamaktadır.\n\n657 sayılı Devlet Memurları Kanunu'nun 13. maddesinde, \"Memurlar, görevlerini yerine getirirken, Devletin hak ve menfaatlerini korumakla yükümlüdürler. Memurlar, görevlerinin gerektirdiği bilgi ve beceri düzeyini sürekli olarak geliştirmek, görevleriyle ilgili fiziksel ve zihinsel sağlıklarını korumak zorundadırlar.\" denilmektedir. Ancak, bu kanun maddesi doğrudan sorumluluk konusunda yeterli bilgi vermemektedir.\n\n5018 sayılı Kamu Mali Yönetimi ve Kontrol Kanunu'nun 71. maddesinde, \"Kamu görevlileri, kamu hizmetlerinin yerine getirilmesi sırasında görevlerini yerine getirmeleri sırasında meydana gelen zararlardan sorumlu tutulabilirler.\" denilmektedir. Ancak, bu kanun maddesi de doğrudan sorumluluk konusunda yeterli bilgi vermemektedir.\n\nVerilen kaynaklar (Kaynak 1, Kaynak 2, Kaynak 4, Kaynak 5) Yargıtay kararlarıdır, ancak bu kararlar devlet memurunun görev sırasında verdiği zarardan sorumluluğu konusunda yeterli bilgi vermemektedir. Kaynak 3, 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 29. maddesinin 3. fıkrasına atıfta bulunmaktadır, ancak bu kanun maddesi de doğrudan sorumluluk konusunda yeterli bilgi vermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "yargitay_karari",
@@ -430,15 +430,15 @@
           "url": null
         }
       ],
-      "kategori_tespit": "İdare Hukuku",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 1256,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1622,
       "ortalama_kaynak_skor": 0.0661,
       "kaynak_sayisi": 5,
-      "message_id": "99ce1e7f-0ec8-4620-b56a-3e1761f28229",
-      "conversation_id": "f97879f3-9082-41c1-a3b0-1980806d205d",
+      "message_id": "297c4227-2ee5-4b0c-8144-02905f38e34e",
+      "conversation_id": "9e614ff5-8cba-4c2b-bf4e-f220cf9cb856",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 2.18,
+      "yanit_suresi_sn": 2.03,
       "basarili": true,
       "hata": null
     },
@@ -446,7 +446,7 @@
       "sira": 8,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Idari para cezasina itiraz sureci nasil isler?",
-      "cevap": "İdari para cezasına itiraz süreci, 5326 sayılı Kabahatler Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar arasında bu kanuna ilişkin bir madde bulunmamaktadır. \n\nİdari para cezasına itiraz süreci genellikle şu şekilde işler: İdari para cezasına ilişkin karar, ilgili kişiye tebliğ edilir. Bu karara karşı, tebliğ tarihinden itibaren 15 gün içinde sulh ceza mahkemesine itiraz edilebilir. İtiraz, mahkeme tarafından değerlendirilir ve karar verilir.\n\nBu konuyla ilgili olarak, 5326 sayılı Kabahatler Kanunu'nun 27. maddesinde \"İdari para cezalarına karşı itiraz\" başlığı altında düzenleme yapılmıştır. Ancak, bu madde verilen kaynaklar arasında yer almamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "İdari para cezasına itiraz süreci, 5326 sayılı Kabahatler Kanunu'nda düzenlenmiştir. Ancak, verilen kaynaklar idari para cezasına itiraz süreciyle ilgili değildir. Verilen kaynaklar, Türk Borçlar Kanunu ve Türk Medeni Kanunu'nun belirli maddelerine ilişkindir.\n\nİdari para cezasına itiraz süreci, genellikle ilgili idareye veya sulh ceza mahkemesine yapılan bir itirazdır. İtiraz, idari para cezasının tebliğ tarihinden itibaren 15 gün içinde yapılmalıdır. İtirazın reddedilmesi halinde, kişiye 7 gün içinde sulh ceza mahkemesine başvurarak itiraz hakkı verilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "kanun",
@@ -491,13 +491,13 @@
       ],
       "kategori_tespit": "Ceza Hukuku",
       "kategori_dogru": false,
-      "cevap_uzunluk": 869,
+      "cevap_uzunluk": 766,
       "ortalama_kaynak_skor": 0.0812,
       "kaynak_sayisi": 5,
-      "message_id": "5f2dc8d4-9ba0-47ac-b36e-ab12da88be91",
-      "conversation_id": "098aa593-029b-48b6-90f9-3c6e8d3f32cc",
+      "message_id": "b07a7c7e-b542-418c-a6f4-8a0ff5abb6e9",
+      "conversation_id": "512647fc-78eb-4800-bdd9-833e1b12502b",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 1.67,
+      "yanit_suresi_sn": 1.68,
       "basarili": true,
       "hata": null
     },
@@ -505,7 +505,7 @@
       "sira": 9,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Imar planina karsi dava acilabilir mi?",
-      "cevap": "İmar planına karşı dava açılması mümkündür. İmar planının hukuka aykırılığı iddia edilirse, idari yargıda dava açılabilir. İdari yargıda, imar planının iptali istenebilir. \n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. İmar planına karşı dava açılmasıyla ilgili daha detaylı bilgi için ilgili kanun ve yönetmeliklere bakılması gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "İmar planına karşı dava açılması mümkündür. İmar planının hukuka aykırılığı iddia edilirse, idari yargıda dava açılabilir. İdari yargıda, imar planının iptali istenebilir. \n\nAncak, verilen kaynaklar bu konuda yeterli bilgi sağlamamaktadır. İmar planına karşı dava açılmasıyla ilgili daha detaylı bilgi için ilgili kanun ve yönetmeliklere başvurmak gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "kanun",
@@ -548,13 +548,13 @@
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
         }
       ],
-      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_tespit": "Genel Hukuk",
       "kategori_dogru": false,
-      "cevap_uzunluk": 566,
+      "cevap_uzunluk": 560,
       "ortalama_kaynak_skor": 0.0556,
       "kaynak_sayisi": 5,
-      "message_id": "bf62ad2f-2dad-47ac-af1c-a5a9988ba30b",
-      "conversation_id": "4955ddab-ad35-490f-966e-b9bcf9a96d75",
+      "message_id": "794491b9-556a-4daf-be2c-ca902b77bbed",
+      "conversation_id": "dc2449bd-f62e-4d47-83e8-33d4b26a9f4b",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
       "yanit_suresi_sn": 1.34,
       "basarili": true,
@@ -564,7 +564,7 @@
       "sira": 10,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Kamu gorevlisinin suc islemesi halinde yargilama sureci nasil isler?",
-      "cevap": "Kamu görevlisinin suç işlemesi halinde yargılama süreci, genel olarak ceza yargılaması hükümlerine tabidir. Ancak, kamu görevlilerinin yargılanması bazı özel hükümlere tabi olabilir.\n\nÖncelikle, kamu görevlisinin suç işlemesi halinde, ilgili makamlar tarafından soruşturma başlatılır. Bu soruşturma, genellikle savcılık tarafından yürütülür. Savcılık, delilleri toplar ve suçun işlendiğine ilişkin yeterli şüphe oluştuğunda, kamu görevlisi hakkında iddianame düzenler.\n\nİddianamenin mahkeme tarafından kabul edilmesiyle, yargılama süreci başlar. Mahkeme, kamu görevlisinin suçlu olup olmadığını belirlemek için delilleri değerlendirir ve tanıkları dinler. Kamu görevlisi, suçsuz olduğunu kanıtlamak için savunma yapma hakkına sahiptir.\n\nYargılama sürecinde, mahkeme, kamu görevlisinin suçlu olduğuna karar verirse, ilgili kanun hükümlerine göre ceza verir. Ceza, hapis cezası, para cezası veya diğer türden cezalar olabilir.\n\nAncak, kamu görevlilerinin yargılanması bazı özel hükümlere tabi olabilir. Örneğin, bazı kamu görevlileri, görevleri nedeniyle özel koruma altına alınabilir veya yargılanmaları için özel izinler gerekebilir.\n\nVerilen kaynaklar, kamu görevlisinin suç işlemesi halinde yargılama sürecine ilişkin özel hükümler içermemektedir. Ancak, 4. Hukuk Dairesi - 2025/13481 sayılı karar, hâkimin tazminatın kapsamını ve ödenme biçimini belirlerken, durumun gereğini ve özellikle kusurun ağırlığını göz önüne alabileceğini belirtmektedir. Ayrıca, 4. Hukuk Dairesi - 2024/9840 sayılı karar, hukuk hakiminin kusurun bulunup bulunmadığı ve oranına ilişkin ceza mahkemesi kararı ile bağlı olmadığını, ancak kesinleşmiş olan maddi olgu ile bağlı olduğunu belirtmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "Kamu görevlisinin suç işlemesi halinde yargılama süreci, görevli mahkeme ve yargılama usulüne göre değişebilir. Ancak, genel olarak aşağıdaki adımlar takip edilir:\n\n1. **Soruşturma**: Kamu görevlisinin suç işlemesi halinde, ilgili makamlar tarafından soruşturma başlatılır. Bu soruşturma, genellikle ilgili kurumun disiplin kurulu veya içişleri bakanlığı tarafından yürütülür.\n2. **İddianame hazırlanması**: Soruşturma sonucunda, kamu görevlisinin suç işlemiş olduğu tespit edilirse, iddianame hazırlanır. İddianame, kamu görevlisinin suçunu ve delilleri içerir.\n3. **Mahkeme kararı**: İddianame, ilgili mahkemeye sunulur. Mahkeme, kamu görevlisinin suçunu değerlendirir ve karar verir.\n4. **Yargılama**: Yargılama süreci, kamu görevlisinin suçunu kanıtlamak amacıyla delillerin sunulmasını içerir. Mahkeme, kamu görevlisinin savunmasını da dinler.\n5. **Karar**: Mahkeme, kamu görevlisinin suçlu olup olmadığını ve uygulanacak cezayı belirler.\n\nKamu görevlisinin yargılanması, genellikle adli yargı mercilerinde yapılır. Ancak, bazı durumlarda, idari yargı mercileri de görevli olabilir.\n\nVerilen kaynaklar, kamu görevlisinin suç işlemesi halinde yargılama sürecine ilişkin özel bir bilgi sağlamamaktadır. Ancak, 4. Hukuk Dairesi - 2025/13481 sayılı karar, hâkimin tazminatın kapsamını ve ödenme biçimini belirlerken, durumun gereğini ve özellikle kusurun ağırlığını göz önüne alması gerektiğini belirtmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "yargitay_karari",
@@ -607,15 +607,15 @@
           "url": null
         }
       ],
-      "kategori_tespit": "İdare Hukuku",
-      "kategori_dogru": false,
-      "cevap_uzunluk": 1881,
+      "kategori_tespit": "Idare Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1615,
       "ortalama_kaynak_skor": 0.0535,
       "kaynak_sayisi": 5,
-      "message_id": "a83c5b8c-1a01-48ba-8850-90b66dabbe1a",
-      "conversation_id": "114b68aa-bf49-4008-a706-ce27ac43ea3c",
+      "message_id": "5ebe4927-7d8b-4858-b50e-8c92f2a7bedf",
+      "conversation_id": "97ffaf61-8c7d-4166-ba02-be5c6ae7106f",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 3.08,
+      "yanit_suresi_sn": 2.45,
       "basarili": true,
       "hata": null
     },
@@ -623,7 +623,7 @@
       "sira": 11,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Idari sozlesmelerde fesih kosullari nelerdir?",
-      "cevap": "İdari sözleşmelerde fesih koşulları, idari sözleşmelerin sona erme şartlarını belirleyen hükümlerdir. Türk hukukunda idari sözleşmeler, genellikle 4735 sayılı Kamu İhale Sözleşmeleri Kanunu veya 2886 sayılı Devlet İhale Kanunu kapsamında düzenlenir.\n\nAncak, verilen kaynaklar idari sözleşmelerde fesih koşulları hakkında yeterli bilgi sağlamamaktadır. 6098 sayılı Türk Borçlar Kanunu'nun 141. maddesi, üçüncü kişi yararına borçlanmaya ilişkin hükümleri içermektedir. 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 27. maddesinin 4. fıkrası, yaşlılık sigortasından sağlanan haklar ve yararlanma şartlarına ilişkindir. Yargıtay kararları (4. Hukuk Dairesi - 2025/2187, 9. Hukuk Dairesi - 2024/14277 ve 2024/14278) ise spesifik dava dosyalarına ilişkin kararları içermektedir.\n\nİdari sözleşmelerde fesih koşulları, genellikle sözleşmenin kendisinde veya ilgili mevzuatta belirtilir. Bu koşullar, sözleşmenin süresi, performansın eksikliği, tarafların yükümlülüklerini yerine getirmemesi gibi durumlara bağlı olabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "İdari sözleşmelerde fesih koşulları, idari sözleşmelerin sona erme şartlarını düzenler. Bu koşullar, sözleşmenin taraflarınca belirlenir ve sözleşmenin hükümlerine göre uygulanır.\n\nİdari sözleşmelerin fesih koşulları, genellikle sözleşmenin süresinin dolması, tarafların anlaşması, ihbar süresi, performans eksikliği, sözleşmenin hükümlerine uyulmaması gibi nedenlerle gerçekleşebilir.\n\nAncak, verilen kaynaklar idari sözleşmelerde fesih koşulları hakkında yeterli bilgi sağlamamaktadır. Türk Borçlar Kanunu'nun 141. maddesi, üçüncü kişi yararına borçlanmaya ilişkin hükümleri düzenlemektedir. Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 27. maddesinin 4. fıkrası, yaşlılık sigortasından sağlanan haklar ve yararlanma şartları ile ilgilidir. Yargıtay kararları ise spesifik dava dosyalarına ilişkin olup, idari sözleşmelerde fesih koşulları hakkında genel bir bilgi vermemektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "yargitay_karari",
@@ -666,15 +666,15 @@
           "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
         }
       ],
-      "kategori_tespit": "İş Hukuku",
+      "kategori_tespit": "Is Hukuku",
       "kategori_dogru": false,
-      "cevap_uzunluk": 1238,
+      "cevap_uzunluk": 1095,
       "ortalama_kaynak_skor": 0.112,
       "kaynak_sayisi": 5,
-      "message_id": "0c818bf5-7cf7-4b40-b96f-9f3f3b2890e6",
-      "conversation_id": "712badeb-88a3-4843-930c-56b6c7fc40ac",
+      "message_id": "7d5bf707-6b15-4771-a101-e1b2db9e4f30",
+      "conversation_id": "398cd4be-04f8-45b9-b224-9012c137037c",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 2.06,
+      "yanit_suresi_sn": 1.51,
       "basarili": true,
       "hata": null
     },
@@ -682,7 +682,7 @@
       "sira": 12,
       "kategori_beklenen": "Idare Hukuku",
       "soru": "Tam yargi davasinda tazminat nasil hesaplanir?",
-      "cevap": "Tam yargı davasında tazminat hesaplanması, davanın konusuna ve ilgili kanun hükümlerine göre değişebilir. Genel olarak, tazminat hesaplanırken mahkeme, davalının eylemlerinin veya ihmallerinin neden olduğu zararın miktarını belirler. Bu belirleme, genellikle uzman görüşlerine, delillere ve ilgili kanun maddelerine dayanır.\n\nÖrneğin, bir kişinin malvarlığına yapılan zararın tazminatı, zararın miktarının belirlenmesi ile hesaplanır. Mahkeme, bu amaçla bilirkişi raporları, uzman görüşleri ve diğer delilleri dikkate alır. Ayrıca, tazminat hesaplanırken, davalının kusurunun derecesi, zararın niteliği ve diğer ilgili faktörler de göz önünde bulundurulur.\n\nVerilen kaynaklar, tam yargı davasında tazminat hesaplanmasına ilişkin spesifik bir hüküm veya yöntemi içermemektedir. Ancak, Yargıtay kararları, mahkemelerin tazminat hesaplanırken objektif ve adil bir yaklaşım sergilemesi gerektiğini vurgulamaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "cevap": "Tam yargı davasında tazminat hesaplanması, davanın konusuna ve türüne göre değişebilir. Ancak genel olarak, tazminat hesaplanırken aşağıdaki adımlar takip edilebilir:\n\n1. **Zararın Belirlenmesi**: Davacı, uğradığı zararın türü ve miktarını belirlemek zorundadır. Bu, maddi zarar (örneğin, malvarlığındaki azalma) veya manevi zarar (örneğin, acı, ıstırap) olabilir.\n2. **Zararın İspatı**: Davacı, iddia ettiği zararın varlığını ve miktarını ispat etmek zorundadır. Bu, delil sunarak (örneğin, belgeler, tanık ifadeleri, uzman raporları) yapılabilir.\n3. **Sorumluluğun Tespiti**: Mahkeme, davalının eyleminin veya ihmalinin zararın oluşmasına neden olup olmadığını tespit eder.\n4. **Tazminat Miktarının Belirlenmesi**: Mahkeme, zararın miktarını ve tazminatın miktarını belirler. Bu, genellikle zararın türüne ve miktarına göre yapılır.\n\nKaynaklarda verilen Yargıtay kararlarına bakıldığında, tazminat hesaplanmasında mahkemenin takdir yetkisinin önemli olduğu görülmektedir. Örneğin, [Kaynak 1] ve [Kaynak 2]'de mahkeme, tazminat miktarının belirlenmesinde hatalı olduğunu tespit etmiş ve kararı bozmuştur.\n\nAncak, verilen kaynaklar tam yargı davasında tazminat hesaplanmasına ilişkin spesifik bir yöntemi veya formülü içermemektedir. Her dava farklıdır ve tazminat hesaplanması da davaya özgüdür.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
       "kaynaklar": [
         {
           "kaynak_turu": "yargitay_karari",
@@ -725,15 +725,15 @@
           "url": null
         }
       ],
-      "kategori_tespit": "İş Hukuku",
+      "kategori_tespit": "Is Hukuku",
       "kategori_dogru": false,
-      "cevap_uzunluk": 1114,
+      "cevap_uzunluk": 1500,
       "ortalama_kaynak_skor": 0.0455,
       "kaynak_sayisi": 5,
-      "message_id": "1921244b-413f-4f9a-ba4f-8c0b32e4ab81",
-      "conversation_id": "72ac5ba8-70bb-4a0b-98df-36db1fec6c6f",
+      "message_id": "fef8a712-e5a2-45e3-be83-edcca280e4b4",
+      "conversation_id": "bcf3ec72-13d0-4acf-8c0a-f881f2e0c2d6",
       "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
-      "yanit_suresi_sn": 2.15,
+      "yanit_suresi_sn": 2.63,
       "basarili": true,
       "hata": null
     }

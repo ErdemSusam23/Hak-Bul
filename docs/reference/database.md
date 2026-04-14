@@ -6,7 +6,7 @@
 
 ## PostgreSQL Şeması (Alembic)
 
-Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `20260317_0004` → `20260317_0005` → `20260326_0006` → `20260326_0007`
+Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `20260317_0004` → `20260317_0005` → `20260326_0006` → `20260326_0007` → `20260330_0008` → `20260330_0009`
 
 | Tablo | Açıklama |
 |-------|----------|
@@ -16,6 +16,11 @@ Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `
 | `message_feedback` | `chat_history.id` FK; `puan` 1 / -1 |
 | `weak_queries` | Düşük güven skorlu sorgular — retrieval kalitesi izleme için loglanır |
 | `shared_conversations` | Sohbet paylaşma token'ları; `share_token` URL-safe, `is_active` ile devre dışı bırakılır |
+| `forum_threads` | Forum başlıkları; sahip kullanıcı, kategori, kilit ve soft-delete alanları içerir |
+| `forum_replies` | Forum yanıtları; başlığa ve kullanıcıya bağlıdır, doğrulama ve soft-delete destekler |
+| `forum_votes` | Thread/reply oyları; kullanıcı başına hedef başına tek oy, değer 1 / -1 |
+
+`users` tablosunda rol alanı `user | lawyer | admin` değerlerini alır.
 
 `chat_history` önemli alanlar: `conversation_id`, `role` (user/assistant), `content`, `category`, `title`, `metadata_json` (asistan mesajlarında `{"kaynaklar": [...]}`), `deleted_at` (soft-delete; `NULL` = aktif, dolu = silinmiş).
 
@@ -38,6 +43,44 @@ Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `
 | `conversation_id` | UUID | Paylaşılan sohbetin ID'si |
 | `user_id` | UUID FK | Paylaşımı oluşturan kullanıcı (`users.id`, CASCADE) |
 | `is_active` | bool | `false` yapılarak paylaşım devre dışı bırakılır |
+| `created_at` | datetime | Oluşturulma zamanı |
+
+### `forum_threads` Alanları
+
+| Alan | Tip | Açıklama |
+|------|-----|----------|
+| `id` | UUID | PK |
+| `user_id` | UUID FK | Başlığı açan kullanıcı (`users.id`, CASCADE) |
+| `title` | string(200) | Başlık |
+| `content` | text | İlk mesaj / başlık içeriği |
+| `category` | string(50) | Forum kategorisi |
+| `is_locked` | bool | Kilitliyse yeni yanıt yazılamaz |
+| `created_at` | datetime | Oluşturulma zamanı |
+| `updated_at` | datetime | Son güncelleme zamanı |
+| `deleted_at` | datetime\|null | Soft-delete alanı |
+
+### `forum_replies` Alanları
+
+| Alan | Tip | Açıklama |
+|------|-----|----------|
+| `id` | UUID | PK |
+| `thread_id` | UUID FK | Yanıtın ait olduğu başlık (`forum_threads.id`, CASCADE) |
+| `user_id` | UUID FK | Yanıtı yazan kullanıcı (`users.id`, CASCADE) |
+| `content` | text | Yanıt içeriği |
+| `is_verified` | bool | `LAWYER`/`ADMIN` doğrulaması |
+| `created_at` | datetime | Oluşturulma zamanı |
+| `updated_at` | datetime | Son güncelleme zamanı |
+| `deleted_at` | datetime\|null | Soft-delete alanı |
+
+### `forum_votes` Alanları
+
+| Alan | Tip | Açıklama |
+|------|-----|----------|
+| `id` | UUID | PK |
+| `user_id` | UUID FK | Oyu veren kullanıcı (`users.id`, CASCADE) |
+| `target_type` | enum | `thread` veya `reply` |
+| `target_id` | UUID | Oy verilen thread/reply ID'si |
+| `value` | int | `1` veya `-1` |
 | `created_at` | datetime | Oluşturulma zamanı |
 
 ---

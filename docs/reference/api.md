@@ -36,11 +36,24 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 | GET | `/chat/shared/{share_token}` | — | Paylaşılan sohbeti görüntüle (salt okunur) |
 | GET | `/chat/guest/conversations` | — | Misafir sohbet listesi |
 | GET | `/chat/guest/history/{id}` | — | Misafir mesajları |
+| DELETE | `/chat/guest/conversations/{id}` | — | Misafir sohbeti sil |
 | POST | `/feedback` | Opsiyonel | 👍/👎 gönder (`puan`: 1 veya -1) |
-| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et (form: `dosya`, `soru`, `language`) |
+| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et (form: `dosya`, `soru`, `language`, `conversation_id`, `guest_session_id`; rate: 10/min) |
 | POST | `/documents/compare` | Opsiyonel | İki PDF karşılaştır (form: `dosya1`, `dosya2`, `soru`, `language`; rate: 5/min) |
 | GET | `/templates` | — | Taslak listesi (`?language=tr\|en`) |
 | POST | `/templates/{id}/generate` | — | PDF taslağı indir |
+| GET | `/forum/threads` | — | Forum başlıklarını listele |
+| POST | `/forum/threads` | Zorunlu | Yeni forum başlığı oluştur |
+| GET | `/forum/threads/{id}` | — | Forum başlığı + yanıt detayını getir |
+| PUT | `/forum/threads/{id}` | Zorunlu | Kendi forum başlığını güncelle |
+| DELETE | `/forum/threads/{id}` | Zorunlu | Kendi başlığını sil; `LAWYER`/`ADMIN` moderasyon yapabilir |
+| PATCH | `/forum/threads/{id}/lock` | `LAWYER`/`ADMIN` | Başlığı kilitle / aç |
+| POST | `/forum/threads/{id}/replies` | Zorunlu | Başlığa yanıt yaz |
+| PUT | `/forum/replies/{id}` | Zorunlu | Kendi yanıtını güncelle |
+| DELETE | `/forum/replies/{id}` | Zorunlu | Kendi yanıtını sil; `LAWYER`/`ADMIN` moderasyon yapabilir |
+| PATCH | `/forum/replies/{id}/verify` | `LAWYER`/`ADMIN` | Yanıtı doğrulanmış olarak işaretle |
+| POST | `/forum/threads/{id}/vote` | Zorunlu | Başlığa oy ver (`value`: 1 / -1) |
+| POST | `/forum/replies/{id}/vote` | Zorunlu | Yanıta oy ver (`value`: 1 / -1) |
 | GET | `/admin/stats` | ADMIN | Genel istatistikler |
 | GET | `/admin/stats/categories` | ADMIN | Kategori dağılımı |
 | GET | `/admin/stats/feedback` | ADMIN | Feedback özeti |
@@ -59,6 +72,7 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 | `POST /ask` | 20 istek / dakika / IP |
 | `POST /ask/stream` | 20 istek / dakika / IP |
 | `POST /auth/register` | 5 istek / dakika / IP |
+| `POST /documents/analyze` | 10 istek / dakika / IP |
 | `POST /documents/compare` | 5 istek / dakika / IP |
 
 Aşım yanıtı: HTTP 429 Too Many Requests. Reset süresi: 60 saniye (sabit pencere). Prod'da kalıcı depolama yok — server restart'ta sıfırlanır.

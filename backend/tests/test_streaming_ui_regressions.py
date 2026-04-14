@@ -25,3 +25,49 @@ def test_format_sources_uses_normalized_scores_for_api_payloads():
     )
 
     assert kaynaklar[0]["skor"] == 1.0
+
+
+def test_format_sources_batch_normalization_preserves_relative_order():
+    """Scores inflated above 1.0 (local scoring + merge) should be rescaled
+    relative to batch max so all values land in [0, 1] and ordering is kept."""
+    chunks = [
+        {
+            "payload": {
+                "chunk_id": "kanun_5237_m125",
+                "kaynak_turu": "kanun",
+                "kanun_adi": "5237 Sayılı Türk Ceza Kanunu",
+                "madde_no": "Madde 125",
+                "metin": "Hakaret.",
+            },
+            "skor": 1.4,
+        },
+        {
+            "payload": {
+                "chunk_id": "kanun_5237_m51",
+                "kaynak_turu": "kanun",
+                "kanun_adi": "5237 Sayılı Türk Ceza Kanunu",
+                "madde_no": "Madde 51",
+                "metin": "Erteleme.",
+            },
+            "skor": 1.05,
+        },
+        {
+            "payload": {
+                "chunk_id": "kanun_2709_m19",
+                "kaynak_turu": "kanun",
+                "kanun_adi": "2709 Sayılı Türkiye Cumhuriyeti Anayasası",
+                "madde_no": "Madde 19",
+                "metin": "Kişi özgürlüğü.",
+            },
+            "skor": 0.35,
+        },
+    ]
+    kaynaklar = pipeline._format_sources(chunks)
+
+    scores = [k["skor"] for k in kaynaklar]
+    # En yüksek ham skor (1.4) → 1.0
+    assert scores[0] == 1.0
+    # Tüm skorlar [0, 1] aralığında
+    assert all(0.0 <= s <= 1.0 for s in scores)
+    # Göreli sıralama korunmuş
+    assert scores[0] > scores[1] > scores[2]

@@ -8,7 +8,7 @@ Vatandaşların Türkçe hukuki sorularına, mevzuat ve ilgili kaynaklar üzerin
 
 - FastAPI backend + React (Vite) frontend
 - RAG pipeline: soru yeniden yazma → Qdrant vektör araması → Groq LLM ile yanıt üretme (SSE streaming destekli)
-- Soru kategorilendirme (İş, Kira, Tüketici, Aile, Ceza, İdare, Ticaret, Genel)
+- Soru kategorilendirme (14 kategori: İş, Medeni, Ceza, Ticaret, Tüketici, Taşınmaz Mülk, İdare, Vergi, Sosyal Güvenlik, Fikri Mülkiyet, Bilişim, Anayasa, Usul, Genel)
 - Kritik konularda (ceza, boşanma, icra, tazminat) otomatik avukat yönlendirmesi (ALO 182)
 - Cevap puanlama (👍/👎 feedback sistemi)
 - JWT kimlik doğrulama (register / login / refresh token rotation / logout / profil yönetimi / hesap silme)
@@ -356,6 +356,7 @@ Eğer local backend `500 Internal Server Error` veriyor ve loglarda bağlantı/h
 | Method | Endpoint   | Açıklama |
 |--------|------------|----------|
 | POST   | `/ask`     | Hukuki soru sor (RAG pipeline, rate limited) |
+| POST   | `/ask/stream` | SSE ile token token yanıt al |
 | GET    | `/search`  | Kanun maddesi veya dava numarasına göre ara |
 | GET    | `/health`  | Servis sağlık durumu |
 
@@ -385,6 +386,7 @@ Eğer local backend `500 Internal Server Error` veriyor ve loglarda bağlantı/h
 | GET | `/chat/shared/{share_token}` | Paylaşılan sohbeti görüntüle (herkese açık) |
 | GET | `/chat/guest/history/{conversation_id}?guest_session_id=...` | Misafir sohbet mesajları |
 | GET | `/chat/guest/conversations?guest_session_id=...` | Misafir sohbet listesi |
+| DELETE | `/chat/guest/conversations/{conversation_id}` | Misafir sohbeti sil |
 
 ### Döküman Analizi
 
@@ -401,6 +403,23 @@ Eğer local backend `500 Internal Server Error` veriyor ve loglarda bağlantı/h
 | POST | `/templates/{template_id}/generate` | Doldurulmuş alanlarla PDF üret ve indir |
 
 Desteklenen taslaklar: `kira_sozlesmesi`, `is_sozlesmesi`, `ihtarname`, `taahhutname`
+
+### Forum
+
+| Method | Endpoint | Açıklama |
+|--------|----------|----------|
+| GET | `/forum/threads` | Forum başlıklarını listele |
+| POST | `/forum/threads` | Yeni başlık oluştur |
+| GET | `/forum/threads/{thread_id}` | Başlık + yanıt detaylarını getir |
+| PUT | `/forum/threads/{thread_id}` | Kendi başlığını güncelle |
+| DELETE | `/forum/threads/{thread_id}` | Başlığı sil |
+| PATCH | `/forum/threads/{thread_id}/lock?locked=true` | `LAWYER`/`ADMIN` için başlığı kilitle/aç |
+| POST | `/forum/threads/{thread_id}/replies` | Başlığa yanıt yaz |
+| PUT | `/forum/replies/{reply_id}` | Kendi yanıtını güncelle |
+| DELETE | `/forum/replies/{reply_id}` | Yanıtı sil |
+| PATCH | `/forum/replies/{reply_id}/verify?verified=true` | `LAWYER`/`ADMIN` için yanıt doğrula |
+| POST | `/forum/threads/{thread_id}/vote` | Başlığa oy ver |
+| POST | `/forum/replies/{reply_id}/vote` | Yanıta oy ver |
 
 ### Feedback
 
@@ -452,6 +471,8 @@ Desteklenen taslaklar: `kira_sozlesmesi`, `is_sozlesmesi`, `ihtarname`, `taahhut
 ## Testler
 
 ```bash
+# Önce ortam tercihini belirle: local veya docker
+
 # Docker içinde çalıştır
 docker exec hak-bul-backend python -m pytest tests/ -v
 
@@ -459,7 +480,7 @@ docker exec hak-bul-backend python -m pytest tests/ -v
 python -m pytest tests/ -v
 ```
 
-Mevcut test kapsamı (39 test):
+Backend test paketi şu alanları kapsar:
 - Auth akışı (register, login, refresh rotation, logout)
 - Sohbet geçmişi (guest + user bazlı)
 - Feedback endpoint'i (validasyon, 404, 👍/👎 kaydetme, güncelleme)
@@ -467,6 +488,9 @@ Mevcut test kapsamı (39 test):
 - PDF analiz endpoint'i (DB kayıt, 400 hataları)
 - Hukuki belge taslakları (liste, PDF üretimi, validasyon)
 - Admin analytics (yetki kontrolleri, veri doğrulama)
+- Forum endpoint ve rol kuralları
+- Dil desteği ve streaming/source-summary regresyonları
+- Production guard ve retrieval regresyonları
 
 ---
 

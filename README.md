@@ -18,10 +18,11 @@ Vatandaşların Türkçe hukuki sorularına, mevzuat ve ilgili kaynaklar üzerin
 - PDF yükleme ve hukuki analiz (`/documents/analyze`)
 - İki PDF belgesini karşılaştırma ve AI analizi (`/documents/compare`)
 - Hukuki belge taslağı üretme — Kira, İş, İhtarname, Taahhütname (PDF çıktı)
+- Topluluk forumu: başlık açma, yanıt yazma, oy verme; `LAWYER`/`ADMIN` doğrulama ve kilitleme
 - Admin analytics dashboard (kategori dağılımı, feedback istatistikleri, günlük aktivite, kullanıcı yönetimi, zayıf sorgu listesi)
 - Çoklu dil arayüzü (Türkçe / İngilizce)
 - Rate limiting (`/ask` ve `/ask/stream` için 20/dk, `/documents/compare` için 5/dk)
-- Alembic migration altyapısı (6 migration)
+- Alembic migration altyapısı (9 migration)
 - Docker Compose ile tek komutla `postgres + backend + frontend` çalıştırma
 
 ## Proje Yapısı
@@ -438,6 +439,12 @@ Desteklenen taslaklar: `kira_sozlesmesi`, `is_sozlesmesi`, `ihtarname`, `taahhut
 20260317_0005  title kolonu (sohbet başlıkları)
     ↓
 20260326_0006  weak_queries + shared_conversations tabloları
+    ↓
+20260326_0007  chat_history soft-delete (`deleted_at`)
+    ↓
+20260330_0008  `lawyer` rolü
+    ↓
+20260330_0009  forum tabloları (`forum_threads`, `forum_replies`, `forum_votes`)
 ```
 
 ---

@@ -1,8 +1,7 @@
-import { createContext, useContext, useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { girisYap, kayitOl, tokenYenile, cikisYap } from '../api/auth';
 import { setAuthHandlers } from '../api/client';
-
-const AuthContext = createContext(null);
+import { AuthContext } from './AuthContextValue';
 
 const ACCESS_KEY = 'hakbul_access';
 const EMAIL_KEY = 'hakbul_email';
@@ -127,5 +126,3 @@ export function AuthProvider({ children }) {
         </AuthContext.Provider>
     );
 }
-
-export const useAuth = () => useContext(AuthContext);

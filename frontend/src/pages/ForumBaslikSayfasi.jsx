@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {
     ArrowLeft, Lock, Unlock, Trash2, CheckCircle, ThumbsUp, ThumbsDown, BadgeCheck,
 } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/useAuth';
 import {
     forumThreadDetayAPI,
     forumThreadSilAPI,

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Plus, Lock, MessageSquare, ThumbsUp, ChevronRight } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/useAuth';
 import { forumThreadListesiAPI, forumThreadOlusturAPI } from '../api/client';
 
 const KATEGORILER = [

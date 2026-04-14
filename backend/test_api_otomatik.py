@@ -40,6 +40,58 @@ MAX_RETRY = 3           # 429 alındığında deneme sayısı
 TIMEOUT_SN = 60.0       # Her istek için timeout
 MAX_KAYNAK = 5          # /ask max_kaynak parametresi
 
+_SLUG_CHAR_MAP = {
+    "ş": "s",
+    "ı": "i",
+    "ğ": "g",
+    "ü": "u",
+    "ö": "o",
+    "ç": "c",
+    " ": "_",
+}
+
+_CATEGORY_ALIASES = {
+    "diger": "Genel Hukuk",
+    "genel_hukuk": "Genel Hukuk",
+    "genel hukuk": "Genel Hukuk",
+}
+
+
+def _ascii_key(value: str) -> str:
+    normalized = (value or "").strip().lower().replace("i̇", "i")
+    for tr, en in _SLUG_CHAR_MAP.items():
+        normalized = normalized.replace(tr, en)
+    return normalized
+
+
+def normalize_category_name(category: str) -> str:
+    """Kategori adını kanonik forma getir."""
+    stripped = (category or "").strip()
+    if not stripped:
+        return ""
+    return _CATEGORY_ALIASES.get(_ascii_key(stripped), stripped)
+
+
+def categories_match(expected: str, actual: str) -> bool:
+    return normalize_category_name(expected) == normalize_category_name(actual)
+
+
+def slugify_category_name(category: str) -> str:
+    normalized = normalize_category_name(category)
+    slug = _ascii_key(normalized)
+    return slug or "genel_hukuk"
+
+
+def normalize_test_folder_name(folder_name: str) -> str:
+    """Numaralı test klasör adını kanonik kategori slug'ına çevir."""
+    if not folder_name:
+        return folder_name
+
+    prefix, sep, suffix = folder_name.partition("_")
+    if prefix.isdigit() and sep:
+        return f"{prefix}_{slugify_category_name(suffix)}"
+    return slugify_category_name(folder_name)
+
 
 def cikti_yolu_belirle(sorular: dict, cikti_param: str | None = None, sorular_yolu: str | None = None) -> str:
     """
@@ -62,18 +114,15 @@ def cikti_yolu_belirle(sorular: dict, cikti_param: str | None = None, sorular_yo
         parts = Path(sorular_yolu).parts
         for part in parts:
             if part[:2].isdigit() and "_" in part:
-                cikti_klasor = os.path.join(os.path.dirname(__file__), "test_results", part)
+                kanonik_klasor = normalize_test_folder_name(part)
+                cikti_klasor = os.path.join(os.path.dirname(__file__), "test_results", kanonik_klasor)
                 os.makedirs(cikti_klasor, exist_ok=True)
                 return os.path.join(cikti_klasor, f"test_sonuclari_{zaman_damgasi}.json")
 
     # Fallback: tek kategori → adından klasör türet
     if len(sorular) == 1:
         kategori_adi = next(iter(sorular.keys()))
-        klasor_adi = kategori_adi.lower()
-        turkce_map = {"ş": "s", "ı": "i", "ğ": "g", "ü": "u", "ö": "o", "ç": "c", " ": "_"}
-        for tr, en in turkce_map.items():
-            klasor_adi = klasor_adi.replace(tr, en)
-        klasor_adi = klasor_adi.replace("i̇", "i")
+        klasor_adi = slugify_category_name(kategori_adi)
 
         cikti_klasor = os.path.join(os.path.dirname(__file__), "test_results", klasor_adi)
         os.makedirs(cikti_klasor, exist_ok=True)
@@ -101,14 +150,17 @@ def sorulari_yuk(dosya_yolu: str) -> dict[str, list[str]]:
         print("[HATA] Soru dosyası bir JSON objesi (dict) olmalı.")
         sys.exit(1)
 
+    normalize_veri: dict[str, list[str]] = {}
     for kategori, sorular in veri.items():
         if not isinstance(sorular, list) or len(sorular) == 0:
             print(f"[HATA] Kategori '{kategori}' en az 1 soru içermeli.")
             sys.exit(1)
+        kanonik_kategori = normalize_category_name(kategori)
+        normalize_veri.setdefault(kanonik_kategori, []).extend(sorular)
 
-    toplam = sum(len(s) for s in veri.values())
-    print(f"[INFO] {len(veri)} kategori, toplam {toplam} soru yüklendi.\n")
-    return veri
+    toplam = sum(len(s) for s in normalize_veri.values())
+    print(f"[INFO] {len(normalize_veri)} kategori, toplam {toplam} soru yüklendi.\n")
+    return normalize_veri
 
 
 def soru_gonder(
@@ -212,8 +264,7 @@ def test_calistir(
                 kategori_tespit = yanit.get("kategori", "")
 
                 # 1) Kategori doğruluğu
-                kategori_dogru = kategori_tespit.strip().lower() == kategori.strip().lower()
-
+                kategori_dogru = categories_match(kategori, kategori_tespit)
                 # 2) Cevap uzunluğu (karakter)
                 cevap_uzunluk = len(cevap)
 

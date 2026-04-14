@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, X, BookOpen, Gavel, Loader2 } from 'lucide-react';
 import clsx from 'clsx';
-import { useDil } from '../context/DilContext';
+import { useDil } from '../context/useDil';
 
 export default function DirekArama({ onArama, yukleniyor, sonuclar, onTemizle }) {
     const [acik, setAcik] = useState(false);

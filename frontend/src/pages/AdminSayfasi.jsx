@@ -10,7 +10,7 @@ import {
     adminKullaniciDurumAPI,
     adminZayifSorguListesiAPI,
 } from '../api/client';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/useAuth';
 
 function StatKarti({ ikon, baslik, deger, renk }) {
     return (

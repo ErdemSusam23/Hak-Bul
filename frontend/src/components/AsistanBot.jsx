@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
     ArrowUpRight,
     Bot,
@@ -8,7 +8,7 @@ import {
     Search,
     X,
 } from 'lucide-react';
-import { useDil } from '../context/DilContext';
+import { useDil } from '../context/useDil';
 import { destekSoruBankasi } from '../data/destekSoruBankasi';
 
 const SUPPORT_URL =
@@ -137,12 +137,8 @@ function DestekKarti({ metinler, onOpenSupport }) {
     );
 }
 
-export default function AsistanBot() {
-    const { dil } = useDil();
+function AsistanBotIcerik({ dil }) {
     const [acik, setAcik] = useState(false);
-    const [girdi, setGirdi] = useState('');
-    const [mesajlar, setMesajlar] = useState([]);
-    const [destekGoster, setDestekGoster] = useState(false);
     const mesajlarRef = useRef(null);
     const inputRef = useRef(null);
 
@@ -184,6 +180,9 @@ export default function AsistanBot() {
               openTitle: 'Destek Asistanı',
           };
 
+    const [girdi, setGirdi] = useState('');
+    const [mesajlar, setMesajlar] = useState(() => [{ rol: 'asistan', icerik: metinler.welcome }]);
+    const [destekGoster, setDestekGoster] = useState(false);
     const soruBankasi = dil === 'en' ? destekSoruBankasi.en : destekSoruBankasi.tr;
     const normalizedQuery = normalizeText(girdi);
 
@@ -192,12 +191,6 @@ export default function AsistanBot() {
         .filter((item) => (normalizedQuery ? item.score > 0 : true))
         .sort((a, b) => b.score - a.score)
         .slice(0, normalizedQuery ? 6 : 4);
-
-    useEffect(() => {
-        setMesajlar([{ rol: 'asistan', icerik: metinler.welcome }]);
-        setGirdi('');
-        setDestekGoster(false);
-    }, [metinler.welcome]);
 
     useEffect(() => {
         if (mesajlarRef.current) {
@@ -423,4 +416,11 @@ export default function AsistanBot() {
             </button>
         </>
     );
+}
+
+export default function AsistanBot() {
+    const { dil } = useDil();
+    const botKey = useMemo(() => `support-bot-${dil}`, [dil]);
+
+    return <AsistanBotIcerik key={botKey} dil={dil} />;
 }

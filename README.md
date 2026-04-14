@@ -166,10 +166,22 @@ Bu repo için önerilen local geliştirme akışı şöyledir:
 
 Bu yapıda Docker sadece veritabanı için kullanılır. Backend local olduğu için `backend/.env` dosyasını okur; Postgres container'ı ise `backend/.env.docker` dosyasını kullanır.
 
+> **Kritik fark:** Docker içindeki backend, Postgres'e `postgres:5432` üzerinden bağlanır. Local backend ise `localhost:5433` üzerinden bağlanmalıdır. Local `backend/.env` içinde yanlışlıkla `@postgres:5432` kalırsa `/auth/login` gibi DB kullanan endpoint'ler 500 hatası verir.
+
+> **Öneri:** Repoda önceden var olan `backend/.env` veya `backend/.env.docker` dosyalarına güvenme; local kuruluma başlarken bu dosyaları yeniden oluştur veya içeriklerini tek tek doğrula.
+
 ### Adım 1 — Docker için Postgres env dosyasını hazırla
+
+macOS / Linux:
 
 ```bash
 cp backend/.env.docker.example backend/.env.docker
+```
+
+Windows PowerShell:
+
+```powershell
+Copy-Item backend/.env.docker.example backend/.env.docker
 ```
 
 `backend/.env.docker` içinde en az şu alanları doldur:
@@ -198,11 +210,22 @@ docker compose ps
 
 > Host makineden erişim portu `5433`'tür. Yani local backend, Postgres'e `localhost:5433` üzerinden bağlanır.
 
+> **Devam etmeden önce:** `hak-bul-postgres` durumu `healthy` olmadan migration çalıştırma. İlk açılışta container birkaç saniye gecikebilir.
+
 ### Adım 3 — Local backend env dosyasını hazırla
+
+macOS / Linux:
 
 ```bash
 cd backend
 cp .env.example .env
+```
+
+Windows PowerShell:
+
+```powershell
+Set-Location backend
+Copy-Item .env.example .env
 ```
 
 `backend/.env` dosyasını düzenle. Bu dosya local backend tarafından okunur, bu yüzden `DATABASE_URL` içinde host `localhost`, port ise `5433` olmalıdır:
@@ -219,6 +242,11 @@ QDRANT_API_KEY=...
 ```
 
 > `backend/.env` içindeki veritabanı kullanıcı adı, şifre ve veritabanı adı; `backend/.env.docker` içindeki Postgres ayarlarıyla aynı olmalıdır.
+
+> Doğru örnek farkı:
+>
+> - Docker/Postgres: `postgresql+psycopg://postgres:guclu_bir_sifre@postgres:5432/hak_bul`
+> - Local backend: `postgresql+psycopg://postgres:guclu_bir_sifre@localhost:5433/hak_bul`
 
 ### Adım 4 — Backend için virtual environment oluştur ve aktive et
 
@@ -250,6 +278,18 @@ pip install -r requirements.txt
 alembic upgrade head
 ```
 
+Bu komut local geliştirmede şu senaryolarda çalıştırılmalıdır:
+
+- İlk local kurulumda, backend'i ilk kez ayağa kaldırmadan önce
+- Repodan yeni kod çektikten sonra ve yeni migration geldiyse
+- Veritabanı volume'unu sıfırladıysan (`docker compose down -v`)
+- `DATABASE_URL` başka bir veritabanına bakacak şekilde değiştiyse
+
+Şu senaryolarda tekrar çalıştırman gerekmez:
+
+- Sadece Python/React kodu değiştiyse ve şema değişmediyse
+- Aynı veritabanı çalışıyorsa ve migration'lar zaten uygulanmışsa
+
 ### Adım 7 — Backend'i local'de başlat
 
 ```bash
@@ -265,9 +305,18 @@ Backend açıldıktan sonra API şu adreste erişilebilir olur:
 
 Yeni bir terminal aç:
 
+macOS / Linux:
+
 ```bash
 cd frontend
 cp .env.example .env
+```
+
+Windows PowerShell:
+
+```powershell
+Set-Location ..\frontend
+Copy-Item .env.example .env
 ```
 
 `frontend/.env` içeriği:
@@ -286,7 +335,7 @@ npm run dev
 
 Uygulama `http://localhost:5173` adresinde açılır.
 
-### Sık karşılaşılan durum
+### Sık karşılaşılan durumlar
 
 Eğer Postgres şifresini veya kullanıcı bilgisini `backend/.env.docker` içinde değiştirdiysen ve container eski bilgilerle initialize edildiyse, volume'u sıfırlaman gerekebilir:
 
@@ -294,6 +343,8 @@ Eğer Postgres şifresini veya kullanıcı bilgisini `backend/.env.docker` için
 docker compose down -v
 docker compose up -d postgres
 ```
+
+Eğer local backend `500 Internal Server Error` veriyor ve loglarda bağlantı/host hatası görüyorsan ilk kontrol etmen gereken alan `backend/.env` içindeki `DATABASE_URL` değeridir. Local backend için host `localhost`, port `5433` olmalıdır.
 
 ---
 

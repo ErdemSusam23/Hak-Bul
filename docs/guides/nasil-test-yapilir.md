@@ -51,10 +51,10 @@ Kendi klasörünü bul:
 
 | Kişi | Klasörler |
 |---|---|
-| Kişi1 | `test_sorular/01_is_hukuku`, `02_medeni_hukuk`, `03_ceza_hukuku`, `04_ticaret_hukuku` |
-| Kişi2 | `05_tuketici_hukuku`, `06_tasinmaz_mulk`, `07_idare_hukuku`, `08_vergi_hukuku` |
-| Kişi3 | `09_sosyal_guvenlik_hukuku`, `10_fikri_mulkiyet`, `11_bilisim_hukuku` |
-| Kişi4 | `12_anayasa_hukuku`, `13_usul_hukuku`, `14_diger` |
+| Mustafa | `test_sorular/01_is_hukuku`, `02_medeni_hukuk`, `03_ceza_hukuku`, `04_ticaret_hukuku` |
+| Omer | `05_tuketici_hukuku`, `06_tasinmaz_mulk`, `07_idare_hukuku`, `08_vergi_hukuku` |
+| Yağız | `09_sosyal_guvenlik_hukuku`, `10_fikri_mulkiyet`, `11_bilisim_hukuku` |
+| Erdem | `12_anayasa_hukuku`, `13_usul_hukuku`, `genel_hukuk` |
 
 
 Klasöründeki `sorular.json` dosyasını aç:

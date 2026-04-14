@@ -5,6 +5,7 @@
 ```
 test_sorular/
 ├── 01_is_hukuku/sorular.json          ← Bu klasöre 12 soru yaz
+│   └── legacy/sorular_20260414.json   ← Önceki aktif set arşivi
 ├── 02_medeni_hukuk/sorular.json
 ├── 03_ceza_hukuku/sorular.json
 └── ... (14 kategori)
@@ -32,6 +33,8 @@ test_results/
 ```
 
 > **Önemli:** JSON dosyasında **sadece 1 kategori** olmalı. Kategori adı, `HUKUK_BOT_HAZIR.md`'deki isimle aynı olmalı.
+
+> **Legacy kuralı:** Aktif test seti her zaman kategori klasöründeki ana `sorular.json` dosyasıdır. Önceki sürümler aynı klasörde `legacy/` altında tarih damgalı dosya adıyla saklanır.
 
 ## Test Çalıştırma
 

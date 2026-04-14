@@ -176,3 +176,27 @@ def test_maddelere_bol_splits_temporary_and_additional_articles():
         "Ek Madde 2",
         "Mükerrer Madde 3",
     ]
+
+
+# ---------------------------------------------------------------------------
+# Kategorilendirici — Ceza Hukuku sabıka/uzaklaştırma testleri
+# ---------------------------------------------------------------------------
+
+def test_ceza_hukuku_sabika_kaydi():
+    """Sabıka kaydı sorusu Ceza Hukuku olarak sınıflandırılmalı."""
+    assert _kat("Sabıka kaydı ne zaman silinir veya arşiv kaydına dönüşür?") == "Ceza Hukuku"
+
+
+def test_ceza_hukuku_sabika_temizleme():
+    """Sabıka temizleme sorusu Ceza Hukuku olarak sınıflandırılmalı."""
+    assert _kat("Sabıkamı nasıl temizletirim?") == "Ceza Hukuku"
+
+
+def test_ceza_hukuku_uzaklastirma_ihlal():
+    """Uzaklaştırma kararı ihlali sorusu Ceza Hukuku olarak sınıflandırılmalı."""
+    assert _kat("Uzaklaştırma kararını ihlal eden kişi hakkında ne yapılır?") == "Ceza Hukuku"
+
+
+def test_usul_hukuku_adli_sicil_regresyon():
+    """Mevcut adli sicil testi kırılmamalı — Usul Hukuku kalmalı."""
+    assert _kat("Adli sicil kaydı nasıl silinir?") == "Usul Hukuku"

@@ -94,8 +94,7 @@ def _get_law_url(kanun_adi: str, madde_no: str = "") -> str | None:
 
 def _normalize_summary_text(text: str) -> str:
     cleaned = re.sub(r"\s+", " ", (text or "")).strip()
-    cleaned = re.sub(r"(?<=\D)\d{1,3}(?=\s)", "", cleaned)
-    return re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
 
 
 def _truncate_summary(text: str, max_chars: int = 280) -> str:
@@ -207,6 +206,16 @@ def run_pipeline(soru: str, max_kaynak: int = 5, language: str = "tr") -> dict:
 
 
 def _format_sources(chunks: list[dict], query: str = "") -> list[dict]:
+    if not chunks:
+        return []
+
+    # Batch-level normalization: local scoring and merge scaling can push scores
+    # above 1.0. Dividing by batch max preserves relative ordering while keeping
+    # all scores in [0, 1]. When max <= 1.0 the division is a no-op.
+    raw_scores = [c.get("skor", 0.0) for c in chunks]
+    max_score = max(raw_scores) if raw_scores else 1.0
+    scale = max_score if max_score > 1.0 else 1.0
+
     sources = []
     for c in chunks:
         p = c["payload"]
@@ -229,7 +238,7 @@ def _format_sources(chunks: list[dict], query: str = "") -> list[dict]:
                 "kaynak_turu": kaynak_turu,
                 "baslik": baslik,
                 "metin_ozet": _build_source_summary(p.get("metin", ""), query=query),
-                "skor": normalize_relevance_score(c.get("skor", 0.0)),
+                "skor": normalize_relevance_score(c.get("skor", 0.0) / scale),
                 "url": url,
             }
         )

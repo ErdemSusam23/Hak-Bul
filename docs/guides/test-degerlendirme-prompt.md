@@ -1,21 +1,127 @@
-# 🤖 Hak-Bul Test Sonuçları — AI Değerlendirme Prompt Şablonu
+# Hak-Bul Test Prompt Rehberi
 
 ## Ne Zaman Kullanılır?
 
-`test_api_otomatik.py` çalıştırıldıktan sonra `test_results/` altındaki JSON dosyasını alıp yapay zekaya (ChatGPT, Claude, Gemini vb.) yapıştırarak niteliksel değerlendirme yapmak için kullanılır.
+Bu doküman iki iş için kullanılır:
+
+1. Yeni kategori veya mevcut kategori için vatandaş odaklı test soruları üretmek
+2. `test_api_otomatik.py` çalıştıktan sonra `test_results/` altındaki JSON çıktısını yapay zeka ile niteliksel olarak değerlendirmek
 
 ---
 
-## Prompt Şablonu
+## 1. Test Sorusu Oluşturma Promptu
+
+Aşağıdaki prompt, `backend/test_sorular/XX_kategori_adi/sorular.json` yapısına uygun yeni soru seti üretmek içindir.
+
+Kullanım amacı:
+- Mevcut soru setini yenilemek
+- Yeni bir kategori için test soruları hazırlamak
+- Soruları Türkiye'de vatandaşların gerçekten sık sorduğu hukuki sorulara yaklaştırmak
+
+### Kullanım Notları
+
+- Çıktı yalnızca JSON olmalı
+- JSON içinde sadece 1 kategori anahtarı bulunmalı
+- Soru sayısı tam `12` olmalı
+- Sorular akademik veya ders anlatımı gibi değil, vatandaş diliyle ve pratik problem odaklı olmalı
+- Sorular Türkiye bağlamında güncel mevzuat ve güncel vatandaş ihtiyacına göre hazırlanmalı
+- Aynı anlama gelen tekrar sorular üretilmemeli
+- Çıktı doğrudan ilgili klasördeki `sorular.json` dosyasına yapıştırılabilecek formatta olmalı
+
+### Prompt Şablonu
+
+Aşağıdaki metni kopyala, `{KATEGORI_ADI}` ve `{HEDEF_KLASOR}` alanlarını doldur, gerekiyorsa mevcut soru setini de ekleyip AI'a gönder.
+
+---
+
+```text
+Sen Türk hukuku alanında çalışan bir test veri seti hazırlayıcısısın.
+Amacın, Hak-Bul isimli Türk hukuk asistanı için vatandaş odaklı test soru seti oluşturmaktır.
+
+Hedef kategori: {KATEGORI_ADI}
+Hedef klasör: {HEDEF_KLASOR}
+
+Lütfen aşağıdaki kurallara göre yeni bir soru seti üret:
+
+1. Çıktı yalnızca JSON olsun.
+2. JSON içinde sadece 1 kategori anahtarı bulunsun.
+3. Kategori adı tam olarak `{KATEGORI_ADI}` olsun.
+4. Toplam soru sayısı tam olarak 12 olsun.
+5. Sorular Türkiye'de vatandaşların bu hukuk başlığında en sık sorabileceği, pratik ve gerçek hayata yakın sorular olsun.
+6. Sorular mevzuat ezberi ölçen akademik sorular gibi değil, vatandaşın arama motoruna veya hukuk asistanına yazacağı doğal sorular gibi olsun.
+7. Soru seti dengeli olsun:
+   - yüksek frekanslı günlük sorunlar
+   - hak arama ve başvuru süreçleri
+   - süre, itiraz, tazminat, başvuru mercii gibi kritik konular
+8. Aynı konu farklı cümlelerle tekrar edilmesin.
+9. Sorular kısa ama yeterince net olsun.
+10. Açıklama, maddeleme, yorum veya ek not yazma; sadece JSON üret.
+
+İstenen çıktı formatı tam olarak şöyle olsun:
+
+{
+  "{KATEGORI_ADI}": [
+    "Soru 1?",
+    "Soru 2?",
+    "Soru 3?"
+  ]
+}
+
+Eğer mevcut soru seti zayıf, tekrar eden veya fazla akademikse, onu daha vatandaş odaklı olacak şekilde baştan yenile.
+```
+
+---
+
+### Mevcut Dosyayı Yenileme İçin Ek Komut
+
+Eğer AI'ın mevcut dosyayı da görerek daha iyi bir yenileme yapmasını istiyorsan şu cümleyi prompt sonuna ekle:
+
+```text
+Aşağıda mevcut soru seti var. Bunu referans al ama gerekirse tamamen yeniden yazarak daha güçlü, daha güncel ve daha vatandaş odaklı bir 12 soruluk set üret:
+
+{MEVCUT_SORU_JSONI}
+```
+
+---
+
+## 2. Test Sonucu Değerlendirme Promptu
+
+Bu prompt, `test_api_otomatik.py` çalıştırıldıktan sonra oluşan sonuç JSON'ını yapay zeka ile değerlendirmek içindir.
+
+### Referans Analiz Stili
+
+Değerlendirme çıktısının dili, bölüm yapısı ve ayrıntı seviyesi için şu dosya referans alınmalıdır:
+
+- [`backend/test_results/14_genel_hukuk/analiz1.md`](../../backend/test_results/14_genel_hukuk/analiz1.md)
+
+AI'dan, analiz üretirken bu dosyadaki gibi:
+- önce güçlü bir özet vermesi
+- sonra başlık bazlı puanlama yapması
+- somut örneklerle hata ve güçlü yön göstermesi
+- en sonda net iyileştirme önerileri sunması
+istenmelidir.
+
+### Prompt Şablonu
 
 Aşağıdaki metni kopyala, `{JSON_VERI}` kısmını test çıktı JSON'ının içeriği ile değiştir ve AI'a gönder.
 
 ---
 
-```
+```text
 Sen bir Türk hukuku uzmanı ve RAG (Retrieval-Augmented Generation) sistem değerlendiricisisin.
 Aşağıda bir Türk hukuku asistanının (Hak-Bul) test sonuçları var.
 Her test kaydında bir hukuk sorusu, modelin cevabı, getirilen kaynaklar ve otomatik metrikler bulunuyor.
+
+Değerlendirme çıktısını üretirken şu referans analiz stilini örnek al:
+`backend/test_results/14_genel_hukuk/analiz1.md`
+
+Lütfen analizini bu referans dosyadaki gibi yaz:
+- önce kısa ama net bir genel değerlendirme yap
+- ardından başlık başlık detaylı analiz ver
+- puanları başlık içinde açıkça belirt
+- sorunları somut soru örnekleriyle göster
+- güçlü örnekleri de belirt
+- en sonda net ve uygulanabilir iyileştirme önerileri sun
 
 Lütfen aşağıdaki 4 başlıkta değerlendirme yap:
 
@@ -35,7 +141,7 @@ Lütfen aşağıdaki 4 başlıkta değerlendirme yap:
 
 ## 4. Halüsinasyon (Faithfulness)
 - Model kaynaklarda olmayan bilgi uyduruyor mu?
-- Yanlış kanun maddesi veya yanlış ceza süresi veriyor mu?
+- Yanlış kanun maddesi, yanlış süre, yanlış ceza miktarı veya yanlış başvuru mercii veriyor mu?
 - "Bu konu profesyonel hukuki destek gerektirmektedir" uyarısı uygun yerlerde mi çıkıyor?
 
 ## Özet Skor Tablosu
@@ -51,6 +157,10 @@ Her kategori için 0-10 arasında puan ver:
 - Hangi kategorilerde generator (cevap üretme) prompt'u düzeltilmeli?
 - Vektör veritabanına hangi hukuk alanlarından daha fazla veri eklenmeli?
 
+Analiz dili doğrudan, teknik ve somut olsun.
+Genel geçer cümleler yerine soru bazlı örneklerle konuş.
+Gerekirse bazı sorular için doğru mevzuat veya doğru merci yönünü ayrıca belirt.
+
 ---
 
 TEST SONUÇLARI (JSON):
@@ -60,25 +170,31 @@ TEST SONUÇLARI (JSON):
 
 ---
 
-## Hızlı Batch Kullanımı (Kategori Bazlı)
+## 3. Hızlı Batch Kullanımı
 
-70 soru tek seferde sığmazsa, kategorilere bölerek gönder:
+Eğer bütün sonucu tek seferde göndermek çok uzunsa, kategori bazlı veya parça parça değerlendirme yapılabilir.
 
-```
+```text
 Aşağıda Hak-Bul hukuk asistanının {KATEGORI_ADI} kategorisindeki test sonuçları var.
+
+Değerlendirme çıktısını üretirken şu referans analiz stilini örnek al:
+`backend/test_results/14_genel_hukuk/analiz1.md`
 
 Bu kategorideki cevapları değerlendir:
 1. Cevap soruyu yanıtlıyor mu?
 2. Kaynaklar alakalı mı?
 3. Halüsinasyon var mı?
-4. Puan (0-10)
+4. Kategori tespiti doğru mu?
+5. Puan (0-10)
 
 SONUÇLAR:
 
 {ILGILI_KATEGORININ_JSON_ARRAYI}
 ```
 
-## JSON'dan İlgili Kategoriyi Çıkarma
+---
+
+## 4. JSON'dan İlgili Kategoriyi Çıkarma
 
 Python ile tek komut:
 
@@ -94,7 +210,7 @@ print(json.dumps({'kategori': 'Ceza Hukuku', 'sonuclar': kat_sonuclar}, ensure_a
 
 ---
 
-## Değerlendirme Sıklığı Önerisi
+## 5. Değerlendirme Sıklığı Önerisi
 
 | Durum | Sıklık |
 |---|---|
@@ -105,9 +221,9 @@ print(json.dumps({'kategori': 'Ceza Hukuku', 'sonuclar': kat_sonuclar}, ensure_a
 
 ---
 
-## Skor Yorumlama
+## 6. Skor Yorumlama
 
-| Metrik | 🟢 İyi | 🟡 Orta | 🔴 Kötü |
+| Metrik | İyi | Orta | Kötü |
 |---|---|---|---|
 | **Kategori Doğruluğu** | ≥ %90 | %70-89 | < %70 |
 | **Ort. Cevap Uzunluğu** | 500-3000 chr | 200-499 veya 3001-5000 | < 200 veya > 5000 |

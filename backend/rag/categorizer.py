@@ -50,6 +50,10 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "uyusturucu", "uyusturucu kullanma",
         "kast", "taksir", "meşru savunma", "zorunluluk hali",
         "ceza kanunu", "tck", "5237",
+        # --- YENİ EKLENENLER ---
+        "sabika", "sabika kaydi", "sabikali", "sabikam", "sabikasi",
+        "uzaklaştırma karari", "uzaklaştırma ihlal", "uzaklastirma ihlal",
+        "uzaklastirma karari",
     ],
     "Ticaret Hukuku": [
         "sirket", "limited sirket", "anonim sirket", "ortaklik", "hisse",

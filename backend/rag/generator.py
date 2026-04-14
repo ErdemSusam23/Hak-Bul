@@ -68,7 +68,7 @@ present in the document. If supporting legal sources are supplied, use them only
 when they are relevant. Do not give legal advice; provide information only."""
 
 
-def _strip_artifacts(text: str) -> str:
+def _strip_artifacts(text: str, *, strip_whitespace: bool = True) -> str:
     """Devanagari, CJK ve diger non-Turkish artifact karakterleri temizler."""
     import re
     text = re.sub(
@@ -79,7 +79,7 @@ def _strip_artifacts(text: str) -> str:
         "",
         text,
     )
-    return text.strip()
+    return text.strip() if strip_whitespace else text
 
 
 def _get_client() -> Groq:
@@ -314,7 +314,7 @@ def generate_answer_stream(soru: str, chunks: list[dict], language: str = "tr"):
         for chunk in stream:
             delta = chunk.choices[0].delta.content
             if delta:
-                yield _strip_artifacts(delta)
+                yield _strip_artifacts(delta, strip_whitespace=False)
     except Exception as exc:
         raise RuntimeError(f"Groq streaming hatasi: {exc}") from exc
 

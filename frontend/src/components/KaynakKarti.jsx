@@ -1,5 +1,6 @@
 import { BookOpen, Gavel, ExternalLink, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { CHAT_TEXT_WRAP_STYLE, getKaynakPreviewText, scoreToPercentage } from '../utils/chatUi';
 
 const KAYNAK_TURU_KONFIG = {
     kanun: {
@@ -41,7 +42,7 @@ const KAYNAK_TURU_KONFIG = {
 };
 
 function SkorCubugu({ skor }) {
-    const yuzde = Math.round(skor * 100);
+    const yuzde = scoreToPercentage(skor);
     let bgColor = '#f59e0b'; // amber-500
     if (yuzde >= 85) bgColor = '#34d399'; // emerald-400
     else if (yuzde >= 70) bgColor = 'var(--tema-accent)';
@@ -65,7 +66,7 @@ export default function KaynakKarti({ kaynak }) {
     const [acik, setAcik] = useState(false);
     const konfig = KAYNAK_TURU_KONFIG[kaynak.kaynak_turu] || KAYNAK_TURU_KONFIG.kanun;
     const { Ikon } = konfig;
-    const gosterilecekMetin = kaynak.metin || kaynak.metin_ozet;
+    const gosterilecekMetin = getKaynakPreviewText(kaynak);
 
     const linkAc = (e) => {
         e.stopPropagation();
@@ -102,7 +103,10 @@ export default function KaynakKarti({ kaynak }) {
                     <div className="flex-1 min-w-0">
                         {/* Başlık + Butonlar */}
                         <div className="flex items-start justify-between gap-2 mb-1.5">
-                            <p className="text-sm font-medium leading-snug transition-colors" style={{ color: 'var(--tema-text)' }}>
+                            <p
+                                className="text-sm font-medium leading-snug transition-colors"
+                                style={{ color: 'var(--tema-text)', ...CHAT_TEXT_WRAP_STYLE }}
+                            >
                                 {kaynak.baslik}
                             </p>
                             <div className="flex items-center gap-0.5 flex-shrink-0 mt-0.5">
@@ -158,6 +162,7 @@ export default function KaynakKarti({ kaynak }) {
                                 borderLeft: `2px solid ${konfig.acikSerit}`,
                                 color: konfig.acikMetin,
                                 whiteSpace: 'pre-wrap',
+                                ...CHAT_TEXT_WRAP_STYLE,
                             }}
                         >
                             {gosterilecekMetin}

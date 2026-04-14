@@ -3,6 +3,7 @@ import { useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import KaynakKarti from './KaynakKarti';
 import FeedbackButonlari from './FeedbackButonlari';
+import { CHAT_TEXT_WRAP_STYLE } from '../utils/chatUi';
 
 function SaatDamgasi({ zaman }) {
     if (!zaman) return null;
@@ -37,7 +38,10 @@ function RenderMarkdown({ icerik }) {
     const bloklar = icerik.split(/\n{2,}/);
 
     return (
-        <div className="space-y-2.5 text-[14.5px] leading-[1.7]" style={{ color: 'var(--tema-text2)' }}>
+        <div
+            className="space-y-2.5 text-[14.5px] leading-[1.7]"
+            style={{ color: 'var(--tema-text2)', ...CHAT_TEXT_WRAP_STYLE }}
+        >
             {bloklar.map((blok, bi) => {
                 const satirlar = blok.split('\n').filter(Boolean);
 
@@ -70,7 +74,7 @@ function RenderMarkdown({ icerik }) {
                 // Normal paragraf
                 const metin = satirlar.join(' ');
                 return (
-                    <p key={bi}>
+                    <p key={bi} style={CHAT_TEXT_WRAP_STYLE}>
                         <InlineFormat text={metin} />
                     </p>
                 );
@@ -91,7 +95,12 @@ function KullaniciMesaji({ mesaj }) {
                         boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
                     }}
                 >
-                    <p className="text-[14.5px] leading-[1.68]" style={{ color: 'var(--tema-text)' }}>{mesaj.icerik}</p>
+                    <p
+                        className="text-[14.5px] leading-[1.68]"
+                        style={{ color: 'var(--tema-text)', ...CHAT_TEXT_WRAP_STYLE }}
+                    >
+                        {mesaj.icerik}
+                    </p>
                 </div>
                 <SaatDamgasi zaman={mesaj.zaman} />
             </div>

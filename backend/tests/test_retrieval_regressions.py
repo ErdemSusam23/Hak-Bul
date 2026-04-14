@@ -146,6 +146,12 @@ def test_strip_artifacts_cjk():
     assert _strip_artifacts(giris) == beklenen
 
 
+def test_strip_artifacts_can_preserve_stream_whitespace():
+    """Streaming delta'larındaki boşluklar korunmalı; aksi halde kelimeler yapışır."""
+    giris = " kıdem "
+    assert _strip_artifacts(giris, strip_whitespace=False) == " kıdem "
+
+
 def test_keyword_normalization_bilirkisi():
     """Türkçe karakterli keyword 'bilirkişi' normalize edildikten sonra eşleşmeli."""
     assert _kat("Bilirkişi raporu nasıl hazırlanır?") == "Usul Hukuku"

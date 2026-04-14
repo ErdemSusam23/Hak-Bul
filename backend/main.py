@@ -30,6 +30,7 @@ from routers.templates import router as templates_router
 from routers.forum import router as forum_router
 from db.session import get_db
 from models.user import User
+from rag.retriever import normalize_relevance_score
 from schemas import AskRequest, AskResponse, HealthResponse, KaynakItem, SearchResponse
 from services.admin_service import zayif_sorgu_kaydet
 from services.chat_service import resolve_conversation_id, save_chat_pair
@@ -382,7 +383,7 @@ async def search(
                     baslik=baslik,
                     metin_ozet=p.get("metin", "")[:300],
                     metin=p.get("metin", ""),
-                    skor=round(c.get("skor", 0), 4),
+                    skor=normalize_relevance_score(c.get("skor", 0)),
                     url=url,
                 )
             )

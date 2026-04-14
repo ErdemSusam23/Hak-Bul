@@ -24,6 +24,7 @@ import { useChat } from '../hooks/useChat';
 import { useTema } from '../context/useTema';
 import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
+import { prepareComposerSubmission } from '../utils/chatUi';
 
 const ORNEK_SORULAR_DATA = [
     {
@@ -192,14 +193,13 @@ function ComposerPanel({
     }, [girdi, compact]);
 
     const gonder = useCallback(async () => {
-        if ((!girdi.trim() && !secilenDosya) || yukleniyor) return;
+        const payload = prepareComposerSubmission({ girdi, secilenDosya, yukleniyor });
+        if (!payload) return;
 
-        const metin = girdi;
-        const dosya = secilenDosya;
-        setGirdi('');
-        setSecilenDosya(null);
-        await onSubmit({ metin, dosya });
-    }, [girdi, secilenDosya, yukleniyor, onSubmit]);
+        setGirdi(payload.nextGirdi);
+        setSecilenDosya(payload.nextSecilenDosya);
+        await onSubmit({ metin: payload.metin, dosya: payload.dosya });
+    }, [girdi, secilenDosya, yukleniyor, onSubmit, setGirdi, setSecilenDosya]);
 
     const klavyeIsle = useCallback((e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -365,6 +365,12 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
     const gonder = useCallback(async ({ metin, dosya }) => {
         if ((!metin.trim() && !dosya) || yukleniyor) return;
 
+        setComposerState((prev) => ({
+            key: prev.key + 1,
+            initialGirdi: '',
+            revision: composerRevision,
+        }));
+
         const localGuestId = localStorage.getItem('hakbul_guest_session_id') || null;
         const stateVars = await mesajGonder(metin, {
             conversationId: sohbetIdRef.current,
@@ -378,7 +384,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                 localStorage.setItem('hakbul_guest_session_id', stateVars.guest_session_id);
             }
         }
-    }, [yukleniyor, mesajGonder]);
+    }, [composerRevision, yukleniyor, mesajGonder]);
 
     const ornekSoruyuYukle = (soru) => {
         setComposerState((prev) => ({
@@ -389,7 +395,7 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
     };
 
     const bosEkran = mesajlar.length === 0;
-    const composerKey = `${secilenSohbet?.id || 'yeni'}:${temizleSinyali}:${composerState.key}`;
+    const composerKey = `${bosEkran ? 'empty' : 'compact'}:${secilenSohbet?.id || 'yeni'}:${temizleSinyali}:${composerState.key}`;
     const composerInitialGirdi =
         composerState.revision === composerRevision ? composerState.initialGirdi : '';
     const ornekSorular = ORNEK_SORULAR_DATA.map((item) => ({

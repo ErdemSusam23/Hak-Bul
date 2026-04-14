@@ -6,7 +6,7 @@
     "kategori_sayisi": 1,
     "rate_limit_bekleme_sn": 6.0,
     "max_retry": 3,
-    "cikti_dosyasi": "/app/test_results/vergi_hukuku/test_sonuclari_20260409_234910.json"
+    "cikti_dosyasi": "/app/test_results/08_vergi_hukuku/test_sonuclari_20260409_234910.json"
   },
   "ozet": {
     "toplam": 12,

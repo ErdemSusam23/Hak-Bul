@@ -6,7 +6,7 @@
     "kategori_sayisi": 1,
     "rate_limit_bekleme_sn": 12.0,
     "max_retry": 3,
-    "cikti_dosyasi": "/app/test_results/tasinmaz_mulk/test_sonuclari_20260411_122724.json"
+    "cikti_dosyasi": "/app/test_results/06_tasinmaz_mulk/test_sonuclari_20260411_122724.json"
   },
   "ozet": {
     "toplam": 12,

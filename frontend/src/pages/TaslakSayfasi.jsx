@@ -3,8 +3,8 @@ import { Download, FileText, RotateCcw } from 'lucide-react';
 
 import AuthModal from '../components/AuthModal';
 import { taslakListesiAPI, taslakPdfUretAPI } from '../api/client';
-import { useAuth } from '../context/AuthContext';
-import { useDil } from '../context/DilContext';
+import { useAuth } from '../context/useAuth';
+import { useDil } from '../context/useDil';
 
 export default function TaslakSayfasi() {
     const { kullanici } = useAuth();

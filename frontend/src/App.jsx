@@ -22,9 +22,12 @@ import PaylasimSayfasi from './pages/PaylasimSayfasi';
 import KarsilastirmaSayfasi from './pages/KarsilastirmaSayfasi';
 import ForumSayfasi from './pages/ForumSayfasi';
 import ForumBaslikSayfasi from './pages/ForumBaslikSayfasi';
-import { TemaProvider, useTema } from './context/TemaContext';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { DilProvider, useDil } from './context/DilContext';
+import { TemaProvider } from './context/TemaContext';
+import { AuthProvider } from './context/AuthContext';
+import { DilProvider } from './context/DilContext';
+import { useTema } from './context/useTema';
+import { useAuth } from './context/useAuth';
+import { useDil } from './context/useDil';
 import {
     sohbetGecmisiListeleAPI,
     sohbetDetayGetirAPI,

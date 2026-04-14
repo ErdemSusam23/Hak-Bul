@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { createElement, useState, useRef, useEffect, useCallback } from 'react';
 import {
     Scale,
     Send,
@@ -21,9 +21,9 @@ import YukleniyorGostergesi from '../components/YukleniyorGostergesi';
 import DirekArama from '../components/DirekArama';
 import AuthModal from '../components/AuthModal';
 import { useChat } from '../hooks/useChat';
-import { useTema } from '../context/TemaContext';
-import { useAuth } from '../context/AuthContext';
-import { useDil } from '../context/DilContext';
+import { useTema } from '../context/useTema';
+import { useAuth } from '../context/useAuth';
+import { useDil } from '../context/useDil';
 
 const ORNEK_SORULAR_DATA = [
     {
@@ -156,7 +156,7 @@ function UstAksiyonlar({
     );
 }
 
-function SoruChip({ Ikon, label, onClick }) {
+function SoruChip({ icon, label, onClick }) {
     return (
         <button
             onClick={onClick}
@@ -167,7 +167,7 @@ function SoruChip({ Ikon, label, onClick }) {
                 color: 'var(--tema-text2)',
             }}
         >
-            <Ikon size={14} style={{ color: 'var(--tema-accent-soft)' }} />
+            {createElement(icon, { size: 14, style: { color: 'var(--tema-accent-soft)' } })}
             <span>{label}</span>
         </button>
     );
@@ -176,22 +176,37 @@ function SoruChip({ Ikon, label, onClick }) {
 function ComposerPanel({
     compact,
     t,
-    girdi,
-    setGirdi,
-    secilenDosya,
-    setSecilenDosya,
-    dosyaInputRef,
-    klavyeIsle,
     yukleniyor,
-    gonder,
+    initialGirdi = '',
+    onSubmit,
 }) {
     const textareaRef = useRef(null);
+    const dosyaInputRef = useRef(null);
+    const [girdi, setGirdi] = useState(initialGirdi);
+    const [secilenDosya, setSecilenDosya] = useState(null);
 
     useEffect(() => {
         if (!textareaRef.current) return;
         textareaRef.current.style.height = 'auto';
         textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, compact ? 160 : 190)}px`;
     }, [girdi, compact]);
+
+    const gonder = useCallback(async () => {
+        if ((!girdi.trim() && !secilenDosya) || yukleniyor) return;
+
+        const metin = girdi;
+        const dosya = secilenDosya;
+        setGirdi('');
+        setSecilenDosya(null);
+        await onSubmit({ metin, dosya });
+    }, [girdi, secilenDosya, yukleniyor, onSubmit]);
+
+    const klavyeIsle = useCallback((e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            gonder();
+        }
+    }, [gonder]);
 
     return (
         <div className={`mx-auto w-full ${compact ? 'max-w-4xl' : 'max-w-[700px]'}`}>
@@ -298,11 +313,8 @@ function ComposerPanel({
 }
 
 export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSinyali }) {
-    const [girdi, setGirdi] = useState('');
-    const [secilenDosya, setSecilenDosya] = useState(null);
     const [authModalAcik, setAuthModalAcik] = useState(false);
     const chatSonuRef = useRef(null);
-    const dosyaInputRef = useRef(null);
     const sohbetIdRef = useRef(null);
     const { tema, toggleTema } = useTema();
     const { kullanici, cikis } = useAuth();
@@ -319,6 +331,12 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         sohbetiTemizle,
         mesajlariYukle,
     } = useChat(dil);
+    const composerRevision = `${secilenSohbet?.id || 'yeni'}:${temizleSinyali}`;
+    const [composerState, setComposerState] = useState({
+        key: 0,
+        initialGirdi: '',
+        revision: composerRevision,
+    });
 
     useEffect(() => {
         chatSonuRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -328,7 +346,6 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         if (secilenSohbet) {
             mesajlariYukle(secilenSohbet.mesajlar);
             sohbetIdRef.current = secilenSohbet.id;
-            setGirdi('');
             onSoruIslendi?.();
         }
     }, [secilenSohbet, mesajlariYukle, onSoruIslendi]);
@@ -336,8 +353,6 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
     useEffect(() => {
         if (temizleSinyali > 0) {
             sohbetiTemizle();
-            setGirdi('');
-            setSecilenDosya(null);
             sohbetIdRef.current = null;
         }
     }, [temizleSinyali, sohbetiTemizle]);
@@ -347,13 +362,8 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
         window.dispatchEvent(new Event('gecmis-guncellendi'));
     }, [mesajlar, yukleniyor]);
 
-    const gonder = useCallback(async () => {
-        if ((!girdi.trim() && !secilenDosya) || yukleniyor) return;
-
-        const metin = girdi;
-        const dosya = secilenDosya;
-        setGirdi('');
-        setSecilenDosya(null);
+    const gonder = useCallback(async ({ metin, dosya }) => {
+        if ((!metin.trim() && !dosya) || yukleniyor) return;
 
         const localGuestId = localStorage.getItem('hakbul_guest_session_id') || null;
         const stateVars = await mesajGonder(metin, {
@@ -368,20 +378,20 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                 localStorage.setItem('hakbul_guest_session_id', stateVars.guest_session_id);
             }
         }
-    }, [girdi, secilenDosya, yukleniyor, mesajGonder]);
-
-    const klavyeIsle = (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            gonder();
-        }
-    };
+    }, [yukleniyor, mesajGonder]);
 
     const ornekSoruyuYukle = (soru) => {
-        setGirdi(soru);
+        setComposerState((prev) => ({
+            key: prev.key + 1,
+            initialGirdi: soru,
+            revision: composerRevision,
+        }));
     };
 
     const bosEkran = mesajlar.length === 0;
+    const composerKey = `${secilenSohbet?.id || 'yeni'}:${temizleSinyali}:${composerState.key}`;
+    const composerInitialGirdi =
+        composerState.revision === composerRevision ? composerState.initialGirdi : '';
     const ornekSorular = ORNEK_SORULAR_DATA.map((item) => ({
         soru: dil === 'en' ? item.soruEn : item.soru,
         kategori: t(item.kategoriKey),
@@ -432,23 +442,19 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
                         </div>
 
                         <ComposerPanel
+                            key={composerKey}
                             compact={false}
                             t={t}
-                            girdi={girdi}
-                            setGirdi={setGirdi}
-                            secilenDosya={secilenDosya}
-                            setSecilenDosya={setSecilenDosya}
-                            dosyaInputRef={dosyaInputRef}
-                            klavyeIsle={klavyeIsle}
                             yukleniyor={yukleniyor}
-                            gonder={gonder}
+                            initialGirdi={composerInitialGirdi}
+                            onSubmit={gonder}
                         />
 
                         <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
                             {ornekSorular.map(({ soru, kategori, Ikon }) => (
                                 <SoruChip
                                     key={kategori}
-                                    Ikon={Ikon}
+                                    icon={Ikon}
                                     label={kategori}
                                     onClick={() => ornekSoruyuYukle(soru)}
                                 />
@@ -491,16 +497,12 @@ export default function SohbetSayfasi({ secilenSohbet, onSoruIslendi, temizleSin
 
                     <div className="shrink-0 px-6 pb-6 pt-3">
                         <ComposerPanel
+                            key={composerKey}
                             compact
                             t={t}
-                            girdi={girdi}
-                            setGirdi={setGirdi}
-                            secilenDosya={secilenDosya}
-                            setSecilenDosya={setSecilenDosya}
-                            dosyaInputRef={dosyaInputRef}
-                            klavyeIsle={klavyeIsle}
                             yukleniyor={yukleniyor}
-                            gonder={gonder}
+                            initialGirdi={composerInitialGirdi}
+                            onSubmit={gonder}
                         />
                     </div>
                 </>

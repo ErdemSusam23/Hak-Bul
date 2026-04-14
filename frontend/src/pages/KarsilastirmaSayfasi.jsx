@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { AlertTriangle, FileText, GitCompare, RotateCcw, Upload } from 'lucide-react';
 
 import { dokumanKarsilastirAPI } from '../api/client';
-import { useDil } from '../context/DilContext';
+import { useDil } from '../context/useDil';
 
 export default function KarsilastirmaSayfasi() {
     const { t, dil } = useDil();

@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { AlertTriangle, RotateCcw, Share2 } from 'lucide-react';
 
 import { paylasimSohbetGetirAPI } from '../api/client';
-import { useDil } from '../context/DilContext';
+import { useDil } from '../context/useDil';
 
 export default function PaylasimSayfasi({ shareToken }) {
     const { t } = useDil();

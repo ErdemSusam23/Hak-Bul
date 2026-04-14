@@ -1,6 +1,5 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-
-const TemaContext = createContext();
+import { useState, useEffect } from 'react';
+import { TemaContext } from './TemaContextValue';
 
 export function TemaProvider({ children }) {
     const [tema, setTema] = useState(() => localStorage.getItem('tema') || 'acik');
@@ -17,5 +16,3 @@ export function TemaProvider({ children }) {
         </TemaContext.Provider>
     );
 }
-
-export const useTema = () => useContext(TemaContext);

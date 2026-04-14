@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { AlertCircle, ArrowLeft, CheckCircle, Eye, EyeOff, Lock, Mail, Trash2, User } from 'lucide-react';
 
 import { hesapSilAPI, profilGetirAPI, profilGuncelleAPI } from '../api/client';
-import { useAuth } from '../context/AuthContext';
-import { useDil } from '../context/DilContext';
+import { useAuth } from '../context/useAuth';
+import { useDil } from '../context/useDil';
 
 function InputAlan({
     label,

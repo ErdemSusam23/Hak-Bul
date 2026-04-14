@@ -1,11 +1,10 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import tr from '../i18n/tr';
 import en from '../i18n/en';
+import { DilContext } from './DilContextValue';
 
 const DILLER = { tr, en };
 const DEPO_ANAHTARI = 'hakbul_dil';
-
-const DilContext = createContext(null);
 
 export function DilProvider({ children }) {
     const [dil, setDil] = useState(() => localStorage.getItem(DEPO_ANAHTARI) || 'tr');
@@ -27,5 +26,3 @@ export function DilProvider({ children }) {
         </DilContext.Provider>
     );
 }
-
-export const useDil = () => useContext(DilContext);

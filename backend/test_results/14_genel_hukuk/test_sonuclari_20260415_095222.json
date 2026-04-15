@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-15T06:54:59.306393+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 6.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\14_genel_hukuk\\test_sonuclari_20260415_095222.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 157.1,
+    "ortalama_sure_sn": 13.09,
+    "kategori_dagilimi": {
+      "Genel Hukuk": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 7.06,
+        "kategori_dogruluk_orani": 75.0,
+        "ortalama_cevap_uzunluk": 320.0,
+        "ortalama_kaynak_skor": 0.8971
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Trafik cezasına nasıl itiraz edilir ve başvuru süresi kaç gündür?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 2918 Sayılı Karayolları Trafik Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baro hukuki yardim burosuna veya ALO 182 ye basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 135",
+          "metin_ozet": "(Mülga cümle:21/2/2019-7166/5 md.) (…) (Ek fıkra:21/2/2019-7166/5 md.) Ayrıca, araç on beş gün süre ile trafikten menedilir.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 368",
+          "metin_ozet": "(Değişik ikinci fıkra:24/12/2025-7571/3 md.) 363 ve 364 üncü maddelerdeki parasal sınırların uygulanmasında şikâyet başvurusunun yapıldığı veya davanın açıldığı tarihteki miktar esas alınır.",
+          "metin": null,
+          "skor": 0.9648,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 308",
+          "metin_ozet": "28/2/2018-7101/37 md.) Alacakları itiraza uğramış olan alacaklılar, tasdik kararının ilânı tarihinden itibaren bir ay içinde dava açabilirler.",
+          "metin": null,
+          "skor": 0.9296,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 309",
+          "metin_ozet": "4- Borçların yeniden yapılandırılması için gerekli görülüyorsa, borçlunun kredi gibi finansman kaynaklarına başvurup başvurmayacağı.",
+          "metin": null,
+          "skor": 0.9296,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 20",
+          "metin_ozet": "Satış ve devir işlemlerini yapanlar, bu işlemler sırasında edindikleri bilgileri ifşa ettikleri takdirde Türk Ceza Kanununun 239 uncu maddesi uyarınca cezalandırılırlar.18 Satış ve devir işlemlerinin bildiriminden itibaren bir aylık süre içerisinde ilgili trafik tescil kuruluşu...",
+          "metin": null,
+          "skor": 0.9296,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 193,
+      "ortalama_kaynak_skor": 0.9507,
+      "kaynak_sayisi": 5,
+      "message_id": "0b02b655-7ae5-439a-8e7e-aec95dc47bfd",
+      "conversation_id": "246cfbfc-b55b-4f80-b372-c8e50636671d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.42,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Trafik kazasında kusur oranına itiraz etmek istersem nereye başvurmalıyım?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 2918 Sayılı Karayolları Trafik Kanunu trafik kazalarında kusur oranının belirlenmesi ve itiraz süreçleri hakkında bilgi vermemektedir. Detayli bilgi icin baro hukuki yardim burosuna veya ALO 182 ye basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 135",
+          "metin_ozet": "2918 sayılı Karayolları Trafik Kanununun suç saydığı fiilleri işleyenler hakkında işlem yapılması amacıyla, Emniyet Genel Müdürlüğünce kendilerine verilen tutanağı düzenlemek ve bunları aracın tescilli olduğu trafik kuruluşuna gönderilmek üzere en geç bir hafta içerisinde...",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 169",
+          "metin_ozet": "18/2/1965-538/82 md.) Borçlu, 168 inci maddenin 5 numaralı bendine göre borca karşı yapacağı itirazını bir dilekçe ile icra mahkemesine bildirir. Bu itiraz satıştan başka icra takip muamelelerini durdurmaz.",
+          "metin": null,
+          "skor": 0.9184,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 308",
+          "metin_ozet": "itiraz eden diğer alacaklılar ise tasdik kararının ilânından itibaren iki hafta içinde istinaf yoluna başvurabilir. 28/2/2018-7101/37 md.) Alacakları itiraza uğramış olan alacaklılar, tasdik kararının ilânı tarihinden itibaren bir ay içinde dava açabilirler.",
+          "metin": null,
+          "skor": 0.8775,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 63",
+          "metin_ozet": "Bu kararlara karşı tebliğini izleyen günden itibaren onbeş gün içerisinde İdari Dava Daireleri Kuruluna itiraz edilebilir.",
+          "metin": null,
+          "skor": 0.8775,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 3",
+          "metin_ozet": "Trafik için, kamunun yararlanmasına açık olan arazi şeridi, köprüler ve alanlardır. Genel olarak üzerindeki trafik yoğunluğu bakımından, bağlandığı yoldan daha az önemde olan yoldur.",
+          "metin": null,
+          "skor": 0.8775,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 263,
+      "ortalama_kaynak_skor": 0.9102,
+      "kaynak_sayisi": 5,
+      "message_id": "3ac95bda-033d-49ce-97d5-6bd577dd4fc7",
+      "conversation_id": "8da4dd39-bd0a-468e-8477-7843ac1217e3",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Ehliyetime el konulduysa geri almak için hangi hukuki yollar vardır?",
+      "cevap": "2918 Sayılı Karayolları Trafik Kanunu'nun ilgili hükümlerine göre, sürücü belgesine el konulması durumunda, geri almak için bazı hukuki yollar bulunmaktadır. \n\nSürücü belgesine el konulmasının ardından, belge geri alma süresi sonunda sürücünün psiko-teknik değerlendirmeden ve psikiyatri uzmanının muayenesinden geçirilerek sürücü belgesi almasına mâni hâli olmadığının anlaşılması şartıyla iade edilir. \n\nAncak, bu konuda daha detaylı bilgi için 2918 Sayılı Karayolları Trafik Kanunu'nun ilgili maddelerine ve ilgili yönetmeliklere bakmak gerekir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 135",
+          "metin_ozet": "Madde 135 – Bu Kanunla ilgili Karayolları Trafik Yönetmeliği, ilgili bakanlıkların görüşü alınmak suretiyle İçişleri Bakanlığının koordinatörlüğünde, Bayındırlık ve Ulaştırma bakanlıklarınca müştereken, bu Kanunda çıkarılması öngörülen diğer yönetmelikler ilgili bakanlıklarca...",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/8473",
+          "metin_ozet": "ve yasaya uygun olduğu ve onanması düşüncesinde olduğumuzdan, sayın çoğunluğun bozma yönündeki görüşüne katılmıyoruz.",
+          "metin": null,
+          "skor": 0.85,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 21",
+          "metin_ozet": "Madde 21 – Tescil edilen araçlar, \"Tescil Belgesi\" ve \"Tescil Plakası\" alınmadan karayollarına çıkarılamaz. Tescil belgesi geçersiz duruma gelince sürekli olarak, üzerinde eksik veya yanlış bilgi bulunması halinde geçici olarak trafik zabıtasınca geri alınır.",
+          "metin": null,
+          "skor": 0.8235,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 51",
+          "metin_ozet": "a) (7) numaralı alt bendinin ihlali halinde her seferinde 30 gün, b) (8) numaralı alt bendinin ihlali halinde her seferinde 60 gün, c) (9) numaralı alt bendinin ihlali halinde ise her seferinde 90 gün, süre ile sürücülerin sürücü belgeleri geri alınır.",
+          "metin": null,
+          "skor": 0.8235,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 53",
+          "metin_ozet": "(6) Belli bir meslek veya sanatın ya da trafik düzeninin gerektirdiği dikkat ve özen yükümlülüğüne aykırılık dolayısıyla işlenen taksirli suçtan mahkûmiyet halinde, üç aydan az ve üç yıldan fazla olmamak üzere, bu meslek veya sanatın icrasının yasaklanmasına ya da sürücü...",
+          "metin": null,
+          "skor": 0.8235,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 753,
+      "ortalama_kaynak_skor": 0.8641,
+      "kaynak_sayisi": 5,
+      "message_id": "a99ddaeb-763a-429a-9cf2-51035c1d7dbe",
+      "conversation_id": "1df722fe-5550-46c9-8b40-53ada1ce2399",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.59,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Noter vekaletnamesi nasıl çıkarılır ve hangi işlemler için gerekir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Noterlik Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baro hukuki yardim burosuna veya ALO 182 ye basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 309",
+          "metin_ozet": "28/2/2018-7101/39 md.) İflâsına hükmedilmiş olan bir borçlu konkordato talep ederse veya bu borçlunun alacaklılarından biri konkordato işlemlerinin başlatılmasını isterse, iflâs idaresi, görüşüyle beraber ikinci alacaklılar toplanmasında veya daha sonra müzakere edilmek üzere...",
+          "metin": null,
+          "skor": 0.525,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 368",
+          "metin_ozet": "Madde 368 – Noter Kanununun 69 ve 71 inci maddeleri ve icarı akar nizamnamesiyle buna müzeyyel kanunun mecur tahliyesine ve 49 uncu madde ile kabul edilen hususlardan gayrı hususi kanun ve nizamların rehinin paraya çevrilmesine mütaallik hükümleri ile 1424 numaralı İcra ve İflas...",
+          "metin": null,
+          "skor": 0.525,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 53",
+          "metin_ozet": "Kamu İhale Kurumu, bu Kanunda belirtilen esas, usul ve işlemlerin doğru olarak uygulanması konusunda görevli ve yetkilidir.",
+          "metin": null,
+          "skor": 0.525,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3625",
+          "metin_ozet": "nun'un 370/1 hükmü uyarınca ONANMASINA, Dosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine, 21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": null,
+          "skor": 0.4462,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/3624",
+          "metin_ozet": "nun'un 370/1 hükmü uyarınca ONANMASINA, Dosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine, 21.04.2025 tarihinde oy birliğiyle karar verildi.",
+          "metin": null,
+          "skor": 0.4462,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 171,
+      "ortalama_kaynak_skor": 0.4935,
+      "kaynak_sayisi": 5,
+      "message_id": "426c69ab-3315-4cfe-a23b-30e459a9a654",
+      "conversation_id": "8df54382-a5ef-4516-9745-8b6026195866",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 1.12,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Adli sicil kaydı e-Devlet üzerinden nasıl alınır, silinme talebi nasıl yapılır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 5352 sayılı Adli Sicil Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baro hukuki yardım bürosuna veya ALO 182 ye başvurunuzu öneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 236",
+          "metin_ozet": "Bu şekilde yurt dışına gönderilecek personelden, örneği Maliye Bakanlığı tarafından hazırlanmış \"Yüklenme Senedi ile Muteber İmzalı Müteselsil Kefalet Senedi\" alınır.300 Anılan personelin mecburi hizmet yükümlülüğünü yerine getirmeden veya tamamlamadan görevinden ayrılması,...",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 239",
+          "metin_ozet": "UNVANI Derece Ek Göstergeler Başmüşaviri, Başbakanlık Müsteşar Yardımcıları, Diyanet İşleri Başkan Yardımcıları, Din İşleri Yüksek Kurulu Başkanı, Mushafları İnceleme ve Kıraat Kurulu Başkanı, Diyanet Akademisi Başkanı, Büyükelçi ve Daimi Temsilci unvanını kazanmış olanlar,...",
+          "metin": null,
+          "skor": 0.9688,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 134",
+          "metin_ozet": "MADDE 134- Çeşitli kalemlerin bir cari hesaba sadece kaydedilmiş olması, borcun yenilenmiş olduğu anlamına gelmez.",
+          "metin": null,
+          "skor": 0.85,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 4",
+          "metin_ozet": "Mevcut kuruluş biçimine bakılmaksızın, Devlet ve diğer kamu tüzel kişiliklerince genel idare esaslarına göre yürütülen asli ve sürekli kamu hizmetlerini ifa ile görevlendirilenler, bu Kanunun uygulanmasında memur sayılır. Adli Tıp Müessesesi uzmanlarının;",
+          "metin": null,
+          "skor": 0.8438,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 300",
+          "metin_ozet": "MADDE 300- Kira sözleşmesi, belirli ve belirli olmayan bir süre için yapılabilir.",
+          "metin": null,
+          "skor": 0.8246,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 389,
+      "ortalama_kaynak_skor": 0.8974,
+      "kaynak_sayisi": 5,
+      "message_id": "e8454894-990e-4c83-bf67-9c1cae8ecb7c",
+      "conversation_id": "ad2f0fd2-8679-4d6e-8367-0857df428aab",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 9.73,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Ad veya soyadı değişikliği için hangi mahkemeye başvurulur?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Ad veya soyadı değişikliği işlemleri genellikle Nüfus Hizmetleri Kanunu kapsamında düzenlenmektedir. Detayli bilgi icin baro hukuki yardim burosuna veya ALO 182 ye basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 314",
+          "metin_ozet": "Evlâtlık küçük ise evlât edinenin soyadını alır. Ergin olan evlâtlık, evlât edinilme sırasında dilerse evlât edinenin soyadını alabilir.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 103",
+          "metin_ozet": "(5) Cinsel istismar için başvurulan cebir ve şiddetin kasten yaralama suçunun ağır neticelerine neden olması hâlinde, ayrıca kasten yaralama suçuna ilişkin hükümler uygulanır.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 19",
+          "metin_ozet": "3/10/2001-4709/4 md.) Yakalanan veya tutuklanan kişi, tutulma yerine en yakın mahkemeye gönderilmesi için gerekli süre hariç en geç kırksekiz saat ve toplu olarak işlenen suçlarda en çok dört gün içinde hâkim önüne çıkarılır.",
+          "metin": null,
+          "skor": 0.9187,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 85",
+          "metin_ozet": "23/7/1995-4121/10 md.) Yasama dokunulmazlığının kaldırılmasına veya milletvekilliğinin düşmesine 84 üncü maddenin birinci, üçüncü veya dördüncü fıkralarına göre karar verilmiş olması hallerinde, Meclis Genel Kurulu kararının alındığı tarihten başlayarak yedi gün içerisinde ilgili...",
+          "metin": null,
+          "skor": 0.9187,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 148",
+          "metin_ozet": "Madde 148 – Anayasa Mahkemesi, kanunların, Cumhurbaşkanlığı kararnamelerinin ve Türkiye Büyük Millet Meclisi İçtüzüğünün Anayasaya şekil ve esas bakımlarından uygunluğunu denetler ve bireysel başvuruları karara bağlar.",
+          "metin": null,
+          "skor": 0.9187,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 229,
+      "ortalama_kaynak_skor": 0.9512,
+      "kaynak_sayisi": 5,
+      "message_id": "9198e19c-33d5-4d54-83cd-2708ea35b47e",
+      "conversation_id": "8ae76563-a82c-4301-b096-7c79cceb64fd",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 10.39,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Yabancıların Türkiye'de çalışma izni başvurusu nasıl yapılır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. Çalışma izni başvurusu ile ilgili işlemler 4817 sayılı Yabancıların Çalışma İzinleri Hakkında Kanun'da düzenlenmektedir. Detaylı bilgi için baro hukuki yardım bürosuna veya ALO 182'ye başvurunuzu öneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardım burosu veya bir avukat ile görüşmenizi öneririz. Adalet Bakanlığı ALO 182 hattından ücretsiz hukuki danışmanlık alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 174",
+          "metin_ozet": "b) Bu Kanunun yürürlüğe girdiği tarihten itibaren beş gün içinde, Türkiye Barolar Birliği Başkanlığı adaylık başvurusunu ilan eder.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 53",
+          "metin_ozet": "Madde 53 – İşçiler ve işverenler, karşılıklı olarak ekonomik ve sosyal durumlarını ve çalışma şartlarını düzenlemek amacıyla toplu iş sözleşmesi yapma hakkına sahiptirler.",
+          "metin": null,
+          "skor": 0.9187,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 74",
+          "metin_ozet": "Madde 74 – Vatandaşlar ve karşılıklılık esası gözetilmek kaydıyla Türkiye’de ikamet eden yabancılar kendileriyle veya kamu ile ilgili dilek ve şikayetleri hakkında, yetkili makamlara ve Türkiye Büyük Millet Meclisine yazı ile başvurma hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.9187,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2024/7891",
+          "metin_ozet": "NANMASINA, Aşağıda yazılı temyiz harcının temyiz eden davacılara yükletilmesine,Dosyanın İlk Derece Mahkemesine, kararın bir örneğinin Bölge Adliye Mahkemesine gönderilmesine,19.09.2024 tarihinde oy birliğiyle karar verildi.",
+          "metin": null,
+          "skor": 0.85,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 54",
+          "metin_ozet": "7/5/2010-5982/7 md.) Greve katılmayanların işyerinde çalışmaları, greve katılanlar tarafından hiç bir şekilde engellenemez.",
+          "metin": null,
+          "skor": 0.8374,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 453,
+      "ortalama_kaynak_skor": 0.905,
+      "kaynak_sayisi": 5,
+      "message_id": "19ca6564-2685-4ee3-b6f9-673010ab2150",
+      "conversation_id": "d48636d4-4b1a-4269-9394-7ea3a56e619b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 10.0,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "İkamet izni başvurum reddedildi, karara nasıl itiraz edebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 6458 sayılı Yabancılar ve Uluslararası Koruma Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baro hukuki yardım bürosuna veya ALO 182 ye başvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 309",
+          "metin_ozet": "Konkordato tasfiye memurlarının malvarlığının paraya çevrilmesine ilişkin kararlarına karşı öğrenilmesinden itibaren yedi gün içinde alacaklılar kurulu nezdinde itiraz edilebilir ve bu kurulun kararlarına karşı da şikâyet yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 68",
+          "metin_ozet": "17/7/2003-4949/16 md.) Talebine itiraz edilen alacaklının takibi, imzası ikrar veya noterlikçe tasdik edilen borç ikrarını içeren bir senede yahut resmî dairelerin veya yetkili makamların yetkileri dahilinde ve usulüne göre verdikleri bir makbuz veya belgeye müstenitse, alacaklı...",
+          "metin": null,
+          "skor": 0.9242,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 97",
+          "metin_ozet": "18/2/1965-538/54 md.) İstihkak iddiasına karşı alacaklı veya borçlu tarafından itiraz edilirse, icra memuru dosyayı hemen icra mahkemesine verir.",
+          "metin": null,
+          "skor": 0.9242,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 150",
+          "metin_ozet": "18/2/1965-538/71 md.) Borçlu veya üçüncü şahıs ödeme emrinin tebliğinden itibaren yedi gün içinde itirazda bulunabilirler. Ancak, rehin hakkı itiraz konusu yapılamaz. 18/2/1965-538/72 md.) Ödeme emrine itiraz hakkında 62 den 72 nci maddeye kadar olan hükümler uygulanır.",
+          "metin": null,
+          "skor": 0.9242,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 265",
+          "metin_ozet": "huzuriyle yapılan hacizlerde haczin tatbiki, aksi hâlde haciz tutanağının kendisine tebliği tarihinden itibaren yedi gün içinde mahkemeye müracaatla itiraz edebilir.",
+          "metin": null,
+          "skor": 0.9242,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 412,
+      "ortalama_kaynak_skor": 0.9394,
+      "kaynak_sayisi": 5,
+      "message_id": "6276451c-44fa-4cd4-9ffe-be8c4a81a71d",
+      "conversation_id": "413d1599-947b-437a-bf61-26e5e4e050ba",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 8.86,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Sınır dışı etme kararına karşı dava açma süresi ne kadardır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 6458 sayılı Yabancılar ve Uluslararası Koruma Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baro hukuki yardım bürosuna veya ALO 182 ye başvurunuzu öneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 236",
+          "metin_ozet": "Yurtdışında görevlendirilen güvenlik görevlileri için geçici görevlendirme süresi en çok iki yıldır;",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 239",
+          "metin_ozet": "UNVANI Derece Ek Göstergeler Başmüşaviri, Başbakanlık Müsteşar Yardımcıları, Diyanet İşleri Başkan Yardımcıları, Din İşleri Yüksek Kurulu Başkanı, Mushafları İnceleme ve Kıraat Kurulu Başkanı, Diyanet Akademisi Başkanı, Büyükelçi ve Daimi Temsilci unvanını kazanmış olanlar,...",
+          "metin": null,
+          "skor": 0.9471,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 4",
+          "metin_ozet": "tercümanların;” ve “bu Kanuna tâbi kamu idarelerinde ve” ibareleri madde metninden çıkarılmış, paragrafta yer alan “dava adedinin azlığı nedeni ile kadrolu avukat istihdamının gerekli olmadığı yerlerde avukatlarını, kadrolu istihdamın mümkün olamadığı hallerde tabip veya uzman...",
+          "metin": null,
+          "skor": 0.8942,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 36",
+          "metin_ozet": "II - TEKNİK HİZMETLER SINIFI:26 Bu Kanunun kapsamına giren kurumlarda meslekleriyle ilgili görevleri fiilen ifa eden ve meri hükümlere göre yüksek mühendis, mühendis, yüksek mimar, mimar, jeolog, hidrojeolog, hidrolog, jeofizikçi, fizikçi, kimyager, matematikçi, istatistikçi,...",
+          "metin": null,
+          "skor": 0.8942,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 125",
+          "metin_ozet": "a) Verilen emir ve görevlerin tam ve zamanında yapılmasında, görev mahallinde kurumlarca belirlenen usul ve esasların yerine getirilmesinde, görevle ilgili resmi belge, araç ve gereçlerin korunması, kullanılması ve bakımında kayıtsızlık göstermek veya düzensiz davranmak, b)...",
+          "metin": null,
+          "skor": 0.8942,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 208,
+      "ortalama_kaynak_skor": 0.9259,
+      "kaynak_sayisi": 5,
+      "message_id": "1d1a1eaf-ebfb-4a6e-9a46-4787bdc1475b",
+      "conversation_id": "42a7fbf7-083d-4ce1-b072-38e48550f292",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 10.42,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Türk vatandaşlığı başvurusu için genel şartlar nelerdir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. Türk vatandaşlığı kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baro hukuki yardım bürosuna veya ALO 182 ye başvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 19",
+          "metin_ozet": "Şekil ve şartları kanunda gösterilen: bunun şartlarını kanun gösterir. 3/10/2001-4709/4 md.) Bu esaslar dışında bir işleme tâbi tutulan kişilerin uğradıkları zarar, tazminat hukukunun genel prensiplerine göre, Devletçe ödenir.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 67",
+          "metin_ozet": "Madde 67 – Vatandaşlar, kanunda gösterilen şartlara uygun olarak seçme, seçilme ve bağımsız olarak veya bir siyasi parti içinde siyasi faaliyette bulunma ve halkoylamasına katılma hakkına sahiptir.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 174",
+          "metin_ozet": "60 Cumhurbaşkanı, ilk genel seçimler sonucu Türkiye Büyük Millet Meclisi toplanıp; b) Bu Kanunun yürürlüğe girdiği tarihten itibaren beş gün içinde, Türkiye Barolar Birliği Başkanlığı adaylık başvurusunu ilan eder.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 3",
+          "metin_ozet": "Madde 3 – Türk vatandaşları kendileriyle veya kamu ile ilgili dilek ve şikayetleri hakkında, Türkiye Büyük Millet Meclisine ve yetkili makamlara yazı ile başvurma hakkına sahiptirler.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 9",
+          "metin_ozet": "Madde 9 – 26 Aralık 1962 tarih ve 140 sayılı Türk Vatandaşlarının Türkiye Büyük Millet Meclisine Dilekçe ile Başvurmaları ve Dilekçelerin İncelenmesi ile Karara Bağlanmasının Düzenlenmesine Dair Kanun yürürlükten kaldırılmıştır.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 180,
+      "ortalama_kaynak_skor": 1.0,
+      "kaynak_sayisi": 5,
+      "message_id": "848b3678-3cfa-4c82-828f-a0f6ec666d38",
+      "conversation_id": "b91d285c-b4fd-4d59-ba04-a2d54786b570",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 9.53,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Dilekçe hakkı kapsamında kamu kurumlarına başvuru nasıl yapılır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 3071 sayılı Dilekçe Hakkının Kullanılmasına İlişkin Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baro hukuki yardim burosuna veya ALO 182 ye basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz. Adalet Bakanligi ALO 182 hattindan ucretsiz hukuki danismanlik alabilirsiniz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 53",
+          "metin_ozet": "(Ek paragraf:16/11/2022-7421/11 md.) (Değişik dördüncü paragraf:24/12/2025- 7571/11 md.) İtirazen şikayet başvuru bedelinin, itirazen şikayet başvuru dilekçesinde yer verilen iddialar dikkate alınarak belirlenecek haklılık oranına karşılık gelen kısmının Kurul kararı ile başvuru...",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 68",
+          "metin_ozet": "30/7/2003-4964/39 md.) 2985 sayılı Toplu Konut Kanunu kapsamındaki projelerde, 5 69 Bu Kanunda belirtilen eşik değerler ve parasal limitlerin uygulanması ile ilgili olarak Kamu İhale Kurumu tarafından çıkarılan Kamu İhale Tebliğleri ile ilgili olarak son sayfada yer alan “4734...",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5520 Sayılı Kurumlar Vergisi Kanunu - Madde 36",
+          "metin_ozet": "Başka bir işletme üzerinde doğrudan veya dolaylı olarak kontrol gücüne sahip olan ve başka bir işletme tarafından doğrudan veya dolaylı olarak kontrol gücüne sahip olunmayan bir işletmeyi ya da başka bir grubun parçası olmaması koşuluyla bulunduğu ülke dışındaki diğer ülkelerde...",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5520&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 53",
+          "metin_ozet": "Madde 53 – İşçiler ve işverenler, karşılıklı olarak ekonomik ve sosyal durumlarını ve çalışma şartlarını düzenlemek amacıyla toplu iş sözleşmesi yapma hakkına sahiptirler. 7/5/2010-5982/6 md.) Memurlar ve diğer kamu görevlileri, toplu sözleşme yapma hakkına sahiptirler.",
+          "metin": null,
+          "skor": 0.9296,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 74",
+          "metin_ozet": "Madde 74 – Vatandaşlar ve karşılıklılık esası gözetilmek kaydıyla Türkiye’de ikamet eden yabancılar kendileriyle veya kamu ile ilgili dilek ve şikayetleri hakkında, yetkili makamlara ve Türkiye Büyük Millet Meclisine yazı ile başvurma hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.9296,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 417,
+      "ortalama_kaynak_skor": 0.9718,
+      "kaynak_sayisi": 5,
+      "message_id": "e59b5e8d-245d-400f-8509-3882a4f86dad",
+      "conversation_id": "700726f2-b345-48c3-a298-6d2feb37a998",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 11.84,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Bilgi edinme başvurusu reddedilirse hangi yola başvurulabilir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Bilgi Edinme Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baro hukuki yardim burosuna veya ALO 182 ye basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 309",
+          "metin_ozet": "Konkordato tasfiye memurlarının malvarlığının paraya çevrilmesine ilişkin kararlarına karşı öğrenilmesinden itibaren yedi gün içinde alacaklılar kurulu nezdinde itiraz edilebilir ve bu kurulun kararlarına karşı da şikâyet yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 45",
+          "metin_ozet": "İdare ve vergi mahkemelerinin kararlarına karşı, başka kanunlarda farklı bir kanun yolu öngörülmüş olsa dahi, mahkemenin bulunduğu yargı çevresindeki bölge idare mahkemesine, kararın tebliğinden itibaren otuz gün içinde istinaf yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 1.0,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 20",
+          "metin_ozet": "Mahkemeler belirlenen süre içinde lüzum gördükleri evrakın gönderilmesini ve her türlü bilgilerin verilmesini taraflardan ve ilgili diğer yerlerden isteyebilirler. g) Verilen nihai kararlara karşı tebliğ tarihinden itibaren on beş gün içinde temyiz yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 0.9559,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 97",
+          "metin_ozet": "18/2/1965-538/54 md.) İstihkak iddiasına karşı alacaklı veya borçlu tarafından itiraz edilirse, icra memuru dosyayı hemen icra mahkemesine verir.",
+          "metin": null,
+          "skor": 0.9119,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 27",
+          "metin_ozet": "hükmünün iptali istemiyle Anayasa Mahkemesine başvurulduğu gerekçesiyle yürütmenin durdurulması kararı verilemez.20 3.",
+          "metin": null,
+          "skor": 0.9119,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 175,
+      "ortalama_kaynak_skor": 0.9559,
+      "kaynak_sayisi": 5,
+      "message_id": "86b1b5cc-5daf-4e4b-a894-5ad3125c0789",
+      "conversation_id": "d566d669-e76f-414c-9b70-b3c501e0519e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 8.36,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

@@ -92,7 +92,7 @@ Bu prompt, `test_api_otomatik.py` çalıştırıldıktan sonra oluşan sonuç JS
 
 Değerlendirme çıktısının dili, bölüm yapısı ve ayrıntı seviyesi için şu dosya referans alınmalıdır:
 
-- [`backend/test_results/14_genel_hukuk/analiz1.md`](../../backend/test_results/14_genel_hukuk/analiz1.md)
+- [`backend\test_results\12_anayasa_hukuku\analiz1.md`]("C:\Github\Hak-Bul\backend\test_results\12_anayasa_hukuku\analiz1.md")
 
 AI'dan, analiz üretirken bu dosyadaki gibi:
 - önce güçlü bir özet vermesi
@@ -160,6 +160,8 @@ Her kategori için 0-10 arasında puan ver:
 Analiz dili doğrudan, teknik ve somut olsun.
 Genel geçer cümleler yerine soru bazlı örneklerle konuş.
 Gerekirse bazı sorular için doğru mevzuat veya doğru merci yönünü ayrıca belirt.
+
+En sonda analizini gerekli dizine markdown olarak kaydet
 
 ---
 

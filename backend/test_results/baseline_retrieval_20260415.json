@@ -1,0 +1,1656 @@
+{
+  "kategoriler": {
+    "01_is_hukuku": {
+      "sonuc_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\01_is_hukuku\\test_sonuclari_20260415_093430.json",
+      "toplam_soru": 12,
+      "beklenen_atanmis": 12,
+      "retrieval_kanun_hit": 0,
+      "retrieval_kanun_total": 12,
+      "retrieval_kanun_madde_hit": 0,
+      "retrieval_kanun_madde_total": 9,
+      "ortalama_gelen_skor": 0.6242,
+      "sorular": [
+        {
+          "sira": 1,
+          "soru": "İşten çıkarıldım, kıdem ve ihbar tazminatımı hangi şartlarda alabilirim?",
+          "beklenen_kanunlar": [
+            "1475",
+            "4857"
+          ],
+          "beklenen_maddeler": [
+            "14",
+            "17"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "4447",
+              "62"
+            ],
+            [
+              "4734",
+              "68"
+            ],
+            [
+              "4734",
+              "53"
+            ],
+            [
+              "4734",
+              "3"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 2,
+          "soru": "Kendi isteğimle işten ayrılırsam kıdem tazminatı alma hakkım olur mu?",
+          "beklenen_kanunlar": [
+            "1475"
+          ],
+          "beklenen_maddeler": [
+            "14"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "4447",
+              "62"
+            ],
+            [
+              "4734",
+              "53"
+            ],
+            [
+              "4734",
+              "68"
+            ],
+            [
+              "6698",
+              "27"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 3,
+          "soru": "Kıdem tazminatı nasıl hesaplanır, brüt mü net maaş mı dikkate alınır?",
+          "beklenen_kanunlar": [
+            "1475"
+          ],
+          "beklenen_maddeler": [
+            "14"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "657",
+              "236"
+            ],
+            [
+              "193",
+              "25"
+            ],
+            [
+              "193",
+              "124"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 4,
+          "soru": "Maaşım geç yatıyor veya eksik yatırılıyor, yasal olarak ne yapabilirim?",
+          "beklenen_kanunlar": [
+            "4857"
+          ],
+          "beklenen_maddeler": [
+            "34"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "4734",
+              "53"
+            ],
+            [
+              "4734",
+              "68"
+            ],
+            [
+              "4734",
+              "3"
+            ],
+            [
+              "4734",
+              "37"
+            ],
+            [
+              "4734",
+              "54"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 5,
+          "soru": "Fazla mesai yaptım ama ücretini alamadım, bunu nasıl ispat edebilirim?",
+          "beklenen_kanunlar": [
+            "4857"
+          ],
+          "beklenen_maddeler": [
+            "41"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "6502",
+              "11"
+            ],
+            [
+              "6502",
+              "47"
+            ],
+            [
+              "6502",
+              "48"
+            ],
+            [
+              "6502",
+              "49"
+            ],
+            [
+              "6502",
+              "63"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 6,
+          "soru": "İşe iade davası hangi şartlarda açılır ve başvuru süresi kaç gündür?",
+          "beklenen_kanunlar": [
+            "4857",
+            "7036"
+          ],
+          "beklenen_maddeler": [
+            "18",
+            "19",
+            "20",
+            "21"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "4447",
+              "50"
+            ],
+            [
+              "4447",
+              "62"
+            ],
+            [
+              "2709",
+              "174"
+            ],
+            [
+              "6100",
+              "74"
+            ],
+            [
+              "6502",
+              "49"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 7,
+          "soru": "SGK işten çıkış kodum yanlış girildiyse nasıl düzelttirebilirim?",
+          "beklenen_kanunlar": [
+            "5510"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "193",
+              "124"
+            ],
+            [
+              "2577",
+              "20"
+            ],
+            [
+              "2577",
+              "29"
+            ],
+            [
+              "2577",
+              "30"
+            ],
+            [
+              "2942",
+              "18"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 8,
+          "soru": "Sigortasız çalıştırıldım, geçmişe dönük sigorta ve ücret haklarımı nasıl arayabilirim?",
+          "beklenen_kanunlar": [
+            "4857",
+            "5510"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "2918",
+              "135"
+            ],
+            [
+              "6102",
+              "1320"
+            ],
+            [
+              "6102",
+              "1352"
+            ],
+            [
+              "6102",
+              "516"
+            ],
+            [
+              "6102",
+              "1022"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 9,
+          "soru": "İşyerinde mobbinge uğruyorum, hangi delillerle dava açabilirim?",
+          "beklenen_kanunlar": [
+            "4857",
+            "6098"
+          ],
+          "beklenen_maddeler": [
+            "417",
+            "5"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "6100",
+              "119"
+            ],
+            [
+              "6100",
+              "129"
+            ],
+            [
+              "6100",
+              "208"
+            ],
+            [
+              "6100",
+              "7"
+            ],
+            [
+              "6100",
+              "22"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 10,
+          "soru": "Kullanmadığım yıllık izin ücretini işten ayrılırken talep edebilir miyim?",
+          "beklenen_kanunlar": [
+            "4857"
+          ],
+          "beklenen_maddeler": [
+            "59"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "193",
+              "124"
+            ],
+            [
+              "3194",
+              "47"
+            ],
+            [
+              "4447",
+              "62"
+            ],
+            [
+              "6098",
+              "389"
+            ],
+            [
+              "6098",
+              "343"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 11,
+          "soru": "İş kazası geçirdim, işverenden hangi tazminatları isteyebilirim?",
+          "beklenen_kanunlar": [
+            "5510",
+            "6098",
+            "6331"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "2918",
+              "135"
+            ],
+            [
+              "2918",
+              "67"
+            ],
+            [
+              "2918",
+              "3"
+            ],
+            [
+              "2918",
+              "5"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 12,
+          "soru": "Emeklilik nedeniyle işten ayrılırsam kıdem tazminatımı nasıl alırım?",
+          "beklenen_kanunlar": [
+            "1475"
+          ],
+          "beklenen_maddeler": [
+            "14"
+          ],
+          "gelen_kanun_madde": [],
+          "kanun_hit": false,
+          "madde_hit": false
+        }
+      ]
+    },
+    "03_ceza_hukuku": {
+      "sonuc_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\03_ceza_hukuku\\test_sonuclari_20260415_093007.json",
+      "toplam_soru": 12,
+      "beklenen_atanmis": 12,
+      "retrieval_kanun_hit": 9,
+      "retrieval_kanun_total": 12,
+      "retrieval_kanun_madde_hit": 4,
+      "retrieval_kanun_madde_total": 12,
+      "ortalama_gelen_skor": 0.8646,
+      "sorular": [
+        {
+          "sira": 1,
+          "soru": "Bana hakaret edildi, şikayetçi olmak için ne kadar sürem var ve nereye başvurmalıyım?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "125",
+            "131",
+            "73"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2709",
+              "174"
+            ],
+            [
+              "5237",
+              "75"
+            ],
+            [
+              "2709",
+              "19"
+            ],
+            [
+              "2709",
+              "159"
+            ],
+            [
+              "5237",
+              "50"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 2,
+          "soru": "Tehdit suçu hangi durumlarda oluşur ve cezası ne olabilir?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "106"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5237",
+              "51"
+            ],
+            [
+              "5237",
+              "84"
+            ],
+            [
+              "5237",
+              "11"
+            ],
+            [
+              "5237",
+              "12"
+            ],
+            [
+              "5237",
+              "80"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 3,
+          "soru": "İnternetten ürün alırken dolandırıldım, ceza şikayetini nasıl yapabilirim?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "157",
+            "158"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5237",
+              "156"
+            ],
+            [
+              "5237",
+              "159"
+            ],
+            [
+              "5237",
+              "11"
+            ],
+            [
+              "5237",
+              "12"
+            ],
+            [
+              "5237",
+              "39"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 4,
+          "soru": "Sosyal medyada hakaret veya iftiraya uğradım, hangi deliller gerekir?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "125",
+            "267"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5237",
+              "51"
+            ],
+            [
+              "5237",
+              "50"
+            ],
+            [
+              "5237",
+              "125"
+            ],
+            [
+              "5651",
+              "12"
+            ],
+            [
+              "6100",
+              "297"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": true
+        },
+        {
+          "sira": 5,
+          "soru": "Kasten yaralama suçunda şikayet süresi ne kadardır ve süreç nasıl işler?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "73",
+            "86",
+            "87"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5237",
+              "106"
+            ],
+            [
+              "5237",
+              "58"
+            ],
+            [
+              "5237",
+              "108"
+            ],
+            [
+              "5237",
+              "294"
+            ],
+            [
+              "5237",
+              "6"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 6,
+          "soru": "Trafik kazasında taksirle yaralama olursa ceza davası nasıl yürür?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "89"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2918",
+              "135"
+            ],
+            [
+              "2918",
+              "48"
+            ],
+            [
+              "2918",
+              "85"
+            ],
+            [
+              "5237",
+              "53"
+            ],
+            [
+              "2918",
+              "3"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 7,
+          "soru": "Uyuşturucu madde kullanırken ilk kez yakalanan kişi hakkında ne işlem yapılır?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "191"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5237",
+              "188"
+            ],
+            [
+              "5237",
+              "38"
+            ],
+            [
+              "5237",
+              "191"
+            ],
+            [
+              "5237",
+              "192"
+            ],
+            [
+              "5237",
+              "221"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": true
+        },
+        {
+          "sira": 8,
+          "soru": "Hükmün açıklanmasının geri bırakılması (HAGB) nedir, hangi durumlarda uygulanır?",
+          "beklenen_kanunlar": [
+            "5271"
+          ],
+          "beklenen_maddeler": [
+            "231"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5237",
+              "191"
+            ],
+            [
+              "6098",
+              "312"
+            ],
+            [
+              "6102",
+              "70"
+            ],
+            [
+              "5237",
+              "17"
+            ],
+            [
+              "5237",
+              "53"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 9,
+          "soru": "Adli para cezası ödenmezse hapis cezasına çevrilir mi?",
+          "beklenen_kanunlar": [
+            "5237",
+            "5275"
+          ],
+          "beklenen_maddeler": [
+            "52"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5237",
+              "14"
+            ],
+            [
+              "5237",
+              "50"
+            ],
+            [
+              "5237",
+              "52"
+            ],
+            [
+              "5237",
+              "65"
+            ],
+            [
+              "5237",
+              "75"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": true
+        },
+        {
+          "sira": 10,
+          "soru": "Sabıka kaydı ne zaman silinir veya arşiv kaydına dönüşür?",
+          "beklenen_kanunlar": [
+            "5352"
+          ],
+          "beklenen_maddeler": [
+            "12",
+            "9"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "193",
+              "124"
+            ],
+            [
+              "5520",
+              "36"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 11,
+          "soru": "Meşru savunma hangi şartlarda ceza sorumluluğunu ortadan kaldırır?",
+          "beklenen_kanunlar": [
+            "5237"
+          ],
+          "beklenen_maddeler": [
+            "25",
+            "27"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "5651",
+              "12"
+            ],
+            [
+              "5237",
+              "27"
+            ],
+            [
+              "5237",
+              "84"
+            ],
+            [
+              "6102",
+              "1533"
+            ],
+            [
+              "4721",
+              "1001"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": true
+        },
+        {
+          "sira": 12,
+          "soru": "Uzaklaştırma kararını ihlal eden kişi hakkında hangi cezai işlemler uygulanır?",
+          "beklenen_kanunlar": [
+            "6284"
+          ],
+          "beklenen_maddeler": [
+            "13"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2709",
+              "174"
+            ],
+            [
+              "5237",
+              "51"
+            ],
+            [
+              "5237",
+              "191"
+            ],
+            [
+              "5237",
+              "221"
+            ],
+            [
+              "5237",
+              "267"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        }
+      ]
+    },
+    "13_usul_hukuku": {
+      "sonuc_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\13_usul_hukuku\\test_sonuclari_20260415_094005.json",
+      "toplam_soru": 12,
+      "beklenen_atanmis": 12,
+      "retrieval_kanun_hit": 9,
+      "retrieval_kanun_total": 12,
+      "retrieval_kanun_madde_hit": 1,
+      "retrieval_kanun_madde_total": 11,
+      "ortalama_gelen_skor": 0.946,
+      "sorular": [
+        {
+          "sira": 1,
+          "soru": "İlamsız icra takibi nasıl başlatılır ve borçlu ne kadar sürede itiraz edebilir?",
+          "beklenen_kanunlar": [
+            "2004"
+          ],
+          "beklenen_maddeler": [
+            "58",
+            "60",
+            "62"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2004",
+              "368"
+            ],
+            [
+              "2004",
+              "150"
+            ],
+            [
+              "657",
+              "186"
+            ],
+            [
+              "2004",
+              "65"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 2,
+          "soru": "Hakkımda icra takibi başlatıldı, ödeme emrine nasıl itiraz edebilirim?",
+          "beklenen_kanunlar": [
+            "2004"
+          ],
+          "beklenen_maddeler": [
+            "62",
+            "63"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2004",
+              "150"
+            ],
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2004",
+              "264"
+            ],
+            [
+              "2004",
+              "368"
+            ],
+            [
+              "2004",
+              "60"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 3,
+          "soru": "Banka hesabıma e-haciz geldi, blokeyi kaldırmak için hangi yollar vardır?",
+          "beklenen_kanunlar": [
+            "2004"
+          ],
+          "beklenen_maddeler": [
+            "85",
+            "89"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2004",
+              "88"
+            ],
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2004",
+              "368"
+            ],
+            [
+              "657",
+              "236"
+            ],
+            [
+              "2004",
+              "69"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 4,
+          "soru": "Arabuluculuk hangi uyuşmazlıklarda zorunludur, başvuru nasıl yapılır?",
+          "beklenen_kanunlar": [
+            "6325",
+            "7036"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "7036",
+              "3"
+            ],
+            [
+              "5411",
+              "38"
+            ],
+            [
+              "2709",
+              "53"
+            ],
+            [
+              "2709",
+              "90"
+            ],
+            [
+              "7036",
+              "4"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 5,
+          "soru": "Dava açarken harç ve masraflar nasıl hesaplanır, peşin ödeme zorunlu mudur?",
+          "beklenen_kanunlar": [
+            "492",
+            "6100"
+          ],
+          "beklenen_maddeler": [
+            "120"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2004",
+              "368"
+            ],
+            [
+              "2004",
+              "134"
+            ],
+            [
+              "2004",
+              "68"
+            ],
+            [
+              "2004",
+              "88"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 6,
+          "soru": "Maddi durumum kötü ise adli yardım talebini nasıl yapabilirim?",
+          "beklenen_kanunlar": [
+            "6100"
+          ],
+          "beklenen_maddeler": [
+            "334",
+            "335",
+            "336",
+            "337",
+            "338",
+            "339",
+            "340"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "6102",
+              "62"
+            ],
+            [
+              "6102",
+              "55"
+            ],
+            [
+              "6102",
+              "523"
+            ],
+            [
+              "6102",
+              "1016"
+            ],
+            [
+              "6102",
+              "1303"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 7,
+          "soru": "İstinaf başvurusu nedir, hangi sürede ve nereye yapılır?",
+          "beklenen_kanunlar": [
+            "6100"
+          ],
+          "beklenen_maddeler": [
+            "341",
+            "342",
+            "343",
+            "345"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "193",
+              "124"
+            ],
+            [
+              "2942",
+              "10"
+            ],
+            [
+              "6100",
+              "98"
+            ],
+            [
+              "6100",
+              "342"
+            ],
+            [
+              "6100",
+              "343"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": true
+        },
+        {
+          "sira": 8,
+          "soru": "Temyiz hangi kararlar için mümkündür ve istinaftan farkı nedir?",
+          "beklenen_kanunlar": [
+            "6100"
+          ],
+          "beklenen_maddeler": [
+            "361",
+            "362",
+            "363",
+            "364",
+            "365"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "193",
+              "124"
+            ],
+            [
+              "2942",
+              "10"
+            ],
+            [
+              "2942",
+              "41"
+            ],
+            [
+              "6100",
+              "450"
+            ],
+            [
+              "6102",
+              "1346"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 9,
+          "soru": "İhtiyati tedbir kararı hangi durumlarda alınabilir?",
+          "beklenen_kanunlar": [
+            "6100"
+          ],
+          "beklenen_maddeler": [
+            "389",
+            "390",
+            "391",
+            "392"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "6284",
+              "1"
+            ],
+            [
+              "6284",
+              "3"
+            ],
+            [
+              "6284",
+              "5"
+            ],
+            [
+              "6284",
+              "7"
+            ],
+            [
+              "6284",
+              "10"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 10,
+          "soru": "Delil tespiti davası nedir, hangi durumlarda dava açmadan önce istenir?",
+          "beklenen_kanunlar": [
+            "6100"
+          ],
+          "beklenen_maddeler": [
+            "400",
+            "401",
+            "402",
+            "403",
+            "404",
+            "405"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "6100",
+              "183"
+            ],
+            [
+              "6100",
+              "375"
+            ],
+            [
+              "6100",
+              "108"
+            ],
+            [
+              "6100",
+              "316"
+            ],
+            [
+              "6100",
+              "320"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 11,
+          "soru": "Tebligat bana ulaşmadıysa yine de süre işlemeye başlar mı?",
+          "beklenen_kanunlar": [
+            "7201"
+          ],
+          "beklenen_maddeler": [
+            "21",
+            "32",
+            "35"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "7201",
+              "7"
+            ],
+            [
+              "7201",
+              "31"
+            ],
+            [
+              "7201",
+              "34"
+            ],
+            [
+              "7201",
+              "43"
+            ],
+            [
+              "7201",
+              "62"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 12,
+          "soru": "Avukatsız dava açabilir miyim, hangi aşamalarda avukat desteği kritik hale gelir?",
+          "beklenen_kanunlar": [
+            "1136",
+            "6100"
+          ],
+          "beklenen_maddeler": [
+            "71"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "193",
+              "94"
+            ],
+            [
+              "193",
+              "124"
+            ],
+            [
+              "193",
+              "126"
+            ],
+            [
+              "193",
+              "89"
+            ],
+            [
+              "6100",
+              "76"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        }
+      ]
+    },
+    "14_genel_hukuk": {
+      "sonuc_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\14_genel_hukuk\\test_sonuclari_20260415_095222.json",
+      "toplam_soru": 12,
+      "beklenen_atanmis": 12,
+      "retrieval_kanun_hit": 4,
+      "retrieval_kanun_total": 12,
+      "retrieval_kanun_madde_hit": 1,
+      "retrieval_kanun_madde_total": 6,
+      "ortalama_gelen_skor": 0.8971,
+      "sorular": [
+        {
+          "sira": 1,
+          "soru": "Trafik cezasına nasıl itiraz edilir ve başvuru süresi kaç gündür?",
+          "beklenen_kanunlar": [
+            "2918",
+            "5326"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "2918",
+              "135"
+            ],
+            [
+              "2004",
+              "368"
+            ],
+            [
+              "2004",
+              "308"
+            ],
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2918",
+              "20"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 2,
+          "soru": "Trafik kazasında kusur oranına itiraz etmek istersem nereye başvurmalıyım?",
+          "beklenen_kanunlar": [
+            "2918"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "2918",
+              "135"
+            ],
+            [
+              "2004",
+              "169"
+            ],
+            [
+              "2004",
+              "308"
+            ],
+            [
+              "2577",
+              "63"
+            ],
+            [
+              "2918",
+              "3"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 3,
+          "soru": "Ehliyetime el konulduysa geri almak için hangi hukuki yollar vardır?",
+          "beklenen_kanunlar": [
+            "2918"
+          ],
+          "beklenen_maddeler": [
+            "48",
+            "51"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2918",
+              "135"
+            ],
+            [
+              "2918",
+              "21"
+            ],
+            [
+              "2918",
+              "51"
+            ],
+            [
+              "5237",
+              "53"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": true
+        },
+        {
+          "sira": 4,
+          "soru": "Noter vekaletnamesi nasıl çıkarılır ve hangi işlemler için gerekir?",
+          "beklenen_kanunlar": [
+            "1512",
+            "6098"
+          ],
+          "beklenen_maddeler": [
+            "502",
+            "514"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2004",
+              "368"
+            ],
+            [
+              "4734",
+              "53"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 5,
+          "soru": "Adli sicil kaydı e-Devlet üzerinden nasıl alınır, silinme talebi nasıl yapılır?",
+          "beklenen_kanunlar": [
+            "5352"
+          ],
+          "beklenen_maddeler": [
+            "12",
+            "9"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "657",
+              "236"
+            ],
+            [
+              "657",
+              "239"
+            ],
+            [
+              "6098",
+              "134"
+            ],
+            [
+              "657",
+              "4"
+            ],
+            [
+              "6098",
+              "300"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 6,
+          "soru": "Ad veya soyadı değişikliği için hangi mahkemeye başvurulur?",
+          "beklenen_kanunlar": [
+            "4721"
+          ],
+          "beklenen_maddeler": [
+            "27"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "4721",
+              "314"
+            ],
+            [
+              "5237",
+              "103"
+            ],
+            [
+              "2709",
+              "19"
+            ],
+            [
+              "2709",
+              "85"
+            ],
+            [
+              "2709",
+              "148"
+            ]
+          ],
+          "kanun_hit": true,
+          "madde_hit": false
+        },
+        {
+          "sira": 7,
+          "soru": "Yabancıların Türkiye'de çalışma izni başvurusu nasıl yapılır?",
+          "beklenen_kanunlar": [
+            "6735"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "2709",
+              "174"
+            ],
+            [
+              "2709",
+              "53"
+            ],
+            [
+              "2709",
+              "74"
+            ],
+            [
+              "2709",
+              "54"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 8,
+          "soru": "İkamet izni başvurum reddedildi, karara nasıl itiraz edebilirim?",
+          "beklenen_kanunlar": [
+            "6458"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2004",
+              "68"
+            ],
+            [
+              "2004",
+              "97"
+            ],
+            [
+              "2004",
+              "150"
+            ],
+            [
+              "2004",
+              "265"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 9,
+          "soru": "Sınır dışı etme kararına karşı dava açma süresi ne kadardır?",
+          "beklenen_kanunlar": [
+            "6458"
+          ],
+          "beklenen_maddeler": [
+            "53"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "657",
+              "236"
+            ],
+            [
+              "657",
+              "239"
+            ],
+            [
+              "657",
+              "4"
+            ],
+            [
+              "657",
+              "36"
+            ],
+            [
+              "657",
+              "125"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 10,
+          "soru": "Türk vatandaşlığı başvurusu için genel şartlar nelerdir?",
+          "beklenen_kanunlar": [
+            "5901"
+          ],
+          "beklenen_maddeler": [
+            "11"
+          ],
+          "gelen_kanun_madde": [
+            [
+              "2709",
+              "19"
+            ],
+            [
+              "2709",
+              "67"
+            ],
+            [
+              "2709",
+              "174"
+            ],
+            [
+              "3071",
+              "3"
+            ],
+            [
+              "3071",
+              "9"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 11,
+          "soru": "Dilekçe hakkı kapsamında kamu kurumlarına başvuru nasıl yapılır?",
+          "beklenen_kanunlar": [
+            "3071"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "4734",
+              "53"
+            ],
+            [
+              "4734",
+              "68"
+            ],
+            [
+              "5520",
+              "36"
+            ],
+            [
+              "2709",
+              "53"
+            ],
+            [
+              "2709",
+              "74"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        },
+        {
+          "sira": 12,
+          "soru": "Bilgi edinme başvurusu reddedilirse hangi yola başvurulabilir?",
+          "beklenen_kanunlar": [
+            "4982"
+          ],
+          "beklenen_maddeler": [],
+          "gelen_kanun_madde": [
+            [
+              "2004",
+              "309"
+            ],
+            [
+              "2577",
+              "45"
+            ],
+            [
+              "2577",
+              "20"
+            ],
+            [
+              "2004",
+              "97"
+            ],
+            [
+              "2577",
+              "27"
+            ]
+          ],
+          "kanun_hit": false,
+          "madde_hit": false
+        }
+      ]
+    }
+  },
+  "toplam": {
+    "retrieval_kanun_hit": 22,
+    "retrieval_kanun_total": 48,
+    "retrieval_kanun_madde_hit": 6,
+    "retrieval_kanun_madde_total": 38
+  }
+}

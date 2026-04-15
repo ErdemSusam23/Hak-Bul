@@ -1,0 +1,661 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-15T11:34:54.476478+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 4,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\03_ceza_hukuku\\test_sonuclari_20260415_142823.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 391.3,
+    "ortalama_sure_sn": 32.61,
+    "kategori_dagilimi": {
+      "Ceza Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 28.58,
+        "kategori_dogruluk_orani": 91.7,
+        "ortalama_cevap_uzunluk": 686.0,
+        "ortalama_kaynak_skor": 0.3719
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Bana hakaret edildi, şikayetçi olmak için ne kadar sürem var ve nereye başvurmalıyım?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5271 sayılı Ceza Muhakemesi Kanunu ve 5237 sayılı Türk Ceza Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 74",
+          "metin_ozet": "Madde 74 – Vatandaşlar ve karşılıklılık esası gözetilmek kaydıyla Türkiye’de ikamet eden yabancılar kendileriyle veya kamu ile ilgili dilek ve şikayetleri hakkında, yetkili makamlara ve Türkiye Büyük Millet Meclisine yazı ile başvurma hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.019,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 148",
+          "metin_ozet": "Madde 148 – Anayasa Mahkemesi, kanunların, Cumhurbaşkanlığı kararnamelerinin ve Türkiye Büyük Millet Meclisi İçtüzüğünün Anayasaya şekil ve esas bakımlarından uygunluğunu denetler ve bireysel başvuruları karara bağlar.",
+          "metin": null,
+          "skor": 0.0041,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 85",
+          "metin_ozet": "23/7/1995-4121/10 md.) Yasama dokunulmazlığının kaldırılmasına veya milletvekilliğinin düşmesine 84 üncü maddenin birinci, üçüncü veya dördüncü fıkralarına göre karar verilmiş olması hallerinde, Meclis Genel Kurulu kararının alındığı tarihten başlayarak yedi gün içerisinde ilgili...",
+          "metin": null,
+          "skor": 0.0038,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 19",
+          "metin_ozet": "Yakalanan veya tutuklanan kişilere, yakalama veya tutuklama sebepleri ve haklarındaki iddialar herhalde yazılı ve bunun hemen mümkün olmaması halinde sözlü olarak derhal, toplu suçlarda en geç hakim huzuruna çıkarılıncaya kadar bildirilir.",
+          "metin": null,
+          "skor": 0.002,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 103",
+          "metin_ozet": "24/11/2016-6763/13 md.) Çocuğu cinsel yönden istismar eden kişi, sekiz yıldan on beş yıla kadar hapis cezası ile cezalandırılır. Cinsel istismarın sarkıntılık düzeyinde kalması hâlinde üç yıldan sekiz yıla kadar hapis cezasına hükmolunur.",
+          "metin": null,
+          "skor": 0.0016,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 353,
+      "ortalama_kaynak_skor": 0.0061,
+      "kaynak_sayisi": 5,
+      "message_id": "1bde3136-49d4-4e1f-a686-eb7ea513ae38",
+      "conversation_id": "4e0d7c43-50fe-4503-9975-a963e3e84bc5",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.65,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Tehdit suçu hangi durumlarda oluşur ve cezası ne olabilir?",
+      "cevap": "Tehdit suçu, bir kişiyi belirli bir davranışa zorlamak veya onu bir davranıştan vazgeçirmek amacıyla, kendisine veya bir başkasına karşı bir zarar veya kötülük yapılacağına ilişkin bir tehdit içeren söz, yazı veya davranışla işlenir. \n\n5237 Sayılı Türk Ceza Kanunu'nun 265. maddesine göre, kamu görevlisine karşı görevini yapmasını engellemek amacıyla cebir veya tehdit kullanan kişi, altı aydan üç yıla kadar hapis cezası ile cezalandırılır. Aynı kanunun 109. maddesine göre, bir kimseyi hukuka aykırı olarak bir yere gitmek veya bir yerde kalmak hürriyetinden yoksun bırakan kişiye, bir yıldan beş yıla kadar hapis cezası verilir. Eğer bu suç, cebir, tehdit veya hile kullanılarak işlenirse, iki yıldan yedi yıla kadar hapis cezasına hükmolunur.\n\nAyrıca, 5237 Sayılı Türk Ceza Kanunu'nun 80. maddesine göre, zorla çalıştırmak, hizmet ettirmek, fuhuş yaptırmak veya esarete tâbi kılmak ya da vücut organlarının verilmesini sağlamak maksadıyla tehdit, baskı, cebir veya şiddet uygulamak, nüfuzu kötüye kullanmak, kandırmak veya kişiler üzerindeki denetim olanaklarından veya çaresizliklerinden yararlanarak rızalarını elde etmek suretiyle kişileri ülkeye sokan, ülke dışına çıkaran, tedarik eden, kaçıran, bir yerden başka bir yere götüren veya sevk eden ya da barındıran kimseye sekiz yıldan oniki yıla kadar hapis ve onbin güne kadar adlî para cezası verilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 224",
+          "metin_ozet": "Madde 224- (1) Kıt'a sahanlığında veya münhasır ekonomik bölgede kurulmuş sabit bir platformu cebir veya tehdit kullanarak ya da hukuka aykırı başka bir davranışla ele geçiren, zapteden veya kontrolü altına alan kişi, beş yıldan onbeş yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.6251,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 109",
+          "metin_ozet": "Madde 109- (1) Bir kimseyi hukuka aykırı olarak bir yere gitmek veya bir yerde kalmak hürriyetinden yoksun bırakan kişiye, bir yıldan beş yıla kadar hapis cezası verilir.",
+          "metin": null,
+          "skor": 0.4909,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 265",
+          "metin_ozet": "Madde 265- (1) Kamu görevlisine karşı görevini yapmasını engellemek amacıyla, cebir veya tehdit kullanan kişi, altı aydan üç yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.4203,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 292",
+          "metin_ozet": "Madde 292- (1) Tutukevinden, ceza infaz kurumundan veya gözetimi altında bulunduğu görevlilerin elinden kaçan tutuklu veya hükümlü hakkında altı aydan bir yıla kadar hapis cezasına hükmolunur.",
+          "metin": null,
+          "skor": 0.3717,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 80",
+          "metin_ozet": "6/12/2006 – 5560/3 md.) Zorla çalıştırmak, hizmet ettirmek, fuhuş yaptırmak veya esarete tâbi kılmak ya da vücut organlarının verilmesini sağlamak maksadıyla tehdit, baskı, cebir veya şiddet uygulamak, nüfuzu kötüye kullanmak, kandırmak veya kişiler üzerindeki denetim...",
+          "metin": null,
+          "skor": 0.2945,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1487,
+      "ortalama_kaynak_skor": 0.4405,
+      "kaynak_sayisi": 5,
+      "message_id": "5633f741-1a02-41c0-8ac0-db618f22a113",
+      "conversation_id": "e015cd33-27fa-49b2-9fb0-74ee5df12b7e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.7,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "İnternetten ürün alırken dolandırıldım, ceza şikayetini nasıl yapabilirim?",
+      "cevap": "İnternetten ürün alırken dolandırıldığınızı düşünüyorsanız, Türk Ceza Kanunu'nun ilgili maddelerine göre şikayette bulunabilirsiniz. Dolandırıcılık suçu, 5237 Sayılı Türk Ceza Kanunu'nun 156. maddesinde düzenlenmiştir. Bu maddeye göre, dolandırıcılık suçu şikayet üzerine soruşturulmaktadır.\n\nŞikayetinizi, suçu işlendiği yerin sulh ceza hakimliğine veya Cumhuriyet başsavcılığına yapabilirsiniz. Şikayetinizi yazılı olarak veya sözlü olarak yapabilirsiniz. Şikayetinizi yazılı olarak yapacaksanız, şikayet dilekçenizi hazırlayarak ilgili mercie teslim etmeniz gerekmektedir.\n\nŞikayet dilekçenizi hazırlarken, aşağıdaki bilgileri belirtmeniz gerekmektedir:\n\n* Adınız ve soyadınız\n* Adresiniz\n* Telefon numaranız\n* Dolandırıldığınız tarih ve saat\n* Dolandırıldığınız yer\n* Dolandırıcılık suçuyla ilgili detaylı bilgi\n* Suçun delilleri (örneğin, e-posta, mesaj, fatura, vb.)\n\nŞikayetinizi yaptıktan sonra, ilgili merci tarafından soruşturma başlatılacaktır. Soruşturma sırasında, sizin ve diğer ilgili kişilerin ifadeleri alınacak ve deliller toplanacaktır.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamaktadır. 5237 Sayılı Türk Ceza Kanunu'nun ilgili maddeleri, dolandırıcılık suçuyla ilgili hükümleri içermektedir. Ancak, şikayet prosedürü ve diğer detaylar için daha fazla bilgiye ihtiyaç duyulabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 159",
+          "metin_ozet": "Madde 159- (1) Dolandırıcılığın, bir hukuki ilişkiye dayanan alacağı tahsil amacıyla işlenmesi halinde, şikayet üzerine, altı aydan bir yıla kadar hapis veya adlî para cezasına hükmolunur.",
+          "metin": null,
+          "skor": 0.2514,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 156",
+          "metin_ozet": "Madde 156- (1) Bedelsiz kalmış bir senedi kullanan kimseye, şikayet üzerine, altı aydan iki yıla kadar hapis ve adlî para cezası verilir.",
+          "metin": null,
+          "skor": 0.0688,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 11",
+          "metin_ozet": "Madde 11- (1) Bir Türk vatandaşı, 13 üncü maddede yazılı suçlar dışında, Türk kanunlarına göre aşağı sınırı bir yıldan az olmayan hapis cezasını gerektiren bir suçu yabancı ülkede işlediği ve kendisi Türkiye'de bulunduğu takdirde, bu suçtan dolayı yabancı ülkede hüküm verilmemiş...",
+          "metin": null,
+          "skor": 0.0053,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 12",
+          "metin_ozet": "Madde 12- (1) Bir yabancı, 13 üncü maddede yazılı suçlar dışında, Türk kanunlarına göre aşağı sınırı en az bir yıl hapis cezasını gerektiren bir suçu yabancı ülkede Türkiye'nin zararına işlediği ve kendisi Türkiye'de bulunduğu takdirde, Türk kanunlarına göre cezalandırılır.",
+          "metin": null,
+          "skor": 0.0037,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 138",
+          "metin_ozet": "Madde 138- (1) Kanunların belirlediği sürelerin geçmiş olmasına karşın verileri sistem içinde yok etmekle yükümlü olanlara görevlerini yerine getirmediklerinde bir yıldan iki yıla kadar hapis cezası verilir.63 (2) (Ek:",
+          "metin": null,
+          "skor": 0.0028,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1429,
+      "ortalama_kaynak_skor": 0.0664,
+      "kaynak_sayisi": 5,
+      "message_id": "f37b3f04-4082-4c40-89a8-3547d4794b0f",
+      "conversation_id": "cf00d9e5-82ab-4ccc-97d3-419156c37ce7",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 30.04,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Sosyal medyada hakaret veya iftiraya uğradım, hangi deliller gerekir?",
+      "cevap": "Sosyal medyada hakaret veya iftiraya uğradığınız durumlarda, delil toplamak önemlidir. 5237 Sayılı Türk Ceza Kanunu'nun ilgili maddelerine göre, hakaret veya iftira suçlarını ispat etmek için aşağıdaki delillere ihtiyaç duyulabilir:\n\n- Hakaret veya iftira içeren sosyal medya paylaşımlarının ekran görüntüleri\n- Paylaşımların zaman damgası ve diğer ilgili bilgiler\n- Paylaşımların kim tarafından yapıldığının belirlenmesine yardımcı olabilecek IP adresi veya diğer teknik bilgiler\n- Hakaret veya iftira içeren paylaşımların kaldırılması veya silinmesi durumunda, bu durumun belgelendirilmesi\n\nAyrıca, 5237 Sayılı Türk Ceza Kanunu'nun 125. maddesi ve 128. maddesi, hakaret ve iftira suçlarına ilişkin hükümleri düzenlemektedir. Bu maddelere göre, hakaret veya iftira suçlarını ispat etmek için, somut ve gerçek vakıalara dayanmak önemlidir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 267",
+          "metin_ozet": "(2) Fiilin maddî eser ve delillerini uydurarak iftirada bulunulması halinde, ceza yarı oranında artırılır.",
+          "metin": null,
+          "skor": 0.2048,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 269",
+          "metin_ozet": "29/6/2005 – 5377/31 md.) Basın ve yayın yoluyla yapılan iftiradan dolayı etkin pişmanlık hükümlerinden yararlanılabilmesi için, bunun aynı yöntemle yayınlanması gerekir.",
+          "metin": null,
+          "skor": 0.0498,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 125",
+          "metin_ozet": "Mağdurun gıyabında hakaretin cezalandırılabilmesi için fiilin en az üç kişiyle ihtilat ederek işlenmesi gerekir.",
+          "metin": null,
+          "skor": 0.0277,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 128",
+          "metin_ozet": "değerlendirmelerin, gerçek ve somut vakıalara dayanması ve uyuşmazlıkla bağlantılı olması gerekir. Haksız fiil nedeniyle veya karşılıklı hakaret",
+          "metin": null,
+          "skor": 0.0242,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 297",
+          "metin_ozet": "c) Tarafların iddia ve savunmalarının özetini, anlaştıkları ve anlaşamadıkları hususları, çekişmeli vakıalar hakkında toplanan delilleri, delillerin tartışılması ve değerlendirilmesini, sabit görülen vakıalarla bunlardan çıkarılan sonuç ve hukuki sebepleri.",
+          "metin": null,
+          "skor": 0.0015,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 965,
+      "ortalama_kaynak_skor": 0.0616,
+      "kaynak_sayisi": 5,
+      "message_id": "64c6a935-f4d9-4d30-b79a-97ee5a77c3f3",
+      "conversation_id": "ab878c3a-f875-46bb-baf9-ed9f1c4bfc43",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 31.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Kasten yaralama suçunda şikayet süresi ne kadardır ve süreç nasıl işler?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5237 Sayılı Türk Ceza Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 86",
+          "metin_ozet": "Madde 86- (1) Kasten başkasının vücuduna acı veren veya sağlığının ya da algılama yeteneğinin bozulmasına neden olan kişi, bir yıl altı aydan üç yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.9286,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 108",
+          "metin_ozet": "Madde 108- (1) Bir şeyi yapması veya yapmaması ya da kendisinin yapmasına 51 4/6/2025 tarihli ve 7550 sayılı Kanunun 11 inci maddesiyle bu maddenin birinci fıkrasına “şikayeti üzerine,” ibaresinden sonra gelmek üzere “iki aydan” ibaresi eklenmiş ve ikinci fıkrasında yer alan “beş...",
+          "metin": null,
+          "skor": 0.846,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 190,
+      "ortalama_kaynak_skor": 0.8873,
+      "kaynak_sayisi": 2,
+      "message_id": "44e06856-a0ff-4fb7-a274-22ed363d8826",
+      "conversation_id": "7f1f5237-dda2-49af-8d74-5b74a7be4127",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.28,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Trafik kazasında taksirle yaralama olursa ceza davası nasıl yürür?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5237 Sayılı Türk Ceza Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 88",
+          "metin_ozet": "Madde 88-(1) Kasten yaralamanın ihmali davranışla işlenmesi halinde, verilecek ceza üçte ikisine kadar indirilebilir.",
+          "metin": null,
+          "skor": 0.6913,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 85",
+          "metin_ozet": "Madde 85- (1) Taksirle bir insanın ölümüne neden olan kişi, iki yıldan altı yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.6641,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 190,
+      "ortalama_kaynak_skor": 0.6777,
+      "kaynak_sayisi": 2,
+      "message_id": "6911096b-d806-47be-a1fb-8565aad48322",
+      "conversation_id": "05b99491-ddfe-495d-aa96-91ac4654b044",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.04,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Uyuşturucu madde kullanırken ilk kez yakalanan kişi hakkında ne işlem yapılır?",
+      "cevap": "5237 Sayılı Türk Ceza Kanunu'nun 191. maddesine göre, uyuşturucu veya uyarıcı madde kullanan kişi, iki yıldan beş yıla kadar hapis cezası ile cezalandırılır. Ancak, bu suçtan dolayı başlatılan soruşturmada şüpheli hakkında, 5271 sayılı Ceza Muhakemesi Kanununun 171. maddesindeki şartlar aranmaksızın, beş yıl süreyle kamu davasının açılmasının ertelenmesine karar verilir.\n\nErteleme süresi zarfında şüpheli hakkında asgari bir yıl süreyle denetimli serbestlik tedbiri uygulanır. Bu süre denetimli serbestlik müdürlüğünün teklifi üzerine veya resen Cumhuriyet savcısının kararı ile altışar aylık sürelerle en fazla iki yıl daha uzatılabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 191",
+          "metin_ozet": "18/6/2014 – 6545/68 md.) (1) Kullanmak için uyuşturucu veya uyarıcı madde satın alan, kabul eden veya bulunduran ya da uyuşturucu veya uyarıcı madde kullanan kişi, iki yıldan beş yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.6161,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 190",
+          "metin_ozet": "Madde 190- (1) Uyuşturucu veya uyarıcı madde kullanılmasını kolaylaştırmak için;",
+          "metin": null,
+          "skor": 0.5788,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 192",
+          "metin_ozet": "Madde 192- (1) Uyuşturucu veya uyarıcı madde imal ve ticareti suçlarına iştirak etmiş olan kişi, resmi makamlar tarafından haber alınmadan önce, diğer suç ortaklarını ve uyuşturucu veya uyarıcı maddelerin saklandığı veya imal edildiği yerleri merciine haber verirse, verilen...",
+          "metin": null,
+          "skor": 0.4223,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 189",
+          "metin_ozet": "Madde 189- (1) Uyuşturucu veya uyarıcı madde imal ve ticareti suçlarının bir tüzel kişinin faaliyeti çerçevesinde işlenmesi halinde, tüzel kişi hakkında bunlara özgü güvenlik tedbirlerine hükmolunur. Uyuşturucu veya uyarıcı madde kullanılmasını kolaylaştırma83",
+          "metin": null,
+          "skor": 0.1781,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 188",
+          "metin_ozet": "Madde 188- (1) Uyuşturucu veya uyarıcı maddeleri ruhsatsız veya ruhsata aykırı olarak imal, ithal veya ihraç eden kişi, yirmi yıldan otuz yıla kadar hapis ve ikibin günden yirmibin güne kadar adlî para cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.1618,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 767,
+      "ortalama_kaynak_skor": 0.3914,
+      "kaynak_sayisi": 5,
+      "message_id": "cc60f626-a4f6-465a-b7a1-3c272d2ab8cb",
+      "conversation_id": "f382f312-2be8-4ed9-9964-961cf1e9071d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.47,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Hükmün açıklanmasının geri bırakılması (HAGB) nedir, hangi durumlarda uygulanır?",
+      "cevap": "Hükmün açıklanmasının geri bırakılması (HAGB), Türk Ceza Kanunu'nda düzenlenen bir kurum olup, mahkemenin, sanığın certain koşulları yerine getirmesi halinde, hükmü açıklamaktan vazgeçerek, denetim süresi altında bırakma kararı vermesidir.\n\n5237 Sayılı Türk Ceza Kanunu'nun 231. maddesinde düzenlenen HAGB, belirli koşulların oluşması halinde uygulanır. Bu koşullar arasında, sanığın daha önce kasıtlı bir suçtan dolayı mahkûm edilmemiş olması, suçu işledikten sonra yargılama sürecinde gösterdiği pişmanlık dolayısıyla tekrar suç işlemeyeceği konusunda mahkemede bir kanaatin oluşması ve mağdurun veya kamunun uğradığı zararın giderilmesi sayılabilir.\n\nHAGB kararı verilebilmesi için, sanığın işlediği suçun, belirli bir süreyle hapis cezasını gerektirmesi gerekir. Bu süre, genel olarak iki yıl veya daha az süreyle hapis cezasıdır. Ancak, fiili işlediği sırada onsekiz yaşını doldurmamış veya altmışbeş yaşını bitirmiş olan kişiler bakımından, bu süre üç yıla kadar çıkabilir.\n\nMahkeme, HAGB kararı verirken, denetim süresi boyunca sanığın certain yükümlülükleri yerine getirmesini isteyebilir. Bu yükümlülükler, belirli bir süre boyunca belirli bir yerde oturmak, belirli bir işi yapmak veya belirli bir eğitim programına katılmak gibi olabilir.\n\nDenetim süresi boyunca, sanığın kasıtlı bir suç işlemesi veya kendisine yüklenen yükümlülüklere uymaması halinde, mahkeme, HAGB kararını kaldırarak, hükmü açıklar ve cezanın infazına karar verebilir. Ancak, denetim süresi boyunca sanığın iyi halli olarak davranması ve yükümlülüklerini yerine getirmesi halinde, ceza infaz edilmiş sayılır.\n\nGetirilen kaynaklar bu soruyu tam olarak karsilamiyor. 5237 Sayılı Türk Ceza Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 17",
+          "metin_ozet": "Madde 17- (1) Yukarıdaki maddelerde açıklanan hallerde mahkeme, yabancı mahkemelerden verilen ve Türk hukuk düzenine aykırı düşmeyen hükmün, Türk kanunlarına göre bir haktan yoksunluğu gerektirmesi halinde, Cumhuriyet savcısının istemi üzerine Türk kanunlarındaki sonuçlarının...",
+          "metin": null,
+          "skor": 0.1708,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 51",
+          "metin_ozet": "Madde 51- (1) İşlediği suçtan dolayı iki yıl veya daha az süreyle hapis cezasına mahkûm edilen kişinin cezası ertelenebilir.",
+          "metin": null,
+          "skor": 0.0096,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 334",
+          "metin_ozet": "Madde 334- (1) Yetkili makamların kanun ve düzenleyici işlemlere göre açıklanmasını yasakladığı ve niteliği bakımından gizli kalması gereken bilgileri temin eden kimseye bir yıldan üç yıla kadar hapis cezası verilir.",
+          "metin": null,
+          "skor": 0.0076,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 335",
+          "metin_ozet": "Madde 335- (1) Yetkili makamların kanun ve düzenleyici işlemlere göre açıklanmasını yasakladığı ve niteliği bakımından gizli kalması gereken bilgileri siyasal veya askerî casusluk maksadıyla temin eden kimseye sekiz yıldan oniki yıla kadar hapis cezası verilir.",
+          "metin": null,
+          "skor": 0.0068,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 337",
+          "metin_ozet": "Madde 337- (1) Yetkili makamların kanun ve düzenleyici işlemlere göre açıklanmasını yasakladığı ve niteliği bakımından gizli kalması gereken bilgileri, siyasal veya askerî casusluk maksadıyla açıklayan kimseye on yıldan onbeş yıla kadar hapis cezası verilir.",
+          "metin": null,
+          "skor": 0.0056,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1793,
+      "ortalama_kaynak_skor": 0.0401,
+      "kaynak_sayisi": 5,
+      "message_id": "bae42b99-3147-44ab-9543-8b1cad466f9b",
+      "conversation_id": "cf339215-9f84-4758-9b51-94aab020e7af",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 30.62,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Adli para cezası ödenmezse hapis cezasına çevrilir mi?",
+      "cevap": "Evet, adli para cezası ödenmezse hapis cezasına çevrilebilir. 5237 Sayılı Türk Ceza Kanunu'nun 52. maddesinin 4. fıkrasına göre, hakim, adli para cezasının ödenmemesi halinde, geri kalan kısmın tamamının tahsil edileceği ve ödenmeyen adli para cezasının hapse çevrileceği belirtilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 52",
+          "metin_ozet": "Madde 52- (1) Adlî para cezası, beş günden az ve kanunda aksine hüküm bulunmayan hallerde yediyüzotuz günden fazla olmamak üzere belirlenen tam gün sayısının, bir gün karşılığı olarak takdir edilen miktar ile çarpılması suretiyle hesaplanan meblağın hükümlü tarafından Devlet...",
+          "metin": null,
+          "skor": 0.9924,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 50",
+          "metin_ozet": "a) Adlî para cezasına, b) Mağdurun veya kamunun uğradığı zararın aynen iade, suçtan önceki hale getirme veya tazmin suretiyle, tamamen giderilmesine, 6 2/7/2018 tarihli ve 700 sayılı KHK’nin 156 ncı maddesiyle, bu maddede yer alan “tüzükte” ibaresi “Cumhurbaşkanınca çıkarılan...",
+          "metin": null,
+          "skor": 0.9563,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 75",
+          "metin_ozet": "Madde 75- (1) Uzlaşma kapsamındaki suçlar hariç olmak üzere, yalnız adlî para cezasını gerektiren veya kanun maddesinde öngörülen hapis cezasının yukarı sınırı altı ayı aşmayan suçların faili;24 a) Adlî para cezası maktu ise bu miktarı, değilse aşağı sınırını, b) Hapis cezasının...",
+          "metin": null,
+          "skor": 0.8776,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 292",
+          "metin_ozet": "Madde 292- (1) Tutukevinden, ceza infaz kurumundan veya gözetimi altında bulunduğu görevlilerin elinden kaçan tutuklu veya hükümlü hakkında altı aydan bir yıla kadar hapis cezasına hükmolunur.",
+          "metin": null,
+          "skor": 0.8155,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 65",
+          "metin_ozet": "(2) Özel af ile hapis cezasının infaz kurumunda çektirilmesine son verilebilir veya infaz kurumunda çektirilecek süresi kısaltılabilir ya da adlî para cezasına çevrilebilir.",
+          "metin": null,
+          "skor": 0.766,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 409,
+      "ortalama_kaynak_skor": 0.8816,
+      "kaynak_sayisi": 5,
+      "message_id": "740c7115-f634-4fff-837b-5f861ba44657",
+      "conversation_id": "6c1cbee8-e624-4561-adcd-c01343d5b75c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 29.48,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Sabıka kaydı ne zaman silinir veya arşiv kaydına dönüşür?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 5352 sayılı Adli Sicil Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardim burosuna veya bir avukata başvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 12",
+          "metin_ozet": "MADDE 12- (1) (4/2/1924 tarihli ve 406 sayılı Telgraf ve Telefon Kanunu ile ilgili olup yerine işlenmiştir.) (2) (4/7/1934 tarihli ve 2559 sayılı Polis Vazife ve Salahiyet Kanunu ile ilgili olup yerine işlenmiştir.) (3) (5/4/1983 tarihli ve 2813 sayılı Telsiz Kanunu ile ilgili...",
+          "metin": null,
+          "skor": 0.0003,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 239",
+          "metin_ozet": "20/8/2016-6745/11 md.) En az dört yıl süreli yükseköğrenim veren fakülte veya yüksekokulları bitirmiş ve birinci dereceli 2.000 kadroya atanmış olmak kaydıyla, 152 nci maddenin “II- Tazminatlar” kısmının “A- Özel 348 “Milli Savunma Bakanlığı Akaryakıt İkmal ve NATO POL Tesisleri...",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1533",
+          "metin_ozet": "ortaklarından, yönetici veya denetçilerden ya da müdürlerinden tebliğ tarihinden itibaren iki ay içinde tasfiye memurunun bildirilmesi, aksi takdirde, bu madde hükümlerine göre ticaret sicili kayıtlarından unvanın silineceği, şirkete ait malvarlığının unvana ilişkin kaydın...",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 126",
+          "metin_ozet": "31/12/1960 TARİH VE 193 SAYILI KANUNA İŞLENEMEYEN GEÇİCİ MADDELER: 1 - 31/12/1982 tarih ve 2772 sayılı Kanunun Geçici Maddeleri:",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 382",
+          "metin_ozet": "(2) Aşağıdaki işler çekişmesiz yargı işlerinden sayılır: 3) Ölüm karinesi sebebiyle (ilgili yerin mülkî amirinin emriyle) nüfus kütüğüne ölü kaydı düşülen kişinin sağ olduğunun tespiti. 5) Kişisel durum sicilindeki kaydın düzeltilmesi.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 191,
+      "ortalama_kaynak_skor": 0.0001,
+      "kaynak_sayisi": 5,
+      "message_id": "5d501902-0bcb-4bb6-abe9-446a8df7ca7a",
+      "conversation_id": "83caac77-5b4a-44fc-96f3-2f6a0c454062",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.48,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Meşru savunma hangi şartlarda ceza sorumluluğunu ortadan kaldırır?",
+      "cevap": "Meşru savunma, sınırın aşılması mazur görülebilecek bir heyecan, korku veya telaştan ileri gelmiş ise faile ceza verilmez. Bu durum, 5237 Sayılı Türk Ceza Kanunu'nun 27. maddesinin 2. fıkrasında düzenlenmiştir.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 27",
+          "metin_ozet": "Madde 27- (1) Ceza sorumluluğunu kaldıran nedenlerde sınırın kast olmaksızın aşılması halinde, fiil taksirle işlendiğinde de cezalandırılıyorsa, taksirli suç için kanunda yazılı cezanın altıda birinden üçte birine kadarı indirilerek hükmolunur.",
+          "metin": null,
+          "skor": 0.9756,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 210,
+      "ortalama_kaynak_skor": 0.9756,
+      "kaynak_sayisi": 1,
+      "message_id": "6b199038-12a0-46be-950b-a61f9256678a",
+      "conversation_id": "412034e4-481b-4bf1-abcd-8cc5742285aa",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.85,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Ceza Hukuku",
+      "soru": "Uzaklaştırma kararını ihlal eden kişi hakkında hangi cezai işlemler uygulanır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6284 Sayılı Ailenin Korunması ve Kadına Karşı Şiddetin Önlenmesine Dair Kanun uzaklaştırma kararını düzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 285",
+          "metin_ozet": "2/7/2012-6352/92 md.) (1) Soruşturmanın gizliliğini alenen ihlal eden kişi, bir yıldan üç yıla kadar hapis veya adli para cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.0634,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 191",
+          "metin_ozet": "18/6/2014 – 6545/68 md.) (1) Kullanmak için uyuşturucu veya uyarıcı madde satın alan, kabul eden veya bulunduran ya da uyuşturucu veya uyarıcı madde kullanan kişi, iki yıldan beş yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.0395,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6284 Sayılı Ailenin Korunması ve Kadına Karşı Şiddetin Önlenmesine Dair Kanun - Madde 8",
+          "metin_ozet": "Ancak şiddet veya şiddet uygulanma tehlikesinin devam edeceğinin anlaşıldığı hâllerde, resen, korunan kişinin ya da Bakanlık veya kolluk görevlilerinin talebi üzerine tedbirlerin süresinin veya şeklinin değiştirilmesine, bu tedbirlerin kaldırılmasına veya aynen devam etmesine...",
+          "metin": null,
+          "skor": 0.0272,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6284&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 267",
+          "metin_ozet": "Madde 267- (1) Yetkili makamlara ihbar veya şikayette bulunarak ya da basın ve yayın yoluyla, işlemediğini bildiği halde, hakkında soruşturma ve kovuşturma başlatılmasını ya da idari bir yaptırım uygulanmasını sağlamak için bir kimseye hukuka aykırı bir fiil isnat eden kişi, bir...",
+          "metin": null,
+          "skor": 0.0214,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 174",
+          "metin_ozet": "nakleden, muhafaza eden, satan, satın alan veya işleyen kişi, dört yıldan sekiz yıla kadar hapis ve beşbin güne kadar adlî para cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.021,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 251,
+      "ortalama_kaynak_skor": 0.0345,
+      "kaynak_sayisi": 5,
+      "message_id": "6da614eb-f39f-4f77-9890-8f574e0f245b",
+      "conversation_id": "ee35f4f2-c284-4795-bf59-2f90c625402d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.53,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

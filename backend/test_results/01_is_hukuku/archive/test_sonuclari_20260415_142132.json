@@ -1,0 +1,709 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-15T11:27:38.491274+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 4,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\01_is_hukuku\\test_sonuclari_20260415_142132.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 365.6,
+    "ortalama_sure_sn": 30.47,
+    "kategori_dagilimi": {
+      "İş Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 26.44,
+        "kategori_dogruluk_orani": 83.3,
+        "ortalama_cevap_uzunluk": 314.0,
+        "ortalama_kaynak_skor": 0.1007
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşten çıkarıldım, kıdem ve ihbar tazminatımı hangi şartlarda alabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 25",
+          "metin_ozet": "MADDE 25 – (1) İşçilerin işe alınmaları;",
+          "metin": null,
+          "skor": 0.049,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 152",
+          "metin_ozet": "(…)201 Defterdarlık Uzmanları221, İçişleri Bakanlığı İl Planlama Uzmanları,201 İl Göç Uzmanları,217 Büyükşehir Belediyeleri ile bunlara bağlı genel müdürlük Başmüfettiş, Müfettiş ve Müfettiş Yardımcıları, (…)201 (…)223201 Maarif Müfettişleri212203 (…)204201 ile Ürün...",
+          "metin": null,
+          "skor": 0.0129,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 236",
+          "metin_ozet": "ile gelen madde hükmü olup, madde numarası teselsül ettirilmiştir.) Milli İstihbarat Teşkilatında, 657 sayılı Devlet Memurları Kanunu ile diğer kanunların sözleşmeli personel çalıştırılmasına dair hükümleriyle bağlı olmaksızın;",
+          "metin": null,
+          "skor": 0.0052,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4447 Sayılı İşsizlik Sigortası Kanunu - Madde 62",
+          "metin_ozet": "31/7/2008-5797/9 md.) Bu maddenin üçüncü fıkrasının (f) bendi hükmü saklı kalmak kaydıyla bu maddede düzenlenen teşvik, 506 sayılı Kanun kapsamında bulunanlarla aynı şartlarda olmak üzere 506 sayılı Kanunun geçici 20 nci maddesi kapsamındaki sandıkların statülerine tabi personeli...",
+          "metin": null,
+          "skor": 0.0047,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4447&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 12",
+          "metin_ozet": "MADDE 12- (1) (4/2/1924 tarihli ve 406 sayılı Telgraf ve Telefon Kanunu ile ilgili olup yerine işlenmiştir.) (2) (4/7/1934 tarihli ve 2559 sayılı Polis Vazife ve Salahiyet Kanunu ile ilgili olup yerine işlenmiştir.) (3) (5/4/1983 tarihli ve 2813 sayılı Telsiz Kanunu ile ilgili...",
+          "metin": null,
+          "skor": 0.0024,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 308,
+      "ortalama_kaynak_skor": 0.0148,
+      "kaynak_sayisi": 5,
+      "message_id": "90964874-4c13-4836-b3eb-7e6722fcdfab",
+      "conversation_id": "7ebd208c-f81c-4c00-9dc8-aecf3d9f4e81",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.52,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Kendi isteğimle işten ayrılırsam kıdem tazminatı alma hakkım olur mu?",
+      "cevap": "Kendi isteğinizle işten ayrıldığınızda, genel olarak kıdem tazminatı alma hakkınız olmaz. Ancak, 6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu'nun 23. maddesinde belirtilen durumlar hariçtir. Bu kanuna göre, işçi kuruluşunda yönetici olduğunuz için çalıştığınız işyerinden ayrıldıysanız ve daha sonra yöneticilik göreviniz sona ererse, belirli şartlar altında kıdem tazminatı alma hakkınız olabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 23",
+          "metin_ozet": "Yönetici dilerse işten ayrıldığı tarihte iş sözleşmesini bildirim süresine uymaksızın veya sözleşme süresinin bitimini beklemeksizin fesheder ve kıdem tazminatına hak kazanır.",
+          "metin": null,
+          "skor": 0.9629,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 532,
+      "ortalama_kaynak_skor": 0.9629,
+      "kaynak_sayisi": 1,
+      "message_id": "e21bc708-249f-421e-b4d0-4438da732ca9",
+      "conversation_id": "93020804-37fd-47e1-8e16-0d048de6f29e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.75,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Kıdem tazminatı nasıl hesaplanır, brüt mü net maaş mı dikkate alınır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 23",
+          "metin_ozet": "Yönetici dilerse işten ayrıldığı tarihte iş sözleşmesini bildirim süresine uymaksızın veya sözleşme süresinin bitimini beklemeksizin fesheder ve kıdem tazminatına hak kazanır.",
+          "metin": null,
+          "skor": 0.6498,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6698 Sayılı Kişisel Verilerin Korunması Kanunu - Madde 27",
+          "metin_ozet": "bulunanların bu görevlerde geçen hizmet süreleri kazanılmış hak aylık, derece ve kademelerinin tespitinde dikkate alınır.",
+          "metin": null,
+          "skor": 0.1681,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6698&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 67",
+          "metin_ozet": "(3) Grev ve lokavt süresince iş sözleşmeleri askıda kalan işçilere bu dönem için işverence ücret ve sosyal yardımlar ödenemez, bu süre kıdem tazminatı hesabında dikkate alınmaz.",
+          "metin": null,
+          "skor": 0.0954,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 152",
+          "metin_ozet": "20/3/1997 – KHK-570/9 md.) Görevin önem, sorumluluk ve niteliği, görev yerinin özelliği, hizmet süresi, kadro ünvan ve derecesi ve eğitim seviyesi gibi hususlar gözönüne alınarak bu Kanunda belirtilen en yüksek Devlet Memuru aylığının (ek gösterge dahil) brüt tutarının, A - ÖZEL...",
+          "metin": null,
+          "skor": 0.0182,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 206",
+          "metin_ozet": "A) İşçilerin, iş ilişkisine dayanan ve iflâsın açılmasından önceki bir yıl içinde tahakkuk etmiş ihbar ve kıdem tazminatları dahil alacakları ile iflâs nedeniyle iş ilişkisinin sona ermesi üzerine hak etmiş oldukları ihbar ve kıdem tazminatları, B) İşverenlerin, işçiler için...",
+          "metin": null,
+          "skor": 0.0139,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 183,
+      "ortalama_kaynak_skor": 0.1891,
+      "kaynak_sayisi": 5,
+      "message_id": "c52767ed-0f0a-4183-bf98-cd166e36eaba",
+      "conversation_id": "2599e354-f797-4c8b-86c6-bc0a1dfb9698",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.9,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Maaşım geç yatıyor veya eksik yatırılıyor, yasal olarak ne yapabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 sayılı İş Kanunu maaş ödemeleri ile ilgili hükümler içermektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 54",
+          "metin_ozet": "Belirtilen hususlara aykırılık içeren ve henüz başvuru süresi dolmamış olan başvurulardaki eksiklikler, idare veya Kurumun bildirim yapma zorunluluğu bulunmaksızın, başvuru süresinin 55 20/11/2008 tarihli ve 5812 sayılı Kanunun 21 inci maddesiyle bu Bölüm başlığı “İnceleme...",
+          "metin": null,
+          "skor": 0.0028,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 3",
+          "metin_ozet": "uluslararası sermaye piyasalarından yapılacak borçlanmalara ilişkin her türlü danışmanlık ve kredi derecelendirme hizmetleri;",
+          "metin": null,
+          "skor": 0.0011,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 53",
+          "metin_ozet": "Kamu İhale Kurumu, bu Kanunda belirtilen esas, usul ve işlemlerin doğru olarak uygulanması konusunda görevli ve yetkilidir.",
+          "metin": null,
+          "skor": 0.0009,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 34",
+          "metin_ozet": "Madde 34- Teminat olarak kabul edilecek değerler aşağıda gösterilmiştir:",
+          "metin": null,
+          "skor": 0.0007,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 59",
+          "metin_ozet": "61 30/7/2003 tarihli ve 4964 sayılı Kanunun 35 inci maddesiyle bu fıkrada geçen “en geç otuz gün” ibaresi, “en geç kırkbeş gün” olarak değiştirilmiştir.",
+          "metin": null,
+          "skor": 0.0006,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 331,
+      "ortalama_kaynak_skor": 0.0012,
+      "kaynak_sayisi": 5,
+      "message_id": "97cc138c-9cd7-4961-abf8-8634d2e4e65c",
+      "conversation_id": "e229e7ba-8e30-4483-9107-bd488e92e797",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.94,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Fazla mesai yaptım ama ücretini alamadım, bunu nasıl ispat edebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 48",
+          "metin_ozet": "Tüketicinin bilgilendirildiğine ilişkin ispat yükü satıcı veya sağlayıcıya aittir. Satıcı veya sağlayıcı, cayma hakkı konusunda tüketicinin bilgilendirildiğini ispat etmekle yükümlüdür.",
+          "metin": null,
+          "skor": 0.0076,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 5",
+          "metin_ozet": "Sözleşmeyi düzenleyen, bir standart şartın münferiden müzakere edildiğini iddia ediyorsa bunu ispatla yükümlüdür.",
+          "metin": null,
+          "skor": 0.0071,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 47",
+          "metin_ozet": "Tüketicinin bilgilendirildiğine ilişkin ispat yükü satıcı veya sağlayıcıya aittir. Sözleşmenin tüketiciye teslim edildiğinin ve mal veya hizmetin sunulduğunun ispatı satıcı veya sağlayıcıya aittir.",
+          "metin": null,
+          "skor": 0.006,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 4",
+          "metin_ozet": "Bu bilgilerin tüketiciye verildiğinin ispatı sözleşmeyi düzenleyene aittir.",
+          "metin": null,
+          "skor": 0.0041,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 49",
+          "metin_ozet": "Sağlayıcı, cayma hakkı konusunda tüketicinin bilgilendirildiğini ispatla yükümlüdür.",
+          "metin": null,
+          "skor": 0.0028,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 309,
+      "ortalama_kaynak_skor": 0.0055,
+      "kaynak_sayisi": 5,
+      "message_id": "ce842faf-a202-4d46-a9a4-b26eb78af1ee",
+      "conversation_id": "273c7283-c0a6-4288-9568-47f7dbd19ec3",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.25,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşe iade davası hangi şartlarda açılır ve başvuru süresi kaç gündür?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. İş Kanunu veya İş Mahkemeleri Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 78",
+          "metin_ozet": "(2) Bu Kanun hükümlerine göre verilen idari yaptırım kararlarına karşı 6/1/1982 tarihli ve 2577 sayılı İdari Yargılama Usulü Kanunu hükümlerine göre idari yargı yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 0.0228,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 54",
+          "metin_ozet": "MADDE 54 - (1) Kanuni temsilciler, davanın açılıp yürütülmesinin belli bir makamın iznine bağlı olduğu hâllerde izin belgelerini, tüzel kişilerin organları ise temsil belgelerini, dava veya cevap dilekçesiyle mahkemeye vermek zorundadırlar;",
+          "metin": null,
+          "skor": 0.0151,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 426",
+          "metin_ozet": "MADDE 426- (1) Taraflar aksini kararlaştırmadıkça tahkim davası, hakemlerin seçimi için mahkemeye veya tarafların sözleşmesine göre hakem seçecek olan kişi, kurum veya kuruluşa başvurulduğu ve eğer sözleşmeye göre hakemlerin seçimi iki tarafa ait ise davacının hakemini seçip...",
+          "metin": null,
+          "skor": 0.0114,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 148",
+          "metin_ozet": "Madde 148 – Anayasa Mahkemesi, kanunların, Cumhurbaşkanlığı kararnamelerinin ve Türkiye Büyük Millet Meclisi İçtüzüğünün Anayasaya şekil ve esas bakımlarından uygunluğunu denetler ve bireysel başvuruları karara bağlar.",
+          "metin": null,
+          "skor": 0.0111,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 439",
+          "metin_ozet": "(2) a) Tahkim sözleşmesinin taraflarından birinin ehliyetsiz ya da tahkim sözleşmesinin geçersiz olduğu, b) Hakem veya hakem kurulunun seçiminde, sözleşmede belirlenen veya bu Kısımda öngörülen usule uyulmadığı, c) Kararın, tahkim süresi içinde verilmediği, ç) Hakem veya hakem...",
+          "metin": null,
+          "skor": 0.0085,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 323,
+      "ortalama_kaynak_skor": 0.0138,
+      "kaynak_sayisi": 5,
+      "message_id": "97486479-be96-4ba4-a75b-0be69e5e02de",
+      "conversation_id": "2eb14104-0804-445e-8593-bea01638a445",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.59,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "SGK işten çıkış kodum yanlış girildiyse nasıl düzelttirebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7595",
+          "metin_ozet": "ket ettiğini ve iş ilişkisinin kurulması esnasında sahte bir diploma sunduğunu, belgenin sahte olduğunun davalının kabulünde olduğunu, davalının eğitim durumunun iş ilişkinin esaslı noktalarından birini oluşturduğunu ve işçinin haksız kazanç elde ettiğini ileri sürmüştür.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/6008",
+          "metin_ozet": "ve kanuna uygun olup davalı vekili tarafından temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.",
+          "metin": null,
+          "skor": 0.0,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/7051",
+          "metin_ozet": "tlarına, yargılama ve ispat kuralları ile kararda belirtilen gerekçelere göre usul ve kanuna uygun olup davacı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.",
+          "metin": null,
+          "skor": 0.0,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2025/6187",
+          "metin_ozet": "ekçelere göre usul ve kanuna uygun olup davacı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.",
+          "metin": null,
+          "skor": 0.0,
+          "url": null
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "9. Hukuk Dairesi - 2024/14497",
+          "metin_ozet": "rtilen gerekçelere göre usul ve kanuna uygun olup davacı vekilince temyiz dilekçesinde ileri sürülen nedenler kararın bozulmasını gerektirecek nitelikte görülmemiştir.",
+          "metin": null,
+          "skor": 0.0,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 224,
+      "ortalama_kaynak_skor": 0.0,
+      "kaynak_sayisi": 5,
+      "message_id": "9800ce24-b2cc-437f-9101-9fcf47bd2a72",
+      "conversation_id": "c7a48653-7f36-48c6-aa90-f7dfe39ba3b4",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.46,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Sigortasız çalıştırıldım, geçmişe dönük sigorta ve ücret haklarımı nasıl arayabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1126",
+          "metin_ozet": "MADDE 1126- (1) Kiracı, geminin iadesine kadar doğacak denizcilik ve sorumluluk rizikolarına karşı sigorta yaptırmak ve sigorta sözleşmesinin kurulduğunu kiraya verene önceden bildirmekle yükümlüdür.",
+          "metin": null,
+          "skor": 0.0021,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 2",
+          "metin_ozet": "2 Bu Kanunla Sigorta hizmetleri ile ilgili olarak Sanayi ve Ticaret Bakanlığına ve Sanayi ve Ticaret Bakanına verilmiş olan her türlü görev, yetki, sorumluluk, hak ve muafiyetten ilgili olanların doğrudan doğruya Başbakana, Başbakanın görevlendireceği Devlet Bakanına, Hazine...",
+          "metin": null,
+          "skor": 0.0015,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 733",
+          "metin_ozet": "MADDE 733- (1) Düzenleyen hakkında iflasın açılmasıyla beraber, poliçe karşılığının veya düzenleyenin muhatap hesabına alacak olarak geçirdiği diğer paraların geri verilmesi hususunda düzenleyenin muhataba karşı poliçe ilişkisinden başka bir hukuki ilişkiden kaynaklanan istem...",
+          "metin": null,
+          "skor": 0.001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1320",
+          "metin_ozet": "a) Ülkelerine getirilme giderleri ve onlar adına ödenmesi gereken sosyal sigorta katılma payları da içinde olmak üzere, gemi adamlarına, gemide çalıştırılmakta olmaları dolayısıyla ödenecek ücretlere ve diğer tutarlara ilişkin istem hakları.",
+          "metin": null,
+          "skor": 0.0009,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1022",
+          "metin_ozet": "MADDE 1022- (1) Gemi ipoteğinin kapsamına giren hususlarla ilgili olarak malikin menfaatinin, malik veya onun lehine bir başkası tarafından sigorta ettirilmiş olması hâlinde, ipotek, sigorta tazminatını da kapsar.",
+          "metin": null,
+          "skor": 0.0007,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 309,
+      "ortalama_kaynak_skor": 0.0012,
+      "kaynak_sayisi": 5,
+      "message_id": "9ba4ba07-b88a-498a-9231-3f63c317fc2c",
+      "conversation_id": "48e536c5-678f-4707-94d1-a1224ec72583",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.92,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşyerinde mobbinge uğruyorum, hangi delillerle dava açabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 sayılı İş Kanunu ve 6098 sayılı Türk Borçlar Kanunu bu konuyu düzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 119",
+          "metin_ozet": "MADDE 119- (1) Dava dilekçesinde aşağıdaki hususlar bulunur: b) Davacı ile davalının adı, soyadı ve adresleri. c) Davacının Türkiye Cumhuriyeti kimlik numarası.",
+          "metin": null,
+          "skor": 0.0232,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 7",
+          "metin_ozet": "MADDE 7- (1) Davalı birden fazla ise dava, bunlardan birinin yerleşim yeri mahkemesinde açılabilir. Ancak, dava sebebine göre kanunda, davalıların tamamı hakkında ortak yetkiyi taşıyan bir mahkeme belirtilmişse, davaya o yer mahkemesinde bakılır.",
+          "metin": null,
+          "skor": 0.0227,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 57",
+          "metin_ozet": "MADDE 57- (1) Birden çok kişi, aşağıdaki hâllerde birlikte dava açabilecekleri gibi aleyhlerine de birlikte dava açılabilir: a) Davacılar veya davalılar arasında dava konusu olan hak veya borcun, elbirliği ile mülkiyet dışındaki bir sebeple ortak olması.",
+          "metin": null,
+          "skor": 0.0156,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 48",
+          "metin_ozet": "MADDE 48- (1) Tazminat davası dilekçesinde hangi sorumluluk sebebine dayanıldığı ve delilleri açıkça belirtilir; (2) Mahkeme, açılan tazminat davasını, ilgili hâkime resen ihbar eder. Davanın reddi hâlinde verilecek ceza",
+          "metin": null,
+          "skor": 0.0109,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 129",
+          "metin_ozet": "b) Davacı ile davalının adı, soyadı ve adresleri; davalı yurt dışında ise açılan dava ile ilgili işlemlere esas olmak üzere yurt içinde göstereceği bir adres. c) Davalının Türkiye Cumhuriyeti kimlik numarası.",
+          "metin": null,
+          "skor": 0.0072,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 218,
+      "ortalama_kaynak_skor": 0.0159,
+      "kaynak_sayisi": 5,
+      "message_id": "1336b466-cd3e-46ab-a5ce-898e7943b6ea",
+      "conversation_id": "e519ed47-a69b-498d-b166-4f9cca674128",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 24.48,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Kullanmadığım yıllık izin ücretini işten ayrılırken talep edebilir miyim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4447 Sayılı İşsizlik Sigortası Kanunu - Madde 62",
+          "metin_ozet": "Ücret Garanti Fonu, işverenlerce işsizlik sigortası primi olarak yapılan ödemelerin yıllık toplamının yüzde biridir.",
+          "metin": null,
+          "skor": 0.0019,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4447&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 124",
+          "metin_ozet": "Mükelleflerin geçmiş vergilendirme dönemlerine ait servet bildirimlerinde beyan ettikleri servet unsurları ile yıllık gelir vergisi beyannamelerinde beyan ettikleri giderler vergi incelemelerinde ve takdir işlemlerinde veri olarak kullanılamaz.",
+          "metin": null,
+          "skor": 0.0004,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "yargitay_karari",
+          "baslik": "4. Hukuk Dairesi - 2025/7200",
+          "metin_ozet": "üne üstünlük tanınması gerektiği düşüncesinde olduğumdan istemin tümden reddi yerine bazı konuşmalar yönünden hükmedilen manevi tazminatın onanması kararına iştirak edemiyorum.",
+          "metin": null,
+          "skor": 0.0002,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 148",
+          "metin_ozet": "MADDE 148- Bu ayırımda belirlenen zamanaşımı süreleri, sözleşmeyle değiştirilemez.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 129",
+          "metin_ozet": "MADDE 129- Kendi adına sözleşme yapan kişi, sözleşmeye üçüncü kişi yararına bir edim yükümlülüğü koydurmuşsa, edimin üçüncü kişiye ifa edilmesini isteyebilir.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 297,
+      "ortalama_kaynak_skor": 0.0005,
+      "kaynak_sayisi": 5,
+      "message_id": "35c52ed5-b2ad-4519-b2c7-f1c1d0968d77",
+      "conversation_id": "8bd6ca9f-d3c4-437b-b7b1-087effaaa17e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.58,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İş kazası geçirdim, işverenden hangi tazminatları isteyebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. İş kazaları ve ilgili tazminatlar 6331 sayılı İş Sağlığı ve Güvenliği Kanunu ve 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ile düzenlenmektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 98",
+          "metin_ozet": "Trafik kazası sebebiyle Sağlık Bakanlığına bağlı sağlık kurumlarınca gerçekleştirilen tedavi giderleri bakımından, Sosyal Güvenlik Kurumu tarafından Sağlık Bakanlığına yapılacak ödemeye ilişkin usul ve esaslar Sosyal Güvenlik Kurumu ve Sağlık Bakanlığı tarafından ayrıca...",
+          "metin": null,
+          "skor": 0.0014,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 5",
+          "metin_ozet": "e) Trafik kazası neticesinde hastalanan veya yaralananların bakımlarını sağlayacak tedbirlerin süratle alınmasına yardımcı olmak ve yakınlarına haber vermek.",
+          "metin": null,
+          "skor": 0.0002,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 3",
+          "metin_ozet": "Madde 3 – Bu Kanunda kullanılan terimlerin tanımları aşağıda gösterilmiştir.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 31",
+          "metin_ozet": "Madde 31 – (Değişik:12/2/2026-7574/6 md.) Cinslerine, özelliklerine ve kullanım amaçlarına göre;",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 47",
+          "metin_ozet": "(Ek fıkra:12/2/2026-7574/11 md.) Işıklı trafik işaretlerinden kırmızı renkli olanına uyma kuralını ihlal ederek trafik kazasına sebebiyet veren sürücülerin sürücü belgeleri altmış gün süre ile geri alınır.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 425,
+      "ortalama_kaynak_skor": 0.0004,
+      "kaynak_sayisi": 5,
+      "message_id": "4ecd806d-f710-46cd-8077-6fc5343eb516",
+      "conversation_id": "356048e5-8281-4d1d-b572-4b1f50ff05fe",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.96,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Emeklilik nedeniyle işten ayrılırsam kıdem tazminatımı nasıl alırım?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 1475 Sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 43 - Fıkra 3",
+          "metin_ozet": "17/1/2012-6270/5 md.) Cumhurbaşkanı yardımcılığı, bakanlık veya Türkiye Büyük Millet Meclisi üyeliği görevlerinde bulunanlara veya bu görevleri herhangi bir sebeple sona erenlere, Kanunun 26, 28, 44, geçici 2 ve geçici 4 üncü maddeleri gereğince aylık bağlanmasına hak kazanmaları...",
+          "metin": null,
+          "skor": 0.0151,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 3",
+          "metin_ozet": "Kredi kuruluşları dışında kalan ve sigortacılık, bireysel emeklilik veya sermaye piyasası faaliyetlerinde bulunmak veya bu Kanunda yer alan faaliyet konularından en az birini yürütmek üzere kurulan kuruluşlar ile kalkınma ve yatırım bankaları ve finansal holding şirketlerini,...",
+          "metin": null,
+          "skor": 0.0003,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 138",
+          "metin_ozet": "Madde 138 – Görevden uzaklaştırmaya yetkililer şunlardır.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 118",
+          "metin_ozet": "Madde 118 — Fonun en üst yöneticisi olan Fon Başkanı, Fonun genel yönetiminden, 44 2/7/2018 tarihli ve 703 sayılı KHK’nin 166 ncı maddesiyle, bu fıkrada yer alan “Başbakanlığa” ibaresi yürürlükten kaldırılmıştır.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 131",
+          "metin_ozet": "Madde 131 — Fon, Hazine Müsteşarlığından izin almak kaydıyla borçlanabileceği gibi ihtiyaç hasıl olduğunda Fona ikrazen verilmek üzere Hazine Müşteşarlığınca özel tertip Devlet iç borçlanma senedi ihraç edilebilir.",
+          "metin": null,
+          "skor": 0.0001,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 309,
+      "ortalama_kaynak_skor": 0.0031,
+      "kaynak_sayisi": 5,
+      "message_id": "d6b2aa99-0a7f-4be8-b442-bfdc7080ca2f",
+      "conversation_id": "e63a6b18-bab2-4e9d-aa8d-4cf0c38d1223",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.94,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

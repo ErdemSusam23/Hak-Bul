@@ -1,16 +1,76 @@
 {
   "Ceza Hukuku": [
-    "Bana hakaret edildi, şikayetçi olmak için ne kadar sürem var ve nereye başvurmalıyım?",
-    "Tehdit suçu hangi durumlarda oluşur ve cezası ne olabilir?",
-    "İnternetten ürün alırken dolandırıldım, ceza şikayetini nasıl yapabilirim?",
-    "Sosyal medyada hakaret veya iftiraya uğradım, hangi deliller gerekir?",
-    "Kasten yaralama suçunda şikayet süresi ne kadardır ve süreç nasıl işler?",
-    "Trafik kazasında taksirle yaralama olursa ceza davası nasıl yürür?",
-    "Uyuşturucu madde kullanırken ilk kez yakalanan kişi hakkında ne işlem yapılır?",
-    "Hükmün açıklanmasının geri bırakılması (HAGB) nedir, hangi durumlarda uygulanır?",
-    "Adli para cezası ödenmezse hapis cezasına çevrilir mi?",
-    "Sabıka kaydı ne zaman silinir veya arşiv kaydına dönüşür?",
-    "Meşru savunma hangi şartlarda ceza sorumluluğunu ortadan kaldırır?",
-    "Uzaklaştırma kararını ihlal eden kişi hakkında hangi cezai işlemler uygulanır?"
+    {
+      "soru": "Bana hakaret edildi, şikayetçi olmak için ne kadar sürem var ve nereye başvurmalıyım?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["73", "125", "131"],
+      "notlar": "TCK m.125 hakaret; m.131 şikayet rejimi; m.73 şikayet süresi (6 ay)."
+    },
+    {
+      "soru": "Tehdit suçu hangi durumlarda oluşur ve cezası ne olabilir?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["106"],
+      "notlar": "TCK m.106 tehdit suçu."
+    },
+    {
+      "soru": "İnternetten ürün alırken dolandırıldım, ceza şikayetini nasıl yapabilirim?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["157", "158"],
+      "notlar": "TCK m.157 dolandırıcılık; m.158/1-f bilişim sistemleri nitelikli hâli."
+    },
+    {
+      "soru": "Sosyal medyada hakaret veya iftiraya uğradım, hangi deliller gerekir?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["125", "267"],
+      "notlar": "TCK m.125 hakaret; m.267 iftira."
+    },
+    {
+      "soru": "Kasten yaralama suçunda şikayet süresi ne kadardır ve süreç nasıl işler?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["73", "86", "87"],
+      "notlar": "TCK m.86-87 yaralama; basit halde şikayete tabi, nitelikli halde re'sen kovuşturma."
+    },
+    {
+      "soru": "Trafik kazasında taksirle yaralama olursa ceza davası nasıl yürür?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["89"],
+      "notlar": "TCK m.89 taksirle yaralama."
+    },
+    {
+      "soru": "Uyuşturucu madde kullanırken ilk kez yakalanan kişi hakkında ne işlem yapılır?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["191"],
+      "notlar": "TCK m.191 — kullanım için satın alma/kabul etme; kamu davasının açılmasının ertelenmesi."
+    },
+    {
+      "soru": "Hükmün açıklanmasının geri bırakılması (HAGB) nedir, hangi durumlarda uygulanır?",
+      "beklenen_kanunlar": ["5271"],
+      "beklenen_maddeler": ["231"],
+      "notlar": "CMK m.231 — HAGB. 5271 CMK corpus'ta yok (Faz 2 için sinyal)."
+    },
+    {
+      "soru": "Adli para cezası ödenmezse hapis cezasına çevrilir mi?",
+      "beklenen_kanunlar": ["5237", "5275"],
+      "beklenen_maddeler": ["52"],
+      "notlar": "TCK m.52 adli para cezası; 5275 İnfaz Kanunu hapse çevirme (5275 corpus'ta yok)."
+    },
+    {
+      "soru": "Sabıka kaydı ne zaman silinir veya arşiv kaydına dönüşür?",
+      "beklenen_kanunlar": ["5352"],
+      "beklenen_maddeler": ["9", "12"],
+      "notlar": "5352 Adli Sicil Kanunu — corpus'ta yok (Faz 2 için kritik eksik)."
+    },
+    {
+      "soru": "Meşru savunma hangi şartlarda ceza sorumluluğunu ortadan kaldırır?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["25", "27"],
+      "notlar": "TCK m.25 meşru savunma şartları; m.27 sınırın aşılması."
+    },
+    {
+      "soru": "Uzaklaştırma kararını ihlal eden kişi hakkında hangi cezai işlemler uygulanır?",
+      "beklenen_kanunlar": ["6284"],
+      "beklenen_maddeler": ["13"],
+      "notlar": "6284 m.13 — zorlama hapsi (3-10 gün, tekrarında 15-30 gün, toplam en çok 6 ay)."
+    }
   ]
 }

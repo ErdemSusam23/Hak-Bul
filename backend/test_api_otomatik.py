@@ -156,7 +156,16 @@ def sorulari_yuk(dosya_yolu: str) -> dict[str, list[str]]:
             print(f"[HATA] Kategori '{kategori}' en az 1 soru içermeli.")
             sys.exit(1)
         kanonik_kategori = normalize_category_name(kategori)
-        normalize_veri.setdefault(kanonik_kategori, []).extend(sorular)
+        soru_strs: list[str] = []
+        for item in sorular:
+            if isinstance(item, str):
+                soru_strs.append(item)
+            elif isinstance(item, dict) and "soru" in item:
+                soru_strs.append(item["soru"])
+            else:
+                print(f"[HATA] Kategori '{kategori}' içinde tanımsız soru formatı: {item!r}")
+                sys.exit(1)
+        normalize_veri.setdefault(kanonik_kategori, []).extend(soru_strs)
 
     toplam = sum(len(s) for s in normalize_veri.values())
     print(f"[INFO] {len(normalize_veri)} kategori, toplam {toplam} soru yüklendi.\n")

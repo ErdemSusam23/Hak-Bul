@@ -157,6 +157,27 @@ LAW_HINT_KEYWORDS = {
     "7201": {"tebligat", "bildirim", "adres", "iade"},
 }
 
+# Faz 2: Kategori → beklenen kanunlar. Bu listede olmayan kanunlardan gelen
+# chunk'lara apply_category_penalty() tarafından soft penalty uygulanır.
+# "Genel" kategori kasıtlı olarak eksik — catch-all, penalty yok.
+KATEGORI_EXPECTED_LAWS: dict[str, set[str]] = {
+    "İş Hukuku":       {"4857", "1475", "5510", "7036", "6331", "6356", "4447", "4904"},
+    "Medeni Hukuk":    {"4721", "6098"},
+    "Ceza Hukuku":     {"5237", "6284"},
+    "Ticaret Hukuku":  {"6102", "5411", "6362"},
+    "Tüketici Hukuku": {"6502", "6098"},
+    "Taşınmaz Mülk":   {"4721", "2942", "3194", "6306", "6098"},
+    "İdare Hukuku":    {"2577", "2709"},
+    "Vergi Hukuku":    {"193", "3065", "5520"},
+    "Sosyal Güvenlik": {"5510", "4447", "4904", "6331"},
+    "Fikri Mülkiyet":  {"5846", "5070"},
+    "Bilişim":         {"5651", "6698", "5237"},
+    "Anayasa":         {"2709", "2911"},
+    "Usul Hukuku":     {"6100", "2004", "7201", "7036", "2577"},
+}
+
+_KANUN_NO_RE = re.compile(r"^\s*(\d{3,5})")
+
 QUERY_SYNONYMS = {
     "stopaj": {"tevkifat", "tevkifati"},
     "tevkifat": {"stopaj"},
@@ -330,8 +351,19 @@ def _get_model():
     return _model
 
 
-def _query_qdrant(embedding: list[float], top_n: int, kaynak_turu: str | None = None):
+def _query_qdrant(
+    embedding: list[float],
+    top_n: int,
+    kaynak_turu: str | None = None,
+    collection_name: str | None = None,
+):
+    """Qdrant'a vector sorgusu gönderir.
+
+    collection_name verilmezse settings.COLLECTION_NAME kullanılır.
+    Bu sayede aynı istemci üzerinden birden fazla collection sorgulanabilir.
+    """
     client = _get_qdrant()
+    col = collection_name or settings.COLLECTION_NAME
     qdrant_filter = None
 
     if kaynak_turu:
@@ -343,7 +375,7 @@ def _query_qdrant(embedding: list[float], top_n: int, kaynak_turu: str | None = 
 
     if hasattr(client, "query_points"):
         return client.query_points(
-            collection_name=settings.COLLECTION_NAME,
+            collection_name=col,
             query=embedding,
             limit=top_n,
             with_payload=True,
@@ -351,7 +383,7 @@ def _query_qdrant(embedding: list[float], top_n: int, kaynak_turu: str | None = 
         ).points
 
     return client.search(
-        collection_name=settings.COLLECTION_NAME,
+        collection_name=col,
         query_vector=embedding,
         limit=top_n,
         with_payload=True,
@@ -527,22 +559,10 @@ def _merge_scored_chunks(
     if not secondary:
         return primary
 
-    primary_max = max((c.get("skor", 0.0) for c in primary), default=0.0)
-    secondary_max = max((c.get("skor", 0.0) for c in secondary), default=0.0)
-
-    scaled_secondary: list[dict] = []
-    if secondary_max > 0:
-        target_max = primary_max if primary_max > 0 else 1.0
-        scale = (target_max / secondary_max) * secondary_boost
-        for chunk in secondary:
-            scaled_secondary.append(
-                {
-                    "payload": chunk["payload"],
-                    "skor": round(chunk.get("skor", 0.0) * scale, 4),
-                }
-            )
-    else:
-        scaled_secondary = secondary
+    scaled_secondary: list[dict] = [
+        {"payload": c["payload"], "skor": round(c.get("skor", 0.0) * secondary_boost, 4)}
+        for c in secondary
+    ]
 
     merged = sorted(primary + scaled_secondary, key=lambda c: c.get("skor", 0.0), reverse=True)
     return _deduplicate_chunks(merged)
@@ -588,6 +608,32 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
         raw = [{"payload": r.payload, "skor": r.score} for r in qdrant_results]
         deduped = _deduplicate_chunks(raw)
 
+        # Kanunlar collection'ı yapılandırılmışsa ayrıca sorgula ve merge et.
+        # kaynak_turu filtresi uygulanmaz — kanunlar collection'ındaki tüm kayıtlar kanundur.
+        got_qdrant_kanunlar = False
+        if settings.COLLECTION_KANUN_NAME:
+            try:
+                kanun_results = _query_qdrant(
+                    embedding=embedding,
+                    top_n=top_n * 2,
+                    collection_name=settings.COLLECTION_KANUN_NAME,
+                )
+                raw_kanunlar = [{"payload": r.payload, "skor": r.score} for r in kanun_results]
+                if raw_kanunlar:
+                    # Kanunlar primary (semantik), kararlar secondary (0.9 boost)
+                    deduped = _merge_scored_chunks(
+                        _deduplicate_chunks(raw_kanunlar),
+                        deduped,
+                        secondary_boost=0.9,
+                    )
+                    got_qdrant_kanunlar = True
+            except Exception as kanun_exc:
+                logger.warning(
+                    "Kanunlar collection sorgulanamadı, local fallback devrede. collection=%s error=%s",
+                    settings.COLLECTION_KANUN_NAME,
+                    kanun_exc,
+                )
+
         should_merge_local_laws = _should_merge_local_law_results(query, kaynak_turu=kaynak_turu)
 
         if not deduped and not should_merge_local_laws:
@@ -595,7 +641,10 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
                 return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
             raise RuntimeError("Qdrant returned no retrieval results")
 
-        if (should_merge_local_laws or kaynak_turu is None) and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
+        # Local kanun merge — sadece Qdrant kanunlar collection'ı kullanılamadıysa devreye girer.
+        if not got_qdrant_kanunlar \
+                and (should_merge_local_laws or kaynak_turu is None) \
+                and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
             local_kanun = _retrieve_local(query=query, top_n=top_n * 2, kaynak_turu="kanun")
             if local_kanun:
                 if kaynak_turu == "kanun":
@@ -649,6 +698,40 @@ def filter_by_score(chunks: list[dict], threshold: float | None = None) -> list[
 
     sorted_chunks = sorted(chunks, key=lambda c: c["skor"], reverse=True)
     return sorted_chunks[: min(5, len(sorted_chunks))]
+
+
+def apply_category_penalty(
+    chunks: list[dict],
+    kategori: str,
+    penalty: float = 0.5,
+) -> list[dict]:
+    """Yanlış kategoriden gelen kanun chunk'larına soft penalty uygular.
+
+    - Yargıtay kararları ve bilinmeyen/Genel kategori etkilenmez.
+    - penalty=0.5: beklenmeyen kanun skoru yarıya iner, sıralama değişir.
+    - Re-sort yapılır; downstream filter_by_score ve deduplicate çalışmaya devam eder.
+    """
+    expected = KATEGORI_EXPECTED_LAWS.get(kategori)
+    if not expected:
+        return chunks  # "Genel" veya eşleşmeyen kategori — dokunma
+
+    result: list[dict] = []
+    for chunk in chunks:
+        if chunk.get("payload", {}).get("kaynak_turu") != "kanun":
+            result.append(chunk)
+            continue
+        kanun_adi = chunk.get("payload", {}).get("kanun_adi", "")
+        m = _KANUN_NO_RE.match(kanun_adi)
+        law_no = m.group(1) if m else ""
+        if law_no and law_no not in expected:
+            result.append({
+                "payload": chunk["payload"],
+                "skor": round(chunk.get("skor", 0.0) * penalty, 4),
+            })
+        else:
+            result.append(chunk)
+
+    return sorted(result, key=lambda c: c.get("skor", 0.0), reverse=True)
 
 
 def normalize_relevance_score(score: float) -> float:

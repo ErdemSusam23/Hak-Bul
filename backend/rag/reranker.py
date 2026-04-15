@@ -63,7 +63,7 @@ def rerank_chunks(query: str, chunks: list[dict], top_n: int) -> list[dict]:
         )
         result = []
         for chunk, score in reranked[:top_n]:
-            result.append({"payload": chunk["payload"], "skor": round(float(score), 4)})
+            result.append({"payload": chunk["payload"], "skor": chunk.get("skor", 0.0)})
         return result
 
     except Exception as exc:

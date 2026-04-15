@@ -1,16 +1,76 @@
 {
   "Medeni Hukuk": [
-    "Boşanma davası açmak için hangi belgeler gerekir ve süreç nasıl başlar?",
-    "Anlaşmalı boşanma için eşlerin hangi konularda anlaşmış olması gerekir?",
-    "Çekişmeli boşanma davasında süreç ortalama nasıl ilerler ve ne kadar sürebilir?",
-    "Nafaka hangi durumlarda istenir, hangi nafaka türleri vardır?",
-    "Bağlanan nafaka sonradan artırılabilir veya kaldırılabilir mi?",
-    "Velayet davasında hakim çocuğu kime vereceğine hangi ölçütlere göre karar verir?",
-    "Boşanma sonrası mal paylaşımı nasıl yapılır, hangi mallar paylaşıma girer?",
-    "Düğünde takılan ziynet eşyaları boşanmada kimde kalır ve nasıl talep edilir?",
-    "Mirasçılık belgesi nasıl alınır ve hangi işlemlerde kullanılır?",
-    "Miras payım bana verilmiyorsa hakkımı almak için hangi davayı açabilirim?",
-    "Vasiyetnameye itiraz etmek veya iptal davası açmak hangi durumlarda mümkündür?",
-    "Ad veya soyadı değişikliği davası hangi sebeplerle açılabilir?"
+    {
+      "soru": "Boşanma davası açmak istiyorum, hangi sebeplere dayanabilirim ve süreç nasıl başlar?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["161", "162", "163", "164", "165", "166"],
+      "notlar": "TMK m.161-166 özel ve genel boşanma sebepleri; özellikle m.166 evlilik birliğinin sarsılması."
+    },
+    {
+      "soru": "Anlaşmalı boşanma için eşimle hangi konularda anlaşmamız gerekir?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["166"],
+      "notlar": "TMK m.166/3 anlaşmalı boşanma; evlilik en az bir yıl sürmeli, taraflar boşanma ve sonuçlarında anlaşmalı."
+    },
+    {
+      "soru": "Çekişmeli boşanma davasında kusur, tanık ve deliller nasıl değerlendirilir?",
+      "beklenen_kanunlar": ["4721", "6100"],
+      "beklenen_maddeler": ["166", "184", "187", "190"],
+      "notlar": "TMK m.166 boşanma sebebi; HMK m.187-190 ispat ve delil yükü. HMK corpus'ta yoksa miss normal olabilir."
+    },
+    {
+      "soru": "Boşanma davasında kendim ve çocuğum için hangi nafakaları isteyebilirim?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["169", "175", "182", "328", "329", "330"],
+      "notlar": "TMK m.169 tedbir nafakası; m.175 yoksulluk nafakası; m.182 ve m.328-330 iştirak nafakası."
+    },
+    {
+      "soru": "Bağlanan nafaka sonradan artırılabilir, azaltılabilir veya kaldırılabilir mi?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["176", "331"],
+      "notlar": "TMK m.176 yoksulluk nafakasının değişmesi/kalkması; m.331 durum değişirse iştirak nafakasının uyarlanması."
+    },
+    {
+      "soru": "Velayet davasında hakim çocuğun hangi ebeveynde kalacağına neye göre karar verir?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["182", "336", "337", "339", "346"],
+      "notlar": "TMK m.182 boşanmada velayet; m.336-337 velayet düzeni; m.339 ve m.346 çocuğun korunması."
+    },
+    {
+      "soru": "Boşanma sonrası mal paylaşımı nasıl yapılır, hangi mallar edinilmiş mal sayılır?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["202", "218", "219", "220", "225", "236"],
+      "notlar": "TMK m.202 yasal mal rejimi; m.218-220 edinilmiş ve kişisel mallar; m.225 tasfiye zamanı; m.236 artık değere katılma."
+    },
+    {
+      "soru": "Düğünde takılan altın ve ziynet eşyalarını boşanmada nasıl talep edebilirim?",
+      "beklenen_kanunlar": ["4721", "6098"],
+      "beklenen_maddeler": ["220", "222", "77"],
+      "notlar": "Ziynet için kanunda tek özel madde yok; TMK m.220-222 kişisel mal/ispat, TBK m.77 sebepsiz zenginleşme dayanağı olabilir."
+    },
+    {
+      "soru": "Mirasçılık belgesi nasıl alınır ve miras payımı göstermek için hangi hükme bakılır?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["495", "496", "497", "598"],
+      "notlar": "TMK m.495-497 yasal mirasçılar; m.598 mirasçılık belgesi."
+    },
+    {
+      "soru": "Miras payım bana verilmiyorsa ortaklığın giderilmesi veya miras paylaşımı için ne yapabilirim?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["640", "642", "646", "649"],
+      "notlar": "TMK m.640 miras ortaklığı; m.642 paylaşma istemi; m.646 ve m.649 paylaşmanın esasları."
+    },
+    {
+      "soru": "Vasiyetnameye hangi sebeplerle itiraz edebilir veya iptal davası açabilirim?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["557", "558", "559", "560", "571"],
+      "notlar": "TMK m.557-559 vasiyetnamenin iptali; m.560 ve m.571 saklı pay/tenkis."
+    },
+    {
+      "soru": "Adımı veya soyadımı değiştirmek için hangi şartlarda dava açabilirim?",
+      "beklenen_kanunlar": ["4721", "5490"],
+      "beklenen_maddeler": ["27", "36"],
+      "notlar": "TMK m.27 haklı sebep ile ad değişikliği; 5490 Nüfus Hizmetleri Kanunu m.36 nüfus kayıtlarının düzeltilmesi. 5490 corpus'ta yoksa miss normal olabilir."
+    }
   ]
 }

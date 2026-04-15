@@ -1,16 +1,76 @@
 {
   "Ticaret Hukuku": [
-    "Şirket kuruluşu için hangi temel belgeler gerekir?",
-    "Limited şirket ile anonim şirket arasındaki temel farklar nelerdir?",
-    "Ortaklar şirket borçlarından hangi ölçüde sorumludur?",
-    "Çek karşılıksız çıkarsa hangi hukuki ve cezai sonuçlar doğar?",
-    "Bono ve poliçe arasındaki farklar nelerdir?",
-    "Ticari defterlerin tutulmaması halinde ne gibi sonuçlar doğar?",
-    "Tacir olmanın hukuki sonuçları nelerdir?",
-    "Haksız rekabet hangi davranışlarla oluşur?",
-    "Ticari işletmenin devri nasıl yapılır?",
-    "Şirket genel kurul kararına nasıl itiraz edilir?",
-    "Konkordato başvurusu hangi şartlarda yapılabilir?",
-    "İflas davası hangi hallerde açılır?"
+    {
+      "soru": "Şirket kurmak istiyorum, kuruluş ve ticaret siciline tescil için hangi temel kurallara bakmalıyım?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["40", "339", "575", "586"],
+      "notlar": "TTK m.40 ticaret siciline tescil; m.339 anonim şirket esas sözleşmesi; m.575 ve m.586 limited şirket kuruluşu/tescili."
+    },
+    {
+      "soru": "Limited şirket ile anonim şirket arasında ortakların sorumluluğu ve sermaye bakımından ne fark vardır?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["329", "332", "573", "580", "602"],
+      "notlar": "TTK m.329 ve m.332 anonim şirket; m.573, m.580 ve m.602 limited şirket."
+    },
+    {
+      "soru": "Şirket ortağı olarak şirket borçlarından kişisel malvarlığımla sorumlu olur muyum?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["329", "573", "602", "603"],
+      "notlar": "TTK m.329 anonim şirkette pay sahiplerinin taahhüt ettikleri sermaye ile sorumluluğu; m.573, m.602-603 limited şirkette ortakların borç ve ek ödeme düzeni."
+    },
+    {
+      "soru": "Çekim karşılıksız çıktı, hangi hukuki ve cezai yollara başvurabilirim?",
+      "beklenen_kanunlar": ["5941", "6102"],
+      "beklenen_maddeler": ["5", "780", "796", "808"],
+      "notlar": "5941 Çek Kanunu m.5 karşılıksız çek yaptırımı; TTK m.780 çek unsurları, m.796 ibraz süreleri, m.808 başvurma hakkı."
+    },
+    {
+      "soru": "Bono ile poliçe arasındaki fark nedir ve geçerli olmaları için hangi unsurlar gerekir?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["671", "672", "776", "777"],
+      "notlar": "TTK m.671-672 poliçe unsurları ve eksiklikleri; m.776-777 bono unsurları ve eksiklikleri."
+    },
+    {
+      "soru": "Ticari defterleri tutmazsam veya usulüne uygun saklamazsam ne gibi sonuçlarla karşılaşırım?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["64", "65", "82", "562"],
+      "notlar": "TTK m.64-65 ticari defterler; m.82 saklama yükümlülüğü; m.562 cezai sorumluluk."
+    },
+    {
+      "soru": "Tacir sayılmanın hukuki sonuçları nelerdir, basiretli davranma ve ticaret unvanı yükümlülüğü ne demektir?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["12", "18", "19", "39"],
+      "notlar": "TTK m.12 tacir; m.18 tacir olmanın hükümleri; m.19 ticari iş karinesi; m.39 ticaret unvanı."
+    },
+    {
+      "soru": "Rakibim müşterilerimi yanıltan reklamlar yapıyor, haksız rekabet için hangi haklarımı kullanabilirim?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["54", "55", "56", "57"],
+      "notlar": "TTK m.54 amaç/ilke; m.55 haksız rekabet halleri; m.56 davalar; m.57 çalışanların fiillerinden sorumluluk."
+    },
+    {
+      "soru": "Ticari işletmemi devretmek istiyorum, devir ve borçlardan sorumluluk açısından hangi hükümler önemlidir?",
+      "beklenen_kanunlar": ["6102", "6098"],
+      "beklenen_maddeler": ["11", "202"],
+      "notlar": "TTK m.11 ticari işletmenin devri; TBK m.202 malvarlığı veya işletme devrinde borçlardan sorumluluk."
+    },
+    {
+      "soru": "Anonim şirket genel kurul kararına karşı iptal davası açmak için kimler, hangi sürede dava açabilir?",
+      "beklenen_kanunlar": ["6102"],
+      "beklenen_maddeler": ["445", "446", "447", "448"],
+      "notlar": "TTK m.445 iptal davası ve süre; m.446 dava açabilecekler; m.447 butlan; m.448 usul."
+    },
+    {
+      "soru": "Borçlarımı ödeyemiyorum, konkordato başvurusu için hangi belgeler ve şartlar aranır?",
+      "beklenen_kanunlar": ["2004"],
+      "beklenen_maddeler": ["285", "286", "287", "289"],
+      "notlar": "İİK m.285 konkordato talebi; m.286 başvuru belgeleri; m.287 geçici mühlet; m.289 kesin mühlet."
+    },
+    {
+      "soru": "Bir şirket hakkında iflas davası hangi hallerde açılır ve doğrudan iflas sebepleri nelerdir?",
+      "beklenen_kanunlar": ["2004", "6102"],
+      "beklenen_maddeler": ["154", "177", "376"],
+      "notlar": "İİK m.154 iflas yoluyla takipte yetki; m.177 doğrudan iflas halleri; TTK m.376 sermaye kaybı/borca batıklık."
+    }
   ]
 }

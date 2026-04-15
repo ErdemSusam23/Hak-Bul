@@ -9,7 +9,8 @@ from config import settings
 from rag.categorizer import get_kategorilendirici
 from rag.generator import generate_answer
 from rag.query_rewriter import rewrite_query
-from rag.retriever import filter_by_score, normalize_relevance_score, retrieve_chunks
+from rag.reranker import rerank_chunks
+from rag.retriever import apply_category_penalty, filter_by_score, normalize_relevance_score, retrieve_chunks
 from services.language_service import informational_warning
 
 LAW_MEVZUAT_URLS: dict[str, str] = {
@@ -181,7 +182,9 @@ def _deduplicate_sources(chunks: list[dict]) -> list[dict]:
 def retrieve_context(soru: str, max_kaynak: int = 5) -> dict:
     kategori = get_kategorilendirici().kategorile(soru)
     rewritten = rewrite_query(soru)
-    chunks = retrieve_chunks(rewritten, top_n=max_kaynak * 2)
+    chunks = retrieve_chunks(rewritten, top_n=max_kaynak * 4)
+    chunks = apply_category_penalty(chunks, kategori)
+    chunks = rerank_chunks(soru, chunks, top_n=max_kaynak * 2)
     filtered = filter_by_score(chunks, threshold=settings.SCORE_THRESHOLD)
     filtered = _deduplicate_sources(filtered)[:max_kaynak]
     kaynaklar = _format_sources(filtered, query=soru)
@@ -209,13 +212,6 @@ def _format_sources(chunks: list[dict], query: str = "") -> list[dict]:
     if not chunks:
         return []
 
-    # Batch-level normalization: local scoring and merge scaling can push scores
-    # above 1.0. Dividing by batch max preserves relative ordering while keeping
-    # all scores in [0, 1]. When max <= 1.0 the division is a no-op.
-    raw_scores = [c.get("skor", 0.0) for c in chunks]
-    max_score = max(raw_scores) if raw_scores else 1.0
-    scale = max_score if max_score > 1.0 else 1.0
-
     sources = []
     for c in chunks:
         p = c["payload"]
@@ -238,7 +234,7 @@ def _format_sources(chunks: list[dict], query: str = "") -> list[dict]:
                 "kaynak_turu": kaynak_turu,
                 "baslik": baslik,
                 "metin_ozet": _build_source_summary(p.get("metin", ""), query=query),
-                "skor": normalize_relevance_score(c.get("skor", 0.0) / scale),
+                "skor": normalize_relevance_score(c.get("skor", 0.0)),
                 "url": url,
             }
         )

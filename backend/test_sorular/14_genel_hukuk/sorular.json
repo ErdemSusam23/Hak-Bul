@@ -1,16 +1,76 @@
 {
   "Genel Hukuk": [
-    "Trafik cezasına nasıl itiraz edilir ve başvuru süresi kaç gündür?",
-    "Trafik kazasında kusur oranına itiraz etmek istersem nereye başvurmalıyım?",
-    "Ehliyetime el konulduysa geri almak için hangi hukuki yollar vardır?",
-    "Noter vekaletnamesi nasıl çıkarılır ve hangi işlemler için gerekir?",
-    "Adli sicil kaydı e-Devlet üzerinden nasıl alınır, silinme talebi nasıl yapılır?",
-    "Ad veya soyadı değişikliği için hangi mahkemeye başvurulur?",
-    "Yabancıların Türkiye'de çalışma izni başvurusu nasıl yapılır?",
-    "İkamet izni başvurum reddedildi, karara nasıl itiraz edebilirim?",
-    "Sınır dışı etme kararına karşı dava açma süresi ne kadardır?",
-    "Türk vatandaşlığı başvurusu için genel şartlar nelerdir?",
-    "Dilekçe hakkı kapsamında kamu kurumlarına başvuru nasıl yapılır?",
-    "Bilgi edinme başvurusu reddedilirse hangi yola başvurulabilir?"
+    {
+      "soru": "Trafik cezasına nasıl itiraz edilir ve başvuru süresi kaç gündür?",
+      "beklenen_kanunlar": ["2918", "5326"],
+      "beklenen_maddeler": [],
+      "notlar": "2918 KTK trafik cezaları; 5326 Kabahatler Kanunu itiraz (corpus'ta yok — Faz 2 sinyali). İtiraz sulh ceza hakimliğine, 15 gün."
+    },
+    {
+      "soru": "Trafik kazasında kusur oranına itiraz etmek istersem nereye başvurmalıyım?",
+      "beklenen_kanunlar": ["2918"],
+      "beklenen_maddeler": [],
+      "notlar": "2918 KTK — kusur tespitine itiraz (bilirkişi raporu, sigorta tahkim, asliye hukuk/ticaret)."
+    },
+    {
+      "soru": "Ehliyetime el konulduysa geri almak için hangi hukuki yollar vardır?",
+      "beklenen_kanunlar": ["2918"],
+      "beklenen_maddeler": ["48", "51"],
+      "notlar": "2918 m.48 alkollü sürücü, m.51 hız; idari yargı ve sulh ceza hakimliği yolu."
+    },
+    {
+      "soru": "Noter vekaletnamesi nasıl çıkarılır ve hangi işlemler için gerekir?",
+      "beklenen_kanunlar": ["1512", "6098"],
+      "beklenen_maddeler": ["502", "514"],
+      "notlar": "1512 Noterlik Kanunu (corpus'ta yok — Faz 2 sinyali); 6098 TBK m.502-514 vekalet sözleşmesi."
+    },
+    {
+      "soru": "Adli sicil kaydı e-Devlet üzerinden nasıl alınır, silinme talebi nasıl yapılır?",
+      "beklenen_kanunlar": ["5352"],
+      "beklenen_maddeler": ["9", "12"],
+      "notlar": "5352 Adli Sicil Kanunu (corpus'ta yok — Faz 2 kritik eksik). m.9 silme, m.12 arşiv kaydı."
+    },
+    {
+      "soru": "Ad veya soyadı değişikliği için hangi mahkemeye başvurulur?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["27"],
+      "notlar": "TMK m.27 ad değiştirme — asliye hukuk mahkemesi, haklı sebep."
+    },
+    {
+      "soru": "Yabancıların Türkiye'de çalışma izni başvurusu nasıl yapılır?",
+      "beklenen_kanunlar": ["6735"],
+      "beklenen_maddeler": [],
+      "notlar": "6735 Uluslararası İşgücü Kanunu (corpus'ta yok — Faz 2 eksik). 4817 önceki kanun, mülga."
+    },
+    {
+      "soru": "İkamet izni başvurum reddedildi, karara nasıl itiraz edebilirim?",
+      "beklenen_kanunlar": ["6458"],
+      "beklenen_maddeler": [],
+      "notlar": "6458 Yabancılar ve Uluslararası Koruma Kanunu (corpus'ta yok — Faz 2 eksik). İdari yargı yolu."
+    },
+    {
+      "soru": "Sınır dışı etme kararına karşı dava açma süresi ne kadardır?",
+      "beklenen_kanunlar": ["6458"],
+      "beklenen_maddeler": ["53"],
+      "notlar": "6458 m.53 — sınır dışı etme kararına karşı 7 gün içinde idare mahkemesi (corpus'ta yok)."
+    },
+    {
+      "soru": "Türk vatandaşlığı başvurusu için genel şartlar nelerdir?",
+      "beklenen_kanunlar": ["5901"],
+      "beklenen_maddeler": ["11"],
+      "notlar": "5901 Türk Vatandaşlığı Kanunu (corpus'ta yok — Faz 2 eksik). m.11 genel şartlar."
+    },
+    {
+      "soru": "Dilekçe hakkı kapsamında kamu kurumlarına başvuru nasıl yapılır?",
+      "beklenen_kanunlar": ["3071"],
+      "beklenen_maddeler": [],
+      "notlar": "3071 Dilekçe Hakkı Kanunu — başvuru şekli ve süreler."
+    },
+    {
+      "soru": "Bilgi edinme başvurusu reddedilirse hangi yola başvurulabilir?",
+      "beklenen_kanunlar": ["4982"],
+      "beklenen_maddeler": [],
+      "notlar": "4982 Bilgi Edinme Hakkı Kanunu — ret halinde BEDK itirazı ve idari yargı."
+    }
   ]
 }

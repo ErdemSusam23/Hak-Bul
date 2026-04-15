@@ -23,9 +23,13 @@ Kullanım amacı:
 - Çıktı yalnızca JSON olmalı
 - JSON içinde sadece 1 kategori anahtarı bulunmalı
 - Soru sayısı tam `12` olmalı
+- Her soru düz string değil, dict nesnesi olarak üretilmeli
 - Sorular akademik veya ders anlatımı gibi değil, vatandaş diliyle ve pratik problem odaklı olmalı
 - Sorular Türkiye bağlamında güncel mevzuat ve güncel vatandaş ihtiyacına göre hazırlanmalı
 - Aynı anlama gelen tekrar sorular üretilmemeli
+- Her soru için retrieval değerlendirmesinde kullanılacak `beklenen_kanunlar` alanı doldurulmalı
+- Mümkün olan sorularda `beklenen_maddeler` alanı da doldurulmalı
+- Gerekliyse kısa bir `notlar` alanı eklenebilir
 - Çıktı doğrudan ilgili klasördeki `sorular.json` dosyasına yapıştırılabilecek formatta olmalı
 
 ### Prompt Şablonu
@@ -47,23 +51,41 @@ Lütfen aşağıdaki kurallara göre yeni bir soru seti üret:
 2. JSON içinde sadece 1 kategori anahtarı bulunsun.
 3. Kategori adı tam olarak `{KATEGORI_ADI}` olsun.
 4. Toplam soru sayısı tam olarak 12 olsun.
-5. Sorular Türkiye'de vatandaşların bu hukuk başlığında en sık sorabileceği, pratik ve gerçek hayata yakın sorular olsun.
-6. Sorular mevzuat ezberi ölçen akademik sorular gibi değil, vatandaşın arama motoruna veya hukuk asistanına yazacağı doğal sorular gibi olsun.
-7. Soru seti dengeli olsun:
+5. Her soru bir dict nesnesi olsun ve şu alanları içersin:
+   - `soru`: vatandaş diliyle yazılmış soru metni
+   - `beklenen_kanunlar`: bu soruda retrieval içinde gelmesini beklediğimiz kanun numaraları listesi
+   - `beklenen_maddeler`: mümkünse gelmesini beklediğimiz madde numaraları listesi
+   - `notlar`: kısa değerlendirme notu veya beklenen eşleşme açıklaması
+6. `beklenen_kanunlar` alanı boş bırakılmamalı; her soru için en az 1 kanun numarası yazılmalı.
+7. `beklenen_maddeler` alanı yalnızca gerçekten makul ölçüde spesifik bir madde beklentisi varsa doldurulmalı; emin olunmayan durumda boş liste kullanılmalı.
+8. `notlar` alanı kısa, somut ve evaluator mantığını destekleyecek şekilde yazılmalı; uzun açıklama yapılmamalı.
+9. Sorular Türkiye'de vatandaşların bu hukuk başlığında en sık sorabileceği, pratik ve gerçek hayata yakın sorular olsun.
+10. Sorular mevzuat ezberi ölçen akademik sorular gibi değil, vatandaşın arama motoruna veya hukuk asistanına yazacağı doğal sorular gibi olsun.
+11. Soru seti dengeli olsun:
    - yüksek frekanslı günlük sorunlar
    - hak arama ve başvuru süreçleri
    - süre, itiraz, tazminat, başvuru mercii gibi kritik konular
-8. Aynı konu farklı cümlelerle tekrar edilmesin.
-9. Sorular kısa ama yeterince net olsun.
-10. Açıklama, maddeleme, yorum veya ek not yazma; sadece JSON üret.
+12. Aynı konu farklı cümlelerle tekrar edilmesin.
+13. Sorular kısa ama yeterince net olsun.
+14. Kanun numaraları ve madde numaraları mümkün olduğunca güncel ve doğru mevzuata göre seçilsin.
+15. Açıklama, maddeleme, yorum veya ek not yazma; sadece JSON üret.
 
 İstenen çıktı formatı tam olarak şöyle olsun:
 
 {
   "{KATEGORI_ADI}": [
-    "Soru 1?",
-    "Soru 2?",
-    "Soru 3?"
+    {
+      "soru": "Soru 1?",
+      "beklenen_kanunlar": ["0000"],
+      "beklenen_maddeler": ["00"],
+      "notlar": "Kısa not"
+    },
+    {
+      "soru": "Soru 2?",
+      "beklenen_kanunlar": ["0000"],
+      "beklenen_maddeler": [],
+      "notlar": "Kısa not"
+    }
   ]
 }
 
@@ -77,7 +99,7 @@ Eğer mevcut soru seti zayıf, tekrar eden veya fazla akademikse, onu daha vatan
 Eğer AI'ın mevcut dosyayı da görerek daha iyi bir yenileme yapmasını istiyorsan şu cümleyi prompt sonuna ekle:
 
 ```text
-Aşağıda mevcut soru seti var. Bunu referans al ama gerekirse tamamen yeniden yazarak daha güçlü, daha güncel ve daha vatandaş odaklı bir 12 soruluk set üret:
+Aşağıda mevcut soru seti var. Bunu referans al ama gerekirse tamamen yeniden yazarak daha güçlü, daha güncel, daha vatandaş odaklı ve Faz 4 retrieval değerlendirme şemasına uygun bir 12 soruluk set üret. Çıktıdaki her soru `soru`, `beklenen_kanunlar`, `beklenen_maddeler`, `notlar` alanlarını içersin:
 
 {MEVCUT_SORU_JSONI}
 ```

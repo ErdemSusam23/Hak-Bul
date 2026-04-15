@@ -44,6 +44,8 @@ class Settings:
     GUEST_SESSION_EXPIRE_DAYS: int = int(os.environ.get("GUEST_SESSION_EXPIRE_DAYS", "30"))
     STRICT_UPSTREAMS: bool = _as_bool("STRICT_UPSTREAMS", "false")
     ALLOW_LOCAL_RETRIEVAL_FALLBACK: bool = _as_bool("ALLOW_LOCAL_RETRIEVAL_FALLBACK", "true")
+    RERANKER_ENABLED: bool = _as_bool("RERANKER_ENABLED", "false")
+    RERANKER_MODEL: str = os.environ.get("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
 
 
 settings = Settings()

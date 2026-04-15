@@ -1,16 +1,76 @@
 {
   "Usul Hukuku": [
-    "İlamsız icra takibi nasıl başlatılır ve borçlu ne kadar sürede itiraz edebilir?",
-    "Hakkımda icra takibi başlatıldı, ödeme emrine nasıl itiraz edebilirim?",
-    "Banka hesabıma e-haciz geldi, blokeyi kaldırmak için hangi yollar vardır?",
-    "Arabuluculuk hangi uyuşmazlıklarda zorunludur, başvuru nasıl yapılır?",
-    "Dava açarken harç ve masraflar nasıl hesaplanır, peşin ödeme zorunlu mudur?",
-    "Maddi durumum kötü ise adli yardım talebini nasıl yapabilirim?",
-    "İstinaf başvurusu nedir, hangi sürede ve nereye yapılır?",
-    "Temyiz hangi kararlar için mümkündür ve istinaftan farkı nedir?",
-    "İhtiyati tedbir kararı hangi durumlarda alınabilir?",
-    "Delil tespiti davası nedir, hangi durumlarda dava açmadan önce istenir?",
-    "Tebligat bana ulaşmadıysa yine de süre işlemeye başlar mı?",
-    "Avukatsız dava açabilir miyim, hangi aşamalarda avukat desteği kritik hale gelir?"
+    {
+      "soru": "İlamsız icra takibi nasıl başlatılır ve borçlu ne kadar sürede itiraz edebilir?",
+      "beklenen_kanunlar": ["2004"],
+      "beklenen_maddeler": ["58", "60", "62"],
+      "notlar": "İİK m.58 takip talebi, m.60 ödeme emri, m.62 itiraz süresi (7 gün)."
+    },
+    {
+      "soru": "Hakkımda icra takibi başlatıldı, ödeme emrine nasıl itiraz edebilirim?",
+      "beklenen_kanunlar": ["2004"],
+      "beklenen_maddeler": ["62", "63"],
+      "notlar": "İİK m.62-63 — itiraz süresi ve mercii (icra dairesi)."
+    },
+    {
+      "soru": "Banka hesabıma e-haciz geldi, blokeyi kaldırmak için hangi yollar vardır?",
+      "beklenen_kanunlar": ["2004"],
+      "beklenen_maddeler": ["85", "89"],
+      "notlar": "İİK m.85 haciz, m.89 üçüncü şahıslara haciz ihbarnamesi."
+    },
+    {
+      "soru": "Arabuluculuk hangi uyuşmazlıklarda zorunludur, başvuru nasıl yapılır?",
+      "beklenen_kanunlar": ["6325", "7036"],
+      "beklenen_maddeler": [],
+      "notlar": "6325 Arabuluculuk Kanunu (corpus'ta yok); 7036 iş uyuşmazlıklarında zorunlu arabuluculuk."
+    },
+    {
+      "soru": "Dava açarken harç ve masraflar nasıl hesaplanır, peşin ödeme zorunlu mudur?",
+      "beklenen_kanunlar": ["492", "6100"],
+      "beklenen_maddeler": ["120"],
+      "notlar": "492 Harçlar Kanunu (corpus'ta yok); HMK m.120 gider avansı."
+    },
+    {
+      "soru": "Maddi durumum kötü ise adli yardım talebini nasıl yapabilirim?",
+      "beklenen_kanunlar": ["6100"],
+      "beklenen_maddeler": ["334", "335", "336", "337", "338", "339", "340"],
+      "notlar": "HMK m.334-340 adli yardım."
+    },
+    {
+      "soru": "İstinaf başvurusu nedir, hangi sürede ve nereye yapılır?",
+      "beklenen_kanunlar": ["6100"],
+      "beklenen_maddeler": ["341", "342", "343", "345"],
+      "notlar": "HMK m.341-360; süre iki hafta (14 gün değil)."
+    },
+    {
+      "soru": "Temyiz hangi kararlar için mümkündür ve istinaftan farkı nedir?",
+      "beklenen_kanunlar": ["6100"],
+      "beklenen_maddeler": ["361", "362", "363", "364", "365"],
+      "notlar": "HMK m.361-375 temyiz."
+    },
+    {
+      "soru": "İhtiyati tedbir kararı hangi durumlarda alınabilir?",
+      "beklenen_kanunlar": ["6100"],
+      "beklenen_maddeler": ["389", "390", "391", "392"],
+      "notlar": "HMK m.389 şartları, m.390 talep, m.391 karar, m.392 teminat."
+    },
+    {
+      "soru": "Delil tespiti davası nedir, hangi durumlarda dava açmadan önce istenir?",
+      "beklenen_kanunlar": ["6100"],
+      "beklenen_maddeler": ["400", "401", "402", "403", "404", "405"],
+      "notlar": "HMK m.400-405 delil tespiti (m.183/A değil — bu yaygın halüsinasyon)."
+    },
+    {
+      "soru": "Tebligat bana ulaşmadıysa yine de süre işlemeye başlar mı?",
+      "beklenen_kanunlar": ["7201"],
+      "beklenen_maddeler": ["21", "32", "35"],
+      "notlar": "7201 m.32 usulsüz tebligat ve öğrenme tarihi; m.21 muhtara bırakma; m.35 bilinen adres."
+    },
+    {
+      "soru": "Avukatsız dava açabilir miyim, hangi aşamalarda avukat desteği kritik hale gelir?",
+      "beklenen_kanunlar": ["6100", "1136"],
+      "beklenen_maddeler": ["71"],
+      "notlar": "HMK m.71 — dava ehliyeti ve kendisini temsil; 1136 Avukatlık Kanunu (corpus'ta yok)."
+    }
   ]
 }

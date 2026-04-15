@@ -1,16 +1,76 @@
 {
   "İş Hukuku": [
-    "İşten çıkarıldım, kıdem ve ihbar tazminatımı hangi şartlarda alabilirim?",
-    "Kendi isteğimle işten ayrılırsam kıdem tazminatı alma hakkım olur mu?",
-    "Kıdem tazminatı nasıl hesaplanır, brüt mü net maaş mı dikkate alınır?",
-    "Maaşım geç yatıyor veya eksik yatırılıyor, yasal olarak ne yapabilirim?",
-    "Fazla mesai yaptım ama ücretini alamadım, bunu nasıl ispat edebilirim?",
-    "İşe iade davası hangi şartlarda açılır ve başvuru süresi kaç gündür?",
-    "SGK işten çıkış kodum yanlış girildiyse nasıl düzelttirebilirim?",
-    "Sigortasız çalıştırıldım, geçmişe dönük sigorta ve ücret haklarımı nasıl arayabilirim?",
-    "İşyerinde mobbinge uğruyorum, hangi delillerle dava açabilirim?",
-    "Kullanmadığım yıllık izin ücretini işten ayrılırken talep edebilir miyim?",
-    "İş kazası geçirdim, işverenden hangi tazminatları isteyebilirim?",
-    "Emeklilik nedeniyle işten ayrılırsam kıdem tazminatımı nasıl alırım?"
+    {
+      "soru": "İşten çıkarıldım, kıdem ve ihbar tazminatımı hangi şartlarda alabilirim?",
+      "beklenen_kanunlar": ["1475", "4857"],
+      "beklenen_maddeler": ["14", "17"],
+      "notlar": "Kıdem: 1475 m.14 (yürürlükte kalan tek madde). İhbar: 4857 m.17."
+    },
+    {
+      "soru": "Kendi isteğimle işten ayrılırsam kıdem tazminatı alma hakkım olur mu?",
+      "beklenen_kanunlar": ["1475"],
+      "beklenen_maddeler": ["14"],
+      "notlar": "İstifa halinde kural olarak kıdem yok; 1475 m.14'teki istisnalar (emeklilik, askerlik, evlilik)."
+    },
+    {
+      "soru": "Kıdem tazminatı nasıl hesaplanır, brüt mü net maaş mı dikkate alınır?",
+      "beklenen_kanunlar": ["1475"],
+      "beklenen_maddeler": ["14"],
+      "notlar": "1475 m.14 — son brüt ücret üzerinden 30 günlük ücret × kıdem yılı."
+    },
+    {
+      "soru": "Maaşım geç yatıyor veya eksik yatırılıyor, yasal olarak ne yapabilirim?",
+      "beklenen_kanunlar": ["4857"],
+      "beklenen_maddeler": ["34"],
+      "notlar": "4857 m.34 — ücretin gününde ödenmemesi, çalışmaktan kaçınma hakkı."
+    },
+    {
+      "soru": "Fazla mesai yaptım ama ücretini alamadım, bunu nasıl ispat edebilirim?",
+      "beklenen_kanunlar": ["4857"],
+      "beklenen_maddeler": ["41"],
+      "notlar": "4857 m.41 — fazla çalışma ücreti ve ispat. Bordro, puantaj, tanık."
+    },
+    {
+      "soru": "İşe iade davası hangi şartlarda açılır ve başvuru süresi kaç gündür?",
+      "beklenen_kanunlar": ["4857", "7036"],
+      "beklenen_maddeler": ["18", "19", "20", "21"],
+      "notlar": "4857 m.18-21 iş güvencesi; 7036 İş Mahkemeleri Kanunu — zorunlu arabuluculuk."
+    },
+    {
+      "soru": "SGK işten çıkış kodum yanlış girildiyse nasıl düzelttirebilirim?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": [],
+      "notlar": "5510 sayılı SGK Kanunu — bildirim ve düzeltme. İşverene itiraz, SGK başvurusu."
+    },
+    {
+      "soru": "Sigortasız çalıştırıldım, geçmişe dönük sigorta ve ücret haklarımı nasıl arayabilirim?",
+      "beklenen_kanunlar": ["5510", "4857"],
+      "beklenen_maddeler": [],
+      "notlar": "5510 — hizmet tespiti davası; 4857 — işçilik ücret alacakları."
+    },
+    {
+      "soru": "İşyerinde mobbinge uğruyorum, hangi delillerle dava açabilirim?",
+      "beklenen_kanunlar": ["4857", "6098"],
+      "beklenen_maddeler": ["5", "417"],
+      "notlar": "4857 m.5 ayrımcılık; 6098 m.417 işverenin işçiyi koruma/kişilik hakkı yükümlülüğü."
+    },
+    {
+      "soru": "Kullanmadığım yıllık izin ücretini işten ayrılırken talep edebilir miyim?",
+      "beklenen_kanunlar": ["4857"],
+      "beklenen_maddeler": ["59"],
+      "notlar": "4857 m.59 — sözleşme sona erdiğinde kullanılmayan yıllık izin ücreti son ücret üzerinden."
+    },
+    {
+      "soru": "İş kazası geçirdim, işverenden hangi tazminatları isteyebilirim?",
+      "beklenen_kanunlar": ["6331", "5510", "6098"],
+      "beklenen_maddeler": [],
+      "notlar": "6331 İSG Kanunu; 5510 iş kazası tanımı ve kısa vade sigorta; 6098 maddi/manevi tazminat."
+    },
+    {
+      "soru": "Emeklilik nedeniyle işten ayrılırsam kıdem tazminatımı nasıl alırım?",
+      "beklenen_kanunlar": ["1475"],
+      "beklenen_maddeler": ["14"],
+      "notlar": "1475 m.14 — emeklilik ve yaş/prim şartlarıyla ayrılış kıdem tazminatı hakkı."
+    }
   ]
 }

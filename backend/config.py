@@ -20,6 +20,7 @@ class Settings:
     QDRANT_API_KEY: str = os.environ.get("QDRANT_API_KEY", "")
     GROQ_API_KEY: str = os.environ.get("GROQ_API_KEY", "")
     COLLECTION_NAME: str = os.environ.get("QDRANT_COLLECTION", "hukuk_chunks")
+    COLLECTION_KANUN_NAME: str = os.environ.get("QDRANT_COLLECTION_KANUN", "")
     SCORE_THRESHOLD: float = float(os.environ.get("SCORE_THRESHOLD", "0.65"))
     EMBEDDING_MODEL: str = os.environ.get(
         "EMBEDDING_MODEL",

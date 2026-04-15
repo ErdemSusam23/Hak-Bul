@@ -351,8 +351,19 @@ def _get_model():
     return _model
 
 
-def _query_qdrant(embedding: list[float], top_n: int, kaynak_turu: str | None = None):
+def _query_qdrant(
+    embedding: list[float],
+    top_n: int,
+    kaynak_turu: str | None = None,
+    collection_name: str | None = None,
+):
+    """Qdrant'a vector sorgusu gönderir.
+
+    collection_name verilmezse settings.COLLECTION_NAME kullanılır.
+    Bu sayede aynı istemci üzerinden birden fazla collection sorgulanabilir.
+    """
     client = _get_qdrant()
+    col = collection_name or settings.COLLECTION_NAME
     qdrant_filter = None
 
     if kaynak_turu:
@@ -364,7 +375,7 @@ def _query_qdrant(embedding: list[float], top_n: int, kaynak_turu: str | None = 
 
     if hasattr(client, "query_points"):
         return client.query_points(
-            collection_name=settings.COLLECTION_NAME,
+            collection_name=col,
             query=embedding,
             limit=top_n,
             with_payload=True,
@@ -372,7 +383,7 @@ def _query_qdrant(embedding: list[float], top_n: int, kaynak_turu: str | None = 
         ).points
 
     return client.search(
-        collection_name=settings.COLLECTION_NAME,
+        collection_name=col,
         query_vector=embedding,
         limit=top_n,
         with_payload=True,
@@ -597,6 +608,32 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
         raw = [{"payload": r.payload, "skor": r.score} for r in qdrant_results]
         deduped = _deduplicate_chunks(raw)
 
+        # Kanunlar collection'ı yapılandırılmışsa ayrıca sorgula ve merge et.
+        # kaynak_turu filtresi uygulanmaz — kanunlar collection'ındaki tüm kayıtlar kanundur.
+        got_qdrant_kanunlar = False
+        if settings.COLLECTION_KANUN_NAME:
+            try:
+                kanun_results = _query_qdrant(
+                    embedding=embedding,
+                    top_n=top_n * 2,
+                    collection_name=settings.COLLECTION_KANUN_NAME,
+                )
+                raw_kanunlar = [{"payload": r.payload, "skor": r.score} for r in kanun_results]
+                if raw_kanunlar:
+                    # Kanunlar primary (semantik), kararlar secondary (0.9 boost)
+                    deduped = _merge_scored_chunks(
+                        _deduplicate_chunks(raw_kanunlar),
+                        deduped,
+                        secondary_boost=0.9,
+                    )
+                    got_qdrant_kanunlar = True
+            except Exception as kanun_exc:
+                logger.warning(
+                    "Kanunlar collection sorgulanamadı, local fallback devrede. collection=%s error=%s",
+                    settings.COLLECTION_KANUN_NAME,
+                    kanun_exc,
+                )
+
         should_merge_local_laws = _should_merge_local_law_results(query, kaynak_turu=kaynak_turu)
 
         if not deduped and not should_merge_local_laws:
@@ -604,7 +641,10 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
                 return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
             raise RuntimeError("Qdrant returned no retrieval results")
 
-        if (should_merge_local_laws or kaynak_turu is None) and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
+        # Local kanun merge — sadece Qdrant kanunlar collection'ı kullanılamadıysa devreye girer.
+        if not got_qdrant_kanunlar \
+                and (should_merge_local_laws or kaynak_turu is None) \
+                and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
             local_kanun = _retrieve_local(query=query, top_n=top_n * 2, kaynak_turu="kanun")
             if local_kanun:
                 if kaynak_turu == "kanun":

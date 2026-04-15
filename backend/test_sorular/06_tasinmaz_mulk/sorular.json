@@ -1,16 +1,76 @@
 {
   "Tasinmaz Mulk": [
-    "Taşınmaz mülkiyeti nasıl kazanılır? Aslen ve devren kazanım farkı nedir?",
-    "Tapu sicilinin aleniyeti ilkesi ne anlama gelir?",
-    "Tapu siciline güven ilkesi nedir? Hangi durumlarda korunmaz?",
-    "Zilyetlik nedir?",
-    "İrtifak hakkı nedir?",
-    "Üst hakkı ve intifa hakkı arasındaki farklar nelerdir?",
-    "Kat mülkiyeti nedir?",
-    "Taşınmaz satış sözleşmesi hangi şekil şartına tabidir?",
-    "Kamulaştırma nedir? Şartları nelerdir?",
-    "İmar uygulamaları mülkiyet hakkını nasıl sınırlar?",
-    "Haksız işgal nedir?",
-    "Tapu iptal ve tescil davası hangi durumlarda açılır?"
+    {
+      "soru": "Tapu nedir ve nasıl alınır?",
+      "beklenen_kanunlar": ["4721", "2644"],
+      "beklenen_maddeler": ["705"],
+      "notlar": "Türk Medeni Kanunu (TMK) m.705 ve Tapu Kanunu (2644)"
+    },
+    {
+      "soru": "Taşınmaz satışında resmi şekil şartı nedir?",
+      "beklenen_kanunlar": ["4721", "6098", "2644"],
+      "beklenen_maddeler": ["706", "237", "26"],
+      "notlar": "TMK m.706, TBK m.237, Tapu Kanunu m.26 resmi şekil"
+    },
+    {
+      "soru": "Tapu iptal ve tescil davası hangi durumlarda açılır?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["1025"],
+      "notlar": "TMK m.1025 Yolsuz tescil"
+    },
+    {
+      "soru": "Kat mülkiyeti ile kat irtifakı arasındaki fark nedir?",
+      "beklenen_kanunlar": ["634"],
+      "beklenen_maddeler": ["1", "2"],
+      "notlar": "Kat Mülkiyeti Kanunu m.1 ve m.2"
+    },
+    {
+      "soru": "Kiracı tahliyesi hangi durumlarda mümkündür?",
+      "beklenen_kanunlar": ["6098"],
+      "beklenen_maddeler": ["350", "352"],
+      "notlar": "TBK m.350-352 (İhtiyaç, yeniden inşa ve haklı sebeplerle tahliye)"
+    },
+    {
+      "soru": "Kira artış oranı nasıl belirlenir?",
+      "beklenen_kanunlar": ["6098"],
+      "beklenen_maddeler": ["344"],
+      "notlar": "TBK m.344 (TÜFE on iki aylık ortalama)"
+    },
+    {
+      "soru": "Ortak mülkiyet (paylı mülkiyet) nedir ve nasıl sona erdirilir?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["688", "698", "699"],
+      "notlar": "TMK m.688 ile m.698-699 arası (İzale-i Şüyu davası)"
+    },
+    {
+      "soru": "İpotek nedir ve nasıl kaldırılır?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["881", "883"],
+      "notlar": "TMK m.881 (İpotek) ve m.883 (kaldırılması)"
+    },
+    {
+      "soru": "Komşuluk hukukundan doğan haklar nelerdir?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["737"],
+      "notlar": "TMK m.737 (Taşınmaz malikinin komşuluk ilişkileri)"
+    },
+    {
+      "soru": "Haksız işgal (ecrimisil) nedir ve nasıl talep edilir?",
+      "beklenen_kanunlar": ["4721", "2886"],
+      "beklenen_maddeler": ["995", "75"],
+      "notlar": "TMK m.995 (İyiniyetli olmayan zilyet) ve 2886 sk m.75"
+    },
+    {
+      "soru": "Arsa payı karşılığı inşaat sözleşmesi nedir?",
+      "beklenen_kanunlar": ["6098"],
+      "beklenen_maddeler": ["470"],
+      "notlar": "TBK Eser Sözleşmesi (m.470 vd.)"
+    },
+    {
+      "soru": "Tapuda yapılan hatalar nasıl düzeltilir?",
+      "beklenen_kanunlar": ["4721"],
+      "beklenen_maddeler": ["1027"],
+      "notlar": "TMK m.1027 (Tapu sicilindeki hataların düzeltilmesi)"
+    }
   ]
 }

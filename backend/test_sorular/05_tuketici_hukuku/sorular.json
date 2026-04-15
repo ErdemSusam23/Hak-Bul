@@ -1,16 +1,76 @@
 {
-  "Tüketici Hukuku": [
-    "İnternetten aldığım ürünü beğenmedim, cayma hakkımı kaç gün içinde kullanabilirim?",
-    "Satıcı 'iade yok' diyor, mesafeli satışta bu geçerli midir?",
-    "Aldığım ürün ayıplı çıktı, değişim yerine para iadesi isteyebilir miyim?",
-    "Garanti kapsamındaki ürün aynı arızayı tekrar yaparsa hangi haklarım doğar?",
-    "Yetkili servis garanti kapsamındaki ürün için ücret talep ederse ne yapabilirim?",
-    "Tüketici hakem heyetine başvuru nasıl yapılır, e-Devlet'ten başvurabilir miyim?",
-    "Hakem heyeti kararına karşı itiraz etmek istersem nereye başvurmalıyım?",
-    "Kargo ile gelen ürün eksik veya farklı çıktıysa nasıl hak arayabilirim?",
-    "Abonelik iptalinde cayma bedeli veya ceza ücreti istenmesi her zaman yasal mıdır?",
-    "Kapora verdiğim ürün veya hizmet teslim edilmezse paramı geri alabilir miyim?",
-    "İkinci el araç veya telefon ayıplı çıkarsa tüketici olarak hangi haklara sahibim?",
-    "Paket tur, otel veya etkinlik iptalinde ücret iadesi hangi şartlarda alınabilir?"
+  "Tuketici Hukuku": [
+    {
+      "soru": "İnternetten aldığım ürünü beğenmedim, cayma hakkımı kaç gün içinde kullanabilirim?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["48"],
+      "notlar": "TKHK m.48 Mesafeli sözleşmelerde cayma süresi 14 gün."
+    },
+    {
+      "soru": "Satıcı 'iade yok' diyor, mesafeli satışta bu geçerli midir?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["48"],
+      "notlar": "TKHK m.48"
+    },
+    {
+      "soru": "Aldığım ürün ayıplı çıktı, değişim yerine para iadesi isteyebilir miyim?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["11"],
+      "notlar": "TKHK m.11 Ayıplı malda seçimlik haklar, bedel iadesi."
+    },
+    {
+      "soru": "Garanti kapsamındaki ürün aynı arızayı tekrar yaparsa hangi haklarım doğar?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["56"],
+      "notlar": "TKHK m.56 Garanti belgesi yönetmelikleri."
+    },
+    {
+      "soru": "Yetkili servis garanti kapsamındaki ürün için ücret talep ederse ne yapabilirim?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["56", "58"],
+      "notlar": "TKHK m.56/m.58."
+    },
+    {
+      "soru": "Tüketici hakem heyetine başvuru nasıl yapılır, e-Devlet'ten başvurabilir miyim?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["68"],
+      "notlar": "TKHK m.68 TUBIS yonergeleri vs."
+    },
+    {
+      "soru": "Hakem heyeti kararına karşı itiraz etmek istersem nereye başvurmalıyım?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["70"],
+      "notlar": "TKHK m.70 Tüketici mahkemesine itiraz."
+    },
+    {
+      "soru": "Kargo ile gelen ürün eksik veya farklı çıktıysa nasıl hak arayabilirim?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["8", "11"],
+      "notlar": "Ayıplı İfa TKHK m.8 ve m.11."
+    },
+    {
+      "soru": "Abonelik iptalinde cayma bedeli veya ceza ücreti istenmesi her zaman yasal mıdır?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["52"],
+      "notlar": "TKHK m.52 Abonelik sözleşmeleri fesih haklı halleri."
+    },
+    {
+      "soru": "Kapora verdiğim ürün veya hizmet teslim edilmezse paramı geri alabilir miyim?",
+      "beklenen_kanunlar": ["6098"],
+      "beklenen_maddeler": ["156"],
+      "notlar": "Türk Borçlar Kanunu (TBK) m.156 Bağlanma Parası / Cayma Parası."
+    },
+    {
+      "soru": "İkinci el araç veya telefon ayıplı çıkarsa tüketici olarak hangi haklara sahibim?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["8"],
+      "notlar": "TKHK m.8 ve ilgili Yönetmelikler uyarınca ayıplı mal."
+    },
+    {
+      "soru": "Paket tur, otel veya etkinlik iptalinde ücret iadesi hangi şartlarda alınabilir?",
+      "beklenen_kanunlar": ["6502"],
+      "beklenen_maddeler": ["51"],
+      "notlar": "TKHK m.51 Paket tur sözleşmeleri."
+    }
   ]
 }

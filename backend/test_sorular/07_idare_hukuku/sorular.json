@@ -1,16 +1,76 @@
 {
   "Idare Hukuku": [
-    "İdarenin bütünlüğü ilkesi nedir?",
-    "İdari işlem nedir? Unsurları nelerdir?",
-    "Yetki, şekil, sebep, konu ve maksat unsurlarını açıklayınız.",
-    "İdari işlemlerin hukuka uygunluk karinesi ne demektir?",
-    "İdari işlemlerin iptal edilme sebepleri nelerdir?",
-    "İdari sözleşme nedir? Örnek veriniz.",
-    "Kamu hizmeti nedir? Özellikleri nelerdir?",
-    "İdarenin sorumluluğu hangi durumlarda doğar?",
-    "Kusur sorumluluğu ve kusursuz sorumluluk farkı nedir?",
-    "İdari yargı türleri nelerdir?",
-    "İptal davası ile tam yargı davası arasındaki fark nedir?",
-    "Yetki gaspı nedir?"
+    {
+      "soru": "İdari işlem nedir ve hangi unsurlardan oluşur?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["2"],
+      "notlar": "İYUK m.2"
+    },
+    {
+      "soru": "İdarenin yaptığı bir işleme karşı nasıl dava açabilirim?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["7"],
+      "notlar": "İYUK m.7 ve genel iptal davası hükümleri"
+    },
+    {
+      "soru": "İptal davası ile tam yargı davası arasındaki fark nedir?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["2"],
+      "notlar": "İYUK m.2/1-a ve m.2/1-b"
+    },
+    {
+      "soru": "İdari işlemlere karşı dava açma süresi ne kadardır?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["7"],
+      "notlar": "İYUK m.7 (Genel dava açma süresi 60 gündür)"
+    },
+    {
+      "soru": "İdarenin kusurundan doğan zararlar nasıl tazmin edilir?",
+      "beklenen_kanunlar": ["2709", "2577"],
+      "beklenen_maddeler": ["125", "2"],
+      "notlar": "Anayasa m.125 ve İYUK m.2 (Tam yargı davası)"
+    },
+    {
+      "soru": "Kamu görevlisinin yaptığı hatadan dolayı devlet sorumlu olur mu?",
+      "beklenen_kanunlar": ["2709", "657"],
+      "beklenen_maddeler": ["129", "13"],
+      "notlar": "Anayasa m.129 ve Devlet Memurları Kanunu m.13 (Rücu ilkesi)"
+    },
+    {
+      "soru": "İdari para cezalarına nasıl itiraz edilir?",
+      "beklenen_kanunlar": ["5326"],
+      "beklenen_maddeler": ["27"],
+      "notlar": "Kabahatler Kanunu (5326) m.27 Sulh Ceza Hakimliğine başvuru"
+    },
+    {
+      "soru": "İdari sözleşme nedir ve özel hukuk sözleşmesinden farkı nedir?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["2"],
+      "notlar": "İYUK m.2/1-c"
+    },
+    {
+      "soru": "Belediyenin aldığı bir karara karşı nereye başvurulur?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["11"],
+      "notlar": "Üst makama itiraz İYUK m.11 ve İdare Mahkemesine dava."
+    },
+    {
+      "soru": "Kamu hizmeti nedir ve hangi ilkeler çerçevesinde yürütülür?",
+      "beklenen_kanunlar": ["2709"],
+      "beklenen_maddeler": ["47"],
+      "notlar": "Anayasa m.47"
+    },
+    {
+      "soru": "İdari yargıda yürütmenin durdurulması ne demektir?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["27"],
+      "notlar": "İYUK m.27 (Yürütmenin durdurulması talebi)"
+    },
+    {
+      "soru": "Ruhsat veya izin başvurum reddedilirse hangi yollara başvurabilirim?",
+      "beklenen_kanunlar": ["2577"],
+      "beklenen_maddeler": ["11"],
+      "notlar": "İYUK m.11 (İlgili merciye itiraz) ve devamında iptal davası."
+    }
   ]
 }

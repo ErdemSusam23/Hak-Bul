@@ -31,7 +31,17 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 
 TARGET_CATEGORIES = [
     "01_is_hukuku",
+    "02_medeni_hukuk",
     "03_ceza_hukuku",
+    "04_ticaret_hukuku",
+    "05_tuketici_hukuku",
+    "06_tasinmaz_mulk",
+    "07_idare_hukuku",
+    "08_vergi_hukuku",
+    "09_sosyal_guvenlik_hukuku",
+    "10_fikri_mulkiyet",
+    "11_bilisim_hukuku",
+    "12_anayasa_hukuku",
     "13_usul_hukuku",
     "14_genel_hukuk",
 ]
@@ -253,7 +263,7 @@ def main() -> int:
     p.add_argument(
         "--all",
         action="store_true",
-        help="Hedef 4 kategori (01_is, 03_ceza, 13_usul, 14_genel) icin birlesik rapor",
+        help="Tum 14 kategori icin birlesik rapor (test_sonuclari olmayan kategoriler atlanir)",
     )
     p.add_argument("--out", type=Path, help="Markdown raporu dosyaya yaz")
     p.add_argument("--json-out", type=Path, help="JSON ozeti dosyaya yaz")
@@ -305,8 +315,9 @@ def main() -> int:
         kanun_hits = sum(1 for e in all_with_exp if e.kanun_hit)
         mad_with = [e for e in all_with_exp if e.beklenen_maddeler]
         mad_hits = sum(1 for e in mad_with if e.madde_hit)
+        n_kat = len(jobs)
         totals: list[str] = [
-            "=== Toplam (4 kategori) ===",
+            f"=== Toplam ({n_kat} kategori) ===",
             f"retrieval@5_kanun        : {kanun_hits}/{kanun_total} "
             f"({kanun_hits / kanun_total * 100:.1f}%)",
         ]

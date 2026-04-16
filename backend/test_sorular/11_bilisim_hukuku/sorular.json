@@ -1,16 +1,76 @@
 {
   "Bilişim Hukuku": [
-    "Bilişim hukuku nedir ve hangi alanları kapsar?",
-    "Kişisel veri nedir?",
-    "Kişisel verilerin korunması neden önemlidir?",
-    "Veri sorumlusu kimdir?",
-    "Açık rıza nedir ve hangi durumlarda gereklidir?",
-    "Kişisel verilerin hukuka aykırı işlenmesi ne anlama gelir?",
-    "Siber suç nedir?",
-    "İnternet ortamında işlenen suçlara örnekler nelerdir?",
-    "Elektronik imza nedir ve hukuki geçerliliği var mıdır?",
-    "5651 sayılı Kanun neyi düzenler?",
-    "Unutulma hakkı nedir?",
-    "Bilişim suçlarında hangi mahkemeler görevlidir?"
+    {
+      "soru": "Kişisel verilerimin bir şirket tarafından izinsiz kullanıldığını öğrendim, ne yapabilirim?",
+      "beklenen_kanunlar": ["6698"],
+      "beklenen_maddeler": ["11", "14"],
+      "notlar": "6698 KVKK m.11 ilgili kişi hakları; m.14 KVK Kurulu'na şikayet ve başvuru hakkı."
+    },
+    {
+      "soru": "Bir web sitesi hakkımda yanlış bilgi yayıyor ve kaldırılmasını istiyorum, yasal yolum nedir?",
+      "beklenen_kanunlar": ["5651", "6698"],
+      "beklenen_maddeler": ["9"],
+      "notlar": "5651 m.9 içerik kaldırma ve erişim engeli talebi; 6698 unutulma hakkı kapsamında KVK başvurusu."
+    },
+    {
+      "soru": "Banka hesabım hacklendi ve param çalındı, suç duyurusunu nasıl yapmalıyım?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["142", "243", "244"],
+      "notlar": "5237 TCK m.142 nitelikli dolandırıcılık; m.243 bilişim sistemine izinsiz giriş; m.244 sistemi engelleme/bozma."
+    },
+    {
+      "soru": "Şirketimiz veri ihlali yaşadı, KVKK kapsamında bildirimi ne kadar süre içinde yapmalıyız?",
+      "beklenen_kanunlar": ["6698"],
+      "beklenen_maddeler": ["12"],
+      "notlar": "6698 m.12 veri güvenliği yükümlülüğü — ihlal durumunda 72 saat içinde KVK Kurulu'na bildirim zorunluluğu."
+    },
+    {
+      "soru": "İnternet ortamında hakarете uğradım, şikayetim için nasıl bir yol izlemeliyim?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["125", "126", "131"],
+      "notlar": "5237 TCK m.125 hakaret; m.126 mağdurun belirlenmesi; m.131 soruşturma koşulları — şikayete bağlı suç."
+    },
+    {
+      "soru": "E-ticaret sitesi kuruyorum, hangi yasal zorunluluklara uymam gerekiyor?",
+      "beklenen_kanunlar": ["6563", "6698", "4054"],
+      "beklenen_maddeler": [],
+      "notlar": "6563 Elektronik Ticaretin Düzenlenmesi Kanunu — bilgi yükümlülükleri, açık rıza; 6698 KVKK; 4054 Rekabet Kanunu."
+    },
+    {
+      "soru": "Sosyal medya hesabım izinsiz kullanılarak dolandırıcılık yapıldı, şikayet hakkım var mı?",
+      "beklenen_kanunlar": ["5237"],
+      "beklenen_maddeler": ["157", "158", "243"],
+      "notlar": "5237 TCK m.157-158 dolandırıcılık ve nitelikli halleri; m.243 bilişim sistemine hukuka aykırı giriş."
+    },
+    {
+      "soru": "Elektronik imzayla imzaladığım sözleşme geçerli sayılır mı?",
+      "beklenen_kanunlar": ["5070"],
+      "beklenen_maddeler": ["5"],
+      "notlar": "5070 Elektronik İmza Kanunu m.5 — güvenli elektronik imza ıslak imzayla aynı hukuki sonucu doğurur."
+    },
+    {
+      "soru": "Çevrimiçi alışverişte ürünü iade etmek istiyorum, işletmenin bana iade hakkı vermemesi hukuki mi?",
+      "beklenen_kanunlar": ["6563", "6502"],
+      "beklenen_maddeler": ["9", "9"],
+      "notlar": "6563 m.9 uzaktan sözleşmelerde cayma hakkı; 6502 Tüketici Kanunu m.9 cayma hakkı — 14 günlük süre."
+    },
+    {
+      "soru": "5651 sayılı Kanun kapsamında web siteme erişim engeli getirildiyse itiraz için ne yapabilirim?",
+      "beklenen_kanunlar": ["5651"],
+      "beklenen_maddeler": ["9", "9A"],
+      "notlar": "5651 m.9 içerik kaldırma; m.9A Atatürk aleyhine ve ulusal güvenlik gibi hızlı engelleme — karara itiraz: sulh ceza hakimliği."
+    },
+    {
+      "soru": "Kişisel verilerimin silinmesini talep ettim ama şirket yanıt vermiyor, KVK Kurulu'na nasıl başvurabilirim?",
+      "beklenen_kanunlar": ["6698"],
+      "beklenen_maddeler": ["11", "13", "14"],
+      "notlar": "6698 m.11 silme hakkı; m.13 veri sorumlusuna başvuru (30 günlük yanıt süresi); m.14 KVK Kurulu şikayeti."
+    },
+    {
+      "soru": "Çalıştığım şirketteki müşteri veritabanını izinsiz kopyaladım, cezai sorumluluğum var mı?",
+      "beklenen_kanunlar": ["5237", "6698"],
+      "beklenen_maddeler": ["244", "136"],
+      "notlar": "5237 TCK m.244 sistemi engelleme/bozma ve veri hırsızlığı; 6698 m.18 idari para cezası; ayrıca m.136 özel hayat ihlali olabilir."
+    }
   ]
 }

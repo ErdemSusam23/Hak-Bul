@@ -1,16 +1,76 @@
 {
   "Fikri Mülkiyet Hukuku": [
-    "Fikri mülkiyet hukuku nedir ve hangi hakları kapsar?",
-    "Telif hakkı nedir ve hangi eserleri koruma altına alır?",
-    "Eser sahibi kimdir ve hangi haklara sahiptir?",
-    "Manevi haklar nelerdir?",
-    "Mali haklar nelerdir?",
-    "Patent nedir ve hangi buluşlar patentlenebilir?",
-    "Marka nedir ve marka tescili nasıl yapılır?",
-    "Endüstriyel tasarım nedir?",
-    "Fikri mülkiyet haklarının ihlali durumunda hangi hukuki yollar izlenir?",
-    "Telif hakkı koruma süresi ne kadardır?",
-    "Coğrafi işaret nedir ve neyi korur?",
-    "Lisans sözleşmesi nedir ve hangi amaçlarla kullanılır?"
+    {
+      "soru": "Yazdığım roman üzerindeki telif hakkım ne zaman başlar, tescil ettirmem gerekiyor mu?",
+      "beklenen_kanunlar": ["5846"],
+      "beklenen_maddeler": ["1", "8"],
+      "notlar": "5846 FSEK m.1 eserin tanımı; m.8 eser sahibi — telif hakkı yaratma anında doğar, tescil şart değil."
+    },
+    {
+      "soru": "Başkasının fotoğrafını izinsiz kullandım, telif hakkı ihlali sayılır mı, cezası nedir?",
+      "beklenen_kanunlar": ["5846"],
+      "beklenen_maddeler": ["68", "71"],
+      "notlar": "5846 m.68 haksız kullanımda bedel talebi; m.71 hapis ve para cezası gerektiren suçlar."
+    },
+    {
+      "soru": "Ürünüm için marka tescili yaptırmak istiyorum, başvuru süreci ve koruma süresi nasıldır?",
+      "beklenen_kanunlar": ["6769"],
+      "beklenen_maddeler": ["4", "7", "23"],
+      "notlar": "6769 SMK m.4 marka tanımı; m.7 başvuru; m.23 tescil süresi 10 yıl, yenilenebilir."
+    },
+    {
+      "soru": "Geliştirdiğim buluş için patent aldım, bu beni rakip şirketlere karşı nasıl korur?",
+      "beklenen_kanunlar": ["6769"],
+      "beklenen_maddeler": ["82", "85", "141"],
+      "notlar": "6769 SMK m.82 patent başvurusu; m.85 patentin sağladığı haklar; m.141 patent ihlali ve dava hakları."
+    },
+    {
+      "soru": "Müzik parçamı bir reklam filminde kullandılar, iznim olmadı, ne yapabilirim?",
+      "beklenen_kanunlar": ["5846"],
+      "beklenen_maddeler": ["25", "70", "71"],
+      "notlar": "5846 m.25 işleme ve yayma hakkı; m.70 hukuki yollar; m.71 cezai sorumluluk."
+    },
+    {
+      "soru": "Şirketim için tasarladığım ürün tasarımını korumanın en iyi yolu nedir?",
+      "beklenen_kanunlar": ["6769"],
+      "beklenen_maddeler": ["55", "56", "58"],
+      "notlar": "6769 SMK m.55 tasarım tanımı; m.56 koruma koşulları (yenilik ve ayırt edicilik); m.58 tescil süresi."
+    },
+    {
+      "soru": "İnternet sitesinde kullandığım logo başkasına ait marka çıktı, tazminat davası açılabilir mi?",
+      "beklenen_kanunlar": ["6769"],
+      "beklenen_maddeler": ["7", "29"],
+      "notlar": "6769 SMK m.7 markanın sağladığı haklar ve ihlal koşulları; m.29 marka hakkına tecavüz halleri."
+    },
+    {
+      "soru": "Bir yayınevine eserimi verdim, sözleşme sona erdi ama yayımlamaya devam ediyorlar, ne yapabilirim?",
+      "beklenen_kanunlar": ["5846"],
+      "beklenen_maddeler": ["48", "52", "68"],
+      "notlar": "5846 m.48 yayım sözleşmesi; m.52 sözleşme sona erişi; m.68 eser sahibinin tazminat hakkı."
+    },
+    {
+      "soru": "Telif hakkı koruma süresi ne zaman dolar, eserim kamu malı haline gelir mi?",
+      "beklenen_kanunlar": ["5846"],
+      "beklenen_maddeler": ["26", "27"],
+      "notlar": "5846 m.26-27 — ölümden itibaren 70 yıl koruma; süre dolduktan sonra eser kamuya geçer."
+    },
+    {
+      "soru": "Peynirlerimiz coğrafi işaretle korunuyor, başkası aynı adı kullanabilir mi?",
+      "beklenen_kanunlar": ["6769"],
+      "beklenen_maddeler": ["33", "34", "36"],
+      "notlar": "6769 SMK m.33 coğrafi işaret tanımı; m.34 tescil başvurusu; m.36 sağlanan koruma ve ihlal."
+    },
+    {
+      "soru": "Yazılımımın kaynak kodunu kopyalayan kişiye dava açabilir miyim, hangi kanun kapsamında?",
+      "beklenen_kanunlar": ["5846"],
+      "beklenen_maddeler": ["2", "71", "72"],
+      "notlar": "5846 m.2/3 bilgisayar programları eser sayılır; m.71-72 haksız kopyalama için cezai ve hukuki yaptırım."
+    },
+    {
+      "soru": "Lisans sözleşmesiyle kullanım hakkı verdim ama karşı taraf anlaşmaya aykırı davranıyor, ne yapabilirim?",
+      "beklenen_kanunlar": ["5846", "6098"],
+      "beklenen_maddeler": ["48", "125"],
+      "notlar": "5846 m.48 lisans/yayım sözleşmesi; 6098 m.125 sözleşmeye aykırılık — tazminat ve sözleşme feshi."
+    }
   ]
 }

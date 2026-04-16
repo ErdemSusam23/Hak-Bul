@@ -1,16 +1,76 @@
 {
   "Sosyal Güvenlik Hukuku": [
-    "Sosyal güvenlik hukukunun temel amacı nedir?",
-    "Sosyal güvenlik sistemleri hangi sosyal risklere karşı koruma sağlar?",
-    "Türkiye’de sosyal güvenlik sistemini düzenleyen temel kurum hangisidir?",
-    "Zorunlu sigortalılık kavramı ne anlama gelir?",
-    "İş kazası nedir ve hangi durumlar iş kazası sayılır?",
-    "Meslek hastalığı nasıl tanımlanır?",
-    "Malullük aylığına hak kazanma şartları nelerdir?",
-    "Yaşlılık aylığı bağlanabilmesi için gerekli koşullar nelerdir?",
-    "Genel sağlık sigortası kimleri kapsar?",
-    "Sosyal güvenlik primleri nasıl belirlenir?",
-    "Hizmet borçlanması nedir ve hangi hallerde yapılabilir?",
-    "Sosyal güvenlik uyuşmazlıklarında görevli mahkeme hangisidir?"
+    {
+      "soru": "SGK'ya bağlı sağlık sigortam var ama hastanede muayene ücretimi neden ödemem isteniyor?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["67", "68"],
+      "notlar": "5510 m.67-68 — genel sağlık sigortası kapsamı ve katılım payı koşulları."
+    },
+    {
+      "soru": "İş kazası geçirdim, SGK'ya bildirim süresi ne kadardır ve hangi belgeler gerekir?",
+      "beklenen_kanunlar": ["5510", "6331"],
+      "beklenen_maddeler": ["13"],
+      "notlar": "5510 m.13 iş kazası tanımı ve bildirimi; 6331 İSG Kanunu — işveren yükümlülüğü."
+    },
+    {
+      "soru": "Malullük aylığı alabilmek için hangi şartları taşımam gerekiyor?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["25", "26"],
+      "notlar": "5510 m.25 maluliyet tanımı; m.26 malullük aylığı bağlanma şartları (en az 10 yıl sigortalılık ve 1800 gün prim)."
+    },
+    {
+      "soru": "Emekli olmak için kaç yıl prim ödemem ve kaç yaşında olmam gerekiyor?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["28"],
+      "notlar": "5510 m.28 — yaşlılık aylığı; 4/a, 4/b, 4/c sigortalıları için farklı kademeli yaş ve prim gün şartları."
+    },
+    {
+      "soru": "Genel sağlık sigortası kapsamı dışında kalan kişiler kimlerdir ve prim ödemek zorundalar mı?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["60", "61"],
+      "notlar": "5510 m.60 GSS kapsamı; m.61 GSS prim yükümlülüğü ve muafiyetler."
+    },
+    {
+      "soru": "Primlerimi düzenli ödemedim, emeklilik hakkım etkilenir mi, yapılandırma yolu var mı?",
+      "beklenen_kanunlar": ["5510", "6183"],
+      "beklenen_maddeler": ["89"],
+      "notlar": "5510 m.89 prim borcu ve hizmet aksaması; 6183 AATUHK — SGK alacaklarının yapılandırılması."
+    },
+    {
+      "soru": "İşverenin beni sigortasız çalıştırdığını öğrendim, geçmiş primlerimi SGK'ya nasıl tescil ettirebilirim?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["86"],
+      "notlar": "5510 m.86 — hizmet tespiti davası, iş mahkemesinden talep; ispat yükümlülüğü."
+    },
+    {
+      "soru": "Meslek hastalığı nedeniyle iş göremiyorum, hangi haklardan yararlanabilirim?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["14", "19"],
+      "notlar": "5510 m.14 meslek hastalığı tanımı; m.19 geçici iş göremezlik ödeneği koşulları."
+    },
+    {
+      "soru": "Askerlikte geçen sürem sigortam için borçlanılabilir mi, nasıl başvurabilirim?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["41"],
+      "notlar": "5510 m.41 — isteğe bağlı hizmet borçlanması; askerlik, doğum, yurt dışı süreleri."
+    },
+    {
+      "soru": "Ölüm aylığı hangi yakınlara bağlanır ve koşulları nelerdir?",
+      "beklenen_kanunlar": ["5510"],
+      "beklenen_maddeler": ["32", "34"],
+      "notlar": "5510 m.32 ölüm aylığı genel şartı; m.34 hak sahipleri (eş, çocuk, ana-baba) ve pay oranları."
+    },
+    {
+      "soru": "Doğum yapacağım, doğum öncesi ve sonrası ne kadar izin ve ödeneğe hak kazanırım?",
+      "beklenen_kanunlar": ["5510", "4857"],
+      "beklenen_maddeler": ["74", "18"],
+      "notlar": "4857 m.74 — analık izni (16 hafta); 5510 m.18 geçici iş göremezlik ödeneği ve doğum ödeneği."
+    },
+    {
+      "soru": "SGK'nın haksız işlemi olduğunu düşünüyorum, itiraz için hangi yola başvurmalıyım?",
+      "beklenen_kanunlar": ["5510", "7036"],
+      "beklenen_maddeler": [],
+      "notlar": "5510 — SGK idari itiraz; 7036 İş Mahkemeleri Kanunu — sosyal güvenlik uyuşmazlıklarında görevli mahkeme."
+    }
   ]
 }

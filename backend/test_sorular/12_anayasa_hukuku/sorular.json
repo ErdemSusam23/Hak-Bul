@@ -1,16 +1,76 @@
 {
   "Anayasa Hukuku": [
-    "Anayasa Mahkemesi'ne bireysel başvuru nasıl yapılır, süresi ne kadardır?",
-    "Temel hak ve özgürlükler nelerdir, Anayasa'da nasıl güvence altındadır?",
-    "İfade özgürlüğünün sınırları nedir, suç teşkil eden ifadeler nelerdir?",
-    "Kişinin dokunulmazlığı hakkı nedir, üst ve ev arama koşulları nelerdir?",
-    "Konut dokunulmazlığı hakkı nedir, ev sahibinin izni olmadan arama yapılabilir mi?",
-    "Toplantı ve gösteri yürüyüşü düzenleme hakkı nasıl kullanılır, izin gerekli mi?",
-    "Dernek kurma hakkı nedir, dernek kurmak için hangi şartlar gerekir?",
-    "Basın özgürlüğü nedir, gazetecilerin kaynak gizliliği hakkı var mı?",
-    "Din ve vicdan özgürlüğü kapsamı nedir, ibadet özgürlüğü Anayasa'da nasıl düzenlenmiştir?",
-    "Olağanüstü hal döneminde hangi temel haklar kısıtlanabilir?",
-    "Vatandaşlıktan çıkarma işlemi hangi durumlarda yapılabilir, itiraz yolu var mı?",
-    "Seçme ve seçilme hakkı nedir, hangi suçlar seçilme hakkını engeller?"
+    {
+      "soru": "Anayasa Mahkemesi'ne bireysel başvuru yapabilmek için hangi şartları taşımalıyım ve süresi ne kadardır?",
+      "beklenen_kanunlar": ["6216"],
+      "beklenen_maddeler": ["45", "47"],
+      "notlar": "6216 AYM Kuruluş Kanunu m.45 bireysel başvuru hakkı ve koşulları; m.47 — tüketilmiş başvuru yolları + 30 günlük süre."
+    },
+    {
+      "soru": "Gözaltına alındıktan sonra ne kadar süre içinde hakim karşısına çıkarılmam gerekiyor?",
+      "beklenen_kanunlar": ["2709", "5271"],
+      "beklenen_maddeler": ["19", "91"],
+      "notlar": "2709 Anayasa m.19 kişi özgürlüğü — gözaltı süresi; 5271 CMK m.91 gözaltı ve tutukluluğun koşulları."
+    },
+    {
+      "soru": "İfade özgürlüğüm var ama sosyal medya paylaşımım nedeniyle gözaltı aldım, bu hak ihlali midir?",
+      "beklenen_kanunlar": ["2709", "5237"],
+      "beklenen_maddeler": ["26", "299", "301"],
+      "notlar": "2709 Anayasa m.26 ifade özgürlüğü ve sınırları; 5237 TCK m.299 Cumhurbaşkanına hakaret; m.301 Türklüğü aşağılama."
+    },
+    {
+      "soru": "Evim arandı ama arama kararı yoktu, bu hukuka aykırı mı ve deliller geçerliliğini yitirir mi?",
+      "beklenen_kanunlar": ["2709", "5271"],
+      "beklenen_maddeler": ["21", "116", "119"],
+      "notlar": "2709 Anayasa m.21 konut dokunulmazlığı; 5271 CMK m.116-119 arama kararı ve koşulları; hukuka aykırı delil yasağı."
+    },
+    {
+      "soru": "Toplantı ve gösteri yürüyüşü düzenlemek istiyorum, önceden izin almam zorunlu mu?",
+      "beklenen_kanunlar": ["2911"],
+      "beklenen_maddeler": ["6", "7", "10"],
+      "notlar": "2911 Toplantı ve Gösteri Yürüyüşleri Kanunu m.6 bildirim zorunluluğu; m.7 yasak yerlerin belirlenmesi; m.10 bildirim süresi."
+    },
+    {
+      "soru": "Dernek kurmak istiyorum, kayıt zorunluluğu var mı ve kuruluş için hangi belgeler gerekiyor?",
+      "beklenen_kanunlar": ["2709", "5253"],
+      "beklenen_maddeler": ["33", "3", "5"],
+      "notlar": "2709 Anayasa m.33 dernek kurma özgürlüğü; 5253 Dernekler Kanunu m.3 kuruluş şartları; m.5 kurucu belgeler."
+    },
+    {
+      "soru": "Gazeteci olarak kaynaklarımı açıklamak zorunda mıyım, kaynak gizliliği güvence altında mı?",
+      "beklenen_kanunlar": ["2709", "5187"],
+      "beklenen_maddeler": ["26", "12"],
+      "notlar": "2709 Anayasa m.26 basın özgürlüğü kapsamı; 5187 Basın Kanunu m.12 kaynak gizliliği hakkı ve sınırları."
+    },
+    {
+      "soru": "İşçi sendikasına üye olduğum için işten çıkarıldım, sendika özgürlüğüm ihlal edildi mi?",
+      "beklenen_kanunlar": ["2709", "6356"],
+      "beklenen_maddeler": ["51", "25"],
+      "notlar": "2709 Anayasa m.51 sendika kurma ve üye olma hakkı; 6356 Sendikalar Kanunu m.25 sendika özgürlüğü ihlalinde tazminat."
+    },
+    {
+      "soru": "Olağanüstü hal kapsamında gözaltı sürem uzatıldı, itiraz edebilir miyim?",
+      "beklenen_kanunlar": ["2709", "7145"],
+      "beklenen_maddeler": ["15", "19"],
+      "notlar": "2709 Anayasa m.15 olağanüstü halde temel hak sınırlaması; m.19 gözaltı süresi uzatımı koşulları; 7145 olağanüstü hal tedbirleri."
+    },
+    {
+      "soru": "Vatandaşlıktan çıkarma kararı aldım, bu kararı nasıl itiraz edebilirim?",
+      "beklenen_kanunlar": ["2709", "5901"],
+      "beklenen_maddeler": ["66", "29"],
+      "notlar": "2709 Anayasa m.66; 5901 Türk Vatandaşlığı Kanunu m.29 — vatandaşlıktan çıkarma; itiraz: idare mahkemesi. Corpus'ta olmayabilir: 5901."
+    },
+    {
+      "soru": "Seçimlerde oy kullanmak istiyorum ama adres kaydım farklı, seçme hakkımı kullanabilir miyim?",
+      "beklenen_kanunlar": ["2839", "298"],
+      "beklenen_maddeler": ["2"],
+      "notlar": "2709 Anayasa m.67 seçme hakkı; 298 Seçimlerin Temel Hükümleri Kanunu — seçmen kütüğü kaydı ve adres koşulu."
+    },
+    {
+      "soru": "Kamu görevinden ihraç edildim, olağanüstü hal KHK'sıyla, itiraz yolum nedir?",
+      "beklenen_kanunlar": ["7075"],
+      "beklenen_maddeler": ["8", "10"],
+      "notlar": "7075 OHAL Komisyonu Kurulması Hakkında Kanun m.8 başvuru süreci; m.10 komisyon kararına itiraz (idare mahkemesine)."
+    }
   ]
 }

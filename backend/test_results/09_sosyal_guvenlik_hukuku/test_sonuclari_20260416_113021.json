@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T08:36:56.617373+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\09_sosyal_guvenlik_hukuku\\test_sonuclari_20260416_113021.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 394.8,
+    "ortalama_sure_sn": 32.9,
+    "kategori_dagilimi": {
+      "Sosyal Güvenlik Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 24.88,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 1043.0,
+        "ortalama_kaynak_skor": 0.856
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "SGK'ya bağlı sağlık sigortam var ama hastanede muayene ücretimi neden ödemem isteniyor?",
+      "cevap": "Getirilen kaynaklar bu soruyu kısmen karsilamaktadir. 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 73. maddesinin 5. fıkrasına göre, sözleşmeli sağlık hizmeti sunucuları, acil hallerde, sözleşmeli sağlık hizmetleri sunucuları ise Kurumun belirlediği sağlık hizmetleri için genel sağlık sigortalısı ve bakmakla yükümlü olduğu kişilerden veya Kurumdan herhangi bir ilave ücret talep edemez. Ancak, bazı sağlık hizmetleri için katılım payı alınabilir. 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun Ek Madde 4'üne göre, bazı sağlık hizmetleri için katılım payı alınır.\n\nAncak, hastanede muayene ücretinin neden istenildiği konusunda net bir bilgi verilememektedir. Hastanenin sözleşmeli olup olmadığı, muayene ücretinin katılım payı mı yoksa ilave ücret mi olduğu gibi bilgiler olmadan net bir cevap verilememektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 98",
+          "metin_ozet": "13/2/2011-6111/59 md.) Trafik kazaları sebebiyle üniversitelere bağlı hastaneler ve diğer bütün resmî ve özel sağlık kurum ve kuruluşlarının sundukları sağlık hizmet bedelleri, kazazedenin sosyal güvencesi olup olmadığına bakılmaksızın genel sağlık sigortalısı sayılanlar için...",
+          "metin": null,
+          "skor": 0.8467,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 4 - Fıkra 2",
+          "metin_ozet": "Ancak, bulunulan ülke mevzuatı gereğince zorunlu olarak yaptırılması gereken kontrol ve muayeneler ile aşı gibi Türkiye’de Sağlık Bakanlığı tarafından doğrudan ve ücretsiz olarak yürütülmesi sebebiyle 66 ncı madde kapsamında herhangi bir belirleme yapılmamış sağlık hizmetlerine...",
+          "metin": null,
+          "skor": 0.8482,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 94 - Fıkra 1",
+          "metin_ozet": "a) Sağlık hizmeti alan genel sağlık sigortalısından veya bunların bakmakla yükümlü olduğu kişilerden, sağlık hizmetinin gerçekten alınıp alınmadığını, b) Sigortalının, isteğe bağlı sigortalının veya bunların hak sahiplerinin malullük, iş göremezlik raporlarında belirtilen...",
+          "metin": null,
+          "skor": 0.8542,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 73 - Fıkra 5",
+          "metin_ozet": "Sözleşmeli ve sözleşmesiz sağlık hizmeti sunucuları, acil hallerde, sözleşmeli sağlık hizmetleri sunucuları ise Kurumun belirlediği sağlık hizmetleri için genel sağlık sigortalısı ve bakmakla yükümlü olduğu kişilerden veya Kurumdan herhangi bir ilave ücret talep edemez.",
+          "metin": null,
+          "skor": 0.8549,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 103 - Fıkra 3",
+          "metin_ozet": "10/9/2014-6552/54 md.) Kurum tarafından sözleşmesi feshedilmiş sağlık hizmeti sunucusuyla feshe neden olan fiillere bağlı olarak oluşan Kurum alacakları tahsil edilmeden ve fesih süresi tamamlanmadan yeni bir sözleşme yapılmaz.",
+          "metin": null,
+          "skor": 0.8474,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 982,
+      "ortalama_kaynak_skor": 0.8503,
+      "kaynak_sayisi": 5,
+      "message_id": "3a5a3d2c-bba8-4499-9b41-6419da21b071",
+      "conversation_id": "748cb0b4-f147-4e44-bf7f-000e88cbe626",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.84,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "İş kazası geçirdim, SGK'ya bildirim süresi ne kadardır ve hangi belgeler gerekir?",
+      "cevap": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'na göre, iş kazası bildirimi için belirli bir süre bulunmaktadır. İş kazasının meydana geldiği tarihten itibaren, işveren tarafından üç iş günü içinde SGK'ya bildirim yapılması zorunludur. \n\nBildirime ilişkin usul ve esaslar, Kanunun 13. maddesinde düzenlenmiştir. Buna göre, iş kazası bildirgesi ile doğrudan ya da taahhütlü posta ile SGK'ya bildirilmesi zorunludur. \n\nAncak, iş kazasının işverenin kontrolü dışındaki yerlerde meydana gelmesi halinde, iş kazasının öğrenildiği tarihten itibaren üç iş günü içinde bildirim yapılması gerekmektedir.\n\nGetirilen kaynaklar bu soruyu karsilamiyor. 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 9 - Fıkra 3",
+          "metin_ozet": "Sigortalının iş kazası ve meslek hastalığı sigorta kollarından sağlanan yardımlardan yararlanabilmesi için iş kazasının olduğu tarihten en az on gün önce tescil edilmiş olması ve sigortalılığının sona ermemiş olması, bu Kanuna göre iş kazası veya meslek hastalığından dolayı...",
+          "metin": null,
+          "skor": 0.8586,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 13 - Fıkra 2",
+          "metin_ozet": "bir ayı geçmemek şartıyla rahatsızlığının bildirim yapmaya engel olmadığı günden sonra üç işgünü içinde, c) (Mülga: 17/4/2008-5754/8 md.) iş kazası ve meslek hastalığı bildirgesi ile doğrudan ya da taahhütlü posta ile Kuruma bildirilmesi zorunludur.",
+          "metin": null,
+          "skor": 0.8717,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 22 - Fıkra 3",
+          "metin_ozet": "13 üncü maddenin ikinci fıkrasının (b) bendinde belirtilenler tarafından iş kazasının anılan bentte belirtilen süre içinde Kuruma bildirilmemesi durumunda, sigortalıya yapılacak iş göremezlik ödenekleri bildirim tarihinden itibaren ödenir.",
+          "metin": null,
+          "skor": 0.8514,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 5 - Fıkra 3",
+          "metin_ozet": "Bu madde hükümlerine tabi sigortalıların iş kazası ve meslek hastalığı sigorta kollarından sağlanan yardımlardan yararlanabilmeleri için iş kazasının olduğu tarihten en az on gün önce tescil edilmiş olmaları ve sigortalılıklarının sona ermemiş olması, bu Kanuna göre iş kazası...",
+          "metin": null,
+          "skor": 0.8536,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 13 - Fıkra 3",
+          "metin_ozet": "Bu fıkranın (a) bendinde belirtilen süre, iş kazasının işverenin kontrolü dışındaki yerlerde meydana gelmesi halinde, iş kazasının öğrenildiği tarihten itibaren başlar.",
+          "metin": null,
+          "skor": 0.85,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 962,
+      "ortalama_kaynak_skor": 0.8571,
+      "kaynak_sayisi": 5,
+      "message_id": "d4e595d6-86f2-429e-83eb-351e6c6232ef",
+      "conversation_id": "9b4c3b29-13b3-4f9b-be61-f6105f540e62",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.08,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Malullük aylığı alabilmek için hangi şartları taşımam gerekiyor?",
+      "cevap": "Malullük aylığı alabilmek için aşağıdaki şartları taşımanız gerekmektedir:\n\n1. 25. maddeye göre malul sayılmanız,\n2. En az on yıldan beri sigortalı bulunup, toplam olarak 1800 gün veya başka birinin sürekli bakımına muhtaç derecede malul olan sigortalılar için ise sigortalılık süresi aranmaksızın 1800 gün malullük, yaşlılık ve ölüm sigortaları primi bildirilmiş olması,\n3. Maluliyetiniz nedeniyle sigortalı olarak çalıştığınız işten ayrıldıktan veya işyerini kapattıktan sonra Kurumdan yazılı istekte bulunmanız.\n\nAyrıca, 4. maddenin birinci fıkrasının (b) bendine göre sigortalı sayılanların kendi sigortalılığı nedeniyle genel sağlık sigortası primi dahil, prim ve prime ilişkin her türlü borçlarının ödenmiş olması zorunludur.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 10 - Fıkra 2",
+          "metin_ozet": "17/4/2008-5754/71 md.) Bu Kanunun yürürlüğe girdiği tarihten önce, malullük durumlarının tespiti için talepte bulunan ve bu Kanunun yürürlük tarihinden sonra malûl olduklarına karar verilenler hakkında 506 ve 2925 sayılı kanunlardaki diğer şartları da taşımaları halinde anılan...",
+          "metin": null,
+          "skor": 0.8622,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 26",
+          "metin_ozet": "MADDE 26- Malûllük sigortasından sigortalılara sağlanan hak, malûllük aylığı bağlanmasıdır. Sigortalıya malûllük aylığı bağlanabilmesi için sigortalının;",
+          "metin": null,
+          "skor": 0.8798,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 43 - Fıkra 4",
+          "metin_ozet": "Bu fıkra hükümlerine göre aylık ödenebilmesi için, bu maddenin yürürlüğe girdiği tarihten önce geçici 4 üncü madde kapsamında Cumhurbaşkanı yardımcılığı, bakanlık ya da Türkiye Büyük Millet Meclisi üyeliği görevi esas alınarak malullük veya emeklilik aylığı ödenenler hariç olmak...",
+          "metin": null,
+          "skor": 0.86,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 10 - Fıkra 1",
+          "metin_ozet": "GEÇİCİ MADDE 10- 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında olup bu Kanunun yürürlük tarihinden önce ilk defa sigortalı olanlardan, sigortalı olarak ilk defa çalışmaya başladığı tarihten önce 506 sayılı Sosyal Sigortalar Kanununun mülga 53 üncü maddesine göre malûl...",
+          "metin": null,
+          "skor": 0.858,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 27 - Fıkra 1",
+          "metin_ozet": "17/4/2008-5754/15 md.) Malûllük aylığı; Malûllük aylığı, 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalılar ile (c) bendi kapsamında sigortalı iken görevinden ayrılmış ve daha sonra başka bir sigortalılık haline tabi olarak çalışmamış olanların;",
+          "metin": null,
+          "skor": 0.8733,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 857,
+      "ortalama_kaynak_skor": 0.8667,
+      "kaynak_sayisi": 5,
+      "message_id": "786fa849-c3d8-4ecc-bc53-540793934fa3",
+      "conversation_id": "07e3cc4a-3f4a-425b-b70b-77cf9be29d38",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.39,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Emekli olmak için kaç yıl prim ödemem ve kaç yaşında olmam gerekiyor?",
+      "cevap": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'na göre, emekli olmak için gerekli olan prim ödeme süresi ve yaş şartları farklı durumlar için farklılık göstermektedir.\n\n4 üncü maddenin birinci fıkrasının (a) bendi kapsamında sigortalı sayılanlar için, 58 yaşını doldurmuş ve en az 9000 gün malûllük, yaşlılık ve ölüm sigortaları primi bildirilmiş olması şartıyla yaşlılık aylığı bağlanır. Ancak, prim gün sayısı şartı 7200 gün olarak uygulanır.\n\n4 üncü maddenin birinci fıkrasının (b) bendi kapsamında sigortalı sayılanlar için, 58 yaşını doldurmuş ve 25 tam yıl sigorta primi ödemiş olması veya 60 yaşını doldurması ve en az 15 tam yıl malûllük, yaşlılık ve ölüm sigortaları primi ödemesi şartıyla kısmi yaşlılık aylığından yararlanırlar.\n\n4 üncü maddenin birinci fıkrasının (c) bendi kapsamında sigortalı sayılanlar için, sigortalılık süresi; sigortalılığın başlangıç tarihi ile 48 inci maddeye göre yetkili makamdan emekliye sevk onayının alınarak görevi ile ilişiğinin kesildiği ayın son günü arasında geçen süredir. Yaşlılık aylığı bağlanmasına ilişkin hükümler, 5434 sayılı Türkiye Cumhuriyeti Emekli Sandığı Kanunu'nun 40 ıncı maddesi gereğince yaş haddinden emekliye ayrılanlar için 5400 gün prim ödeme gün sayısı olması halinde uygulanır.\n\nBu bilgiler ışığında, emekli olmak için gerekli olan prim ödeme süresi ve yaş şartları, sigortalılık durumuna göre değişmektedir. Detaylı bilgi için baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 38 - Fıkra 2",
+          "metin_ozet": "Bu Kanunun uygulanmasında 18 yaşından önce malûllük, yaşlılık ve ölüm sigortalarına tâbi olanların sigortalılık süresi, 18 yaşını doldurdukları tarihte başlamış kabul edilir.",
+          "metin": null,
+          "skor": 0.856,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 9 - Fıkra 2",
+          "metin_ozet": "17/4/2008-5754/70 md.) 4 üncü maddenin birinci fıkrasının © bendi kapsamında olup da 8/9/1999 tarihinden 30/4/2008 tarihine kadar ilk defa sigortalı sayılanlar kadın ise 58, erkek ise 60 yaşını doldurmuş ve 25 tam yıl sigorta primi ödemiş olması veya 61 yaşını doldurması ve en az...",
+          "metin": null,
+          "skor": 0.852,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 9 - Fıkra 1",
+          "metin_ozet": "GEÇİCİ MADDE 9- 4 üncü maddenin birinci fıkrasının (a) bendi kapsamında olup da 8/9/1999 tarihinden 30/4/2008 tarihine kadar ilk defa sigortalı sayılanlar;",
+          "metin": null,
+          "skor": 0.8659,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 28 - Fıkra 1",
+          "metin_ozet": "17/4/2008-5754/16 md.) İlk defa bu Kanuna göre sigortalı sayılanlara; a) Kadın ise 58, erkek ise 60 yaşını doldurmuş olmaları ve en az 9000 gün malûllük, yaşlılık ve ölüm sigortaları primi bildirilmiş olması şartıyla yaşlılık aylığı bağlanır.",
+          "metin": null,
+          "skor": 0.8639,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 44 - Fıkra 1",
+          "metin_ozet": "MADDE 44- Bu Kanun hükümlerinin uygulanmasında bu Kanunun 4 üncü maddesinin birinci fıkrasının (c) bendi kapsamında sigortalı sayılan bazı kamu görevlilerine yaşlılık aylığı bağlanmasına ilişkin aşağıdaki hükümler uygulanır:",
+          "metin": null,
+          "skor": 0.8468,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1485,
+      "ortalama_kaynak_skor": 0.8569,
+      "kaynak_sayisi": 5,
+      "message_id": "147f2fa3-c7d3-4bc1-bf38-ba4c5c5a96d8",
+      "conversation_id": "df2fe9a0-01b4-4bfd-906f-e360f5c96ebf",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.62,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Genel sağlık sigortası kapsamı dışında kalan kişiler kimlerdir ve prim ödemek zorundalar mı?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 60 - Fıkra 7",
+          "metin_ozet": "Bu şekilde genel sağlık sigortalısı sayılanların genel sağlık sigortası primleri Kanunun 82 nci maddesine göre belirlenen prime esas günlük kazanç alt sınırının otuz günlük tutarının %6'sıdır.",
+          "metin": null,
+          "skor": 0.8919,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 52 - Fıkra 1",
+          "metin_ozet": "Bunun %21'i malûllük, yaşlılık ve ölüm sigortaları primi, %12'si genel sağlık sigortası primidir.",
+          "metin": null,
+          "skor": 0.8836,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 67 - Fıkra 3",
+          "metin_ozet": "Ancak, genel sağlık sigortalısının bakmakla yükümlü olduğu kişi kapsamından çıkanların genel sağlık sigortalısı olduğu tarihten itibaren otuz gün içinde sağlık hizmetlerinden yararlanabilmesi için bu maddenin birinci fıkrasının (a) bendindeki prim ödeme gün sayısı aranmaz.",
+          "metin": null,
+          "skor": 0.8804,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 88 - Fıkra 5",
+          "metin_ozet": "Ancak 60 ıncı maddenin birinci fıkrasının (c) bendi kapsamındaki kişilerden aynı zamanda anılan fıkranın diğer bentleri kapsamına girerek genel sağlık sigortalısı sayılanlar, bu fıkraya göre tespit edilecek kişi sayısı hesabına dahil edilmez.",
+          "metin": null,
+          "skor": 0.8801,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 60 - Fıkra 8",
+          "metin_ozet": "Bu kişilerin genel sağlık sigortası primleri, 82 nci maddeye göre belirlenen prime esas günlük kazanç alt sınırının otuz günlük tutarı üzerinden Adalet Bakanlığı bütçesinden ödenir.",
+          "metin": null,
+          "skor": 0.8946,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 224,
+      "ortalama_kaynak_skor": 0.8861,
+      "kaynak_sayisi": 5,
+      "message_id": "9567b830-7855-44ad-b7f1-9dee5e6ba0ec",
+      "conversation_id": "45c39216-7630-4c47-b43d-4dadd89c5c19",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 21.99,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Primlerimi düzenli ödemedim, emeklilik hakkım etkilenir mi, yapılandırma yolu var mı?",
+      "cevap": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'na göre, prim borçlarının ödenmemesi veya yapılandırılmaması durumunda, sigortalılık hakları etkilenebilir. \n\nGetirilen kaynaklar, özellikle Gecici Madde 23 ve Gecici Madde 60'da, prim borçlarının yapılandırılmasıyla ilgili hükümler yer almaktadır. Bu hükümlere göre, borçluların prim borçlarını yapılandırarak ödemeleri mümkündür. Ancak, bu yapılandırma işlemlerinin belirli şartlara tabi olduğu ve belirli bir süre içinde yapılması gerektiği belirtilmektedir.\n\nÖrneğin, Gecici Madde 23'te, 5458 sayılı Kanunun 1 inci ve 2 nci maddeleri kapsamına giren borçları yeniden yapılandırıldığı halde, aynı Kanunun 3 üncü maddesi uyarınca yeniden yapılandırma haklarını kaybedenlerin, bu maddenin yürürlüğe girdiği tarihi takip eden iki ay içinde Kuruma yazılı olarak başvurmaları halinde, bozulmuş olan yeniden yapılandırma anlaşmaları ihya edilebileceği belirtilmektedir.\n\nAyrıca, Gecici Madde 60'da, borçluların prim borçlarını yapılandırarak ödemeleri halinde, genel sağlık sigortasından yararlanmaya başlatılabileceği belirtilmektedir.\n\nAncak, getirilen kaynaklar, emeklilik hakkının etkilenmesi konusunda yeterli bilgi vermemektedir. Detaylı bilgi için ilgili kanunların incelenmesi veya bir uzmana danışılması gerekebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 60 - Fıkra 11",
+          "metin_ozet": "(13) Bu Kanunun 4 üncü maddesinin birinci fıkrasının (b) bendi kapsamındaki sigortalılar, 60 ıncı maddesinin birinci fıkrasının (g) bendi kapsamında genel sağlık sigortalısı olanlar, ek 5 inci ve ek 6 ncı maddeleri kapsamında sigortalı olanlar, bu madde kapsamındaki borçlarını...",
+          "metin": null,
+          "skor": 0.846,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 23 - Fıkra 2",
+          "metin_ozet": "(3) İhya veya mahsup işlemleri sonucunda bu maddeye göre yapılan başvuru tarihinden önce vadesinde ödenmediği veya eksik ödendiği anlaşılan taksit tutarlarının, ödeme tarihine kadar gecikilen her ay için ayrı ayrı Hazine Müsteşarlığınca açıklanacak bir önceki aya ait Yeni Türk...",
+          "metin": null,
+          "skor": 0.8576,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 23 - Fıkra 1",
+          "metin_ozet": "15/5/2008-5763/26 md.) 22/2/2006 tarihli ve 5458 sayılı Sosyal Güvenlik Prim Alacaklarının Yeniden Yapılandırılması ve Bazı Kanunlarda Değişiklik Yapılması Hakkında Kanunun 1 inci ve 2 nci maddeleri kapsamına giren borçları yeniden yapılandırıldığı halde aynı Kanunun 3 üncü...",
+          "metin": null,
+          "skor": 0.8594,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 60 - Fıkra 10",
+          "metin_ozet": "(12) 10/1/2013 tarihli ve 6385 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu ile Bazı Kanunlarda Değişiklik Yapılmasına Dair Kanuna göre sosyal güvenlik destek primi borçlarını yapılandıran ve yapılandırma işlemi bu maddenin yürürlüğe girdiği tarih itibarıyla devam...",
+          "metin": null,
+          "skor": 0.8682,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 76 - Fıkra 1",
+          "metin_ozet": "11/5/2018-7143/24 md.) Köy ve mahalle muhtarları, kendi adına ve hesabına bağımsız çalışanlarla tarımda kendi adına ve hesabına bağımsız çalışanlardan, Kuruma kayıt ve tescilleri yapıldığı hâlde, 31/5/2018 tarihi itibarıyla prim borcu bulunanların, bu tarihten önceki sürelere...",
+          "metin": null,
+          "skor": 0.8451,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1411,
+      "ortalama_kaynak_skor": 0.8553,
+      "kaynak_sayisi": 5,
+      "message_id": "bf81d5d6-48e2-4729-b496-762f1f6bbfb3",
+      "conversation_id": "a30ab295-22ae-49de-9bf7-cad8b0e79bc9",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 21.39,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "İşverenin beni sigortasız çalıştırdığını öğrendim, geçmiş primlerimi SGK'ya nasıl tescil ettirebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu kısmen karşılamaktadır. 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'na göre, işverenlerin çalıştırdıkları kişileri sigortalı olarak tescil ettirmeleri zorunludur. Ancak, işverenin sizi sigortasız çalıştırdığını öğrendiğiniz durumda, geçmiş primlerinizin SGK'ya tescil ettirilmesi için işverenle birlikte hareket etmeniz veya yasal yollara başvurmanız gerekebilir.\n\nKaynaklardan anlaşıldığı üzere, işverenler çalıştırdıkları kişileri belirli bir süre içinde Kuruma bildirmekle yükümlüdürler. Örneğin, 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 8. maddesinin 4. fıkrasına göre, bazı kişilerin bildirimleri en geç 15 gün, bazılarının ise en geç bir ay içinde yapılır. Ayrıca, işverenler tarafından yapılan bildirimlerden itibaren bir ay içinde tescili yapılan kişilere, sigortalılık hak ve yükümlülüklerinin başladığını Kurum bildirir.\n\nAncak, işverenin sizi sigortasız çalıştırdığını öğrendiğiniz durumda, bu kaynaklar yeterli bilgi sağlamamaktadır. Bu durumda, işverenle birlikte hareket ederek veya yasal yollara başvurarak geçmiş primlerinizin tescil ettirilmesi için gerekli adımları atabilirsiniz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 8 - Fıkra 4",
+          "metin_ozet": "4 üncü maddenin üçüncü fıkrasında belirtilenlerin ise çalışmaya başladıkları tarihten itibaren en geç bir ay içinde tescil eden kuruluş tarafından Kuruma bildirilmesi zorunludur.",
+          "metin": null,
+          "skor": 0.8482,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 60 - Fıkra 6",
+          "metin_ozet": "(5) Kendi adına ve hesabına bağımsız çalışanlar ile tarımda kendi adına ve hesabına bağımsız çalışanlardan 2/9/1971 tarihli ve 1479 sayılı Esnaf ve Sanatkârlar ve Diğer Bağımsız Çalışanlar Sosyal Sigortalar Kurumu Kanunu mülga hükümlerine ve mülga 17/10/1983 tarihli ve 2926...",
+          "metin": null,
+          "skor": 0.8477,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 6 - Fıkra 1",
+          "metin_ozet": "GEÇİCİ MADDE 6- 17/7/1964 tarihli ve 506 sayılı Kanuna göre 1/4/1981 tarihinden önce malullük, yaşlılık ve ölüm sigortalarına tescil edilmiş olanlar hakkında, bu Kanunun 38 inci maddesinin ikinci fıkrasındaki sigortalılık süresinin 18 yaşın doldurulduğu tarihten başlayacağına...",
+          "metin": null,
+          "skor": 0.8491,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 8 - Fıkra 1",
+          "metin_ozet": "17/4/2008-5754/68 md.) Bu Kanunun 4 üncü maddesinin birinci fıkrasının (b) bendinin (4) numaralı alt bendi hariç diğer alt bentlerine göre sigortalılık niteliği taşıdıkları halde bu Kanunun yürürlük tarihine kadar kayıt ve tescillerini yaptırmayanların sigortalılık hak ve...",
+          "metin": null,
+          "skor": 0.8551,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 92 - Fıkra 2",
+          "metin_ozet": "genel sağlık sigortalıları ve bunların bakmakla yükümlü olduğu kişilerin tescil ve diğer tüm işlemlerinde sosyal güvenlik sicil numarası olarak Türk vatandaşları için T.C.",
+          "metin": null,
+          "skor": 0.8506,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1299,
+      "ortalama_kaynak_skor": 0.8501,
+      "kaynak_sayisi": 5,
+      "message_id": "6a155bbd-b67a-43b3-a92c-93a8a5894959",
+      "conversation_id": "0f137231-b576-4f5c-8d19-92d5360e021a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 22.76,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Meslek hastalığı nedeniyle iş göremiyorum, hangi haklardan yararlanabilirim?",
+      "cevap": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'na göre, meslek hastalığı nedeniyle iş göremeyen sigortalılar, aşağıdaki haklardan yararlanabilirler:\n\n- Geçici iş göremezlik süresince günlük geçici iş göremezlik ödeneği verilmesi (MADDE 16 - Fıkra 1, bent a)\n- Sürekli iş göremezlik geliri bağlanması (MADDE 16 - Fıkra 1, bent b)\n- İş kazası veya meslek hastalığı sonucu ölen sigortalının hak sahiplerine, gelir bağlanması (MADDE 16 - Fıkra 1, bent c)\n- Gelir bağlanmış olan kız çocuklarına evlenme ödeneği verilmesi (MADDE 16 - Fıkra 1, bent d)\n- İş kazası ve meslek hastalığı sonucu ölen sigortalı için cenaze ödeneği verilmesi (MADDE 16 - Fıkra 1, bent e)\n\nAncak, meslek hastalığının sigortalının çalıştığı veya yaptığı işin niteliğinden dolayı tekrarlanan bir sebeple veya işin yürütüm şartları yüzünden uğradığı geçici veya sürekli hastalık, bedensel veya ruhsal engellilik halleri olması ve Kurum Sağlık Kurulu tarafından tespit edilmesi zorunludur (MADDE 14 - Fıkra 1).\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 16 - Fıkra 1",
+          "metin_ozet": "17/4/2008-5754/10 md.) İş kazası veya meslek hastalığı sigortasından sağlanan haklar şunlardır: c) İş kazası veya meslek hastalığı sonucu ölen sigortalının hak sahiplerine, gelir bağlanması. e) İş kazası ve meslek hastalığı sonucu ölen sigortalı için cenaze ödeneği verilmesi.",
+          "metin": null,
+          "skor": 0.8451,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 14 - Fıkra 1",
+          "metin_ozet": "MADDE 14- Meslek hastalığı, sigortalının çalıştığı veya yaptığı işin niteliğinden dolayı tekrarlanan bir sebeple veya işin yürütüm şartları yüzünden uğradığı geçici veya sürekli hastalık, bedensel veya ruhsal engellilik halleridir.",
+          "metin": null,
+          "skor": 0.8745,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 15",
+          "metin_ozet": "17/4/2008-5754/9 md.) 4 üncü maddenin birinci fıkrasının (a) ve (b) bentleri kapsamındaki sigortalının, iş kazası ve meslek hastalığı dışında kalan ve iş göremezliğine neden olan rahatsızlıklar, hastalık halidir.",
+          "metin": null,
+          "skor": 0.8639,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 22 - Fıkra 1",
+          "metin_ozet": "MADDE 22- Sigortalının aşağıdaki sayılan nedenlerden dolayı iş kazasına veya meslek hastalığına uğraması, hastalanması, tedavi süresinin uzaması veya iş göremezliğinin artması hallerinde geçici iş göremezlik ödeneği veya sürekli iş göremezlik geliri;",
+          "metin": null,
+          "skor": 0.8467,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 14 - Fıkra 2",
+          "metin_ozet": "Herhangi bir meslek hastalığının klinik ve laboratuvar bulgularıyla belirlendiği ve meslek hastalığına yol açan etkenin işyerindeki inceleme sonunda tespit edildiği hallerde, meslek hastalıkları listesindeki yükümlülük süresi aşılmış olsa bile, söz konusu hastalık Kurumun veya...",
+          "metin": null,
+          "skor": 0.8508,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1117,
+      "ortalama_kaynak_skor": 0.8562,
+      "kaynak_sayisi": 5,
+      "message_id": "c902b4ec-9130-4f02-8fae-5ad23cecda09",
+      "conversation_id": "e5b6a872-177a-4743-a341-3f1039f42f10",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 36.0,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Askerlikte geçen sürem sigortam için borçlanılabilir mi, nasıl başvurabilirim?",
+      "cevap": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'na göre, askerlik hizmeti borçlanılabilir. Ancak, borçlanmanın şartları ve usulü kanunda belirtilen hükümlere göre belirlenir.\n\nAskerlik hizmeti borçlanması, 5510 Sayılı Kanunun 41. maddesinde düzenlenmiştir. Bu maddeye göre, askerlik hizmeti borçlanması için, borçlanmak isteyen kişinin, askerlik hizmetini yaptığı süreleri belgelemesi ve bu sürelere ilişkin genel sağlık sigortası primlerinin ödenmiş olması gerekir.\n\nBorçlanma başvurusu, 5510 Sayılı Kanunun 41. maddesinin 4. fıkrasına göre, borçlanmak isteyen kişinin, borçlanma talebini yazılı olarak Sosyal Güvenlik Kurumuna bildirmesi ile yapılır. Başvuru sırasında, askerlik hizmeti borçlanması için gerekli belgelerin sunulması gerekir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 36 - Fıkra 2",
+          "metin_ozet": "[231] 5434 sayılı Kanuna tabi çalışmakta iken 1402 sayılı Sıkıyönetim Kanunu uyarınca kurulan sıkıyönetim mahkemelerinin görev alanına giren suçlar nedeniyle yakalanan veya tutuklananlardan, Türk Silahlı Kuvvetlerinin yönetime el koyduğu 12 Eylül 1980 tarihinden itibaren...",
+          "metin": null,
+          "skor": 0.8747,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 41 - Fıkra 4",
+          "metin_ozet": "[64] Bir ay içinde ödenmeyen borçlanmalar için ise yeni başvuru şartı aranır.",
+          "metin": null,
+          "skor": 0.8625,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 60 - Fıkra 9",
+          "metin_ozet": "1/2/2018-7073/73 md.) Askerlik hizmetlerini er ve erbaş olarak yapmakta olanlar askere sevk tarihi ile terhis tarihi arasında, yedek subay öğrencileri ve adayları askere sevk tarihi ile yedek subay nasıp tarihi arasında, yedek astsubay öğrencileri ve adayları askere sevk tarihi...",
+          "metin": null,
+          "skor": 0.8552,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 41 - Fıkra 5",
+          "metin_ozet": "Borçlanılan süreler, uzun vadeli sigorta ve genel sağlık sigortası bakımından;",
+          "metin": null,
+          "skor": 0.8639,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 7 - Fıkra 2",
+          "metin_ozet": "17/7/1964 tarihli ve 506 sayılı Kanunun ek 5 inci maddesinde sayılan itibari hizmet süresi kapsamında yer alıp bu Kanunun 40 ıncı maddesinde sayılmayan işlerde bu Kanunun yürürlük tarihinden önce geçen çalışma sürelerinin bu maddenin birinci fıkrası kapsamında...",
+          "metin": null,
+          "skor": 0.8555,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 991,
+      "ortalama_kaynak_skor": 0.8624,
+      "kaynak_sayisi": 5,
+      "message_id": "2a724db6-0dea-4486-a137-b168f281c45b",
+      "conversation_id": "985de621-ca87-425b-a48f-6ef04bf0f93c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 23.75,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Ölüm aylığı hangi yakınlara bağlanır ve koşulları nelerdir?",
+      "cevap": "Ölüm aylığı, sigortalının hak sahiplerine bağlanır. Hak sahiplerine bağlanacak ölüm aylığı, sigortalının ölüm tarihini takip eden ay başından itibaren başlatılır. Ölüm aylığı bağlanabilmesi için, sigortalının ölüm tarihinden önce hak sahibi olma niteliğinin kazanılması gerekir.\n\nÖlüm aylığı, sigortalının eşine, çocuklarına, anne ve babasına bağlanabilir. Ancak, hak sahiplerine bağlanacak ölüm aylığı, 34 üncü maddede belirtilen şartların ortadan kalkması halinde kesilir. Örneğin, hak sahiplerinin diğer çocuklarından hak kazanılan gelir ve aylıklar hariç olmak üzere gelir ve/veya aylık bağlanması halinde, ölüm aylığı kesilir.\n\nÖlüm aylığı bağlanabilmesi için, sigortalının ölüm tarihinden önce en az 2 yıl süreyle en yüksek Devlet memuru emsal alınarak sigorta primi veya geçici 4 üncü madde kapsamında emekli keseneği ile kurum karşılığı ödenmiş olması zorunludur. Ancak, bazı durumlarda bu şart aranmayabilir. Örneğin, Cumhurbaşkanı yardımcılığı, bakanlık veya Türkiye Büyük Millet Meclisi üyeliği görevi sırasında veya bu görevlerinin sona ermesinden sonra ölenlerin hak sahiplerine, 2 yıl süreyle bu görevlerde bulunmuş olma ve sigorta primi veya emekli keseneği ile kurum karşılığı ödenmesi açısından yukarıdaki fıkrada düzenlenmiş olan şart aranmaksızın, ölüm aylığı bağlanır.\n\nAyrıca, kömür ve linyit madenlerinin yer altı işlerinde meydana gelen iş kazası sonucunda ölen sigortalının hak sahiplerine, ölüm tarihinde sigortalıya ilişkin şartlar aranmaksızın ölüm aylığı bağlanır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 35 - Fıkra 1",
+          "metin_ozet": "MADDE 35- Ölüm sigortasından sigortalının hak sahiplerine bağlanacak aylıklar; a) Sigortalının ölüm tarihini, b) Hak sahibi olma niteliğinin ölüm tarihinden sonra kazanılması halinde, bu niteliğin kazanıldığı tarihi, takip eden ay başından itibaren başlatılır.",
+          "metin": null,
+          "skor": 0.8536,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 43 - Fıkra 4",
+          "metin_ozet": "Bu fıkra hükümlerine göre aylık ödenebilmesi için, bu maddenin yürürlüğe girdiği tarihten önce geçici 4 üncü madde kapsamında Cumhurbaşkanı yardımcılığı, bakanlık ya da Türkiye Büyük Millet Meclisi üyeliği görevi esas alınarak malullük veya emeklilik aylığı ödenenler hariç olmak...",
+          "metin": null,
+          "skor": 0.8451,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 23 - Fıkra 1",
+          "metin_ozet": "genel sağlık sigortası primi dâhil kendi sigortalılığı nedeniyle prim ve prime ilişkin her türlü borçları terkin edilir ve ölüm tarihinde sigortalıya ilişkin şartlar aranmaksızın hak sahiplerine aylık bağlanır.",
+          "metin": null,
+          "skor": 0.8389,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 47 - Fıkra 11",
+          "metin_ozet": "Sonradan geçen çalışmalarından dolayı yaşlılık aylığına hak kazanamayanların kendilerine toptan ödeme yapılır, vefatları halinde ise hak sahiplerine ölüm aylığı bağlanır veya toptan ödeme yapılır.",
+          "metin": null,
+          "skor": 0.8545,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 10 - Fıkra 2",
+          "metin_ozet": "17/4/2008-5754/71 md.) Bu Kanunun yürürlüğe girdiği tarihten önce, malullük durumlarının tespiti için talepte bulunan ve bu Kanunun yürürlük tarihinden sonra malûl olduklarına karar verilenler hakkında 506 ve 2925 sayılı kanunlardaki diğer şartları da taşımaları halinde anılan...",
+          "metin": null,
+          "skor": 0.854,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1618,
+      "ortalama_kaynak_skor": 0.8492,
+      "kaynak_sayisi": 5,
+      "message_id": "5ed02215-3b5c-4f11-b8c0-91a5899543c5",
+      "conversation_id": "48e26576-1b96-4414-acbc-904eed4c1905",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 23.72,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "Doğum yapacağım, doğum öncesi ve sonrası ne kadar izin ve ödeneğe hak kazanırım?",
+      "cevap": "Doğum öncesi ve sonrası izin ve ödeneğe ilişkin haklarınız 4857 sayılı İş Kanunu'nun 74. maddesinde düzenlenmiştir. Buna göre, doğumdan önce sekiz ve doğumdan sonra sekiz hafta olmak üzere toplam on altı haftalık süre için çalıştırılmayacaksınız. Çoğul gebelik halinde doğumdan önce çalıştırılmayacak sekiz haftalık süreye iki hafta süre eklenir. \n\nDoğum sonrası analık hâli izninin bitiminden itibaren çocuğunuzun bakımı ve yetiştirilmesi amacıyla ve çocuğunuzun hayatta olması kaydıyla, doğumun ardından ücretsiz izin hakkına sahip olacaksınız. Birinci doğumda altmış gün, ikinci doğumda yüz yirmi gün, sonraki doğumlarda ise yüz seksen gün süreyle haftalık çalışma süresinin yarısı kadar ücretsiz izin verilir. Çoğul doğum hâlinde bu sürelere otuzar gün eklenir. Çocuğunuzun engelli doğması hâlinde bu süre üç yüz altmış gün olarak uygulanır.\n\nAyrıca, 4447 sayılı İşsizlik Sigortası Kanunu'nun Ek Madde 5 hükmüne göre, doğum ve evlat edinme sonrası yarım çalışma ödeneği ödenir. Ödenek süresi, haftalık çalışma süresinin yarısı kadardır. Yarım çalışma ödeneği, çalışılan aya ait aylık prim ve hizmet belgesinin ilişkin olduğu aydan sonraki ikinci aydan itibaren ödenir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 74 - Fıkra 1",
+          "metin_ozet": "Ancak, sağlık durumu uygun olduğu takdirde, doktorun onayı ile kadın işçi isterse doğumdan önceki üç haftaya kadar işyerinde çalışabilir. Bu durumda, kadın işçinin çalıştığı süreler doğum sonrası sürelere eklenir.",
+          "metin": null,
+          "skor": 0.8504,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 74 - Fıkra 2",
+          "metin_ozet": "29/1/2016-6663/22 md.) Birinci fıkra uyarınca kullanılan doğum sonrası analık hâli izninin bitiminden itibaren çocuğunun bakımı ve yetiştirilmesi amacıyla ve çocuğun hayatta olması kaydıyla kadın işçi ile üç yaşını doldurmamış çocuğu evlat edinen kadın veya erkek işçilere...",
+          "metin": null,
+          "skor": 0.8678,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4447 Sayılı İşsizlik Sigortası Kanunu - Ek Madde 5",
+          "metin_ozet": "29/1/2016-6663/20 md.) İşçiye, 4857 sayılı Kanunun 74 üncü maddesinin ikinci fıkrası uyarınca haftalık çalışma süresinin yarısı kadar verilen ücretsiz izin süresince doğum ve evlat edinme sonrası yarım 22 28/11/2017 tarihli ve 7061 sayılı Kanunun 56 ncı maddesiyle, bu maddenin...",
+          "metin": null,
+          "skor": 0.8389,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4447&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Ek Madde 2",
+          "metin_ozet": "evlenmesi veya evlat edinmesi ya da ana veya babasının, eşinin, kardeşinin, çocuğunun ölümü hâlinde üç gün, eşinin doğum yapması hâlinde ise beş gün ücretli izin verilir.",
+          "metin": null,
+          "skor": 0.8429,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 41 - Fıkra 1",
+          "metin_ozet": "10/9/2014-6552/43 md.) Kanunları gereği verilen ücretsiz doğum ya da analık izni süreleri ile 4 üncü maddenin birinci fıkrasının (a), (b) ve (c) bentleri kapsamındaki sigortalı kadının, üç defaya mahsus olmak üzere doğum tarihinden sonra iki yıllık süreyi geçmemek kaydıyla...",
+          "metin": null,
+          "skor": 0.8371,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1298,
+      "ortalama_kaynak_skor": 0.8474,
+      "kaynak_sayisi": 5,
+      "message_id": "c085a72d-c106-4d31-bf3c-f4089942f426",
+      "conversation_id": "df204960-5302-4c60-a23e-ad02c9e3e399",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 33.77,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Sosyal Güvenlik Hukuku",
+      "soru": "SGK'nın haksız işlemi olduğunu düşünüyorum, itiraz için hangi yola başvurmalıyım?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Sosyal Güvenlik Kurumu (SGK) ile ilgili işlemler 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu tarafından düzenlenmektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4447 Sayılı İşsizlik Sigortası Kanunu - Madde 54",
+          "metin_ozet": "23/1/2008 – 5728/578 md.) İşsizlik sigortası uygulamasına ilişkin işlemlere karşı sigortalıların ve işverenlerin yapacakları itirazlardan Sosyal Sigortalar Kurumuna verilen görevlerle ilgili olanlar adı geçen Kuruluşa, diğerleri ise Kuruma yapılır.",
+          "metin": null,
+          "skor": 0.8461,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4447&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 67",
+          "metin_ozet": "17/7/2003-4949/15 md.) Takip talebine itiraz edilen alacaklı, itirazın tebliği tarihinden itibaren bir sene içinde mahkemeye başvurarak, genel hükümler dairesinde alacağının varlığını ispat suretiyle itirazın iptalini dava edebilir.",
+          "metin": null,
+          "skor": 0.8344,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 45",
+          "metin_ozet": "Bölge idare mahkemesi, ilk derece mahkemesi kararını hukuka uygun bulmadığı takdirde istinaf başvurusunun kabulü ile ilk derece mahkemesi kararının kaldırılmasına karar verir.",
+          "metin": null,
+          "skor": 0.83,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 394",
+          "metin_ozet": "MADDE 394- (1) Karşı taraf dinlenmeden verilmiş olan ihtiyati tedbir kararlarına itiraz edilebilir.",
+          "metin": null,
+          "skor": 0.8304,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 365",
+          "metin_ozet": "2/3/2005-5311/26 md.) İstinaf yoluna başvurma, yasal süre geçtikten sonra yapılır veya istinaf yoluna başvurulmasına olanak bulunmayan bir karara veya vazgeçme nedeniyle itiraz veya şikâyetin reddine yahut süresi geçmiş bir şikâyete ilişkin olursa, Hukuk Usulü Muhakemeleri...",
+          "metin": null,
+          "skor": 0.8324,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 275,
+      "ortalama_kaynak_skor": 0.8347,
+      "kaynak_sayisi": 5,
+      "message_id": "995442bf-a398-4f92-962c-f43c54a4c056",
+      "conversation_id": "60b6c82f-56c3-43cd-87eb-72f45b5ba787",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 35.22,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

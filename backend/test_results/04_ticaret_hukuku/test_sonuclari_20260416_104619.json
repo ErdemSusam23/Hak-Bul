@@ -1,0 +1,688 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T07:53:46.774608+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\04_ticaret_hukuku\\test_sonuclari_20260416_104619.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 11,
+    "basarisiz": 1,
+    "basari_orani": 91.7,
+    "toplam_sure_sn": 447.7,
+    "ortalama_sure_sn": 37.31,
+    "kategori_dagilimi": {
+      "Ticaret Hukuku": {
+        "toplam": 12,
+        "basarili": 11,
+        "basarisiz": 1,
+        "basari_orani": 91.7,
+        "ortalama_sure_sn": 26.49,
+        "kategori_dogruluk_orani": 81.8,
+        "ortalama_cevap_uzunluk": 1139.0,
+        "ortalama_kaynak_skor": 0.774
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Şirket kurmak istiyorum, kuruluş ve ticaret siciline tescil için hangi temel kurallara bakmalıyım?",
+      "cevap": "",
+      "kaynaklar": [],
+      "kategori_tespit": "",
+      "message_id": null,
+      "conversation_id": null,
+      "uyari": "",
+      "yanit_suresi_sn": 60.0,
+      "basarili": false,
+      "hata": "İstek zaman aşımına uğradı"
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Limited şirket ile anonim şirket arasında ortakların sorumluluğu ve sermaye bakımından ne fark vardır?",
+      "cevap": "Limited şirket ile anonim şirket arasında ortakların sorumluluğu ve sermaye bakımından bazı farklar bulunmaktadır. \n\nOrtakların sorumluluğu bakımından, limited şirketlerde ortaklar şirket borçlarından sorumlu olmayıp, sadece taahhüt ettikleri esas sermaye paylarını ödemekle ve şirket sözleşmesinde öngörülen ek ödeme ve yan edim yükümlülüklerini yerine getirmekle yükümlüdürler (6102 Sayılı Türk Ticaret Kanunu - Madde 573). Anonim şirketlerde de pay sahipleri, sadece taahhüt etmiş oldukları sermaye payları ile ve şirkete karşı sorumludur (6102 Sayılı Türk Ticaret Kanunu - Madde 329).\n\nSermaye bakımından, limited şirketin esas sermayesi belirli olup, bu sermaye esas sermaye paylarının toplamından oluşur (6102 Sayılı Türk Ticaret Kanunu - Madde 573). Anonim şirketin sermayesi de belirli ve paylara bölünmüş olan bir sermayedir (6102 Sayılı Türk Ticaret Kanunu - Madde 329).\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 573",
+          "metin_ozet": "MADDE 573- (1) Limited şirket, bir veya daha çok gerçek veya tüzel kişi tarafından bir ticaret unvanı altında kurulur;",
+          "metin": null,
+          "skor": 0.8437,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 329",
+          "metin_ozet": "MADDE 329- (1) Anonim şirket, sermayesi belirli ve paylara bölünmüş olan, borçlarından dolayı yalnız malvarlığıyla sorumlu bulunan şirkettir. (2) Pay sahipleri, sadece taahhüt etmiş oldukları sermaye payları ile ve şirkete karşı sorumludur.",
+          "metin": null,
+          "skor": 0.8658,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 135",
+          "metin_ozet": "“ortak”, anonim şirketlerin pay sahiplerini, limited şirketler ile şahıs şirketlerinin ve kooperatiflerin ortaklarını;",
+          "metin": null,
+          "skor": 0.8527,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 189",
+          "metin_ozet": "Tür değiştirme kararı aşağıdaki nisaplarla alınır:36 a) Kanunun 421 inci maddesinin beşinci fıkrasının (b) bendi hükmü saklı olmak şartıyla anonim ve sermayesi paylara bölünmüş komandit şirketlerde, esas veya çıkarılmış sermayenin üçte ikisini karşılaması şartıyla, genel kurulda...",
+          "metin": null,
+          "skor": 0.8387,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 151",
+          "metin_ozet": "a) Bu Kanunun 421 inci maddesinin beşinci fıkrasının (b) bendi saklı olmak üzere, anonim ve sermayesi paylara bölünmüş komandit şirketlerde, esas veya çıkarılmış sermayenin çoğunluğunu temsil etmesi şartıyla, genel kurulda mevcut bulunan oyların dörtte üçüyle, b) Bir kooperatif...",
+          "metin": null,
+          "skor": 0.8399,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1006,
+      "ortalama_kaynak_skor": 0.8482,
+      "kaynak_sayisi": 5,
+      "message_id": "b276489e-a709-4b26-b264-4a9a9f092f6b",
+      "conversation_id": "7750bee0-0ae8-4490-b579-6fcdcfcfde49",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.02,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Şirket ortağı olarak şirket borçlarından kişisel malvarlığımla sorumlu olur muyum?",
+      "cevap": "Şirket türüne göre sorumluluk durumunuz değişebilir. Limited şirketlerde, ortaklar şirket borçlarından sorumlu olmayıp, sadece taahhüt ettikleri esas sermaye paylarını ödemekle ve şirket sözleşmesinde öngörülen ek ödeme ve yan edim yükümlülüklerini yerine getirmekle yükümlüdürler (MADDE 573). Ancak, komandit şirketlerde ortaklar şirketin borç ve taahhütlerinden dolayı müteselsilen ve bütün malvarlığı ile sorumludurlar (MADDE 236).\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 236",
+          "metin_ozet": "MADDE 236- (1) Ortaklar, şirketin borç ve taahhütlerinden dolayı müteselsilen ve bütün malvarlığı ile sorumludur.",
+          "metin": null,
+          "skor": 0.8424,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 325",
+          "metin_ozet": "MADDE 325- (1) Şirketin varlığı şirket alacaklılarına yetmeyecek olursa, bu alacaklılar geri kalan alacaklarından dolayı komanditelerin kişisel mallarına başvurabilirler.",
+          "metin": null,
+          "skor": 0.8428,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 602",
+          "metin_ozet": "MADDE 602- (1) Şirket, borç ve yükümlülükleri dolayısıyla sadece malvarlığıyla sorumludur.",
+          "metin": null,
+          "skor": 0.8555,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 324",
+          "metin_ozet": "MADDE 324- (1) Bir komandit şirketin iflası hâlinde, şirket alacaklıları alacaklarını almadıkça, ortakların kişisel alacaklıları şirket mallarına başvuramaz.",
+          "metin": null,
+          "skor": 0.8386,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 573",
+          "metin_ozet": "MADDE 573- (1) Limited şirket, bir veya daha çok gerçek veya tüzel kişi tarafından bir ticaret unvanı altında kurulur;",
+          "metin": null,
+          "skor": 0.8381,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 560,
+      "ortalama_kaynak_skor": 0.8435,
+      "kaynak_sayisi": 5,
+      "message_id": "9d233fcc-b09b-4c83-835b-a0194d2fbddd",
+      "conversation_id": "70d2b170-0153-4482-aec4-648222b3bd59",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 16.23,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Çekim karşılıksız çıktı, hangi hukuki ve cezai yollara başvurabilirim?",
+      "cevap": "Çekin karşılıksız çıkması durumunda, Türk Ticaret Kanunu'nun ilgili hükümlerine göre hareket edilebilir. \n\nÖncelikle, çekin ibraz süresi içinde bankaya ibraz edilmesi ve ödenmemesi durumunda, hamil tarafından protesto veya buna eş değer bir belirleme yapılabilir (6102 Sayılı Türk Ticaret Kanunu - Madde 808). Protesto, çekin ödenmediğini resmî olarak belgelemek için yapılan bir işlemdir. \n\nProtesto yapıldıktan sonra, hamil, cirantalara, düzenleyene ve diğer çek borçlularına karşı başvurma hakkını kullanabilir (6102 Sayılı Türk Ticaret Kanunu - Madde 808). \n\nAyrıca, çekin ödenmemesi durumunda, hamil, düzenleyene karşı icra takibi başlatabilir (2004 Sayili Icra ve Iflas Kanunu - Madde 42). İcra takibi, takip talebiyle başlar ve haciz yoluyla veya rehnin paraya çevrilmesi yahut iflas yoluyla cereyan eder. \n\nCezaında, çekin karşılıksız çıkması, Türk Ceza Kanunu'nun ilgili hükümlerine göre suç teşkil edebilir. Ancak, bu konuda daha detaylı bilgi için ilgili kanun maddelerine bakılması gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 822",
+          "metin_ozet": "MADDE 822- (1) Aşağıda yazılı hususlar çekin ödeneceği ülke hukukuna göre belirlenir:",
+          "metin": null,
+          "skor": 0.4232,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 35",
+          "metin_ozet": "MADDE 35- (1) Çekinme kararına karşı üst mahkemeye başvurulabilir. (2) Çekinme kararının ilk derece mahkemesi hâkimince verildiği hâllerde, başvuru üzerine bölge adliye mahkemesinin vereceği karar kesindir.",
+          "metin": null,
+          "skor": 0.4207,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 808",
+          "metin_ozet": "MADDE 808- (1) Zamanında ibraz edilmiş olan çekin ödenmemiş olduğu ve ödememe hâli;",
+          "metin": null,
+          "skor": 0.4188,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 806",
+          "metin_ozet": "MADDE 806- (1) Hesaba geçirilmek üzere düzenlenen bir çekin hamili, muhatap iflas etmiş veya bir ilamla ispatlanmamış olsa bile ödemelerini tatil etmiş ya da aleyhine yapılan herhangi bir icra takibi semeresiz kalmışsa, çek bedelinin nakden ödenmesini muhataptan isteyebileceği...",
+          "metin": null,
+          "skor": 0.4183,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 42",
+          "metin_ozet": "2/7/2012-6352/8 md.) Yabancı devlet aleyhine ilamsız takip yoluna başvurulamaz. 1/2/2018-7078/8 md.) İdari yargının görev alanına giren konularda ilamsız takip yoluna başvurulamaz.",
+          "metin": null,
+          "skor": 0.4164,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1128,
+      "ortalama_kaynak_skor": 0.4195,
+      "kaynak_sayisi": 5,
+      "message_id": "edfa3a07-4120-4207-9629-1af705c8743e",
+      "conversation_id": "9e5f3334-32e6-4a3c-8870-b9e41c9f25aa",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 24.24,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Bono ile poliçe arasındaki fark nedir ve geçerli olmaları için hangi unsurlar gerekir?",
+      "cevap": "Bono ve poliçe, her ikisi de ticari işlemlerde kullanılan değerli kağıtlardır, ancak aralarında bazı farklar vardır. \n\nBono, bir kişi tarafından diğer kişiye belirli bir tutarın ödenmesi için düzenlenen bir senettir. Bono ile poliçe arasındaki temel fark, bononun genellikle daha basit bir structure sahip olması ve poliçeye kıyasla daha az formalite gerektirmesidir. \n\nPoliçe ise, bir kişi tarafından diğer kişiye belirli bir tutarın ödenmesi için düzenlenen, daha formal bir structure sahip olan bir senettir. Poliçe, genellikle daha büyük tutarlı işlemlerde kullanılır ve bonoya kıyasla daha fazla formalite gerektirir.\n\nHer iki senet türünün de geçerli olması için bazı unsurların bulunması gerekir. Bu unsurlar arasında;\n\n- Düzenleyenin adı ve imzası\n- Ödenecek tutar\n- Ödeme yeri\n- Ödeme tarihi\n- Alıcının adı\n\ngibi bilgiler bulunur. \n\nBunların yanı sıra, bono ve poliçenin geçerli olması için, düzenleyenin borçlanmaya ehil olması, yani borcunu ödeyecek ekonomik güce sahip olması da gerekir. \n\nAyrıca, bono ve poliçenin düzenlenmesinde, belirli bir şekil ve içerik gereksinimleri de vardır. Örneğin, poliçede, düzenleyenin imzası, ödeme yeri ve tarihi, alıcının adı gibi bilgiler bulunmalıdır. \n\nBono ve poliçenin geçerli olması için gereken unsurlar ve şekil gereksinimleri, 6102 Sayılı Türk Ticaret Kanunu'nda düzenlenmiştir. \n\nGetirilen kaynaklar bu soruyu karsilamiyor. 6102 Sayılı Türk Ticaret Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 779",
+          "metin_ozet": "MADDE 779- (1) Bir bonoyu düzenleyen kişi, tıpkı bir poliçeyi kabul eden gibi sorumludur. (2) Görüldüğünden belirli bir süre sonra ödenmesi şart olan bonoların düzenleyene 693 üncü maddede yazılı süreler içinde ibraz olunması gerekir.",
+          "metin": null,
+          "skor": 0.835,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 818",
+          "metin_ozet": "b) Poliçede gösterilen bedeller arasındaki farklara ilişkin 676 ncı madde. o) Poliçe nüshaları arasındaki ilişkiye ait 744 üncü madde.",
+          "metin": null,
+          "skor": 0.8248,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 778",
+          "metin_ozet": "MADDE 778- (1) Bononun niteliğine aykırı düşmedikçe;",
+          "metin": null,
+          "skor": 0.8338,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 676",
+          "metin_ozet": "MADDE 676- (1) Poliçe bedeli hem yazı hem de rakamla gösterilip de iki bedel arasında fark bulunursa, yazı ile gösterilen bedel üstün tutulur.",
+          "metin": null,
+          "skor": 0.846,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 775",
+          "metin_ozet": "MADDE 775- (1) Poliçenin kaybolması veya çalınması hâlinde alınacak tedbirleri, ödeme yerindeki hukuk belirler. İKİNCİ BÖLÜM Bono veya Emre Yazılı Senet A) Unsurlar",
+          "metin": null,
+          "skor": 0.8401,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1531,
+      "ortalama_kaynak_skor": 0.8359,
+      "kaynak_sayisi": 5,
+      "message_id": "d9ed8d47-4754-4405-8fc6-5e1ffa6e4fa9",
+      "conversation_id": "1450c166-53dc-4ad1-b8e6-ec78cce2d3bf",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.79,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Ticari defterleri tutmazsam veya usulüne uygun saklamazsam ne gibi sonuçlarla karşılaşırım?",
+      "cevap": "Ticari defterleri tutmamak veya usulüne uygun saklamamak, Türk Ticaret Kanunu'nda belirtilen yükümlülüklerin ihlali olarak kabul edilir. Bu durumda, 6102 Sayılı Türk Ticaret Kanunu'nun 562. maddesine göre, dörtbin (88.997) Türk Lirası idari para cezasıyla cezalandırılabilirsiniz.\n\nAyrıca, 6102 Sayılı Türk Ticaret Kanunu'nun 562. maddesinin 4. fıkrasına göre, defter, kayıt ve belgeleri usulüne uygun şekilde saklamayanlar, üçyüz güne kadar adli para cezasıyla cezalandırılabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 562",
+          "metin_ozet": "a) 64 üncü maddesinin birinci fıkrasının ikinci veya üçüncü cümlesindeki yükümlülükleri yerine getirmeyenler, b) 64 üncü maddesinin ikinci fıkrası uyarınca belgelerin kopyasını sağlamayanlar, c) 64 üncü maddesinin üçüncü fıkrası uyarınca gerekli onayları yaptırmayanlar, d) 65...",
+          "metin": null,
+          "skor": 0.8667,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 154",
+          "metin_ozet": "Madde 154 — Bu Kanunun 42 nci maddesinde belirtilen belgelerin saklanması yükümlülüğüne uymayanlar bir yıldan üç yıla kadar hapis ve beşyüz günden binbeşyüz güne kadar adlî para cezası ile cezalandırılırlar.",
+          "metin": null,
+          "skor": 0.8495,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 153",
+          "metin_ozet": "Madde 153 — Bu Kanunla yetkilendirilen mercilerin ve denetim görevlilerinin istedikleri bilgi ve belgeler ile bu Kanun kapsamındaki kuruluşların, konsolide finansal tabloların hazırlanmasını teminen 38 inci madde kapsamında istedikleri bilgi ve belgeleri vermeyen kişi bir yıldan...",
+          "metin": null,
+          "skor": 0.8517,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 35",
+          "metin_ozet": "MADDE 35- (1) Tescil işleminin dayanakları olan dilekçe, beyanname, senetler, belgeler ve ilanları içeren gazeteler, üzerlerine sicil defterinin tarih ve numaraları yazılarak sicil müdürlüğünce saklanır.",
+          "metin": null,
+          "skor": 0.8619,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 607,
+      "ortalama_kaynak_skor": 0.8575,
+      "kaynak_sayisi": 4,
+      "message_id": "4c1aed1c-9024-427b-8d9d-0586aa71c25b",
+      "conversation_id": "1b2dcfd8-2257-4d29-8131-a518cb606adc",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.41,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Tacir sayılmanın hukuki sonuçları nelerdir, basiretli davranma ve ticaret unvanı yükümlülüğü ne demektir?",
+      "cevap": "Tacir sayılmanın hukuki sonuçları, 6102 Sayılı Türk Ticaret Kanunu'nda düzenlenmiştir. Bir kişinin tacir sayılması, çeşitli yükümlülükler ve sorumluluklar doğurur. \n\nBir tacirin, her türlü borcu için iflasa tabi olduğu ve ayrıca kanuna uygun bir ticaret unvanı seçmek, ticari işletmesini ticaret siciline tescil ettirmek ve bu Kanun hükümleri uyarınca gerekli ticari defterleri tutmakla da yükümlü olduğu belirtilmiştir (MADDE 18/1). \n\nTacir, ticari işletmesine ilişkin işlemleri, ticaret unvanıyla yapmak ve işletmesiyle ilgili senetlerle diğer belgeleri bu unvan altında imzalamak zorundadır (MADDE 39/1). Tescil edilen ticaret unvanı, ticari işletmenin görülebilecek bir yerine okunaklı bir şekilde yazılır ve tacirin işletmesiyle ilgili olarak düzenlediği ticari mektuplarda ve ticari defterlere yapılan kayıtların dayandığı belgelerde tacirin sicil numarası, ticaret unvanı, işletmesinin merkezi ile tacir internet sitesi oluşturma yükümlülüğüne tabi ise tescil edilen internet sitesinin adresi de gösterilir (MADDE 39/2).\n\nBasiretli davranma yükümlülüğü, her tacirin, ticaretine ait bütün faaliyetlerinde basiretli bir iş adamı gibi hareket etmesini gerektirir (MADDE 18/2). Bu, tacirin işlerini özenle ve dürüstlük kurallarına uygun bir şekilde yürütme sorumluluğunu içerir.\n\nTicaret unvanı yükümlülüğü, bir tacirin ticari işletmesine ilişkin işlemleri, ticaret unvanıyla yapması ve işletmesiyle ilgili senetlerle diğer belgeleri bu unvan altında imzalamak zorunda olmasını ifade eder (MADDE 39/1). Bu yükümlülük, tacirin ticari faaliyetlerini şeffaf ve hesap verilebilir bir şekilde yürütmesini sağlar.\n\nBu konuyla ilgili daha detaylı bilgi için, 6102 Sayılı Türk Ticaret Kanunu'nun ilgili maddelerine başvurmak gerekir.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 18",
+          "metin_ozet": "MADDE 18- (1) Tacir, her türlü borcu için iflasa tabidir; ayrıca kanuna uygun bir ticaret unvanı seçmek, ticari işletmesini ticaret siciline tescil ettirmek ve bu Kanun hükümleri uyarınca gerekli ticari defterleri tutmakla da yükümlüdür.",
+          "metin": null,
+          "skor": 0.8831,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 14",
+          "metin_ozet": "MADDE 14- (1) Kişisel durumları ya da yaptığı işlerin niteliği nedeniyle yahut meslek ve görevleri dolayısıyla, kanundan veya bir yargı kararından doğan bir yasağa aykırı bir şekilde ya da başka bir kişinin veya resmî bir makamın iznine gerek olmasına rağmen izin veya onay...",
+          "metin": null,
+          "skor": 0.8679,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 13",
+          "metin_ozet": "MADDE 13- (1) Küçük ve kısıtlılara ait ticari işletmeyi bunların adına işleten yasal temsilci, tacir sayılmaz. Tacir sıfatı, temsil edilene aittir. Ancak, yasal temsilci ceza hükümlerinin uygulanması yönünden tacir gibi sorumlu olur.",
+          "metin": null,
+          "skor": 0.8645,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 12",
+          "metin_ozet": "MADDE 12- (1) Bir ticari işletmeyi, kısmen de olsa, kendi adına işleten kişiye tacir denir.",
+          "metin": null,
+          "skor": 0.8602,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Her tacir, ticari işletmesine ilişkin işlemleri, ticaret unvanıyla yapmak ve işletmesiyle ilgili senetlerle diğer belgeleri bu unvan altında imzalamak zorundadır.",
+          "metin": null,
+          "skor": 0.8561,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1728,
+      "ortalama_kaynak_skor": 0.8664,
+      "kaynak_sayisi": 5,
+      "message_id": "97f0253f-16d7-41f2-854e-64ad8ce825d8",
+      "conversation_id": "160508c4-27a5-492b-b26f-030689d10032",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.66,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Rakibim müşterilerimi yanıltan reklamlar yapıyor, haksız rekabet için hangi haklarımı kullanabilirim?",
+      "cevap": "6102 Sayılı Türk Ticaret Kanunu'nun 56. maddesine göre, haksız rekabet sebebiyle müşterileri, kredisi, meslekî itibarı, ticari faaliyetleri veya diğer ekonomik menfaatleri zarar gören veya böyle bir tehlikeyle karşılaşabilecek olan kimse, aşağıdaki hakları kullanabilir:\n\n- Fiilin haksız olup olmadığının tespitini,\n- Haksız rekabetin men'ini,\n- Haksız rekabetin sonucu olan maddi durumun ortadan kaldırılmasını, haksız rekabet yanlış veya yanıltıcı beyanlarla yapılmışsa bu beyanların düzeltilmesini ve tecavüzün önlenmesi için kaçınılmaz ise, haksız rekabetin işlenmesinde etkili olan araçların ve malların imhasını,\n- Kusur varsa zarar ve zıyanın tazminini,\n- Türk Borçlar Kanununun 58. maddesinde öngörülen şartların varlığında manevi tazminat verilmesini isteyebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 55",
+          "metin_ozet": "MADDE 55- (1) Aşağıda sayılan hâller haksız rekabet hâllerinin başlıcalarıdır: a) Dürüstlük kuralına aykırı reklamlar ve satış yöntemleri ile diğer hukuka aykırı davranışlar ve özellikle;",
+          "metin": null,
+          "skor": 0.8542,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 56",
+          "metin_ozet": "MADDE 56- (1) Haksız rekabet sebebiyle müşterileri, kredisi, meslekî itibarı, ticari faaliyetleri veya diğer ekonomik menfaatleri zarar gören veya böyle bir tehlikeyle karşılaşabilecek olan kimse;",
+          "metin": null,
+          "skor": 0.8421,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 62",
+          "metin_ozet": "MADDE 62- (1) a) 55 inci maddede yazılı haksız rekabet fiillerinden birini kasten işleyenler, b) Kendi icap ve tekliflerinin rakiplerininkine tercih edilmesi için kişisel durumu, ürünleri, iş ürünleri, ticari faaliyeti ve işleri hakkında kasten yanlış veya yanıltıcı bilgi...",
+          "metin": null,
+          "skor": 0.8356,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 57",
+          "metin_ozet": "Ticari işlere ait haksız rekabet hakkında Türk Ticaret Kanunu hükümleri saklıdır.",
+          "metin": null,
+          "skor": 0.8561,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 54",
+          "metin_ozet": "MADDE 54- (1) Haksız rekabete ilişkin bu Kısım hükümlerinin amacı, bütün katılanların menfaatine, dürüst ve bozulmamış rekabetin sağlanmasıdır.",
+          "metin": null,
+          "skor": 0.8582,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 898,
+      "ortalama_kaynak_skor": 0.8492,
+      "kaynak_sayisi": 5,
+      "message_id": "ec59c2c6-fd72-4c86-b4a5-c4c6e89c62bd",
+      "conversation_id": "c7505226-c723-4fb6-b9c5-bcc4216ae19f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.52,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Ticari işletmemi devretmek istiyorum, devir ve borçlardan sorumluluk açısından hangi hükümler önemlidir?",
+      "cevap": "Ticari işletmenizi devretmek istediğinizde, devir ve borçlardan sorumluluk açısından beberapa önemli hükümler dikkate alınmalıdır. \n\n6102 Sayılı Türk Ticaret Kanunu'nun 11. maddesine göre, ticari işletme, içerdiği malvarlığı unsurlarının devri için zorunlu tasarruf işlemlerinin ayrı ayrı yapılmasına gerek olmaksızın bir bütün halinde devredilebilir ve diğer hukuki işlemlere konu olabilir. Bu devir sözleşmesiyle ticari işletmeyi bir bütün halinde konu alan diğer sözleşmeler yazılı olarak yapılır, ticaret siciline tescil ve ilan edilir.\n\nAyrıca, 6102 Sayılı Türk Ticaret Kanunu'nun 193. maddesine göre, birleşme, bölünme veya tür değiştirme işlemlerine herhangi bir şekilde katılmış bulunan bütün kişiler şirketlere, ortaklara ve alacaklılara karşı kusurları ile verdikleri zararlardan sorumludurlar.\n\nTicari işletmenin bir ticaret şirketine dönüşmesi veya bir ticaret şirketinin bir ticari işletmeye dönüştürülmesi durumunda da, 6102 Sayılı Türk Ticaret Kanunu'nun 194. maddesinde belirtilen hükümler uygulanır. Bu hükümlere göre, ticari işletmenin devri veya dönüştürülmesi sırasında, borçlardan sorumluluk açısından önemli hususlar dikkate alınmalıdır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 194",
+          "metin_ozet": "MADDE 194- (1) Bir ticari işletme, bir ticaret şirketiyle, onun tarafından devralınmak suretiyle birleşebilir. Bu hâlde devralan ticaret şirketinin türüne göre 138 ilâ 140, 142 ilâ 158 ve ortak hükümlere ilişkin 191 ilâ 193 üncü madde hükümleri kıyas yoluyla uygulanır.",
+          "metin": null,
+          "skor": 0.8491,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 11",
+          "metin_ozet": "MADDE 11- (1) Ticari işletme, esnaf işletmesi için öngörülen sınırı aşan düzeyde gelir sağlamayı hedef tutan faaliyetlerin devamlı ve bağımsız şekilde yürütüldüğü işletmedir.",
+          "metin": null,
+          "skor": 0.8767,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 193",
+          "metin_ozet": "Kurucuların sorumlulukları saklıdır. 26/6/2012-6335/43 md.) (3) 202 ilâ 208, 555, 557, 560 ıncı madde hükümleri saklıdır. VI – Ticari işletme ile ilgili birleşme ve tür değiştirme",
+          "metin": null,
+          "skor": 0.8543,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 4",
+          "metin_ozet": "MADDE 4- (1) Her iki tarafın da ticari işletmesiyle ilgili hususlardan doğan hukuk davaları ve çekişmesiz yargı işleri ile tarafların tacir olup olmadıklarına bakılmaksızın;",
+          "metin": null,
+          "skor": 0.8643,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 127",
+          "metin_ozet": "a) Para, alacak, kıymetli evrak ve sermaye şirketlerine ait paylar, b) Fikrî mülkiyet hakları, c) Taşınırlar ve her çeşit taşınmaz, d) Taşınır ve taşınmazların faydalanma ve kullanma hakları, e) Kişisel emek, f) Ticari itibar, g) Ticari işletmeler, h) Haklı olarak kullanılan...",
+          "metin": null,
+          "skor": 0.8543,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1285,
+      "ortalama_kaynak_skor": 0.8597,
+      "kaynak_sayisi": 5,
+      "message_id": "b11a80c9-b6d1-4cb5-b4c8-0ef404ce40d2",
+      "conversation_id": "14e2ca51-cbb1-4858-8f03-9ffa8a44976f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 30.97,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Anonim şirket genel kurul kararına karşı iptal davası açmak için kimler, hangi sürede dava açabilir?",
+      "cevap": "Anonim şirket genel kurul kararına karşı iptal davası açmak için, 6102 Sayılı Türk Ticaret Kanunu'nun 445. maddesinde belirtilen kişiler, kanun veya esas sözleşme hükümlerine ve özellikle dürüstlük kuralına aykırı olan genel kurul kararları aleyhine, karar tarihinden itibaren üç ay içinde, şirket merkezinin bulunduğu yerdeki asliye ticaret mahkemesinde iptal davası açabilirler.\n\nİptal davası açabilecek kişiler, 6102 Sayılı Türk Ticaret Kanunu'nun 446. maddesinde belirtilmiştir. Buna göre, iptal davası açabilecek kişiler şunlardır:\n- Toplantıda hazır bulunup da karara olumsuz oy veren ve bu muhalefetini tutanağa geçirten,\n- Toplantıda hazır bulunsun veya bulunmasın, olumsuz oy kullanmış olsun ya da olmasın; çağrının usulüne göre yapılmadığını, gündemin gereği gibi ilan edilmediğini, genel kurula katılma yetkisi bulunmayan kişilerin veya temsilcilerinin toplantıya katılıp oy kullandıklarını, genel kurula katılmasına ve oy kullanmasına haksız olarak izin verilmediğini ve yukarıda sayılan aykırılıkların genel kurul kararının alınmasında etkili olduğunu ileri süren pay sahipleri,\n- Yönetim kurulu,\n- Kararların yerine getirilmesi, kişisel sorumluluğuna sebep olacaksa yönetim kurulu üyelerinden her biri.\n\nBu kişiler, karar tarihinden itibaren üç ay içinde iptal davası açabilirler.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 445",
+          "metin_ozet": "MADDE 445- (1) 446 ncı maddede belirtilen kişiler, kanun veya esas sözleşme hükümlerine ve özellikle dürüstlük kuralına aykırı olan genel kurul kararları aleyhine, karar tarihinden itibaren üç ay içinde, şirket merkezinin bulunduğu yerdeki asliye ticaret mahkemesinde iptal davası...",
+          "metin": null,
+          "skor": 0.8871,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 640",
+          "metin_ozet": "MADDE 640- (1) Şirket sözleşmesinde, bir ortağın genel kurul kararı ile şirketten çıkarılabileceği sebepler öngörülebilir. (2) Çıkarma kararına karşı ortak, kararın noter aracılığıyla kendisine bildirilmesinden itibaren üç ay içinde iptal davası açabilir.",
+          "metin": null,
+          "skor": 0.8411,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 446",
+          "metin_ozet": "çağrının usulüne göre yapılmadığını, gündemin gereği gibi ilan edilmediğini, genel kurula katılma yetkisi bulunmayan kişilerin veya temsilcilerinin toplantıya katılıp oy kullandıklarını, genel kurula katılmasına ve oy kullanmasına haksız olarak izin verilmediğini ve yukarıda...",
+          "metin": null,
+          "skor": 0.8498,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 192",
+          "metin_ozet": "MADDE 192- (1) 134 ilâ 190 ıncı maddelerin ihlali hâlinde, birleşme, bölünme ve tür değiştirme kararına olumlu oy vermemiş ve bunu tutanağa geçirmiş bulunan birleşmeye, bölünmeye veya tür değiştirmeye katılan şirketlerin ortakları;",
+          "metin": null,
+          "skor": 0.8481,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 449",
+          "metin_ozet": "MADDE 449- (1) Genel kurul kararı aleyhine iptal veya butlan davası açıldığı takdirde mahkeme, yönetim kurulu üyelerinin görüşünü aldıktan sonra, dava konusu kararın yürütülmesinin geri bırakılmasına karar verebilir.",
+          "metin": null,
+          "skor": 0.8509,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1294,
+      "ortalama_kaynak_skor": 0.8554,
+      "kaynak_sayisi": 5,
+      "message_id": "a37b550e-6fcb-42a5-a634-d9d713ee2150",
+      "conversation_id": "f6bec2c9-108e-4034-a1f2-bd468cf4ae3b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.35,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Borçlarımı ödeyemiyorum, konkordato başvurusu için hangi belgeler ve şartlar aranır?",
+      "cevap": "Konkordato başvurusu için, 2004 Sayılı İcra ve Iflas Kanunu'nun 285 ve 286. maddelerine göre, aşağıdaki belgeler ve şartlar aranır:\n\n- Borçlunun borçlarını hangi oranda veya vadede ödeyeceğini, bu kapsamda alacaklıların alacaklarından hangi oranda vazgeçmiş olacaklarını, ödemelerin yapılması için borçlunun mevcut mallarını satıp satmayacağını, borçlunun faaliyetine devam edebilmesi ve alacaklılara ödemelerini yapabilmesi için gerekli malî kaynağın sermaye artırımı veya kredi temini yoluyla yahut başka bir yöntem kullanılarak sağlanacağını gösteren konkordato ön projesi,\n- Borçlunun malvarlığının durumunu gösterir belgeler; borçlu defter tutmaya mecbur kişilerden ise Türk Ticaret Kanununa göre hazırlanan son bilanço, gelir tablosu, nakit akım tablosu, hem işletmenin devamlılığı esasına göre hem de aktiflerin muhtemel satış fiyatları üzerinden hazırlanan ara bilançolar, ticari defterlerin açılış ve kapanış tasdikleri ile elektronik ortamda tutulan defterlere ilişkin bilgilerin yer aldığı rapor,\n- Bağımsız denetim kuruluşu tarafından Türkiye Denetim Standartlarına göre yapılacak denetim kapsamında hazırlanan ve konkordato ön projesinde yer alan teklifin gerçekleşeceği hususunda makul güvence veren denetim raporu ile dayanakları.\n\nAyrıca, konkordato talebinde bulunan, Adalet Bakanlığı tarafından yürürlüğe konulan tarifede belirtilen konkordato gider avansını yatırmaya mecburdur.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile görüşmenizi öneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 285",
+          "metin_ozet": "28/2/2018-7101/13 md.) Borçlarını, vadesi geldiği hâlde ödeyemeyen veya vadesinde ödeyememe tehlikesi altında bulunan herhangi bir borçlu, vade verilmek veya tenzilat yapılmak suretiyle borçlarını ödeyebilmek veya muhtemel bir iflâstan kurtulmak için konkordato talep edebilir.",
+          "metin": null,
+          "skor": 0.4363,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 286",
+          "metin_ozet": "28/2/2018-7101/14 md.) Borçlu, konkordato talebine aşağıdaki belgeleri ekler.",
+          "metin": null,
+          "skor": 0.4336,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 303",
+          "metin_ozet": "28/2/2018-7101/31 md.) Konkordatoya muvafakat etmeyen alacaklı borçtan birlikte sorumlu olanlara karşı bütün haklarını muhafaza eder.",
+          "metin": null,
+          "skor": 0.4262,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 304",
+          "metin_ozet": "28/2/2018-7101/32 md.) Komiserin gerekçeli raporunu ve dosyayı tevdi alan mahkeme, konkordato hakkında karar vermek üzere yargılamaya başlar. Konkordato hakkında yapılan yargılamada kesin mühlet içinde bir karar verilemeyeceği anlaşılırsa; Konkordatonun tasdiki şartları:",
+          "metin": null,
+          "skor": 0.4255,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 302",
+          "metin_ozet": "Oylamada sadece konkordato projesinden etkilenen alacaklılar oy kullanabilir. Konkordato projesinin müzakereleri sonucunda oluşturulan konkordato tutanağı, kabul ve ret oylarını içerecek şekilde derhâl imza olunur.",
+          "metin": null,
+          "skor": 0.4253,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1523,
+      "ortalama_kaynak_skor": 0.4294,
+      "kaynak_sayisi": 5,
+      "message_id": "1cf57720-d345-45fd-af59-a799957dce8a",
+      "conversation_id": "008c3d64-d315-4845-9f33-2237052c184f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.32,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Ticaret Hukuku",
+      "soru": "Bir şirket hakkında iflas davası hangi hallerde açılır ve doğrudan iflas sebepleri nelerdir?",
+      "cevap": "Bir şirket hakkında iflas davası, şirketin borçlarını ödeyememesi veya diğer haklı sebeplerin varlığı halinde açılabilir. Türk Ticaret Kanunu'nun 636. maddesine göre, limited şirket aşağıdaki hallerde sona erer:\n\n- Şirket sözleşmesinde öngörülen sona erme sebeplerinden birinin gerçekleşmesiyle.\n- Genel kurul kararı ile.\n- İflasın açılması ile.\n- Kanunda öngörülen diğer sona erme hallerinde.\n\nDoğrudan iflas sebepleri arasında, şirketin borçlarını ödeyememesi veya diğer haklı sebeplerin varlığı bulunur. Örneğin, bir şirketin alacaklıları, şirketin borçlarını ödeyememesi halinde iflas davası açabilirler. Ayrıca, Türk Ticaret Kanunu'nun 245. maddesine göre, haklı sebep, şirketin kuruluşuna yol açan fiili veya kişisel sebeplerin şirketin işletme konusunun elde edilmesini imkansız kılacak veya güçleştirecek şekilde ortadan kalkmış olmasıdır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 238",
+          "metin_ozet": "MADDE 238- (1) Yalnız şirket aleyhine alınmış olan mahkeme kararı, şirket hakkındaki takip semeresiz kalmadıkça veya şirket herhangi bir sebeple sona ermiş olmadıkça ortaklar hakkında icra edilemez.",
+          "metin": null,
+          "skor": 0.8467,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 142",
+          "metin_ozet": "Madde 142 — Fon, Fon bankaları ve faaliyet izni kaldırılan bankaların iflas ve tasfiye idareleri tarafından açılacak hukuk davalarına asliye ticaret mahkemesi tarafından bakılır.",
+          "metin": null,
+          "skor": 0.8589,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 636",
+          "metin_ozet": "MADDE 636- (1) Limited şirket aşağıdaki hâllerde sona erer: a) Şirket sözleşmesinde öngörülen sona erme sebeplerinden birinin gerçekleşmesiyle. (3) Haklı sebeplerin varlığında, her ortak mahkemeden şirketin feshini isteyebilir.",
+          "metin": null,
+          "skor": 0.843,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 556",
+          "metin_ozet": "MADDE 556- (1) Zarara uğrayan şirketin iflası hâlinde, tazminatın şirkete ödenmesini isteme hakkını şirket alacaklıları da haizdir. Ancak, pay sahiplerinin ve şirket alacaklılarının istemleri önce iflas idaresince ileri sürülür. artan iflas masasına verilir.",
+          "metin": null,
+          "skor": 0.8457,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 245",
+          "metin_ozet": "MADDE 245- (1) Haklı sebep, şirketin kuruluşuna yol açan fiili veya kişisel sebeplerin şirketin işletme konusunun elde edilmesini imkânsız kılacak veya güçleştirecek şekilde ortadan kalkmış olmasıdır;",
+          "metin": null,
+          "skor": 0.8546,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 973,
+      "ortalama_kaynak_skor": 0.8498,
+      "kaynak_sayisi": 5,
+      "message_id": "98601be3-04e4-47e0-bffc-2c47e864f1e3",
+      "conversation_id": "ed82d4fc-f895-4ced-9347-b44800b46cfc",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 24.91,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

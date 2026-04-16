@@ -1,0 +1,725 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T08:00:44.409916+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\05_tuketici_hukuku\\test_sonuclari_20260416_105502.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 342.4,
+    "ortalama_sure_sn": 28.53,
+    "kategori_dagilimi": {
+      "Tuketici Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 20.51,
+        "kategori_dogruluk_orani": 58.3,
+        "ortalama_cevap_uzunluk": 664.0,
+        "ortalama_kaynak_skor": 0.8034
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "İnternetten aldığım ürünü beğenmedim, cayma hakkımı kaç gün içinde kullanabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6502 sayili Tuketicinin Korunmasi Hakkinda Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 255",
+          "metin_ozet": "MADDE 255- Taksitle satış sözleşmesi, alıcı bakımından, taraflarca imzalanmış sözleşmenin bir nüshasının eline geçmesinden yedi gün sonra hüküm ve sonuçlarını doğurur. Geri alma bildiriminin sürenin son gününde postaya verilmiş olması, sonuç doğurması için yeterlidir.",
+          "metin": null,
+          "skor": 0.833,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 269",
+          "metin_ozet": "MADDE 269- Ödeme süresi bir yıldan daha uzun veya belirsiz olan sözleşmelerde alıcı, malın devrine kadar her zaman sözleşmeden cayabilir.",
+          "metin": null,
+          "skor": 0.8402,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 270",
+          "metin_ozet": "MADDE 270- Ön ödemeleri ifa borcu, beş yılın geçmesiyle sona erer. Ödeme süresi bir yıldan daha uzun veya belirsiz olan sözleşmelerde alıcı, sekiz yıl geçtiği hâlde satılanın devri isteminde bulunmazsa, satıcı kendisini uyararak üç aylık süre tanır.",
+          "metin": null,
+          "skor": 0.8344,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 42",
+          "metin_ozet": "4/7/2012-6353/38 md.) Geçici 38 inci maddenin dördüncü fıkrası kapsamında bulunanlardan 60 gün içinde başvuru hakkını kullanmamış olanlar, bu maddenin yürürlüğe girdiği tarihten itibaren 60 gün içinde Kuruma başvurmaları halinde, geçici 38 inci madde hükümlerinden...",
+          "metin": null,
+          "skor": 0.8328,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 178",
+          "metin_ozet": "MADDE 178- Cayma parası kararlaştırılmışsa, taraflardan her biri sözleşmeden caymaya yetkili sayılır; bu durumda parayı vermiş olan cayarsa verdiğini bırakır; almış olan cayarsa aldığının iki katını geri verir.",
+          "metin": null,
+          "skor": 0.8367,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 336,
+      "ortalama_kaynak_skor": 0.8354,
+      "kaynak_sayisi": 5,
+      "message_id": "34cfa70d-25ed-42ff-a62b-4a18a903baec",
+      "conversation_id": "18d8bfb8-8667-4e97-b300-ee5ecb5771f2",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 23.06,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Satıcı 'iade yok' diyor, mesafeli satışta bu geçerli midir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Tüketicinin Korunması Hakkında Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 8",
+          "metin_ozet": "Bu husus kanuna göre borçlu oldukları vergi tutarından daha yüksek bir meblağı gösteren mükellefler için de geçerlidir.",
+          "metin": null,
+          "skor": 0.8303,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 235",
+          "metin_ozet": "MADDE 235- Satılanın, ancak satış bedeli ödendikten sonra veya ödenme anında devredilmesi gereken durumlarda alıcı temerrüde düşerse satıcı, herhangi bir işlem gerekmeksizin satıştan dönebilir.",
+          "metin": null,
+          "skor": 0.8243,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 190",
+          "metin_ozet": "Madde 190 – Satıldığı ve gönderildiği halde iflasına hükmolunmazdan evvel müflisin eline geçmiyen mallar için masa tarafından bedeli verilmiş olmadıkça satıcı istirdat iddiasında bulunabilir.",
+          "metin": null,
+          "skor": 0.8257,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 234",
+          "metin_ozet": "MADDE 234- Aksine sözleşme yoksa, satılan alıcının zilyetliğine girince satış bedeli muaccel olur.",
+          "metin": null,
+          "skor": 0.8312,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Geçici Madde 89",
+          "metin_ozet": "Geçici Madde 89 - (Ek:18/1/2019-7162/4 md.) 27/3/2018 tarihinden önce karşılıklı sonlandırma sözleşmesi veya ikale sözleşmesi kapsamında ödenen tazminatlar, iş kaybı tazminatları, iş sonu tazminatları, iş güvencesi tazminatları gibi çeşitli adlar altında yapılan ödemeler ve...",
+          "metin": null,
+          "skor": 0.8265,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 324,
+      "ortalama_kaynak_skor": 0.8276,
+      "kaynak_sayisi": 5,
+      "message_id": "18ee8ce9-8e30-4b56-b790-eb0c2266b228",
+      "conversation_id": "629fe284-44e7-4bc8-b1b5-4b751a35ecce",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 23.85,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Aldığım ürün ayıplı çıktı, değişim yerine para iadesi isteyebilir miyim?",
+      "cevap": "Evet, aldığınız ürün ayıplı çıktıysa, Türk Borçlar Kanunu'nun 227. maddesine göre, satılanın ayıplarından sorumlu olduğu hâllerde alıcı, sözleşmeden dönme hakkını kullanabilir. Bu durumda, satıcıdan satış bedelinin faiziyle birlikte geri verilmesini isteyebilirsiniz. Ayrıca, satılanın tamamen zaptında olduğu gibi, yargılama giderleri ile satılan için yapmış olduğunuz giderlerin ödenmesini de talep edebilirsiniz. \n\nAncak, Türk Borçlar Kanunu'nun 227. maddesinde belirtilen seçimlik haklardan birini kullanırken, satıcıya aynı malın ayıpsız bir benzerini hemen vererek ve uğradığınız zararın tamamını gidererek seçimlik haklarınızı kullanmanızı önleyebilir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile görüşmenizi öneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 227",
+          "metin_ozet": "MADDE 227- Satıcının satılanın ayıplarından sorumlu olduğu hâllerde alıcı, aşağıdaki seçimlik haklardan birini kullanabilir:",
+          "metin": null,
+          "skor": 0.8498,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 230",
+          "metin_ozet": "MADDE 230- Birden çok mal veya birden çok parçadan oluşan bir mal, birlikte satılmış olup da bunlardan bazıları ayıplı çıkarsa, dönme hakkı bunlardan ancak ayıplı çıkanlar için kullanılabilir.",
+          "metin": null,
+          "skor": 0.8365,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 228",
+          "metin_ozet": "MADDE 228- Alıcıya ayıplı olarak devredilmiş olan satılanın ayıptan, beklenmedik hâlden veya mücbir sebepten dolayı yok olması veya ağır biçimde zarara uğraması, alıcının sözleşmeden dönme hakkını kullanmasını engellemez.",
+          "metin": null,
+          "skor": 0.8463,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 229",
+          "metin_ozet": "Ayıplı maldan doğan doğrudan zararının giderilmesi.",
+          "metin": null,
+          "skor": 0.8366,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 284",
+          "metin_ozet": "MADDE 284- Satış sözleşmesinin zapttan ve ayıptan sorumluluğa ilişkin hükümleri uygun düştüğü ölçüde, mal değişim sözleşmesine de uygulanır.",
+          "metin": null,
+          "skor": 0.8485,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 786,
+      "ortalama_kaynak_skor": 0.8435,
+      "kaynak_sayisi": 5,
+      "message_id": "c11ed324-d985-4665-a40c-3cde41aa2970",
+      "conversation_id": "b77ba7f7-a702-4dce-b3b7-6fc0bd982740",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.49,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Garanti kapsamındaki ürün aynı arızayı tekrar yaparsa hangi haklarım doğar?",
+      "cevap": "Garanti kapsamındaki ürünün aynı arızayı tekrar yapması durumunda, 6098 Sayılı Türk Borçlar Kanunu'nun 227. maddesine göre, alıcıya bazı haklar tanınmıştır. Bu haklar arasında sözleşmeden dönme, ayıp oranında satış bedelinde indirim isteme, ücretsiz onarım isteme ve ayıpsız bir benzeri ile değiştirilmesini isteme hakları bulunmaktadır. Ayrıca, alıcının genel hükümlere göre tazminat isteme hakkı da saklıdır.\n\nAyrıca, 6098 Sayılı Türk Borçlar Kanunu'nun 228. maddesine göre, alıcıya ayıplı olarak devredilmiş olan satılanın ayıptan, beklenmedik hâlden veya mücbir sebepten dolayı yok olması veya ağır biçimde zarara uğraması, alıcının sözleşmeden dönme hakkını kullanmasını engellemez. Bu durumda alıcı, satılandan elinde ne kalmışsa onu geri vermekle yükümlüdür.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 900",
+          "metin_ozet": "MADDE 900- (1) Eşyanın zıyaından veya hasara uğramasından doğan istem hakları, 889 uncu maddenin birinci ve ikinci fıkralarından farklı olarak;",
+          "metin": null,
+          "skor": 0.8327,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 227",
+          "metin_ozet": "Satıcı, alıcıya aynı malın ayıpsız bir benzerini hemen vererek ve uğradığı zararın tamamını gidererek seçimlik haklarını kullanmasını önleyebilir.",
+          "metin": null,
+          "skor": 0.8467,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 874",
+          "metin_ozet": "MADDE 874- (1) Eşya, taşıma süresini izleyen yirmi gün içinde teslim edilmezse, hak sahibi ona zayi olmuş gözüyle bakabilir.",
+          "metin": null,
+          "skor": 0.8361,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 431",
+          "metin_ozet": "MADDE 431- Taraflardan her birinin, belirsiz süreli sözleşmeyi fesih sürelerine uyarak feshetme hakkı vardır.",
+          "metin": null,
+          "skor": 0.8369,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 228",
+          "metin_ozet": "MADDE 228- Alıcıya ayıplı olarak devredilmiş olan satılanın ayıptan, beklenmedik hâlden veya mücbir sebepten dolayı yok olması veya ağır biçimde zarara uğraması, alıcının sözleşmeden dönme hakkını kullanmasını engellemez.",
+          "metin": null,
+          "skor": 0.8343,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 891,
+      "ortalama_kaynak_skor": 0.8373,
+      "kaynak_sayisi": 5,
+      "message_id": "f330eb2a-bb6e-406a-bf0c-9dd3b892fa8a",
+      "conversation_id": "789d9859-06ab-4a03-9d63-0433a085df53",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.21,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Yetkili servis garanti kapsamındaki ürün için ücret talep ederse ne yapabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6502 Sayılı Tüketicinin Korunması Hakkında Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 73 - Fıkra 8",
+          "metin_ozet": "10/9/2014-6552/ 49 md.) Kurum, fatura denetimi konusunda kriterler koymaya, alternatif geri ödeme modelleri oluşturmaya ve bu konularda tespitler ve denetimler yapmaya ve/veya yaptırmaya, buna bağlı olarak hizmet alımı yapmaya yetkilidir.",
+          "metin": null,
+          "skor": 0.8325,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 73 - Fıkra 5",
+          "metin_ozet": "Sözleşmeli ve sözleşmesiz sağlık hizmeti sunucuları, acil hallerde, sözleşmeli sağlık hizmetleri sunucuları ise Kurumun belirlediği sağlık hizmetleri için genel sağlık sigortalısı ve bakmakla yükümlü olduğu kişilerden veya Kurumdan herhangi bir ilave ücret talep edemez.",
+          "metin": null,
+          "skor": 0.8291,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 73 - Fıkra 3",
+          "metin_ozet": "21/5/2013-6486/4) Ancak yükseköğretim kurumlarına ait sağlık hizmeti sunucularında öğretim üyeleri tarafından mesai saatleri dışında bizzat verilen sağlık hizmetleri için Kurumca belirlenmiş sağlık hizmetleri bedelinin, poliklinik muayenelerinde bir katını, diğer hizmetlerde...",
+          "metin": null,
+          "skor": 0.8294,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 336,
+      "ortalama_kaynak_skor": 0.8303,
+      "kaynak_sayisi": 3,
+      "message_id": "d51b6435-9186-42e9-b62b-5f9de9cefe1a",
+      "conversation_id": "2db31edb-5297-41dc-a35d-a17a0c3fe46d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 19.55,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Tüketici hakem heyetine başvuru nasıl yapılır, e-Devlet'ten başvurabilir miyim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 4077 sayılı Tüketicinin Korunması Hakkında Kanun bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu öneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 80",
+          "metin_ozet": "a) Mesleğin gelişmesini temin etmek, b) Meslek ilkelerini belirlemek suretiyle üyelerin birlik ve mesleğin gerektirdiği vakar ve disiplin içinde ekonominin ihtiyaçlarına uygun olarak çalışmalarını sağlamak, c) Üye banka mensuplarının uyacakları meslek ilkeleri ve standartlarını...",
+          "metin": null,
+          "skor": 0.8323,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 414",
+          "metin_ozet": "MADDE 414- (1) Aksi kararlaştırılmadıkça, tahkim yargılaması sırasında hakem veya hakem kurulu, taraflardan birinin talebi üzerine, bir ihtiyati tedbirin alınmasına veya delil tespitine karar verebilir.",
+          "metin": null,
+          "skor": 0.8313,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 426",
+          "metin_ozet": "MADDE 426- (1) Taraflar aksini kararlaştırmadıkça tahkim davası, hakemlerin seçimi için mahkemeye veya tarafların sözleşmesine göre hakem seçecek olan kişi, kurum veya kuruluşa başvurulduğu ve eğer sözleşmeye göre hakemlerin seçimi iki tarafa ait ise davacının hakemini seçip...",
+          "metin": null,
+          "skor": 0.8166,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 437",
+          "metin_ozet": "MADDE 437- (1) Evvelce daha farklı bir süre öngörülmemişse, taraflardan her biri, hakem kararının kendisine bildirilmesinden itibaren iki hafta içinde, karşı tarafa da bilgi vermek kaydıyla, hakem veya hakem kuruluna başvurarak;",
+          "metin": null,
+          "skor": 0.8272,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 432",
+          "metin_ozet": "MADDE 432- (1) Taraflardan biri, hakem veya hakem kurulunun onayı ile delillerin toplanmasında mahkemeden yardım isteyebilir. Hakem kurulunun karar vermesi",
+          "metin": null,
+          "skor": 0.8303,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 335,
+      "ortalama_kaynak_skor": 0.8275,
+      "kaynak_sayisi": 5,
+      "message_id": "4dfa9792-7548-441d-8bb1-a8ba443355eb",
+      "conversation_id": "89c01561-aa7e-41f4-8209-34f1e8946d06",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.61,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Hakem heyeti kararına karşı itiraz etmek istersem nereye başvurmalıyım?",
+      "cevap": "Hakem heyeti kararına karşı itiraz etmek için, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 361. maddesine göre, bölge adliye mahkemesine başvurabilirsiniz. Bu başvuruyu, hakem heyeti kararının tebliğ tarihinden itibaren iki hafta içinde yapabilirsiniz.\n\nAncak, hakem heyeti kararının iptali talebiyle mahkemeye başvurulduğunda, mahkemenin vereceği karara karşı da temyiz yoluna başvurulabilir. Bu durumda, temyiz başvurusunu, mahkemenin kararının tebliğ tarihinden itibaren iki hafta içinde yapabilirsiniz.\n\nAyrıca, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 418. maddesine göre, hakem kurulundan bir veya birden çok hakemin reddini isteyen taraf, ret talebini ve gerekçesini hakem kuruluna bildirir. Ret talebinin kabul edilmediğini öğrenen taraf, bu tarihten itibaren karara karşı bir ay içinde mahkemeye başvurarak bu kararın kaldırılmasını ve hakem veya hakemlerin reddine ilişkin talep hakkında karar verilmesini isteyebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 361",
+          "metin_ozet": "MADDE 361- (1) Bölge adliye mahkemesi hukuk dairelerinden verilen temyizi kabil nihai kararlar ile hakem kararlarının iptali talebi üzerine verilen kararlara karşı tebliğ tarihinden itibaren iki hafta içinde temyiz yoluna başvurulabilir.55 (2) Davada haklı çıkmış olan taraf da...",
+          "metin": null,
+          "skor": 0.8452,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 418",
+          "metin_ozet": "(2) Hakemi reddetmek isteyen taraf, hakemin veya hakem kurulunun seçiminden ya da hakemin reddi talebinde bulunabileceği bir durumun ortaya çıktığını öğrendiği tarihten itibaren iki hafta içinde ret talebinde bulunabilir ve bu talebini karşı tarafa yazılı olarak bildirir.",
+          "metin": null,
+          "skor": 0.8485,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 265",
+          "metin_ozet": "17/7/2003-4949/63 md.) Borçlu kendisi dinlenmeden verilen ihtiyatî haczin dayandığı sebeplere, mahkemenin yetkisine ve teminata karşı;",
+          "metin": null,
+          "skor": 0.8517,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 422",
+          "metin_ozet": "MADDE 422- (1) Hakem veya hakem kurulu, tahkim sözleşmesinin mevcut veya geçerli olup olmadığına ilişkin itirazlar da dâhil olmak üzere, kendi yetkisi hakkında karar verebilir. (2) Hakem veya hakem kurulunun yetkisizliğine ilişkin itiraz, en geç cevap dilekçesinde yapılır.",
+          "metin": null,
+          "skor": 0.8519,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 394",
+          "metin_ozet": "MADDE 394- (1) Karşı taraf dinlenmeden verilmiş olan ihtiyati tedbir kararlarına itiraz edilebilir. Aksine karar verilmedikçe, itiraz icrayı durdurmaz. (5) İtiraz hakkında verilen karara karşı, kanun yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 0.8515,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1053,
+      "ortalama_kaynak_skor": 0.8498,
+      "kaynak_sayisi": 5,
+      "message_id": "6428e41f-8f5a-4ce0-9c83-3b7cc6156524",
+      "conversation_id": "5d670a0b-bb7f-4f01-88cd-168f71939112",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Kargo ile gelen ürün eksik veya farklı çıktıysa nasıl hak arayabilirim?",
+      "cevap": "Eğer kargo ile gelen ürün eksik veya farklı çıktıysa, Türk Ticaret Kanunu ve Türk Borçlar Kanunu'na göre hak arayabilirsiniz. \n\nÖncelikle, ürünün teslim edildiği anda kontrol edilmesi ve eksik veya farklı olduğunun tespit edilmesi önemlidir. Bu durumda, taşıyıcıya (kargo şirketine) ürünün eksik veya farklı olduğunu bildirmelisiniz. \n\nTürk Ticaret Kanunu'nun 874. maddesine göre, eşya (ürün) taşıma süresini izleyen yirmi gün içinde teslim edilmezse, hak sahibi ona zayi olmuş gözüyle bakabilir. Sınır ötesi taşımalarda bu süre otuz gündür. \n\nTürk Borçlar Kanunu'nun 227. maddesine göre, satıcının satılanın (ürünün) ayıplarından sorumlu olduğu hâllerde alıcı, aşağıdaki seçimlik haklardan birini kullanabilir: \n1. Satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme.\n2. Satılanı alıkoyup ayıp oranında satış bedelinde indirim isteme.\n3. Aşırı bir masrafı gerektirmediği takdirde, bütün masrafları satıcıya ait olmak üzere satılanın ücretsiz onarılmasını isteme.\n4. İmkân varsa, satılanın ayıpsız bir benzeri ile değiştirilmesini isteme.\n\nAlıcının genel hükümlere göre tazminat isteme hakkı saklıdır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 867",
+          "metin_ozet": "(2) Birinci fıkra hükmüne göre verilen süre içinde eşya yüklenmez veya hazır bulundurulmazsa, taşıyıcı sözleşmeyi feshedebilir ve 865 inci maddenin ikinci fıkrasına göre haklarını kullanabilir.",
+          "metin": null,
+          "skor": 0.8332,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 866",
+          "metin_ozet": "a) Sözleşmede kararlaştırılmış olan taşıma ücretinin tamamını, b) Doğmuş bekleme ücretini, c) Eksik yükleme sebebiyle yapmak zorunda kaldığı giderleri ve uğradığı zararı, d) Alacakları, eksik yükleme sebebiyle kısmen veya tamamen teminatsız kalmışsa, kendisine ek teminat...",
+          "metin": null,
+          "skor": 0.8257,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 874",
+          "metin_ozet": "MADDE 874- (1) Eşya, taşıma süresini izleyen yirmi gün içinde teslim edilmezse, hak sahibi ona zayi olmuş gözüyle bakabilir.",
+          "metin": null,
+          "skor": 0.8269,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 227",
+          "metin_ozet": "MADDE 227- Satıcının satılanın ayıplarından sorumlu olduğu hâllerde alıcı, aşağıdaki seçimlik haklardan birini kullanabilir: Alıcının genel hükümlere göre tazminat isteme hakkı saklıdır.",
+          "metin": null,
+          "skor": 0.8439,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 228",
+          "metin_ozet": "MADDE 228- Alıcıya ayıplı olarak devredilmiş olan satılanın ayıptan, beklenmedik hâlden veya mücbir sebepten dolayı yok olması veya ağır biçimde zarara uğraması, alıcının sözleşmeden dönme hakkını kullanmasını engellemez.",
+          "metin": null,
+          "skor": 0.8356,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1242,
+      "ortalama_kaynak_skor": 0.8331,
+      "kaynak_sayisi": 5,
+      "message_id": "9b6f1d3c-5cf3-46ab-9dc5-a817765c8d80",
+      "conversation_id": "9f8947ea-40bc-4d3a-9591-ed965e9f3293",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 24.63,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Abonelik iptalinde cayma bedeli veya ceza ücreti istenmesi her zaman yasal mıdır?",
+      "cevap": "Abonelik iptalinde cayma bedeli veya ceza ücreti istenmesi her zaman yasal değildir. 6098 Sayılı Türk Borçlar Kanunu'nun 179. maddesine göre, bir sözleşmenin hiç veya gereği gibi ifa edilmemesi durumu için bir ceza kararlaştırılmışsa, aksi sözleşmeden anlaşılmadıkça alacaklı, ya borcun ya da cezanın ifasını isteyebilir. Ancak, 6098 Sayılı Türk Borçlar Kanunu'nun 182. maddesine göre, hâkim, aşırı gördüğü ceza koşulunu kendiliğinden indirir. Bu durum, abonelik iptalinde cayma bedeli veya ceza ücreti istenmesinin her zaman yasal olmadığını gösterir.\n\nAyrıca, 6098 Sayılı Türk Borçlar Kanunu'nun 269. maddesine göre, ödeme süresi bir yıldan daha uzun veya belirsiz olan sözleşmelerde alıcı, malın devrine kadar her zaman sözleşmeden cayabilir. Sözleşmeden cayma hâlinde alıcı tarafından ödenmesi öngörülen cayma parası, durumun özelliğine ve sözleşmenin kurulması ile cayma arasında geçen süreye bakılarak belirlenir. Ancak, bu miktar satıcının toplam alacağının yüzde ikisinden az ve yüzde beşinden fazla olamaz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 163",
+          "metin_ozet": "Madde 163- (1) Otomatlar aracılığı ile sunulan ve bedeli ödendiği takdirde yararlanılabilen bir hizmetten ödeme yapmadan yararlanan kişi, iki aydan altı aya kadar hapis veya adlî para cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.4229,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 179",
+          "metin_ozet": "MADDE 179- Bir sözleşmenin hiç veya gereği gibi ifa edilmemesi durumu için bir ceza kararlaştırılmışsa, aksi sözleşmeden anlaşılmadıkça alacaklı, ya borcun ya da cezanın ifasını isteyebilir.",
+          "metin": null,
+          "skor": 0.4202,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 121",
+          "metin_ozet": "MADDE 121- (1) Belirsiz bir süre için yapılmış olan acentelik sözleşmesini, taraflardan her biri üç ay önceden ihbarda bulunmak şartıyla feshedebilir. Sözleşme belirli bir süre için yapılmış olsa bile haklı sebeplerden dolayı her zaman fesih olunabilir.",
+          "metin": null,
+          "skor": 0.4201,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 182",
+          "metin_ozet": "MADDE 182- Taraflar, cezanın miktarını serbestçe belirleyebilirler. Asıl borç herhangi bir sebeple geçersiz ise veya aksi kararlaştırılmadıkça sonradan borçlunun sorumlu tutulamayacağı bir sebeple imkânsız hâle gelmişse, cezanın ifası istenemez.",
+          "metin": null,
+          "skor": 0.4189,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 269",
+          "metin_ozet": "MADDE 269- Ödeme süresi bir yıldan daha uzun veya belirsiz olan sözleşmelerde alıcı, malın devrine kadar her zaman sözleşmeden cayabilir.",
+          "metin": null,
+          "skor": 0.4173,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1141,
+      "ortalama_kaynak_skor": 0.4199,
+      "kaynak_sayisi": 5,
+      "message_id": "366185e4-fb04-49f0-a558-c2ef52a6e011",
+      "conversation_id": "7f4ceae5-94e9-4bb3-b0fd-53dbde699d79",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 14.7,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Kapora verdiğim ürün veya hizmet teslim edilmezse paramı geri alabilir miyim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6098 Sayılı Türk Borçlar Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 178",
+          "metin_ozet": "almış olan cayarsa aldığının iki katını geri verir.",
+          "metin": null,
+          "skor": 0.8662,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 235",
+          "metin_ozet": "Satılanın zilyetliği satış bedeli ödenmeden alıcıya devredilmişse, alıcının temerrüdü sebebiyle satıcının dönme hakkını kullanarak satılanı geri alması, bu hakkın sözleşmede açıkça saklı tutulmasına bağlıdır.",
+          "metin": null,
+          "skor": 0.8562,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 443",
+          "metin_ozet": "MADDE 443- Sözleşmenin sona ermesi durumunda, taraflardan her biri, diğerinden veya üçüncü bir kişiden diğerinin hesabına, hizmetle ilişkili olarak almış olduğu şeyleri geri vermekle yükümlüdür.",
+          "metin": null,
+          "skor": 0.8565,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 968",
+          "metin_ozet": "Ödünç veren, makbuzu kim getirirse taşınırı ona geri verme hakkını açıkça saklı tutmuşsa, makbuzun hamilinin bunu haksız olarak ele geçirdiğini bilmedikçe ve bilmesi gerekmedikçe bu yetkisini kullanabilir. Geri alım hakkı tanıyarak satım",
+          "metin": null,
+          "skor": 0.8498,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 392",
+          "metin_ozet": "MADDE 392- Ödüncün geri verilmesi konusunda belirli bir gün ya da bildirim süresi veya borcun geri istendiği anda muaccel olacağı kararlaştırılmamışsa ödünç alan, ilk istemden başlayarak altı hafta geçmedikçe ödüncü geri vermekle yükümlü değildir.",
+          "metin": null,
+          "skor": 0.8482,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 193,
+      "ortalama_kaynak_skor": 0.8554,
+      "kaynak_sayisi": 5,
+      "message_id": "5cf5e143-e7e9-404b-aa1d-68ddfe18ed25",
+      "conversation_id": "b0bba0c1-949e-4275-a842-1e38647d8f1f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 14.16,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "İkinci el araç veya telefon ayıplı çıkarsa tüketici olarak hangi haklara sahibim?",
+      "cevap": "6098 Sayılı Türk Borçlar Kanunu'na göre, ayıplı bir mal satın aldığınızda, satıcıya karşı bazı haklara sahipsiniz. \n\nSatıcı, alıcıya karşı herhangi bir suretle bildirdiği niteliklerin satılanda bulunmaması sebebiyle sorumlu olduğu gibi, nitelik veya niteliği etkileyen niceliğine aykırı olan, kullanım amacı bakımından değerini ve alıcının ondan beklediği faydaları ortadan kaldıran veya önemli ölçüde azaltan maddi, hukuki ya da ekonomik ayıpların bulunmasından da sorumlu olur. \n\nAlıcı, satıcının satılanın ayıplarından sorumlu olduğu hâllerde, aşağıdaki seçimlik haklardan birini kullanabilir:\n1. Satılanı geri vermeye hazır olduğunu bildirerek sözleşmeden dönme.\n2. Satılanı alıkoyup ayıp oranında satış bedelinde indirim isteme.\n3. Aşırı bir masrafı gerektirmediği takdirde, bütün masrafları satıcıya ait olmak üzere satılanın ücretsiz onarılmasını isteme.\n4. İmkân varsa, satılanın ayıpsız bir benzeri ile değiştirilmesini isteme.\n\nAyrıca, alıcının genel hükümlere göre tazminat isteme hakkı saklıdır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 226",
+          "metin_ozet": "MADDE 226- Başka yerden gönderilen satılanın ayıplı olduğunu ileri süren alıcı, bulunduğu yerde satıcının temsilcisi yoksa, satılanın korunması için gerekli önlemleri geçici olarak almakla yükümlüdür.",
+          "metin": null,
+          "skor": 0.8496,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 227",
+          "metin_ozet": "MADDE 227- Satıcının satılanın ayıplarından sorumlu olduğu hâllerde alıcı, aşağıdaki seçimlik haklardan birini kullanabilir:",
+          "metin": null,
+          "skor": 0.8591,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 228",
+          "metin_ozet": "MADDE 228- Alıcıya ayıplı olarak devredilmiş olan satılanın ayıptan, beklenmedik hâlden veya mücbir sebepten dolayı yok olması veya ağır biçimde zarara uğraması, alıcının sözleşmeden dönme hakkını kullanmasını engellemez.",
+          "metin": null,
+          "skor": 0.8565,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 231",
+          "metin_ozet": "Satıcı, satılanı ayıplı olarak devretmekte ağır kusurlu ise, iki yıllık zamanaşımı süresinden yararlanamaz.",
+          "metin": null,
+          "skor": 0.834,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 219",
+          "metin_ozet": "MADDE 219- Satıcı, alıcıya karşı herhangi bir surette bildirdiği niteliklerin satılanda bulunmaması sebebiyle sorumlu olduğu gibi, nitelik veya niteliği etkileyen niceliğine aykırı olan, kullanım amacı bakımından değerini ve alıcının ondan beklediği faydaları ortadan kaldıran...",
+          "metin": null,
+          "skor": 0.8458,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1134,
+      "ortalama_kaynak_skor": 0.849,
+      "kaynak_sayisi": 5,
+      "message_id": "e452da31-2427-4091-8d71-ef7f0c6a7750",
+      "conversation_id": "9a8361ab-841a-48a0-a8c2-ba64ab037ccd",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.23,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Tuketici Hukuku",
+      "soru": "Paket tur, otel veya etkinlik iptalinde ücret iadesi hangi şartlarda alınabilir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Tüketicinin Korunması Hakkında Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 89",
+          "metin_ozet": "MADDE 89- (1) Teminat gösterilmesini gerektiren sebep ortadan kalktığı takdirde, ilgilinin talebi üzerine mahkeme, teminatın iadesine karar verir.",
+          "metin": null,
+          "skor": 0.8287,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Geçici Madde 46",
+          "metin_ozet": "Geçici Madde 46- (Ek:4/12/2025-7566/15 md.) 2026 UEFA Avrupa Ligi Finali ve 2027 UEFA Konferans Ligi Finali müsabakaları ile 2032 UEFA Avrupa Futbol Şampiyonası organizasyonuna ilişkin olmak üzere Avrupa Futbol Federasyonları Birliği (UEFA), katılımcı takımlar ve organizasyonda...",
+          "metin": null,
+          "skor": 0.8472,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 765",
+          "metin_ozet": "(2) Teminat, poliçeyi iyiniyetle iktisap eden kişinin uğrayabileceği zarara bir karşılık oluşturur.",
+          "metin": null,
+          "skor": 0.8245,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 763",
+          "metin_ozet": "MADDE 763- (1) Elden çıkan poliçe mahkemeye sunulursa, mahkeme, iade davası açması için dilekçe sahibine uygun bir süre verir.",
+          "metin": null,
+          "skor": 0.8245,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 282",
+          "metin_ozet": "18/2/1965-538/117 md.) İcra ve iflas Kanununun 11 inci babındaki iptal davaları borçlu ve borçlu ile hukuki muamelede bulunan veya borçlu tarafından kendilerine ödeme yapılan kimseler ile bunların mirasçıları aleyhine açılır.",
+          "metin": null,
+          "skor": 0.8322,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 198,
+      "ortalama_kaynak_skor": 0.8314,
+      "kaynak_sayisi": 5,
+      "message_id": "ff90da3c-8d1b-4108-b943-7d82351d1ba1",
+      "conversation_id": "e56407dc-cb0a-4aea-ba9a-b4f4cd0c9e12",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.82,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

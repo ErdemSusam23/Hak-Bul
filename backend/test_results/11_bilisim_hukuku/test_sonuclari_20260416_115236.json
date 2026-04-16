@@ -1,0 +1,709 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T08:59:09.917320+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\11_bilisim_hukuku\\test_sonuclari_20260416_115236.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 393.2,
+    "ortalama_sure_sn": 32.76,
+    "kategori_dagilimi": {
+      "Bilişim Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 24.74,
+        "kategori_dogruluk_orani": 25.0,
+        "ortalama_cevap_uzunluk": 682.0,
+        "ortalama_kaynak_skor": 0.7297
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Kişisel verilerimin bir şirket tarafından izinsiz kullanıldığını öğrendim, ne yapabilirim?",
+      "cevap": "Kişisel verilerinizin bir şirket tarafından izinsiz kullanıldığını öğrendiğiniz durumda, several adımlar atabilirsiniz. \n\nÖncelikle, 6098 Sayılı Türk Borçlar Kanunu'nun 419. maddesine göre, işveren veya şirket, işçiye ait kişisel verileri, ancak işçinin işe yatkınlığıyla ilgili veya hizmet sözleşmesinin ifası için zorunlu olduğu ölçüde kullanabilir. Eğer şirket, bu sınırları aşarak kişisel verilerinizi izinsiz kullanmışsa, bu durum hukuka aykırıdır.\n\nAyrıca, 5237 Sayılı Türk Ceza Kanunu'nun 139. maddesine göre, kişisel verilerin kaydedilmesi, verileri hukuka aykırı olarak verme veya ele geçirme ve verileri yok etmeme hariç, bu bölümde yer alan suçların soruşturulması ve kovuşturulması şikayete bağlıdır. Bu nedenle, kişisel verilerinizin izinsiz kullanıldığını öğrendiğiniz durumda, savcılığa şikayette bulunabilirsiniz.\n\nDiğer yandan, 2709 Sayılı Türkiye Cumhuriyeti Anayasası'nın 20. maddesine göre, herkes, kendisiyle ilgili kişisel verilerin korunmasını isteme hakkına sahiptir. Bu hak; kişinin kendisiyle ilgili kişisel veriler hakkında bilgilendirilme, bu verilere erişme, bunların düzeltilmesini veya silinmesini talep etme ve amaçları doğrultusunda kullanılıp kullanılmadığını öğrenmeyi de kapsar.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 419",
+          "metin_ozet": "MADDE 419- İşveren, işçiye ait kişisel verileri, ancak işçinin işe yatkınlığıyla ilgili veya hizmet sözleşmesinin ifası için zorunlu olduğu ölçüde kullanabilir.",
+          "metin": null,
+          "skor": 0.4231,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 139",
+          "metin_ozet": "Madde 139- (1) Kişisel verilerin kaydedilmesi, verileri hukuka aykırı olarak verme veya ele geçirme ve verileri yok etmeme hariç, bu bölümde yer alan suçların soruşturulması ve kovuşturulması şikayete bağlıdır.",
+          "metin": null,
+          "skor": 0.4188,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 20",
+          "metin_ozet": "7/5/2010-5982/2 md.) Herkes, kendisiyle ilgili kişisel verilerin korunmasını isteme hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.4181,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 396",
+          "metin_ozet": "MADDE 396- (1) Yönetim kurulu üyelerinden biri, genel kurulun iznini almaksızın, şirketin işletme konusuna giren ticari iş türünden bir işlemi kendi veya başkası hesabına yapamayacağı gibi, aynı tür ticari işlerle uğraşan bir şirkete sorumluluğu sınırsız ortak sıfatıyla da...",
+          "metin": null,
+          "skor": 0.4158,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 244",
+          "metin_ozet": "Madde 244- (1) Bir bilişim sisteminin işleyişini engelleyen veya bozan kişi, bir yıldan beş yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.4142,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1340,
+      "ortalama_kaynak_skor": 0.418,
+      "kaynak_sayisi": 5,
+      "message_id": "c0bd373d-f5fb-407f-b54b-00b00299e02e",
+      "conversation_id": "5e3854de-0768-491a-853e-eebfb7701e8b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 39.38,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Bir web sitesi hakkımda yanlış bilgi yayıyor ve kaldırılmasını istiyorum, yasal yolum nedir?",
+      "cevap": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu'nun 9. maddesine göre, özel hayatın gizliliği nedeniyle içeriğe erişimin engellenmesi talebinde bulunabilirsiniz. Bu talebi sulh ceza hâkimine iletmeniz gerekir. Hâkim, internet ortamında yapılan yayın içeriği nedeniyle özel hayatın gizliliğinin ihlal edilip edilmediğini değerlendirerek karar verecektir.\n\nAyrıca, 5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu'nun 8. maddesine göre, internet ortamında yapılan ve içeriği suç oluşturduğu hususunda yeterli şüphe sebebi bulunan yayınlarla ilgili olarak içeriğin çıkarılmasına ve/veya erişimin engellenmesine karar verilebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile görüşmenizi öneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 217",
+          "metin_ozet": "Halkı yanıltıcı bilgiyi alenen yayma Madde 217/A- (Ek:13/10/2022-7418/29 md.) (1) Sırf halk arasında endişe, korku veya panik yaratmak saikiyle, ülkenin iç ve dış güvenliği, kamu düzeni ve genel sağlığı ile ilgili gerçeğe aykırı bir bilgiyi, kamu barışını bozmaya elverişli...",
+          "metin": null,
+          "skor": 0.8324,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 57",
+          "metin_ozet": "MADDE 57- Gerçek olmayan haberlerin yayılması veya bu tür ilanların yapılması ya da dürüstlük kurallarına aykırı diğer davranışlarda bulunulması yüzünden müşterileri azalan veya onları kaybetme tehlikesiyle karşılaşan kişi, bu davranışlara son verilmesini ve kusurun varlığı...",
+          "metin": null,
+          "skor": 0.8391,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 9",
+          "metin_ozet": "hakkın ihlaline neden olan yayının tam adresi (URL), hangi açılardan hakkın ihlal edildiğine ilişkin açıklama ve kimlik bilgilerini ispatlayacak bilgilere yer verilir. Bu bilgilerde eksiklik olması hâlinde talep işleme konulmaz.",
+          "metin": null,
+          "skor": 0.8342,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 8",
+          "metin_ozet": "Ancak, teknik olarak ihlale ilişkin içeriğe erişimin engellenmesi yapılamadığı veya ilgili içeriğe erişimin engellenmesi yoluyla ihlalin önlenemediği durumlarda, internet sitesinin tümüne yönelik olarak erişimin engellenmesi kararı verilebilir.",
+          "metin": null,
+          "skor": 0.8347,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 139",
+          "metin_ozet": "Madde 139- (1) Kişisel verilerin kaydedilmesi, verileri hukuka aykırı olarak verme veya ele geçirme ve verileri yok etmeme hariç, bu bölümde yer alan suçların soruşturulması ve kovuşturulması şikayete bağlıdır.",
+          "metin": null,
+          "skor": 0.833,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 795,
+      "ortalama_kaynak_skor": 0.8347,
+      "kaynak_sayisi": 5,
+      "message_id": "48a029bd-a079-42af-94dd-bfa48e4b6c8d",
+      "conversation_id": "774ea71b-ee12-480f-833d-d4a0d0a4c173",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.66,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Banka hesabım hacklendi ve param çalındı, suç duyurusunu nasıl yapmalıyım?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5237 Sayılı Türk Ceza Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 166",
+          "metin_ozet": "Madde 166- (1) Bir hukuki ilişkiye dayalı olarak elde ettiği eşyanın, esasında suç işlemek suretiyle veya suç işlemek dolayısıyla elde edildiğini öğrenmesine rağmen, suçu takibe yetkili makamlara vakit geçirmeksizin bildirimde bulunmayan kişi, altı aya kadar hapis veya adlî para...",
+          "metin": null,
+          "skor": 0.8209,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 140",
+          "metin_ozet": "Madde 140- (1) Yukarıdaki maddelerde tanımlanan suçların işlenmesi dolayısıyla tüzel kişiler hakkında bunlara özgü güvenlik tedbirlerine hükmolunur.",
+          "metin": null,
+          "skor": 0.8214,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 238",
+          "metin_ozet": "Ticarî sır, bankacılık sırrı veya müşteri sırrı niteliğindeki bilgi veya belgelerin açıklanması",
+          "metin": null,
+          "skor": 0.8195,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 144",
+          "metin_ozet": "Madde 144- (1) Hırsızlık suçunun;",
+          "metin": null,
+          "skor": 0.8266,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 169",
+          "metin_ozet": "Madde 169- (1) Hırsızlık, güveni kötüye kullanma ve dolandırıcılık suçlarının işlenmesi suretiyle yararına haksız menfaat sağlanan tüzel kişiler hakkında bunlara özgü güvenlik tedbirlerine hükmolunur.",
+          "metin": null,
+          "skor": 0.8252,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 190,
+      "ortalama_kaynak_skor": 0.8227,
+      "kaynak_sayisi": 5,
+      "message_id": "d88e0da2-8d95-4f7c-85d7-153620a133fd",
+      "conversation_id": "77bda4cd-afea-48ba-8cf9-28dd09b58b55",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 13.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Şirketimiz veri ihlali yaşadı, KVKK kapsamında bildirimi ne kadar süre içinde yapmalıyız?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 6698 sayılı Kişisel Verilerin Korunması Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu öneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 47 - Fıkra 2",
+          "metin_ozet": "Kamu idareleri vazife malûllüğüne sebep olan olayı, o yer yetkili kolluk kuvvetlerine veya kendi mevzuatına göre yetkili mercilere derhal, Kuruma da en geç onbeş iş günü içinde bildirmekle yükümlüdür.",
+          "metin": null,
+          "skor": 0.8305,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 3",
+          "metin_ozet": "(2) Yukarıdaki fıkrada belirtilen yükümlülüğü yerine getirmeyen içerik, yer veya erişim sağlayıcısına Başkan tarafından iki bin Türk lirasından elli bin Türk lirasına kadar idarî para cezası verilir.23 (3) (Ek:",
+          "metin": null,
+          "skor": 0.8357,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 621",
+          "metin_ozet": "Madde 621- Sulh mahkemesi, mirasbırakanın alacaklıları ile borçlularını belli bir süre içinde alacaklarını ve borçlarını bildirmeleri için bir ay arayla iki defa yapılacak ilân yoluyla çağırır.",
+          "metin": null,
+          "skor": 0.8595,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 889",
+          "metin_ozet": "MADDE 889- (1) Eşyanın zıyaı veya hasara uğramış olduğu açıkça görülüyorsa, gönderen veya gönderilen en geç teslim anına kadar zıyaı veya hasarı bildirmezlerse, eşyanın sözleşmeye uygun olarak teslim edildiği varsayılır.",
+          "metin": null,
+          "skor": 0.8346,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 65",
+          "metin_ozet": "20/11/2008-5812/25 md.) Aday, istekliler ve istekli olabileceklere yapılacak her türlü bildirim ve tebligatlarda aşağıdaki hususlara uyulması zorunludur: (…)68 yabancı isteklilerde ise ondokuzuncu gün (…)68.",
+          "metin": null,
+          "skor": 0.8298,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Bilişim Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 208,
+      "ortalama_kaynak_skor": 0.838,
+      "kaynak_sayisi": 5,
+      "message_id": "f701829b-cee4-422d-8a91-1aa14a7d940f",
+      "conversation_id": "de7df14d-0a87-4f19-aaa8-9cd24cd634e9",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.15,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "İnternet ortamında hakarете uğradım, şikayetim için nasıl bir yol izlemeliyim?",
+      "cevap": "İnternet ortamında hakaret uğradığınız durumlarda, şikayetinizi nasıl işleteceğiniz konusunda bazı adımları takip edebilirsiniz. \n\nÖncelikle, 5237 Sayılı Türk Ceza Kanunu'nun 131. maddesine göre, hakaret suçunun soruşturulması ve kovuşturulması, mağdurun şikayetine bağlıdır. Bu nedenle, hakareti yapan kişiye karşı şikayette bulunabilirsiniz.\n\nİnternet ortamında yapılan yayınların düzenlenmesini düzenleyen 5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu'nun 8. maddesine göre, internet ortamında yapılan ve içeriği suç oluşturduğu hususunda yeterli şüphe sebebi bulunan yayınlarla ilgili olarak içeriğin çıkarılmasına ve/veya erişimin engellenmesine karar verilebilir. \n\nBu kanun kapsamında, içerik sağlayıcıları, yönetmelikle belirlenen esas ve usûller çerçevesinde tanıtıcı bilgilerini kendilerine ait internet ortamında kullanıcıların ulaşabileceği şekilde ve güncel olarak bulundurmakla yükümlüdür. \n\nİçeriğin çıkarılması ve/veya erişimin engellenmesi kararı, sulh ceza hâkiminin onayına sunulur. Hâkim, kararını kırk sekiz saat içinde açıklar.\n\nGetirilen kaynaklar bu soruyu karsilamiyor. 5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu ve 5237 Sayılı Türk Ceza Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 131",
+          "metin_ozet": "hakaret suçunun soruşturulması ve kovuşturulması, mağdurun şikayetine bağlıdır.",
+          "metin": null,
+          "skor": 0.8369,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 126",
+          "metin_ozet": "Madde 126- (1) Hakaret suçunun işlenmesinde mağdurun ismi açıkça belirtilmemiş veya isnat üstü kapalı geçiştirilmiş olsa bile, eğer niteliğinde ve mağdurun şahsına yönelik bulunduğunda duraksanmayacak bir durum varsa, hem ismi belirtilmiş ve hem de hakaret açıklanmış sayılır.",
+          "metin": null,
+          "skor": 0.8304,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 9",
+          "metin_ozet": "6/2/2014-6518/94 md.) (1) İnternet ortamında yapılan yayın içeriği nedeniyle özel hayatının gizliliğinin ihlal edildiğini iddia eden kişiler, Kuruma doğrudan başvurarak içeriğe erişimin engellenmesi tedbirinin uygulanmasını isteyebilir.",
+          "metin": null,
+          "skor": 0.8319,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 8",
+          "metin_ozet": "MADDE 8- (1) İnternet ortamında yapılan ve içeriği aşağıdaki suçları oluşturduğu hususunda yeterli şüphe sebebi bulunan yayınlarla ilgili olarak içeriğin çıkarılmasına ve/veya 15 29/7/2020 tarihli ve 7253 sayılı Kanunun 4 üncü maddesiyle, bu madde başlığı “Erişimin engellenmesi...",
+          "metin": null,
+          "skor": 0.8391,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 3",
+          "metin_ozet": "MADDE 3- (1) İçerik, yer ve erişim sağlayıcıları, yönetmelikle belirlenen esas ve usûller çerçevesinde tanıtıcı bilgilerini kendilerine ait internet ortamında kullanıcıların ulaşabileceği şekilde ve güncel olarak bulundurmakla yükümlüdür.",
+          "metin": null,
+          "skor": 0.8323,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1463,
+      "ortalama_kaynak_skor": 0.8341,
+      "kaynak_sayisi": 5,
+      "message_id": "1353c9c9-84e0-47eb-819d-9325f92c64c9",
+      "conversation_id": "5bbf4737-8a9e-4de4-bf82-2c89b9083b00",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.23,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "E-ticaret sitesi kuruyorum, hangi yasal zorunluluklara uymam gerekiyor?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6563 sayili Elektronik Ticaretin Düzenlenmesi Hakkında Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 86",
+          "metin_ozet": "VI - Ticarete yeni başlayanlar için uygulama",
+          "metin": null,
+          "skor": 0.834,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 450",
+          "metin_ozet": "MADDE 450- Pazarlamacı, talimata uymamasını zorunlu kılan haklı bir sebep olmadıkça, kendisine verilen talimata uygun olarak müşterileri ziyaret etmekle yükümlüdür;",
+          "metin": null,
+          "skor": 0.8466,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Her tacir, ticari işletmesine ilişkin işlemleri, ticaret unvanıyla yapmak ve işletmesiyle ilgili senetlerle diğer belgeleri bu unvan altında imzalamak zorundadır.",
+          "metin": null,
+          "skor": 0.8315,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 368",
+          "metin_ozet": "MADDE 368- (1) Yönetim kurulu, ticari mümessil ve ticari vekiller atayabilir.",
+          "metin": null,
+          "skor": 0.8324,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 14",
+          "metin_ozet": "MADDE 14- (1) Kişisel durumları ya da yaptığı işlerin niteliği nedeniyle yahut meslek ve görevleri dolayısıyla, kanundan veya bir yargı kararından doğan bir yasağa aykırı bir şekilde ya da başka bir kişinin veya resmî bir makamın iznine gerek olmasına rağmen izin veya onay...",
+          "metin": null,
+          "skor": 0.8323,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 222,
+      "ortalama_kaynak_skor": 0.8354,
+      "kaynak_sayisi": 5,
+      "message_id": "bf2b54ca-6ac3-4b83-9035-92b9dea1c988",
+      "conversation_id": "59dbde88-6f98-491a-b73e-499497d020df",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 19.28,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Sosyal medya hesabım izinsiz kullanılarak dolandırıcılık yapıldı, şikayet hakkım var mı?",
+      "cevap": "5237 Sayılı Türk Ceza Kanunu'nun 139. maddesine göre, kişisel verilerin kaydedilmesi, verileri hukuka aykırı olarak verme veya ele geçirme ve verileri yok etmeme hariç, bu bölümde yer alan suçların soruşturulması ve kovuşturulması şikayete bağlıdır. Dolandırıcılık suçu da bu bölümde yer alan suçlardan biridir. \n\nDolayısıyla, sosyal medya hesabınız izinsiz kullanılarak dolandırıcılık yapılması durumunda, şikayet hakkınız bulunmaktadır. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 156",
+          "metin_ozet": "Madde 156- (1) Bedelsiz kalmış bir senedi kullanan kimseye, şikayet üzerine, altı aydan iki yıla kadar hapis ve adlî para cezası verilir.",
+          "metin": null,
+          "skor": 0.4272,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 148",
+          "metin_ozet": "Madde 148 — Kurul kararıyla ve gerekçesi belirtilmek suretiyle, bu Kanun kapsamındaki kuruluşlar ile ilgili gerçek ve tüzel kişilere;66 a) Bu Kanun veya bu Kanuna istinaden çıkarılan düzenlemelerde yer alan sınırlamalara uyulmaması hâlinde beş yüz bin Türk Lirasından az olmamak...",
+          "metin": null,
+          "skor": 0.4263,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 158",
+          "metin_ozet": "Madde 158- (1) Dolandırıcılık suçunun;",
+          "metin": null,
+          "skor": 0.4243,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 139",
+          "metin_ozet": "Madde 139- (1) Kişisel verilerin kaydedilmesi, verileri hukuka aykırı olarak verme veya ele geçirme ve verileri yok etmeme hariç, bu bölümde yer alan suçların soruşturulması ve kovuşturulması şikayete bağlıdır.",
+          "metin": null,
+          "skor": 0.4242,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 159",
+          "metin_ozet": "Madde 159- (1) Dolandırıcılığın, bir hukuki ilişkiye dayanan alacağı tahsil amacıyla işlenmesi halinde, şikayet üzerine, altı aydan bir yıla kadar hapis veya adlî para cezasına hükmolunur.",
+          "metin": null,
+          "skor": 0.4233,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 565,
+      "ortalama_kaynak_skor": 0.4251,
+      "kaynak_sayisi": 5,
+      "message_id": "255655ad-2120-407c-aacf-ea1ec3a64e46",
+      "conversation_id": "2894981a-a104-42bd-8246-3acc1cab1e58",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.67,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Elektronik imzayla imzaladığım sözleşme geçerli sayılır mı?",
+      "cevap": "5070 Sayılı Elektronik İmza Kanunu'nun 5. maddesine göre, güvenli elektronik imza, elle atılan imza ile aynı hukukî sonucu doğurur. Bu nedenle, elektronik imzayla imzaladığınız sözleşme geçerli sayılır. Ancak, kanunların resmî şekle veya özel bir merasime tabi tuttuğu hukukî işlemler ile banka teminat mektupları ve Türkiye’de yerleşik sigorta şirketleri tarafından düzenlenen kefalet senetleri dışındaki teminat sözleşmeleri, güvenli elektronik imza ile gerçekleştirilemez.\n\nAyrıca, 6098 Sayılı Türk Borçlar Kanunu'nun 15. maddesine göre, güvenli elektronik imza da, el yazısıyla atılmış imzanın bütün hukuki sonuçlarını doğurur. Bu nedenle, elektronik imzayla imzaladığınız sözleşme, el yazısıyla imzaladığınız bir sözleşmeyle aynı hukukî sonuçları doğurur.\n\n6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 205. maddesine göre, usulüne göre güvenli elektronik imza ile oluşturulan elektronik veriler, senet hükmündedir. Bu nedenle, elektronik imzayla imzaladığınız sözleşme, mahkeme huzurunda delil olarak sunulabilir ve geçerli sayılır.\n\nAncak, söz konusu sözleşmenin geçerli sayılması için, güvenli elektronik imza oluşturma araçlarının ve güvenli elektronik imza doğrulama araçlarının 5070 Sayılı Elektronik İmza Kanunu'nun 6. ve 7. maddelerine uygun olarak kullanılmış olması gerekir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5070 Sayılı Elektronik İmza Kanunu - Madde 5",
+          "metin_ozet": "Madde 5- Güvenli elektronik imza, elle atılan imza ile aynı hukukî sonucu doğurur.",
+          "metin": null,
+          "skor": 0.8579,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5070&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 15",
+          "metin_ozet": "Güvenli elektronik imza da, el yazısıyla atılmış imzanın bütün hukuki sonuçlarını doğurur. İmzanın el yazısı dışında bir araçla atılması, ancak örf ve âdetçe kabul edilen durumlarda ve özellikle çok sayıda çıkarılan kıymetli evrakın imzalanmasında yeterli sayılır.",
+          "metin": null,
+          "skor": 0.8547,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 205",
+          "metin_ozet": "MADDE 205- (1) Mahkeme huzurunda ikrar olunan veya mahkemece inkâr edenden sadır olduğu kabul edilen adi senetler, aksi ispat edilmedikçe kesin delil sayılırlar. (2) Usulüne göre güvenli elektronik imza ile oluşturulan elektronik veriler, senet hükmündedir.",
+          "metin": null,
+          "skor": 0.8368,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5070 Sayılı Elektronik İmza Kanunu - Madde 6",
+          "metin_ozet": "Madde 6- Güvenli elektronik imza oluşturma araçları;",
+          "metin": null,
+          "skor": 0.8477,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5070&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5070 Sayılı Elektronik İmza Kanunu - Madde 7",
+          "metin_ozet": "Madde 7- Güvenli elektronik imza doğrulama araçları;",
+          "metin": null,
+          "skor": 0.8455,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5070&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Bilişim Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1411,
+      "ortalama_kaynak_skor": 0.8485,
+      "kaynak_sayisi": 5,
+      "message_id": "6245550e-0f3b-4327-b863-b6174fd18120",
+      "conversation_id": "0caea577-f21b-4c09-9e7d-3c1b7f9da354",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.0,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Çevrimiçi alışverişte ürünü iade etmek istiyorum, işletmenin bana iade hakkı vermemesi hukuki mi?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Tüketicinin Korunması Hakkında Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 333",
+          "metin_ozet": "MADDE 333- (1) Hükmün kesinleşmesinden sonra mahkeme kendiliğinden, yatırılan avansın kullanılmayan kısmının iadesine karar verir. Bu kararın tebliğ gideri iade edilecek avanstan karşılanır.",
+          "metin": null,
+          "skor": 0.829,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 541",
+          "metin_ozet": "MADDE 541- Komisyoncunun, sattığı malın bedeli ve satın aldığı mal üzerinde hapis hakkı vardır.",
+          "metin": null,
+          "skor": 0.8271,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 89",
+          "metin_ozet": "MADDE 89- (1) Teminat gösterilmesini gerektiren sebep ortadan kalktığı takdirde, ilgilinin talebi üzerine mahkeme, teminatın iadesine karar verir.",
+          "metin": null,
+          "skor": 0.8277,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 181",
+          "metin_ozet": "MADDE 181- Ceza koşuluna ilişkin hükümler, dönme durumunda ifa edilmiş olan kısmın alacaklıya kalacağını öngören sözleşmelere de uygulanır.",
+          "metin": null,
+          "skor": 0.8312,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 107",
+          "metin_ozet": "MADDE 107- Alacaklının temerrüde düşmesi durumunda borçlu, hasar ve giderleri alacaklıya ait olmak üzere, teslim edeceği şeyi tevdi ederek borcundan kurtulabilir.",
+          "metin": null,
+          "skor": 0.8288,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 198,
+      "ortalama_kaynak_skor": 0.8288,
+      "kaynak_sayisi": 5,
+      "message_id": "8a7708b6-d932-4fa7-8647-7a32439c8372",
+      "conversation_id": "9f46e24c-04b0-4830-a1f9-962f08166dd9",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 12.97,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "5651 sayılı Kanun kapsamında web siteme erişim engeli getirildiyse itiraz için ne yapabilirim?",
+      "cevap": "5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu kapsamında web sitenize erişim engeli getirilmişse, itiraz için aşağıdaki adımları takip edebilirsiniz:\n\n1. İtiraz mercii: Erişim engeli kararını veren sulh ceza hâkimine karşı 5271 sayılı Kanun hükümlerine göre itiraz yoluna gidebilirsiniz (Kaynak 1, Madde 9, fıkra 6).\n2. İtiraz süresi: İtiraz süresi hakkında kaynaklarda specific bir bilgi bulunmamaktadır.\n3. İtiraz prosedürü: İtiraz prosedürü hakkında kaynaklarda specific bir bilgi bulunmamaktadır.\n\nGetirilen kaynaklar bu soruyu tamamen karsilamiyor. 5651 sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 9",
+          "metin_ozet": "2023/172 sayılı Kararı ile) Özel hayatın gizliliği nedeniyle içeriğe erişimin engellenmesi3435 33 Bu maddenin başlığı “İçeriğin yayından çıkarılması ve cevap hakkı” iken 6518 sayılı Kanunun 93 üncü maddesiyle metne işlendiği şekilde değiştirilmiştir.",
+          "metin": null,
+          "skor": 0.8541,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 8",
+          "metin_ozet": "MADDE 8- (1) İnternet ortamında yapılan ve içeriği aşağıdaki suçları oluşturduğu hususunda yeterli şüphe sebebi bulunan yayınlarla ilgili olarak içeriğin çıkarılmasına ve/veya 15 29/7/2020 tarihli ve 7253 sayılı Kanunun 4 üncü maddesiyle, bu madde başlığı “Erişimin engellenmesi...",
+          "metin": null,
+          "skor": 0.8589,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 394",
+          "metin_ozet": "MADDE 394- (1) Karşı taraf dinlenmeden verilmiş olan ihtiyati tedbir kararlarına itiraz edilebilir. Aksine karar verilmedikçe, itiraz icrayı durdurmaz.",
+          "metin": null,
+          "skor": 0.8368,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 461",
+          "metin_ozet": "Vesayet makamının kararlarına karşı tebliğ gününden başlayarak on gün içinde denetim makamına itiraz edilebilir.",
+          "metin": null,
+          "skor": 0.8406,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 434",
+          "metin_ozet": "Madde 434- Kısıtlı bir kişi bir kuruma yerleştirildiği veya alıkonulduğu ya da ergin bir kişi hakkında vesayete ilişkin diğer önlemlerin alınmasına gerek görüldüğü takdirde, kişinin bulunduğu yer vesayet makamı veya özel kanunlarda öngörülen ilgililer, durumu yerleşim yeri...",
+          "metin": null,
+          "skor": 0.8366,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Bilişim Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 890,
+      "ortalama_kaynak_skor": 0.8454,
+      "kaynak_sayisi": 5,
+      "message_id": "e2fa38be-4d5d-4588-925e-7a0813b4a91b",
+      "conversation_id": "170c4687-3a0e-4f63-b44a-260d04adec4d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.33,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Kişisel verilerimin silinmesini talep ettim ama şirket yanıt vermiyor, KVK Kurulu'na nasıl başvurabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6698 sayili Kisisel Verilerin Korunmasi Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 24",
+          "metin_ozet": "1/2/2018- 7078/157 md.) Gümrük ve Ticaret Bakanlığı tarafından il merkezindeki ticaret ve sanayi odaları ile ticaret odalarında faaliyet gösterecek şekilde ticaret sicili müdürlükleri kurulur.",
+          "metin": null,
+          "skor": 0.811,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 208,
+      "ortalama_kaynak_skor": 0.811,
+      "kaynak_sayisi": 1,
+      "message_id": "1264ebc4-0a13-4108-a715-9c4e59a00044",
+      "conversation_id": "de67d41a-a16f-4327-9f10-361d9a9ae062",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 19.27,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Bilişim Hukuku",
+      "soru": "Çalıştığım şirketteki müşteri veritabanını izinsiz kopyaladım, cezai sorumluluğum var mı?",
+      "cevap": "Getirilen kaynaklar bu soruyu kısmen karsilamiyor. 5237 Sayılı Türk Ceza Kanunu - Madde 244'de bilişim sistemleri ve verilere ilişkin suçlar düzenlenmektedir. Ancak, bu madde müşteri veritabanının izinsiz kopyalanmasıyla ilgili değildir. \n\n6102 Sayılı Türk Ticaret Kanunu - Madde 62'de haksız rekabet fiilleri düzenlenmektedir. Bu madde kapsamında, çalışanların veya vekillerin üretim veya ticaret sırlarını ele geçirmelerini sağlamak için aldatmaları cezai sorumluluk teşkil edebilir. Ancak, bu madde müşteri veritabanının izinsiz kopyalanmasıyla ilgili değildir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 62",
+          "metin_ozet": "II - Tüzel kişilerin cezai sorumluluğu",
+          "metin": null,
+          "skor": 0.4174,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 465",
+          "metin_ozet": "Madde 465- Kanunen gerektiği hâlde vasinin yetkili vesayet dairelerinin iznini almadan yapmış olduğu işlemler, vesayet altındaki kişinin vasinin izni olmaksızın yaptığı işlem hükmündedir.",
+          "metin": null,
+          "skor": 0.4152,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 244",
+          "metin_ozet": "(2) Bir bilişim sistemindeki verileri bozan, yok eden, değiştiren veya erişilmez kılan, sisteme veri yerleştiren, var olan verileri başka bir yere gönderen kişi, altı aydan üç yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.415,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 396",
+          "metin_ozet": "MADDE 396- (1) Yönetim kurulu üyelerinden biri, genel kurulun iznini almaksızın, şirketin işletme konusuna giren ticari iş türünden bir işlemi kendi veya başkası hesabına yapamayacağı gibi, aynı tür ticari işlerle uğraşan bir şirkete sorumluluğu sınırsız ortak sıfatıyla da...",
+          "metin": null,
+          "skor": 0.4137,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 644",
+          "metin_ozet": "MADDE 644- (1) Aşağıda madde numaraları bildirilen anonim şirketlere ilişkin hükümler limited şirketlere de uygulanır.",
+          "metin": null,
+          "skor": 0.4135,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 690,
+      "ortalama_kaynak_skor": 0.415,
+      "kaynak_sayisi": 5,
+      "message_id": "b716957d-8103-4a5b-acac-735bf6478cc5",
+      "conversation_id": "77d1f02d-d9c8-4cb6-81e3-8cc7c6b60a5a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 30.53,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

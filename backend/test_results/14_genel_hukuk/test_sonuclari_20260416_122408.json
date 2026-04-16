@@ -1,0 +1,717 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T09:30:45.350747+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\14_genel_hukuk\\test_sonuclari_20260416_122408.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 397.1,
+    "ortalama_sure_sn": 33.09,
+    "kategori_dagilimi": {
+      "Genel Hukuk": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 25.07,
+        "kategori_dogruluk_orani": 75.0,
+        "ortalama_cevap_uzunluk": 447.0,
+        "ortalama_kaynak_skor": 0.843
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Trafik cezasına nasıl itiraz edilir ve başvuru süresi kaç gündür?",
+      "cevap": "Trafik cezasına itiraz etmek için, ilgili kişinin ceza tutanağının tebliğ tarihinden itibaren belirli bir süre içinde itiraz başvurusunda bulunması gerekir. Ancak, verilen kaynaklar trafik cezasına itiraz sürecini ve başvuru süresini açıkça belirtmemektedir.\n\nGetirilen kaynaklar bu soruyu karsilamiyor. 2918 Sayılı Karayolları Trafik Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 353",
+          "metin_ozet": "31/3/2011-6217/5 md.) İcra mahkemesinin verdiği tazyik ve disiplin hapsine ilişkin kararlara karşı, (…)131 tebliğ tarihinden itibaren iki hafta içinde itiraz edilebilir.",
+          "metin": null,
+          "skor": 0.8511,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 274",
+          "metin_ozet": "3/7/1940-3890/1 md.) İtiraz etmek isteyen kiracı itirazını tahliye emrinin tebliğinden itibaren yedi gün içinde dilekçe ile veya şifahen icra dairesine bildirir. 63, 64 ve 65 inci maddeler hükmü tahliye takiplerinde de caridir. 2 – İtirazın kaldırılması:",
+          "metin": null,
+          "skor": 0.8606,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 116",
+          "metin_ozet": "31/10/1990 – 3672/7 md.) Trafiği tehlikeye düşürecek, engel olacak şekilde veya yasaklanmış yerlerde park etmiş araçlara veya trafik kural ve yasaklarına aykırı davranışları belirlenmiş bulunan, karayolları ağırlık kontrol mahallerinde işaret, ışık, ses veya görevlilerin ikazına...",
+          "metin": null,
+          "skor": 0.851,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 265",
+          "metin_ozet": "17/7/2003-4949/63 md.) Menfaati ihlâl edilen üçüncü kişiler de ihtiyatî haczi öğrendiği tarihten itibaren yedi gün içinde ihtiyatî haczin dayandığı sebeplere veya teminata itiraz edebilir.",
+          "metin": null,
+          "skor": 0.8597,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 25",
+          "metin_ozet": "Madde 25 – Tescilsiz olup, karayolunda geçici olarak kullanılacak araçlara mali mesuliyet sigortası yaptırılmış olmak şartı ile ilgili tescil bürosundan geçici trafik belgesi ile geçici tescil plakası alınması zorunludur.",
+          "metin": null,
+          "skor": 0.8514,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 459,
+      "ortalama_kaynak_skor": 0.8548,
+      "kaynak_sayisi": 5,
+      "message_id": "8b7c7d92-c8b8-4a3f-ac41-2e0beeb02bcc",
+      "conversation_id": "feb28ec8-3211-45ad-8342-69b73df5ef16",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 39.6,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Trafik kazasında kusur oranına itiraz etmek istersem nereye başvurmalıyım?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 2918 Sayılı Karayolları Trafik Kanunu trafik kazalarında kusur oranının belirlenmesi ve itiraz süreçleri hakkında detaylı bilgi vermemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 84",
+          "metin_ozet": "Madde 84 – Araç sürücüleri trafik kazalarında;",
+          "metin": null,
+          "skor": 0.8394,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Ek Madde 4",
+          "metin_ozet": "17/10/1996-4199/43 md.) Karayollarında yolcu taşımacılığı yapan otobüs ve benzeri taşıtların karışmış olduğu ölümlü trafik kazası sonuçlarının;",
+          "metin": null,
+          "skor": 0.8427,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 81",
+          "metin_ozet": "Madde 81 – Trafik kazalarına karışanlar:",
+          "metin": null,
+          "skor": 0.842,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 117",
+          "metin_ozet": "28/3/1985- 3176/16 md.) Ceza puanı uygulaması, puanlama ve trafik kazası nedeniyle sürücü belgelerinin Bakanlığı ile Ulaştırma, Denizcilik ve Haberleşme Bakanlığınca” ibaresi “İçişleri Bakanlığı, Hazine ve Maliye Bakanlığı, Ulaştırma ve Altyapı Bakanlığı ile Ticaret Bakanlığınca”...",
+          "metin": null,
+          "skor": 0.8405,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 8",
+          "metin_ozet": "Okul öncesi, okul içi ve okul dışı trafik eğitimini düzenleyen trafik genel eğitim planı hazırlamak ve ilgili kuruluşlarla iş birliği yaparak uygulamak b) Sağlık Bakanlığı:",
+          "metin": null,
+          "skor": 0.8339,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 277,
+      "ortalama_kaynak_skor": 0.8397,
+      "kaynak_sayisi": 5,
+      "message_id": "467e5452-0601-4c1e-9ae0-c8d950360022",
+      "conversation_id": "16dd824e-8a1b-46fe-9b6e-19e2f9dd1018",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.73,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Ehliyetime el konulduysa geri almak için hangi hukuki yollar vardır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 2918 Sayılı Karayolları Trafik Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 765",
+          "metin_ozet": "Senet iptal edildiği veya senetten doğan haklar diğer bir sebeple ortadan kalktığı takdirde, teminat geri alınır.",
+          "metin": null,
+          "skor": 0.8372,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 763",
+          "metin_ozet": "Dilekçe sahibi bu süre içinde dava açmazsa, mahkeme, poliçeyi, sunmuş olana geri verir ve muhatap hakkındaki ödeme yasağını kaldırır.",
+          "metin": null,
+          "skor": 0.8547,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Madde 73",
+          "metin_ozet": "Son ihlalin gerçekleştiği tarihten itibaren geriye doğru bir yıl içinde bu kuralın ikinci defa ihlal edilmesi halinde sürücülere 10.000 Türk lirası idari para cezası uygulanır.",
+          "metin": null,
+          "skor": 0.833,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 762",
+          "metin_ozet": "MADDE 762- (1) Poliçenin getirilmesine ilişkin ilan, 35 inci maddede yazılı gazete ile üç defa yapılır.",
+          "metin": null,
+          "skor": 0.8312,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Ek Madde 2",
+          "metin_ozet": "(Değişik üçüncü cümle:12/2/2026-7574/32 md.) Ayrıca (a) bendi kapsamında işlem yapılan sürücülerin sürücü belgeleri otuz gün süreyle geri alınır.",
+          "metin": null,
+          "skor": 0.8308,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 325,
+      "ortalama_kaynak_skor": 0.8374,
+      "kaynak_sayisi": 5,
+      "message_id": "55bf1b7e-56a0-4b99-b389-4b33f35e2671",
+      "conversation_id": "53ec4c57-0f99-44a7-affc-2155f630513d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.85,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Noter vekaletnamesi nasıl çıkarılır ve hangi işlemler için gerekir?",
+      "cevap": "Noter vekaletnamesi, bir kişinin başka bir kişiye belirli işleri yapmak veya işlemleri gerçekleştirmek için yetki vermesini sağlayan bir belgedir. 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 76. maddesine göre, avukatlar tarafından açılan veya takip edilen dava ve işlerde, noter tarafından onaylanan veya düzenlenen vekâletname aslının veya avukat tarafından onaylanmış aslına uygun örneğinin dava veya takip dosyasına konulmak üzere ibraz edilmesi zorunludur.\n\nNoter vekaletnamesi, genellikle aşağıdaki işlemler için gerekir:\n\n- Dava açılması ve takip edilmesi\n- Mahkeme işlemlerinin yürütülmesi\n- Hukuki işlemlerin gerçekleştirilmesi\n\nNoter vekaletnamesi çıkarmak için, ilgili kişi notere başvurur ve vekaletnameyi düzenlettirir. Vekaletname, noter tarafından onaylanır ve aslına uygun örnekleri çıkartılır. Bu belge, vekile belirli işleri yapmak veya işlemleri gerçekleştirmek için yetki verir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. 4721 Sayılı Türk Medeni Kanunu ve 6102 Sayılı Türk Ticaret Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 76",
+          "metin_ozet": "MADDE 76- (1) Avukat, açtığı veya takip ettiği dava ve işlerde, noter tarafından onaylanan ya da düzenlenen vekâletname aslını veya avukat tarafından onaylanmış aslına uygun örneğini, dava yahut takip dosyasına konulmak üzere ibraz etmek zorundadır.",
+          "metin": null,
+          "skor": 0.8538,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 538",
+          "metin_ozet": "El yazılı vasiyetname, saklanmak üzere açık veya kapalı olarak notere, sulh hâkimine veya yetkili memura bırakılabilir.",
+          "metin": null,
+          "skor": 0.8365,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 532",
+          "metin_ozet": "Resmî memur, sulh hâkimi, noter veya kanunla kendisine bu yetki verilmiş diğer bir görevli olabilir.",
+          "metin": null,
+          "skor": 0.8345,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 65",
+          "metin_ozet": "Kayıt sırasında mı yoksa daha sonra mı yapıldığı anlaşılmayan değiştirmeler 22 15/2/2018 tarihli ve 7099 sayılı Kanunun 22 nci maddesiyle, bu fıkranın son cümlesinden önceki cümlesine “noter” ibaresinden sonra gelmek üzere “veya ticaret sicili müdürlüğü” ibaresi eklenmiştir.",
+          "metin": null,
+          "skor": 0.8266,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 502",
+          "metin_ozet": "MADDE 502- Vekâlet sözleşmesi, vekilin vekâlet verenin bir işini görmeyi veya işlemini yapmayı üstlendiği sözleşmedir.",
+          "metin": null,
+          "skor": 0.8331,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1132,
+      "ortalama_kaynak_skor": 0.8369,
+      "kaynak_sayisi": 5,
+      "message_id": "899a16a7-ed59-44a3-878c-20b13407b659",
+      "conversation_id": "8e96c66f-596b-45fb-b0f8-0d7624c66b70",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.5,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Adli sicil kaydı e-Devlet üzerinden nasıl alınır, silinme talebi nasıl yapılır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5352 sayili Adli Sicil Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 97",
+          "metin_ozet": "Dilekçede, talebin dayandığı sebepler ile bunların delil veya emareleri gösterilir. Süresinde yapılamayan işlemin de eski hâle getirme talebinde bulunmak için öngörülen süre içinde yapılması zorunludur.",
+          "metin": null,
+          "skor": 0.8311,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 98",
+          "metin_ozet": "(2) Eski hâle getirme, istinaf yoluna başvuru hakkının düşmesi hâlinde, bölge adliye mahkemesinden; Talebin yargılamaya ve hükmün icrasına etkisi",
+          "metin": null,
+          "skor": 0.8266,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 402",
+          "metin_ozet": "MADDE 402- (1) Delil tespiti talebi dilekçeyle yapılır. Tespit talebinde bulunan, durum ve koşulların imkân vermemesi nedeniyle, aleyhine tespit yapılacak kişiyi gösteremiyorsa talebi geçerli sayılır.",
+          "metin": null,
+          "skor": 0.8249,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 191,
+      "ortalama_kaynak_skor": 0.8275,
+      "kaynak_sayisi": 3,
+      "message_id": "293f2051-430d-45b2-9bc7-d4414faea69c",
+      "conversation_id": "9a7c056c-f975-4020-bf07-6079849cb856",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.31,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Ad veya soyadı değişikliği için hangi mahkemeye başvurulur?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4721 Sayılı Türk Medeni Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 27",
+          "metin_ozet": "hükmü veren mahkeme, kararın verildiği tarih, dosyanın esas ve karar numarası ile adının değiştirilmesine karar verilen kişinin nüfusa kayıtlı olduğu yer, doğum tarihi, ana ve baba adı, önceki adı ve soyadı, mahkeme kararıyla verilen yeni adı ve soyadı yer alır.",
+          "metin": null,
+          "skor": 0.8641,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 40",
+          "metin_ozet": "Madde 40- Cinsiyetini değiştirmek isteyen kimse, şahsen başvuruda bulunarak mahkemece cinsiyet değişikliğine izin verilmesini isteyebilir.",
+          "metin": null,
+          "skor": 0.8313,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 295",
+          "metin_ozet": "Madde 295- Tanıma, babanın, nüfus memuruna veya mahkemeye yazılı başvurusu ya da resmî senette veya vasiyetnamesinde yapacağı beyanla olur.",
+          "metin": null,
+          "skor": 0.8322,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 26",
+          "metin_ozet": "Madde 26- Adının kullanılması çekişmeli olan kişi, hakkının tespitini dava edebilir.",
+          "metin": null,
+          "skor": 0.8382,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 39",
+          "metin_ozet": "Madde 39- Mahkeme kararı olmadıkça, kişisel durum sicilinin hiçbir kaydında düzeltme yapılamaz.",
+          "metin": null,
+          "skor": 0.8372,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 192,
+      "ortalama_kaynak_skor": 0.8406,
+      "kaynak_sayisi": 5,
+      "message_id": "ca4cff71-c5ff-4d96-9d18-34d3e352537d",
+      "conversation_id": "ce6ac516-c3d3-4592-b8a0-7af509440263",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.43,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Yabancıların Türkiye'de çalışma izni başvurusu nasıl yapılır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4817 sayılı Yabancıların Çalışma İzinleri Hakkında Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 3",
+          "metin_ozet": "Madde 3 – Türk vatandaşları kendileriyle veya kamu ile ilgili dilek ve şikayetleri hakkında, Türkiye Büyük Millet Meclisine ve yetkili makamlara yazı ile başvurma hakkına sahiptirler.",
+          "metin": null,
+          "skor": 0.8382,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 99",
+          "metin_ozet": "MADDE 99- Sosyal güvenlik hak ve yükümlülükleri ile ilgili yapılacak her türlü kanunî düzenlemeler bu Kanunda yapılır.",
+          "metin": null,
+          "skor": 0.8258,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 7",
+          "metin_ozet": "2/1/2003-4778/27 md.) Türk vatandaşlarının ve Türkiye’de ikamet eden yabancıların kendileri ve kamu ile ilgili dilek ve şikâyetleri konusunda yetkili makamlara yaptıkları başvuruların sonucu veya yapılmakta olan işlemin safahatı hakkında dilekçe sahiplerine en geç otuz gün içinde...",
+          "metin": null,
+          "skor": 0.8349,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 2",
+          "metin_ozet": "2/1/2003-4778/24 md.) Bu Kanun, Türk vatandaşları ve Türkiye’de ikamet eden yabancılar tarafından Türkiye Büyük Millet Meclisi ile idarî makamlara yapılan dilek ve şikâyetler hakkındaki başvuruları kapsar.",
+          "metin": null,
+          "skor": 0.8342,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 1",
+          "metin_ozet": "2/1/2003-4778/23 md.) Bu Kanunun amacı, Türk vatandaşlarının ve Türkiye’de ikamet eden yabancıların kendileriyle veya kamu ile ilgili dilek ve şikâyetleri hakkında, Türkiye Büyük Millet Meclisine ve yetkili makamlara yazı ile başvurma haklarının kullanılma biçimini düzenlemektir.",
+          "metin": null,
+          "skor": 0.8306,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 218,
+      "ortalama_kaynak_skor": 0.8327,
+      "kaynak_sayisi": 5,
+      "message_id": "109c1a26-6307-430e-a47a-196f753a9904",
+      "conversation_id": "61ff20f1-3857-4208-b187-f62c444a5be7",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.16,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "İkamet izni başvurum reddedildi, karara nasıl itiraz edebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6458 Sayılı Yabancılar ve Uluslararası Koruma Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 13",
+          "metin_ozet": "Madde 13- Bilgi edinme istemi (…)1 reddedilen başvuru sahibi, yargı yoluna başvurmadan önce kararın tebliğinden itibaren onbeş gün içinde Kurula itiraz edebilir. Kurula itiraz, başvuru sahibinin idarî yargıya başvurma süresini durdurur.",
+          "metin": null,
+          "skor": 0.85,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 265",
+          "metin_ozet": "huzuriyle yapılan hacizlerde haczin tatbiki, aksi hâlde haciz tutanağının kendisine tebliği tarihinden itibaren yedi gün içinde mahkemeye müracaatla itiraz edebilir.",
+          "metin": null,
+          "skor": 0.8474,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 337",
+          "metin_ozet": "11/4/2013-6459/ 23 md.) Adli yardım talebinin reddine ilişkin kararlara karşı, tebliğinden itibaren iki hafta içinde kararı veren mahkemeye dilekçe vermek suretiyle itiraz edilebilir.",
+          "metin": null,
+          "skor": 0.8435,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 365",
+          "metin_ozet": "2/3/2005-5311/26 md.) İstinaf yoluna başvurma, yasal süre geçtikten sonra yapılır veya istinaf yoluna başvurulmasına olanak bulunmayan bir karara veya vazgeçme nedeniyle itiraz veya şikâyetin reddine yahut süresi geçmiş bir şikâyete ilişkin olursa, Hukuk Usulü Muhakemeleri...",
+          "metin": null,
+          "skor": 0.8435,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 394",
+          "metin_ozet": "MADDE 394- (1) Karşı taraf dinlenmeden verilmiş olan ihtiyati tedbir kararlarına itiraz edilebilir. (5) İtiraz hakkında verilen karara karşı, kanun yoluna başvurulabilir. Bu başvuru öncelikle incelenir ve kesin olarak karara bağlanır.",
+          "metin": null,
+          "skor": 0.8487,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 340,
+      "ortalama_kaynak_skor": 0.8466,
+      "kaynak_sayisi": 5,
+      "message_id": "9f7b2219-bf7e-4a1b-a5f4-5796e419fe35",
+      "conversation_id": "504864ed-f1e8-462e-b365-7ff5fb5aceae",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.61,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Sınır dışı etme kararına karşı dava açma süresi ne kadardır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6458 sayılı Yabancılar ve Uluslararası Koruma Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 133",
+          "metin_ozet": "MADDE 133- (1) Karşı dava, cevap dilekçesiyle veya esasa cevap süresi içinde ayrı bir dilekçe verilmek suretiyle açılır. (2) Süresinden sonra karşı dava açılması hâlinde, mahkeme davaların ayrılmasına karar verir.",
+          "metin": null,
+          "skor": 0.8377,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 10",
+          "metin_ozet": "İlgililer, haklarında idari davaya konu olabilecek bir işlem veya eylemin yapılması için idari makamlara başvurabilirler. İlgililer otuz günün bittiği tarihten itibaren dava açma süresi içinde, konusuna göre Danıştaya, idare ve vergi mahkemelerine dava açabilirler.",
+          "metin": null,
+          "skor": 0.8566,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 7",
+          "metin_ozet": "Dava açma süresi, özel kanunlarında ayrı süre gösterilmeyen hallerde Danıştayda ve idare mahkemelerinde altmış ve vergi mahkemelerinde otuz gündür.",
+          "metin": null,
+          "skor": 0.845,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 11",
+          "metin_ozet": "İlgililer tarafından idari dava açılmadan önce, idari işlemin kaldırılması, geri alınması, değiştirilmesi veya yeni bir işlem yapılması üst makamdan, üst makam yoksa işlemi yapmış olan makamdan, idari dava açma süresi içinde istenebilir.",
+          "metin": null,
+          "skor": 0.8522,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 214,
+      "ortalama_kaynak_skor": 0.8479,
+      "kaynak_sayisi": 4,
+      "message_id": "23a794f8-9c26-46b1-9d28-50002f7cebd1",
+      "conversation_id": "b50a97db-f06a-4dda-8968-00feabc94883",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.56,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Türk vatandaşlığı başvurusu için genel şartlar nelerdir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5901 sayılı Türk Vatandaşlığı Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 66",
+          "metin_ozet": "Madde 66 – Türk Devletine vatandaşlık bağı ile bağlı olan herkes Türktür. Türk babanın veya Türk ananın çocuğu Türktür. 3/10/2001-4709/23 md.) Vatandaşlık, kanunun gösterdiği şartlarla kazanılır ve ancak kanunda belirtilen hallerde kaybedilir.",
+          "metin": null,
+          "skor": 0.852,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 3",
+          "metin_ozet": "Madde 3 – Türk vatandaşları kendileriyle veya kamu ile ilgili dilek ve şikayetleri hakkında, Türkiye Büyük Millet Meclisine ve yetkili makamlara yazı ile başvurma hakkına sahiptirler.",
+          "metin": null,
+          "skor": 0.8413,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 13 - Fıkra 1",
+          "metin_ozet": "23/2/2017-6824/16 md.) a) Türkiye’de ikamet eden Türk vatandaşlarının Türkiye’de ikamet etmeyen ve 28/7/2016 tarihli ve 6735 sayılı Uluslararası İşgücü Kanununun 16 ncı maddesinin birinci fıkrasının (ç) bendinde belirtilenlerin ana, baba, eş ve çocukları, b) 6735 sayılı Kanunun...",
+          "metin": null,
+          "skor": 0.8238,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 60 - Fıkra 1",
+          "metin_ozet": "17/4/2008-5754/38 md.) İkametgahı Türkiye'de olan kişilerden;",
+          "metin": null,
+          "skor": 0.8285,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 136",
+          "metin_ozet": "Başvurunun incelenmesi ve reddi",
+          "metin": null,
+          "skor": 0.8287,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 198,
+      "ortalama_kaynak_skor": 0.8349,
+      "kaynak_sayisi": 5,
+      "message_id": "10dfe4ea-883b-4ff7-9c6a-6069459ea2d4",
+      "conversation_id": "98943ad9-c491-4381-b1b4-e15f0c218da8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.06,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Dilekçe hakkı kapsamında kamu kurumlarına başvuru nasıl yapılır?",
+      "cevap": "Dilekçe hakkı kapsamında kamu kurumlarına başvuru, 3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun'un 3. maddesine göre, Türk vatandaşları ve Türkiye'de ikamet eden yabancılar tarafından, kendileri ile ilgili veya kamu ile ilgili dilek ve şikayetleri hakkında, yetkili makamlara yazı ile başvuru yoluyla yapılır. \n\nDilekçede bulunması zorunlu şartlar, 3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun'un 3. maddesinde belirtilmiştir. Ayrıca, 4982 Sayılı Bilgi Edinme Hakkı Kanunu'nun 6. maddesine göre, bilgi edinme başvurusu, başvuru sahibinin adı ve soyadı, imzası, oturma yeri veya iş adresini, başvuru sahibi tüzel kişi ise tüzel kişinin unvanı ve adresi ile yetkili kişinin imzasını ve yetki belgesini içeren dilekçe ile istenen bilgi veya belgenin bulunduğu kuruma yapılır.\n\nDilekçe sahiplerine, yaptıkları başvuruların sonucu veya yapılmakta olan işlemin safahatı hakkında, en geç otuz gün içinde gerekçeli olarak cevap verilir. İşlem safahatının duyurulması halinde alınan sonuç ayrıca bildirilir. \n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. 3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun ve 4982 Sayılı Bilgi Edinme Hakkı Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 3",
+          "metin_ozet": "Madde 3 – Türk vatandaşları kendileriyle veya kamu ile ilgili dilek ve şikayetleri hakkında, Türkiye Büyük Millet Meclisine ve yetkili makamlara yazı ile başvurma hakkına sahiptirler.",
+          "metin": null,
+          "skor": 0.8595,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 2",
+          "metin_ozet": "2/1/2003-4778/24 md.) Bu Kanun, Türk vatandaşları ve Türkiye’de ikamet eden yabancılar tarafından Türkiye Büyük Millet Meclisi ile idarî makamlara yapılan dilek ve şikâyetler hakkındaki başvuruları kapsar.",
+          "metin": null,
+          "skor": 0.856,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 8",
+          "metin_ozet": "2/1/2003-4778/28 md.) Türkiye Büyük Millet Meclisine gönderilen dilekçelerin, Dilekçe Komisyonunda incelenmesi ve karara bağlanması altmış gün içinde sonuçlandırılır.",
+          "metin": null,
+          "skor": 0.8737,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 6",
+          "metin_ozet": "Madde 6- Bilgi edinme başvurusu, başvuru sahibinin adı ve soyadı, imzası, oturma yeri veya iş adresini, başvuru sahibi tüzel kişi ise tüzel kişinin unvanı ve adresi ile yetkili kişinin imzasını ve yetki belgesini içeren dilekçe ile istenen bilgi veya belgenin bulunduğu kurum veya...",
+          "metin": null,
+          "skor": 0.8521,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 7",
+          "metin_ozet": "2/1/2003-4778/27 md.) Türk vatandaşlarının ve Türkiye’de ikamet eden yabancıların kendileri ve kamu ile ilgili dilek ve şikâyetleri konusunda yetkili makamlara yaptıkları başvuruların sonucu veya yapılmakta olan işlemin safahatı hakkında dilekçe sahiplerine en geç otuz gün içinde...",
+          "metin": null,
+          "skor": 0.84,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1411,
+      "ortalama_kaynak_skor": 0.8563,
+      "kaynak_sayisi": 5,
+      "message_id": "d17b6861-23f9-4720-9734-beeb8e88cba5",
+      "conversation_id": "a3cfc512-984b-461d-baf4-2b064155dffe",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.21,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Genel Hukuk",
+      "soru": "Bilgi edinme başvurusu reddedilirse hangi yola başvurulabilir?",
+      "cevap": "Bilgi edinme başvurusu reddedilirse, başvuru sahibi yargı yoluna başvurmadan önce, kararın tebliğinden itibaren onbeş gün içinde Bilgi Edinme Değerlendirme Kuruluna itiraz edebilir. Bilgi Edinme Değerlendirme Kuruluna itiraz, başvuru sahibinin idarî yargıya başvurma süresini durdurur. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 13",
+          "metin_ozet": "Madde 13- Bilgi edinme istemi (…)1 reddedilen başvuru sahibi, yargı yoluna başvurmadan önce kararın tebliğinden itibaren onbeş gün içinde Kurula itiraz edebilir. Kurum ve kuruluşlar, Kurulun istediği her türlü bilgi veya belgeyi onbeş iş günü içinde vermekle yükümlüdürler.",
+          "metin": null,
+          "skor": 0.8787,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 12",
+          "metin_ozet": "Madde 12- Kurum ve kuruluşlar, bilgi edinme başvurularıyla ilgili cevaplarını yazılı olarak veya elektronik ortamda başvuru sahibine bildirirler. Başvurunun reddedilmesi hâlinde bu kararın gerekçesi ve buna karşı başvuru yolları belirtilir.",
+          "metin": null,
+          "skor": 0.8748,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 7",
+          "metin_ozet": "Madde 7- Bilgi edinme başvurusu, başvurulan kurum ve kuruluşların ellerinde bulunan veya görevleri gereği bulunması gereken bilgi veya belgelere ilişkin olmalıdır.",
+          "metin": null,
+          "skor": 0.8563,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 6",
+          "metin_ozet": "Madde 6- Bilgi edinme başvurusu, başvuru sahibinin adı ve soyadı, imzası, oturma yeri veya iş adresini, başvuru sahibi tüzel kişi ise tüzel kişinin unvanı ve adresi ile yetkili kişinin imzasını ve yetki belgesini içeren dilekçe ile istenen bilgi veya belgenin bulunduğu kurum veya...",
+          "metin": null,
+          "skor": 0.8433,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 349",
+          "metin_ozet": "(2) Başvuru yapıldıktan sonra feragat edilirse, dosya bölge adliye mahkemesine gönderilmez ve kararı veren mahkemece başvurunun reddine karar verilir. Dosya, bölge adliye mahkemesine gönderilmiş ve henüz karara bağlanmamış ise başvuru feragat nedeniyle reddolunur.",
+          "metin": null,
+          "skor": 0.851,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 412,
+      "ortalama_kaynak_skor": 0.8608,
+      "kaynak_sayisi": 5,
+      "message_id": "d0db3b9b-de05-4ae5-ab50-c17ed32ddced",
+      "conversation_id": "73132f95-29b3-4081-975e-98aacc39d0f7",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.82,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

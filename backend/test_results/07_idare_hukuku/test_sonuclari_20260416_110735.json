@@ -1,0 +1,513 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T08:14:03.433911+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\07_idare_hukuku\\test_sonuclari_20260416_110735.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 8,
+    "basarisiz": 4,
+    "basari_orani": 66.7,
+    "toplam_sure_sn": 387.8,
+    "ortalama_sure_sn": 32.32,
+    "kategori_dagilimi": {
+      "Idare Hukuku": {
+        "toplam": 12,
+        "basarili": 8,
+        "basarisiz": 4,
+        "basari_orani": 66.7,
+        "ortalama_sure_sn": 23.99,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 891.0,
+        "ortalama_kaynak_skor": 0.7361
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İdari işlem nedir ve hangi unsurlardan oluşur?",
+      "cevap": "İdari işlem, idarenin bir kararı veya eylemi olarak tanımlanabilir. İdari işlemin unsurları, idari yargılama usulü kanununda ve Türkiye Cumhuriyeti Anayasasında düzenlenmiştir.\n\nİdari işlemin unsurları arasında, idarenin eylem veya işlemlerinin hukuka uygunluğunun denetimi yer alır. İdari yargı yetkisi, idari eylem ve işlemlerin hukuka uygunluğunun denetimi ile sınırlıdır. İdari mahkemeler, yerindelik denetimi yapamazlar, yürütme görevinin kanunlarda ve Cumhurbaşkanlığı Kararnamelerinde gösterilen şekil ve esaslara uygun olarak yerine getirilmesini kısıtlayacak, idari eylem ve işlem niteliğinde veya idarenin takdir yetkisini kaldıracak biçimde yargı kararı veremezler.\n\nİdari işlemin diğer unsurları arasında, idarenin kuruluş ve görevleri, merkezden yönetim ve yerinden yönetim esaslarına dayanır. Kamu tüzelkişiliği, kanunla veya Cumhurbaşkanlığı kararnamesiyle kurulur.\n\nİdari işlemin uygulanması halinde telafisi güç veya imkansız zararların doğması ve idari işlemin açıkça hukuka aykırı olması şartlarının birlikte gerçekleşmesi durumunda, gerekçe gösterilerek yürütmenin durdurulmasına karar verilebilir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamaktadır. Detayli bilgi icin idari yargılama usulü kanunu ve Türkiye Cumhuriyeti Anayasasını incelemenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 2",
+          "metin_ozet": "10/6/1994-4001/1 md.) İdari dava türleri şunlardır:",
+          "metin": null,
+          "skor": 0.8282,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 125",
+          "metin_ozet": "Madde 125 – İdarenin her türlü eylem ve işlemlerine karşı yargı yolu açıktır. 40 İdari işlemlere karşı açılacak davalarda süre, yazılı bildirim tarihinden başlar.",
+          "metin": null,
+          "skor": 0.8251,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 5",
+          "metin_ozet": "Her idari işlem aleyhine ayrı ayrı dava açılır. Ancak, aralarında maddi veya hukuki yönden bağlılık yada sebep-sonuç ilişkisi bulunan birden fazla işleme karşı bir dilekçe ile de dava açılabilir. Dilekçe üzerine uygulanacak işlem:",
+          "metin": null,
+          "skor": 0.8223,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 123",
+          "metin_ozet": "Madde 123 – İdare, kuruluş ve görevleriyle bir bütündür ve kanunla düzenlenir.",
+          "metin": null,
+          "skor": 0.825,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 108",
+          "metin_ozet": "Madde 108 – İdarenin hukuka uygunluğunun, düzenli ve verimli şekilde yürütülmesinin ve geliştirilmesinin sağlanması amacıyla, Cumhurbaşkanlığına bağlı olarak kurulan Devlet Denetleme Kurulu, Cumhurbaşkanının isteği üzerine, tüm kamu kurum ve kuruluşlarında ve sermayesinin...",
+          "metin": null,
+          "skor": 0.821,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1279,
+      "ortalama_kaynak_skor": 0.8243,
+      "kaynak_sayisi": 5,
+      "message_id": "0abc4d36-e1d7-4564-a962-2db4d6d6c6bd",
+      "conversation_id": "eceef7f6-d4fb-45a7-8bcc-76471444b5f3",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.17,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İdarenin yaptığı bir işleme karşı nasıl dava açabilirim?",
+      "cevap": "İdarenin yaptığı bir işleme karşı dava açabilmek için, önce ilgili idareye başvurarak haklarınızın yerine getirilmesini istemelisiniz. Bu başvurunun reddedilmesi veya 30 gün içinde cevap verilmemesi durumunda, dava açma süresi içinde dava açabilirsiniz. \n\n2577 Sayılı İdari Yargılama Usulü Kanunu'nun 10. maddesine göre, idareye yapılan başvurunun reddedilmesi veya 30 gün içinde cevap verilmemesi durumunda, ilgililer dava açma süresi içinde Danıştaya, idare ve vergi mahkemelerine dava açabilirler. \n\nAyrıca, 2577 Sayılı İdari Yargılama Usulü Kanunu'nun 13. maddesine göre, idari eylemlerden hakları ihlal edilmiş olanların, idari dava açmadan önce, bu eylemleri yazılı bildirim üzerine veya başka şekilde öğrendikleri tarihten itibaren bir yıl ve her halde eylem tarihinden itibaren beş yıl içinde ilgili idareye başvurarak haklarının yerine getirilmesini istemeleri gereklidir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 5",
+          "metin_ozet": "Her idari işlem aleyhine ayrı ayrı dava açılır. Ancak, aralarında maddi veya hukuki yönden bağlılık yada sebep-sonuç ilişkisi bulunan birden fazla işleme karşı bir dilekçe ile de dava açılabilir.",
+          "metin": null,
+          "skor": 0.847,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 12",
+          "metin_ozet": "Madde 12 – İlgililer haklarını ihlal eden bir idari işlem dolayısıyla Danıştaya ve idare ve vergi mahkemelerine doğrudan doğruya tam yargı davası veya iptal ve tam yargı davalarını birlikte açabilecekleri gibi ilk önce iptal davası açarak bu davanın karara bağlanması üzerine, bu...",
+          "metin": null,
+          "skor": 0.851,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 10",
+          "metin_ozet": "İlgililer, haklarında idari davaya konu olabilecek bir işlem veya eylemin yapılması için idari makamlara başvurabilirler. İlgililer otuz günün bittiği tarihten itibaren dava açma süresi içinde, konusuna göre Danıştaya, idare ve vergi mahkemelerine dava açabilirler.",
+          "metin": null,
+          "skor": 0.8525,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 125",
+          "metin_ozet": "Madde 125 – İdarenin her türlü eylem ve işlemlerine karşı yargı yolu açıktır. 7/5/2010-5982/11 md.) (…)68 Yüksek Askerî Şûranın terfi işlemleri ile kadrosuzluk nedeniyle emekliye ayırma hariç her türlü ilişik kesme kararlarına karşı yargı yolu açıktır.",
+          "metin": null,
+          "skor": 0.8457,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 13",
+          "metin_ozet": "İdari eylemlerden hakları ihlal edilmiş olanların idari dava açmadan önce, bu eylemleri yazılı bildirim üzerine veya başka süretle öğrendikleri tarihten itibaren bir yıl ve her halde eylem tarihinden itibaren beş yıl içinde ilgili idareye başvurarak haklarının yerine...",
+          "metin": null,
+          "skor": 0.8439,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1007,
+      "ortalama_kaynak_skor": 0.848,
+      "kaynak_sayisi": 5,
+      "message_id": "021f777e-ae2a-4262-9ee2-3676f7c69dd1",
+      "conversation_id": "51e2a40f-10fa-4a03-9603-8db5b44d9e69",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İptal davası ile tam yargı davası arasındaki fark nedir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4721 Sayılı Türk Medeni Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 558",
+          "metin_ozet": "Madde 558- İptal davası, tasarrufun iptal edilmesinde menfaati bulunan mirasçı veya vasiyet alacaklısı tarafından açılabilir. Dava, ölüme bağlı tasarrufun tamamının veya bir kısmının iptaline ilişkin olabilir.",
+          "metin": null,
+          "skor": 0.8357,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 559",
+          "metin_ozet": "Madde 559- İptal davası açma hakkı, davacının tasarrufu, iptal sebebini ve kendisinin hak sahibi olduğunu öğrendiği tarihten başlayarak bir yıl ve her hâlde vasiyetnamelerde açılma tarihinin, diğer tasarruflarda mirasın geçmesi tarihinin üzerinden, iyiniyetli davalılara karşı on...",
+          "metin": null,
+          "skor": 0.8363,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 192,
+      "ortalama_kaynak_skor": 0.836,
+      "kaynak_sayisi": 2,
+      "message_id": "ffae30b3-bb79-418e-9d47-7692ceab0801",
+      "conversation_id": "e6c596fe-a550-4a07-b479-ef9212469d93",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.12,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İdari işlemlere karşı dava açma süresi ne kadardır?",
+      "cevap": "2577 Sayılı İdari Yargılama Usulü Kanunu'nun 7. maddesine göre, dava açma süresi özel kanunlarında ayrı süre gösterilmeyen hallerde Danıştayda ve idare mahkemelerinde altmış gün, vergi mahkemelerinde ise otuz gündür. Bu süreler, idari uyuşmazlıklarda yazılı bildirimin yapıldığı, vergi, resim ve harçlar ile benzeri mali yükümler ve bunların zam ve cezalarından doğan uyuşmazlıklarda ise tahakkuku tahsile bağlı olan vergilerde tahsilatın, tebliğ yapılan hallerde veya tebliğ yerine geçen işlemlerde tebliğin, tevkif yoluyla alınan vergilerde istihkak sahiplerine ödemenin, tescile bağlı vergilerde tescilin yapıldığı ve idarenin dava açması gereken konularda ise ilgili merci veya komisyon kararının idareye geldiği tarihi izleyen günden başlar.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 10",
+          "metin_ozet": "İlgililer, haklarında idari davaya konu olabilecek bir işlem veya eylemin yapılması için idari makamlara başvurabilirler. İlgililer otuz günün bittiği tarihten itibaren dava açma süresi içinde, konusuna göre Danıştaya, idare ve vergi mahkemelerine dava açabilirler.",
+          "metin": null,
+          "skor": 0.8749,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 13",
+          "metin_ozet": "İdari eylemlerden hakları ihlal edilmiş olanların idari dava açmadan önce, bu eylemleri yazılı bildirim üzerine veya başka süretle öğrendikleri tarihten itibaren bir yıl ve her halde eylem tarihinden itibaren beş yıl içinde ilgili idareye başvurarak haklarının yerine...",
+          "metin": null,
+          "skor": 0.8505,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 11",
+          "metin_ozet": "İlgililer tarafından idari dava açılmadan önce, idari işlemin kaldırılması, geri alınması, değiştirilmesi veya yeni bir işlem yapılması üst makamdan, üst makam yoksa işlemi yapmış olan makamdan, idari dava açma süresi içinde istenebilir.",
+          "metin": null,
+          "skor": 0.8685,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 7",
+          "metin_ozet": "Dava açma süresi, özel kanunlarında ayrı süre gösterilmeyen hallerde Danıştayda ve idare mahkemelerinde altmış ve vergi mahkemelerinde otuz gündür.",
+          "metin": null,
+          "skor": 0.8573,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Geçici Madde 11",
+          "metin_ozet": "6/2/2023 tarihinde meydana gelen depremler nedeniyle genel hayata etkili afet bölgesi olarak kabul edilen yerlerde, bu depremlerin ve akabinde meydana gelen depremlerin etkisiyle oluşan hasarlarla bağlantılı olması kaydıyla, hak sahipliğine ilişkin işlemler hariç olmak üzere...",
+          "metin": null,
+          "skor": 0.8492,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 746,
+      "ortalama_kaynak_skor": 0.8601,
+      "kaynak_sayisi": 5,
+      "message_id": "cb9de1db-143a-45b0-985d-1787cdd2349a",
+      "conversation_id": "f824e36a-665d-44c8-be9e-7af4b4613bf6",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.6,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İdarenin kusurundan doğan zararlar nasıl tazmin edilir?",
+      "cevap": "İdarenin kusurundan doğan zararlar, Türk Borçlar Kanunu ve Türk Medeni Kanunu hükümlerine göre tazmin edilir. Zarar gören, zararını ve zarar verenin kusurunu ispat yükü altındadır (6098 Sayılı Türk Borçlar Kanunu - Madde 50). Uğranılan zararın miktarı tam olarak ispat edilemiyorsa, hâkim, olayların olağan akışını ve zarar görenin aldığı önlemleri göz önünde tutarak, zararın miktarını hakkaniyete uygun olarak belirler.\n\nDevlet, vesayet dairelerinde görevli olanların hukuka aykırı olarak sebebiyet verdikleri zararlardan doğrudan doğruya sorumlu olduğu gibi; vasi, kayyım ve yasal danışmanlara tazmin ettirilemeyen zararlardan da sorumludur (4721 Sayılı Türk Medeni Kanunu - Madde 468). Zararı tazmin eden Devlet, zararın meydana gelmesinde kusurlu olanlara rücu eder.\n\nDestekten yoksun kalma zararları ile bedensel zararlar, Türk Borçlar Kanunu hükümlerine ve sorumluluk hukuku ilkelerine göre hesaplanır (6098 Sayılı Türk Borçlar Kanunu - Madde 55). Kısmen veya tamamen rücu edilemeyen sosyal güvenlik ödemeleri ile ifa amacını taşımayan ödemeler, bu tür zararların belirlenmesinde gözetilemez; zarar veya tazminattan indirilemez.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 468",
+          "metin_ozet": "Madde 468- Devlet, vesayet dairelerinde görevli olanların hukuka aykırı olarak sebebiyet verdikleri zararlardan doğrudan doğruya sorumlu olduğu gibi; vasi, kayyım ve yasal danışmanlara tazmin ettirilemeyen zararlardan da sorumludur.",
+          "metin": null,
+          "skor": 0.4298,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 50",
+          "metin_ozet": "MADDE 50- Zarar gören, zararını ve zarar verenin kusurunu ispat yükü altındadır.",
+          "metin": null,
+          "skor": 0.4275,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 55",
+          "metin_ozet": "MADDE 55- Destekten yoksun kalma zararları ile bedensel zararlar, bu Kanun hükümlerine ve sorumluluk hukuku ilkelerine göre hesaplanır. Kısmen veya tamamen rücu edilemeyen sosyal güvenlik ödemeleri ile ifa amacını taşımayan ödemeler, bu tür zararların belirlenmesinde gözetilemez;",
+          "metin": null,
+          "skor": 0.4274,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 52",
+          "metin_ozet": "MADDE 52- Zarar gören, zararı doğuran fiile razı olmuş veya zararın doğmasında ya da artmasında etkili olmuş yahut tazminat yükümlüsünün durumunu ağırlaştırmış ise hâkim, tazminatı indirebilir veya tamamen kaldırabilir.",
+          "metin": null,
+          "skor": 0.4273,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 555",
+          "metin_ozet": "MADDE 555- (1) Şirketin uğradığı zararın tazminini, şirket ve her bir pay sahibi isteyebilir. Pay sahipleri tazminatın ancak şirkete ödenmesini isteyebilirler.",
+          "metin": null,
+          "skor": 0.4271,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1261,
+      "ortalama_kaynak_skor": 0.4278,
+      "kaynak_sayisi": 5,
+      "message_id": "dbaa8b0a-6450-435d-8a4f-290245d74d3e",
+      "conversation_id": "1518424e-8ae2-4a37-9cc2-02a842698b56",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.58,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Kamu görevlisinin yaptığı hatadan dolayı devlet sorumlu olur mu?",
+      "cevap": "Evet, kamu görevlisinin yaptığı hatadan dolayı devlet sorumlu olur. 2709 Sayılı Türkiye Cumhuriyeti Anayasası'nın 40. maddesine göre, kişinin, resmî görevliler tarafından vaki haksız işlemler sonucu uğradığı zarar, kanuna göre, Devletçe tazmin edilir. Ayrıca, Devletin sorumlu olan ilgili görevliye rücu hakkı saklıdır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 40",
+          "metin_ozet": "3/10/2001-4709/16 md.) Devlet, işlemlerinde, ilgili kişilerin hangi kanun yolları ve mercilere başvuracağını ve sürelerini belirtmek zorundadır. Kişinin, Resmî görevliler tarafından vaki haksız işlemler sonucu uğradığı zarar da, kanuna göre, Devletçe tazmin edilir.",
+          "metin": null,
+          "skor": 0.8418,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 137",
+          "metin_ozet": "Madde 137 – Kamu hizmetlerinde herhangi bir sıfat ve suretle çalışmakta olan kimse, üstünden aldığı emri, yönetmelik, Cumhurbaşkanlığı kararnamesi, kanun veya Anayasa hükümlerine aykırı görürse, yerine getirmez ve bu aykırılığı o emri verene bildirir.",
+          "metin": null,
+          "skor": 0.8413,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 445,
+      "ortalama_kaynak_skor": 0.8416,
+      "kaynak_sayisi": 2,
+      "message_id": "100d2fe1-4173-4e40-9926-d09e4b4edba7",
+      "conversation_id": "cfed6971-4af0-46a9-a3ad-d3bed8863d02",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.56,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İdari para cezalarına nasıl itiraz edilir?",
+      "cevap": "İdari para cezalarına itiraz, 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 102. maddesinin 17. fıkrasına göre, idari para cezasının tebliğ tarihinden itibaren onbeş gün içinde Kuruma itiraz edilebilir. İtiraz takibi durdurur. Kurumca itirazı reddedilenler, kararın kendilerine tebliğ tarihinden itibaren otuz gün içinde yetkili idare mahkemesine başvurabilirler.\n\nAyrıca, 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 102. maddesinin 18. fıkrasına göre, mahkemeye başvurulması idari para cezasının takip ve tahsilini durdurmaz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 102 - Fıkra 17",
+          "metin_ozet": "Bu süre sonunda tespit edilen eksik tutarın Kuruma bildirilmemesi halinde birinci fıkranın ilgili hükümlerine göre idari para cezası verilir. İdarî para cezası uygulanması 8 inci, 9 uncu, 11 inci ve 86 ncı maddelerde belirtilen belgelerin Kuruma verilmesi yükümlülüğünü kaldırmaz.",
+          "metin": null,
+          "skor": 0.4339,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 102 - Fıkra 18",
+          "metin_ozet": "2013/139 sayılı Kararı ile.) (…) Mahkemeye başvurulması idari para cezasının takip ve tahsilini durdurmaz.",
+          "metin": null,
+          "skor": 0.4327,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5411 Sayılı Bankacılık Kanunu - Madde 147",
+          "metin_ozet": "b) 36 ncı maddesine aykırılık hâlinde, yüz bin Türk Lirasından iki yüz bin Türk Lirasına kadar, c) 38 inci maddesine aykırılık hâlinde, elli bin Türk Lirasından iki yüz bin Türk Lirasına kadar, idarî para cezası uygulanır.",
+          "metin": null,
+          "skor": 0.4274,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5411&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 102 - Fıkra 7",
+          "metin_ozet": "Belirtilen unsurlardan herhangi birini ihtiva etmeyen (imza şartı yönünden makbuz mukabilinde veya banka kanalıyla yapılan ödemeler hariç) ücret tediye bordroları geçerli sayılmaz ve her bir geçersiz ücret tediye bordrosu için aylık asgari ücretin yarısı tutarında, idari para...",
+          "metin": null,
+          "skor": 0.4266,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3194 Sayılı İmar Kanunu - Geçici Madde 23",
+          "metin_ozet": "Geçici Madde 23- (Ek:25/3/2020-7226/40 md.) 14/2/2020 tarihli ve 7221 sayılı Coğrafi Bilgi Sistemleri ile Bazı Kanunlarda Değişiklik Yapılması Hakkında Kanunla değiştirilen 42 nci maddenin ikinci fıkrası hükümlerine dayanılarak uygulanan idari para cezaları, bu maddeyi ihdas eden...",
+          "metin": null,
+          "skor": 0.4261,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3194&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 696,
+      "ortalama_kaynak_skor": 0.4293,
+      "kaynak_sayisi": 5,
+      "message_id": "f05580ce-20ab-4d09-a1b1-04424cd318b8",
+      "conversation_id": "86f23c1a-f9b4-4081-939a-86cd673cecd0",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.72,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İdari sözleşme nedir ve özel hukuk sözleşmesinden farkı nedir?",
+      "cevap": "İdari sözleşme, 2577 Sayılı İdari Yargılama Usulü Kanunu'nda tanımlanan bir kavramdır. Madde 2'de idari dava türleri arasında idari sözleşmelerden doğan uyuşmazlıklara ilişkin davalar yer almaktadır. İdari sözleşmeler, kamu hizmetlerinin yürütülmesi için yapılan sözleşmelerdir.\n\nÖzel hukuk sözleşmesinden farkı, idari sözleşmelerin kamu hizmetlerinin yürütülmesi için yapıldığı ve idari yargının denetimine tabi olduğudur. Özel hukuk sözleşmeleri ise, iki veya daha fazla kişinin aralarında yaptıkları sözleşmelerdir ve adli yargının denetimine tabidir.\n\n2577 Sayılı İdari Yargılama Usulü Kanunu'nun 36. maddesinde, idari sözleşmelerden doğan uyuşmazlıkların yetkili mahkemesi belirlenmiştir. Ayrıca, 4734 Sayılı Kamu İhale Kanunu'nun 46. maddesinde, kamu ihaleleri sonucunda yapılan sözleşmelerin idarece hazırlanacağı ve ihale yetkilisi ile yüklenici tarafından imzalanacağı belirtilmiştir.\n\nİdari sözleşmelerin özel hukuk sözleşmelerinden başka bir farkı, idari sözleşmelerin kamu yararının korunmasına yönelik hükümler içermesidir. 2709 Sayılı Türkiye Cumhuriyeti Anayasası'nın 47. maddesinde, kamu hizmeti niteliği taşıyan özel teşebbüslerin kamu yararının zorunlu kıldığı hallerde devletleştirilebileceği belirtilmiştir. Bu nedenle, idari sözleşmelerde kamu yararının korunmasına yönelik hükümler yer alabilir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamaktadir. Detayli bilgi icin 4734 Sayılı Kamu İhale Kanunu ve 2577 Sayılı İdari Yargılama Usulü Kanunu'nun ilgili maddelerine bakilabilir.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 32",
+          "metin_ozet": "Göreve ilişkin hükümler saklı kalmak şartıyla bu Kanunda veya özel kanunlarda yetkili idare mahkemesinin gösterilmemiş olması halinde, yetkili idare mahkemesi, dava konusu olan idari işlemi veya idari sözleşmeyi yapan idari merciin bulunduğu yerdeki idare mahkemesidir.",
+          "metin": null,
+          "skor": 0.826,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 36",
+          "metin_ozet": "Madde 36 – İdari sözleşmelerden doğanlar dışında kalan tam yargı davalarında yetkili mahkeme, sırasıyla:",
+          "metin": null,
+          "skor": 0.8258,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 2",
+          "metin_ozet": "10/6/1994-4001/1 md.) İdari dava türleri şunlardır:",
+          "metin": null,
+          "skor": 0.8181,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 47",
+          "metin_ozet": "Madde 47 – Kamu hizmeti niteliği taşıyan özel teşebbüsler, kamu yararının zorunlu kıldığı hallerde devletleştirilebilir.",
+          "metin": null,
+          "skor": 0.817,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4734 Sayılı Kamu İhale Kanunu - Madde 46",
+          "metin_ozet": "30/7/2003-4964/28 md.) Yapılan bütün ihaleler bir sözleşmeye bağlanır. Sözleşmeler idarece hazırlanır ve ihale yetkilisi ile yüklenici tarafından imzalanır. Yüklenicinin ortak girişim olması halinde, sözleşmeler ortak girişimin bütün ortakları tarafından imzalanır.",
+          "metin": null,
+          "skor": 0.8219,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4734&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1501,
+      "ortalama_kaynak_skor": 0.8218,
+      "kaynak_sayisi": 5,
+      "message_id": "f616b498-aadd-450b-a45a-0fd16949b0dd",
+      "conversation_id": "93c84f2b-ea2e-41a6-bf11-1b03908e20c8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Belediyenin aldığı bir karara karşı nereye başvurulur?",
+      "cevap": "",
+      "kaynaklar": [],
+      "kategori_tespit": "",
+      "message_id": null,
+      "conversation_id": null,
+      "uyari": "",
+      "yanit_suresi_sn": 19.87,
+      "basarili": false,
+      "hata": "HTTP 503: {\"detail\":{\"error\":\"upstream_unavailable\",\"detail\":\"Harici servis(ler)e su an erisilemiyor.\",\"retry_after\":30}}"
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Kamu hizmeti nedir ve hangi ilkeler çerçevesinde yürütülür?",
+      "cevap": "",
+      "kaynaklar": [],
+      "kategori_tespit": "",
+      "message_id": null,
+      "conversation_id": null,
+      "uyari": "",
+      "yanit_suresi_sn": 25.6,
+      "basarili": false,
+      "hata": "HTTP 503: {\"detail\":{\"error\":\"upstream_unavailable\",\"detail\":\"Harici servis(ler)e su an erisilemiyor.\",\"retry_after\":30}}"
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "İdari yargıda yürütmenin durdurulması ne demektir?",
+      "cevap": "",
+      "kaynaklar": [],
+      "kategori_tespit": "",
+      "message_id": null,
+      "conversation_id": null,
+      "uyari": "",
+      "yanit_suresi_sn": 26.26,
+      "basarili": false,
+      "hata": "HTTP 503: {\"detail\":{\"error\":\"upstream_unavailable\",\"detail\":\"Harici servis(ler)e su an erisilemiyor.\",\"retry_after\":30}}"
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Idare Hukuku",
+      "soru": "Ruhsat veya izin başvurum reddedilirse hangi yollara başvurabilirim?",
+      "cevap": "",
+      "kaynaklar": [],
+      "kategori_tespit": "",
+      "message_id": null,
+      "conversation_id": null,
+      "uyari": "",
+      "yanit_suresi_sn": 27.85,
+      "basarili": false,
+      "hata": "HTTP 503: {\"detail\":{\"error\":\"upstream_unavailable\",\"detail\":\"Harici servis(ler)e su an erisilemiyor.\",\"retry_after\":30}}"
+    }
+  ]
+}

@@ -1,0 +1,621 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T08:47:09.535376+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\10_fikri_mulkiyet\\test_sonuclari_20260416_114102.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 367.0,
+    "ortalama_sure_sn": 30.59,
+    "kategori_dagilimi": {
+      "Fikri Mülkiyet Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 22.56,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 417.0,
+        "ortalama_kaynak_skor": 0.7644
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Yazdığım roman üzerindeki telif hakkım ne zaman başlar, tescil ettirmem gerekiyor mu?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5846 Sayili Fikir ve Sanat Eserleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Geçici Madde 1",
+          "metin_ozet": "Geçici Madde 1 – Aşağıdaki maddelerde aksi tayin edilmemiş ise bu kanun hükümleri, yürürlükten önce ilk defa memleket içinde umuma arz yahut sicile kayıt edilmiş eserlere de uygulanır.",
+          "metin": null,
+          "skor": 0.8275,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 204,
+      "ortalama_kaynak_skor": 0.8275,
+      "kaynak_sayisi": 1,
+      "message_id": "8257f0c8-9705-4df8-8e02-47c9ac832128",
+      "conversation_id": "e1bbe37e-4bae-4ce3-8cf9-3f0ed8630162",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 21.31,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Başkasının fotoğrafını izinsiz kullandım, telif hakkı ihlali sayılır mı, cezası nedir?",
+      "cevap": "5846 Sayili Fikir ve Sanat Eserleri Kanunu'nun 30. maddesine göre, fotoğraflar umumi emniyet mülahazasiyle veya adli maksatlar için sahibinin rızası alınmaksızın, resmi makamlar veya bunların emriyle başkaları tarafından her şekilde çoğaltılabilir ve yayılabilir. Ancak, bu durum ticari amaçlarla kullanımda farklılık gösterebilir.\n\nEğer fotoğrafı ticari amaçlarla veya eserin sahibinin haklarını ihlal edecek şekilde kullandıysanız, bu durum telif hakkı ihlali olarak değerlendirilebilir. Ancak, getirilen kaynaklar bu soruyu tam olarak karşılamıyor. 5846 Sayili Fikir ve Sanat Eserleri Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu oneririz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardım burosu veya bir avukat ile görüşmenizi öneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 30",
+          "metin_ozet": "Madde 30 – Eser sahibine tanınan haklar, eserin ispatı maksadiyle mahkeme ve diğer resmi makamlar huzurunda ve alelıtlak zabıta ve ceza işlerinde bir muameleye konu teşkil etmek üzere kullanılmasına mani değildir.",
+          "metin": null,
+          "skor": 0.8418,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 838,
+      "ortalama_kaynak_skor": 0.8418,
+      "kaynak_sayisi": 1,
+      "message_id": "c82b79cd-62d9-4afc-bb21-f23d8c818fed",
+      "conversation_id": "aa7cd99a-f11c-4842-82e7-0f0dc604df2d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 10.98,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Ürünüm için marka tescili yaptırmak istiyorum, başvuru süreci ve koruma süresi nasıldır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 556 Sayili Markalar Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Geçici Madde 1",
+          "metin_ozet": "Bu Kanunun yürürlüğe girmesinden önce alenileşmiş eserlere mütaallik koruma süreleri bu kanuna göre hesap edilir. Aynı hüküm koruma süresinin eskisine nispetle daha uzun olması haline veya eski kanunun korunmadığı eser ve mahsullere de uygulanır.",
+          "metin": null,
+          "skor": 0.8272,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 188,
+      "ortalama_kaynak_skor": 0.8272,
+      "kaynak_sayisi": 1,
+      "message_id": "1ec97dd7-407f-4aee-8be5-cd59888b56b9",
+      "conversation_id": "92772441-55bc-45e6-b41e-50de8e21da81",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.13,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Geliştirdiğim buluş için patent aldım, bu beni rakip şirketlere karşı nasıl korur?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6769 sayili Sınai Mülkiyet Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 613",
+          "metin_ozet": "MADDE 613- (1) Ortaklar, şirket sırlarını korumakla yükümlüdür.",
+          "metin": null,
+          "skor": 0.8292,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 153",
+          "metin_ozet": "MADDE 153- (1) Birleşme, birleşmenin ticaret siciline tescili ile geçerlilik kazanır.",
+          "metin": null,
+          "skor": 0.8192,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 161",
+          "metin_ozet": "MADDE 161- (1) Tam ve kısmi bölünmede şirket payları ve hakları 140 ıncı madde uyarınca korunur.",
+          "metin": null,
+          "skor": 0.8228,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 216",
+          "metin_ozet": "MADDE 216- (1) Tescil yükümlülüğü yerine getirilmeksizin şirket adına işlere başlanmışsa, ortaklar giriştikleri işlerden dolayı üçüncü kişilere karşı müteselsilen sorumludur.",
+          "metin": null,
+          "skor": 0.8293,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 599",
+          "metin_ozet": "MADDE 599- (1) Bir esas sermaye payı birden fazla ortağa ait olduğu takdirde, paydaşlar şirket sözleşmesinde öngörülen ek ödeme ve yan edim yükümlülüklerinden dolayı şirkete karşı müteselsilen sorumludur.",
+          "metin": null,
+          "skor": 0.8277,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 195,
+      "ortalama_kaynak_skor": 0.8256,
+      "kaynak_sayisi": 5,
+      "message_id": "f285d803-0dce-4743-86f6-366253273396",
+      "conversation_id": "0a01425b-74d5-4ba5-8b8d-9b0ca17e919f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.92,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Müzik parçamı bir reklam filminde kullandılar, iznim olmadı, ne yapabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5846 Sayılı Fikir ve Sanat Eserleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 127",
+          "metin_ozet": "Madde 127- Kısıtlı, yasal temsilcisinin izni olmadıkça evlenemez.",
+          "metin": null,
+          "skor": 0.8405,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 38",
+          "metin_ozet": "MADDE 38- (1) (Değişik birinci cümle:",
+          "metin": null,
+          "skor": 0.8362,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 69",
+          "metin_ozet": "Madde 69 – Mali veya manevi haklarında tecavüz tehlikesine maruz kalan eser sahibi muhtemel tecavüzün önlenmesini dava edebilir.",
+          "metin": null,
+          "skor": 0.8375,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 807",
+          "metin_ozet": "Madde 807- Malik, hakkın konusu olan malın hukuka aykırı ya da niteliğine uygun düşmeyen kullanılış biçimine itiraz edebilir.",
+          "metin": null,
+          "skor": 0.8363,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 26",
+          "metin_ozet": "Madde 26- Adının kullanılması çekişmeli olan kişi, hakkının tespitini dava edebilir.",
+          "metin": null,
+          "skor": 0.8406,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 330,
+      "ortalama_kaynak_skor": 0.8382,
+      "kaynak_sayisi": 5,
+      "message_id": "ed4dd320-5589-4202-8b55-f59425ffc7d4",
+      "conversation_id": "f1b54bd1-bbd8-480f-9409-25f53a3778db",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Şirketim için tasarladığım ürün tasarımını korumanın en iyi yolu nedir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. 6769 sayılı Sınai Mülkiyet Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 27",
+          "metin_ozet": "MADDE 27- (1) Ticaret siciline tescil, kural olarak istem üzerine yapılır.",
+          "metin": null,
+          "skor": 0.8117,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 37",
+          "metin_ozet": "MADDE 37- (1) Tescil kaydı ile ilan edilen durum arasında aykırılık bulunması hâlinde, tescil edilmiş olan gerçek durumu bildikleri ispat edilmediği sürece, üçüncü kişilerin ilan edilen duruma güvenleri korunur.",
+          "metin": null,
+          "skor": 0.8131,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 29",
+          "metin_ozet": "MADDE 29- (1) Tescil istemi dilekçe ile yapılır.",
+          "metin": null,
+          "skor": 0.8095,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 195,
+      "ortalama_kaynak_skor": 0.8114,
+      "kaynak_sayisi": 3,
+      "message_id": "b58a715a-0405-43e3-8f16-b54c92d4a660",
+      "conversation_id": "d074c6f0-a96e-41d6-98e2-7492ae8ca427",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.09,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "İnternet sitesinde kullandığım logo başkasına ait marka çıktı, tazminat davası açılabilir mi?",
+      "cevap": "Getirilen kaynaklar bu soruyu kısmen karşılamaktadır. 5846 Sayılı Fikir ve Sanat Eserleri Kanunu ve 6102 Sayılı Türk Ticaret Kanunu, fikri mülkiyet hakları ve haksız rekabet konularını düzenlemektedir. \n\n6102 Sayılı Türk Ticaret Kanunu'nun 52. maddesine göre, ticaret unvanının, ticari dürüstlüğe aykırı biçimde bir başkası tarafından kullanılması halinde hak sahibi, bunun tespitini, yasaklanmasını; haksız kullanılan ticaret unvanı tescil edilmişse kanuna uygun bir şekilde değiştirilmesini veya silinmesini, tecavüzün sonucu olan maddi durumun ortadan kaldırılmasını, gereğinde araçların ve ilgili malların imhasını ve zarar varsa, kusurun ağırlığına göre maddi ve manevi tazminat isteyebilir.\n\nAncak, marka hakkı ihlali durumunda tazminat davası açma hakkı, 556 Sayılı Markaların Korunması Hakkında Kanun Hükmünde Kararname'de düzenlenmektedir. Bu kanun hükmünde kararnamede, marka hakkı sahibi, marka hakkının ihlal edilmesi durumunda, maddi ve manevi tazminat talep edebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 70",
+          "metin_ozet": "7/6/1995 - 4110/22 md.) Manevi hakları haleldar edilen kişi, uğradığı manevi zarara karşılık manevi tazminat ödenmesi için dava açabilir. Mahkeme, bu para yerine veya bunlara ek olarak başka bir manevi tazminat şekline de hükmedebilir.",
+          "metin": null,
+          "skor": 0.4223,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 56",
+          "metin_ozet": "a) Fiilin haksız olup olmadığının tespitini, b) Haksız rekabetin men’ini, c) Haksız rekabetin sonucu olan maddi durumun ortadan kaldırılmasını, haksız rekabet yanlış veya yanıltıcı beyanlarla yapılmışsa bu beyanların düzeltilmesini ve tecavüzün önlenmesi için kaçınılmaz ise,...",
+          "metin": null,
+          "skor": 0.4219,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 52",
+          "metin_ozet": "haksız kullanılan ticaret unvanı tescil edilmişse kanuna uygun bir şekilde değiştirilmesini veya silinmesini, tecavüzün sonucu olan maddi durumun ortadan kaldırılmasını, gereğinde araçların ve ilgili malların imhasını ve zarar varsa, kusurun ağırlığına göre maddi ve manevi...",
+          "metin": null,
+          "skor": 0.4217,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 38",
+          "metin_ozet": "Gerçeğe aykırı tescilden dolayı zarar görenlerin tazminat hakları saklıdır.",
+          "metin": null,
+          "skor": 0.4215,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 399",
+          "metin_ozet": "(2) Haksız ihtiyati tedbirden kaynaklanan tazminat davası, esas hakkındaki davanın karara bağlandığı mahkemede açılır. (3) Tazminat davası açma hakkı, hükmün kesinleşmesinden veya ihtiyati tedbir kararının kalkmasından itibaren, bir yıl geçmesiyle zamanaşımına uğrar.",
+          "metin": null,
+          "skor": 0.4213,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1107,
+      "ortalama_kaynak_skor": 0.4217,
+      "kaynak_sayisi": 5,
+      "message_id": "cbcf6a3d-eec0-47a6-83d1-e02423ad7ba5",
+      "conversation_id": "197ecba1-fed3-4bf3-a0a0-9cfaa321183a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 23.02,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Bir yayınevine eserimi verdim, sözleşme sona erdi ama yayımlamaya devam ediyorlar, ne yapabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu kısmen karsilamaktadır. 6098 Sayılı Türk Borçlar Kanunu'nun 490. maddesine göre, yayımlatan, sözleşmede kararlaştırılan süre sona ermedikçe veya süre belirlenmemişse kararlaştırılan baskı adedinin tükenmesi için alışılmış süre geçmedikçe, eserin tamamı veya bir bölümü üzerinde, yayımcının zararına olacak biçimde tasarrufta bulunamaz. Ancak, sözleşmenin sona ermesinden sonra yayınevinin eserinizin yayımını durdurması gerektiği açıkça anlaşılmaktadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 500",
+          "metin_ozet": "MADDE 500- Eser sahibi eseri tamamlamadan önce ölür veya tamamlama yeteneğini yitirir ya da eseri tamamlaması kendi kusuru olmaksızın imkânsız duruma gelirse, sözleşme kendiliğinden sona erer.",
+          "metin": null,
+          "skor": 0.8595,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 490",
+          "metin_ozet": "MADDE 490- Yayımlatan, sözleşmede kararlaştırılan süre sona ermedikçe veya süre belirlenmemişse kararlaştırılan baskı adedinin tükenmesi için alışılmış süre geçmedikçe, eserin tamamı veya bir bölümü üzerinde, yayımcının zararına olacak biçimde tasarrufta bulunamaz.",
+          "metin": null,
+          "skor": 0.8486,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 489",
+          "metin_ozet": "MADDE 489- Yayım sözleşmesiyle eser sahibinin hakları, sözleşmenin ifasının gerektirdiği ölçüde ve süreyle yayımcıya geçer.",
+          "metin": null,
+          "skor": 0.8529,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 493",
+          "metin_ozet": "Bu düzeltme ve iyileştirme gerektirdiği hâlde sözleşmede öngörülmemiş giderler, yayımlatan tarafından karşılanır.",
+          "metin": null,
+          "skor": 0.8543,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 491",
+          "metin_ozet": "MADDE 491- Sözleşmede basım sayısı belirtilmemişse, yayımcının ancak bir basım yapma hakkı vardır. Taraflar, sözleşmenin süresini veya baskı adedini kararlaştırmak zorundadırlar.",
+          "metin": null,
+          "skor": 0.8504,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 609,
+      "ortalama_kaynak_skor": 0.8531,
+      "kaynak_sayisi": 5,
+      "message_id": "b777e994-7ec1-4959-9909-f79a460c97c1",
+      "conversation_id": "864f0b0e-aa97-4e8c-822a-9120add6c2f5",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.93,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Telif hakkı koruma süresi ne zaman dolar, eserim kamu malı haline gelir mi?",
+      "cevap": "Telif hakkı koruma süresi, eser sahibinin yaşadığı müddetçe ve ölümünden itibaren 70 yıl devam eder. Eğer eser sahibinin birden fazla olması durumunda, koruma süresi hayatta kalan son eser sahibinin ölümünden itibaren yetmiş yıl geçmekle son bulur. \n\nEser sahibinin ölümünden sonra alenileşen eserlerde koruma süresi ölüm tarihinden sonra 70 yıldır. \n\nEserin kamu malı haline gelmesi için, mali haklarla ilgili koruma süresinin dolması gerekmektedir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 46",
+          "metin_ozet": "1/11/1983 - 2936/10 md.) Çoğaltma ve yayımı eser sahibi tarafından açıkça men edilmemiş olan ve umumi kütüphane, müze ve benzeri müesseselerde saklı bulunan henüz yayımlanmamış veya alenileşmemiş eserler, mali haklarla ilgili koruma süresi dolmuş olmak şartıyla, bulunduğu kamu...",
+          "metin": null,
+          "skor": 0.8412,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Ek Madde 2",
+          "metin_ozet": "21/2/2001 -4630/35 md.) Bu Kanunla sağlanan koruma, bu madde ile getirilen değişikliğin yürürlüğe girdiği sırada;",
+          "metin": null,
+          "skor": 0.8464,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 27",
+          "metin_ozet": "7/6/1995 - 4110/10 md.) Koruma süresi eser sahibinin yaşadığı müddetçe ve ölümünden itibaren 70 yıl devam eder (Ek cümle: Sahibinin ölümünden sonra alenileşen eserlerde koruma süresi ölüm tarihinden sonra 70 yıldır.",
+          "metin": null,
+          "skor": 0.8582,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Geçici Madde 1",
+          "metin_ozet": "Geçici Madde 1 – Aşağıdaki maddelerde aksi tayin edilmemiş ise bu kanun hükümleri, yürürlükten önce ilk defa memleket içinde umuma arz yahut sicile kayıt edilmiş eserlere de uygulanır.",
+          "metin": null,
+          "skor": 0.8514,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 577,
+      "ortalama_kaynak_skor": 0.8493,
+      "kaynak_sayisi": 4,
+      "message_id": "754bd321-878c-4238-a107-c70e4a8d103c",
+      "conversation_id": "63b91067-dbd9-4171-b2ce-73e7a665aa2d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.16,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Peynirlerimiz coğrafi işaretle korunuyor, başkası aynı adı kullanabilir mi?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6769 Sayılı Coğrafi İşaretler Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 49",
+          "metin_ozet": "MADDE 49- (1) Ticaret unvanı işletmeden ayrı olarak başkasına devredilemez. (2) Bir işletmenin devri, aksi açıkça kabul edilmiş olmadıkça, unvanın da devri sonucunu doğurur.",
+          "metin": null,
+          "skor": 0.802,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 46",
+          "metin_ozet": "MADDE 46- (1) Tacirin kimliği, işletmesinin genişliği, önemi ve finansal durumu hakkında, üçüncü kişilerde yanlış bir görüşün oluşmasına sebep olacak nitelikte bulunmamak, gerçeğe ve kamu düzenine aykırı olmamak şartıyla;",
+          "metin": null,
+          "skor": 0.8024,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 50",
+          "metin_ozet": "MADDE 50- (1) Usulen tescil ve ilan edilmiş olan ticaret unvanını kullanma hakkı sadece sahibine aittir.",
+          "metin": null,
+          "skor": 0.8089,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 19",
+          "metin_ozet": "21/2/2001-4630/12 md.) Eser sahibinin ölümünden sonra yukarıdaki fıkrada sayılan kimseler eser sahibine 14, 15 ve 16 ncı maddelerin üçüncü fıkralarında tanınan hakları eser sahibinin ölümünden itibaren yetmiş yıl kendi namlarına kullanabilirler.",
+          "metin": null,
+          "skor": 0.813,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 47",
+          "metin_ozet": "MADDE 47- (1) Ticari işletme sahibinin veya bir ortağın ticaret unvanında yer alan adı kanunen değişir veya yetkili makamlar tarafından değiştirilirse unvan olduğu gibi kalabilir.",
+          "metin": null,
+          "skor": 0.815,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 198,
+      "ortalama_kaynak_skor": 0.8083,
+      "kaynak_sayisi": 5,
+      "message_id": "31e74466-85a3-4029-9de4-b3c6d58a02b5",
+      "conversation_id": "f4d0b5d7-1ab4-4960-b9b9-a9710fc51c25",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Yazılımımın kaynak kodunu kopyalayan kişiye dava açabilir miyim, hangi kanun kapsamında?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5846 Sayılı Fikir ve Sanat Eserleri Kanunu ve 6100 Sayılı Hukuk Muhakemeleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 51",
+          "metin_ozet": "MADDE 51- (1) Dava ehliyeti, medenî hakları kullanma ehliyetine göre belirlenir.",
+          "metin": null,
+          "skor": 0.8419,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 561",
+          "metin_ozet": "MADDE 561- (1) Sorumlular aleyhinde şirketin merkezinin bulunduğu yer asliye ticaret mahkemesinde dava açılabilir.",
+          "metin": null,
+          "skor": 0.8411,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 10",
+          "metin_ozet": "MADDE 10- (1) Sözleşmeden doğan davalar, sözleşmenin ifa edileceği yer mahkemesinde de açılabilir. Mirastan doğan davalarda yetki",
+          "metin": null,
+          "skor": 0.8469,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 807",
+          "metin_ozet": "Madde 807- Malik, hakkın konusu olan malın hukuka aykırı ya da niteliğine uygun düşmeyen kullanılış biçimine itiraz edebilir.",
+          "metin": null,
+          "skor": 0.8401,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 66",
+          "metin_ozet": "Madde 66 – Manevi ve mali hakları tecavüze uğrıyan kimse tecavüz edene karşı tecavüzün ref'ini dava edebilir. Tecavüz, hizmetlerini ifa ettikleri sırada bir işletmenin temsilcisi veya müstahdemleri tarafından yapılmışsa işletme sahibi hakkında da dava açılabilir.",
+          "metin": null,
+          "skor": 0.841,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 245,
+      "ortalama_kaynak_skor": 0.8422,
+      "kaynak_sayisi": 5,
+      "message_id": "1c73b9b5-a60f-4caa-a53a-7113505f3ab9",
+      "conversation_id": "ebac3d49-9c71-44ce-8a9f-4bde2d3d7b38",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 13.37,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Lisans sözleşmesiyle kullanım hakkı verdim ama karşı taraf anlaşmaya aykırı davranıyor, ne yapabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6769 sayili Sınai Mülkiyet Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 122",
+          "metin_ozet": "a) Müvekkil, acentenin bulduğu yeni müşteriler sayesinde, sözleşme ilişkisinin sona ermesinden sonra da önemli menfaatler elde ediyorsa, b) Acente, sözleşme ilişkisinin sona ermesinin sonucu olarak, onun tarafından işletmeye kazandırılmış müşterilerle yapılmış veya kısa bir süre...",
+          "metin": null,
+          "skor": 0.4272,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 334",
+          "metin_ozet": "Kiracının, sözleşmenin sona ermesi hâlinde, sözleşmeye aykırı kullanmadan doğacak zararları giderme dışında, başkaca bir tazminat ödeyeceğini önceden taahhüt etmesine ilişkin anlaşmalar geçersizdir.",
+          "metin": null,
+          "skor": 0.4265,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 37",
+          "metin_ozet": "MADDE 37- Taraflardan biri, diğerinin veya üçüncü bir kişinin korkutması sonucu bir sözleşme yapmışsa, sözleşmeyle bağlı değildir.",
+          "metin": null,
+          "skor": 0.4263,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 35",
+          "metin_ozet": "Ancak, diğer taraf yanılmayı biliyor veya bilmesi gerekiyorsa, tazminat istenemez.",
+          "metin": null,
+          "skor": 0.426,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 123",
+          "metin_ozet": "MADDE 123- (1) Acentenin, işletmesine ilişkin faaliyetlerini, sözleşme ilişkisinin sona ermesinden sonrası için sınırlandıran anlaşmanın yazılı şekilde yapılması ve anlaşma hükümlerini içeren ve müvekkil tarafından imzalanmış bulunan bir belgenin acenteye verilmesi gerekir.",
+          "metin": null,
+          "skor": 0.4253,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 321,
+      "ortalama_kaynak_skor": 0.4263,
+      "kaynak_sayisi": 5,
+      "message_id": "52640026-f862-4310-b762-2f676fe80303",
+      "conversation_id": "ec4c92dd-6056-4e5e-88f1-dbd48ffb5371",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.63,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

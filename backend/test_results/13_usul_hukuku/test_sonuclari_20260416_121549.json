@@ -1,0 +1,709 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-16T09:22:38.611955+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\13_usul_hukuku\\test_sonuclari_20260416_121549.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 408.9,
+    "ortalama_sure_sn": 34.07,
+    "kategori_dagilimi": {
+      "Usul Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 26.05,
+        "kategori_dogruluk_orani": 83.3,
+        "ortalama_cevap_uzunluk": 1025.0,
+        "ortalama_kaynak_skor": 0.8499
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "İlamsız icra takibi nasıl başlatılır ve borçlu ne kadar sürede itiraz edebilir?",
+      "cevap": "İlamsız icra takibi, alacaklının icra dairesine başvurarak borçluya karşı takip talebinde bulunmasıyla başlar. Borçlu, ödeme emrinin tebliği tarihinden itibaren yedi gün içinde itiraz edebilir. İtiraz, dilekçe ile veya sözlü olarak icra dairesine bildirilmelidir. \n\nBu süre içinde itiraz edilmemesi durumunda, borçlu itiraz hakkını kaybetmiş sayılır. İtirazın zamanında yapılması için, borçlu ödeme emrinin tebliği tarihinden itibaren yedi gün içinde itirazını bildirmelidir. \n\nİtirazın nasıl yapılacağı ve içeriği, 2004 Sayılı İcra ve İflas Kanunu'nun 62. maddesinde düzenlenmiştir.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 65",
+          "metin_ozet": "18/2/1965-538/35 md.) Borçlu kusuru olmaksızın bir mani sebebiyle müddeti içinde itiraz edememiş ise paraya çevirme muamelesi bitinceye kadar itiraz edebilir.",
+          "metin": null,
+          "skor": 0.8707,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 68",
+          "metin_ozet": "Borçlu itirazını varit gösterecek hiçbir belge ibraz edemezse icra mahkemesi itirazın kaldırılmasına karar verir.",
+          "metin": null,
+          "skor": 0.8644,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 264",
+          "metin_ozet": "18/2/1965-538/104 md.) Dava açılmadan veya icra takibine başlanmadan evvel ihtiyati haciz yaptırmış olan alacaklı; İcra takibinde, borçlu ödeme emrine itiraz ederse bu itiraz hemen alacaklıya tebliğ olunur.",
+          "metin": null,
+          "skor": 0.8654,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 62",
+          "metin_ozet": "18/2/1965-538/33 md.) İtiraz etmek istiyen borçlu, itirazını, ödeme emrinin tebliği tarihinden itibaren yedi gün içinde dilekçe ile veya sözlü olarak icra dairesine bildirmeye mecburdur.",
+          "metin": null,
+          "skor": 0.8705,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 169",
+          "metin_ozet": "18/2/1965-538/82 md.) Borçlu, 168 inci maddenin 5 numaralı bendine göre borca karşı yapacağı itirazını bir dilekçe ile icra mahkemesine bildirir.",
+          "metin": null,
+          "skor": 0.8734,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 583,
+      "ortalama_kaynak_skor": 0.8689,
+      "kaynak_sayisi": 5,
+      "message_id": "fe2cdbe7-3061-440d-b5c9-3b5f929401ca",
+      "conversation_id": "c49bebfd-2c22-4309-ad0c-e9a485ab439e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 29.58,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Hakkımda icra takibi başlatıldı, ödeme emrine nasıl itiraz edebilirim?",
+      "cevap": "Ödeme emrine itiraz etmek için, ödeme emrinin tebliğ tarihinden itibaren yedi gün içinde dilekçe ile veya sözlü olarak icra dairesine itirazınızı bildirmeniz gerekir. İtirazda bulunmak istiyorsanız, itiraz nedenlerinizi ve varsa borcun bir kısmına itiraz ediyorsanız, o kısmın miktarını açıkça belirtmeniz gerekir. Ayrıca, takibin dayandığı senet altındaki imzayı reddediyorsanız, bunu da ayrıca ve açıkça beyan etmelisiniz. İtirazınız üzerine, icra dairesi gerekli işlemleri yapacak ve itirazınızın incelenmesi için gereken adımları takip edecektir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 62",
+          "metin_ozet": "18/2/1965-538/33 md.) İtiraz etmek istiyen borçlu, itirazını, ödeme emrinin tebliği tarihinden itibaren yedi gün içinde dilekçe ile veya sözlü olarak icra dairesine bildirmeye mecburdur.",
+          "metin": null,
+          "skor": 0.859,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 146",
+          "metin_ozet": "18/2/1965-538/66 md.) Takip talebi üzerine, icra dairesi, keyfiyeti merhun üzerinde sonra gelen rehin hakkı sahibine bir ihbarname ile bildirir ve borçlu ile rehin maliki üçüncü şahsa aşağıdaki kayıtlara uygun olmak üzere birer ödeme emri gönderir: Ödeme müddeti onbeş gündür.",
+          "metin": null,
+          "skor": 0.8626,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 150",
+          "metin_ozet": "18/2/1965-538/71 md.) Borçlu veya üçüncü şahıs ödeme emrinin tebliğinden itibaren yedi gün içinde itirazda bulunabilirler. 18/2/1965-538/72 md.) Ödeme emrine itiraz hakkında 62 den 72 nci maddeye kadar olan hükümler uygulanır.",
+          "metin": null,
+          "skor": 0.8612,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 172",
+          "metin_ozet": "18/2/1965-538/87 md.) Ödeme emrine itiraz veya şikayet etmek istiyen borçlu, ödeme emrinin tebliğinden itibaren beş gün içinde her türlü itiraz veya şikayetini sebepleri ile birlikte diğer tarafa tebliğ edilecek nüshadan bir fazla dilekçe ile icra dairesine bildirmeye mecburdur.",
+          "metin": null,
+          "skor": 0.8709,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 60",
+          "metin_ozet": "2/7/2012-6352/10 md.) Borcun ve masrafların yedi gün içinde icra dairesine ait ödeme emrinde yazılı olan banka hesabına ödenmesi, borç, teminat verilmesi mükellefiyeti ise teminatın bu süre içinde gösterilmesi ihtarını, 3.",
+          "metin": null,
+          "skor": 0.8527,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 676,
+      "ortalama_kaynak_skor": 0.8613,
+      "kaynak_sayisi": 5,
+      "message_id": "41df01fa-17bd-4fe1-991e-08013fe92a14",
+      "conversation_id": "2fbfd7f8-c257-4676-832f-1cc0965ad660",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.97,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Banka hesabıma e-haciz geldi, blokeyi kaldırmak için hangi yollar vardır?",
+      "cevap": "E-haciz, 2004 sayılı İcra ve İflas Kanunu kapsamında, banka hesaplarına konulan bir tür haciz türüdür. Banka hesabına e-haciz geldiğinde, hesabın bloke edildiğini ve hesabın belirli bir kısmının veya tamamının haciz altına alındığını gösteren bir bildirim alırsınız. \n\nBlokeyi kaldırmak için aşağıdaki yolları takip edebilirsiniz:\n\n1. **İtirazın kaldırılması**: İcra mahkemesine başvurarak, haciz kararına itiraz edebilirsiniz. İtirazın kabul edilmesi halinde, haciz kararı kaldırılabilir.\n2. **Haciz talebinin geri alınması**: Alacaklı, haciz talebini geri alabilir. Bu durumda, haciz kararı kaldırılır.\n3. **Ödeme**: Haciz altına alınan tutarın ödenmesi halinde, haciz kararı kaldırılabilir.\n4. **İhtiyati tedbir**: Mahkemeden, hesabın bloke edilmesinin haksız olduğunu iddia ederek, ihtiyati tedbir kararı alabilirsiniz. Bu karar, hesabın blokesini kaldırabilir.\n\nBu konularda daha detaylı bilgi için, 2004 sayılı İcra ve İflas Kanunu'nun ilgili maddelerine bakabilirsiniz. Özellikle, Madde 266, Madde 78 ve Madde 68, bu konuda bilgi verebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 266",
+          "metin_ozet": "18/2/1965-538/106 md.) Borçlu, para veya mahkemece kabul edilecek rehin veya esham yahut tahvilat depo etmek veya taşınmaz rehin yahut muteber bir banka kefaleti göstermek şartı ile ihtiyati haczin kaldırılmasını mahkemeden istiyebilir. İhtiyati hacizde iflas yolu ile takip:",
+          "metin": null,
+          "skor": 0.8278,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 78",
+          "metin_ozet": "3/7/1940-3890/1 md.) (Değişik birinci fıkra:22/7/2020-7251/49 md.) Ödeme emrindeki müddet geçtikten ve borçlu itiraz etmiş ise itirazı kaldırıldıktan sonra mal beyanını beklemeksizin alacaklı, haciz konmasını isteyebilir.",
+          "metin": null,
+          "skor": 0.8403,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 178",
+          "metin_ozet": "İflasa tabi bir borçlu aleyhine alacaklılardan birinin haciz yolu ile takibi neticesinde yapılan haciz borçlunun yarı mevcudunun elinden çıkmasına sebep olup da kalanı muaccel ve 67 28/2/2018 tarihli ve 7101 sayılı Kanunun 2 nci maddesiyle bu bentte yer alan “301 inci” ibaresi...",
+          "metin": null,
+          "skor": 0.8224,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Geçici Madde 5",
+          "metin_ozet": "1- 4, 13, 26 ve 250 nci maddeleri ile 88 inci maddesinin dördüncü ve beşinci fıkralarında değişiklik yapan hükümleri, Kanunun yürürlüğe girmesinden itibaren üç ay sonra, 2- 14 üncü maddesinde değişiklik yapan hükmü, Kanunun yürürlüğe girmesinden itibaren 6 ay sonra, 3- 18 inci...",
+          "metin": null,
+          "skor": 0.8276,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 68",
+          "metin_ozet": "18/2/1965-538/38 md.) (Değişik birinci fıkra:",
+          "metin": null,
+          "skor": 0.8259,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1173,
+      "ortalama_kaynak_skor": 0.8288,
+      "kaynak_sayisi": 5,
+      "message_id": "a15e8431-08fd-4c4a-a5fe-b0a3ed31feaf",
+      "conversation_id": "1a141dee-092c-4136-8b82-b5360212391e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.86,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Arabuluculuk hangi uyuşmazlıklarda zorunludur, başvuru nasıl yapılır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6325 sayili Hukuk Uyuşmazlıklarında Arabuluculuk Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 31",
+          "metin_ozet": "MADDE 31- (1) Hâkim, uyuşmazlığın aydınlatılmasının zorunlu kıldığı durumlarda, maddi veya hukuki açıdan belirsiz yahut çelişkili gördüğü hususlar hakkında, taraflara açıklama yaptırabilir;",
+          "metin": null,
+          "skor": 0.8237,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 217,
+      "ortalama_kaynak_skor": 0.8237,
+      "kaynak_sayisi": 1,
+      "message_id": "2ada67f5-264c-43e2-87d3-1e18e9a07b01",
+      "conversation_id": "2b1e1124-bfc9-4d47-a28d-3b6deac34ad4",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.5,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Dava açarken harç ve masraflar nasıl hesaplanır, peşin ödeme zorunlu mudur?",
+      "cevap": "Dava açarken harç ve masrafların hesaplanması ve peşin ödeme zorunluluğu 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun ilgili maddelerinde düzenlenmiştir. \n\nDavacı, yargılama harçları ile her yıl Adalet Bakanlığınca çıkarılacak gider avansı tarifesinde belirlenecek olan tutarı, dava açarken mahkeme veznesine yatırmak zorundadır (Madde 120/1). Avansın yeterli olmadığının dava sırasında anlaşılması hâlinde, mahkemece, bu eksikliğin tamamlanması için davacıya iki haftalık kesin süre verilir (Madde 120/2).\n\nYargılama giderleri, başvurma, karar ve ilam harçları, dava nedeniyle yapılan tebliğ ve posta giderleri, dosya ve sair evrak giderleri, geçici hukuki koruma tedbirleri ve protesto, ihbar, ihtarname ve vekâletname düzenlenmesine ilişkin giderler, keşif giderleri, tanık ile bilirkişiye ödenen ücret ve giderler, resmî dairelerden alınan belgeler için ödenen harç, vergi, ücret ve sair giderler, vekil ile takip edilmeyen davalarda tarafların hazır bulundukları günlere ait gündelik, seyahat ve konaklama giderlerine karşılık hâkimin takdir edeceği miktar, vekille takip edilen davalarda kanun gereğince takdir olunacak vekâlet ücreti ve yargılama sırasında yapılan diğer giderleri içermektedir (Madde 323).\n\nDava açarken harç ve masrafların peşin ödenmesi zorunludur. Ancak, avansın yeterli olmadığının dava sırasında anlaşılması hâlinde, mahkemece, bu eksikliğin tamamlanması için davacıya iki haftalık kesin süre verilir. Bu süre içinde eksikliğin tamamlanmaması hâlinde, dava açılmamış sayılır (Madde 119/2).\n\nGetirilen kaynaklar bu soruyu karsilamiyor. 6100 Sayılı Hukuk Muhakemeleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 120",
+          "metin_ozet": "MADDE 120- (1) Davacı, yargılama harçları ile her yıl Adalet Bakanlığınca çıkarılacak gider avansı tarifesinde belirlenecek olan tutarı, dava açarken mahkeme veznesine yatırmak zorundadır.",
+          "metin": null,
+          "skor": 0.8592,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 325",
+          "metin_ozet": "MADDE 325- (1) Tarafların üzerinde serbestçe tasarruf edemeyeceği dava ve işlerde, hâkim tarafından resen başvurulan deliller için gereken giderlerin, bir haftalık süre içinde taraflardan birisi veya belirtilecek oranda her ikisi tarafından ödenmesine karar verilir.",
+          "metin": null,
+          "skor": 0.8479,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 323",
+          "metin_ozet": "a) Başvurma, karar ve ilam harçları.38 b) Dava nedeniyle yapılan tebliğ ve posta giderleri. f) Resmî dairelerden alınan belgeler için ödenen harç, vergi, ücret ve sair giderler.",
+          "metin": null,
+          "skor": 0.8529,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 119",
+          "metin_ozet": "MADDE 119- (1) Dava dilekçesinde aşağıdaki hususlar bulunur: b) Davacı ile davalının adı, soyadı ve adresleri. c) Davacının Türkiye Cumhuriyeti kimlik numarası.",
+          "metin": null,
+          "skor": 0.8458,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 312",
+          "metin_ozet": "MADDE 312- (1) Feragat veya kabul beyanında bulunan taraf, davada aleyhine hüküm verilmiş gibi yargılama giderlerini ödemeye mahkûm edilir.",
+          "metin": null,
+          "skor": 0.8493,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1716,
+      "ortalama_kaynak_skor": 0.851,
+      "kaynak_sayisi": 5,
+      "message_id": "63560b23-f6a3-42c1-a0e6-a2e34143cef4",
+      "conversation_id": "40ee87cc-03f4-4f2b-b89a-0539d1cd1aec",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 20.97,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Maddi durumum kötü ise adli yardım talebini nasıl yapabilirim?",
+      "cevap": "Maddi durumunuz kötü ise adli yardım talebinde bulunabilirsiniz. Adli yardım talebi, asıl talep veya işin karara bağlanacağı mahkemeden istenir. İcra ve iflas takiplerinde ise takibin yapılacağı yerdeki icra mahkemesinden istenir. Talepte bulunan kişi, iddiasının özeti ile birlikte, iddiasını dayandıracağı delilleri ve yargılama giderlerini karşılayabilecek durumda olmadığını gösteren mali durumuna ilişkin belgeleri mahkemeye sunmak zorundadır.\n\nAdli yardım talebi, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 334. maddesinde düzenlenen koşullara göre yapılır. Bu koşullara göre, kendisi ve ailesinin geçimini önemli ölçüde zor duruma düşürmeksizin, gereken yargılama veya takip giderlerini kısmen veya tamamen ödeme gücünden yoksun olan kimseler, iddia ve savunmalarında, geçici hukuki korunma taleplerinde ve icra takibinde, taleplerinin açıkça dayanaktan yoksun olmaması kaydıyla adli yardımdan yararlanabilirler.\n\nAdli yardım talebi, mahkemeye yazılı olarak yapılır ve talepte bulunan kişi, iddiasının özeti ile birlikte, iddiasını dayandıracağı delilleri ve yargılama giderlerini karşılayabilecek durumda olmadığını gösteren mali durumuna ilişkin belgeleri mahkemeye sunmak zorundadır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 336",
+          "metin_ozet": "MADDE 336- (1) Adli yardım, asıl talep veya işin karara bağlanacağı mahkemeden; (3) Kanun yollarına başvuru sırasında adli yardım talebi bölge adliye mahkemesine veya Yargıtaya yapılır. Adli yardım talebinin incelenmesi",
+          "metin": null,
+          "skor": 0.858,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 338",
+          "metin_ozet": "MADDE 338- (1) Adli yardımdan yararlanan kişinin mali durumu hakkında kasten veya ağır kusuru sonucu yanlış bilgi verdiği ortaya çıkar veya sonradan mali durumunun yeteri derecede iyileştiği anlaşılırsa adli yardım kararı kaldırılır.",
+          "metin": null,
+          "skor": 0.8608,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 334",
+          "metin_ozet": "MADDE 334- (1) Kendisi ve ailesinin geçimini önemli ölçüde zor duruma düşürmeksizin, gereken yargılama veya takip giderlerini kısmen veya tamamen ödeme gücünden yoksun olan kimseler, iddia ve savunmalarında, geçici hukuki korunma taleplerinde ve icra takibinde, taleplerinin...",
+          "metin": null,
+          "skor": 0.8539,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 337",
+          "metin_ozet": "MADDE 337- (1) Mahkeme, adli yardım talebi hakkında duruşma yapmaksızın karar verebilir.(Ek cümle :",
+          "metin": null,
+          "skor": 0.8426,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 335",
+          "metin_ozet": "MADDE 335- (1) Adli yardım kararı, ilgiliye, aşağıdaki hususları sağlar: (3) Adli yardım, hükmün kesinleşmesine kadar devam eder.",
+          "metin": null,
+          "skor": 0.8349,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1318,
+      "ortalama_kaynak_skor": 0.85,
+      "kaynak_sayisi": 5,
+      "message_id": "4aaeca12-2056-4c62-86c7-642e89d5a2b0",
+      "conversation_id": "d897c836-c6fd-46fe-8cfd-6bf4e6ab78e6",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.21,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "İstinaf başvurusu nedir, hangi sürede ve nereye yapılır?",
+      "cevap": "İstinaf başvurusu, mahkeme kararlarına karşı yapılan bir kanun yolu başvurusudur. İstinaf başvurusu süresi, kararın usulen taraflardan her birine tebliğiyle başlar ve iki haftadır (6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 345). İstinaf dilekçesi, kararı veren mahkemeye veya başka bir yer mahkemesine verilebilir (6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 343). İstinaf başvurusu, bölge adliye mahkemesine yapılır. \n\nAncak, idare ve vergi mahkemelerinin kararlarına karşı istinaf başvurusu süresi, kararın tebliğinden itibaren otuz gündür (2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 45). Ayrıca, bazı özel kanunlarda farklı süreler öngörülmüş olabilir. \n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 345",
+          "metin_ozet": "MADDE 345- (1) İstinaf yoluna başvuru süresi iki haftadır. İstinaf yoluna başvuru süresine ilişkin özel kanun hükümleri saklıdır. İstinaf dilekçesinin reddi",
+          "metin": null,
+          "skor": 0.8683,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 45",
+          "metin_ozet": "İstinaf başvurusuna konu olacak kararlara karşı yapılan kanun yolu başvurularında dilekçelerdeki hitap ve istekle bağlı kalınmaksızın dosyalar bölge idare mahkemesine gönderilir.",
+          "metin": null,
+          "skor": 0.8377,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 365",
+          "metin_ozet": "2/3/2005-5311/26 md.) İstinaf yoluna başvurma, yasal süre geçtikten sonra yapılır veya istinaf yoluna başvurulmasına olanak bulunmayan bir karara veya vazgeçme nedeniyle itiraz veya şikâyetin reddine yahut süresi geçmiş bir şikâyete ilişkin olursa, Hukuk Usulü Muhakemeleri...",
+          "metin": null,
+          "skor": 0.8406,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 164",
+          "metin_ozet": "Bu kararlara karşı tebliğ tarihinden itibaren iki hafta içinde istinaf yoluna başvurulabilir. Bölge adliye mahkemesi kararına karşı da tebliğ tarihinden itibaren iki hafta içinde temyiz yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 0.8429,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 343",
+          "metin_ozet": "MADDE 343- (1) İstinaf dilekçesi, kararı veren mahkemeye veya başka bir yer mahkemesine verilebilir. İstinaf dilekçesi hangi mahkemeye verilmişse, o mahkemece bölge adliye mahkemesi başvuru defterine kaydolunur ve başvurana ücretsiz bir alındı belgesi verilir.",
+          "metin": null,
+          "skor": 0.8567,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 811,
+      "ortalama_kaynak_skor": 0.8492,
+      "kaynak_sayisi": 5,
+      "message_id": "82402cff-47fd-490b-8afa-2e23acc20622",
+      "conversation_id": "bada86ed-ccad-402b-9153-2d8e6835a1a8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.96,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Temyiz hangi kararlar için mümkündür ve istinaftan farkı nedir?",
+      "cevap": "Temyiz, belirli kararlar için başvurulabilen bir kanun yolu olup, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 363. maddesinde düzenlenmiştir. Buna göre, ilk derece mahkemelerinin kesin olarak verdikleri kararlar ile istinaf incelemesinden geçmeden kesinleşmiş bulunan kararlarına ve bölge adliye mahkemesi hukuk dairelerinin ilk derece mahkemesi sıfatıyla kesin olarak verdikleri kararlar ile yine bu sıfatla verdikleri ve temyiz incelemesinden geçmeden kesinleşmiş bulunan kararlarına karşı, yürürlükteki hukuka aykırı bulunduğu ileri sürülerek Adalet Bakanlığı veya Yargıtay Cumhuriyet Başsavcılığı tarafından kanun yararına temyiz yoluna başvurulabilir.\n\nİstinaf ise, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 341. maddesinde düzenlenmiştir. Buna göre, ilk derece mahkemelerinin nihai kararlarına karşı istinaf yoluna başvurulabilir. İstinaf, belirli bir miktar veya değeri aşan davalarda mümkündür. İstinaf dilekçesi, kararın tebliğinden itibaren belirli bir süre içinde verilir.\n\nİstinaf ve temyiz arasındaki fark, başvurulabilecek kararlar ve amaçlarıdır. İstinaf, ilk derece mahkemesi kararlarına karşı başvurulan bir kanun yolu olup, hukuki yanlışlıkların düzeltilmesi amaçlanır. Temyiz ise, belirli kararlar için başvurulabilen bir kanun yolu olup, yürürlükteki hukuka aykırı kararların düzeltilmesi amaçlanır. Ayrıca, istinaf dilekçesi belirli bir süre içinde verilirken, temyiz talebi herhangi bir süre kısıtlaması olmadan yapılabilir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. 2577 Sayılı İdari Yargılama Usulü Kanunu ve 6100 Sayılı Hukuk Muhakemeleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 168",
+          "metin_ozet": "MADDE 168- (1) Aynı yargı çevresinde yer alan aynı düzey ve sıfattaki hukuk mahkemelerinde görülmekte olan davalar yönünden verilen birleştirme ve ayırma hususundaki ilk derece mahkemesi kararlarına karşı istinaf yoluna;",
+          "metin": null,
+          "skor": 0.8637,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 51",
+          "metin_ozet": "5/4/1990-3622/20 md.) İdare ve vergi mahkemeleri ile bölge idare mahkemelerinin kesin olarak verdiği kararlar ile istinaf veya temyiz incelemesinden geçmeden kesinleşmiş bulunan kararlardan niteliği bakımından yürürlükteki hukuka aykırı bir sonucu ifade edenler, ilgili...",
+          "metin": null,
+          "skor": 0.8464,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 341",
+          "metin_ozet": "MADDE 341- (1) (Değişik:22/7/2020-7251/34 md.) İlk derece mahkemelerinin aşağıdaki kararlarına karşı istinaf yoluna başvurulabilir:",
+          "metin": null,
+          "skor": 0.8397,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 45",
+          "metin_ozet": "İdare ve vergi mahkemelerinin kararlarına karşı, başka kanunlarda farklı bir kanun yolu öngörülmüş olsa dahi, mahkemenin bulunduğu yargı çevresindeki bölge idare mahkemesine, kararın tebliğinden itibaren otuz gün içinde istinaf yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 0.8386,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 363",
+          "metin_ozet": "20/7/2017-7035/33 md.) İlk derece mahkemelerinin kesin olarak verdikleri kararlar ile istinaf incelemesinden geçmeden kesinleşmiş bulunan kararlarına ve bölge adliye mahkemesi hukuk dairelerinin ilk derece mahkemesi sıfatıyla kesin olarak verdikleri kararlar ile yine bu sıfatla...",
+          "metin": null,
+          "skor": 0.8433,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1696,
+      "ortalama_kaynak_skor": 0.8463,
+      "kaynak_sayisi": 5,
+      "message_id": "9146f2a9-7a8a-4b67-9d44-9962d2dd9385",
+      "conversation_id": "ecf85147-7ee1-4058-8ae7-504565dcc9c4",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.53,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "İhtiyati tedbir kararı hangi durumlarda alınabilir?",
+      "cevap": "İhtiyati tedbir kararı, mevcut durumda meydana gelebilecek bir değişme nedeniyle hakkın elde edilmesinin önemli ölçüde zorlaşacağından ya da tamamen imkânsız hâle geleceğinden veya gecikme sebebiyle bir sakıncanın yahut ciddi bir zararın doğacağından endişe edilmesi hâllerinde alınabilir. Bu durumlar 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 389. maddesinde düzenlenmiştir. \n\nBu karar, dava açılmadan önce, esas hakkında görevli ve yetkili olan mahkemeden; dava açıldıktan sonra ise ancak asıl davanın görüldüğü mahkemeden talep edilebilir. Talep edenin haklarının derhâl korunmasında zorunluluk bulunan hâllerde, hâkim karşı tarafı dinlemeden de tedbire karar verebilir. \n\nİhtiyati tedbir kararı, mahkeme tarafından verilir ve bu kararın içeriği, 6100 Sayılı Hukuk Muhakemeleri Kanunu'nun 391. maddesinde belirtilen hususları içermelidir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 389",
+          "metin_ozet": "MADDE 389- (1) Mevcut durumda meydana gelebilecek bir değişme nedeniyle hakkın elde edilmesinin önemli ölçüde zorlaşacağından ya da tamamen imkânsız hâle geleceğinden veya gecikme sebebiyle bir sakıncanın yahut ciddi bir zararın doğacağından endişe edilmesi hâllerinde, uyuşmazlık...",
+          "metin": null,
+          "skor": 0.8637,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 414",
+          "metin_ozet": "Hakem veya hakem kurulu, ihtiyati tedbir kararı vermeyi, uygun bir teminat verilmesine bağlı kılabilir.",
+          "metin": null,
+          "skor": 0.8663,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 396",
+          "metin_ozet": "MADDE 396- (1) Durum ve koşulların değiştiği sabit olursa, talep üzerine ihtiyati tedbirin değiştirilmesine veya kaldırılmasına teminat aranmaksızın karar verilebilir. İhtiyati tedbiri tamamlayan işlemler",
+          "metin": null,
+          "skor": 0.865,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 390",
+          "metin_ozet": "MADDE 390- (1) İhtiyati tedbir, dava açılmadan önce, esas hakkında görevli ve yetkili olan mahkemeden; (2) Talep edenin haklarının derhâl korunmasında zorunluluk bulunan hâllerde, hâkim karşı tarafı dinlemeden de tedbire karar verebilir.",
+          "metin": null,
+          "skor": 0.8778,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 391",
+          "metin_ozet": "(2) İhtiyati tedbir kararında;",
+          "metin": null,
+          "skor": 0.879,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 968,
+      "ortalama_kaynak_skor": 0.8704,
+      "kaynak_sayisi": 5,
+      "message_id": "4c84a789-a2dc-4caa-abe4-f4b44ddbe0d6",
+      "conversation_id": "f9f6b07e-517f-48bf-a251-52d6d7e61f73",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.86,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Delil tespiti davası nedir, hangi durumlarda dava açmadan önce istenir?",
+      "cevap": "Delil tespiti davası, henüz dava açılmamış olan hallerde, delillerin kaybolacağı veya gösterilmesinde zorlukla karşılaşılacağı kuşkusunu uyandıran durumlarda, mahkemeden delil tespiti talebinde bulunma imkânı veren bir hukuki kurumudur. \n\nDelil tespiti davası, esas hakkındaki davanın açılmasından önce, delillerin korunması amacıyla istenir. Bu talep, henüz dava açılmamış olan hallerde, delil tespiti yapan mahkemenin yetkisiz ve görevsiz olduğu ileri sürülemeyeceği şekilde yapılır. \n\nDelil tespiti talebi, dava açılmadan önce, mahkemeden delil tespiti yapılması talebi olarak yapılır. Bu talep, delillerin kaybolacağı veya gösterilmesinde zorlukla karşılaşılacağı kuşkusunu uyandıran durumlarda yapılır. Mahkeme, delil tespiti talebini haklı bulursa, delil tespiti yapılır ve tespit tutanağı ile varsa bilirkişi raporu karşı tarafa tebliğ edilir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamaktadır. Detayli bilgi icin 6100 Sayılı Hukuk Muhakemeleri Kanunu'nu incelemenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 401",
+          "metin_ozet": "MADDE 401- (1) Henüz dava açılmamış olan hâllerde delil tespiti, esas hakkındaki davaya bakacak olan mahkemeden veya üzerinde keşif yahut bilirkişi incelemesi yapılacak olan şeyin bulunduğu veya tanık olarak dinlenilecek kişinin oturduğu yer sulh mahkemesinden istenir.",
+          "metin": null,
+          "skor": 0.8768,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 58",
+          "metin_ozet": "Taraflar, idari dava açtıktan sonra bu davalara ilişkin delillerin tespitini ancak davaya bakan Danıştay, idare ve vergi mahkemelerinden isteyebilirler.",
+          "metin": null,
+          "skor": 0.8537,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 400",
+          "metin_ozet": "MADDE 400- (1) Taraflardan her biri, görülmekte olan bir davada henüz inceleme sırası gelmemiş yahut ileride açacağı davada ileri süreceği bir vakıanın tespiti amacıyla keşif yapılması, bilirkişi incelemesi yaptırılması ya da tanık ifadelerinin alınması gibi işlemlerin...",
+          "metin": null,
+          "skor": 0.8684,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 399",
+          "metin_ozet": "(2) Haksız ihtiyati tedbirden kaynaklanan tazminat davası, esas hakkındaki davanın karara bağlandığı mahkemede açılır. (3) Tazminat davası açma hakkı, hükmün kesinleşmesinden veya ihtiyati tedbir kararının kalkmasından itibaren, bir yıl geçmesiyle zamanaşımına uğrar.",
+          "metin": null,
+          "skor": 0.8487,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 402",
+          "metin_ozet": "MADDE 402- (1) Delil tespiti talebi dilekçeyle yapılır.",
+          "metin": null,
+          "skor": 0.8615,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 988,
+      "ortalama_kaynak_skor": 0.8618,
+      "kaynak_sayisi": 5,
+      "message_id": "8b11849f-0c47-4d49-a414-3d8fd74b270e",
+      "conversation_id": "8aa52b56-0875-44ce-95c5-75017bd46e8b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.71,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Tebligat bana ulaşmadıysa yine de süre işlemeye başlar mı?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 6100 Sayılı Hukuk Muhakemeleri Kanunu ve 2577 Sayılı İdari Yargılama Usulü Kanunu, sürelerin başlangıcını ve bitimini düzenlemektedir, ancak tebligatın yapılmaması veya tebligatın ulaşmaması durumunda sürelerin işlemeye başlaması konusunda açık bir hüküm bulunmamaktadır. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 91",
+          "metin_ozet": "MADDE 91- (1) Süreler, taraflara tebliğ tarihinden veya kanunda öngörülen hâllerde, tefhim tarihinden itibaren işlemeye başlar.",
+          "metin": null,
+          "skor": 0.8425,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 8",
+          "metin_ozet": "Süreler, tebliğ, yayın veya ilan tarihini izleyen günden itibaren işlemeye başlar. Tatil günleri sürelere dahildir. Şu kadarki, sürenin son günü tatil gününe rastlarsa, süre tatil gününü izleyen çalışma gününün bitimine kadar uzar.",
+          "metin": null,
+          "skor": 0.8455,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 92",
+          "metin_ozet": "MADDE 92- (1) Süreler gün olarak belirlenmiş ise tebliğ veya tefhim edildiği gün hesaba katılmaz ve süre son günün tatil saatinde biter. hafta, ay veya yıl olarak belirlenmiş ise başladığı güne son hafta, ay veya yıl içindeki karşılık gelen günün tatil saatinde biter.",
+          "metin": null,
+          "skor": 0.841,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 6",
+          "metin_ozet": "Danıştay, idare mahkemesi ve vergi mahkemesi başkanlıklarına veya 4 ncü maddede yazılı yerlere verilen dilekçelerin harç ve posta ücretleri alındıktan sonra deftere derhal kayıtları yapılarak kayıt tarih ve sayısı dilekçenin üzerine yazılır.",
+          "metin": null,
+          "skor": 0.843,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 10",
+          "metin_ozet": "10/6/1994-4001/5 md.) Otuz gün içinde bir cevap verilmezse istek reddedilmiş sayılır. İlgililer otuz günün bittiği tarihten itibaren dava açma süresi içinde, konusuna göre Danıştaya, idare ve vergi mahkemelerine dava açabilirler.",
+          "metin": null,
+          "skor": 0.8431,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Usul Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 532,
+      "ortalama_kaynak_skor": 0.843,
+      "kaynak_sayisi": 5,
+      "message_id": "a9a50eed-30b8-4554-80d4-7f7e2acd85bf",
+      "conversation_id": "3f7988e6-c2db-464a-a29e-50dbc131e8dd",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.45,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Usul Hukuku",
+      "soru": "Avukatsız dava açabilir miyim, hangi aşamalarda avukat desteği kritik hale gelir?",
+      "cevap": "6100 Sayılı Hukuk Muhakemeleri Kanunu'na göre, avukatsız dava açmak mümkün olmakla birlikte, bazı durumlarda avukat desteği kritik hale gelebilir. \n\nMadde 77'ye göre, vekâletnamesinin aslını veya onaylı örneğini vermeyen avukat, dava açamaz ve yargılamayla ilgili hiçbir işlem yapamaz. Ancak, mahkeme, vereceği kesin süre içinde vekâletnamesini getirmek koşuluyla avukatın dava açmasına veya usul işlemlerini yapmasına izin verebilir.\n\nMadde 76'da da belirtildiği gibi, avukat, açtığı veya takip ettiği dava ve işlerde, noter tarafından onaylanan ya da düzenlenen vekâletname aslını veya avukat tarafından onaylanmış aslına uygun örneğini, dava yahut takip dosyasına konulmak üzere ibraz etmek zorundadır.\n\nAvukat desteği, özellikle davanın açılması, usul işlemlerinin yapılması ve duruşmalarda temsil edilmesi gibi aşamalarda kritik hale gelebilir. Ayrıca, davanın takibi, delillerin toplanması ve sunulması, karşı tarafın iddialarına cevap verilmesi gibi konularda da avukat desteği önemli olabilir.\n\nAncak, bazı durumlarda, örneğin adli yardım talebinde bulunmak gibi, avukat desteği olmadan da işlem yapılabilir. Madde 335'e göre, adli yardım kararı, ilgiliye, yapılacak tüm yargılama ve takip giderlerinden geçici olarak muafiyet, yargılama ve takip giderleri için teminat göstermekten muafiyet, dava ve icra takibi sırasında yapılması gereken tüm giderlerin Devlet tarafından avans olarak ödenmesi ve davanın avukat ile takibi gerekiyorsa, ücreti sonradan ödenmek üzere bir avukat temini sağlar.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 77",
+          "metin_ozet": "MADDE 77- (1) Vekâletnamesinin aslını veya onaylı örneğini vermeyen avukat, dava açamaz ve yargılamayla ilgili hiçbir işlem yapamaz.",
+          "metin": null,
+          "skor": 0.8471,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 76",
+          "metin_ozet": "MADDE 76- (1) Avukat, açtığı veya takip ettiği dava ve işlerde, noter tarafından onaylanan ya da düzenlenen vekâletname aslını veya avukat tarafından onaylanmış aslına uygun örneğini, dava yahut takip dosyasına konulmak üzere ibraz etmek zorundadır.",
+          "metin": null,
+          "skor": 0.8435,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 57",
+          "metin_ozet": "MADDE 57- (1) Birden çok kişi, aşağıdaki hâllerde birlikte dava açabilecekleri gibi aleyhlerine de birlikte dava açılabilir: a) Davacılar veya davalılar arasında dava konusu olan hak veya borcun, elbirliği ile mülkiyet dışındaki bir sebeple ortak olması.",
+          "metin": null,
+          "skor": 0.8402,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 335",
+          "metin_ozet": "c) Dava ve icra takibi sırasında yapılması gereken tüm giderlerin Devlet tarafından avans olarak ödenmesi. ç) Davanın avukat ile takibi gerekiyorsa, ücreti sonradan ödenmek üzere bir avukat temini.",
+          "metin": null,
+          "skor": 0.8459,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 60",
+          "metin_ozet": "MADDE 60- (1) Mecburi dava arkadaşları, ancak birlikte dava açabilir veya aleyhlerine de birlikte dava açılabilir. Bu tür dava arkadaşlığında, dava arkadaşları birlikte hareket etmek zorundadır. ÜÇÜNCÜ AYIRIM Davanın İhbarı ve Davaya Müdahale İhbar ve şartları",
+          "metin": null,
+          "skor": 0.8445,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1627,
+      "ortalama_kaynak_skor": 0.8442,
+      "kaynak_sayisi": 5,
+      "message_id": "252a45c8-6a59-4141-a0d3-f32e4754e83a",
+      "conversation_id": "8b497368-9059-4813-891b-e39682d76bf8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.98,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

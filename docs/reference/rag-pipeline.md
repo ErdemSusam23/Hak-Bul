@@ -10,32 +10,43 @@
 Kullanıcı sorusu
       │
       ▼
-[1] categorize()          ← Uygulama içi keyword eşleme
+[1] categorize()              ← Uygulama içi keyword eşleme
       │
       ▼
-[2] rewrite_query()       ← Groq API → llama-3.1-8b-instant
+[2] rewrite_query()           ← Groq API → llama-3.1-8b-instant
       │
       ▼
-[3] retrieve_chunks()     ← Qdrant Cloud + yerel kanun korpusu fallback/merge
+[3] retrieve_chunks()         ← Qdrant hukuk_chunks_v2 (kanunlar, PRIMARY)
+      │                          + Qdrant hukuk_chunks (kararlar, SECONDARY ×0.9)
+      │                          + local JSON fallback (Qdrant başarısız olursa)
       │
       ▼
-[4] filter_by_score()     ← Uygulama içi (mulga filtreleme + skor eşiği)
+[4] apply_category_penalty()  ← Kategoriye uymayan kanunlara ×0.5 soft penalty
       │
       ▼
-[5] generate_answer()     ← Groq API → llama-3.3-70b-versatile
+[5] rerank_chunks()           ← BAAI/bge-reranker-v2-m3 CrossEncoder sıralaması
+      │                          (RERANKER_ENABLED=true ise aktif)
       │
       ▼
-[6] format_response()     ← AskResponse JSON
+[6] filter_by_score()         ← Mulga filtreleme + SCORE_THRESHOLD eşiği
+      │
+      ▼
+[7] generate_answer()         ← Groq API → llama-3.3-70b-versatile
+      │
+      ▼
+[8] format_response()         ← AskResponse JSON
 ```
 
 | Adım | Fonksiyon | Girdi | Çıktı | Servis |
 |------|-----------|-------|-------|--------|
 | 1 | `get_kategorilendirici().kategorile()` | Kullanıcı sorusu | 14 kategoriden biri | Uygulama içi |
 | 2 | `rewrite_query()` | Kullanıcı sorusu | Vektör aramaya uygun kısa sorgu | Groq — llama-3.1-8b-instant |
-| 3 | `retrieve_chunks()` | Rewrite edilmiş sorgu | Qdrant sonucu + gerektiğinde yerel kanun sonuçları | Qdrant Cloud + local corpus |
-| 4 | `filter_by_score()` | Chunk listesi | Mulga maddeler ayıklandı, eşik uygulandı | Uygulama içi |
-| 5 | `generate_answer()` | Filtreli chunk'lar + orijinal soru | Kaynak atıflı TR/EN yanıt | Groq — llama-3.3-70b-versatile |
-| 6 | `format_response()` | Yanıt + chunk metadata | AskResponse JSON | Uygulama içi |
+| 3 | `retrieve_chunks()` | Rewrite edilmiş sorgu | Kanunlar (primary) + kararlar (secondary) + local fallback | Qdrant Cloud + local corpus |
+| 4 | `apply_category_penalty()` | Chunk listesi + kategori | Kategoriye uymayan kanunlara ×0.5 penalty uygulanmış liste | Uygulama içi |
+| 5 | `rerank_chunks()` | Chunk listesi + orijinal soru | CrossEncoder'la yeniden sıralanmış liste (skor Qdrant'tan korunur) | Uygulama içi |
+| 6 | `filter_by_score()` | Chunk listesi | Mulga maddeler ayıklandı, eşik uygulandı | Uygulama içi |
+| 7 | `generate_answer()` | Filtreli chunk'lar + orijinal soru | Kaynak atıflı TR/EN yanıt | Groq — llama-3.3-70b-versatile |
+| 8 | `format_response()` | Yanıt + chunk metadata | AskResponse JSON | Uygulama içi |
 
 ---
 
@@ -78,32 +89,80 @@ Davranış notları:
 
 ### Adım 3 — Retrieval
 
+Dual-collection stratejisi: kanunlar primary, Yargıtay kararları secondary, local JSON son çare.
+
 ```python
-# rag/retriever.py
+# rag/retriever.py (özet)
 
 def retrieve_chunks(query: str, top_n: int = 5) -> list[dict]:
     embedding = model.encode(f"query: {query}").tolist()
-    qdrant_results = _query_qdrant(
-        embedding=embedding,
-        top_n=top_n * 2,
-        kaynak_turu=kaynak_turu,
-    )
+
+    # PRIMARY: kararlar collection (hukuk_chunks)
+    qdrant_results = _query_qdrant(embedding=embedding, top_n=top_n * 2)
     raw = [{"payload": r.payload, "skor": r.score} for r in qdrant_results]
+    deduped = _deduplicate_chunks(raw)
 
-    if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
-        local_kanun = _retrieve_local(query=query, top_n=top_n * 2, kaynak_turu="kanun")
-        raw = _merge_scored_chunks(local_kanun, raw, secondary_boost=0.85)
+    # SECONDARY: kanunlar collection (hukuk_chunks_v2) — COLLECTION_KANUN_NAME ile kontrol
+    if settings.COLLECTION_KANUN_NAME:
+        kanun_results = _query_qdrant(
+            embedding=embedding,
+            top_n=top_n * 2,
+            collection_name=settings.COLLECTION_KANUN_NAME,
+        )
+        raw_kanunlar = [{"payload": r.payload, "skor": r.score} for r in kanun_results]
+        deduped = _merge_scored_chunks(
+            _deduplicate_chunks(raw_kanunlar),  # primary
+            deduped,                             # secondary ×0.9
+            secondary_boost=0.9,
+        )
 
-    return _deduplicate_chunks(raw)[:top_n]
+    # FALLBACK: local JSON — sadece kanunlar collection sorgulanamadıysa
+    if not got_qdrant_kanunlar and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
+        local_kanun = _retrieve_local(query=query, top_n=top_n * 2)
+        deduped = _merge_scored_chunks(local_kanun, deduped, secondary_boost=0.85)
+
+    return deduped[:top_n]
 ```
 
 Davranış notları:
 
-- Qdrant yapılandırılmamışsa ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=true` ise yerel JSON korpusu kullanılır.
-- Qdrant erişilebilir olsa bile bazı kanun sorgularında yerel kanun sonuçları Qdrant sonuçlarıyla birleştirilir.
+- `COLLECTION_KANUN_NAME` env var boşsa sadece kararlar collection sorgulanır (geriye dönük uyumlu).
+- Kanunlar collection başarısız olursa uyarı loglanır ve local JSON fallback devreye girer.
 - Retrieval katmanı tamamen mulga metinleri sonradan filtreleyebilmek için ham payload'ı taşır.
 
-### Adım 4 — Skor Filtresi ve Zayıf Sorgu Tespiti
+### Adım 4 — Kategori Penalty
+
+```python
+# rag/retriever.py
+
+def apply_category_penalty(chunks, kategori, penalty=0.5):
+    expected = KATEGORI_EXPECTED_LAWS.get(kategori)
+    # Kategoriye uymayan kanun chunk'larına ×0.5 soft penalty
+    # Yargıtay kararları ve "Genel" kategorisi etkilenmez
+```
+
+`KATEGORI_EXPECTED_LAWS` dict'i her kategori için beklenen kanun numaralarını tanımlar (örn. İş Hukuku → 4857, 1475, 5510). Beklenmeyenler penalize edilerek sıralamanın altına iner; threshold altına düşerlerse `filter_by_score` tarafından elenirler.
+
+### Adım 5 — Reranker
+
+```python
+# rag/reranker.py
+
+def rerank_chunks(query, chunks, top_n):
+    if not settings.RERANKER_ENABLED:
+        return chunks[:top_n]  # sıfır ek maliyet
+
+    reranker = CrossEncoder("BAAI/bge-reranker-v2-m3")  # lazy-load, ~270MB
+    scores = reranker.predict([(query, c["payload"]["metin"]) for c in chunks])
+    reranked = sorted(zip(chunks, scores), key=lambda x: x[1], reverse=True)
+
+    # Sıralama cross-encoder'dan, skor Qdrant cosine similarity'den korunur
+    return [{"payload": c["payload"], "skor": c["skor"]} for c, _ in reranked[:top_n]]
+```
+
+`RERANKER_ENABLED=false` ise fonksiyon `chunks[:top_n]` döndürür — model yüklenmez, gecikme eklenmez.
+
+### Adım 6 — Skor Filtresi ve Zayıf Sorgu Tespiti
 
 ```python
 # rag/retriever.py
@@ -119,7 +178,7 @@ def filter_by_score(chunks: list[dict], threshold: float = settings.SCORE_THRESH
 
 Tüm chunk'ların `max_skor < SCORE_THRESHOLD` ise sorgu `weak_queries` tablosuna loglanır (soru metni, max skor, kategori). Bu veriler admin panelinden izlenebilir (`GET /admin/weak-queries`).
 
-### Adım 5 — Yanıt Üretme
+### Adım 7 — Yanıt Üretme
 
 `rag/generator.py` — `GENERAL_SYSTEM_PROMPT_TR` / `GENERAL_SYSTEM_PROMPT_EN` sabitleri kullanılır.
 
@@ -144,7 +203,7 @@ Format: "Adalet Bakanlığı ALO 182 hattından ücretsiz hukuki danışmanlık 
 
 **SSE Streaming:** `generate_answer_stream()` ile aynı Groq çağrısı token token yield edilir; `/ask/stream` endpoint'i bu fonksiyonu kullanır.
 
-### Adım 6 — Kaynak Özetleme (Source Summary)
+### Adım 8 — Kaynak Özetleme (Source Summary)
 
 `pipeline._format_sources()` her chunk için `metin_ozet` alanı üretir. Sorguya göre en ilgili cümleler seçilir:
 
@@ -201,7 +260,8 @@ backend/
 │   ├── pipeline.py          # run_pipeline() — adımları zincirler
 │   ├── categorizer.py       # Keyword tabanlı kategori tespiti (14 kategori)
 │   ├── query_rewriter.py    # Groq llama-3.1-8b-instant ile sorgu optimizasyonu
-│   ├── retriever.py         # Qdrant Cloud araması; yerel JSON fallback
+│   ├── retriever.py         # Qdrant dual-collection + local JSON fallback; category penalty
+│   ├── reranker.py          # BAAI/bge-reranker-v2-m3 CrossEncoder; RERANKER_ENABLED ile kontrol
 │   └── generator.py         # Groq llama-3.3-70b-versatile ile yanıt üretimi
 ├── auth/
 │   ├── dependencies.py      # get_current_user_optional, require_roles

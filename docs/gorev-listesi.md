@@ -1,6 +1,6 @@
 # Hak-Bul — Görev Listesi
 
-Son güncelleme: 2026-03-27
+Son güncelleme: 2026-04-16
 
 Bu belge tartışma amaçlıdır. İmplementasyon detayları burada yer almaz; her görev ayrıca planlanacak.
 
@@ -8,60 +8,18 @@ Bu belge tartışma amaçlıdır. İmplementasyon detayları burada yer almaz; h
 
 ## Yüksek Öncelik
 
-### G0 — Retrieval Sorunu: Qdrant Devre Dışı, Local Fallback Çalışıyor ⚠️
+### ~~G0 — Retrieval Sorunu: Qdrant Devre Dışı, Local Fallback Çalışıyor~~ ✅ ÇÖZÜLDÜ
 
-**Durum:** Aktif hata — sistem retrieval açısından bozuk çalışıyor.
+**Durum:** Çözüldü — sistem retrieval açısından tam çalışıyor.
 
-**Belirtiler:**
-- Sorgulara dönen tüm kaynaklar aynı skoru gösteriyor (örnek: hepsi %87)
-- Qdrant'tan veri çekilemiyor
+**Çözüm özeti (Nisan 2026):**
 
-**Neden oluyor — adım adım:**
-
-Sistem iki farklı retrieval yöntemi biliyor: Qdrant vektör araması ve local keyword araması. Qdrant çalışmadığında ya da hata verdiğinde `retriever.py` sessizce local aramaya geçiyor. Sorun şu ki local arama için gereken JSON dosyaları da yok.
-
-```
-retrieve_chunks() çağrılır
-    │
-    ├─ Qdrant'a bağlan, embedding üret, sorgu at
-    │       │
-    │       └─ HATA (bağlantı, API key, koleksiyon adı, model boyutu vb.)
-    │               ↓
-    │           except bloğu: sessizce local aramaya geç
-    │               ↓
-    │           data/processed/ klasörüne bak
-    │               ↓
-    │           KLASÖR BOŞ → hiç chunk yok
-    │               ↓
-    │           fallback: skor=0.01 ile rastgele chunk döndür
-    │
-    └─ Sonuç: tüm kaynaklar aynı (yapay) skoru taşıyor
-```
-
-**Qdrant hatası neden görünmüyor?**
-
-`retriever.py` satır 591'deki `except Exception:` bloğu herhangi bir hatayı yakaladığında log'a hiçbir şey yazmadan local aramaya geçiyor. Dolayısıyla Qdrant neden çalışmadığı log'lara yansımıyor.
-
-**Muhtemel Qdrant hata nedenleri (hangisi olduğu bilinmiyor):**
-
-| Olası Neden | Nasıl Kontrol Edilir |
-|---|---|
-| `QDRANT_URL` veya `QDRANT_API_KEY` `.env`'de boş/yanlış | `.env` dosyasına bak |
-| Embedding modeli yüklenemiyor (`intfloat/multilingual-e5-base` ~500MB) | Docker container'da `model_data` volume mount'u kontrol et |
-| Qdrant koleksiyonundaki vektör boyutu ile embedding modeli boyutu uyuşmuyor | Qdrant Cloud dashboard'dan koleksiyon boyutuna bak (768 olmalı) |
-| `QDRANT_COLLECTION` adı yanlış | Dashboard'da koleksiyon adını kontrol et |
-
-**İkincil sorun — Local fallback da kırık:**
-
-`data/processed/` klasörü boş. 33 kanunun JSON dosyaları `data/processed_backup_20260326/` altında duruyor ama kod `processed/` klasörüne bakıyor. Klasör adı uyuşmazlığından dolayı Qdrant düşse bile local fallback çalışmıyor.
-
-**Çözüm için yapılması gerekenler:**
-
-1. Qdrant hatasının nedenini tespit et (yukarıdaki kontroller)
-2. Qdrant düzelene kadar local fallback'i çalışır hale getirmek için `processed_backup_20260326/` klasörünü `processed/` olarak yeniden adlandır
-3. `retriever.py`'daki `except Exception:` bloğuna hata loglama ekle — böylece bir dahaki seferde sorun görünür olur
-
-**Bağımlılık:** Bu görev bitmeden G1 (RAGAS) ve G2 (Multi-turn RAG) çalıştırılamaz; retrieval bozukken kalite ölçümü anlamsız.
+- Embedding model `intfloat/multilingual-e5-base` olarak düzeltildi (önceki: yanlış model)
+- Dual-collection yapısı kuruldu: `hukuk_chunks` (Yargıtay kararları) + `hukuk_chunks_v2` (kanunlar)
+- `QDRANT_COLLECTION_KANUN` env var ile ikinci collection sorgulanıyor
+- Local JSON fallback (`data/processed_backup_20260326/`) sadece Qdrant erişilemez olduğunda devreye giriyor
+- Qdrant hatası artık loglanıyor (`logger.warning`)
+- Retrieval@5_kanun baseline: **%67** (Faz 4, 15 Nisan 2026)
 
 ---
 
@@ -107,23 +65,18 @@ Sistemin RAG kalitesini otomatik olarak ölçen değerlendirme altyapısı. Jür
 
 ---
 
-### G3 — Reranker
+### ~~G3 — Reranker~~ ✅ UYGULAMAYA ALINDI
 
-**Ne?**
-Qdrant'tan gelen top-5 chunk'u ikinci bir modelle yeniden sıralama. Şu an sadece embedding cosine similarity var; reranker semantic uyumu daha hassas değerlendirir.
+**Durum:** Tamamlandı — production'da aktif.
 
-**Beklenen iyileşme:**
-- Yanlış chunk'ların LLM'e gönderilmesi azalır
-- Retrieval kalitesi artar → faithfulness skoru iyileşir
+**Uygulama özeti (Nisan 2026):**
 
-**Gereksinimler:**
-- Cross-encoder model seçimi ve entegrasyonu
-- Mevcut `pipeline.py`'daki modüler yapıya eklenmesi (yer zaten ayrılmış)
-- Reranker öncesi/sonrası karşılaştırmalı test
-
-**Açık sorular:**
-- Hangi cross-encoder modeli kullanılacak? (multilingual destek önemli)
-- Reranker latency'si kabul edilebilir mi? (p95 < 10s hedefini etkilemez mi?)
+- Model: `BAAI/bge-reranker-v2-m3` (çok dilli CrossEncoder, Türkçe destekli)
+- Dosya: `backend/rag/reranker.py` — lazy-load, ilk çağrıda indirilir (~270MB)
+- Kontrol: `RERANKER_ENABLED=true/false` env var — `false` olduğunda sıfır ek maliyet
+- Pipeline'daki yeri: `apply_category_penalty` → **`rerank_chunks`** → `filter_by_score`
+- Skor davranışı: Cross-encoder sıralama için kullanılır, `skor` alanı Qdrant cosine similarity'yi korur
+- Retrieval@5_kanun_madde baseline: **%32** (Faz 4, 15 Nisan 2026)
 
 ---
 

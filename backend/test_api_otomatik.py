@@ -73,7 +73,9 @@ def normalize_category_name(category: str) -> str:
 
 
 def categories_match(expected: str, actual: str) -> bool:
-    return normalize_category_name(expected) == normalize_category_name(actual)
+    # Kanonik ASCII-slug karşılaştırması: "Tasinmaz Mulk" ile "Taşınmaz Mülk"
+    # gibi ortografik varyantlar da eşit sayılır.
+    return _ascii_key(normalize_category_name(expected)) == _ascii_key(normalize_category_name(actual))
 
 
 def slugify_category_name(category: str) -> str:

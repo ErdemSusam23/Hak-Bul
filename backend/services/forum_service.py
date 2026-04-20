@@ -9,6 +9,15 @@ from models.forum import ForumThread, ForumReply, ForumVote
 from models.user import User
 
 
+def _display_name_for_user(user: User) -> str:
+    role = user.role.value
+    if role == "lawyer":
+        return "Avukat"
+    if role == "admin":
+        return "Yönetici"
+    return "Kullanıcı"
+
+
 def _thread_to_dict(db: Session, thread: ForumThread, user: User) -> dict:
     reply_count = (
         db.query(func.count(ForumReply.id))
@@ -29,7 +38,7 @@ def _thread_to_dict(db: Session, thread: ForumThread, user: User) -> dict:
         "category": thread.category,
         "is_locked": thread.is_locked,
         "user_id": thread.user_id,
-        "user_email": user.email,
+        "display_name": _display_name_for_user(user),
         "reply_count": reply_count,
         "vote_score": vote_score,
         "created_at": thread.created_at.isoformat(),
@@ -50,7 +59,7 @@ def _reply_to_dict(db: Session, reply: ForumReply, user: User) -> dict:
         "content": reply.content,
         "is_verified": reply.is_verified,
         "user_id": reply.user_id,
-        "user_email": user.email,
+        "display_name": _display_name_for_user(user),
         "user_role": user.role.value,
         "vote_score": vote_score,
         "created_at": reply.created_at.isoformat(),

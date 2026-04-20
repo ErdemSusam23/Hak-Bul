@@ -174,7 +174,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
     }
 
     const { thread, replies } = detay;
-    const isOwner = kullanici && kullanici.email === thread.user_email;
+    const isOwner = kullanici && kullanici.id === thread.user_id;
 
     return (
         <div className="flex-1 flex flex-col min-h-0 p-6 overflow-y-auto">
@@ -201,7 +201,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
                         </div>
                         <h1 className="text-lg font-bold" style={{ color: 'var(--tema-text)' }}>{thread.title}</h1>
                         <p className="text-xs mt-1" style={{ color: 'var(--tema-muted)' }}>
-                            {thread.user_email} · {formatDate(thread.created_at)}
+                            {thread.display_name} · {formatDate(thread.created_at)}
                         </p>
                     </div>
                     <div className="flex items-center gap-2 flex-shrink-0">
@@ -227,7 +227,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
 
             <div className="flex flex-col gap-3 mb-6">
                 {replies.map((reply) => {
-                    const isReplyOwner = kullanici && kullanici.email === reply.user_email;
+                    const isReplyOwner = kullanici && kullanici.id === reply.user_id;
                     return (
                         <div
                             key={reply.id}
@@ -239,7 +239,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri }) {
                         >
                             <div className="flex items-start justify-between gap-2 mb-2">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-xs font-medium" style={{ color: 'var(--tema-text2)' }}>{reply.user_email}</span>
+                                    <span className="text-xs font-medium" style={{ color: 'var(--tema-text2)' }}>{reply.display_name}</span>
                                     {reply.user_role === 'lawyer' && (
                                         <span className="flex items-center gap-0.5 text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>
                                             <BadgeCheck size={10} /> Avukat

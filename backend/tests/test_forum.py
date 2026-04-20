@@ -124,6 +124,8 @@ def test_thread_olustur_ve_listele() -> None:
     assert data["category"] == "İş Hukuku"
     assert data["is_locked"] is False
     assert data["reply_count"] == 0
+    assert data["display_name"] == "Kullanıcı"
+    assert "user_email" not in data
 
 
 def test_thread_detay_herkese_acik() -> None:
@@ -143,6 +145,43 @@ def test_thread_detay_herkese_acik() -> None:
     data = resp.json()
     assert "thread" in data
     assert "replies" in data
+    assert data["thread"]["display_name"] == "Kullanıcı"
+    assert "user_email" not in data["thread"]
+
+
+def test_thread_ve_yanitlarda_mail_yerine_anonim_etiket_doner() -> None:
+    user_email = f"user_{uuid.uuid4().hex[:6]}@test.com"
+    lawyer_email = f"lawyer_{uuid.uuid4().hex[:6]}@test.com"
+    _kullanici_olustur(user_email)
+    _kullanici_olustur(lawyer_email, role="lawyer")
+    user_token = _token_al(user_email)
+    lawyer_token = _token_al(lawyer_email)
+
+    thread_resp = client.post(
+        "/forum/threads",
+        json={"title": "Anonim thread", "content": "Mail görünürlüğü testi için içerik.", "category": "Genel Hukuk"},
+        headers=_auth_header(user_token),
+    )
+    assert thread_resp.status_code == 201
+    thread_id = thread_resp.json()["id"]
+
+    reply_resp = client.post(
+        f"/forum/threads/{thread_id}/replies",
+        json={"content": "Avukat yanıtı"},
+        headers=_auth_header(lawyer_token),
+    )
+    assert reply_resp.status_code == 201
+    reply_data = reply_resp.json()
+    assert reply_data["display_name"] == "Avukat"
+    assert "user_email" not in reply_data
+
+    detail_resp = client.get(f"/forum/threads/{thread_id}")
+    assert detail_resp.status_code == 200
+    detail = detail_resp.json()
+    assert detail["thread"]["display_name"] == "Kullanıcı"
+    assert "user_email" not in detail["thread"]
+    assert detail["replies"][0]["display_name"] == "Avukat"
+    assert "user_email" not in detail["replies"][0]
 
 
 def test_thread_guncelle_sadece_sahip() -> None:

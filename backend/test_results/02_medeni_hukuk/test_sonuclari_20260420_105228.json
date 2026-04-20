@@ -1,0 +1,741 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-20T07:57:11.919971+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 4,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\02_medeni_hukuk\\test_sonuclari_20260420_105228.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 283.4,
+    "ortalama_sure_sn": 23.62,
+    "kategori_dagilimi": {
+      "Medeni Hukuk": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 19.59,
+        "kategori_dogruluk_orani": 58.3,
+        "ortalama_cevap_uzunluk": 1068.0,
+        "ortalama_kaynak_skor": 0.8147
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Boşanma davası açmak istiyorum, hangi sebeplere dayanabilirim ve süreç nasıl başlar?",
+      "cevap": "4721 Sayılı Türk Medeni Kanunu'na göre boşanma davası açmak için çeşitli sebeplere dayanabilirsiniz. Bu sebepler arasında eşin zina etmesi (Madde 161), hayata kast, pek kötü veya onur kırıcı davranış (Madde 162), evlilik birliğinin temelinden sarsılması (Madde 166) ve eşin evlilik birliğinden doğan yükümlülüklerini yerine getirmemek maksadıyla diğerini terk etmesi (Madde 164) sayılabilir.\n\nBoşanma davası açmak için, eşin boşanma sebebini öğrenmesinden başlayarak altı ay ve her hâlde bu sebebin doğumunun üzerinden beş yıl geçmekle dava hakkı düşer. Affeden tarafın dava hakkı yoktur.\n\nSürecin başlaması için, boşanma davası açmak isteyen eşin, ilgili mahkemeye başvurması ve boşanma sebebini belirterek dava açması gerekir. Mahkeme, tarafları dinleyerek ve gerekli incelemeleri yaparak boşanma kararı verebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 162",
+          "metin_ozet": "Madde 162- Eşlerden her biri diğeri tarafından hayatına kastedilmesi veya kendisine pek kötü davranılması ya da ağır derecede onur kırıcı bir davranışta bulunulması sebebiyle boşanma davası açabilir.",
+          "metin": null,
+          "skor": 0.8564,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 161",
+          "metin_ozet": "Madde 161- Eşlerden biri zina ederse, diğer eş boşanma davası açabilir. Davaya hakkı olan eşin boşanma sebebini öğrenmesinden başlayarak altı ay ve her hâlde zina eyleminin üzerinden beş yıl geçmekle dava hakkı düşer.",
+          "metin": null,
+          "skor": 0.852,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 166",
+          "metin_ozet": "Madde 166- Evlilik birliği, ortak hayatı sürdürmeleri kendilerinden beklenmeyecek derecede temelinden sarsılmış olursa, eşlerden her biri boşanma davası açabilir.",
+          "metin": null,
+          "skor": 0.8488,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 164",
+          "metin_ozet": "terk edilen eş, boşanma davası açabilir. Ancak, boşanma davası açmak için belirli sürenin dördüncü ayı bitmedikçe ihtar isteminde bulunulamaz ve ihtardan sonra iki ay geçmedikçe dava açılamaz.",
+          "metin": null,
+          "skor": 0.8523,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 167",
+          "metin_ozet": "Madde 167- Boşanma davası açmaya hakkı olan eş, dilerse boşanma, dilerse ayrılık isteyebilir.",
+          "metin": null,
+          "skor": 0.86,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 942,
+      "ortalama_kaynak_skor": 0.8539,
+      "kaynak_sayisi": 5,
+      "message_id": "713fa2ac-c637-44dd-85da-0036437da273",
+      "conversation_id": "9b04cc40-8cb2-4f74-be02-1ef1a9f460d7",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 30.26,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Anlaşmalı boşanma için eşimle hangi konularda anlaşmamız gerekir?",
+      "cevap": "Anlaşmalı boşanma için eşler arasında aşağıdaki konularda anlaşma sağlanması gerekmektedir:\n\n1. Mal rejimi: Eşler, mal rejimine ilişkin olarak anlaşma sağlayabilirler. Bu anlaşma, mal rejimi sözleşmesinde açıkça öngörülmüş olması halinde geçerlidir (Madde 277).\n2. Edinilmiş mallara katılma rejimi: Eşler, edinilmiş mallara katılma rejimine ilişkin olarak anlaşma sağlayabilirler. Bu rejimde, her eş kendi kişisel malını ortaklık mallarından geri alır ve geri kalan ortaklık malları eşler arasında yarı yarıya paylaşılır (Madde 277).\n3. Aile konutu: Eşler, aile konutunda kimin kalacağına ilişkin olarak anlaşma sağlayabilirler. Bu anlaşma, tapu kütüğüne şerh edilebilir (Madde 254).\n4. Ev eşyası: Eşler, ev eşyasının kimin tarafından kullanılacağına ilişkin olarak anlaşma sağlayabilirler (Madde 254).\n5. Çocukların menfaatleri: Eşler, çocukların menfaatlerini göz önünde bulundurarak anlaşma sağlayabilirler (Madde 254).\n\nEşler, bu konularda anlaşma sağlayamadıkları takdirde, hâkim tarafından karar verilebilir (Madde 254). \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 254",
+          "metin_ozet": "Madde 254- Evliliğin iptal veya boşanma kararıyla sona erdirilmesi hâlinde, ailenin ortak kullanımına özgülenmiş ve eşler arasında eşit olarak paylaşma konusu olan konutta kalmaya ve ev eşyasını kullanmaya hangisinin devam edeceği konusunda eşler anlaşabilirler.",
+          "metin": null,
+          "skor": 0.8378,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 184",
+          "metin_ozet": "Madde 184- Boşanmada yargılama, aşağıdaki kurallar saklı kalmak üzere Hukuk Usulü Muhakemeleri Kanununa tâbidir: Hâkim, boşanma veya ayrılık davasının dayandığı olguların varlığına vicdanen kanaat getirmedikçe, bunları ispatlanmış sayamaz.",
+          "metin": null,
+          "skor": 0.8452,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 162",
+          "metin_ozet": "Madde 162- Eşlerden her biri diğeri tarafından hayatına kastedilmesi veya kendisine pek kötü davranılması ya da ağır derecede onur kırıcı bir davranışta bulunulması sebebiyle boşanma davası açabilir.",
+          "metin": null,
+          "skor": 0.848,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 167",
+          "metin_ozet": "Madde 167- Boşanma davası açmaya hakkı olan eş, dilerse boşanma, dilerse ayrılık isteyebilir.",
+          "metin": null,
+          "skor": 0.8473,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 277",
+          "metin_ozet": "Madde 277- Boşanma veya evliliğin iptali sebebiyle ya da kanun veya mahkeme kararı gereğince mal ayrılığına geçiş hâllerinde, her eş edinilmiş mallara katılma rejiminde kendi kişisel malı sayılacak olanları ortaklık mallarından geri alır.",
+          "metin": null,
+          "skor": 0.8359,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1153,
+      "ortalama_kaynak_skor": 0.8428,
+      "kaynak_sayisi": 5,
+      "message_id": "9b4c0cee-dacd-45c0-ae8b-11a8522723ce",
+      "conversation_id": "aeec44f3-1bdb-4d6b-ac22-45e0a7ef178f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.98,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Çekişmeli boşanma davasında kusur, tanık ve deliller nasıl değerlendirilir?",
+      "cevap": "4721 Sayılı Türk Medeni Kanunu'na göre, çekişmeli boşanma davasında kusur, tanık ve delillerin değerlendirilmesi önemli bir role sahiptir. \n\nMadde 184'e göre, hâkim boşanma veya ayrılık davasının dayandığı olguların varlığına vicdanen kanaat getirmedikçe, bunları ispatlanmış sayamaz. Ayrıca, hâkim bu olgular hakkında gerek re'sen, gerek istem üzerine taraflara yemin öneremez ve tarafların bu konudaki her türlü ikrarları hâkimi bağlamaz. Hâkim, kanıtları serbestçe takdir eder.\n\nMadde 162'de belirtilen boşanma sebepleri arasında eşlerden birinin diğerine hayatına kast etmesi veya kendisine pek kötü davranması ya da ağır derecede onur kırıcı bir davranışta bulunması yer alır. Bu sebeplerin ispatı için delillerin sunulması ve tanık ifadelerinin alınması önemlidir.\n\nMadde 252 ve 236'da, zina veya hayata kast nedeniyle boşanma hâlinde hâkimin, kusurlu eşin payının veya artık değerdeki pay oranının hakkaniyete uygun olarak azaltılmasına veya kaldırılmasına karar verebileceği belirtilmiştir. Bu durum, kusurun boşanma davasında nasıl değerlendirildiğini gösterir.\n\nBu bilgiler ışığında, çekişmeli boşanma davasında kusur, tanık ve delillerin değerlendirilmesi hâkimin takdirine bağlıdır. Hâkim, delilleri serbestçe takdir eder ve boşanma davasının dayandığı olguların varlığına vicdanen kanaat getirmedikçe, bunları ispatlanmış sayamaz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 181",
+          "metin_ozet": "Madde 181- Boşanan eşler, bu sıfatla birbirlerinin yasal mirasçısı olamazlar ve boşanmadan önce yapılmış olan ölüme bağlı tasarruflarla kendilerine sağlanan hakları, aksi tasarruftan anlaşılmadıkça, kaybederler.",
+          "metin": null,
+          "skor": 0.8273,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 184",
+          "metin_ozet": "Madde 184- Boşanmada yargılama, aşağıdaki kurallar saklı kalmak üzere Hukuk Usulü Muhakemeleri Kanununa tâbidir: Hâkim, boşanma veya ayrılık davasının dayandığı olguların varlığına vicdanen kanaat getirmedikçe, bunları ispatlanmış sayamaz.",
+          "metin": null,
+          "skor": 0.8402,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 252",
+          "metin_ozet": "Madde 252- Zina veya hayata kast nedeniyle boşanma hâlinde hâkim, kusurlu eşin payının hakkaniyete uygun olarak azaltılmasına veya kaldırılmasına karar verebilir.",
+          "metin": null,
+          "skor": 0.8343,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 236",
+          "metin_ozet": "Zina veya hayata kast nedeniyle boşanma hâlinde hâkim, kusurlu eşin artık değerdeki pay oranının hakkaniyete uygun olarak azaltılmasına veya kaldırılmasına karar verebilir.",
+          "metin": null,
+          "skor": 0.8254,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 162",
+          "metin_ozet": "Madde 162- Eşlerden her biri diğeri tarafından hayatına kastedilmesi veya kendisine pek kötü davranılması ya da ağır derecede onur kırıcı bir davranışta bulunulması sebebiyle boşanma davası açabilir.",
+          "metin": null,
+          "skor": 0.8298,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1469,
+      "ortalama_kaynak_skor": 0.8314,
+      "kaynak_sayisi": 5,
+      "message_id": "3f1c3446-eacf-4464-b03c-f0428b78d095",
+      "conversation_id": "5f204aca-04ec-488f-b52a-61432b383d49",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 21.48,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Boşanma davasında kendim ve çocuğum için hangi nafakaları isteyebilirim?",
+      "cevap": "Boşanma davasında, 4721 Sayılı Türk Medeni Kanunu'na göre, kendiniz ve çocuğunuz için çeşitli nafakalar isteyebilirsiniz. \n\nKendiniz için, boşanma yüzünden yoksulluğa düşecek taraf, kusuru daha ağır olmamak koşuluyla, geçimi için diğer taraftan malî gücü oranında süresiz olarak nafaka isteyebilir (Madde 175). Ayrıca, mevcut veya beklenen menfaatleri boşanma yüzünden zedelenen kusursuz veya daha az kusurlu taraf, kusurlu taraftan uygun bir maddî tazminat isteyebilir (Madde 174).\n\nÇocuğunuz için, nafaka isteme hakkı bulunmaktadır. Ancak, bu konuda verilen kaynaklar yeterli bilgi sağlamamaktadır. Çocuğunuz için nafaka isteme hakkı ve miktarı, çocuğun ihtiyaçları ve diğer tarafın malî gücü gibi faktörlere bağlı olarak belirlenir.\n\nGetirilen kaynaklar bu soruyu tam olarak karşılamıyor. 4721 Sayılı Türk Medeni Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 175",
+          "metin_ozet": "Madde 175- Boşanma yüzünden yoksulluğa düşecek taraf, kusuru daha ağır olmamak koşuluyla geçimi için diğer taraftan malî gücü oranında süresiz olarak nafaka isteyebilir.",
+          "metin": null,
+          "skor": 0.8619,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 174",
+          "metin_ozet": "Madde 174- Mevcut veya beklenen menfaatleri boşanma yüzünden zedelenen kusursuz veya daha az kusurlu taraf, kusurlu taraftan uygun bir maddî tazminat isteyebilir.",
+          "metin": null,
+          "skor": 0.8535,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 177",
+          "metin_ozet": "Madde 177- Boşanmadan sonra açılacak nafaka davalarında, nafaka alacaklısının yerleşim yeri mahkemesi yetkilidir.",
+          "metin": null,
+          "skor": 0.844,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 333",
+          "metin_ozet": "Madde 333- Babalık davası ile birlikte nafaka istenir ve hâkim, babalık olasılığını kuvvetli bulursa, hükümden önce çocuğun ihtiyaçları için uygun bir nafakaya karar verebilir.",
+          "metin": null,
+          "skor": 0.8542,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 173",
+          "metin_ozet": "Madde 173- Boşanma hâlinde kadın, evlenme ile kazandığı kişisel durumunu korur; Boşanmada tazminat ve nafaka 1.",
+          "metin": null,
+          "skor": 0.8583,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1065,
+      "ortalama_kaynak_skor": 0.8544,
+      "kaynak_sayisi": 5,
+      "message_id": "f9e1bd73-82af-4540-89b6-709bfb4553b7",
+      "conversation_id": "bc5a08de-a8bd-45dc-a6dc-cd5c7c23db8a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 16.61,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Bağlanan nafaka sonradan artırılabilir, azaltılabilir veya kaldırılabilir mi?",
+      "cevap": "Evet, bağlanan nafaka sonradan artırılabilir, azaltılabilir veya kaldırılabilir. Türk Medeni Kanunu'nun 331. maddesine göre, durumun değişmesi halinde hâkim, istem üzerine nafaka miktarını yeniden belirler veya nafakayı kaldırır. Ayrıca, aynı kanunun 176. maddesine göre, tarafların malî durumlarının değişmesi veya hakkaniyetin gerektirdiği hâllerde iradın artırılması veya azaltılmasına karar verilebilir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 365",
+          "metin_ozet": "Madde 365- Nafaka davası, mirasçılıktaki sıra göz önünde tutularak açılır. Nafakanın, yükümlülerin bir veya bir kaçından istenmesi hakkaniyete aykırıysa hâkim, onların nafaka yükümlülüğünü azaltabilir veya kaldırabilir.",
+          "metin": null,
+          "skor": 0.8484,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 176",
+          "metin_ozet": "Madde 176- Maddî tazminat ve yoksulluk nafakasının toptan veya durumun gereklerine göre irat biçiminde ödenmesine karar verilebilir.",
+          "metin": null,
+          "skor": 0.8578,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 331",
+          "metin_ozet": "Madde 331- Durumun değişmesi hâlinde hâkim, istem üzerine nafaka miktarını yeniden belirler veya nafakayı kaldırır.",
+          "metin": null,
+          "skor": 0.87,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 329",
+          "metin_ozet": "Madde 329- Küçüğe fiilen bakan ana veya baba, diğerine karşı çocuk adına nafaka davası açabilir. Ayırt etme gücüne sahip olmayan küçük için gereken hâllerde nafaka davası, atanacak kayyım veya vasi tarafından da açılabilir.",
+          "metin": null,
+          "skor": 0.8561,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 20 - Fıkra 4",
+          "metin_ozet": "Devir tarihinden sonra bu kişilerin gelir ve aylıklarının durum değişikliği nedeniyle artırılması, azaltılması, kesilmesi ve yeniden bağlanması işlemleri sırasında vakıf senetlerine göre yapılacak hesaplamalar ilgili sandıklar veya sandık iştirakçilerini istihdam eden kuruluşlar...",
+          "metin": null,
+          "skor": 0.844,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 534,
+      "ortalama_kaynak_skor": 0.8553,
+      "kaynak_sayisi": 5,
+      "message_id": "884f03ef-fb7f-4f34-ad33-81b50765783d",
+      "conversation_id": "2422fba1-bab1-429d-86b0-0d2b2311587d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 13.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Velayet davasında hakim çocuğun hangi ebeveynde kalacağına neye göre karar verir?",
+      "cevap": "Velayet davasında hakim, çocuğun hangi ebeveynde kalacağına karar verirken, çocuğun menfaatini göz önünde bulundurur. Hakim, çocuğun bedensel ve zihinsel gelişmesini, ailenin huzurunu ve diğer ilgili faktörleri dikkate alır.\n\n4721 Sayılı Türk Medeni Kanunu'nun 337. maddesine göre, ana ve baba evli değilse, velâyet anaya aittir. Ancak, ana küçük, kısıtlı veya ölmüş ya da velâyet kendisinden alınmışsa, hakim, çocuğun menfaatine göre, vasi atar veya velâyeti babaya verir.\n\n4721 Sayılı Türk Medeni Kanunu'nun 347. maddesine göre, çocuğun bedensel ve zihinsel gelişmesi tehlikede bulunursa veya çocuk manen terk edilmiş hâlde kalırsa, hakim, çocuğu ana ve babadan alarak bir aile yanına veya bir kuruma yerleştirebilir.\n\n4721 Sayılı Türk Medeni Kanunu'nun 348. maddesine göre, çocuğun korunmasına ilişkin diğer önlemlerden sonuç alınamaz ya da bu önlemlerin yetersiz olacağı önceden anlaşılırsa, hakim, velâyetin kaldırılmasına karar verebilir. Velâyetin kaldırılması, ana ve babanın deneyimsizliği, hastalığı, başka bir yerde bulunması veya benzeri sebeplerden biriyle velayet görevini gereği gibi yerine getirememesi veya ana ve babanın çocuğa yeterli ilgiyi göstermemesi veya ona karşı yükümlülüklerini ağır biçimde savsaklaması hallerinde söz konusu olabilir.\n\nBu durumda, hakim, çocuğun menfaatini göz önünde bulundurarak, çocuğun hangi ebeveynde kalacağına karar verir. Ancak, getirilen kaynaklar bu soruyu tam olarak cevaplamıyor. Detaylı bilgi için ilgili kanunun incelenmesi veya bir avukata danışılması önerilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 337",
+          "metin_ozet": "Ana küçük, kısıtlı veya ölmüş ya da velâyet kendisinden alınmışsa hâkim, çocuğun menfaatine göre, vasi atar veya velâyeti babaya verir.",
+          "metin": null,
+          "skor": 0.854,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 347",
+          "metin_ozet": "Madde 347- Çocuğun bedensel ve zihinsel gelişmesi tehlikede bulunur veya çocuk manen terk edilmiş hâlde kalırsa hâkim, çocuğu ana ve babadan alarak bir aile yanına veya bir kuruma yerleştirebilir.",
+          "metin": null,
+          "skor": 0.8473,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 348",
+          "metin_ozet": "Madde 348- Çocuğun korunmasına ilişkin diğer önlemlerden sonuç alınamaz ya da bu önlemlerin yetersiz olacağı önceden anlaşılırsa, hâkim aşağıdaki hâllerde velâyetin kaldırılmasına karar verir:",
+          "metin": null,
+          "skor": 0.8507,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 336",
+          "metin_ozet": "Madde 336- Evlilik devam ettiği sürece ana ve baba velâyeti birlikte kullanırlar.",
+          "metin": null,
+          "skor": 0.8408,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 21",
+          "metin_ozet": "Madde 21- Velâyet altında bulunan çocuğun yerleşim yeri, ana ve babasının; ana ve babanın ortak yerleşim yeri yoksa, çocuğun kendisine bırakıldığı ana veya babanın yerleşim yeridir. Diğer hâllerde çocuğun oturma yeri, onun yerleşim yeri sayılır.",
+          "metin": null,
+          "skor": 0.856,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1648,
+      "ortalama_kaynak_skor": 0.8498,
+      "kaynak_sayisi": 5,
+      "message_id": "7cbb8c13-6c3a-44a6-a0c1-b8dfc18f9349",
+      "conversation_id": "12858bfa-e204-478e-af09-c6f8c73e5bd0",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.74,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Boşanma sonrası mal paylaşımı nasıl yapılır, hangi mallar edinilmiş mal sayılır?",
+      "cevap": "Boşanma sonrası mal paylaşımı, Türk Medeni Kanunu'nun ilgili hükümlerine göre yapılır. Edinilmiş mallar, eşlerin evlilikleri sırasında edindikleri mallardır. Bu mallar, mal rejiminin sona ermesi halinde, eşler arasında eşit olarak paylaşılır (Madde 250).\n\nEdinilmiş mallara örnek olarak, evlilik sırasında alınan ev, araba, diğer taşınır ve taşınmaz mallar verilebilir. Ancak, miras yoluyla edinilen mallar, karşılıksız kazandırmada bulunanın açık iradesinden aksi anlaşılmadıkça, sağlararası veya ölüme bağlı tasarruflarla edinilen mallar, edinilmiş mal olarak kabul edilmez (Madde 250).\n\nBoşanma veya evliliğin iptali sebebiyle ya da kanun veya mahkeme kararı gereğince mal ayrılığına geçiş hâllerinde, her eş edinilmiş mallara katılma rejiminde kendi kişisel malını ortaklık mallarından geri alır. Geri kalan ortaklık malları eşler arasında yarı yarıya paylaşılır (Madde 277).\n\nMal paylaşımında, işletmelerin ekonomik bütünlüğü gözetilir. Ayrıca, yasal paylaşmanın değiştirilmesine ilişkin anlaşmalar, ancak mal rejimi sözleşmesinde bunun açıkça öngörülmüş olması halinde geçerlidir (Madde 277).\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 250",
+          "metin_ozet": "Madde 250- Eşlerden biri tarafından paylaşmalı mal ayrılığı rejiminin kurulmasından sonra edinilmiş olup ailenin ortak kullanım ve yararlanmasına özgülenmiş mallar ile ailenin ekonomik geleceğini güvence altına almaya yönelik yatırımlar veya bunların yerine geçen değerler, mal...",
+          "metin": null,
+          "skor": 0.4278,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 277",
+          "metin_ozet": "Madde 277- Boşanma veya evliliğin iptali sebebiyle ya da kanun veya mahkeme kararı gereğince mal ayrılığına geçiş hâllerinde, her eş edinilmiş mallara katılma rejiminde kendi kişisel malı sayılacak olanları ortaklık mallarından geri alır.",
+          "metin": null,
+          "skor": 0.4262,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 255",
+          "metin_ozet": "Madde 255- Eşlerden birinin ölümü hâlinde, paylaşma konusu olan mallar arasında ev eşyası veya eşlerin birlikte yaşadıkları konut varsa; BEŞİNCİ AYIRIM MAL ORTAKLIĞI A.",
+          "metin": null,
+          "skor": 0.4245,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 225",
+          "metin_ozet": "Madde 225 - Mal rejimi, eşlerden birinin ölümü veya başka bir mal rejiminin kabulüyle sona erer.",
+          "metin": null,
+          "skor": 0.4232,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 235",
+          "metin_ozet": "Madde 235- Mal rejiminin sona erdiği sırada mevcut olan edinilmiş mallar, tasfiye anındaki değerleriyle hesaba katılırlar. Edinilmiş mallara hesapta eklenecek olanların değeri, malın devredildiği tarih esas alınarak hesaplanır.",
+          "metin": null,
+          "skor": 0.4226,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1224,
+      "ortalama_kaynak_skor": 0.4249,
+      "kaynak_sayisi": 5,
+      "message_id": "6ab42712-6635-4cb6-95c9-b8d5124cb7a7",
+      "conversation_id": "079324fd-e982-4b9a-8a3f-ca6d53a8ef44",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.21,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Düğünde takılan altın ve ziynet eşyalarını boşanmada nasıl talep edebilirim?",
+      "cevap": "4721 Sayılı Türk Medeni Kanunu'na göre, boşanma durumunda eşlerin malvarlıkları arasındaki artık değerin paylaşımı Madde 236'da düzenlenmiştir. Bu maddeye göre, her eş veya mirasçıları, diğer eşe ait artık değerin yarısı üzerinde hak sahibi olurlar. Alacaklar takas edilir. Ancak, zina veya hayata kast nedeniyle boşanma hâlinde hâkim, kusurlu eşin artık değerdeki pay oranının hakkaniyete uygun olarak azaltılmasına veya kaldırılmasına karar verebilir.\n\nDüğünde takılan altın ve ziynet eşyaları, artık değerin bir parçası olarak değerlendirilebilir. Ancak, bu eşyaların paylaşımı veya geri alınmasıyla ilgili özel bir düzenleme bulunmamaktadır. \n\nGetirilen kaynaklar bu soruyu karsilamiyor. 4721 Sayılı Türk Medeni Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 236",
+          "metin_ozet": "Madde 236- Her eş veya mirasçıları, diğer eşe ait artık değerin yarısı üzerinde hak sahibi olurlar.",
+          "metin": null,
+          "skor": 0.822,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 122",
+          "metin_ozet": "Madde 122- Nişanlılık evlenme dışındaki bir sebeple sona ererse, nişanlıların birbirlerine veya ana ve babanın ya da onlar gibi davrananların, diğer nişanlıya vermiş oldukları alışılmışın dışındaki hediyeler, verenler tarafından geri istenebilir.",
+          "metin": null,
+          "skor": 0.8251,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 161",
+          "metin_ozet": "Madde 161- Eşlerden biri zina ederse, diğer eş boşanma davası açabilir.",
+          "metin": null,
+          "skor": 0.8297,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 158",
+          "metin_ozet": "Madde 158- Evlenmenin butlanına karar verilirse, evlenirken iyiniyetli bulunan eş bu evlenme ile kazanmış olduğu kişisel durumunu korur.",
+          "metin": null,
+          "skor": 0.8305,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 167",
+          "metin_ozet": "Madde 167- Boşanma davası açmaya hakkı olan eş, dilerse boşanma, dilerse ayrılık isteyebilir.",
+          "metin": null,
+          "skor": 0.8536,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 966,
+      "ortalama_kaynak_skor": 0.8322,
+      "kaynak_sayisi": 5,
+      "message_id": "46fa2f7d-9ce2-4dfa-bfae-ce0a36ebce5f",
+      "conversation_id": "25d7275d-8041-4e63-82de-a4268e36f003",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.95,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Mirasçılık belgesi nasıl alınır ve miras payımı göstermek için hangi hükme bakılır?",
+      "cevap": "Mirasçılık belgesi, yasal mirasçı oldukları belirlenenlere, sulh mahkemesince veya noterlikçe verilir. Miras payını göstermek için 4721 Sayılı Türk Medeni Kanunu'nun ilgili hükümlerine bakılır. Mirasçılık belgesinin geçersizliği her zaman ileri sürülebilir. \n\nMirasçılık belgesi, mirasçılık sıfatını gösteren bir belgedir ve sulh mahkemesince veya noterlikçe verilir. Miras payının teslimi, gaipliğine karar verilen kimsenin mirasının mirasçılara teslimine ilişkin kurallara tabidir. Mirasçılık belgesinin geçersizliği her zaman ileri sürülebilir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 598",
+          "metin_ozet": "Madde 598- Başvurusu üzerine yasal mirasçı oldukları belirlenenlere, sulh mahkemesince veya noterlikçe mirasçılık sıfatlarını gösteren bir belge verilir.30 Mirasçı atamaya veya vasiyete ilişkin ölüme bağlı tasarrufa mirasçılar veya başka vasiyet alacaklıları tarafından...",
+          "metin": null,
+          "skor": 0.8779,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 513",
+          "metin_ozet": "Madde 513- Mirasbırakan, hakkında borç ödemeden aciz belgesi bulunan altsoyunu, saklı payının yarısı için mirasçılıktan çıkarabilir. Ancak, bu yarıyı mirasçılıktan çıkarılanın doğmuş ve doğacak çocuklarına özgülemesi şarttır.",
+          "metin": null,
+          "skor": 0.8615,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 597",
+          "metin_ozet": "Madde 597- Mirasta hak sahibi olanların her birine gideri terekeye ait olmak üzere, vasiyetnamenin kendilerine ilişkin kısımlarının onaylı bir örneği hâkim tarafından tebliğ edilir.",
+          "metin": null,
+          "skor": 0.8879,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 586",
+          "metin_ozet": "Madde 586- Ortada bulunmayan ve mirasın açıldığı anda sağ olup olmadığı ispat edilemeyen mirasçının miras payı resmen yönetilir.",
+          "metin": null,
+          "skor": 0.869,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 637",
+          "metin_ozet": "Madde 637- Yasal veya atanmış mirasçı, terekeyi veya bazı tereke mallarını elinde bulunduran kimseye karşı mirasçılıktaki üstün hakkını ileri sürerek miras sebebiyle istihkak davası açabilir. Bu davada hâkim, mirasçılık sıfatıyla ilgili uyuşmazlıkları da çözer.",
+          "metin": null,
+          "skor": 0.8623,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 674,
+      "ortalama_kaynak_skor": 0.8717,
+      "kaynak_sayisi": 5,
+      "message_id": "a79b0ab1-0000-4c3a-b331-128fb7dcd2cb",
+      "conversation_id": "b2084e25-f21d-4b1d-af56-28adfebc5d02",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 13.9,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Miras payım bana verilmiyorsa ortaklığın giderilmesi veya miras paylaşımı için ne yapabilirim?",
+      "cevap": "Türk Medeni Kanunu'na göre, mirasçılardan her biri, sözleşme veya kanun gereğince ortaklığı sürdürmekle yükümlü olmadıkça, her zaman mirasın paylaşılmasını isteyebilir. Mirasçı, terekedeki belirli malların aynen veya satış yoluyla paylaştırılmasına karar verilmesini sulh mahkemesinden isteyebilir. \n\nMirasçılardan birinin istemi üzerine hâkim, terekedeki malların her birini göz önünde tutarak, olanak varsa taşınmazlardan her birinin tamamının bir mirasçıya verilmesi suretiyle paylaştırmayı yapar. Mirasçılara verilen taşınmazların değerleri arasındaki fark para ödenmesi yoluyla giderilerek miras payları arasında denkleştirme sağlanır.\n\nPaylaşmanın derhâl yapılması, paylaşım konusu malın veya terekenin değerini önemli ölçüde azaltacaksa; sulh hâkimi, mirasçılardan birinin istemi üzerine bu malın veya terekenin paylaşılmasının ertelenmesine karar verebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 642",
+          "metin_ozet": "Madde 642- Mirasçılardan her biri, sözleşme veya kanun gereğince ortaklığı sürdürmekle yükümlü olmadıkça, her zaman mirasın paylaşılmasını isteyebilir.",
+          "metin": null,
+          "skor": 0.8763,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 382",
+          "metin_ozet": "Madde 382- Ortaklardan birinin ölümü hâlinde onun ortaklığa dahil olmayan mirasçıları, ancak ölen ortağa düşen payın karşılığının kendilerine ödenmesini isteyebilirler.",
+          "metin": null,
+          "skor": 0.8725,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 276",
+          "metin_ozet": "Madde 276- Eşlerden birinin ölümü veya diğer bir mal rejiminin kabulü sebebiyle mal ortaklığının sona ermesi hâlinde, her eşe veya mirasçılarına ortaklık mallarının yarısı verilir.",
+          "metin": null,
+          "skor": 0.8592,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 648",
+          "metin_ozet": "Madde 648- Açılmış mirasta bir mirasçının payını devralmış veya haczettirmiş olan ya da elinde mirasçıya karşı alınmış borç ödemeden aciz belgesi bulunan alacaklı, sulh hâkiminden bu mirasçının yerine paylaşmaya katılmak üzere bir kayyım atanmasını isteyebilir.",
+          "metin": null,
+          "skor": 0.8656,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 650",
+          "metin_ozet": "Madde 650- Mirasçılar, tereke mallarından mirasçı veya ortak kök sayısınca pay oluştururlar. Anlaşma olmazsa, mirasçılardan her biri, payların oluşturulmasını sulh mahkemesinden isteyebilir.",
+          "metin": null,
+          "skor": 0.8567,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 991,
+      "ortalama_kaynak_skor": 0.8661,
+      "kaynak_sayisi": 5,
+      "message_id": "3e14ff28-8629-4376-a7f2-3cd8a089a773",
+      "conversation_id": "7c6339f6-85e6-4e62-8bc5-3a0d9ea40a9d",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 13.19,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Vasiyetnameye hangi sebeplerle itiraz edebilir veya iptal davası açabilirim?",
+      "cevap": "4721 Sayılı Türk Medeni Kanunu'na göre, ölüme bağlı bir tasarrufun iptali için dava açılabilmesi için aşağıdaki sebeplerin bulunması gerekmektedir:\n\n1. Tasarruf mirasbırakanın tasarruf ehliyeti bulunmadığı bir sırada yapılmışsa,\n2. Tasarruf yanılma, aldatma, korkutma veya zorlama sonucunda yapılmışsa,\n3. Tasarrufun içeriği, bağlandığı koşullar veya yüklemeler hukuka veya ahlâka aykırı ise,\n4. Tasarruf kanunda öngörülen şekillere uyulmadan yapılmışsa.\n\nİptal davası, tasarrufun iptal edilmesinde menfaati bulunan mirasçı veya vasiyet alacaklısı tarafından açılabilir. Dava, ölüme bağlı tasarrufun tamamının veya bir kısmının iptaline ilişkin olabilir. \n\nİptal davası açma hakkı, davacının tasarrufu, iptal sebebini ve kendisinin hak sahibi olduğunu öğrendiği tarihten başlayarak bir yıl ve her hâlde vasiyetnamelerde açılma tarihinin, diğer tasarruflarda mirasın geçmesi tarihinin üzerinden, iyiniyetli davalılara karşı on yıl, iyiniyetli olmayan davalılara karşı yirmi yıl geçmekle düşer. \n\nHükümsüzlük, def'i yoluyla her zaman ileri sürülebilir.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 559",
+          "metin_ozet": "Madde 559- İptal davası açma hakkı, davacının tasarrufu, iptal sebebini ve kendisinin hak sahibi olduğunu öğrendiği tarihten başlayarak bir yıl ve her hâlde vasiyetnamelerde açılma tarihinin, diğer tasarruflarda mirasın geçmesi tarihinin üzerinden, iyiniyetli davalılara karşı on...",
+          "metin": null,
+          "skor": 0.8427,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 558",
+          "metin_ozet": "Madde 558- İptal davası, tasarrufun iptal edilmesinde menfaati bulunan mirasçı veya vasiyet alacaklısı tarafından açılabilir. Dava, ölüme bağlı tasarrufun tamamının veya bir kısmının iptaline ilişkin olabilir.",
+          "metin": null,
+          "skor": 0.855,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 557",
+          "metin_ozet": "Madde 557- Aşağıdaki sebeplerle ölüme bağlı bir tasarrufun iptali için dava açılabilir:",
+          "metin": null,
+          "skor": 0.8457,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 297",
+          "metin_ozet": "Madde 297- Tanıyan, yanılma, aldatma veya korkutma sebebiyle tanımanın iptalini dava edebilir. İptal davası anaya ve çocuğa karşı açılır.",
+          "metin": null,
+          "skor": 0.8537,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 152",
+          "metin_ozet": "Madde 152- İptal davası açma hakkı, iptal sebebinin öğrenildiği veya korkunun etkisinin ortadan kalktığı tarihten başlayarak altı ay ve her hâlde evlenmenin üzerinden beş yıl geçmekle düşer.",
+          "metin": null,
+          "skor": 0.8444,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1050,
+      "ortalama_kaynak_skor": 0.8483,
+      "kaynak_sayisi": 5,
+      "message_id": "899d7df4-e9be-43de-beea-6e3af245bb64",
+      "conversation_id": "161c8d03-87f4-4d18-9013-7f15a9ea6c82",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Medeni Hukuk",
+      "soru": "Adımı veya soyadımı değiştirmek için hangi şartlarda dava açabilirim?",
+      "cevap": "4721 Sayılı Türk Medeni Kanunu'na göre, ad değişikliği için haklı sebeplere dayanılarak hâkimden istekte bulunulabilir. Ad değişikliği talebi, 4721 Sayılı Türk Medeni Kanunu'nun 27. maddesinde düzenlenmiştir. Bu maddeye göre, adın değiştirilmesi ancak haklı sebeplere dayanılarak hâkimden istenebilir.\n\nCinsiyet değişikliği talebi ise, 4721 Sayılı Türk Medeni Kanunu'nun 40. maddesinde düzenlenmiştir. Bu maddeye göre, cinsiyetini değiştirmek isteyen kimse, şahsen başvuruda bulunarak mahkemece cinsiyet değişikliğine izin verilmesini isteyebilir. Ancak, iznin verilebilmesi için, istem sahibinin onsekiz yaşını doldurmuş bulunması ve evli olmaması; ayrıca transseksüel yapıda olup, cinsiyet değişikliğinin ruh sağlığı açısından zorunluluğunu bir eğitim ve araştırma hastanesinden alınacak resmî sağlık kurulu raporuyla belgelemesi şarttır.\n\nBu konularda dava açabilmek için, ilgili kanun maddelerine uygun şekilde hareket etmek ve gerekli şartları taşımak gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 27",
+          "metin_ozet": "Adın değiştirilmesinden zarar gören kimse, bunu öğrendiği günden başlayarak bir yıl içinde değiştirme kararının kaldırılmasını dava edebilir.",
+          "metin": null,
+          "skor": 0.8728,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 40",
+          "metin_ozet": "Madde 40- Cinsiyetini değiştirmek isteyen kimse, şahsen başvuruda bulunarak mahkemece cinsiyet değişikliğine izin verilmesini isteyebilir.",
+          "metin": null,
+          "skor": 0.8314,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 26",
+          "metin_ozet": "Madde 26- Adının kullanılması çekişmeli olan kişi, hakkının tespitini dava edebilir.",
+          "metin": null,
+          "skor": 0.8502,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 291",
+          "metin_ozet": "Madde 291- (Değişik birinci fıkra:7/11/2024-7531/11 md.) Dava açma süresinin geçmesinden önce kocanın ölmesi veya gaipliğine karar verilmesi ya da sürekli olarak ayırt etme gücünü kaybetmesi hâllerinde baba olduğunu iddia eden kişi, kocanın altsoyu, anası veya babası, doğumu ve...",
+          "metin": null,
+          "skor": 0.8339,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 113",
+          "metin_ozet": "MADDE 113- (1) Dernekler ve diğer tüzel kişiler, statüleri çerçevesinde, üyelerinin veya mensuplarının yahut temsil ettikleri kesimin menfaatlerini korumak için, kendi adlarına, ilgililerin haklarının tespiti veya hukuka aykırı durumun giderilmesi yahut ilgililerin gelecekteki...",
+          "metin": null,
+          "skor": 0.842,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1097,
+      "ortalama_kaynak_skor": 0.8461,
+      "kaynak_sayisi": 5,
+      "message_id": "f788c5ca-3811-4473-bbe6-2e0670edc0f8",
+      "conversation_id": "2226d1aa-57b8-4fba-8adf-c48004b9ecfb",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.58,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

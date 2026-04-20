@@ -107,7 +107,7 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
           ) : (
             <>
               <button onClick={() => onOpenAuth('login')} className="btn btn-ghost text-sm">Giriş Yap</button>
-              <button onClick={() => onOpenAuth('register')} className="btn btn-primary text-sm">Ücretsiz Dene</button>
+              <button onClick={() => onOpenAuth('register')} className="btn btn-primary text-sm" title="Ücretsiz hesap oluştur">Ücretsiz Dene</button>
             </>
           )}
         </div>
@@ -284,9 +284,9 @@ function AppIcerik() {
   useEffect(() => { localStorage.setItem('hb_page', page); }, [page]);
 
   useEffect(() => {
-    const h = () => { setPage('sohbet'); setAuthModal(null); };
-    window.addEventListener('auth-cikis', () => setPage('landing'));
-    return () => window.removeEventListener('auth-cikis', h);
+    const handleCikis = () => { setPage('landing'); setAuthModal(null); };
+    window.addEventListener('auth-cikis', handleCikis);
+    return () => window.removeEventListener('auth-cikis', handleCikis);
   }, []);
 
   const toast = (text, kind = 'success') => {
@@ -301,19 +301,15 @@ function AppIcerik() {
     toast('Hoş geldiniz!');
   };
 
-  const showNavbar = page !== 'landing' || !!kullanici;
-
   return (
     <div className="min-h-screen flex flex-col bg-bg text-ink">
-      {(showNavbar || page === 'landing') && (
-        <Navbar
-          page={page}
-          setPage={setPage}
-          onOpenAuth={setAuthModal}
-          theme={theme}
-          setTheme={v => toggleTema()}
-        />
-      )}
+      <Navbar
+        page={page}
+        setPage={setPage}
+        onOpenAuth={setAuthModal}
+        theme={theme}
+        setTheme={v => toggleTema()}
+      />
 
       <main className="flex-1 min-h-0">
         {page === 'landing'      && <LandingPage onOpenAuth={setAuthModal} setPage={setPage} />}

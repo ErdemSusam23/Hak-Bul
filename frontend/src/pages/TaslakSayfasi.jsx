@@ -19,7 +19,7 @@ export default function TaslakSayfasi() {
         title="Hukuki belgenizi dakikalar içinde hazırlayın"
         sub="Profesyonel avukatlar tarafından hazırlanmış şablonlarla, alanları doldurarak anında PDF elde edin."
         actions={
-          <button className="btn btn-outline">
+          <button className="btn btn-outline" onClick={() => alert('Özel şablon özelliği yakında aktif olacak!')}>
             <Icon name="plus" size={14} /> Özel Şablon
           </button>
         }

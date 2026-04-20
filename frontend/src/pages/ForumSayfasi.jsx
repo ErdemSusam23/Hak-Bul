@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Icon, Avatar, SectionHeader, renderInline } from '../components/ui';
 import { forumThreads, forumReplies } from '../data/mockData';
+import { useAuth } from '../context/useAuth';
 
 function ForumDetail({ thread, onBack }) {
   return (
@@ -83,8 +84,17 @@ function ForumDetail({ thread, onBack }) {
 }
 
 export default function ForumSayfasi({ onThreadSec }) {
+  const { kullanici } = useAuth();
   const [filter, setFilter] = useState('all');
   const [thread, setThread] = useState(null);
+
+  const handleYeniSoru = () => {
+    if (!kullanici) {
+      alert('Soru sormak için lütfen giriş yapın.');
+      return;
+    }
+    alert('Forum sorma özelliği yakında aktif olacak!');
+  };
 
   const filtered =
     filter === 'unanswered' ? forumThreads.filter(t => !t.answered) :
@@ -105,9 +115,21 @@ export default function ForumSayfasi({ onThreadSec }) {
         title="Hukuki Forum"
         sub="Soru sorun, deneyim paylaşın. Avukat onaylı yanıtlara altın rozete bakın."
         actions={
-          <button className="btn btn-primary"><Icon name="plus" size={14} /> Yeni Soru Sor</button>
+          <button onClick={handleYeniSoru} className="btn btn-primary"><Icon name="plus" size={14} /> Yeni Soru Sor</button>
         }
       />
+
+      {!kullanici && (
+        <div
+          className="mb-6 p-4 rounded-xl flex items-center gap-3 text-sm"
+          style={{ background: 'color-mix(in srgb,var(--accent) 8%,var(--surface))', border: '1px solid color-mix(in srgb,var(--accent) 20%,var(--line))' }}
+        >
+          <Icon name="info" size={16} style={{ color: 'var(--accent)' }} />
+          <span style={{ color: 'var(--ink-soft)' }}>
+            Soru sormak veya yorum yapmak için <strong style={{ color: 'var(--accent)' }}>giriş yapın</strong>. Göz atmak için giriş gerekmez.
+          </span>
+        </div>
+      )}
 
       {/* Filters */}
       <div className="flex items-center gap-1 hairline-b mb-2">

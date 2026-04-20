@@ -474,14 +474,45 @@ export default function SohbetSayfasi() {
     }
   }, [mesajlar, yukleniyor]);
 
+  const handlePaylas = async () => {
+    if (!convId) { alert('Önce bir sohbet başlatın.'); return; }
+    try {
+      const { share_token } = await sohbetPaylasAPI(convId);
+      await navigator.clipboard.writeText(`${window.location.origin}/#/shared/${share_token}`);
+      alert('Paylaşım bağlantısı panoya kopyalandı!');
+    } catch { alert('Paylaşılamadı.'); }
+  };
+
+  const handlePDF = async () => {
+    if (!convId) { alert('Önce bir sohbet başlatın.'); return; }
+    try {
+      const blob = await sohbetPDFIndirAPI(convId);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `hak-bul-${convId.slice(0, 8)}.pdf`;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch { alert('PDF indirilemedi.'); }
+  };
+
   return (
     <div className="flex h-[calc(100vh-56px)]" style={{ background: 'var(--surface)' }}>
-      <ChatSidebar
-        open={sidebarOpen}
-        activeId={activeId}
-        onSelect={handleSelect}
-        onNew={handleNew}
-      />
+      {/* Mobile sidebar overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-10 md:hidden"
+          style={{ background: 'rgba(0,0,0,0.3)' }}
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      <div className={sidebarOpen ? 'z-20 md:relative md:z-auto fixed inset-y-0 left-0' : ''}>
+        <ChatSidebar
+          open={sidebarOpen}
+          activeId={activeId}
+          onSelect={handleSelect}
+          onNew={handleNew}
+        />
+      </div>
 
       <main className="flex-1 flex flex-col min-w-0">
         {/* Chat header */}
@@ -501,8 +532,8 @@ export default function SohbetSayfasi() {
               {convId ? `Sohbet #${convId.slice(0, 8)}` : 'Yeni Sohbet'}
             </div>
           </div>
-          <button className="btn btn-ghost text-xs"><Icon name="link-2" size={14} /> Paylaş</button>
-          <button className="btn btn-ghost text-xs"><Icon name="download" size={14} /> PDF</button>
+          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet bağlantısını kopyala"><Icon name="link-2" size={14} /> Paylaş</button>
+          <button onClick={handlePDF} className="btn btn-ghost text-xs" title="PDF olarak indir"><Icon name="download" size={14} /> PDF</button>
         </div>
 
         {/* Messages */}

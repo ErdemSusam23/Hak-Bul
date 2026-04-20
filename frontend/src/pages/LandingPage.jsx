@@ -146,8 +146,12 @@ export default function LandingPage({ onOpenAuth, setPage }) {
           <div className="col-span-12 md:col-span-3">
             <div className="label mb-3">Bülten</div>
             <div className="flex gap-0 border border-line rounded-lg overflow-hidden">
-              <input className="flex-1 px-3 py-2 bg-transparent text-sm" placeholder="E-posta" />
-              <button className="px-3 text-sm" style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}>
+              <input className="flex-1 min-w-0 px-3 py-2 bg-transparent text-sm" placeholder="E-posta" />
+              <button
+                className="px-4 py-2 text-sm shrink-0 whitespace-nowrap font-medium"
+                style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}
+                onClick={() => alert('Bülten aboneliği yakında aktif olacak!')}
+              >
                 Abone ol
               </button>
             </div>

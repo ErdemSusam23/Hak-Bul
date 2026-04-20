@@ -1,0 +1,677 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-20T11:22:07.915915+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\06_tasinmaz_mulk\\test_sonuclari_20260420_141602.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 365.8,
+    "ortalama_sure_sn": 30.48,
+    "kategori_dagilimi": {
+      "Tasinmaz Mulk": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 22.46,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 1105.0,
+        "ortalama_kaynak_skor": 0.8078
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Tapu nedir ve nasıl alınır?",
+      "cevap": "Tapu, taşınmazlar üzerindeki hakları gösteren resmi bir belgedir. 4721 Sayılı Türk Medeni Kanunu'nun 997. maddesine göre, tapu sicili, tapu kütüğü ve kat mülkiyeti kütüğü ile bunları tamamlayan yevmiye defteri ve belgeler ile plânlardan oluşur.\n\nTapu almak için, öncelikle taşınmazın kaydedilmesi gerekir. 4721 Sayılı Türk Medeni Kanunu'nun 1003. maddesine göre, bir taşınmazın kütüğe kaydı ve belirlenmesinde resmî bir ölçüme dayanan plân esas alınır. Plânların nasıl hazırlanacağı Cumhurbaşkanınca çıkarılan yönetmelikle belirlenir.\n\nTapu alma işlemleri, genellikle ilgili belediye veya valilikçe yürütülür. 3194 Sayılı İmar Kanunu'nun 22. maddesine göre, yapı ruhsatiyesi almak için belediye, valilik bürolarına yapı sahipleri veya kanuni vekillerince dilekçe ile müracaat edilir. Dilekçeye tapu, mimari proje, statik proje, elektrik ve tesisat projeleri, resim ve hesapları, röperli veya yoksa, ebatlı kroki eklenmesi gereklidir.\n\nTapu kütüğüne tescil edilecek haklar, 4721 Sayılı Türk Medeni Kanunu'nun 1008. maddesinde belirtilmiştir. Bunlar; mülkiyet, irtifak hakları ve taşınmaz yükleri, rehin haklarıdır.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 1003",
+          "metin_ozet": "Madde 1003- Bir taşınmazın kütüğe kaydı ve belirlenmesinde resmî bir ölçüme dayanan plân esas alınır. Tapu sicilinin tutulması 1.",
+          "metin": null,
+          "skor": 0.8332,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 997",
+          "metin_ozet": "Madde 997- Taşınmazlar üzerindeki hakları göstermek üzere tapu sicili tutulur. Tapu sicili, tapu kütüğü ve kat mülkiyeti kütüğü ile bunları tamamlayan yevmiye defteri ve belgeler ile plânlardan oluşur.",
+          "metin": null,
+          "skor": 0.831,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3194 Sayılı İmar Kanunu - Madde 22",
+          "metin_ozet": "Dilekçeye sadece tapu (istisnai hallerde tapu senedi yerine geçecek belge), mimari proje, statik proje, elektrik ve tesisat projeleri, resim ve hesapları, röperli veya yoksa, ebatlı kroki eklenmesi gereklidir.",
+          "metin": null,
+          "skor": 0.8229,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3194&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 1008",
+          "metin_ozet": "Madde 1008- Taşınmaza ilişkin aşağıdaki haklar, tapu kütüğüne tescil edilir:",
+          "metin": null,
+          "skor": 0.8181,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 735",
+          "metin_ozet": "Madde 735- Tapu kütüğüne şerh verilen sözleşmeden doğan önalım hakkı, şerhte belirtilen sürede ve belirtilen koşullara göre her malike karşı kullanılabilir. Kütükte koşullar belirtilmemişse taşınmazın üçüncü kişiye satışındaki koşullar esas alınır.",
+          "metin": null,
+          "skor": 0.821,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1256,
+      "ortalama_kaynak_skor": 0.8252,
+      "kaynak_sayisi": 5,
+      "message_id": "16256446-99c0-409c-ba90-3bfb91773739",
+      "conversation_id": "173f6c3c-cfcd-433d-bfea-ea69bb5783f7",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 12.7,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Taşınmaz satışında resmi şekil şartı nedir?",
+      "cevap": "Taşınmaz satışında resmi şekil şartı, sözleşmenin resmi şekilde düzenlenmesi şarttır. Bu, 6098 Sayılı Türk Borçlar Kanunu'nun 237. maddesinde belirtilmiştir. Buna göre, taşınmaz satışının geçerli olabilmesi için sözleşmenin resmi şekilde düzenlenmesi gerekmektedir. Ayrıca, taşınmaz satışı vaadi, geri alım ve alım sözleşmeleri de resmi şekilde düzenlenmedikçe geçerli olmaz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 237",
+          "metin_ozet": "MADDE 237- Taşınmaz satışının geçerli olabilmesi için, sözleşmenin resmî şekilde düzenlenmesi şarttır. Taşınmaz satışı vaadi, geri alım ve alım sözleşmeleri, resmî şekilde düzenlenmedikçe geçerli olmaz. Önalım sözleşmesinin geçerliliği, yazılı şekilde yapılmış olmasına bağlıdır.",
+          "metin": null,
+          "skor": 0.8739,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 830",
+          "metin_ozet": "Madde 830- Taşınmaz malikine kalan yapılar için üst hakkı sahibine ödenmesi kararlaştırılan bedelin miktarı ve bunun hesaplanış biçimi ile bu bedel borcunun kaldırılmasına ve arazinin ilk hâline getirilmesine ilişkin anlaşmalar, üst hakkının kurulması için gerekli olan resmî...",
+          "metin": null,
+          "skor": 0.8351,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 243",
+          "metin_ozet": "MADDE 243- Bir taşınmazın koşula bağlı satışında, koşul gerçekleşmedikçe tapu siciline tescil yapılamaz. Taşınmaz satışında mülkiyeti saklı tutma koşulu da tescil edilemez.",
+          "metin": null,
+          "skor": 0.8517,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 277",
+          "metin_ozet": "MADDE 277- Taşınmazın açık artırma yoluyla satışında, ihalenin veya reddinin artırmadan hemen sonra yapılması gerekir.",
+          "metin": null,
+          "skor": 0.8398,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 444",
+          "metin_ozet": "Madde 444- Taşınmazların satışı, vesayet makamının talimatı uyarınca ve ancak vesayet altındaki kişinin menfaati gerekli kıldığı hâllerde mümkündür.",
+          "metin": null,
+          "skor": 0.8434,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 375,
+      "ortalama_kaynak_skor": 0.8488,
+      "kaynak_sayisi": 5,
+      "message_id": "398bc5f3-aaaf-450d-a6e2-49823e6bda7d",
+      "conversation_id": "208b8bd7-7374-4062-ad12-3f6ebcf8c382",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 21.3,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Tapu iptal ve tescil davası hangi durumlarda açılır?",
+      "cevap": "Tapu iptal ve tescil davası, belirli durumlarda açılabilir. \n\nİptal davası, ölüme bağlı tasarrufun iptal edilmesinde menfaati bulunan mirasçı veya vasiyet alacaklısı tarafından açılabilir (m. 558). \n\nTescil davası ise, tapu kütüğünde kayıtlı olmayan bir taşınmazı davasız ve aralıksız olarak yirmi yıl süreyle ve malik sıfatıyla zilyetliğinde bulunduran kişi tarafından açılabilir (m. 713). Aynı koşullar altında, maliki tapu kütüğünden anlaşılamayan veya yirmi yıl önce hakkında gaiplik kararı verilmiş bir kimse adına kayıtlı bulunan taşınmazın tamamının veya bölünmesinde sakınca olmayan bir parçasının zilyedi de, o taşınmazın tamamı, bir parçası veya bir payı üzerindeki mülkiyet hakkının tapu kütüğüne tesciline karar verilmesini isteyebilir (m. 713).\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 713",
+          "metin_ozet": "Madde 713- Tapu kütüğünde kayıtlı olmayan bir taşınmazı davasız ve aralıksız olarak yirmi yıl süreyle ve malik sıfatıyla zilyetliğinde bulunduran kişi, o taşınmazın tamamı, bir parçası veya bir payı üzerindeki mülkiyet hakkının tapu kütüğüne tesciline karar verilmesini...",
+          "metin": null,
+          "skor": 0.8593,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 558",
+          "metin_ozet": "Madde 558- İptal davası, tasarrufun iptal edilmesinde menfaati bulunan mirasçı veya vasiyet alacaklısı tarafından açılabilir. Dava, ölüme bağlı tasarrufun tamamının veya bir kısmının iptaline ilişkin olabilir.",
+          "metin": null,
+          "skor": 0.8467,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 1026",
+          "metin_ozet": "Madde 1026- Bir aynî hakkın sona ermesiyle tescil her türlü hukukî değerini kaybettiği takdirde, yüklü taşınmaz maliki, terkini isteyebilir.",
+          "metin": null,
+          "skor": 0.8547,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 992",
+          "metin_ozet": "Madde 992- Tapuya kayıtlı taşınmazlarda, hak karinesinden ve zilyetlikten doğan dava açma hakkından yalnız adına tescil bulunan kimse yararlanır.",
+          "metin": null,
+          "skor": 0.8502,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 103",
+          "metin_ozet": "Vakıflar Genel Müdürlüğü veya ilgililer, vakfın kurulmasını engelleyen sebeplerin varlığı hâlinde iptal davası açabilirler.",
+          "metin": null,
+          "skor": 0.8486,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 883,
+      "ortalama_kaynak_skor": 0.8519,
+      "kaynak_sayisi": 5,
+      "message_id": "51d4c605-e74b-45d4-a342-26b6f967118d",
+      "conversation_id": "f83dcb63-5479-4bc5-8065-f5e485ca6531",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.66,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Kat mülkiyeti ile kat irtifakı arasındaki fark nedir?",
+      "cevap": "Kat mülkiyeti ve kat irtifakı, Türk hukukunda gayrimenkul mülkiyetinin belirli bir bölümüne ilişkin haklar olarak tanımlanır. Aralarındaki temel fark, mülkiyetin niteliği ve sürekliliğidir.\n\nKat irtifakı, bir binanın bağımsız bölümlerinin inşa edilmesi ve bu bölümlerin mülkiyetinin ayrı ayrı kişilerce elde edilmesi amacıyla kurulan bir haktır. Bu hak, binanın belirli bir bölümü üzerinde süreli veya süresiz olarak kurulabilir. Kat irtifakı, binanın tamamı üzerinde ortak bir mülkiyet hakkı değil, belirli bir bölümü üzerinde ayrı bir mülkiyet hakkı sağlar.\n\nKat mülkiyeti ise, kat irtifakının tamamlanmasıyla oluşan bir mülkiyet türüdür. Bir binanın bağımsız bölümlerinin tamamı üzerinde kat mülkiyeti kurulduğunda, her bir bölümün sahibi, o bölümün bağımsız mülkiyetine sahip olur. Ayrıca, binanın ortak alanları üzerinde de ortak mülkiyet hakkı oluşur.\n\nBu farklılıklar, 4721 Sayılı Türk Medeni Kanunu'nun 726. maddesinde ve Kat Mülkiyeti Kanunu'nda düzenlenmiştir. Ancak, bu kanunda kat mülkiyeti ve kat irtifakı arasındaki farklar daha ayrıntılı olarak açıklanmıştır. \n\nGetirilen kaynaklar bu soruyu tam olarak karsilamiyor. 634 sayili Kat Mulkieti Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 726",
+          "metin_ozet": "Madde 726- Bir üst irtifakına dayalı olarak başkasına ait bir arazinin altında veya üstünde sürekli kalmak üzere inşa edilen yapıların mülkiyeti, irtifak hakkı sahibine ait olur.",
+          "metin": null,
+          "skor": 0.8731,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1280,
+      "ortalama_kaynak_skor": 0.8731,
+      "kaynak_sayisi": 1,
+      "message_id": "051e65be-79df-43e6-8be8-771df2e3fac4",
+      "conversation_id": "5de213db-2f6e-4502-8f41-6e7c86f56360",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Kiracı tahliyesi hangi durumlarda mümkündür?",
+      "cevap": "Kiracı tahliyesi, 2004 Sayılı İcra ve Iflas Kanunu'nun ilgili maddelerine göre mümkündür. \n\nKiracı, kiralanan taşınmazın müddeti bittikten bir ay içinde icra dairesine müracaat ederek tahliye emri talebinde bulunabilir (Madde 272). Tahliye emri tebliğ edildikten sonra kiracı, yedi gün içinde itirazda bulunabilir (Madde 274). İtirazda bulunulmazsa veya itiraz kaldırılırsa, kiralanan taşınmaz müddetin hitamında zorla tahliye ve kiralıyana teslim olunur (Madde 273).\n\nAyrıca, kiralanan taşınmazda üçüncü şahıs bulunursa ve bu şahıs resmi bir vesika gösteremezse, derhal tahliye olunur (Madde 276). Ancak, bu şahıs resmi bir vesika gösterememekle beraber, daireye ibraz olunan mukavele tarihinden evvelki bir zamandan beri orayı işgal etmekte bulunduğunu beyan eder ve bu beyanı icra memuru tarafından mahallinde yapılacak tahkikatla teyit ederse, memur tahliyeyi tehirle üç gün içinde keyfiyeti icra mahkemesine bildirir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamaktadır. Detayli bilgi icin 2004 Sayılı İcra ve Iflas Kanunu'nun ilgili hükümlerine bakmak gerekir.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 272",
+          "metin_ozet": "3/7/1940-3890/1 md.) Mukavelename ile kiralanan bir taşınmazın müddeti bittikten bir ay içinde mukavelenin icra dairesine ibrazı ile tahliyesi istenebilir.",
+          "metin": null,
+          "skor": 0.8691,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 275",
+          "metin_ozet": "Tahliye talebi noterlikçe res’en tanzim veya tarih ve imzası tasdik edilmiş yahut ikrar olunmuş bir mukaveleye müstenit olup da kiracı kiranın yenilendiğine veya uzatıldığına dair aynı kuvvet ve mahiyette bir vesika gösteremezse itiraz kaldırılır.",
+          "metin": null,
+          "skor": 0.8763,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 276",
+          "metin_ozet": "18/2/1965-538/113 md.) Tahliyesi istenen yerde kiracıdan başka bir şahıs bulunur ve işgalde haklı olduğuna dair resmi bir vesika gösteremezse derhal tahliye olunur.",
+          "metin": null,
+          "skor": 0.8551,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 273",
+          "metin_ozet": "Madde 273 – Müddeti içinde itiraz olunmaz veya itiraz kaldırılırsa kiralanan taşınmaz müddetin hitamında zorla tahliye ve kiralıyana teslim olunur.",
+          "metin": null,
+          "skor": 0.8664,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 274",
+          "metin_ozet": "3/7/1940-3890/1 md.) İtiraz etmek isteyen kiracı itirazını tahliye emrinin tebliğinden itibaren yedi gün içinde dilekçe ile veya şifahen icra dairesine bildirir.",
+          "metin": null,
+          "skor": 0.8632,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1068,
+      "ortalama_kaynak_skor": 0.866,
+      "kaynak_sayisi": 5,
+      "message_id": "a28e6a72-ae62-434b-a586-a2d7a82db97e",
+      "conversation_id": "63784305-9213-446a-90cd-baca6b7d9d80",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.17,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Kira artış oranı nasıl belirlenir?",
+      "cevap": "Kira artış oranı, 6098 Sayılı Türk Borçlar Kanunu'nun 344. maddesine göre belirlenir. Buna göre, tarafların yenilenen kira dönemlerinde uygulanacak kira bedeline ilişkin anlaşmaları, bir önceki kira yılında tüketici fiyat endeksindeki oniki aylık ortalamalara göre değişim oranını geçmemek koşuluyla geçerlidir. Eğer taraflarca bu konuda bir anlaşma yapılmamışsa, kira bedeli, bir önceki kira yılının tüketici fiyat endeksindeki oniki aylık ortalamalara göre değişim oranını geçmemek koşuluyla hâkim tarafından, kiralananın durumu göz önüne alınarak hakkaniyete göre belirlenir.\n\nAncak, 6098 Sayılı Türk Borçlar Kanunu'nun Geçici Madde 1 ve Geçici Madde 2'ye göre, belirli tarihler arasında yenilenen kira dönemlerinde uygulanacak kira bedeline ilişkin anlaşmalar, bir önceki kira yılına ait kira bedelinin yüzde yirmi beşini geçmemek koşuluyla geçerlidir. Bir önceki kira yılının tüketici fiyat endeksindeki oniki aylık ortalamalara göre değişim oranının yüzde yirmi beşin altında kalması halinde değişim oranı geçerlidir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 344 - Fıkra 1",
+          "metin_ozet": "MADDE 344 - Tarafların yenilenen kira dönemlerinde uygulanacak kira bedeline ilişkin anlaşmaları, bir önceki kira yılında tüketici fiyat endeksindeki oniki aylık ortalamalara göre değişim oranını geçmemek koşuluyla geçerlidir.",
+          "metin": null,
+          "skor": 0.857,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 345",
+          "metin_ozet": "MADDE 345- Kira bedelinin belirlenmesine ilişkin dava her zaman açılabilir.",
+          "metin": null,
+          "skor": 0.8554,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6502 Sayılı Tüketicinin Korunması Hakkında Kanun - Madde 36",
+          "metin_ozet": "MADDE 36- (1) Kredilerde geri ödeme tutarlarının, finansal kiralama işlemlerinde ise kira bedellerinin anaparayı aşan kısmı bu madde kapsamında faiz olarak kabul edilir.",
+          "metin": null,
+          "skor": 0.8503,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6502&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Gecici Madde 1",
+          "metin_ozet": "GEÇİCİ MADDE 1- (Ek:8/6/2022-7409/4 md.) Konut kiraları bakımından bu maddenin yürürlüğe girdiği tarih ilâ 1/7/2023 (bu tarih dâhil) tarihleri arasında yenilenen kira dönemlerinde uygulanacak kira bedeline ilişkin anlaşmalar, bir önceki kira yılına ait kira bedelinin yüzde yirmi...",
+          "metin": null,
+          "skor": 0.859,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Gecici Madde 2",
+          "metin_ozet": "14/7/2023-7456/23 md.) Konut kiraları bakımından 2/7/2023 ilâ 1/7/2024 (bu tarihler dâhil) tarihleri arasında yenilenen kira dönemlerinde uygulanacak kira bedeline ilişkin anlaşmalar, bir önceki kira yılına ait kira bedelinin yüzde yirmi beşini geçmemek koşuluyla geçerlidir.",
+          "metin": null,
+          "skor": 0.8581,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1149,
+      "ortalama_kaynak_skor": 0.856,
+      "kaynak_sayisi": 5,
+      "message_id": "4c0956eb-a603-4440-bfd8-7c356fc976e3",
+      "conversation_id": "91fb24f6-95fc-44ab-8c27-cb7a151bbcfa",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.04,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Ortak mülkiyet (paylı mülkiyet) nedir ve nasıl sona erdirilir?",
+      "cevap": "Ortak mülkiyet, aynı taşınmaz malın birden fazla kişi tarafından ortaklaşa sahip olunması durumudur. Paylı mülkiyet olarak da bilinen bu durum, 4721 Sayılı Türk Medeni Kanunu'nda düzenlenmiştir.\n\nPaylı mülkiyette, malın tamamına birden fazla kişi belli paylarla malik olur. Paydaşlardan her biri, kendi payı bakımından malik hak ve yükümlülüklerine sahip olur. Pay devredilebilir, rehnedilebilir ve alacaklılar tarafından haczettirilebilir.\n\nPaylı mülkiyet, elbirliği mülkiyeti, malın devri, topluluğun dağılması veya paylı mülkiyete geçilmesiyle sona erer. Paylaştırma, aksine bir hüküm bulunmadıkça, paylı mülkiyet hükümlerine göre yapılır.\n\nOrtaklık sözleşmesinde öngörülen amacın gerçekleşmesi veya gerçekleşmesinin imkânsız duruma gelmesiyle, sözleşmede ortaklığın mirasçılarla sürdürülmesi konusunda bir hüküm yoksa, ortaklardan birinin ölmesiyle, sözleşmede ortaklığın devam edeceğine ilişkin bir hüküm yoksa, bir ortağın kısıtlanması, iflası veya tasfiyedeki payının cebrî icra yoluyla paraya çevrilmesiyle, bütün ortakların oybirliğiyle karar vermesiyle, ortaklık için kararlaştırılmış olan sürenin bitmesiyle, ortaklık sözleşmesinde feshi bildirme hakkı saklı tutulmuş veya ortaklık belirsiz bir süre için ya da ortaklardan birinin ömrü boyunca kurulmuşsa, bir ortağın fesih bildiriminde bulunmasıyla, haklı sebeplerin bulunması hâlinde, her zaman başkaca koşul aranmaksızın, fesih istemi üzerine mahkeme kararıyla da ortaklık sona erer.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 703",
+          "metin_ozet": "Madde 703- Elbirliği mülkiyeti, malın devri, topluluğun dağılması veya paylı mülkiyete geçilmesiyle sona erer. Paylaştırma, aksine bir hüküm bulunmadıkça, paylı mülkiyet hükümlerine göre yapılır. Taşınmaz mülkiyetinin konusu",
+          "metin": null,
+          "skor": 0.431,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 639",
+          "metin_ozet": "MADDE 639- Ortaklık, aşağıdaki durumlarda sona erer: Ortaklık sözleşmesinde öngörülen amacın gerçekleşmesi veya gerçekleşmesinin imkânsız duruma gelmesiyle. Sözleşmede ortaklığın mirasçılarla sürdürülmesi konusunda bir hüküm yoksa, ortaklardan birinin ölmesiyle.",
+          "metin": null,
+          "skor": 0.4292,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 638",
+          "metin_ozet": "MADDE 638- Ortaklık için edinilen veya ortaklığa devredilen şeyler, alacaklar ve ayni haklar, ortaklık sözleşmesi çerçevesinde elbirliği hâlinde bütün ortaklara ait olur.",
+          "metin": null,
+          "skor": 0.428,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 688",
+          "metin_ozet": "Madde 688- Paylı mülkiyette birden çok kimse, maddî olarak bölünmüş olmayan bir şeyin tamamına belli paylarla maliktir.",
+          "metin": null,
+          "skor": 0.4261,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 380",
+          "metin_ozet": "Madde 380- Aşağıdaki hâllerde ortaklık sona erer: Bütün ortakların anlaşması veya feshin bildirilmesiyle, 2. Ortaklık süresi açıkça veya örtülü olarak uzatılmadığı takdirde sürenin bitmesiyle, 3.",
+          "metin": null,
+          "skor": 0.4222,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1573,
+      "ortalama_kaynak_skor": 0.4273,
+      "kaynak_sayisi": 5,
+      "message_id": "8a6d6af4-1652-43e4-9da8-51955f1613a9",
+      "conversation_id": "e5bb3172-8b94-4e0b-8e40-78520f208c4c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.81,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "İpotek nedir ve nasıl kaldırılır?",
+      "cevap": "İpotek, bir taşınmaz veya gemi gibi bir malın belirli bir alacak için teminat olarak gösterilmesidir. İpotek kaldırılması, ipoteğin sona ermesi ve ipotek kaydının sicilden silinmesi anlamına gelir.\n\nİpotek kaldırılması için aşağıdaki şartlar geçerli olabilir:\n\n- İpotekli alacaklı ile gemi malikinin, ipoteğin kaldırılması hususunda anlaşmaları ve ipotek kaydının gemi sicilinden silinmesi ile ipotek sona erer. İpotek üzerinde hak sahibi kişiler varsa, onların da onayları şarttır.\n- Alacaklının feragati ve bunun üzerine sicilden ipotek kaydının silinmesi ile ipotek düşer. İpotek üzerinde hak sahibi kişiler varsa, onların da onayları şarttır.\n- Malik, ipoteğin ileri sürülmesini sürekli olarak imkânsız kılan bir def’e sahip bulunduğu takdirde, alacaklıdan ipotekten feragatini isteyebilir.\n- İpotekle ilgili olarak yapılan son kayıttan itibaren belirli bir süre geçtiği ve alacaklının hakkı bu süre içinde malik tarafından tanınmış olmadığı takdirde, alacaklı ilan yoluyla çağrılarak ipoteğin düşmesine karar verilebilir.\n- Gemi ipoteği ile mülkiyetin aynı kişide birleşmesi ile ipotek düşer.\n\nBu konular 6102 Sayılı Türk Ticaret Kanunu ve 4721 Sayılı Türk Medeni Kanunu'nda düzenlenmiştir.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1049",
+          "metin_ozet": "MADDE 1049- (1) İpotekli alacaklı ile gemi malikinin, ipoteğin kaldırılması hususunda 1015 inci maddenin ikinci fıkrasında öngörüldüğü şekilde anlaşmaları ve ipotek kaydının gemi sicilinden silinmesi ile ipotek sona erer.",
+          "metin": null,
+          "skor": 0.8649,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1050",
+          "metin_ozet": "MADDE 1050- (1) İpotek, alacaklının feragati ve bunun üzerine sicilden ipotek kaydının silinmesi ile düşer.",
+          "metin": null,
+          "skor": 0.8486,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 884",
+          "metin_ozet": "Madde 884- Borçtan şahsen sorumlu olmayan rehinli taşınmaz maliki, borçluya ait koşullar içinde borcu ödeyerek taşınmazın üzerindeki ipoteğin kaldırılmasını isteyebilir.",
+          "metin": null,
+          "skor": 0.8475,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1052",
+          "metin_ozet": "MADDE 1052- (1) Alacaklının kim olduğu bilinmiyorsa, gemi siciline ipotekle ilgili olmak üzere yapılan son kayıttan itibaren on yıl geçtiği ve alacaklının hakkı bu süre içinde malik tarafından Türk Borçlar Kanununun 154 üncü maddesi gereğince zamanaşımını kesecek tarzda tanınmış...",
+          "metin": null,
+          "skor": 0.8422,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 1045",
+          "metin_ozet": "MADDE 1045- (1) Gemi ipoteği ile mülkiyetin aynı kişide birleşmesi ile ipotek düşer.",
+          "metin": null,
+          "skor": 0.8327,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1195,
+      "ortalama_kaynak_skor": 0.8472,
+      "kaynak_sayisi": 5,
+      "message_id": "bf3c6061-42bd-4f3e-a835-a32652b6e495",
+      "conversation_id": "a2f3f644-10ea-4183-a310-9395ade5a68b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 14.08,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Komşuluk hukukundan doğan haklar nelerdir?",
+      "cevap": "Komşuluk hukukundan doğan haklar, taşınmaz mülkiyetinin kullanılmasına ilişkin olarak komşular arasında doğan hak ve yükümlülükleri içerir. Bu haklar, 4721 Sayılı Türk Medeni Kanunu'nda düzenlenmiştir.\n\nKomşuluk hukukundan doğan haklar arasında, taşınmaz malikinin taşınmazını işletme veya iyileştirme ya da taşınmazı üzerinde yapı yapma amacıyla komşu taşınmaza geçici olarak girme hakkı (Madde 748), orman ve mer'aya girme hakkı (Madde 750), su, gaz, elektrik ve benzerlerinin mecraları ile ilgili haklar (Madde 727) ve taşınmazın durumuna, niteliğine ve yerel âdete göre komşular arasında hoş görülebilecek dereceyi aşan duman, buğu, kurum, toz, koku çıkartarak, gürültü veya sarsıntı yaplarak rahatsızlık vermemek (Madde 737) gibi haklar yer alır.\n\nAyrıca, komşuluk hukukundan doğan haklar arasında, tarla yolu, hayvan sulama yolu, kış geçidi, tomruk kaydırma yolu ve oluğu ve bunlara benzer diğer geçitler ile ilgili haklar da bulunmaktadır (Madde 748). Bu haklar, taşınmaz maliklerinin birbirlerine karşı olan yükümlülüklerini ve haklarını düzenler.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. 4721 Sayılı Türk Medeni Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 750",
+          "metin_ozet": "Madde 750- Her taşınmaz maliki, komşuluk hukukundan doğan yetkilerin kullanılması için gerekli işlere ve bunların giderlerine, kendi yararlanması oranında katılmakla yükümlüdür.",
+          "metin": null,
+          "skor": 0.8302,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 727",
+          "metin_ozet": "Komşuluk hukukunun gerektirdiği hâller dışında bir taşınmazın böyle bir mecra ile aynî hak olarak yüklenmesi, ancak bir irtifak hakkı kurulması suretiyle olabilir.",
+          "metin": null,
+          "skor": 0.8257,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 737",
+          "metin_ozet": "Madde 737- Herkes, taşınmaz mülkiyetinden doğan yetkileri kullanırken ve özellikle işletme faaliyetini sürdürürken, komşularını olumsuz şekilde etkileyecek taşkınlıktan kaçınmakla yükümlüdür.",
+          "metin": null,
+          "skor": 0.8237,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 748",
+          "metin_ozet": "Doğrudan doğruya kanundan kaynaklanan geçit hakları, tapu kütüğüne tescil edilmeksizin doğar.",
+          "metin": null,
+          "skor": 0.8144,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 736",
+          "metin_ozet": "Madde 736- Tapu kütüğüne şerh verilen alım ve geri alım hakları, şerhde belirtilen süre içinde her malike karşı kullanılabilir.",
+          "metin": null,
+          "skor": 0.818,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1256,
+      "ortalama_kaynak_skor": 0.8224,
+      "kaynak_sayisi": 5,
+      "message_id": "3dccc325-09a0-4681-8d8a-e99564a2110a",
+      "conversation_id": "d3354473-95c4-4934-a8b2-54d45bbbfc6e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 10.49,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Haksız işgal (ecrimisil) nedir ve nasıl talep edilir?",
+      "cevap": "Haksız işgal, bir kişinin başka bir kişinin taşınmaz mülkiyetine sahip olduğu yere, izinsiz ve haksız olarak girerek orada kalması veya kullanmasıdır. Türk hukukunda, haksız işgalin tazminatı olarak bilinen \"ecrimisil\" talep edilebilir.\n\nTürk Medeni Kanunu'nun 716. maddesine göre, mülkiyetin kazanılmasına esas olacak bir hukukî sebebe dayanarak malikten mülkiyetin kendi adına tescilini istemek hususunda kişisel hakka sahip olan kimse, malikin kaçınması hâlinde hâkimden, mülkiyetin hükmen geçirilmesini isteyebilir. Ancak, bu madde doğrudan haksız işgalin tazminatını düzenlemez.\n\nHaksız fiilden doğan davalarda, haksız fiilin işlendiği veya zararın meydana geldiği yahut gelme ihtimalinin bulunduğu yer ya da zarar görenin yerleşim yeri mahkemesi de yetkilidir (Hukuk Muhakemeleri Kanunu, Madde 16).\n\nHaksız işgalin tazminatı olarak ecrimisil talep edilebilmesi için, işgalin haksız olması ve taşınmazın malikinin rızası dışında gerçekleştirilmesi gerekmektedir. Ecrimisil talebi, haksız işgalin gerçekleştiği tarihten itibaren belirli bir süre içinde ileri sürülmelidir. Ancak, bu süre ve talebin şartları hakkında kaynaklarda yeterli bilgi bulunmamaktadır.\n\nGetirilen kaynaklar bu soruyu tamamen karsilamiyor. 4721 Sayılı Türk Medeni Kanunu ve 6100 Sayılı Hukuk Muhakemeleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 716",
+          "metin_ozet": "Bir taşınmazın mülkiyetini işgal, miras, kamulaştırma, cebrî icra veya mahkeme kararına dayanarak kazanan kişi tescili doğrudan doğruya yaptırabilir.",
+          "metin": null,
+          "skor": 0.8168,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 67",
+          "metin_ozet": "Eser üzerinde sahibinin adı hiç konulmamış veya yanlış konulmuş yahut konulan ad iltibasa meydan verecek mahiyette olupta eser sahibi 15 inci maddede zikredilen tesbit davasından başka tecavüzün ref'ini talep etmişse, tecavüz eden gerek aslına, gerek tedavülde bulunan çoğaltılmış...",
+          "metin": null,
+          "skor": 0.8197,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 707",
+          "metin_ozet": "Madde 707- Tapu kütüğüne kayıtlı bir taşınmazın mülkiyetinin işgal yoluyla kazanılması, ancak kaydının malikin istemiyle terkin edilmiş olmasına bağlıdır. Tapuya kayıtlı olmayan taşınmazlar üzerinde işgal yoluyla mülkiyet kazanılamaz.",
+          "metin": null,
+          "skor": 0.8129,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 16",
+          "metin_ozet": "MADDE 16- (1) Haksız fiilden doğan davalarda, haksız fiilin işlendiği veya zararın meydana geldiği yahut gelme ihtimalinin bulunduğu yer ya da zarar görenin yerleşim yeri mahkemesi de yetkilidir.",
+          "metin": null,
+          "skor": 0.8142,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 71",
+          "metin_ozet": "MADDE 71- (1) Tasarım başvurusu gerçek hak sahibi olmayan bir kişi tarafından yapılmış veya tasarım bu kişi adına tescil edilmişse veya tescilsiz tasarım gerçek hak sahibi olmayan bir kişi tarafından kamuya sunulmuşsa, gerçek hak sahibi olduğunu iddia eden kişi, tasarım hakkından...",
+          "metin": null,
+          "skor": 0.8137,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1406,
+      "ortalama_kaynak_skor": 0.8155,
+      "kaynak_sayisi": 5,
+      "message_id": "f21bb6a8-e652-4a39-b36d-3d1b3cbe71e8",
+      "conversation_id": "a9f39287-c1a7-49c5-bd26-ac6cb3a43cf0",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 29.13,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Arsa payı karşılığı inşaat sözleşmesi nedir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karşılamıyor. Kat Mülkiyeti Kanunu bu konuyu düzenlemektedir. Detaylı bilgi için baronuzun hukuki yardım bürosuna veya bir avukata başvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 346",
+          "metin_ozet": "Satış süresinin sonunda, payların itibarî değerlerinin, varsa çıkarma priminin karşılığı şirkete, giderler düştükten sonra kalan tutar ise, pay senetlerini halka arzeden pay sahiplerine ödenir.",
+          "metin": null,
+          "skor": 0.8237,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 182,
+      "ortalama_kaynak_skor": 0.8237,
+      "kaynak_sayisi": 1,
+      "message_id": "b7667d53-c409-413d-aed6-4ef29feb1687",
+      "conversation_id": "f625d63b-a811-4ea0-9948-9ff21157b218",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.56,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Tasinmaz Mulk",
+      "soru": "Tapuda yapılan hatalar nasıl düzeltilir?",
+      "cevap": "Tapuda yapılan hataların düzeltilmesi, Türk Medeni Kanunu'nun 1027. maddesinde düzenlenmiştir. Bu maddeye göre, tapu memuru, tapu sicilindeki yanlışlığı ancak mahkeme kararıyla düzeltebilir. Düzeltme, eski tescilin terkini ve yeni bir tescilin yapılması biçiminde de olabilir. Ayrıca, basit yazı yanlışlıkları, Cumhurbaşkanınca çıkarılan yönetmelik uyarınca re'sen düzeltilir.\n\nİmar Kanunu'nun Ek Madde 7'sine göre, belirlenen alanlarda, mülkiyete ilişkin hisse hatalarının, parsellerin yüz ölçümü ve sınır düzenlemelerinin ve imar uygulaması gören alanlarda dağıtım ve alan hatalarının doğru miktar üzerinden resen düzeltilmesinde, kamulaştırma, trampa ve benzeri yollarla edinilen taşınmazların, Hazinenin özel mülkiyetindeki veya özel mülkiyete konu olabilecek Devletin hüküm ve tasarrufu altındaki veya ihtiyaç duyulması hâlinde belirlenen alan dışında olup Hazinenin özel mülkiyetindeki taşınmazların uygulamalar kapsamında değerlendirilmek ve trampa yoluyla yapılacak kamulaştırmalarda kullanılmak üzere tespitinde ve temininde ve üçüncü kişilere devir ve temliki gereken taşınmazlarla ilgili iş ve işlemler ile tapudaki işlemlerin yürütülmesinde, ilgili alanlarda her tür ölçekteki imar planı ve imar uygulamaları ile hak sahibine devir ve benzeri ilgili işlemlerde Bakanlık yetkilidir.\n\nKamulaştırma Kanunu'nun 14. maddesine göre, kamulaştırmaya konu taşınmaz malın maliki tarafından, kamulaştırma işlemine karşı idari yargıda iptal ve maddi hatalara karşı da adli yargıda düzeltim davası açılabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 1027",
+          "metin_ozet": "Madde 1027- İlgililerin yazılı rızaları olmadıkça, tapu memuru, tapu sicilindeki yanlışlığı ancak mahkeme kararıyla düzeltebilir.",
+          "metin": null,
+          "skor": 0.8515,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3194 Sayılı İmar Kanunu - Ek Madde 7",
+          "metin_ozet": "Ek Madde 7 – (Ek:4/7/2019-7181/13 md.) Alan, sınır, hisse düzeltimi yapılamaması nedeniyle zamanla sicili ile zemini uyumsuz hâle gelen, imar uygulama hatalarının varlığı tespit edilmesine rağmen bu hataların düzeltilemediği, haricî bölünmeye tabi tutulup tescili sağlanamayan...",
+          "metin": null,
+          "skor": 0.834,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3194&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2942 Sayılı Kamulaştırma Kanunu - Madde 14",
+          "metin_ozet": "24/4/2001 - 4650/7 md.) Kamulaştırmaya konu taşınmaz malın maliki tarafından 10 uncu madde gereğince mahkemece yapılan tebligat gününden, kendilerine tebligat yapılamayanlara tebligat yerine geçmek üzere mahkemece gazete ile yapılan ilan tarihinden itibaren otuz gün içinde,...",
+          "metin": null,
+          "skor": 0.8276,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2942&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 1007",
+          "metin_ozet": "Madde 1007- Tapu sicilinin tutulmasından doğan bütün zararlardan Devlet sorumludur.",
+          "metin": null,
+          "skor": 0.8468,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2942 Sayılı Kamulaştırma Kanunu - Madde 36",
+          "metin_ozet": "Madde 36 – Kamulaştırma kanunları uyarınca gerekli işlemler tamamlanıp tapuda kayıtlı olanların idare adına intikallerinin yapılmasından, tapuda kayıtlı olmayanların tescillerinin sağlanmasından sonra, kamulaştırılan yer için herhangi bir nedenle gerçek ve tüzelkişiler adına...",
+          "metin": null,
+          "skor": 0.8256,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2942&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Taşınmaz Mülk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1634,
+      "ortalama_kaynak_skor": 0.8371,
+      "kaynak_sayisi": 5,
+      "message_id": "26d48724-00f4-47e0-8f6e-a5a838f4a2e0",
+      "conversation_id": "16eef19c-0c70-401c-933a-d0c5119ac5f5",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.14,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

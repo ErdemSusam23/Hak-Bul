@@ -195,7 +195,7 @@ def main():
         batch_texts = kanun_texts[i : i + BATCH_SIZE]
         batch_chunks = kanun_chunks[i : i + BATCH_SIZE]
 
-        embeddings = model.encode(batch_texts, show_progress_bar=False)
+        embeddings = model.encode(batch_texts, normalize_embeddings=True, show_progress_bar=False)
 
         points = []
         for j, (emb, chunk) in enumerate(zip(embeddings, batch_chunks)):

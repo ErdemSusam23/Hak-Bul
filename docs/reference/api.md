@@ -63,6 +63,8 @@ Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/
 | PATCH | `/admin/users/{id}/status` | ADMIN | Kullanıcı aktif/pasif durumu değiştir |
 | GET | `/admin/weak-queries` | ADMIN | Zayıf sorgu listesi (düşük güven skorlu) |
 
+Forum endpoint'lerinin public response alanlarında kullanıcı email'i dönülmez. Forum thread ve reply öğelerinde bunun yerine rol bazlı anonim `display_name` alanı kullanılır.
+
 ---
 
 ## Rate Limiting

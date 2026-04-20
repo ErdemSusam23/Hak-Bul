@@ -242,7 +242,7 @@ class ForumThreadItem(BaseModel):
     category: str
     is_locked: bool
     user_id: str
-    user_email: str
+    display_name: str
     reply_count: int
     vote_score: int
     created_at: str
@@ -270,7 +270,7 @@ class ForumReplyItem(BaseModel):
     content: str
     is_verified: bool
     user_id: str
-    user_email: str
+    display_name: str
     user_role: str
     vote_score: int
     created_at: str

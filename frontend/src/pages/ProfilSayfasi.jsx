@@ -102,7 +102,7 @@ export default function ProfilSayfasi({ onGeri }) {
 
             const updated = await profilGuncelleAPI(payload);
             setProfil(updated);
-            kullaniciGuncelle({ email: updated.email, rol: updated.role || kullanici?.rol });
+            kullaniciGuncelle({ id: updated.id, email: updated.email, rol: updated.role || kullanici?.rol });
             setMevcutSifre('');
             setYeniSifre('');
             setYeniSifreTekrar('');

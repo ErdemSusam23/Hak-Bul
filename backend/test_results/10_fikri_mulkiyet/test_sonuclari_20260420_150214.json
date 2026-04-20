@@ -1,0 +1,701 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-20T12:09:09.351184+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\10_fikri_mulkiyet\\test_sonuclari_20260420_150214.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 414.4,
+    "ortalama_sure_sn": 34.53,
+    "kategori_dagilimi": {
+      "Fikri Mülkiyet Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 26.5,
+        "kategori_dogruluk_orani": 0.0,
+        "ortalama_cevap_uzunluk": 789.0,
+        "ortalama_kaynak_skor": 0.6361
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Yazdığım roman üzerindeki telif hakkım ne zaman başlar, tescil ettirmem gerekiyor mu?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Fikir ve Sanat Eserleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 1017",
+          "metin_ozet": "Madde 1017- Kütüğe tesciller, istem tarihine ve sırasına göre yapılır. Sicildeki kaydın bir örneği isteyen ilgiliye verilir. Tescil ve terkin ile verilecek örneklerin şekli Cumhurbaşkanınca çıkarılan yönetmelikle belirlenir.45 2.",
+          "metin": null,
+          "skor": 0.4199,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 91",
+          "metin_ozet": "MADDE 91- (1) Süreler, taraflara tebliğ tarihinden veya kanunda öngörülen hâllerde, tefhim tarihinden itibaren işlemeye başlar.",
+          "metin": null,
+          "skor": 0.4192,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 81",
+          "metin_ozet": "(2) Başvuru, 65 inci maddeye göre tescil edilerek yayımlandığı takdirde, tescil sahibi, tasarım hakkına yönelik olarak bu maddede sayılan tecavüzlerden dolayı hukuk davası açma hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.4191,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 29",
+          "metin_ozet": "MADDE 29- (1) Tescil istemi dilekçe ile yapılır. (2) Dilekçe sahibi kimliğini ispat etmek zorundadır. Dilekçedeki imza noterlikçe onaylanmışsa, ayrıca kimliğin ispatlanmasına gerek yoktur.",
+          "metin": null,
+          "skor": 0.4187,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 780",
+          "metin_ozet": "Madde 780- İrtifak hakkının kurulması için tapu kütüğüne tescil şarttır. İrtifak hakkının kazanılmasında ve tescilinde, aksi öngörülmüş olmadıkça taşınmaz mülkiyetine ilişkin hükümler uygulanır.",
+          "metin": null,
+          "skor": 0.4186,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 192,
+      "ortalama_kaynak_skor": 0.4191,
+      "kaynak_sayisi": 5,
+      "message_id": "9bc1c788-c202-4014-beb1-f4a961d1c4af",
+      "conversation_id": "7e196c21-5e4a-4abf-b920-9509a82cef2b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 36.88,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Başkasının fotoğrafını izinsiz kullandım, telif hakkı ihlali sayılır mı, cezası nedir?",
+      "cevap": "5846 Sayili Fikir ve Sanat Eserleri Kanunu'nun 30. maddesine göre, fotoğraflar umumi emniyet mülahazasiyle veya adli maksatlar için sahibinin rızası alınmaksızın, resmi makamlar veya bunların emriyle başkaları tarafından her şekilde çoğaltılabilir ve yayılabilir. Ancak, bu durum telif hakkı ihlali olarak değerlendirilmez.\n\nAncak, fotoğrafın ticaret mevkiine konulması, temsil edilmesi veya diğer şekillerde kullanılması durumunda, kamu hukuku hükümlerine göre değerlendirilir. Eğer fotoğrafın kullanımı eserin sahibinin haklarını ihlal ediyorsa, telif hakkı ihlali olarak kabul edilebilir.\n\nGetirilen kaynaklar bu soruyu tam olarak cevaplamıyor. 5846 Sayili Fikir ve Sanat Eserleri Kanunu bu konuyu düzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 30",
+          "metin_ozet": "Madde 30 – Eser sahibine tanınan haklar, eserin ispatı maksadiyle mahkeme ve diğer resmi makamlar huzurunda ve alelıtlak zabıta ve ceza işlerinde bir muameleye konu teşkil etmek üzere kullanılmasına mani değildir.",
+          "metin": null,
+          "skor": 0.8418,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 934,
+      "ortalama_kaynak_skor": 0.8418,
+      "kaynak_sayisi": 1,
+      "message_id": "bfdffba4-26d4-4776-b7dd-56770c7d3dc7",
+      "conversation_id": "5c688f89-e48b-485a-a570-ce7f11815acf",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 21.9,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Ürünüm için marka tescili yaptırmak istiyorum, başvuru süreci ve koruma süresi nasıldır?",
+      "cevap": "Marka tescil başvurunuzun eksiksiz yapılmış veya eksiklikleri giderilmiş, 16 ncı madde uyarınca incelenmiş, yayımlanmış, hakkında itiraz yapılmamış veya yapılan itirazların tümü nihai olarak reddedilmiş ve tescil ücretinin ödendiğine ilişkin bilgi de dâhil olmak üzere eksik evrakı, süresi içinde Kuruma sunularak bütün aşamaları tamamlanmış bir başvuru tescil edilerek sicile kaydedilir ve Bültende yayımlanır. \n\nMarkanın koruma süresi, başvuru tarihinden itibaren on yıldır. Bu süre, onar yıllık dönemler hâlinde yenilenir. Yenileme talebinin marka sahibi tarafından koruma süresinin sona erdiği tarihten önceki altı ay içinde yapılması ve aynı süre içinde yenileme ücretinin ödendiğine ilişkin bilginin Kuruma sunulması gerekir. \n\nBu süre içinde talebin yapılmaması veya yenileme ücretinin ödendiğine ilişkin bilginin Kuruma sunulmaması hâlinde, yenileme talebi, koruma süresinin sona erdiği tarihten itibaren altı aylık süre içinde ek ücretin ödenmesi şartıyla da yapılabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 23",
+          "metin_ozet": "MADDE 23- (1) Tescilli markanın koruma süresi başvuru tarihinden itibaren on yıldır.",
+          "metin": null,
+          "skor": 0.442,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 22",
+          "metin_ozet": "MADDE 22- (1) Başvurusu eksiksiz yapılmış veya eksiklikleri giderilmiş, 16 ncı madde uyarınca incelenmiş, yayımlanmış, hakkında itiraz yapılmamış veya yapılan itirazların tümü nihai olarak reddedilmiş ve tescil ücretinin ödendiğine ilişkin bilgi de dâhil olmak üzere eksik evrakı,...",
+          "metin": null,
+          "skor": 0.4364,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 69",
+          "metin_ozet": "MADDE 69- (1) Tescilli tasarımların koruma süresi başvuru tarihinden itibaren beş yıldır. (2) Tescilsiz tasarımların koruma süresi, koruma talep edilen tasarımın kamuya ilk sunulduğu tarihten itibaren üç yıldır.",
+          "metin": null,
+          "skor": 0.4301,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 18",
+          "metin_ozet": "MADDE 18- (1) Bültende yayımlanmış bir marka başvurusunun, 5 inci veya 6 ncı maddelere göre tescil edilmemesi gerektiğine ilişkin itirazlar ilgili kişiler tarafından marka başvurusunun yayımından itibaren iki ay içinde yapılır.",
+          "metin": null,
+          "skor": 0.4294,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 6",
+          "metin_ozet": "(2) Ticari vekil veya temsilcinin, marka sahibinin izni olmaksızın ve haklı bir sebebe dayanmaksızın markanın aynı veya ayırt edilemeyecek kadar benzerinin kendi adına tescili için yaptığı başvuru, marka sahibinin itirazı üzerine reddedilir.",
+          "metin": null,
+          "skor": 0.4278,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1106,
+      "ortalama_kaynak_skor": 0.4331,
+      "kaynak_sayisi": 5,
+      "message_id": "27438e39-d665-4f79-b409-47f656a80913",
+      "conversation_id": "1cf18d36-b5a0-479d-84b3-b60edb1a329f",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.23,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Geliştirdiğim buluş için patent aldım, bu beni rakip şirketlere karşı nasıl korur?",
+      "cevap": "6769 Sayılı Sınai Mülkiyet Kanunu'na göre, patent sahibi olarak buluşunuzu kullanmak ve başkalarının aynı buluşu kullanmasını önlemek için haklara sahip olursunuz. \n\nÖrneğin, 6769 Sayılı Sınai Mülkiyet Kanunu'nun 86. maddesine göre, patent sahibinin, patent konusu buluşun uygulanmasını mümkün kılan ve buluşun esasını teşkil eden bir kısmı ile ilgili unsurların veya araçların üçüncü kişiler tarafından, patent konusu buluşu kullanmaya yetkili olmayan kişilere verilmesini önleme hakkı vardır.\n\nAyrıca, 6769 Sayılı Sınai Mülkiyet Kanunu'nun 87. maddesine göre, patent sahibi, patent konusu buluşu kullanmak zorundadır. Ancak, patent sahibi, buluşu kullanmaya başlamak için belirli bir süre içinde harekete geçmezse, başkaları tarafından zorunlu lisans talebinde bulunulabilir.\n\nRakip şirketlerin patentinizi ihlal etmesini önlemek için, patentinizi düzenli olarak izlemek ve herhangi bir ihlal durumunda gerekli adımları atmaya hazır olmak önemlidir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 87",
+          "metin_ozet": "MADDE 87- (1) Başvuru tarihinde veya bu tarihten önce buluşu iyiniyetli olarak ülke içinde kullanmakta olan veya kullanım için ciddi ve gerçek tedbirler almış kişilere karşı, patent konusu buluşu aynı şekilde kullanmaya devam etmelerini veya alınmış tedbirlere uygun olarak...",
+          "metin": null,
+          "skor": 0.4283,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 130",
+          "metin_ozet": "MADDE 130- (1) Patent sahibi veya yetkili kıldığı kişi, patentle korunan buluşu kullanmak zorundadır. Kullanımın değerlendirilmesinde pazar şartları ve patent sahibinin kontrolü ve iradesi dışındaki şartlar göz önünde tutulur.",
+          "metin": null,
+          "skor": 0.4223,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 112",
+          "metin_ozet": "Madde 112- (1) Patent başvurusu veya patent birden çok kişiye aitse hak üzerindeki ortaklık taraflar arasındaki anlaşmaya göre, böyle bir anlaşma yoksa 4721 sayılı Kanundaki paylı mülkiyete ilişkin hükümlere göre belirlenir.",
+          "metin": null,
+          "skor": 0.4196,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 86",
+          "metin_ozet": "MADDE 86- (1) Patent sahibinin, patent konusu buluşun uygulanmasını mümkün kılan ve buluşun esasını teşkil eden bir kısmı ile ilgili unsurların veya araçların üçüncü kişiler tarafından, patent konusu buluşu kullanmaya yetkili olmayan kişilere verilmesini önleme hakkı vardır.",
+          "metin": null,
+          "skor": 0.4192,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 116",
+          "metin_ozet": "MADDE 116- (1) İşveren, kendisine bildirimi yapılan hizmet buluşu için tam hak talebinde bulunmuşsa patent verilmesi amacıyla ilk başvuruyu Kuruma yapmakla yükümlüdür.",
+          "metin": null,
+          "skor": 0.4188,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1077,
+      "ortalama_kaynak_skor": 0.4216,
+      "kaynak_sayisi": 5,
+      "message_id": "efa6b102-c9b2-4d23-8192-5b8cf44482df",
+      "conversation_id": "c3810e50-4ac0-42bc-9ada-c4dabd39d117",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.7,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Müzik parçamı bir reklam filminde kullandılar, iznim olmadı, ne yapabilirim?",
+      "cevap": "Bu konu 5846 Sayılı Fikir ve Sanat Eserleri Kanunu kapsamında değerlendirilebilir. Madde 69'a göre, mali veya manevi haklarında tecavüz tehlikesine maruz kalan eser sahibi, muhtemel tecavüzün önlenmesini dava edebilir. Vakı olan tecavüzün devam veya tekrarı muhtemel görülen hallerde de aynı hüküm uygulanır.\n\nAyrıca, 6769 Sayılı Sınai Mülkiyet Kanunu'nun 150. maddesine göre, sınai mülkiyet hakkına tecavüz sayılan fiilleri işleyen kişiler, hak sahibinin zararını tazmin etmekle yükümlüdür. Hak sahibi, sınai mülkiyet hakkının ihlali iddiasına dayalı tazminat davası açmadan önce, delillerin tespiti ya da açılmış tazminat davasında uğramış olduğu zarar miktarının belirlenebilmesi için, sınai mülkiyet hakkının kullanılması ile ilgili belgelerin, tazminat yükümlüsü tarafından mahkemeye sunulması konusunda karar verilmesini mahkemeden talep edebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 10",
+          "metin_ozet": "Madde 10- (1) Marka sahibinin izni olmadan markanın aynı veya ayırt edilemeyecek kadar benzerinin ticari vekil ya da temsilci adına tescilinin yapılması hâlinde, ticari vekil veya temsilcinin haklı bir sebebi yoksa marka sahibi mahkemeden, markasının kullanımının yasaklanmasını...",
+          "metin": null,
+          "skor": 0.848,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 150",
+          "metin_ozet": "MADDE 150- (1) Sınai mülkiyet hakkına tecavüz sayılan fiilleri işleyen kişiler, hak sahibinin zararını tazmin etmekle yükümlüdür.",
+          "metin": null,
+          "skor": 0.8553,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 127",
+          "metin_ozet": "Madde 127- Kısıtlı, yasal temsilcisinin izni olmadıkça evlenemez.",
+          "metin": null,
+          "skor": 0.8405,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 153",
+          "metin_ozet": "Tecavüzün mevcut olmadığına ilişkin dava ve şartları",
+          "metin": null,
+          "skor": 0.8441,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 69",
+          "metin_ozet": "Madde 69 – Mali veya manevi haklarında tecavüz tehlikesine maruz kalan eser sahibi muhtemel tecavüzün önlenmesini dava edebilir.",
+          "metin": null,
+          "skor": 0.8375,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 979,
+      "ortalama_kaynak_skor": 0.8451,
+      "kaynak_sayisi": 5,
+      "message_id": "0509e5e1-e851-497b-ac88-2a7429031fdf",
+      "conversation_id": "7ac861a0-35b5-40af-bb63-decd37ffcf8e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.93,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Şirketim için tasarladığım ürün tasarımını korumanın en iyi yolu nedir?",
+      "cevap": "Tasarımınızın korunması için en iyi yol, 6769 Sayılı Sınai Mülkiyet Kanunu kapsamında tasarım tescil başvurusu yapmaktır. Bu kanun, tasarım hakkının korunmasına ilişkin hükümleri düzenlemektedir.\n\nTasarım tescil başvurusu, tasarım sahibinin tasarım hakkını korumasını sağlar ve üçüncü kişiler tarafından yapılan tecavüzleri önler. Tasarım tescil başvurusu, tasarım sahibine, tasarımın kullanıldığı veya uygulandığı ürünün adını, tasarımın görünümünü yansıtan görsel anlatımını, tasarımın kullanıldığı veya uygulandığı ürünün sınıfını ve diğer bilgileri içeren bir başvuru formu ile yapılır.\n\nTasarım tescil başvurusu yapıldıktan sonra, tasarım sahibi, tasarım hakkına yönelik ihlallerden dolayı dava açmaya yetkilidir. Ayrıca, tasarım tescil başvurusu, tasarım sahibine, tasarım hakkının korunması için gerekli olan belgeleri sağlar.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. 6769 Sayılı Sınai Mülkiyet Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 60",
+          "metin_ozet": "MADDE 60- (1) Başvuru tarihinden önce, tescilli tasarımın koruma kapsamına giren ve tescilli tasarımdan bağımsız olarak yapılan tasarımı iyiniyetli olarak ticari amaçla ülke içinde kullanmakta olan veya kullanım için ciddi ve gerçek tedbirler almış kişilere karşı önceki...",
+          "metin": null,
+          "skor": 0.4286,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 69",
+          "metin_ozet": "MADDE 69- (1) Tescilli tasarımların koruma süresi başvuru tarihinden itibaren beş yıldır.",
+          "metin": null,
+          "skor": 0.4283,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 81",
+          "metin_ozet": "a) Tasarım sahibinin izni olmaksızın bu Kanun hükümlerine göre koruma kapsamındaki bir tasarımın kullanıldığı veya uygulandığı ürünün aynısını veya genel izlenim itibarıyla ayırt edilemeyecek kadar benzerini üretmek, piyasaya sunmak, satmak, sözleşme yapmak için öneride bulunmak,...",
+          "metin": null,
+          "skor": 0.4233,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 80",
+          "metin_ozet": "MADDE 80- (1) Tasarım hakkı;",
+          "metin": null,
+          "skor": 0.4217,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 61",
+          "metin_ozet": "a) Başvuru sahibinin kimliğine ilişkin bilgileri içeren başvuru formunu, b) Tasarımın görünümünü yansıtan ve yayım yoluyla çoğaltılmaya elverişli görsel anlatımını, c) Tasarımın kullanıldığı veya uygulandığı ürünün adını, ç) Tasarımcının veya tasarımcı grubundaki tasarımcıların...",
+          "metin": null,
+          "skor": 0.4213,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Ticaret Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1037,
+      "ortalama_kaynak_skor": 0.4246,
+      "kaynak_sayisi": 5,
+      "message_id": "1faeab31-861f-45d9-9998-d6b9bb75c685",
+      "conversation_id": "75eb0f30-1371-4135-9dde-5b169692f4af",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.71,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "İnternet sitesinde kullandığım logo başkasına ait marka çıktı, tazminat davası açılabilir mi?",
+      "cevap": "6769 Sayılı Sınai Mülkiyet Kanunu'nun 29. maddesine göre, marka sahibinin izni olmaksızın markayı veya ayırt edilemeyecek kadar benzerini kullanmak suretiyle markayı taklit etmek, marka hakkına tecavüz sayılır. \n\nEğer internet sitesinde kullanılan logo başkasına ait marka ise, marka sahibi tarafından tazminat davası açılabilir. 6769 Sayılı Sınai Mülkiyet Kanunu'nun 150. maddesine göre, sınai mülkiyet hakkına tecavüz sayılan fiilleri işleyen kişiler, hak sahibinin zararını tazmin etmekle yükümlüdür. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 51",
+          "metin_ozet": "(2) Coğrafi işaretin veya geleneksel ürün adının kullanım hakkı sahiplerinin kötüniyetli hareket etmesinden zarar görenlerin tazminat talepleri saklı kalmak üzere, coğrafi işaretin veya geleneksel ürün adının hükümsüzlüğü kararının geriye dönük etkisi aşağıdaki durumları...",
+          "metin": null,
+          "skor": 0.4238,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 150",
+          "metin_ozet": "(2) Sınai mülkiyet hakkına tecavüz edilmesi durumunda, hakka konu ürün veya hizmetlerin, tecavüz eden tarafından kötü şekilde kullanılması veya üretilmesi, bu şekilde üretilen ürünlerin temin edilmesi yahut uygun olmayan bir tarzda piyasaya sürülmesi sonucunda sınai mülkiyet...",
+          "metin": null,
+          "skor": 0.4236,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 29",
+          "metin_ozet": "Madde 29- (1) Aşağıdaki fiiller marka hakkına tecavüz sayılır: a) Marka sahibinin izni olmaksızın, markayı 7 nci maddede belirtilen biçimlerde kullanmak. b) Marka sahibinin izni olmaksızın, markayı veya ayırt edilemeyecek kadar benzerini kullanmak suretiyle markayı taklit etmek.",
+          "metin": null,
+          "skor": 0.4228,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 70",
+          "metin_ozet": "7/6/1995 - 4110/22 md.) Manevi hakları haleldar edilen kişi, uğradığı manevi zarara karşılık manevi tazminat ödenmesi için dava açabilir. Mahkeme, bu para yerine veya bunlara ek olarak başka bir manevi tazminat şekline de hükmedebilir.",
+          "metin": null,
+          "skor": 0.4223,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 56",
+          "metin_ozet": "a) Fiilin haksız olup olmadığının tespitini, b) Haksız rekabetin men’ini, c) Haksız rekabetin sonucu olan maddi durumun ortadan kaldırılmasını, haksız rekabet yanlış veya yanıltıcı beyanlarla yapılmışsa bu beyanların düzeltilmesini ve tecavüzün önlenmesi için kaçınılmaz ise,...",
+          "metin": null,
+          "skor": 0.4219,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 630,
+      "ortalama_kaynak_skor": 0.4229,
+      "kaynak_sayisi": 5,
+      "message_id": "e3c76969-8a17-47bc-b257-2474bcee3dae",
+      "conversation_id": "55787959-63fc-4c1d-a202-2f134051b15b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 22.2,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Bir yayınevine eserimi verdim, sözleşme sona erdi ama yayımlamaya devam ediyorlar, ne yapabilirim?",
+      "cevap": "6098 Sayılı Türk Borçlar Kanunu'nun 491. maddesine göre, sözleşmede basım sayısı belirtilmemişse, yayımcının ancak bir basım yapma hakkı vardır. Ayrıca, aynı kanunun 490. maddesine göre, yayımlatan, sözleşmede kararlaştırılan süre sona ermedikçe veya süre belirlenmemişse kararlaştırılan baskı adedinin tükenmesi için alışılmış süre geçmedikçe, eserin tamamı veya bir bölümü üzerinde, yayımcının zararına olacak biçimde tasarrufta bulunamaz.\n\nEğer sözleşme sona erdiyse ve yayınevi hala eserinizi yayımlamaya devam ediyorsa, bu durumun hukuka aykırılık teşkil edebileceğini düşünmektedir. Bu durumda, yayıneviyle görüşerek sözleşmenin sona erdiğini ve eserinizin yayımlanmasını durdurmasını talep edebilirsiniz. Eğer yayınevi bu talebi reddederse, hukuki yollara başvurabilirsiniz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 500",
+          "metin_ozet": "MADDE 500- Eser sahibi eseri tamamlamadan önce ölür veya tamamlama yeteneğini yitirir ya da eseri tamamlaması kendi kusuru olmaksızın imkânsız duruma gelirse, sözleşme kendiliğinden sona erer.",
+          "metin": null,
+          "skor": 0.8595,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 490",
+          "metin_ozet": "MADDE 490- Yayımlatan, sözleşmede kararlaştırılan süre sona ermedikçe veya süre belirlenmemişse kararlaştırılan baskı adedinin tükenmesi için alışılmış süre geçmedikçe, eserin tamamı veya bir bölümü üzerinde, yayımcının zararına olacak biçimde tasarrufta bulunamaz.",
+          "metin": null,
+          "skor": 0.8486,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 489",
+          "metin_ozet": "MADDE 489- Yayım sözleşmesiyle eser sahibinin hakları, sözleşmenin ifasının gerektirdiği ölçüde ve süreyle yayımcıya geçer.",
+          "metin": null,
+          "skor": 0.8529,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 493",
+          "metin_ozet": "Bu düzeltme ve iyileştirme gerektirdiği hâlde sözleşmede öngörülmemiş giderler, yayımlatan tarafından karşılanır.",
+          "metin": null,
+          "skor": 0.8543,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 491",
+          "metin_ozet": "MADDE 491- Sözleşmede basım sayısı belirtilmemişse, yayımcının ancak bir basım yapma hakkı vardır. Taraflar, sözleşmenin süresini veya baskı adedini kararlaştırmak zorundadırlar.",
+          "metin": null,
+          "skor": 0.8504,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 907,
+      "ortalama_kaynak_skor": 0.8531,
+      "kaynak_sayisi": 5,
+      "message_id": "3d7fdfbe-54f8-4464-b6e8-f551c2e7578d",
+      "conversation_id": "157e4ce4-aae6-4183-9933-17f46e706e23",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.24,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Telif hakkı koruma süresi ne zaman dolar, eserim kamu malı haline gelir mi?",
+      "cevap": "Telif hakkı koruma süresi, eser sahibinin yaşadığı müddetçe ve ölümünden itibaren 70 yıl devam eder. Eğer eser sahibinin birden fazla olması durumunda, koruma süresi hayatta kalan son eser sahibinin ölümünden itibaren yetmiş yıl geçmekle son bulur. \n\nEserin kamu malı haline gelmesi için, koruma süresinin dolması gerekmektedir. Koruma süresi dolunca, eser kamu malı haline gelir ve herkes tarafından kullanılabilir. Ancak, eser sahibinin hakları ile bağlantılı hak sahiplerinin hakları da dikkate alınmalıdır.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 46",
+          "metin_ozet": "1/11/1983 - 2936/10 md.) Çoğaltma ve yayımı eser sahibi tarafından açıkça men edilmemiş olan ve umumi kütüphane, müze ve benzeri müesseselerde saklı bulunan henüz yayımlanmamış veya alenileşmemiş eserler, mali haklarla ilgili koruma süresi dolmuş olmak şartıyla, bulunduğu kamu...",
+          "metin": null,
+          "skor": 0.8412,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Ek Madde 2",
+          "metin_ozet": "21/2/2001 -4630/35 md.) Bu Kanunla sağlanan koruma, bu madde ile getirilen değişikliğin yürürlüğe girdiği sırada;",
+          "metin": null,
+          "skor": 0.8464,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Madde 27",
+          "metin_ozet": "7/6/1995 - 4110/10 md.) Koruma süresi eser sahibinin yaşadığı müddetçe ve ölümünden itibaren 70 yıl devam eder (Ek cümle: Sahibinin ölümünden sonra alenileşen eserlerde koruma süresi ölüm tarihinden sonra 70 yıldır.",
+          "metin": null,
+          "skor": 0.8582,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5846 Sayili Fikir ve Sanat Eserleri Kanunu - Geçici Madde 1",
+          "metin_ozet": "Geçici Madde 1 – Aşağıdaki maddelerde aksi tayin edilmemiş ise bu kanun hükümleri, yürürlükten önce ilk defa memleket içinde umuma arz yahut sicile kayıt edilmiş eserlere de uygulanır.",
+          "metin": null,
+          "skor": 0.8514,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5846&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Fikri Mülkiyet",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 636,
+      "ortalama_kaynak_skor": 0.8493,
+      "kaynak_sayisi": 4,
+      "message_id": "83a63349-135b-4f1a-adac-1fa607b81241",
+      "conversation_id": "326b6739-ce8f-4e76-ac77-12bc54e3032c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.26,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Peynirlerimiz coğrafi işaretle korunuyor, başkası aynı adı kullanabilir mi?",
+      "cevap": "6769 Sayılı Sınai Mülkiyet Kanunu'nun 39. maddesine göre, yabancı ülke kaynaklı coğrafi işaret veya geleneksel ürün adı başvurusu Türkiye'de korunuyor ise, inceleme bölgesel ve geleneksel kullanım ile benzer adların tüketici tarafından birbiriyle karıştırılması riski göz önüne alınarak yapılır. Aynı şekilde, 44. maddede belirtilen hükümler çerçevesinde, coğrafi işaret tescilinde belirtilen ürün özelliklerini taşımadığı halde coğrafi işaretin ününden yarar sağlayacak şekilde ya da tescil kapsamındaki ürünler veya bunlarla ilişkilendirilebilecek nitelikteki ürünlerle ilgili olarak coğrafi işaretin veya amblemin ticari amaçlı olarak doğrudan veya dolaylı kullanımının engellenmesi söz konusu olabilir.\n\nAncak, 39. maddenin 2. fıkrasına göre, yabancı ülke kaynaklı coğrafi işaret veya geleneksel ürün adı başvurusu Türkiye'de korunuyor ve aynı isim ise, sadece üretildiği kaynak ülkenin açık ve görülebilir şekilde etikette belirtilmesi halinde izin verilir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 39",
+          "metin_ozet": "MADDE 39- (1) Uluslararası anlaşma hükümleri saklı kalmak kaydıyla, yabancı ülke kaynaklı coğrafi işaret veya geleneksel ürün adı başvurularına bu Kanun hükümlerinin uygulanması için 37 nci maddede belirtilen şartlara ek olarak aşağıdaki şartlar ayrıca aranır:",
+          "metin": null,
+          "skor": 0.8426,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 48",
+          "metin_ozet": "MADDE 48- (1) Coğrafi işaretin tescilinden sonra 44 üncü maddede belirtilen biçimlerde veya tescile konu coğrafi işaretle ilgili mal veya hizmetler için kullanılmak üzere yapılan marka başvurusu reddedilir, tescil edilmiş ise dava yoluyla hükümsüz kılınabilir.",
+          "metin": null,
+          "skor": 0.8554,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 2",
+          "metin_ozet": "Coğrafi işaretler ve geleneksel ürün adlarının bu Kanun hükümlerine uygun olarak tescil edilmiş olduğunu gösteren ve Kurum tarafından oluşturulan;",
+          "metin": null,
+          "skor": 0.8281,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 51",
+          "metin_ozet": "MADDE 51- (1) Mahkeme tarafından coğrafi işaretin veya geleneksel ürün adının hükümsüzlüğüne karar verilmesi hâlinde, tescil edilen coğrafi işarete ve geleneksel ürün adına bu Kanunla sağlanan koruma hiç doğmamış sayılır.",
+          "metin": null,
+          "skor": 0.8497,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 44",
+          "metin_ozet": "a) Coğrafi işaret tescilinde belirtilen ürün özelliklerini taşımadığı hâlde coğrafi işaretin ününden yarar sağlayacak şekilde ya da tescil kapsamındaki ürünler veya bunlarla ilişkilendirilebilecek nitelikteki ürünlerle ilgili olarak coğrafi işaretin veya 46 ncı madde uyarınca...",
+          "metin": null,
+          "skor": 0.8566,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1089,
+      "ortalama_kaynak_skor": 0.8465,
+      "kaynak_sayisi": 5,
+      "message_id": "aaed388f-e32f-4374-aa53-80a12fbea3e9",
+      "conversation_id": "b6e0d1d8-c52b-4a16-8a64-d1e68dc8c69b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.02,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Yazılımımın kaynak kodunu kopyalayan kişiye dava açabilir miyim, hangi kanun kapsamında?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5846 Sayılı Fikir ve Sanat Eserleri Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 81",
+          "metin_ozet": "a) Tasarım sahibinin izni olmaksızın bu Kanun hükümlerine göre koruma kapsamındaki bir tasarımın kullanıldığı veya uygulandığı ürünün aynısını veya genel izlenim itibarıyla ayırt edilemeyecek kadar benzerini üretmek, piyasaya sunmak, satmak, sözleşme yapmak için öneride bulunmak,...",
+          "metin": null,
+          "skor": 0.855,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 70",
+          "metin_ozet": "(2) Tasarım başvurusu veya tasarım birden çok kişiye aitse hak üzerindeki ortaklık taraflar arasındaki anlaşmaya göre, böyle bir anlaşma yoksa 22/11/2001 tarihli ve 4721 sayılı Türk Medenî Kanunundaki paylı mülkiyete ilişkin hükümlere göre belirlenir.",
+          "metin": null,
+          "skor": 0.846,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 155",
+          "metin_ozet": "MADDE 155- (1) Marka, patent veya tasarım hakkı sahibi, kendi hakkından daha önceki rüçhan veya başvuru tarihine sahip hak sahiplerinin açmış olduğu tecavüz davasında, sahip olduğu sınai mülkiyet hakkını savunma gerekçesi olarak ileri süremez.",
+          "metin": null,
+          "skor": 0.8452,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 78",
+          "metin_ozet": "(3) Tasarımın hükümsüzlüğüne ilişkin olarak koruma süresince veya tasarım hakkının sona ermesini izleyen beş yıl içinde dava açılabilir. (4) Hükümsüzlük davası, dava tarihinde sicilde tasarım sahibi olarak kayıtlı kişiye karşı açılır.",
+          "metin": null,
+          "skor": 0.8457,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 10",
+          "metin_ozet": "MADDE 10- (1) Sözleşmeden doğan davalar, sözleşmenin ifa edileceği yer mahkemesinde de açılabilir. Mirastan doğan davalarda yetki",
+          "metin": null,
+          "skor": 0.8469,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 204,
+      "ortalama_kaynak_skor": 0.8478,
+      "kaynak_sayisi": 5,
+      "message_id": "4797b067-ff51-4fa3-89ca-c79bbb8eeb8f",
+      "conversation_id": "4e375d79-8f22-43e2-ac2b-9ef99dc6685e",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.34,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Fikri Mülkiyet Hukuku",
+      "soru": "Lisans sözleşmesiyle kullanım hakkı verdim ama karşı taraf anlaşmaya aykırı davranıyor, ne yapabilirim?",
+      "cevap": "Lisans sözleşmesiyle kullanım hakkı verdiğiniz karşı tarafın anlaşmaya aykırı davranması durumunda, 6769 Sayılı Sınai Mülkiyet Kanunu'nun 136. maddesinin 2. fıkrasına göre, mahkeme, patent sahibinin talebi üzerine, patent sahibinin tazminat hakları saklı kalmak kaydıyla lisansı iptal edebilir. Ayrıca, 6769 Sayılı Sınai Mülkiyet Kanunu'nun 158. maddesine göre, inhisari lisansa sahip olan kişi, üçüncü bir kişi tarafından sınai mülkiyet hakkına tecavüz edilmesi durumunda, hak sahibinin bu Kanun uyarınca açabileceği davaları, kendi adına açabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 136",
+          "metin_ozet": "MADDE 136- (1) Lisans alan veya patent sahibi, zorunlu lisans verilmesinden sonra, zorunlu lisansa göre daha uygun şartlarda sözleşmeye dayalı lisans vermiş olması gibi sonradan ortaya çıkan ve değişikliği haklı kılan olaylara dayanarak mahkemeden zorunlu lisans bedelinde veya...",
+          "metin": null,
+          "skor": 0.4319,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 158",
+          "metin_ozet": "MADDE 158- (1) Sözleşmede aksi kararlaştırılmamışsa inhisari lisansa sahip olan kişi, üçüncü bir kişi tarafından sınai mülkiyet hakkına tecavüz edilmesi durumunda, hak sahibinin bu Kanun uyarınca açabileceği davaları, kendi adına açabilir.",
+          "metin": null,
+          "skor": 0.4296,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 334",
+          "metin_ozet": "Kiracının, sözleşmenin sona ermesi hâlinde, sözleşmeye aykırı kullanmadan doğacak zararları giderme dışında, başkaca bir tazminat ödeyeceğini önceden taahhüt etmesine ilişkin anlaşmalar geçersizdir.",
+          "metin": null,
+          "skor": 0.4265,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 75",
+          "metin_ozet": "MADDE 75- (1) Tasarım hakkı, lisans sözleşmesine konu olabilir. İnhisari lisans sözleşmelerinde, lisans veren başkasına lisans veremez ve hakkını açıkça saklı tutmadıkça kendisi de tasarımı kullanamaz.",
+          "metin": null,
+          "skor": 0.4263,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6769 Sayılı Sınai Mülkiyet Kanunu - Madde 137",
+          "metin_ozet": "MADDE 137- (1) 129 ila 136 ncı maddelerdeki hükümlere aykırı olmamak üzere, 125 inci ve 126 ncı maddelerde belirtilen sözleşmeye dayalı lisans ile ilgili hükümler zorunlu lisansa da uygulanır. SEKİZİNCİ KISIM Hakkın Sona Ermesi BİRİNCİ BÖLÜM Hükümsüzlük Hükümsüzlük hâlleri",
+          "metin": null,
+          "skor": 0.4262,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 675,
+      "ortalama_kaynak_skor": 0.4281,
+      "kaynak_sayisi": 5,
+      "message_id": "b247bbf6-454c-4b45-92d5-8a83fb0b64a7",
+      "conversation_id": "fa43d33f-f1a0-445c-8528-54603d60f68c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 19.65,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

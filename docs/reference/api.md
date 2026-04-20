@@ -1,69 +1,81 @@
-# API Dokümantasyonu
-
-`backend-docs.md`'den bölündü — v2.0`
+# API Dokumantasyonu
 
 ```
 Base URL (dev):  http://localhost:8000
 Base URL (prod): https://turk-hukuk-api.onrender.com
 ```
 
-Tüm yanıtlar JSON formatındadır. FastAPI otomatik `/docs` (Swagger UI) ve `/redoc` üretir.
+FastAPI otomatik olarak `/docs` (Swagger UI) ve `/redoc` uretir.
+
+Response formatlari:
+
+- Varsayilan format JSON'dir.
+- `POST /ask/stream` `text/event-stream` doner.
+- `GET /chat/conversations/{id}/export` `application/pdf` doner.
+- `POST /templates/{id}/generate` `application/pdf` doner.
+
+Kimlik dogrulama notlari:
+
+- Kullanici endpoint'lerinde `Authorization: Bearer <access_token>` gerekir.
+- Misafir endpoint'leri acik gibi gorunse de fiilen `guest_session_id` cookie'si ister.
+- `POST /auth/login` ve `POST /auth/refresh` refresh token'i response body yerine HttpOnly cookie olarak yazar.
+- `POST /auth/logout` cookie veya body'den gelen refresh token'i iptal eder.
 
 ---
 
 ## Endpoint Listesi
 
-| Method | Path | Auth | Açıklama |
+| Method | Path | Auth | Aciklama |
 |--------|------|------|----------|
 | POST | `/ask` | Opsiyonel | RAG pipeline (rate: 20/min) |
-| POST | `/ask/stream` | Opsiyonel | SSE streaming yanıt (rate: 20/min) |
-| GET | `/search` | — | Kanun/karar keyword arama |
-| GET | `/health` | — | Servis durumu |
-| POST | `/auth/register` | — | Kayıt (rate: 5/min) |
-| POST | `/auth/login` | — | Giriş → token çifti |
-| POST | `/auth/refresh` | — | Access token yenileme |
-| POST | `/auth/logout` | — | Refresh token iptal |
-| GET | `/auth/profile` | Zorunlu | Profil bilgilerini görüntüle |
-| PUT | `/auth/profile` | Zorunlu | Email / şifre güncelle |
-| DELETE | `/auth/account` | Zorunlu | Hesabı kalıcı olarak sil (şifre JSON body'de) |
-| GET | `/chat/conversations` | Zorunlu | Auth kullanıcı sohbet listesi |
-| GET | `/chat/history/{id}` | Zorunlu | Auth sohbet mesajları |
+| POST | `/ask/stream` | Opsiyonel | SSE streaming yanit (rate: 20/min) |
+| GET | `/search` | - | Kanun/karar arama, LLM cagrisi yapmaz |
+| GET | `/health` | - | Servis saglik ozeti |
+| POST | `/auth/register` | - | Kayit (rate: 5/min) |
+| POST | `/auth/login` | - | Giris, access token + refresh cookie (rate: 5/min) |
+| POST | `/auth/refresh` | - | Access token yenile, refresh rotation |
+| POST | `/auth/logout` | - | Refresh token iptal |
+| GET | `/auth/profile` | Zorunlu | Profil bilgilerini getir |
+| PUT | `/auth/profile` | Zorunlu | Email / sifre guncelle |
+| DELETE | `/auth/account` | Zorunlu | Hesabi pasiflestir, tokenlari iptal et |
+| GET | `/chat/conversations` | Zorunlu | Kullanici sohbet listesi |
+| GET | `/chat/history/{id}` | Zorunlu | Kullanici sohbet mesajlari |
 | DELETE | `/chat/conversations/{id}` | Zorunlu | Sohbeti sil |
-| PATCH | `/chat/conversations/{id}/title` | Zorunlu | Sohbet başlığını yeniden adlandır |
-| GET | `/chat/conversations/{id}/export` | Zorunlu | Sohbeti PDF olarak dışa aktar |
-| POST | `/chat/conversations/{id}/share` | Zorunlu | Paylaşım linki oluştur |
-| DELETE | `/chat/conversations/{id}/share` | Zorunlu | Paylaşımı kaldır |
-| GET | `/chat/shared/{share_token}` | — | Paylaşılan sohbeti görüntüle (salt okunur) |
-| GET | `/chat/guest/conversations` | — | Misafir sohbet listesi |
-| GET | `/chat/guest/history/{id}` | — | Misafir mesajları |
-| DELETE | `/chat/guest/conversations/{id}` | — | Misafir sohbeti sil |
-| POST | `/feedback` | Opsiyonel | 👍/👎 gönder (`puan`: 1 veya -1) |
-| POST | `/documents/analyze` | Opsiyonel | PDF yükle + analiz et (form: `dosya`, `soru`, `language`, `conversation_id`, `guest_session_id`; rate: 10/min) |
-| POST | `/documents/compare` | Opsiyonel | İki PDF karşılaştır (form: `dosya1`, `dosya2`, `soru`, `language`; rate: 5/min) |
-| GET | `/templates` | — | Taslak listesi (`?language=tr\|en`) |
-| POST | `/templates/{id}/generate` | — | PDF taslağı indir |
-| GET | `/forum/threads` | — | Forum başlıklarını listele |
-| POST | `/forum/threads` | Zorunlu | Yeni forum başlığı oluştur |
-| GET | `/forum/threads/{id}` | — | Forum başlığı + yanıt detayını getir |
-| PUT | `/forum/threads/{id}` | Zorunlu | Kendi forum başlığını güncelle |
-| DELETE | `/forum/threads/{id}` | Zorunlu | Kendi başlığını sil; `LAWYER`/`ADMIN` moderasyon yapabilir |
-| PATCH | `/forum/threads/{id}/lock` | `LAWYER`/`ADMIN` | Başlığı kilitle / aç |
-| POST | `/forum/threads/{id}/replies` | Zorunlu | Başlığa yanıt yaz |
-| PUT | `/forum/replies/{id}` | Zorunlu | Kendi yanıtını güncelle |
-| DELETE | `/forum/replies/{id}` | Zorunlu | Kendi yanıtını sil; `LAWYER`/`ADMIN` moderasyon yapabilir |
-| PATCH | `/forum/replies/{id}/verify` | `LAWYER`/`ADMIN` | Yanıtı doğrulanmış olarak işaretle |
-| POST | `/forum/threads/{id}/vote` | Zorunlu | Başlığa oy ver (`value`: 1 / -1) |
-| POST | `/forum/replies/{id}/vote` | Zorunlu | Yanıta oy ver (`value`: 1 / -1) |
+| PATCH | `/chat/conversations/{id}/title` | Zorunlu | Sohbet basligini yeniden adlandir |
+| GET | `/chat/conversations/{id}/export` | Zorunlu | Sohbeti PDF olarak disa aktar |
+| POST | `/chat/conversations/{id}/share` | Zorunlu | Paylasim linki olustur |
+| DELETE | `/chat/conversations/{id}/share` | Zorunlu | Paylasimi kaldir |
+| GET | `/chat/shared/{share_token}` | - | Paylasilan sohbeti salt okunur getir |
+| GET | `/chat/guest/conversations` | Guest cookie | Misafir sohbet listesi |
+| GET | `/chat/guest/history/{id}` | Guest cookie | Misafir mesajlari |
+| DELETE | `/chat/guest/conversations/{id}` | Guest cookie | Misafir sohbeti sil |
+| POST | `/feedback` | Kullanici veya guest cookie | Asistan mesajina `puan: 1/-1` gonder |
+| POST | `/documents/analyze` | Opsiyonel | PDF yukle + analiz et (rate: 10/min) |
+| POST | `/documents/compare` | Opsiyonel | Iki PDF karsilastir (rate: 5/min) |
+| GET | `/templates` | - | Taslak listesi (`?language=tr|en`) |
+| POST | `/templates/{id}/generate` | - | PDF taslagi indir (rate: 20/min) |
+| GET | `/forum/threads` | - | Forum basliklarini listele |
+| POST | `/forum/threads` | Zorunlu | Yeni forum basligi olustur |
+| GET | `/forum/threads/{id}` | - | Forum basligi + yanit detayini getir |
+| PUT | `/forum/threads/{id}` | Zorunlu | Kendi forum basligini guncelle |
+| DELETE | `/forum/threads/{id}` | Zorunlu | Kendi basligini sil; `LAWYER`/`ADMIN` moderasyon yapabilir |
+| PATCH | `/forum/threads/{id}/lock` | `LAWYER`/`ADMIN` | Basligi kilitle / ac |
+| POST | `/forum/threads/{id}/replies` | Zorunlu | Basliga yanit yaz |
+| PUT | `/forum/replies/{id}` | Zorunlu | Kendi yanitini guncelle |
+| DELETE | `/forum/replies/{id}` | Zorunlu | Kendi yanitini sil; `LAWYER`/`ADMIN` moderasyon yapabilir |
+| PATCH | `/forum/replies/{id}/verify` | `LAWYER`/`ADMIN` | Yaniti dogrulanmis olarak isaretle |
+| POST | `/forum/threads/{id}/vote` | Zorunlu | Basliga oy ver (`value`: 1 / -1) |
+| POST | `/forum/replies/{id}/vote` | Zorunlu | Yanita oy ver (`value`: 1 / -1) |
 | GET | `/admin/stats` | ADMIN | Genel istatistikler |
-| GET | `/admin/stats/categories` | ADMIN | Kategori dağılımı |
-| GET | `/admin/stats/feedback` | ADMIN | Feedback özeti |
-| GET | `/admin/stats/daily` | ADMIN | Günlük aktivite (son N gün) |
-| GET | `/admin/users` | ADMIN | Kullanıcı listesi |
-| PATCH | `/admin/users/{id}/role` | ADMIN | Kullanıcı rolü güncelle |
-| PATCH | `/admin/users/{id}/status` | ADMIN | Kullanıcı aktif/pasif durumu değiştir |
-| GET | `/admin/weak-queries` | ADMIN | Zayıf sorgu listesi (düşük güven skorlu) |
+| GET | `/admin/stats/categories` | ADMIN | Kategori dagilimi |
+| GET | `/admin/stats/feedback` | ADMIN | Feedback ozeti |
+| GET | `/admin/stats/daily` | ADMIN | Gunluk aktivite (son N gun) |
+| GET | `/admin/users` | ADMIN | Kullanici listesi |
+| PATCH | `/admin/users/{id}/role` | ADMIN | Kullanici rolu guncelle |
+| PATCH | `/admin/users/{id}/status` | ADMIN | Kullanici aktif/pasif durumu degistir |
+| GET | `/admin/weak-queries` | ADMIN | Zayif sorgu listesi |
 
-Forum endpoint'lerinin public response alanlarında kullanıcı email'i dönülmez. Forum thread ve reply öğelerinde bunun yerine rol bazlı anonim `display_name` alanı kullanılır.
+Forum endpoint'lerinin public response alanlarinda kullanici email'i donulmez. Thread ve reply response'larinda bunun yerine anonim `display_name` kullanilir.
 
 ---
 
@@ -74,46 +86,69 @@ Forum endpoint'lerinin public response alanlarında kullanıcı email'i dönülm
 | `POST /ask` | 20 istek / dakika / IP |
 | `POST /ask/stream` | 20 istek / dakika / IP |
 | `POST /auth/register` | 5 istek / dakika / IP |
+| `POST /auth/login` | 5 istek / dakika / IP |
 | `POST /documents/analyze` | 10 istek / dakika / IP |
 | `POST /documents/compare` | 5 istek / dakika / IP |
+| `POST /templates/{id}/generate` | 20 istek / dakika / IP |
 
-Aşım yanıtı: HTTP 429 Too Many Requests. Reset süresi: 60 saniye (sabit pencere). Prod'da kalıcı depolama yok — server restart'ta sıfırlanır.
+Rate limit asiminda response:
+
+```json
+{
+  "error": "Rate limit exceeded",
+  "detail": "20 per 1 minute",
+  "retry_after": 60
+}
+```
 
 ---
 
-## Genel Hata Kodları
+## Genel Hata Kodlari
 
-| HTTP Kodu | Durum | Açıklama |
+| HTTP Kodu | Durum | Aciklama |
 |-----------|-------|----------|
-| `200` | OK | Başarılı yanıt |
-| `400` | Bad Request | Eksik/geçersiz istek gövdesi |
-| `422` | Unprocessable Entity | FastAPI validasyon hatası |
-| `429` | Too Many Requests | Rate limit aşıldı |
-| `503` | Service Unavailable | Groq API veya Qdrant erişilemiyor |
-| `500` | Internal Server Error | Beklenmedik sunucu hatası |
+| `200` | OK | Basarili yanit |
+| `201` | Created | Kaynak olusturuldu |
+| `204` | No Content | Govdesiz basarili islem |
+| `400` | Bad Request | Eksik/gecersiz istek |
+| `401` | Unauthorized | Token veya guest session eksik/gecersiz |
+| `403` | Forbidden | Yetki var ama hedefe erisim izni yok |
+| `404` | Not Found | Kaynak bulunamadi |
+| `409` | Conflict | Kayitli email gibi cakisma |
+| `422` | Unprocessable Entity | FastAPI / Pydantic validasyon hatasi |
+| `429` | Too Many Requests | Rate limit asildi |
+| `500` | Internal Server Error | Beklenmedik sunucu hatasi |
+| `503` | Service Unavailable | Upstream servis kullanilamiyor |
 
-`STRICT_UPSTREAMS=true` ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=false` kombinasyonunda `/ask` ve `/ask/stream`
-endpoint'leri dış servis kesintilerinde fallback yerine doğrudan `503` döndürür.
+`STRICT_UPSTREAMS=true` modunda `/ask` ve `/ask/stream` upstream kesintilerinde `503` dondurebilir.
 
 ---
 
 ## POST /ask
 
-Ana endpoint. Kullanıcının hukuki sorusunu alır, RAG pipeline'ı çalıştırır, kaynak atıflı yanıt döner.
+Ana endpoint. Hukuki soruyu alir, RAG pipeline'i calistirir, chat history'ye kaydeder ve kaynak atifli yanit doner.
 
-**Request**
+Request body:
 
 ```json
 {
-  "soru": "string",           // Zorunlu. Min 10, max 1000 karakter.
-  "max_kaynak": 5,            // Opsiyonel. Default: 5, max: 10
-  "language": "tr",           // Opsiyonel. "tr" | "en" (default: "tr")
-  "conversation_id": "uuid",  // Opsiyonel. Mevcut sohbete devam için.
-  "guest_session_id": "uuid"  // Opsiyonel. Misafir oturumu için.
+  "soru": "string",
+  "max_kaynak": 5,
+  "language": "tr",
+  "conversation_id": "uuid",
+  "guest_session_id": "uuid"
 }
 ```
 
-**Response — 200**
+Alanlar:
+
+- `soru`: zorunlu, `10-1000` karakter.
+- `max_kaynak`: opsiyonel, varsayilan `5`, aralik `1-10`.
+- `language`: opsiyonel, `tr` veya `en`.
+- `conversation_id`: opsiyonel, mevcut sohbeti devam ettirmek icin.
+- `guest_session_id`: opsiyonel, cookie yoksa misafir oturumunu devam ettirmek icin.
+
+Response `200`:
 
 ```json
 {
@@ -121,99 +156,125 @@ Ana endpoint. Kullanıcının hukuki sorusunu alır, RAG pipeline'ı çalıştı
   "kaynaklar": [
     {
       "kaynak_turu": "kanun",
-      "baslik": "4857 Sayılı İş Kanunu — Madde 17",
+      "baslik": "4857 Sayili Is Kanunu - 17",
       "metin_ozet": "string",
-      "metin": "string|null",
+      "metin": "string",
       "skor": 0.87,
       "url": "https://www.mevzuat.gov.tr/..."
     }
   ],
   "conversation_id": "uuid",
   "guest_session_id": "uuid|null",
-  "kategori": "İş Hukuku",
+  "kategori": "Is Hukuku",
   "message_id": "uuid",
-  "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz."
+  "uyari": "string"
 }
 ```
 
-**Response — 429**
+Response `503`:
 
 ```json
 {
-  "error": "Rate limit exceeded",
-  "detail": "20 per 1 minute",
-  "retry_after": 34
+  "detail": {
+    "error": "upstream_unavailable",
+    "detail": "Harici servis(ler)e su an erisilemiyor.",
+    "retry_after": 30
+  }
 }
 ```
 
-**Response — 503**
+Notlar:
 
-```json
-{
-  "error": "upstream_unavailable",
-  "detail": "Groq API timeout",
-  "retry_after": 30
-}
-```
+- Auth'suz isteklerde `guest_session_id` cookie'si set edilir.
+- Dusuk skorlu veya kaynaksiz sorgular admin paneli icin `weak_queries` tablosuna loglanabilir.
 
 ---
 
 ## POST /ask/stream
 
-`/ask` ile aynı istek gövdesini alır, yanıtı SSE (Server-Sent Events) olarak token token akıtır.
+`/ask` ile ayni request body'yi alir, yaniti SSE olarak akar.
 
-**İlk SSE mesajı — meta**
+Response content type:
+
+```text
+text/event-stream
+```
+
+SSE event tipleri:
+
+1. `meta`
 
 ```json
 {
   "type": "meta",
-  "kaynaklar": [...],
-  "kategori": "İş Hukuku",
+  "kaynaklar": [],
+  "kategori": "Is Hukuku",
   "conversation_id": "uuid",
   "guest_session_id": "uuid|null"
 }
 ```
 
-**Sonraki mesajlar — token**
+2. `token`
 
 ```json
 { "type": "token", "text": "Madde" }
 ```
 
-**Hata mesajı**
+3. `error`
 
 ```json
 { "type": "error", "detail": "string" }
 ```
 
+4. `done`
+
+```json
+{
+  "type": "done",
+  "message_id": "uuid|null",
+  "uyari": "string"
+}
+```
+
+Notlar:
+
+- `done.message_id` feedback icin kullanilir.
+- Guest akislarda uygun durumda `guest_session_id` cookie'si set edilir.
+- Streaming baslamadan onceki upstream hatalari normal HTTP `503` olarak donebilir.
+
 ---
 
 ## GET /search
 
-Direkt kanun maddesi veya dava numarasıyla arama. LLM çağrısı yapılmaz, sadece Qdrant'ta metadata filtreli arama yapılır.
+LLM cagrisi yapmaz. Retriever katmanini kullanarak ilgili kanun / karar parcaciklarini getirir.
 
-```
-GET /search?q=Madde+17&tur=kanun
+Ornek:
 
-Parametreler:
-  q      string   Zorunlu. Madde no veya dava no. Örn: "Madde 17", "2023/1234"
-  tur    string   Opsiyonel. kanun | yargitay_karari (filtre, default: hepsi)
-  limit  integer  Opsiyonel. Max sonuç sayısı, default: 10
+```text
+GET /search?q=Madde+17&tur=kanun&limit=10
 ```
 
-**Response — 200**
+Query parametreleri:
+
+- `q`: zorunlu.
+- `tur`: opsiyonel, `kanun` veya `yargitay_karari`.
+- `limit`: opsiyonel, varsayilan `10`, aralik `1-50`.
+
+Response `200`:
 
 ```json
 {
   "sonuclar": [
     {
       "kaynak_turu": "kanun",
-      "baslik": "4857 Sayılı İş Kanunu — Madde 17",
+      "baslik": "4857 Sayili Is Kanunu - 17",
+      "metin_ozet": "string",
       "metin": "string",
-      "skor": 0.95
+      "skor": 0.95,
+      "url": "https://www.mevzuat.gov.tr/..."
     }
   ],
-  "toplam": 3
+  "toplam": 1
 }
 ```
 
@@ -221,63 +282,168 @@ Parametreler:
 
 ## GET /health
 
-Render.com cron job ve deployment check için. Qdrant ve Groq API erişimini kontrol eder.
+Qdrant ve Groq baglanti durumunu ozetler. Endpoint kendi basina `503` donmez; bozulma durumunu response body icinde `status: "degraded"` ile ifade eder.
+
+Olasu `qdrant` degerleri:
+
+- `connected`
+- `mock`
+- `local_fallback`
+- `not_configured`
+- `unreachable`
+
+Olasu `groq` degerleri:
+
+- `reachable`
+- `mock`
+- `not_configured`
+
+Response ornegi:
 
 ```json
-// 200
-{ "status": "ok", "qdrant": "connected", "groq": "reachable", "version": "1.0.0" }
-
-// 503
-{ "status": "degraded", "qdrant": "unreachable", "groq": "connected" }
+{
+  "status": "ok",
+  "qdrant": "connected",
+  "groq": "reachable",
+  "version": "1.0.0"
+}
 ```
+
+Degraded ornegi:
+
+```json
+{
+  "status": "degraded",
+  "qdrant": "local_fallback",
+  "groq": "not_configured",
+  "version": "1.0.0"
+}
+```
+
+---
+
+## Auth Notlari
+
+`POST /auth/login` response modeli:
+
+```json
+{
+  "access_token": "jwt",
+  "refresh_token": "",
+  "token_type": "bearer",
+  "role": "user"
+}
+```
+
+Notlar:
+
+- `refresh_token` body'de bilerek bos string doner.
+- Gercek refresh token HttpOnly `refresh_token` cookie'sine yazilir.
+- `POST /auth/refresh` cookie'yi tercih eder, body fallback'i geriye donuk uyumluluk icin destekler.
+
+---
+
+## PDF ve Taslak Endpoint'leri
+
+### POST /documents/analyze
+
+`multipart/form-data` alanlari:
+
+- `dosya`: zorunlu PDF
+- `soru`: opsiyonel
+- `language`: opsiyonel, `tr|en`
+- `conversation_id`: opsiyonel
+- `guest_session_id`: opsiyonel
+
+Response `200`:
+
+```json
+{
+  "yanit": "string",
+  "belge_ozeti": "string",
+  "kaynaklar": [],
+  "kategori": "Genel Hukuk",
+  "conversation_id": "uuid",
+  "guest_session_id": "uuid|null",
+  "message_id": "uuid|null",
+  "uyari": "string"
+}
+```
+
+### POST /documents/compare
+
+`multipart/form-data` alanlari:
+
+- `dosya1`: zorunlu PDF
+- `dosya2`: zorunlu PDF
+- `soru`: opsiyonel
+- `language`: opsiyonel, `tr|en`
+
+Response `200`:
+
+```json
+{
+  "yanit": "string",
+  "belge1_ozet": "string",
+  "belge2_ozet": "string",
+  "kaynaklar": [],
+  "kategori": "Genel Hukuk",
+  "uyari": "string"
+}
+```
+
+### POST /templates/{id}/generate
+
+JSON request body:
+
+```json
+{
+  "alanlar": {
+    "ad_soyad": "Ornek Kisi"
+  },
+  "language": "tr"
+}
+```
+
+Response:
+
+- `application/pdf`
 
 ---
 
 ## Pydantic Modelleri
 
+Asil kaynak `backend/schemas.py` dosyasidir. Dokumanda ozetlenen temel modeller:
+
 ```python
-# schemas.py
-
 class AskRequest(BaseModel):
-    soru: str = Field(..., min_length=10, max_length=1000)
-    max_kaynak: int = Field(default=5, ge=1, le=10)
-    language: str = Field(default="tr", pattern="^(tr|en)$")
-    conversation_id: str | None = Field(default=None, min_length=36, max_length=36)
-    guest_session_id: str | None = Field(default=None, min_length=36, max_length=36)
-
-class KaynakItem(BaseModel):
-    kaynak_turu: str
-    baslik: str
-    metin_ozet: str
-    metin: str | None = None
-    skor: float
-    url: str | None = None
+    soru: str
+    max_kaynak: int = 5
+    language: str = "tr"
+    conversation_id: str | None = None
+    guest_session_id: str | None = None
 
 class AskResponse(BaseModel):
     yanit: str
     kaynaklar: list[KaynakItem]
     conversation_id: str
     guest_session_id: str | None = None
-    kategori: str = "Genel Hukuk"
+    kategori: str
     message_id: str | None = None
-    uyari: str = "..."
+    uyari: str
 
 class DokumanAnalizCevap(BaseModel):
     yanit: str
     belge_ozeti: str
     kaynaklar: list
-    kategori: str = "Genel Hukuk"
+    kategori: str
     conversation_id: str | None = None
     guest_session_id: str | None = None
     message_id: str | None = None
-    uyari: str = "..."
-
-class TaslakOlusturRequest(BaseModel):
-    alanlar: dict[str, str]
-    language: str = Field(default="tr", pattern="^(tr|en)$")
+    uyari: str
 
 class FeedbackGonder(BaseModel):
-    message_id: str = Field(..., min_length=36, max_length=36)
-    puan: int        # 1 veya -1 (validator ile doğrulanır)
+    message_id: str
+    puan: int  # 1 veya -1
     guest_session_id: str | None = None
 ```

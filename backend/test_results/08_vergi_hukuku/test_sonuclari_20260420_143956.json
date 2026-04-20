@@ -1,0 +1,669 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-20T11:46:35.001460+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\08_vergi_hukuku\\test_sonuclari_20260420_143956.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 398.5,
+    "ortalama_sure_sn": 33.21,
+    "kategori_dagilimi": {
+      "Vergi Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 25.18,
+        "kategori_dogruluk_orani": 91.7,
+        "ortalama_cevap_uzunluk": 793.0,
+        "ortalama_kaynak_skor": 0.7006
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Gelir vergisi beyannamesini kimler vermek zorundadır?",
+      "cevap": "Gelir Vergisi Kanunu'na göre, gelir vergisi beyannamesi vermekle yükümlü olanlar, Gelir Vergisi Kanunu'nun 84. maddesinde belirtilen şekilde yıllık, muhtasar ve münferit beyanname vermek zorundadırlar. \n\nYıllık beyanname, muhtelif kaynaklardan bir takvim yılı içinde elde edilen kazanç ve iratların bir araya getirilip toplanmasına ve bu suretle hesaplanan gelirin vergi dairesine bildirilmesine mahsustur. \n\nMuhtasar beyanname, iş verenler veya vergi tevkifatı yapan diğer kimseler tarafından kesilen vergilerin matrahları ile birlikte, toplu olarak vergi dairesine bildirilmesine mahsustur.\n\nMünferit beyanname, dar mükellefiyete tabi olanların yıllık beyanname ile bildirmeye mecbur olmadıkları kazanç ve iratlardan, vergisi tevkif suretiyle alınmamış olanların bildirilmesine mahsustur.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5520 Sayılı Kurumlar Vergisi Kanunu - Madde 26",
+          "metin_ozet": "MADDE 26- (1) Dar mükellefiyete tâbi olan yabancı kurumların vergiye tâbi kazancının Gelir Vergisi Kanununda yazılı diğer kazanç ve iratlardan (telif, imtiyaz, ihtira, işletme, ticaret unvanı, marka ve benzeri gayrimaddî hakların satışı, devir ve temliki karşılığında alınan...",
+          "metin": null,
+          "skor": 0.8392,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5520&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5520 Sayılı Kurumlar Vergisi Kanunu - Madde 25",
+          "metin_ozet": "(4) Yıllık kurumlar vergisi beyannamesi, kurumun Türkiye’deki iş yerinin veya daimî temsilcisinin bulunduğu yerin; Mükellefler beyanlarını bu beyanname ile yapmak veya bu beyannamelerde yazılı bilgilere uygun olarak bildirmek zorundadır.",
+          "metin": null,
+          "skor": 0.8473,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5520&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 84",
+          "metin_ozet": "Madde 84 – Gelir Vergisi beyanları: Yıllık beyanname, muhtelif kaynaklardan bir takvim yılı içinde elde edilen kazanç ve iratların bir araya getirilip toplanmasına ve bu suretle hesaplanan gelirin vergi dairesine bildirilmesine mahsustur.",
+          "metin": null,
+          "skor": 0.8573,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 46",
+          "metin_ozet": "Beyanname vermek mecburiyetinde olan mükellefler (…)99 bir vergilendirme dönemine ait katma değer vergilerini beyanname verecekleri ayın yirmialtıncı günü akşamına kadar, vergi kesintisi yapmakla sorumlu tutulanlar bir vergilendirme dönemine ait katma değer vergilerini beyanname...",
+          "metin": null,
+          "skor": 0.8383,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 92",
+          "metin_ozet": "9/4/2003-4842/11 md.) Bir takvim yılına ait beyanname izleyen yılın Mart ayının başından yirmibeşinci günü akşamına kadar (…)103 tam mükellefiyette vergiyi tarha yetkili vergi dairesine, dar mükellefiyette Türkiye'de vergi 103 14/10/2021 tarihli ve 7338 sayılı Kanunun 6 ncı...",
+          "metin": null,
+          "skor": 0.8509,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 916,
+      "ortalama_kaynak_skor": 0.8466,
+      "kaynak_sayisi": 5,
+      "message_id": "4f32d929-ab25-4e82-8634-4de18341ff33",
+      "conversation_id": "ddd90d0d-99b8-433c-8712-6b0d361c2401",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.19,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi borcumu zamanında ödemezsem ne tür cezalar uygulanır?",
+      "cevap": "Gelir Vergisi Kanunu'nun 90. maddesine göre, vergi borcunun zamanında ödenmemesi durumunda, Amme Alacaklarının Tahsili Usulü hakkındaki Kanun hükümlerine göre cezalar, gecikme zamları ve faizler uygulanır. Ayrıca, Vergi Usul Kanunu hükümlerine göre ödenen gecikme faizleri de uygulanabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 90",
+          "metin_ozet": "19/2/1963-202/45 md.) Gelir Vergisi ile diğer şahsi vergiler ve her ne şekilde olursa olsun vergi cezaları ve para cezaları, Amme Alacaklarının Tahsili Usulü hakkındaki Kanun hükümlerine göre ödenen cezalar, gecikme zamları ve faizler Gelir Vergisinin matrahından ve gelir...",
+          "metin": null,
+          "skor": 0.8528,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 416,
+      "ortalama_kaynak_skor": 0.8528,
+      "kaynak_sayisi": 1,
+      "message_id": "c6d7a04e-b4ce-4887-89cf-c292499c0025",
+      "conversation_id": "cc020fb4-f011-4941-a1eb-273aeae17477",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 14.89,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi incelemesi hangi durumlarda yapılır?",
+      "cevap": "Vergi incelemesi, ödenmesi gereken vergilerin doğruluğunu araştırmak, tespit etmek ve sağlamak amacıyla yapılır. İncelemeye yetkili olanlar tarafından lüzum görüldüğü takdirde, inceleme işletmeye dahil iktisadi kıymetlerin fiili envanterinin yapılmasına ve beyannamelerde gösterilmesi gereken unsurların tetkikine de teşmil edilebilir. \n\nİnceleme, neticesi alınmamış hesap dönemi de dahil olmak üzere, tarh zamanaşımı süresi sonuna kadar her zaman yapılabilir. Evvelce inceleme yapılmış veya matrahın re'sen takdir edilmiş olması yeniden inceleme yapılmasına ve gerekirse tarhıyatın ikmaline mani değildir. \n\nVergi incelemeleri esas itibariyle dairede yapılır, ancak incelemeye tabi olanın lüzumlu defter ve vesikalarını daireye getirmesi yazılı olarak istenilir. İstenilen defter veya vesikaları belli edilen zamanda mazeretsiz olarak getirmiyenler, bunları ibraz etmemiş sayılırlar. Haklı bir mazeret gösterenlere, defter ve vesikalarını ibraz etmesi için münasip bir mühlet verilir. İncelemenin dairede yapılması, incelemeye tabi olanın iş yerinde tespit yapılmasına ve çalışmalarda bulunulmasına mani değildir. Mükellef ve vergi sorumlusunun talep etmesi ve iş yerinin müsait olması halinde inceleme iş yerinde de yapılabilir. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 135",
+          "metin_ozet": "7/7/2011-KHK-646/4 md.) Vergi incelemesi; Vergi Müfettişleri, Vergi Müfettiş Yardımcıları, ilin en büyük mal memuru veya vergi dairesi müdürleri tarafından yapılır.",
+          "metin": null,
+          "skor": 0.445,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 134",
+          "metin_ozet": "30/12/1980-2365/22 md.) Vergi incelemesinden maksat, ödenmesi gereken vergilerin doğruluğunu araştırmak tespit etmek ve sağlamaktır.",
+          "metin": null,
+          "skor": 0.4391,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 138",
+          "metin_ozet": "Madde 138 – Vergi incelemesinin ne zaman yapılacağının evvelden haber verilmesi mecburi değildir.",
+          "metin": null,
+          "skor": 0.4385,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 139",
+          "metin_ozet": "Madde 139 – Vergi incelemeleri, esas itibariyle dairede yapılır. 14/10/2021-7338/17 md.) Mükellef ve vergi sorumlusunun talep etmesi ve iş yerinin müsait olması halinde inceleme iş yerinde de yapılabilir.",
+          "metin": null,
+          "skor": 0.436,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 140",
+          "metin_ozet": "Madde 140 – Vergi incelemesi yapanlar, yaptıkları inceleme sırasında aşağıdaki esaslara uymaya mecburdurlar: 14/10/2021-7338/18 md.) İncelemeye tabi olana, vergi incelemesinin konusunu ve incelemeye başlanıldığı hususunu bir yazıyla bildirirler.",
+          "metin": null,
+          "skor": 0.4317,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1357,
+      "ortalama_kaynak_skor": 0.4381,
+      "kaynak_sayisi": 5,
+      "message_id": "0ce83685-00af-4fa5-92c1-3969fcd56894",
+      "conversation_id": "cb3bb2aa-e613-4a9c-ab47-75b7002e3356",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.34,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "E-fatura ve e-arşiv fatura kullanmak kimler için zorunludur?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 213 Sayılı Vergi Usul Kanunu ve 6102 Sayılı Türk Ticaret Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 232",
+          "metin_ozet": "Sattıkları emtia veya yaptıkları işler için fatura vermek ve bunlara da fatura istemek ve almak mecburiyetindedirler.",
+          "metin": null,
+          "skor": 0.8299,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 100 - Fıkra 5",
+          "metin_ozet": "Elektronik ortamda hazırlanacak bilgi ve belgeler adli ve idari makamlar nezdinde resmi belge olarak geçerlidir.",
+          "metin": null,
+          "skor": 0.832,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 227",
+          "metin_ozet": "Madde 227 – Bu kanunda aksine hüküm olmadıkça, bu kanuna göre tutulan ve üçüncü şahıslarla olan münasebet ve muamelelere ait olan kayıtların tevsiki mecburidir.",
+          "metin": null,
+          "skor": 0.8389,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 86",
+          "metin_ozet": "MADDE 86- (1) Saklanması zorunlu olan belgeleri, sadece görüntü veya başkaca bir veri taşıyıcısı aracılığıyla ibraz edebilen kimse, giderleri kendisine ait olmak üzere, o belgelerin okunabilmesi için gerekli olan yardımcı araçları kullanıma hazır bulundurmakla yükümlüdür;",
+          "metin": null,
+          "skor": 0.8232,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 256",
+          "metin_ozet": "22/7/1998-4369/4 md.) Geçen maddelerde yazılı gerçek ve tüzel kişiler ile mükerrer 257 nci madde ile getirilen zorunluluklara tabi olanlar, muhafaza etmek zorunda oldukları her türlü defter, belge ve karneler ile vermek zorunda bulundukları bilgilere ilişkin mikro fiş, mikro...",
+          "metin": null,
+          "skor": 0.841,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Tuketici Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 225,
+      "ortalama_kaynak_skor": 0.833,
+      "kaynak_sayisi": 5,
+      "message_id": "380caf75-c90f-4308-86cc-d9ea62cdca42",
+      "conversation_id": "bf09e723-67e2-404a-b3a2-c2836483da09",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.47,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi kaçakçılığı ile vergi usulsüzlüğü arasındaki fark nedir?",
+      "cevap": "Vergi kaçakçılığı ve vergi usulsüzlüğü, Vergi Usul Kanunu'nda düzenlenen iki ayrı kavramdır. \n\nVergi usulsüzlüğü, vergi kanunlarının şekle ve usule ilişkin hükümlerine riayet edilmemesidir (Madde 351). Vergi usulsüzlüğü, vergi kanunlarının şekle ve usule ilişkin hükümlerine aykırılık teşkil eden fiilleri ifade eder.\n\nVergi kaçakçılığı ise, daha ağır cezaları gerektiren bir kavramdır. Ancak, 213 Sayılı Vergi Usul Kanunu'nda \"kaçakçılık\" terimi, 4369 sayılı Kanun ile değiştirilmiş ve \"vergi ziyaı\" terimi ile değiştirilmiştir. Dolayısıyla, Vergi Usul Kanunu'nda \"vergi ziyaı\" terimi, daha önce \"kaçakçılık\" olarak bilinen kavramı ifade etmektedir.\n\nVergi ziyaı, vergi kanunlarına göre verilmesi gereken vergi veya vergilerin kısmen veya tamamen ödenmemesi durumunu ifade eder. Vergi ziyaı cezası, vergi ziyaına sebebiyet veren fiiller için kesilir.\n\nBu iki kavram arasındaki temel fark, vergi usulsüzlüğünün daha çok şekle ve usule ilişkin hükümlere aykırılık teşkil eden fiilleri ifade etmesi, i vergi ziyaının vergi veya vergilerin ödenmemesi durumunu ifade etmesidir.\n\nGetirilen kaynaklar bu soruyu kısmen karsilamiyor. 213 Sayılı Vergi Usul Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 336",
+          "metin_ozet": "30/12/1980-2365/62 md.) Cezayı istilzam eden tek bir fiil ile vergi ziyaı ve usulsüzlük birlikte işlenmiş olursa bunlara ait cezalardan sadece miktar itibariyle en ağırı kesilir.",
+          "metin": null,
+          "skor": 0.4173,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 351",
+          "metin_ozet": "Madde 351 – Usulsüzlük vergi kanunlarının şekle ve usule mütaallik hükümlerine riayet edilmemesidir.",
+          "metin": null,
+          "skor": 0.4172,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 338",
+          "metin_ozet": "111 Bu maddede yer alan \"Kaçakçılık, ağır kusur veya kusurda\" ibaresi, 22/7/1998 tarih ve 4369 sayılı Kanunun 81 inci maddesiyle “Vergi ziyaı cezasında” şeklinde değiştirilmiştir. vergi ziyaı ve usulsüzlük ...\" şeklinde, ikinci fıkrasında yer alan \"...",
+          "metin": null,
+          "skor": 0.4166,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 337",
+          "metin_ozet": "30/12/1980-2365/63 md.) Ayrı ayrı yapılmış olan vergi ziyaı veya usulsüzlükten dolayı ayrı ayrı ceza kesilir.",
+          "metin": null,
+          "skor": 0.4164,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Geçici Madde 22",
+          "metin_ozet": "22/7/1998-4369/20 md.) Diğer kanunlarda Vergi Usul Kanununun bu Kanunla yürürlükten kaldırılan kaçakçılık, ağır kusur ve kusur cezalarına yapılan atıflar Vergi Usul Kanununun 344 üncü maddesinde yer alan vergi ziyaı cezasına yapılmış sayılır.",
+          "metin": null,
+          "skor": 0.4135,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1272,
+      "ortalama_kaynak_skor": 0.4162,
+      "kaynak_sayisi": 5,
+      "message_id": "b0523e8f-c4ad-471e-bc7f-c364e53e5e6b",
+      "conversation_id": "f083c251-fef3-436f-95c8-0a5202f42441",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.36,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi borcuna itiraz etmek istersem hangi yollara başvurabilirim?",
+      "cevap": "Vergi borcuna itiraz etmek için several yollara başvurabilirsiniz. \n\nİlk olarak, 6183 Sayılı Amme Alacaklarının Tahsil Usulü Hakkında Kanun'un 58. maddesine göre, ödeme emri tebliğ tarihinden itibaren 15 gün içinde alacaklı tahsil dairesine ait itiraz işlerine bakan vergi itiraz komisyonu nezdinde itirazda bulunabilirsiniz. İtirazın şekli, incelenmesi ve itiraz incelemelerinin iadesi hususlarında Vergi Usul Kanunu hükümleri uygulanır.\n\nAyrıca, 2577 Sayılı İdari Yargılama Usulü Kanunu'nun 45. maddesine göre, idare ve vergi mahkemelerinin kararlarına karşı, başka kanunlarda farklı bir kanun yolu öngörülmüş olsa dahi, mahkemenin bulunduğu yargı çevresindeki bölge idare mahkemesine, kararın tebliğinden itibaren otuz gün içinde istinaf yoluna başvurulabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6183 Sayılı Amme Alacaklarının Tahsil Usulü Hakkında Kanun - Madde 58",
+          "metin_ozet": "Madde 58 – Kendisine ödeme emri tebliğ olunan şahıs, böyle bir borcu olmadığı veya kısmen ödediği veya zamanaşımına uğradığı hakkında tebliğ tarihinden itibaren 15 gün içinde alacaklı tahsil dairesine ait itiraz işlerine bakan vergi itiraz komisyonu nezdinde itirazda bulunabilir.",
+          "metin": null,
+          "skor": 0.4304,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 172",
+          "metin_ozet": "18/2/1965-538/87 md.) Ödeme emrine itiraz veya şikayet etmek istiyen borçlu, ödeme emrinin tebliğinden itibaren beş gün içinde her türlü itiraz veya şikayetini sebepleri ile birlikte diğer tarafa tebliğ edilecek nüshadan bir fazla dilekçe ile icra dairesine bildirmeye mecburdur.",
+          "metin": null,
+          "skor": 0.428,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 173",
+          "metin_ozet": "18/2/1965-538/88 md.) Borçlu beş gün içinde borcu ödemez, itiraz veya şikayette de bulunmazsa, alacaklı, bu durumu tevsik eden ödeme emri nüshası ile ticaret mahkemesinden borçlunun iflasına karar verilmesini istiyebilir.",
+          "metin": null,
+          "skor": 0.4244,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 45",
+          "metin_ozet": "İdare ve vergi mahkemelerinin kararlarına karşı, başka kanunlarda farklı bir kanun yolu öngörülmüş olsa dahi, mahkemenin bulunduğu yargı çevresindeki bölge idare mahkemesine, kararın tebliğinden itibaren otuz gün içinde istinaf yoluna başvurulabilir.",
+          "metin": null,
+          "skor": 0.4222,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2004 Sayili Icra ve Iflas Kanunu - Madde 265",
+          "metin_ozet": "huzuriyle yapılan hacizlerde haczin tatbiki, aksi hâlde haciz tutanağının kendisine tebliği tarihinden itibaren yedi gün içinde mahkemeye müracaatla itiraz edebilir.",
+          "metin": null,
+          "skor": 0.4218,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2004&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 889,
+      "ortalama_kaynak_skor": 0.4254,
+      "kaynak_sayisi": 5,
+      "message_id": "482efee3-9b79-46ba-95e1-1a4d4f59dc54",
+      "conversation_id": "83a3b819-872c-45eb-9b9a-41217a47b2ac",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.69,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi affı (yapılandırma) hangi durumlarda çıkar ve nasıl yararlanılır?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 213 sayılı Vergi Usul Kanunu ve 6183 sayılı Amme Alacaklarının Tahsil Usulü Hakkında Kanun vergi affı (yapılandırma) ile ilgili hükümleri içermektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Geçici Madde 45",
+          "metin_ozet": "Geçici Madde 45-(Ek:28/7/2024-7524/23 md.) 6/2/2023 tarihinde meydana gelen depremler nedeniyle genel hayata etkili afet bölgesi olarak kabul edilen yerlerde, genel bütçeli kamu idareleri ile yabancı devlet kurum ve kuruluşları arasında imzalanan protokol kapsamında genel bütçeli...",
+          "metin": null,
+          "skor": 0.8358,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Geçici Madde 89",
+          "metin_ozet": "Geçici Madde 89 - (Ek:18/1/2019-7162/4 md.) 27/3/2018 tarihinden önce karşılıklı sonlandırma sözleşmesi veya ikale sözleşmesi kapsamında ödenen tazminatlar, iş kaybı tazminatları, iş sonu tazminatları, iş güvencesi tazminatları gibi çeşitli adlar altında yapılan ödemeler ve...",
+          "metin": null,
+          "skor": 0.8358,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 30",
+          "metin_ozet": "Madde 30 – Aşağıdaki vergiler mükellefin vergiye tabi işlemleri üzerinden hesaplanan katma değer vergisinden indirilemez:8182 a) Vergiye tabi olmayan veya vergiden istisna edilmiş bulunan malların teslimi ve hizmet ifası (Bu Kanunun 17 nci maddesinin (2) numaralı fıkrasının (b),...",
+          "metin": null,
+          "skor": 0.8374,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 286,
+      "ortalama_kaynak_skor": 0.8363,
+      "kaynak_sayisi": 3,
+      "message_id": "579bc5c6-ae88-4b10-bed5-d3f13ee4e030",
+      "conversation_id": "77387362-a218-4308-87f8-37771f890a1c",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.41,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "KDV hangi işlemlerden alınır ve oranları nasıl belirlenir?",
+      "cevap": "Katma Değer Vergisi (KDV), mal ve hizmetlerin teslimi ve ithalatında alınan bir vergidir. KDV oranları, 3065 Sayılı Katma Değer Vergisi Kanunu'nda belirlenmiştir. \n\nKDV, mal ve hizmetlerin teslimi ve ithalatında hesaplanan vergidir. KDV oranları, Maliye ve Gümrük Bakanlığı tarafından belirlenir. 3065 Sayılı Katma Değer Vergisi Kanunu'nun 29. maddesine göre, mükellefler yaptıkları vergiye tabi işlemler üzerinden hesaplanan katma değer vergisinden, faaliyetlerine ilişkin olarak belirli vergileri indirebilirler.\n\nKDV oranları, genel olarak %1, %8 ve %18 olarak belirlenmiştir. Ancak, bazı mal ve hizmetler için özel oranlar uygulanabilir. Örneğin, gıda maddeleri, ilaçlar ve kitaplar gibi bazı mal ve hizmetler için %1 oranında KDV uygulanır.\n\nKDV'nin hesaplanmasında, mal ve hizmetlerin teslimi veya ithalatı sırasında oluşan katma değer esas alınır. Katma değer, mal veya hizmetin teslimi veya ithalatı sırasında oluşan değerdir. KDV, bu katma değer üzerinden hesaplanır.\n\nÖrneğin, bir malın teslimi sırasında oluşan katma değer 100 TL ise, %18 oranında KDV uygulanırsa, KDV tutarı 18 TL olur. Bu durumda, malın teslimi sırasında oluşan toplam tutar, 100 TL + 18 TL = 118 TL olur.\n\nKDV oranlarının belirlenmesi, Maliye ve Gümrük Bakanlığı'nın yetkisindedir. Bakanlık, KDV oranlarını değiştirebilir veya yeni oranlar belirleyebilir. Ayrıca, bazı mal ve hizmetler için özel oranlar uygulanabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 56",
+          "metin_ozet": "imal ve inşa işlerinde, hammadde, yardımcı madde, enerji, işçilik ve benzeri ölçüleri esas alarak belli iş ve sanat kolları itibariyle asgari randıman oranları tespit etmeye, alım - satım ve hizmet işlerinde ise asgari birim satış bedellerini belirlemeye yetkilidir.",
+          "metin": null,
+          "skor": 0.8329,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 29",
+          "metin_ozet": "71 Bu maddede yer alan katma değer vergisi oranlarının uygulanması ile ilgili olarak, 3/2/2017 tarihli ve 29968 sayılı Resmi Gazete’de yayımlanan 31/1/2017 tarihli ve 2017/9759 sayılı Bakanlar Kurulu Eki Karara bakınız.",
+          "metin": null,
+          "skor": 0.8361,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 38",
+          "metin_ozet": "29/3/2018- 7104/12 md.) Ticari kazancı işletme hesabı esasına göre tespit edilenler ile mesleki kazancı serbest meslek kazanç defterine göre tespit edilenlerden Cumhurbaşkanı tarafından belirlenen sektör ve meslek grupları kapsamında yer alanlar, talep etmeleri halinde vergiye...",
+          "metin": null,
+          "skor": 0.8311,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5520 Sayılı Kurumlar Vergisi Kanunu - Madde 13",
+          "metin_ozet": "İlişkili kişiler açısından bu oranlar topluca dikkate alınır.30 (3) Emsallere uygunluk ilkesi, ilişkili kişilerle yapılan mal veya hizmet alım ya da satımında uygulanan fiyat veya bedelin, aralarında böyle bir ilişkinin bulunmaması durumunda oluşacak fiyat veya bedele uygun...",
+          "metin": null,
+          "skor": 0.8413,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5520&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 42",
+          "metin_ozet": "Madde 42 – Katma Değer Vergisi beyannamelerinin şekil ve muhtevası ile gümrük giriş beyannamelerinde Katma Değer Vergisine ilişkin olarak yer alacak bilgiler Maliye ve Gümrük Bakanlığınca tespit ve tanzim olunur.",
+          "metin": null,
+          "skor": 0.8378,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1525,
+      "ortalama_kaynak_skor": 0.8358,
+      "kaynak_sayisi": 5,
+      "message_id": "27276ec1-b180-4c9f-9399-e611fa887781",
+      "conversation_id": "f07e8b32-5d2d-48f7-865e-74718a4853e9",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.61,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Serbest meslek erbabı hangi vergileri ödemek zorundadır?",
+      "cevap": "Serbest meslek erbabı, serbest meslek faaliyetinden doğan kazançları üzerinden gelir vergisi ödemek zorundadır. Gelir Vergisi Kanunu'nun 65. maddesine göre, her türlü serbest meslek faaliyetinden doğan kazançlar serbest meslek kazancıdır. \n\nSerbest meslek erbabı, gelir vergisi dışında, diğer vergileri de ödemek zorundadır. Örneğin, Gelir Vergisi Kanunu'nun 94. maddesine göre, serbest meslek erbabı, hizmet erbabına ödenen ücretler, serbest meslek işleri dolayısıyla yapılan ödemeler gibi ödemeleri nakden veya hesaben yaptıkları sırada, istihkak sahiplerinin gelir vergilerine mahsuben tevkifat yapmak zorundadır.\n\nAyrıca, Gelir Vergisi Kanunu'nun 67. maddesine göre, serbest meslek erbabı, mesleki kazançlarını Vergi Usul Kanunu hükümlerine göre tuttukları \"Serbest meslek kazanç defteri\" ne istinaden tespit ederler. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 94",
+          "metin_ozet": "26/12/1993-3946/22 md.) Kamu idare ve müesseseleri, iktisadi kamu müesseseleri, sair kurumlar, ticaret şirketleri, iş ortaklıkları, dernekler, vakıflar, dernek ve vakıfların iktisadi işletmeleri, kooperatifler, yatırım fonu yönetenler, gerçek gelirlerini beyan etmeye mecbur olan...",
+          "metin": null,
+          "skor": 0.8553,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 66",
+          "metin_ozet": "Madde 66 – Serbest meslek faaliyetini mütat meslek halinde ifa edenler, serbest meslek erbabıdır.",
+          "metin": null,
+          "skor": 0.8588,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 67",
+          "metin_ozet": "19/2/1963-202/32 md.) Serbest meslek erbabı, mesleki kazançlarını Vergi Usul Kanunu hükümlerine göre tuttukları \"Serbest meslek kazanç defteri\" ne istinaden tesbit ederler. Serbest meslek erbabı için:",
+          "metin": null,
+          "skor": 0.8529,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 17",
+          "metin_ozet": "22/7/1998-4369/82 md.) (Başlığı ile Birlikte Yeniden Düzenleme:28/7/2024-7524/2 md.) Sanayi ve Teknoloji Bakanlığınca belirlenen kriterlere göre teknogirişim şirketi niteliğini haiz işverenlerce hizmet erbabına bedelsiz veya indirimli olarak verilen ve ücret niteliğinde kabul...",
+          "metin": null,
+          "skor": 0.8542,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 65",
+          "metin_ozet": "19/2/1963-202/31 md.) Her türlü serbest meslek faaliyetinden doğan kazançlar serbest meslek kazancıdır. Serbest meslek faaliyeti;",
+          "metin": null,
+          "skor": 0.8587,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 948,
+      "ortalama_kaynak_skor": 0.856,
+      "kaynak_sayisi": 5,
+      "message_id": "6d9b8fbe-88e3-4655-a187-2f25c026f1de",
+      "conversation_id": "429124a1-2a38-4d5d-8f03-517abbb983b8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.8,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi dairesi tarafından kesilen cezaya karşı dava açma süresi ne kadardır?",
+      "cevap": "Vergi dairesi tarafından kesilen cezaya karşı dava açma süresi, Ek Madde 7'de belirtilen uzlaşma talebinden önce dava açılmamışsa, uzlaşmanın vaki olmadığına dair tutanağın tebliğinden itibaren genel hükümler dairesinde ve yetkili vergi mahkemesi nezdinde dava açma süresi bulunmaktadır. Bu süre, tutanağın tebliği tarihinden itibaren 15 gün olarak uzar.\n\nAncak, dava açma süresi bitmiş veya 15 günden az kalmış ise bu süre, tutanağın tebliği tarihinden itibaren 15 gün olarak uzar. \n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 10",
+          "metin_ozet": "İlgililer, haklarında idari davaya konu olabilecek bir işlem veya eylemin yapılması için idari makamlara başvurabilirler. İlgililer otuz günün bittiği tarihten itibaren dava açma süresi içinde, konusuna göre Danıştaya, idare ve vergi mahkemelerine dava açabilirler.",
+          "metin": null,
+          "skor": 0.4303,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Ek Madde 7",
+          "metin_ozet": "23/6/1982-2686/47 md.)157 Müddeti içinde uzlaşma talebinde bulunan mükellef veya ceza muhatabı uzlaşma talep ettiği (…)157 ceza için, ancak uzlaşma vaki olmadığı takdirde dava açma yoluna gidebilir.",
+          "metin": null,
+          "skor": 0.4301,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Ek Madde 15",
+          "metin_ozet": "başvuru kapsamındaki tarh ve tebliğ edilen vergi ve cezalar ile ihtirazi kayıtla verilen beyanname üzerine tahakkuk eden vergiye ilişkin dava açma süresini durdurur.",
+          "metin": null,
+          "skor": 0.43,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 368",
+          "metin_ozet": "23/6/1982-2686/41 md.) Vergi Cezaları: Cezaya karşı vergi mahkemesinde dava açılmamışsa dava açma süresinin bittiği tarihten; Cezaya karşı dava açılmışsa, vergi mahkemesi kararı üzerine vergi dairesince düzenlenecek ihbarnamenin ilgiliye tebliğ tarihinden:",
+          "metin": null,
+          "skor": 0.4295,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 376",
+          "metin_ozet": "İkmalen, resen veya idarece tarh edilen vergiyi veya vergi farkını ve vergi ziyaı, usulsüzlük ve özel usulsüzlük cezalarının yarısını ihbarnamelerin tebliğ tarihinden itibaren otuz gün içinde ilgili vergi dairesine başvurarak vadesinde veya 6183 sayılı Kanunda belirtilen türden...",
+          "metin": null,
+          "skor": 0.4295,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 609,
+      "ortalama_kaynak_skor": 0.4299,
+      "kaynak_sayisi": 5,
+      "message_id": "b95d23eb-98ea-430f-88d4-a743b83bdae0",
+      "conversation_id": "88ca4ce1-bc86-4aa0-ab3c-9baf4914236a",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.76,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Stopaj (kaynakta kesinti) nedir, kimler tarafından uygulanır?",
+      "cevap": "Stopaj, gelir vergisi kanununda düzenlenen bir kesinti sistemidir. Gelir vergisi stopajı, belirli gelirlerin elde edildiği anda, bu gelirlerin üzerinden belirli bir oranda vergi kesintisi yapılmasıdır. \n\nGelir Vergisi Kanunu'nun 94. maddesinde, kimlerin stopaj uygulayacağı düzenlenmiştir. Buna göre, belirli gelirlerin ödenmesi sırasında, bu gelirlerin üzerinden vergi kesintisi yapanlar, stopaj uygulamakla yükümlüdürler. \n\nÖrneğin, işverenler, çalışanlarına ödedikleri ücretler üzerinden, belirli bir oranda vergi kesintisi yapmak zorundadırlar. Benzer şekilde, kiraya verenler, kira gelirleri üzerinden de vergi kesintisi yapmakla yükümlüdürler.\n\nGetirilen kaynaklar bu soruyu karsilamiyor. Gelir Vergisi Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Geçici Madde 80",
+          "metin_ozet": "31/5/2012-6322/12 md.) Cumhurbaşkanınca istatistiki bölge birimleri sınıflandırması, kişi başına düşen milli gelir veya sosyoekonomik gelişmişlik düzeyleri dikkate alınmak suretiyle belirlenen illerde yapılacak yatırımlar için Ekonomi Bakanlığı tarafından düzenlenen yatırım...",
+          "metin": null,
+          "skor": 0.8074,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Geçici Madde 76",
+          "metin_ozet": "2011/172 sayılı Kararı ile, 6/6/2008 tarihinden önce 29/1/2004 tarihli ve 5084 sayılı Kanun’un 3 üncü maddesi kapsamında yatırıma başlayarak gelir vergisi stopajı teşvikinden faydalanması gereken mükellefler yönünden iptal edilmiştir.",
+          "metin": null,
+          "skor": 0.7994,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 833,
+      "ortalama_kaynak_skor": 0.8034,
+      "kaynak_sayisi": 2,
+      "message_id": "5ab0e2c8-8b2e-4392-94f2-b1d3a94fbd3b",
+      "conversation_id": "edc4aa1e-88cc-4aed-97a5-db70f68b2c00",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 22.51,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Vergi Hukuku",
+      "soru": "Vergi mükellefi olmadan ticari faaliyet yürütmenin sonuçları nelerdir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 193 Sayili Gelir Vergisi Kanunu ve 3065 Sayılı Katma Değer Vergisi Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 107",
+          "metin_ozet": "Madde 107 – Gelir Vergisi, bu vergiye mükellef olan gerçek kişiler namına tarh edilir. Verginin tevkif suretiyle alınması halinde, mükellef hesabına tevkifat yapmaya mecbur olanlar;",
+          "metin": null,
+          "skor": 0.8347,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Mükerrer Madde 20",
+          "metin_ozet": "29/1/2016-6663/1 md.) Ticari, zirai veya mesleki faaliyeti nedeniyle adlarına ilk defa gelir vergisi mükellefiyeti tesis olunan ve mükellefiyet başlangıç tarihi itibarıyla yirmi dokuz yaşını doldurmamış tam mükellef gerçek kişilerin, faaliyete başladıkları takvim yılından...",
+          "metin": null,
+          "skor": 0.8384,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 106",
+          "metin_ozet": "Madde 106 – Gelir Vergisi, mükellefin ikametgahının bulunduğu mahal vergi dairesince tarh edilir.",
+          "metin": null,
+          "skor": 0.8288,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3065 Sayılı Katma Değer Vergisi Kanunu - Madde 8",
+          "metin_ozet": "Katma Değer Vergisinin Mükellefi:",
+          "metin": null,
+          "skor": 0.8328,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3065&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "193 Sayili Gelir Vergisi Kanunu - Madde 30",
+          "metin_ozet": "Madde 30 – Dar mükellefiyete tabi olanların: Hükümetin müsaadesiyle açılan sergi ve panayırlarda yaptıkları ticari faaliyetlerden elde ettikleri kazançlar (Türkiye'de başkaca iş yeri veya daimi temsilcileri bulunmamak şartiyle);",
+          "metin": null,
+          "skor": 0.833,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Vergi Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 235,
+      "ortalama_kaynak_skor": 0.8335,
+      "kaynak_sayisi": 5,
+      "message_id": "94cddf5b-57a9-43be-a841-abeef952b072",
+      "conversation_id": "3923f502-35f6-42b0-9e1f-199918bafa68",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.14,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

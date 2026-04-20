@@ -1,0 +1,701 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-20T12:33:27.652472+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 8.0,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\12_anayasa_hukuku\\test_sonuclari_20260420_152657.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 389.7,
+    "ortalama_sure_sn": 32.48,
+    "kategori_dagilimi": {
+      "Anayasa Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 24.45,
+        "kategori_dogruluk_orani": 41.7,
+        "ortalama_cevap_uzunluk": 714.0,
+        "ortalama_kaynak_skor": 0.7753
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Anayasa Mahkemesi'ne bireysel başvuru yapabilmek için hangi şartları taşımalıyım ve süresi ne kadardır?",
+      "cevap": "Anayasa Mahkemesi'ne bireysel başvuru yapabilmek için, Anayasada güvence altına alınmış temel hak ve özgürlüklerinden herhangi birinin ihlal edildiğini iddia etmek gerekir. Bireysel başvuruya ilişkin usul ve esaslar kanunla düzenlenir.\n\nBireysel başvuruda, kanun yolunda gözetilmesi gereken hususlarda inceleme yapılamaz. Ayrıca, Anayasa Mahkemesi, bireysel başvuruları karara bağlar.\n\nBireysel başvurunun süresi, Anayasa Mahkemesi tarafından belirlenen süre içinde yapılmalıdır. Ancak, bu süre kaynaklarda açıkça belirtilmemiştir. \n\nGetirilen kaynaklar bu soruyu karsilamiyor. 2709 Sayılı Türkiye Cumhuriyeti Anayasası bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 148",
+          "metin_ozet": "Madde 148 – Anayasa Mahkemesi, kanunların, Cumhurbaşkanlığı kararnamelerinin ve Türkiye Büyük Millet Meclisi İçtüzüğünün Anayasaya şekil ve esas bakımlarından uygunluğunu denetler ve bireysel başvuruları karara bağlar.",
+          "metin": null,
+          "skor": 0.8517,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 147",
+          "metin_ozet": "7/5/2010-5982/17 md.) Anayasa Mahkemesi üyeleri oniki yıl için seçilirler. Bir kimse iki defa Anayasa Mahkemesi üyesi seçilemez. Anayasa Mahkemesi üyeleri altmışbeş yaşını doldurunca emekliye ayrılırlar.",
+          "metin": null,
+          "skor": 0.85,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 150",
+          "metin_ozet": "Madde 150 – Kanunların, Cumhurbaşkanlığı kararnamelerinin, Türkiye Büyük Millet Meclisi İçtüzüğünün veya bunların belirli madde ve hükümlerinin şekil ve esas bakımından Anayasaya aykırılığı iddiasıyla Anayasa Mahkemesinde doğrudan doğruya iptal davası açabilme hakkı,...",
+          "metin": null,
+          "skor": 0.8422,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 114",
+          "metin_ozet": "MADDE 114- (1) Dava şartları şunlardır: (2) Diğer kanunlarda yer alan dava şartlarına ilişkin hükümler saklıdır. Dava şartlarının incelenmesi",
+          "metin": null,
+          "skor": 0.8438,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 20",
+          "metin_ozet": "MADDE 20- (1) Görevsizlik veya yetkisizlik kararı verilmesi hâlinde, taraflardan birinin, bu karar verildiği anda kesin ise tebliğ tarihinden, (…)1 süresi içinde kanun yoluna başvurulmayarak kesinleşmiş ise kararın kesinleştiği tarihten;",
+          "metin": null,
+          "skor": 0.8408,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Anayasa Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 737,
+      "ortalama_kaynak_skor": 0.8457,
+      "kaynak_sayisi": 5,
+      "message_id": "756ab549-bdfc-4d25-ae51-7955890110e3",
+      "conversation_id": "104e7503-7050-4325-9599-bc6c1901e474",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 30.34,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Gözaltına alındıktan sonra ne kadar süre içinde hakim karşısına çıkarılmam gerekiyor?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5271 sayili Ceza Muhakemesi Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 295",
+          "metin_ozet": "Madde 295- (1) Gözaltına alınan, tutuklu veya hükümlünün muhafaza veya nakli ile görevli kişilerin, görevlerinin gereklerine aykırı hareket etmeleri halinde, görevi kötüye kullanma suçuna ilişkin hükümler uygulanır.",
+          "metin": null,
+          "skor": 0.8439,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6284 Sayılı Ailenin Korunması ve Kadına Karşı Şiddetin Önlenmesine Dair Kanun - Madde 13",
+          "metin_ozet": "MADDE 13 – (1) Bu Kanun hükümlerine göre hakkında tedbir kararı verilen şiddet uygulayan, bu kararın gereklerine aykırı hareket etmesi hâlinde, fiili bir suç oluştursa bile ihlal edilen tedbirin niteliğine ve aykırılığın ağırlığına göre hâkim kararıyla üç günden on güne kadar...",
+          "metin": null,
+          "skor": 0.8446,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6284&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 291",
+          "metin_ozet": "Madde 291- (1) Kendisini, bir hükümlünün veya tutuklunun yerine koyarak ceza infaz kurumuna veya tutukevine giren kimseye altı aydan iki yıla kadar hapis cezası verilir.",
+          "metin": null,
+          "skor": 0.8515,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 196,
+      "ortalama_kaynak_skor": 0.8467,
+      "kaynak_sayisi": 3,
+      "message_id": "f5f5f829-a3e5-42fe-9e4b-96f8bd79f314",
+      "conversation_id": "7a460a34-80d0-483f-bf18-08c8e9268130",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.83,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "İfade özgürlüğüm var ama sosyal medya paylaşımım nedeniyle gözaltı aldım, bu hak ihlali midir?",
+      "cevap": "İfade özgürlüğü, Anayasa'nın 26. maddesinde düzenlenen bir haktır. Bu hak, düşünce ve kanaatlerini söz, yazı, resim veya başka yollarla tek başına veya toplu olarak açıklama ve yayma hakkını kapsar. Ancak, bu hürriyetin kullanılması, millî güvenlik, kamu düzeni, kamu güvenliği, Cumhuriyetin temel nitelikleri ve Devletin ülkesi ve milleti ile bölünmez bütünlüğünün korunması, suçların önlenmesi, suçluların cezalandırılması, Devlet sırrı olarak usulünce belirtilmiş bilgilerin açıklanmaması, başkalarının şöhret veya haklarının, özel ve aile hayatlarının yahut kanunun öngördüğü meslek sırlarının korunması veya yargılama görevinin gereğine uygun olarak yerine getirilmesi amaçlarıyla sınırlanabilir.\n\n2918 Sayılı Karayolları Trafik Kanunu'nun Ek Madde 20'de, trafik kural ihlali yapmaya özendiren görüntüleri alenen yaymak ve övmek yasaklanmıştır. Bu madde hükümlerine uymayanlara 25.000 Türk lirası idari para cezası verilir. Ancak, bu durumun ifade özgürlüğü ihlali olup olmadığı, somut olayın koşullarına göre değerlendirilmelidir.\n\nSosyal medya paylaşımınız nedeniyle gözaltına alınmanız, ifade özgürlüğü ihlali olabilir. Ancak, bu durumun değerlendirilebilmesi için, paylaşımınızın içeriği, paylaşım amacınız, ve paylaşımın yapıldığı bağlam gibi faktörlerin dikkate alınması gerekmektedir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2918 Sayılı Karayolları Trafik Kanunu - Ek Madde 20",
+          "metin_ozet": "Ek Madde 20- (Ek:12/2/2026-7574/33 md.) Bu Kanunun idari yaptırıma bağlayarak yasakladığı bir eylemi basın, yayın, internet, sosyal ve dijital medya veya diğer elektronik cihazlar yoluyla paylaşarak trafik kural ihlali yapmaya özendiren görüntüleri alenen yaymak ve övmek...",
+          "metin": null,
+          "skor": 0.8413,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2918&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5651 Sayılı İnternet Ortamında Yapılan Yayınların Düzenlenmesi Kanunu - Madde 9",
+          "metin_ozet": "2023/172 sayılı Kararı ile) Özel hayatın gizliliği nedeniyle içeriğe erişimin engellenmesi3435 33 Bu maddenin başlığı “İçeriğin yayından çıkarılması ve cevap hakkı” iken 6518 sayılı Kanunun 93 üncü maddesiyle metne işlendiği şekilde değiştirilmiştir.",
+          "metin": null,
+          "skor": 0.8397,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5651&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 26",
+          "metin_ozet": "Madde 26 – Herkes, düşünce ve kanaatlerini söz, yazı, resim veya başka yollarla tek başına veya toplu olarak açıklama ve yayma hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.8489,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 268",
+          "metin_ozet": "Madde 268- (1) İşlediği suç nedeniyle kendisi hakkında soruşturma ve kovuşturma yapılmasını engellemek amacıyla, başkasına ait kimliği veya kimlik bilgilerini kullanan 103 Anayasa Mahkemesi’nin 10/4/2013 tarihli ve E.:",
+          "metin": null,
+          "skor": 0.853,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 26",
+          "metin_ozet": "Madde 26- (1) Hakkını kullanan kimseye ceza verilmez. (2) Kişinin üzerinde mutlak surette tasarruf edebileceği bir hakkına ilişkin olmak üzere, açıkladığı rızası çerçevesinde işlenen fiilden dolayı kimseye ceza verilmez.",
+          "metin": null,
+          "skor": 0.8384,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Anayasa Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1422,
+      "ortalama_kaynak_skor": 0.8443,
+      "kaynak_sayisi": 5,
+      "message_id": "7de47d75-7a0b-4584-8095-ef259f0f5aa2",
+      "conversation_id": "6315efba-eb41-4def-8546-4c7f01cf5d73",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.21,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Evim arandı ama arama kararı yoktu, bu hukuka aykırı mı ve deliller geçerliliğini yitirir mi?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5271 Sayılı Ceza Muhakemesi Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 353",
+          "metin_ozet": "a) Aşağıdaki durumlarda bölge adliye mahkemesi, esası incelemeden kararın kaldırılmasına ve davanın yeniden görülmesi için dosyanın kararı veren mahkemeye veya kendi yargı çevresinde uygun göreceği başka bir yer mahkemesine ya da görevli ve yetkili mahkemeye gönderilmesine...",
+          "metin": null,
+          "skor": 0.8382,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 142",
+          "metin_ozet": "Madde 142 – İhbar veya yapılan incelemeler dolayısiyle, bir mükellefin vergi kaçırdığına delalet eden emareler bulunursa, bu mükellef veya kaçakçılıkla ilgisi görülen diğer şahıslar nezdinde ve bunların üzerinde arama yapılabilir. Aramanın yapılabilmesi için:",
+          "metin": null,
+          "skor": 0.8422,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 105",
+          "metin_ozet": "20/6/2012-6331/37 md.) İş ve işçi bulma hükümlerine aykırılık",
+          "metin": null,
+          "skor": 0.842,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 20",
+          "metin_ozet": "MADDE 20- (1) Görevsizlik veya yetkisizlik kararı verilmesi hâlinde, taraflardan birinin, bu karar verildiği anda kesin ise tebliğ tarihinden, (…)1 süresi içinde kanun yoluna başvurulmayarak kesinleşmiş ise kararın kesinleştiği tarihten;",
+          "metin": null,
+          "skor": 0.8364,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6098 Sayılı Türk Borçlar Kanunu - Madde 161",
+          "metin_ozet": "MADDE 161- Zamanaşımı ileri sürülmedikçe, hâkim bunu kendiliğinden göz önüne alamaz.",
+          "metin": null,
+          "skor": 0.8391,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6098&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Genel Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 321,
+      "ortalama_kaynak_skor": 0.8396,
+      "kaynak_sayisi": 5,
+      "message_id": "2e9ca708-f70e-49bb-9b49-a9a551865412",
+      "conversation_id": "9991fa2f-6e0e-4cb3-b021-cc0e12b6b928",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.51,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Toplantı ve gösteri yürüyüşü düzenlemek istiyorum, önceden izin almam zorunlu mu?",
+      "cevap": "2911 Sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu'nun 3. maddesine göre, herkes önceden izin almaksızın, bu Kanun hükümlerine göre silahsız ve saldırısız olarak kanunların suç saymadığı belirli amaçlarla toplantı ve gösteri yürüyüşü düzenleme hakkına sahiptir. Aynı zamanda, 2709 Sayılı Türkiye Cumhuriyeti Anayasası'nın 34. maddesinde de belirtildiği gibi, herkes önceden izin almadan, silahsız ve saldırısız toplantı ve gösteri yürüyüşü düzenleme hakkına sahiptir.\n\nAncak, 2911 Sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu'nun 3. maddesinde yabancı kişilerin toplantı ve gösteri yürüyüşü düzenlemeleri İçişleri Bakanlığının iznine bağlıdır. Ayrıca, aynı Kanunun 6. maddesinde toplantı ve gösteri yürüyüşü yer ve güzergâhının belirlenmesinde kamu düzenini ve genel asayişi bozmayacak şekilde belirlenmesi gerektiği belirtilmiştir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2911 Sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu - Madde 3",
+          "metin_ozet": "Madde 3 – Herkes, önceden izin almaksızın, bu Kanun hükümlerine göre silahsız ve saldırısız olarak kanunların suç saymadığı belirli amaçlarla toplantı ve gösteri yürüyüşü düzenleme hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.8514,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2911&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 34",
+          "metin_ozet": "3/10/2001-4709/13 md.) Herkes, önceden izin almadan, silahsız ve saldırısız toplantı ve gösteri yürüyüşü düzenleme hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.8551,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 33",
+          "metin_ozet": "3/10/2001-4709/12 md.) Herkes, önceden izin almaksızın dernek kurma ve bunlara üye olma ya da üyelikten çıkma hürriyetine sahiptir. Dernek kurma hürriyetinin kullanılmasında uygulanacak şekil, şart ve usuller kanunda gösterilir. Toplantı ve gösteri yürüyüşü düzenleme hakkı",
+          "metin": null,
+          "skor": 0.8393,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2911 Sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu - Madde 6",
+          "metin_ozet": "İl ve ilçelerde toplantı ve gösteri yürüyüşü yer ve güzergâhı, kamu düzenini ve genel asayişi bozmayacak, vatandaşların günlük yaşamını aşırı ve katlanılmaz derecede zorlaştırmayacak (…)2 şekilde ve 22 nci maddenin birinci fıkrasında sayılan sınırlamalara uyulması kaydıyla...",
+          "metin": null,
+          "skor": 0.8547,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2911&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2911 Sayılı Toplantı ve Gösteri Yürüyüşleri Kanunu - Madde 22",
+          "metin_ozet": "Madde 22 – (…)11 ile parklarda, mabetlerde, kamu hizmeti görülen bina ve tesislerde ve bunların eklentilerinde ve Türkiye Büyük Millet Meclisine bir kilometre uzaklıktaki alan içinde toplantı yapılamaz (İptal ibare:",
+          "metin": null,
+          "skor": 0.8369,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2911&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Anayasa Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 959,
+      "ortalama_kaynak_skor": 0.8475,
+      "kaynak_sayisi": 5,
+      "message_id": "e90a9cfb-b117-494a-a72b-0503291bfb9e",
+      "conversation_id": "eba62c89-c515-4646-8792-723a9ebeedc8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 28.12,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Dernek kurmak istiyorum, kayıt zorunluluğu var mı ve kuruluş için hangi belgeler gerekiyor?",
+      "cevap": "Dernek kurmak için belirli bir kayıt zorunluluğu bulunmaktadır. 4721 Sayılı Türk Medeni Kanunu'nun 59. maddesine göre, dernekler, kuruluş bildirimini, dernek tüzüğünü ve gerekli belgeleri yerleşim yerinin bulunduğu yerin en büyük mülkî amirine verdikleri anda tüzel kişilik kazanırlar. \n\nKuruluş bildiriminin içeriği ve gerekli belgelerin neler olduğu, yönetmelikte gösterilir. Ancak, dernek kurucularının fiil ehliyetine sahip olması gerekir ve gerçek veya tüzel en az yedi kişinin kazanç paylaşma dışında belirli ve ortak bir amacı gerçekleştirmek üzere, bilgi ve çalışmalarını sürekli olarak birleştirmek suretiyle dernek kurabilirler.\n\nGetirilen kaynaklar, dernek kuruluşu için gerekli belgelerin neler olduğunu tam olarak açıklamıyor. Detaylı bilgi için ilgili yönetmelik veya 4721 Sayılı Türk Medeni Kanunu'nun diğer maddelerine bakılması gerekebilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile görüşmenizi öneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 59",
+          "metin_ozet": "Madde 59- Dernekler, kuruluş bildirimini, dernek tüzüğünü ve gerekli belgeleri yerleşim yerinin bulunduğu yerin en büyük mülkî amirine verdikleri anda tüzel kişilik kazanırlar. Kuruluş bildiriminin içeriği ve gerekli belgelerin nelerden ibaret olduğu, yönetmelikte gösterilir.",
+          "metin": null,
+          "skor": 0.8535,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 94",
+          "metin_ozet": "Madde 94- Dernekler, gerekli görülen yerlerde genel kurul kararıyla şube açabilirler. Bu amaçla dernek yönetim kurulunca yetki verilen en az üç kişilik kurucular kurulu, şube açılacak yerin en büyük mülkî amirine şube kuruluş bildirimini ve gerekli belgeleri verir.",
+          "metin": null,
+          "skor": 0.8565,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 57",
+          "metin_ozet": "Madde 57- Herkes, önceden izin almaksızın dernek kurma hakkına sahiptir. Dernek kurucularının fiil ehliyetine sahip olması gerekir.",
+          "metin": null,
+          "skor": 0.8636,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 56",
+          "metin_ozet": "Madde 56- Dernekler, gerçek veya tüzel en az yedi kişinin kazanç paylaşma dışında belirli ve ortak bir amacı gerçekleştirmek üzere, bilgi ve çalışmalarını sürekli olarak birleştirmek suretiyle oluşturdukları, tüzel kişiliğe sahip kişi topluluklarıdır.3 Hukuka veya ahlâka aykırı...",
+          "metin": null,
+          "skor": 0.8595,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 96",
+          "metin_ozet": "Madde 96- Federasyonlar, kuruluş amaçları aynı olan en az beş derneğin, amaçlarını gerçekleştirmek üzere üye sıfatıyla bir araya gelmeleri suretiyle kurulur.",
+          "metin": null,
+          "skor": 0.8443,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 983,
+      "ortalama_kaynak_skor": 0.8555,
+      "kaynak_sayisi": 5,
+      "message_id": "cb484430-0414-487c-bb8b-145ee0fb144b",
+      "conversation_id": "c182d949-2005-4a64-89a5-5438a36c2f62",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.42,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Gazeteci olarak kaynaklarımı açıklamak zorunda mıyım, kaynak gizliliği güvence altında mı?",
+      "cevap": "Gazeteci olarak kaynaklarınızı açıklamak zorunda olup olmadığınız ve kaynak gizliliği güvence altında mıdır sorusuna kaynaklar yeterli bilgi vermemektedir. 4982 Sayılı Bilgi Edinme Hakkı Kanunu ve 2709 Sayılı Türkiye Cumhuriyeti Anayasası, basın ve yayın özgürlüğü ile ilgili hükümler içermektedir ancak kaynak gizliliği konusunda spesifik bir düzenleme bulunmamaktadır. \n\nGetirilen kaynaklar bu soruyu karsilamiyor. 2709 Sayılı Türkiye Cumhuriyeti Anayasası ve 5187 Sayılı Basın Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 21",
+          "metin_ozet": "Madde 21- Kişinin izin verdiği hâller saklı kalmak üzere, özel hayatın gizliliği kapsamında, açıklanması hâlinde kişinin sağlık bilgileri ile özel ve aile hayatına, şeref ve haysiyetine, meslekî ve ekonomik değerlerine haksız müdahale oluşturacak bilgi veya belgeler, bilgi edinme...",
+          "metin": null,
+          "skor": 0.419,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 29",
+          "metin_ozet": "Süreli yayınların çıkarılması, yayım şartları, mali kaynakları ve gazetecilik mesleği ile ilgili esaslar kanunla düzenlenir.",
+          "metin": null,
+          "skor": 0.4182,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6458 Sayılı Yabancılar ve Uluslararası Koruma Kanunu - Madde 94",
+          "metin_ozet": "MADDE 94 – (1) Başvuru sahibinin ve uluslararası koruma statüsü sahibi kişinin tüm bilgi ve belgelerinde gizlilik esastır.",
+          "metin": null,
+          "skor": 0.4169,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "657 Sayılı Devlet Memurları Kanunu - Madde 31",
+          "metin_ozet": "12/5/1982 - 2670/11 md.) Devlet memurlarının kamu hizmetleri ile ilgili gizli bilgileri görevlerinden ayrılmış bile olsalar, yetkili bakanın yazılı izni olmadıkça açıklamaları yasaktır.",
+          "metin": null,
+          "skor": 0.4155,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=657&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 4",
+          "metin_ozet": "Madde 4- Herkes bilgi edinme hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.4154,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 604,
+      "ortalama_kaynak_skor": 0.417,
+      "kaynak_sayisi": 5,
+      "message_id": "9bc3fe2b-e00e-4342-8bb0-ac35cb2f25af",
+      "conversation_id": "d9846155-e68c-4acc-9551-b8ac9648bc43",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 11.41,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "İşçi sendikasına üye olduğum için işten çıkarıldım, sendika özgürlüğüm ihlal edildi mi?",
+      "cevap": "Sendika özgürlüğü, işçilerin sendika kurma, sendikaya üye olma ve sendika faaliyetlerine katılma hakkını içerir. İşçi sendikasına üye olduğunuz için işten çıkarıldıysanız, bu durum sendika özgürlüğünüzün ihlal edildiğini gösterebilir.\n\n4857 sayılı İş Kanunu'nun 5. maddesi, iş ilişkisinde dil, ırk, renk, cinsiyet, engellilik, siyasal düşünce, felsefî inanç, din ve mezhep ve benzeri sebeplere dayalı ayrım yapılamayacağını düzenlemektedir. Aynı zamanda, işverenin esaslı sebepler olmadıkça tam süreli çalışan işçi karşısında kısmî süreli çalışan işçiye, belirsiz süreli çalışan işçi karşısında belirli süreli çalışan işçiye farklı işlem yapamayacağını belirtmektedir. Ancak, bu madde doğrudan sendika üyeliğine dayalı ayrımcılığı düzenlemez.\n\nSendika üyeliğine dayalı ayrımcılık ve sendika özgürlüğü ihlali konularında daha spesifik düzenlemeler, 6356 sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu'nda yer almaktadır. Ancak, bu kanun maddeleri doğrudan işten çıkarmaya ilişkin düzenlemeleri içermemektedir.\n\nBu konuyla ilgili daha spesifik bir düzenleme, 4857 sayılı İş Kanunu'nun diğer maddelerinde veya 6356 sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu'nda bulunabilir. Ancak, verilen kaynaklar bu soruyu tam olarak cevaplamaktadır.\n\nGetirilen kaynaklar bu soruyu karsilamiyor. 6356 sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu ve 4857 sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 27",
+          "metin_ozet": "MADDE 27 –(1) Toplu iş sözleşmesi yapmak üzere yetkisi kesinleşen sendika;",
+          "metin": null,
+          "skor": 0.8524,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "7036 Sayılı İş Mahkemeleri Kanunu - Madde 8",
+          "metin_ozet": "c) 18/10/2012 tarihli ve 6356 sayılı Sendikalar ve Toplu İş Sözleşmesi Kanununun; ç) 25/6/2001 tarihli ve 4688 sayılı Kamu Görevlileri Sendikaları ve Toplu Sözleşme Kanununun;",
+          "metin": null,
+          "skor": 0.8464,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=7036&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 5 - Fıkra 1",
+          "metin_ozet": "İşçinin cinsiyeti nedeniyle özel koruyucu hükümlerin uygulanması, daha düşük bir ücretin uygulanmasını haklı kılmaz. 2821 sayılı Sendikalar Kanununun 31 inci maddesi hükümleri saklıdır.",
+          "metin": null,
+          "skor": 0.8434,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 117",
+          "metin_ozet": "Madde 117 - (5.5.1983 tarihli ve 2821 sayılı Sendikalar Kanunu ile ilgili olup yerine işlenmiştir.)",
+          "metin": null,
+          "skor": 0.8619,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 118",
+          "metin_ozet": "Madde 118 - (5.5.1983 tarihli ve 2821 sayılı Sendikalar Kanunu ile ilgili olup yerine işlenmiştir.) Yönetmelikler",
+          "metin": null,
+          "skor": 0.8692,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 1606,
+      "ortalama_kaynak_skor": 0.8547,
+      "kaynak_sayisi": 5,
+      "message_id": "53ba39d6-9322-400e-b431-4cc2c68b337f",
+      "conversation_id": "eea6d0dd-e198-4bf6-a8ea-db0b518216cf",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 22.68,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Olağanüstü hal kapsamında gözaltı sürem uzatıldı, itiraz edebilir miyim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 7145 Sayılı Kanun bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 51",
+          "metin_ozet": "(2) Cezanın ertelenmesi, mağdurun veya kamunun uğradığı zararın aynen iade, suçtan önceki hale getirme veya tazmin suretiyle tamamen giderilmesi koşuluna bağlı tutulabilir.",
+          "metin": null,
+          "skor": 0.8353,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5237 Sayılı Türk Ceza Kanunu - Madde 191",
+          "metin_ozet": "18/6/2014 – 6545/68 md.) (1) Kullanmak için uyuşturucu veya uyarıcı madde satın alan, kabul eden veya bulunduran ya da uyuşturucu veya uyarıcı madde kullanan kişi, iki yıldan beş yıla kadar hapis cezası ile cezalandırılır.",
+          "metin": null,
+          "skor": 0.8305,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5237&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Ceza Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 305,
+      "ortalama_kaynak_skor": 0.8329,
+      "kaynak_sayisi": 2,
+      "message_id": "cd91ea84-9d5d-4dbb-a0e4-b19446383fae",
+      "conversation_id": "033d9b0a-e8b5-47ae-95ba-deb791c689b6",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.22,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Vatandaşlıktan çıkarma kararı aldım, bu kararı nasıl itiraz edebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. Vatandaşlıktan çıkarma kararı ile ilgili itiraz prosedürü 5901 Sayılı Türk Vatandaşlığı Kanunu'nda düzenlenmektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 435",
+          "metin_ozet": "Madde 435- Kuruma yerleştirilen kişi veya yakınları, verilen karara karşı kendilerine bildirilmesinden başlayarak on gün içinde denetim makamına itiraz edebilirler.",
+          "metin": null,
+          "skor": 0.8554,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5326 Sayılı Kabahatler Kanunu - Madde 29",
+          "metin_ozet": "Madde 29- (1) Mahkemenin verdiği son karara karşı, Ceza Muhakemesi Kanununa göre itiraz edilebilir. Bu itiraz, kararın tebliği tarihten itibaren en geç iki hafta içinde yapılır.56 (2) İtirazla ilgili karar, dosya üzerinden inceleme yapılarak verilir.",
+          "metin": null,
+          "skor": 0.8524,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6458 Sayılı Yabancılar ve Uluslararası Koruma Kanunu - Madde 80",
+          "metin_ozet": "a) İlgili kişi veya yasal temsilcisi ya da avukatı tarafından kararın tebliğinden itibaren on gün içinde Uluslararası Koruma Değerlendirme Komisyonuna itiraz edilebilir.",
+          "metin": null,
+          "skor": 0.872,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6458 Sayılı Yabancılar ve Uluslararası Koruma Kanunu - Madde 53",
+          "metin_ozet": "MADDE 53 – (1) Sınır dışı etme kararı, Genel Müdürlüğün talimatı üzerine veya resen valiliklerce alınır. (2) Karar, gerekçeleriyle birlikte hakkında sınır dışı etme kararı alınan yabancıya veya yasal temsilcisine ya da avukatına tebliğ edilir.",
+          "metin": null,
+          "skor": 0.8599,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6284 Sayılı Ailenin Korunması ve Kadına Karşı Şiddetin Önlenmesine Dair Kanun - Madde 9",
+          "metin_ozet": "MADDE 9 – (1) Bu Kanun hükümlerine göre verilen kararlara karşı tefhim veya tebliğ tarihinden itibaren iki hafta içinde ilgililer tarafından aile mahkemesine itiraz edilebilir.",
+          "metin": null,
+          "skor": 0.8544,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6284&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Anayasa Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 376,
+      "ortalama_kaynak_skor": 0.8588,
+      "kaynak_sayisi": 5,
+      "message_id": "04152fa0-01e5-47d4-b820-2800bff9b5ca",
+      "conversation_id": "dd7921c9-55d0-4212-b1cf-ad96ac92b351",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 19.3,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Seçimlerde oy kullanmak istiyorum ama adres kaydım farklı, seçme hakkımı kullanabilir miyim?",
+      "cevap": "Seçimlerde oy kullanmak için adres kaydının güncellenmesi önemlidir. 2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 67'de seçme hakkının kullanılması kanunla düzenlenir. Ancak, kaynaklarda seçme hakkının kullanılmasına ilişkin ayrıntılı bilgi bulunmamaktadır.\n\nGetirilen kaynaklar bu soruyu karsilamiyor. 298 sayılı Seçimlerin Temel Hükümleri ve Seçmen Kütükleri Hakkında Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2709 Sayılı Türkiye Cumhuriyeti Anayasası - Madde 67",
+          "metin_ozet": "Madde 67 – Vatandaşlar, kanunda gösterilen şartlara uygun olarak seçme, seçilme ve bağımsız olarak veya bir siyasi parti içinde siyasi faaliyette bulunma ve halkoylamasına katılma hakkına sahiptir.",
+          "metin": null,
+          "skor": 0.8387,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2709&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 14",
+          "metin_ozet": "(5) Seçim kurulu başkanlığı, kuruluşun üyesi olmayan kişiler arasından bir başkan ve seçimlerde aday olmayan üyeler arasından iki üye belirleyerek seçim sandık kurulunu oluşturur.",
+          "metin": null,
+          "skor": 0.834,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "3071 Sayılı Dilekçe Hakkının Kullanılmasına Dair Kanun - Madde 4",
+          "metin_ozet": "2/1/2003-4778/26 md.) Türkiye Büyük Millet Meclisine veya yetkili makamlara verilen veya gönderilen dilekçelerde, dilekçe sahibinin adı-soyadı ve imzası ile iş veya ikametgâh adresinin bulunması gerekir.",
+          "metin": null,
+          "skor": 0.8348,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=3071&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "7201 Sayili Tebligat Kanunu - Madde 49",
+          "metin_ozet": "11/1/2011-6099/11 md.) Tapuda kayıtlı taşınmazların veya miras, istimlak, cebrî icra veya mahkeme ilâmı ile iktisapta bulunan hak sahipleri, adreslerini ve değiştirdikleri takdirde yenisini, bulundukları yerin tapu idaresine bildirmeye mecburdur.",
+          "metin": null,
+          "skor": 0.8468,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=7201&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "213 Sayılı Vergi Usul Kanunu - Madde 101",
+          "metin_ozet": "28/11/2017-7061/16 md.) Bu Kanuna göre bilinen adresler şunlardır: Mükellef tarafından işe başlamada veya adres değişikliğinde bildirilen işyeri adresleri, 2.",
+          "metin": null,
+          "skor": 0.8429,
+          "url": null
+        }
+      ],
+      "kategori_tespit": "Anayasa Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 625,
+      "ortalama_kaynak_skor": 0.8394,
+      "kaynak_sayisi": 5,
+      "message_id": "b4a949af-7cdf-447f-ac9e-38fc0387ff85",
+      "conversation_id": "9acd2c74-e98a-476e-87eb-b934abc4f7cf",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.46,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "Anayasa Hukuku",
+      "soru": "Kamu görevinden ihraç edildim, olağanüstü hal KHK'sıyla, itiraz yolum nedir?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 7075 Sayılı Olağanüstü Hal Kapsamında Alınması Gereken Tedbirler ile Bazı Kurum ve Kuruluşlara Dair Düzenleme Yapılması Hakkında Kanun Hükmünde Kararname bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4982 Sayılı Bilgi Edinme Hakkı Kanunu - Madde 33",
+          "metin_ozet": "4982 SAYILI KANUNA EK VE DEĞİŞİKLİK GETİREN MEVZUATIN VEYA ANAYASA MAHKEMESİ TARAFINDAN İPTAL EDİLEN HÜKÜMLERİN YÜRÜRLÜĞE GİRİŞ TARİHİNİ GÖSTERİR LİSTE Değiştiren Kanunun/ KHK’nin/ İptal Eden 4982 Sayılı Kanunun Değişen Yürürlüğe Giriş Tarihi Anayasa Mahkemesi veya İptal Edilen...",
+          "metin": null,
+          "skor": 0.4239,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4982&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6735 Sayılı Uluslararası İşgücü Kanunu - Madde 29",
+          "metin_ozet": " 6735 SAYILI KANUNA EK VE DEĞİŞİKLİK GETİREN MEVZUATIN VEYA ANAYASA MAHKEMESİ KARARLARININ YÜRÜRLÜĞE GİRİŞ TARİHLERİNİ GÖSTERİR TABLO Değiştiren Kanunun/ KHK’nin veya İptal Eden 6735 Sayılı Kanunun Değişen Yürürlüğe Giriş Tarihi Anayasa Mahkemesi veya İptal Edilen Maddeleri...",
+          "metin": null,
+          "skor": 0.4214,
+          "url": null
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 346",
+          "metin_ozet": "MADDE 346- (1) İstinaf dilekçesi, kanuni süre geçtikten sonra verilir veya kesin olan 46 15/8/2016 tarihli ve 674 sayılı KHK’nin 18 inci maddesiyle, bu maddenin birinci fıkrasında yer alan “başvuru harcı” ibaresi “başvuru için gerekli harçlar” şeklinde değiştirilmiş olup, daha...",
+          "metin": null,
+          "skor": 0.4206,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "7036 Sayılı İş Mahkemeleri Kanunu - Madde 39",
+          "metin_ozet": "7036 SAYILI KANUNA EK VE DEĞİŞİKLİK GETİREN MEVZUATIN VEYA ANAYASA MAHKEMESİ İPTAL KARARLARININ YÜRÜRLÜĞE GİRİŞ TARİHLERİNİ GÖSTERİR LİSTE Değiştiren Kanunun/ KHK’nin veya İptal Eden 7036 Sayılı Kanunun Değişen veya Yürürlüğe Giriş Tarihi Anayasa Mahkemesi İptal Edilen Maddeleri...",
+          "metin": null,
+          "skor": 0.4206,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=7036&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4721 Sayılı Türk Medeni Kanunu - Madde 421",
+          "metin_ozet": "27 2/7/2018 tarihli ve 700 sayılı KHK’nin 139 uncu maddesiyle, bu bentte yer alan “ve Bakanlar Kurulu üyeleri” ibaresi “üyeleri, Cumhurbaşkanı yardımcıları, bakanlar,” şeklinde değiştirilmiştir.",
+          "metin": null,
+          "skor": 0.4203,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4721&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İdare Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 440,
+      "ortalama_kaynak_skor": 0.4214,
+      "kaynak_sayisi": 5,
+      "message_id": "90d1b147-865d-4ebf-9231-aa93e1e9d744",
+      "conversation_id": "f1efcb98-6036-4128-a16e-4830be2a3fa8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.92,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

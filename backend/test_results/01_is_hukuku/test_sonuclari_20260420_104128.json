@@ -1,0 +1,725 @@
+{
+  "test_meta": {
+    "tarih": "2026-04-20T07:47:00.697970+00:00",
+    "api_url": "http://127.0.0.1:8000",
+    "toplam_soru": 12,
+    "kategori_sayisi": 1,
+    "rate_limit_bekleme_sn": 4,
+    "max_retry": 3,
+    "cikti_dosyasi": "C:\\Github\\Hak-Bul\\backend\\test_results\\01_is_hukuku\\test_sonuclari_20260420_104128.json"
+  },
+  "ozet": {
+    "toplam": 12,
+    "basarili": 12,
+    "basarisiz": 0,
+    "basari_orani": 100.0,
+    "toplam_sure_sn": 331.8,
+    "ortalama_sure_sn": 27.65,
+    "kategori_dagilimi": {
+      "İş Hukuku": {
+        "toplam": 12,
+        "basarili": 12,
+        "basarisiz": 0,
+        "basari_orani": 100.0,
+        "ortalama_sure_sn": 23.62,
+        "kategori_dogruluk_orani": 83.3,
+        "ortalama_cevap_uzunluk": 640.0,
+        "ortalama_kaynak_skor": 0.8094
+      }
+    }
+  },
+  "sonuclar": [
+    {
+      "sira": 1,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşten çıkarıldım, kıdem ve ihbar tazminatımı hangi şartlarda alabilirim?",
+      "cevap": "İşten çıkarıldığınızda kıdem ve ihbar tazminatınızı alabilmeniz için belirli şartları yerine getirmeniz gerekmektedir. \n\nKıdem tazminatına hak kazanmak için, iş sözleşmenizin kıdem tazminatını gerektirecek şekilde sona ermesi gerekmektedir. Bu durum, işveren tarafından iş sözleşmenizin feshedilmesi veya sizin tarafından iş sözleşmenizin haklı nedenle feshedilmesi durumunda oluşabilir.\n\nİhbar tazminatına gelince, bu tazminat işveren tarafından iş sözleşmenizin bildirim süresine uymaksızın feshedilmesi durumunda ödenmektedir. Bildirim süresi, iş sözleşmenizin feshedilmesi durumunda, işverenin size belirli bir süre için bildirimde bulunması ve bu sürenin sonunda iş sözleşmenizin sona ermesi anlamına gelmektedir.\n\nKıdem tazminatının hesabında, işyerinde çalışılmış süreler göz önünde bulundurulur ve fesih anında emsaller için geçerli olan ücret ve diğer hakları esas alınır. \n\nAlt işveren tarafından çalıştırılan işçilerin kıdem tazminatları, alt işverenlerinin değişip değişmediğine bakılmaksızın aralıksız olarak aynı kamu kurum veya kuruluşuna ait işyerlerinde çalışmış olanların bu şekilde çalışmış oldukları sürelere ilişkin kıdem tazminatına esas hizmet süreleri, aynı kamu kurum veya kuruluşuna ait işyerlerinde geçen toplam çalışma süreleri esas alınarak tespit olunur.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 23",
+          "metin_ozet": "Yönetici dilerse işten ayrıldığı tarihte iş sözleşmesini bildirim süresine uymaksızın veya sözleşme süresinin bitimini beklemeksizin fesheder ve kıdem tazminatına hak kazanır.",
+          "metin": null,
+          "skor": 0.8458,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 3",
+          "metin_ozet": "10/9/2014-6552/8 md.) Alt işveren ile yapmış olduğu iş sözleşmesi sona ermediği gibi, alt işveren tarafından 4734 sayılı Kanun kapsamında bulunan idarelere ait işyerleri dışında bir işyerinde çalıştırılmaya devam olunan ve bu şekilde çalıştırıldığı sırada iş sözleşmesi kıdem...",
+          "metin": null,
+          "skor": 0.8492,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 5",
+          "metin_ozet": "4/4/2015-6645/40 md.) 5/1/2002 tarihli ve 4735 sayılı Kamu İhale Sözleşmeleri Kanunu ile 4/6/1985 tarihli ve 3213 sayılı Maden Kanunu kapsamında rödövans sözleşmeleri çerçevesinde yer altı maden işletmeciliği yapan şirketlere ve ortaklarına ait malların Tasarruf Mevduatı Sigorta...",
+          "metin": null,
+          "skor": 0.8639,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 1",
+          "metin_ozet": "Madde 112 - Kanuna veya kanunun verdiği yetkiye dayanılarak kurulan kurum ve kuruluşların haklarında bu Kanun ve 854, 5953, 5434 sayılı kanunların hükümleri uygulanmayan personeli ile kamu kuruluşlarında sözleşmeli olarak istihdam edilenlere mevzuat veya sözleşmelerine göre kıdem...",
+          "metin": null,
+          "skor": 0.8551,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Gecici Madde 11",
+          "metin_ozet": "Geçici Madde 11 – (Ek:23/7/2020-7252/6 md.) Manisa ili Soma ilçesinde Türkiye Kömür İşletmeleri Kurumunun taraf olduğu 3213 sayılı Kanun kapsamında imzalanmış rödovans sözleşmeleri kapsamında yer alan Işıklar, Atabacası ve Geventepe ocaklarında çalışan ve (…) [39] kıdem...",
+          "metin": null,
+          "skor": 0.8547,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1410,
+      "ortalama_kaynak_skor": 0.8537,
+      "kaynak_sayisi": 5,
+      "message_id": "4d8446b1-8e7c-448a-a7ad-ac71b478f28d",
+      "conversation_id": "5e5b0b04-040c-4d4b-8f23-05fbeb26904b",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 34.93,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 2,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Kendi isteğimle işten ayrılırsam kıdem tazminatı alma hakkım olur mu?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 23",
+          "metin_ozet": "Yönetici dilerse işten ayrıldığı tarihte iş sözleşmesini bildirim süresine uymaksızın veya sözleşme süresinin bitimini beklemeksizin fesheder ve kıdem tazminatına hak kazanır.",
+          "metin": null,
+          "skor": 0.848,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 3",
+          "metin_ozet": "10/9/2014-6552/8 md.) Alt işveren ile yapmış olduğu iş sözleşmesi sona ermediği gibi, alt işveren tarafından 4734 sayılı Kanun kapsamında bulunan idarelere ait işyerleri dışında bir işyerinde çalıştırılmaya devam olunan ve bu şekilde çalıştırıldığı sırada iş sözleşmesi kıdem...",
+          "metin": null,
+          "skor": 0.8599,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Gecici Madde 6",
+          "metin_ozet": "Geçici Madde 6 - Kıdem tazminatı için bir kıdem tazminatı fonu kurulur. Kıdem tazminatı fonuna ilişkin Kanunun yürürlüğe gireceği tarihe kadar işçilerin kıdemleri için 1475 sayılı İş Kanununun 14 üncü maddesi hükümlerine göre kıdem tazminatı hakları saklıdır.",
+          "metin": null,
+          "skor": 0.8592,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Gecici Madde 4",
+          "metin_ozet": "Geçici Madde 4 - Mülga 3008 sayılı İş Kanununun 13 üncü maddesi hükümleri haklarında uygulanmayanlar için, bu Kanunun geçici 6 ncı maddesinde sözü edilen kıdem tazminatı hakkı 12.8.1967 tarihinden itibaren başlar.",
+          "metin": null,
+          "skor": 0.8539,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 1",
+          "metin_ozet": "Madde 112 - Kanuna veya kanunun verdiği yetkiye dayanılarak kurulan kurum ve kuruluşların haklarında bu Kanun ve 854, 5953, 5434 sayılı kanunların hükümleri uygulanmayan personeli ile kamu kuruluşlarında sözleşmeli olarak istihdam edilenlere mevzuat veya sözleşmelerine göre kıdem...",
+          "metin": null,
+          "skor": 0.8606,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 309,
+      "ortalama_kaynak_skor": 0.8563,
+      "kaynak_sayisi": 5,
+      "message_id": "cfd8ebd3-a3a2-44ef-995a-9e5ccde5e49c",
+      "conversation_id": "45865d6d-b15f-428c-9eaf-d4cfaef339dc",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 17.89,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 3,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Kıdem tazminatı nasıl hesaplanır, brüt mü net maaş mı dikkate alınır?",
+      "cevap": "Kıdem tazminatının hesaplanmasında, işçinin son brüt ücreti dikkate alınır. 1475 Sayılı İş Kanunu'nun 14. maddesinde, kıdem tazminatının hesabında işçinin son brüt ücretinin esas alınacağı belirtilmiştir. Ayrıca, 4857 Sayılı İş Kanunu'nun 112. maddesinin 3. fıkrasında da, kıdem tazminatının hesabında işçinin son kamu kurum veya kuruluşundaki ücretinin yılları itibarıyla asgari ücret artış oranları dikkate alınarak güncellenmiş miktarı üzerinden hesaplanacağı belirtilmiştir.\n\nBu nedenle, kıdem tazminatının hesaplanmasında, işçinin son brüt ücreti dikkate alınır ve net maaş değil, brüt ücret esas alınır. Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 3",
+          "metin_ozet": "10/9/2014-6552/8 md.) Alt işveren ile yapmış olduğu iş sözleşmesi sona ermediği gibi, alt işveren tarafından 4734 sayılı Kanun kapsamında bulunan idarelere ait işyerleri dışında bir işyerinde çalıştırılmaya devam olunan ve bu şekilde çalıştırıldığı sırada iş sözleşmesi kıdem...",
+          "metin": null,
+          "skor": 0.8497,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 80 - Fıkra 1",
+          "metin_ozet": "1) Hak edilen ücretlerin, 2) Prim, ikramiye ve bu nitelikteki her çeşit istihkaktan o ay içinde yapılan ödemelerin ve işverenler tarafından sigortalılar için özel sağlık sigortalarına ve bireysel emeklilik sistemine ödenen tutarların, 3) İdare veya yargı mercilerince verilen...",
+          "metin": null,
+          "skor": 0.8408,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "1475 Sayılı İş Kanunu (Kıdem Tazminatı Maddesi) - Madde 14",
+          "metin_ozet": "25/8/1999 - 4447/45 md.) 506 Sayılı Kanunun 60 ıncı maddesinin birinci fıkrasının (A) bendinin (a) ve (b) alt bentlerinde öngörülen yaşlar dışında kalan diğer şartları veya aynı Kanunun Geçici 81 inci maddesine göre yaşlılık aylığı bağlanması için öngörülen sigortalılık süresini...",
+          "metin": null,
+          "skor": 0.8387,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=1475&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 4",
+          "metin_ozet": "10/9/2014-6552/8 md.) İkinci fıkranın (b) bendi veya üçüncü fıkra uyarınca farklı kamu kurum veya kuruluşlarına ait işyerlerinde geçen hizmet sürelerinin toplamı üzerinden kıdem tazminatı ödenmesi hâlinde, kıdem tazminatı ödemesini gerçekleştiren son kamu kurum veya kuruluşu,...",
+          "metin": null,
+          "skor": 0.8458,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 1",
+          "metin_ozet": "Madde 112 - Kanuna veya kanunun verdiği yetkiye dayanılarak kurulan kurum ve kuruluşların haklarında bu Kanun ve 854, 5953, 5434 sayılı kanunların hükümleri uygulanmayan personeli ile kamu kuruluşlarında sözleşmeli olarak istihdam edilenlere mevzuat veya sözleşmelerine göre kıdem...",
+          "metin": null,
+          "skor": 0.8492,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 793,
+      "ortalama_kaynak_skor": 0.8448,
+      "kaynak_sayisi": 5,
+      "message_id": "fea12db1-a747-44aa-8f7f-4ec44c3cfe67",
+      "conversation_id": "e3856f86-f9f5-4555-bc8d-feced2c536a8",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 29.4,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 4,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Maaşım geç yatıyor veya eksik yatırılıyor, yasal olarak ne yapabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 112 - Fıkra 4",
+          "metin_ozet": "Ancak, ilgili ayda 2026 yılı Ocak ila Aralık aylarına/dönemine ait aylık brüt asgari ücretin onda birini geçmeyecek tutarda eksik prime esas kazanç bildirimi yapıldığının tespiti durumunda Kurumca yapılacak ihtar üzerine on beş günlük süre içinde söz konusu eksikliği gideren...",
+          "metin": null,
+          "skor": 0.8402,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 64 - Fıkra 3",
+          "metin_ozet": "bir takvim yılında iki veya daha az taksitin, süresinde ödenmemesi veya eksik ödenmesi hâlinde, ödenmeyen veya eksik ödenen taksit tutarlarının son taksiti izleyen ayın sonuna kadar, gecikilen her ay ve kesri için 4/12/1984 tarihli ve 3095 sayılı Kanuni Faiz ve Temerrüt Faizine...",
+          "metin": null,
+          "skor": 0.8424,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 89 - Fıkra 2",
+          "metin_ozet": "[165] [166] Yanlış veya yersiz alınmış olduğu tespit edilen primler, alındıkları tarihten on yıl geçmemiş ise, hisseleri oranında işverenlere, sigortalılara, isteğe bağlı sigortalılara veya genel sağlık sigortalılarına veya hak sahiplerine kanunî faizi ile birlikte geri verilir.",
+          "metin": null,
+          "skor": 0.8477,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 86 - Fıkra 2",
+          "metin_ozet": "21/3/2018-7103/67 md.) Ay içinde bazı iş günlerinde çalıştırılmayan ve ücret ödenmeyen sigortalıların eksik gün nedeni ve eksik gün sayısı, işverence ilgili aya ait aylık prim ve hizmet belgesinde veya muhtasar ve prim hizmet beyannamesiyle beyan edilir.",
+          "metin": null,
+          "skor": 0.8431,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 60 - Fıkra 7",
+          "metin_ozet": "Hesaplanan borcun tamamının ilk taksit ödeme süresi içinde ödenmemesi hâlinde ihya işlemi geçerli sayılmaz ve bu madde kapsamında ödenmiş olan tutarlar ilgilinin bu madde kapsamı haricinde başkaca prim borcunun bulunmaması kaydıyla faizsiz olarak iade edilir.",
+          "metin": null,
+          "skor": 0.8516,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 309,
+      "ortalama_kaynak_skor": 0.845,
+      "kaynak_sayisi": 5,
+      "message_id": "49461248-f005-480c-aadd-e2d8f85164fd",
+      "conversation_id": "50b50eea-c60c-45f0-af23-3341fd36cad2",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 16.15,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 5,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Fazla mesai yaptım ama ücretini alamadım, bunu nasıl ispat edebilirim?",
+      "cevap": "Fazla mesai yaptığınızı ispat etmek için işvereninizle olan sözleşmenizi, çalışma saatlerinizi gösteren belgeleri, fazla mesaiye ilişkin kayıtları ve diğer ilgili belgeleri toplamanız gerekir. Ayrıca, işyerinde tutulan çalışma saatleri kayıtları, puantaj kayıtları, işvereninizle yapılan yazışmalar ve diğer ilgili belgeler de delil olarak kullanılabilir.\n\nİş Kanunu'nun 8. maddesine göre, işveren, işçilerin çalışma saatlerini gösteren bir puantaj defteri tutmak zorundadır. Bu defterde, işçilerin günlük çalışma saatleri, fazla çalışma saatleri, hafta tatili ve yıllık izin günleri gibi bilgiler yer almalıdır. Bu defter, fazla mesai yaptığınızı ispat etmek için önemli bir delil olabilir.\n\nAyrıca, işvereninizle yapılan yazışmalar, e-postalar, mesajlar ve diğer iletişimler de delil olarak kullanılabilir. İşvereninizle yaptığınız görüşmelerde, fazla mesaiye ilişkin konuları yazılı olarak talep edebilir ve bu taleplerin cevaplarını saklayabilirsiniz.\n\nEğer işvereninizle anlaşamazsanız, iş mahkemesine başvurabilirsiniz. İş mahkemesinde, fazla mesai yaptığınızı ispat etmek için topladığınız belgeleri sunabilirsiniz. Mahkeme, bu belgeleri inceleyerek fazla mesai yaptığınızı tespit edebilir ve hak ettiğiniz ücreti ödemenizi kararlaştırabilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 41 - Fıkra 1",
+          "metin_ozet": "Madde 41 - Ülkenin genel yararları yahut işin niteliği veya üretimin artırılması gibi nedenlerle fazla çalışma yapılabilir. Her bir saat fazla çalışma için verilecek ücret normal çalışma ücretinin saat başına düşen miktarının yüzde elli yükseltilmesi suretiyle ödenir.",
+          "metin": null,
+          "skor": 0.8249,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 41 - Fıkra 2",
+          "metin_ozet": "Fazla çalışma veya fazla sürelerle çalışma yapan işçi isterse, bu çalışmalar karşılığı zamlı ücret yerine, fazla çalıştığı her saat karşılığında bir saat otuz dakikayı, fazla sürelerle çalıştığı her saat karşılığında bir saat onbeş dakikayı serbest zaman olarak kullanabilir.",
+          "metin": null,
+          "skor": 0.8299,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 50",
+          "metin_ozet": "Madde 50 - Fazla çalışma karşılığı olarak alınan ücretler, primler, işyerinin temelli işçisi olarak normal çalışma saatleri dışında hazırlama, tamamlama, temizleme işlerinde çalışan işçilerin bu işler için aldıkları ücretler ve sosyal yardımlar, ulusal bayram, hafta tatili ve...",
+          "metin": null,
+          "skor": 0.8285,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 40",
+          "metin_ozet": "Madde 40 - 24 ve 25 inci maddelerin (III) numaralı bentlerinde gösterilen zorlayıcı sebepler dolayısıyla çalışamayan veya çalıştırılmayan işçiye bu bekleme süresi içinde bir haftaya kadar her gün için yarım ücret ödenir.",
+          "metin": null,
+          "skor": 0.8241,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 24 - Fıkra 3",
+          "metin_ozet": "f) Ücretin parça başına veya iş tutarı üzerinden ödenmesi kararlaştırılıp da işveren tarafından işçiye yapabileceği sayı ve tutardan az iş verildiği hallerde, aradaki ücret farkı zaman esasına göre ödenerek işçinin eksik aldığı ücret karşılanmazsa, yahut çalışma şartları...",
+          "metin": null,
+          "skor": 0.8218,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1375,
+      "ortalama_kaynak_skor": 0.8258,
+      "kaynak_sayisi": 5,
+      "message_id": "caab82e4-da6c-4251-9049-60257abc43c6",
+      "conversation_id": "aae45de8-9c3c-4ec3-83da-92b437038736",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.24,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 6,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşe iade davası hangi şartlarda açılır ve başvuru süresi kaç gündür?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 10",
+          "metin_ozet": "10/6/1994-4001/5 md.) Otuz gün içinde bir cevap verilmezse istek reddedilmiş sayılır. Ancak, bekleme süresi başvuru tarihinden itibaren dört ayı geçemez.",
+          "metin": null,
+          "skor": 0.4275,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6102 Sayılı Türk Ticaret Kanunu - Madde 763",
+          "metin_ozet": "MADDE 763- (1) Elden çıkan poliçe mahkemeye sunulursa, mahkeme, iade davası açması için dilekçe sahibine uygun bir süre verir.",
+          "metin": null,
+          "skor": 0.4236,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6102&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 11",
+          "metin_ozet": "6 2/7/2018 tarihli ve 703 sayılı Kanun Hükmünde Kararnamenin 185 inci maddesiyle bu maddenin birinci fıkrasında yer alan “ve askeri” ibaresi ve ikinci fıkrasında yer alan “veya askeri” ibaresi madde metninden çıkarılmıştır.",
+          "metin": null,
+          "skor": 0.423,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "2577 Sayılı İdari Yargılama Usulü Kanunu - Madde 7",
+          "metin_ozet": "Dava açma süresi, özel kanunlarında ayrı süre gösterilmeyen hallerde Danıştayda ve idare mahkemelerinde altmış ve vergi mahkemelerinde otuz gündür. Tarihi izleyen günden başlar. İlanı gereken düzenleyici işlemlerde dava süresi, ilan tarihini izleyen günden itibaren başlar.",
+          "metin": null,
+          "skor": 0.4228,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=2577&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6100 Sayılı Hukuk Muhakemeleri Kanunu - Madde 345",
+          "metin_ozet": "MADDE 345- (1) İstinaf yoluna başvuru süresi iki haftadır. İstinaf yoluna başvuru süresine ilişkin özel kanun hükümleri saklıdır.",
+          "metin": null,
+          "skor": 0.4225,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6100&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Medeni Hukuk",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 171,
+      "ortalama_kaynak_skor": 0.4239,
+      "kaynak_sayisi": 5,
+      "message_id": "6e04440f-a40f-4746-ace5-ce2334b2562c",
+      "conversation_id": "e44268ad-c62c-488a-bad3-7bdc8b067375",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.39,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 7,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "SGK işten çıkış kodum yanlış girildiyse nasıl düzelttirebilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 5510 sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4447 Sayılı İşsizlik Sigortası Kanunu - Madde 54",
+          "metin_ozet": "a) İşsizlik sigortasına ilişkin yükümlülükleri nedeniyle sigortalıların ücretlerinden indirim veya kesinti yapan işverenlere her bir sigortalı için beşyüz Türk Lirası, b) 48 inci maddede öngörülen işten ayrılma bildirgesini Kuruma vermeyen işverenlere her bir fiil için ayrı ayrı...",
+          "metin": null,
+          "skor": 0.8264,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4447&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4447 Sayılı İşsizlik Sigortası Kanunu - Geçici Madde 30",
+          "metin_ozet": "Geçici Madde 30- (Ek:15/4/2021-7316/7 md.) Bu maddenin yürürlüğe girdiği tarih itibarıyla NACE Rev.2 Ekonomik Faaliyet Sınıflamasına göre 56 kodunda faaliyet gösteren işyerleri ile 61.90.05, 85.51.03, 93.11.01, 93.12.07, 93.13.01, 93.19.05, 93.21.01, 93.29.02, 93.29.03, 96.02.01,...",
+          "metin": null,
+          "skor": 0.8283,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4447&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 102 - Fıkra 15",
+          "metin_ozet": "gerçeğe aykırı bildiren her bir işyeri için aylık asgari ücreti geçmemek üzere meslek adı ve kodu gerçeğe aykırı bildirilen sigortalı başına asgari ücretin onda biri tutarında idari para cezası uygulanır.",
+          "metin": null,
+          "skor": 0.8323,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4447 Sayılı İşsizlik Sigortası Kanunu - Geçici Madde 20",
+          "metin_ozet": "Bu madde kapsamında destekten yararlanılmış olan sigortalının işten ayrılıp yeniden işe başlaması halinde, bu maddede belirtilen şartların sağlanması kaydıyla 2018 yılı Aralık ayı/dönemini geçmemek üzere söz konusu sigortalıdan dolayı bu destekten yararlanılır.",
+          "metin": null,
+          "skor": 0.8311,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4447&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 57 - Fıkra 2",
+          "metin_ozet": "İş kazası, meslek hastalığı, malûllük, yaşlılık ve ölüm sigortalarından gelir ve aylık tahsisleri ile sermaye değerinin hesabında, iş kazasının olduğu veya meslek hastalığının hekim raporuyla ilk defa tespit edildiği veya sigortalıların bu Kanuna ve bu Kanunla yürürlükten...",
+          "metin": null,
+          "skor": 0.8367,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "Sosyal Guvenlik Hukuku",
+      "kategori_dogru": false,
+      "cevap_uzunluk": 350,
+      "ortalama_kaynak_skor": 0.831,
+      "kaynak_sayisi": 5,
+      "message_id": "7a94ecb7-0315-4283-a5f7-9d51ae3d76a0",
+      "conversation_id": "9a661499-904d-4ff8-9cd4-3f7e527489be",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 27.09,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 8,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Sigortasız çalıştırıldım, geçmişe dönük sigorta ve ücret haklarımı nasıl arayabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu ve 5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz. \nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 5 - Fıkra 1",
+          "metin_ozet": "13/2/2011-6111/51 md.) 4 üncü madde ile isteğe bağlı sigortalılık hükümleri ve 506 sayılı Kanunun geçici 20 nci maddesi kapsamında sigortalı olmayan, kendi sigortalılıklarından dolayı bu kanunlara göre gelir veya aylık almayan ve 18 yaşını doldurmuş olanlardan;",
+          "metin": null,
+          "skor": 0.8377,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 9 - Fıkra 2",
+          "metin_ozet": "Bu şekilde çalışanların sigortalılık tescili, çalışan ve çalıştıran imzalarını da ihtiva eden ve en geç çalışmanın geçtiği ayın sonuna kadar Kuruma verilmesi gereken örneği Kurumca hazırlanacak belgenin Kuruma verilmesi ile sağlanır.",
+          "metin": null,
+          "skor": 0.8359,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 7 - Fıkra 4",
+          "metin_ozet": "Bu Kanunun yürürlüğe girdiği tarihten sonra 4 üncü maddenin birinci fıkrasının © bendine göre ilk defa sigortalı olanların sigortalılık başlangıç tarihinden önceki süreleri, bu Kanunun 41 ve 46 ncı maddeleri, 5434 sayılı Kanunun ek 31 inci maddesi ile 3201 sayılı Kanuna göre...",
+          "metin": null,
+          "skor": 0.8368,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 6 - Fıkra 5",
+          "metin_ozet": "17/4/2008-5754/69 md.) Sosyal güvenlik sözleşmesi imzalanmamış ülkelerde iş üstlenen işverenlerce çalıştırılmak üzere bu ülkelere götürülen Türk işçilerinden, bu Kanunun yürürlük tarihinden önce sadece malullük, yaşlılık ve ölüm sigortalarına tabi topluluk sigortasına devam...",
+          "metin": null,
+          "skor": 0.8376,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 36 - Fıkra 2",
+          "metin_ozet": "Ancak, sigortalılık başlangıç tarihinden önceki borçlanılan süreler sigortalılık başlangıç tarihini geriye götürmez.",
+          "metin": null,
+          "skor": 0.8394,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 375,
+      "ortalama_kaynak_skor": 0.8375,
+      "kaynak_sayisi": 5,
+      "message_id": "712a3a85-b914-4801-89c5-a46bf98d180b",
+      "conversation_id": "d8dc6385-cf05-4322-adfe-63d046a633e5",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 18.28,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 9,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İşyerinde mobbinge uğruyorum, hangi delillerle dava açabilirim?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu iş hukuku konularını düzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 92 - Fıkra 1",
+          "metin_ozet": "Madde 92 - 91 inci madde hükmünün uygulanması için iş hayatının izlenmesi, denetlenmesi ve teftişiyle ödevli olan iş müfettişleri, işyerlerini ve eklentilerini, işin yürütülmesi tarzını ve ilgili belgeleri, araç ve gereçleri, cihaz ve makineleri, ham ve işlenmiş maddelerle, iş...",
+          "metin": null,
+          "skor": 0.8197,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 25 - Fıkra 2",
+          "metin_ozet": "II- Ahlak ve iyi niyet kurallarına uymayan haller ve benzerleri:",
+          "metin": null,
+          "skor": 0.8376,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 24 - Fıkra 2",
+          "metin_ozet": "Ahlak ve iyiniyet kurallarına uymayan haller ve benzerleri:",
+          "metin": null,
+          "skor": 0.8215,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 319,
+      "ortalama_kaynak_skor": 0.8263,
+      "kaynak_sayisi": 3,
+      "message_id": "19fc598a-d995-4e11-a4b8-5eadb9b43e25",
+      "conversation_id": "d7d83926-9bf6-4a92-b131-9883e5e485a4",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.37,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 10,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Kullanmadığım yıllık izin ücretini işten ayrılırken talep edebilir miyim?",
+      "cevap": "Evet, kullanmadığınız yıllık izin ücretini işten ayrılırken talep edebilirsiniz. 4857 Sayılı İş Kanunu'nun 59. maddesine göre, iş sözleşmesinin herhangi bir nedenle sona ermesi halinde işçinin hak kazanıp da kullanmadığı yıllık izin sürelerine ait ücreti, sözleşmenin sona erdiği tarihteki ücreti üzerinden kendisine veya hak sahiplerine ödenir.\n\nBu ücrete ilişkin zamanaşımı iş sözleşmesinin sona erdiği tarihten itibaren başlar. Dolayısıyla, işten ayrılırken kullanmadığınız yıllık izin ücretini işverenden talep edebilirsiniz.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 59",
+          "metin_ozet": "Madde 59 - İş sözleşmesinin, herhangi bir nedenle sona ermesi halinde işçinin hak kazanıp da kullanmadığı yıllık izin sürelerine ait ücreti, sözleşmenin sona erdiği tarihteki ücreti üzerinden kendisine veya hak sahiplerine ödenir.",
+          "metin": null,
+          "skor": 0.8578,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 58",
+          "metin_ozet": "Madde 58 - Yıllık ücretli iznini kullanmakta olan işçinin izin süresi içinde ücret karşılığı bir işte çalıştığı anlaşılırsa, bu izin süresi içinde kendisine ödenen ücret işveren tarafından geri alınabilir. Sözleşmenin sona ermesinde izin ücreti",
+          "metin": null,
+          "skor": 0.8639,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 57",
+          "metin_ozet": "Madde 57 - İşveren, yıllık ücretli iznini kullanan her işçiye, yıllık izin dönemine ilişkin ücretini ilgili işçinin izine başlamasından önce peşin olarak ödemek veya avans olarak vermek zorundadır.",
+          "metin": null,
+          "skor": 0.8467,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 54 - Fıkra 1",
+          "metin_ozet": "Madde 54 - Yıllık ücretli izine hak kazanmak için gerekli sürenin hesabında işçilerin, aynı işverenin bir veya çeşitli işyerlerinde çalıştıkları süreler birleştirilerek göz önüne alınır.",
+          "metin": null,
+          "skor": 0.8557,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 56 - Fıkra 1",
+          "metin_ozet": "Madde 56 - Yıllık ücretli izin işveren tarafından bölünemez. İşveren tarafından yıl içinde verilmiş bulunan diğer ücretli ve ücretsiz izinler veya dinlenme ve hastalık izinleri yıllık izne mahsup edilemez.",
+          "metin": null,
+          "skor": 0.8533,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 655,
+      "ortalama_kaynak_skor": 0.8555,
+      "kaynak_sayisi": 5,
+      "message_id": "5da246f8-eeb1-425e-87ea-247a8b2ccd21",
+      "conversation_id": "8618dbfa-1bb6-4337-92f4-05d2cb1d59f4",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 25.88,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 11,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "İş kazası geçirdim, işverenden hangi tazminatları isteyebilirim?",
+      "cevap": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu'nun 21. maddesine göre, iş kazası ve meslek hastalığı, işverenin kastı veya sigortalıların sağlığını koruma ve iş güvenliği mevzuatına aykırı bir hareketi sonucu meydana gelmişse, Kurumca sigortalıya veya hak sahiplerine yapılan veya ileride yapılması gereken ödemeler ile bağlanan gelirin başladığı tarihteki ilk peşin sermaye değeri toplamı, sigortalı veya hak sahiplerinin işverenden isteyebilecekleri tutarlarla sınırlı olmak üzere, Kurumca işverene ödettirilir.\n\nAyrıca, iş kazası ve meslek hastalığı sigorta kollarından sağlanan yardımlardan yararlanabilmeniz için, iş kazasının olduğu tarihten en az on gün önce tescil edilmiş olmanız ve sigortalılığınızın sona ermemiş olması, bu Kanuna göre iş kazası veya meslek hastalığından dolayı geçici iş göremezlik ödeneği ödenmesi veya sürekli iş göremezlik geliri ya da malullük, yaşlılık ve ölüm sigortalarından aylık bağlanabilmesi için prim ve prime ilişkin her türlü borçlarınızın ödenmiş olması şarttır.\n\nİşverenin sorumluluğunun tespitinde kaçınılmazlık ilkesi dikkate alınır. İş kazasının, belirtilen sürede işveren tarafından Kuruma bildirilmemesi halinde, bildirim tarihine kadar geçen süre için sigortalıya ödenecek geçici iş göremezlik ödeneği, Kurumca işverenden tahsil edilir.\n\nBu konu profesyonel hukuki destek gerektirmektedir; baronuzun hukuki yardim burosu veya bir avukat ile gorusmenizi oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 21 - Fıkra 1",
+          "metin_ozet": "MADDE 21- İş kazası ve meslek hastalığı, işverenin kastı veya sigortalıların sağlığını koruma ve iş güvenliği mevzuatına aykırı bir hareketi sonucu meydana gelmişse, Kurumca sigortalıya veya hak sahiplerine bu Kanun gereğince yapılan veya ileride yapılması gereken ödemeler ile...",
+          "metin": null,
+          "skor": 0.8584,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Ek Madde 9 - Fıkra 3",
+          "metin_ozet": "Sigortalının iş kazası ve meslek hastalığı sigorta kollarından sağlanan yardımlardan yararlanabilmesi için iş kazasının olduğu tarihten en az on gün önce tescil edilmiş olması ve sigortalılığının sona ermemiş olması, bu Kanuna göre iş kazası veya meslek hastalığından dolayı...",
+          "metin": null,
+          "skor": 0.8461,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 76 - Fıkra 1",
+          "metin_ozet": "MADDE 76- İşveren, iş kazasına uğrayan veya meslek hastalığına tutulan genel sağlık sigortalısına sağlık durumunun gerektirdiği sağlık hizmetlerini derhal sağlamakla yükümlüdür.",
+          "metin": null,
+          "skor": 0.8515,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Madde 76 - Fıkra 2",
+          "metin_ozet": "İş kazası ile meslek hastalığı, işverenin kastı veya genel sağlık sigortalısının iş sağlığını koruma ve iş güvenliği ile ilgili mevzuat hükümlerine aykırı hareketi sonucu olmuşsa, Kurumca yapılan sağlık hizmeti giderleri işverene tazmin ettirilir.",
+          "metin": null,
+          "skor": 0.8629,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 28",
+          "metin_ozet": "Madde 28 - İşten ayrılan işçiye, işveren tarafından işinin çeşidinin ne olduğunu ve süresini gösteren bir belge verilir.",
+          "metin": null,
+          "skor": 0.8623,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 1429,
+      "ortalama_kaynak_skor": 0.8562,
+      "kaynak_sayisi": 5,
+      "message_id": "6816cdf9-ddea-4904-b533-5046055ea63e",
+      "conversation_id": "3e7c25a1-a3a0-4a26-a114-78120a6f58fa",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 15.42,
+      "basarili": true,
+      "hata": null
+    },
+    {
+      "sira": 12,
+      "kategori_beklenen": "İş Hukuku",
+      "soru": "Emeklilik nedeniyle işten ayrılırsam kıdem tazminatımı nasıl alırım?",
+      "cevap": "Getirilen kaynaklar bu soruyu karsilamiyor. 4857 Sayılı İş Kanunu bu konuyu duzenlemektedir. Detayli bilgi icin baronuzun hukuki yardim burosuna veya bir avukata basvurunuzu oneririz.",
+      "kaynaklar": [
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "6356 Sayılı Sendikalar ve Toplu İş Sözleşmesi Kanunu - Madde 23",
+          "metin_ozet": "Yönetici dilerse işten ayrıldığı tarihte iş sözleşmesini bildirim süresine uymaksızın veya sözleşme süresinin bitimini beklemeksizin fesheder ve kıdem tazminatına hak kazanır.",
+          "metin": null,
+          "skor": 0.8661,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=6356&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 2",
+          "metin_ozet": "Bunlardan son alt işverenleri ile yapılmış olan iş sözleşmeleri 1475 sayılı İş Kanununun 14 üncü maddesine göre kıdem tazminatı ödenmesini gerektirecek şekilde sona ermiş olanların kıdem tazminatları ilgili kamu kurum veya kuruluşları tarafından, b) Aynı alt işveren tarafından ve...",
+          "metin": null,
+          "skor": 0.8543,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Madde 112 - Fıkra 1",
+          "metin_ozet": "Madde 112 - Kanuna veya kanunun verdiği yetkiye dayanılarak kurulan kurum ve kuruluşların haklarında bu Kanun ve 854, 5953, 5434 sayılı kanunların hükümleri uygulanmayan personeli ile kamu kuruluşlarında sözleşmeli olarak istihdam edilenlere mevzuat veya sözleşmelerine göre kıdem...",
+          "metin": null,
+          "skor": 0.8625,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "5510 Sayılı Sosyal Sigortalar ve Genel Sağlık Sigortası Kanunu - Gecici Madde 14 - Fıkra 5",
+          "metin_ozet": "Bunlara ve bu maddenin yürürlük tarihinden önce sınıf veya görev değiştirerek 4 üncü maddenin birinci fıkrasının (c) bendi kapsamında sigortalı olarak çalışmaya devam edenlerden bu maddenin birinci fıkrasının (d) bendi hükümleri uygulanmak suretiyle vazife malullüğü aylığı...",
+          "metin": null,
+          "skor": 0.8511,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5510&MevzuatTur=1&MevzuatTertip=5"
+        },
+        {
+          "kaynak_turu": "kanun",
+          "baslik": "4857 Sayılı İş Kanunu - Gecici Madde 4",
+          "metin_ozet": "Geçici Madde 4 - Mülga 3008 sayılı İş Kanununun 13 üncü maddesi hükümleri haklarında uygulanmayanlar için, bu Kanunun geçici 6 ncı maddesinde sözü edilen kıdem tazminatı hakkı 12.8.1967 tarihinden itibaren başlar.",
+          "metin": null,
+          "skor": 0.8522,
+          "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5"
+        }
+      ],
+      "kategori_tespit": "İş Hukuku",
+      "kategori_dogru": true,
+      "cevap_uzunluk": 183,
+      "ortalama_kaynak_skor": 0.8572,
+      "kaynak_sayisi": 5,
+      "message_id": "5bd98b82-1e58-456d-ab43-984360067bfd",
+      "conversation_id": "76ab1d7a-9cd0-4e04-bd0b-b24bf7692210",
+      "uyari": "Bu yanit bilgi amaclidir ve hukuki tavsiye niteligi tasimaz.",
+      "yanit_suresi_sn": 26.45,
+      "basarili": true,
+      "hata": null
+    }
+  ]
+}

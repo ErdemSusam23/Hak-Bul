@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { TemaProvider } from './context/TemaContext';
 import { AuthProvider } from './context/AuthContext';
 import { DilProvider } from './context/DilContext';
 import { useTema } from './context/useTema';
 import { useAuth } from './context/useAuth';
-import { Icon, Logo, Avatar, Modal, Toast } from './components/ui';
 import { useAuth as useAuthInModal } from './context/useAuth';
+import { Icon, Logo, Avatar, Modal, Toast } from './components/ui';
+import { submitAuthModal } from './utils/authFlow';
 import LandingPage from './pages/LandingPage';
 import SohbetSayfasi from './pages/SohbetSayfasi';
 import TaslakSayfasi from './pages/TaslakSayfasi';
@@ -21,9 +22,9 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { key: 'sohbet',     label: 'Sohbet'      },
-    { key: 'taslak',     label: 'Taslak'      },
-    { key: 'forum',      label: 'Forum'       },
+    { key: 'sohbet', label: 'Sohbet' },
+    { key: 'taslak', label: 'Taslak' },
+    { key: 'forum', label: 'Forum' },
     { key: 'karsilastir', label: 'Karşılaştır' },
   ];
 
@@ -38,15 +39,17 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
         </button>
 
         <nav className="hidden md:flex items-center gap-1 ml-4">
-          {links.map(l => (
+          {links.map((link) => (
             <button
-              key={l.key}
-              onClick={() => setPage(l.key)}
-              className={'px-3 py-1.5 rounded-md text-sm transition ' +
-                (page === l.key ? 'text-ink' : 'text-ink-muted hover:text-ink')}
+              key={link.key}
+              onClick={() => setPage(link.key)}
+              className={
+                'px-3 py-1.5 rounded-md text-sm transition ' +
+                (page === link.key ? 'text-ink' : 'text-ink-muted hover:text-ink')
+              }
             >
-              {l.label}
-              {page === l.key && (
+              {link.label}
+              {page === link.key && (
                 <span className="block h-[2px] -mb-[3px] mt-[4px]" style={{ background: 'var(--accent)' }} />
               )}
             </button>
@@ -65,7 +68,7 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
           {kullanici ? (
             <div className="relative">
               <button
-                onClick={() => setMenuOpen(v => !v)}
+                onClick={() => setMenuOpen((value) => !value)}
                 className="flex items-center gap-2 p-1 pl-1.5 rounded-full hover:bg-surface-muted"
               >
                 <Avatar name={kullanici.email || 'U'} size={26} />
@@ -81,14 +84,20 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
                     <div className="text-xs text-ink-muted">{kullanici.email}</div>
                   </div>
                   <button
-                    onClick={() => { setPage('profil'); setMenuOpen(false); }}
+                    onClick={() => {
+                      setPage('profil');
+                      setMenuOpen(false);
+                    }}
                     className="w-full text-left px-3 py-2 text-sm hover:bg-surface-muted flex items-center gap-2"
                   >
                     <Icon name="user" size={14} /> Profilim
                   </button>
                   {kullanici.rol === 'admin' && (
                     <button
-                      onClick={() => { setPage('admin'); setMenuOpen(false); }}
+                      onClick={() => {
+                        setPage('admin');
+                        setMenuOpen(false);
+                      }}
                       className="w-full text-left px-3 py-2 text-sm hover:bg-surface-muted flex items-center gap-2"
                     >
                       <Icon name="shield" size={14} /> Admin Paneli
@@ -96,7 +105,11 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
                   )}
                   <div className="hairline-t my-1" />
                   <button
-                    onClick={() => { cikis?.(); setMenuOpen(false); setPage('landing'); }}
+                    onClick={() => {
+                      cikis?.();
+                      setMenuOpen(false);
+                      setPage('landing');
+                    }}
                     className="w-full text-left px-3 py-2 text-sm hover:bg-surface-muted flex items-center gap-2 text-ink-soft"
                   >
                     <Icon name="log-out" size={14} /> Çıkış Yap
@@ -106,8 +119,16 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
             </div>
           ) : (
             <>
-              <button onClick={() => onOpenAuth('login')} className="btn btn-ghost text-sm">Giriş Yap</button>
-              <button onClick={() => onOpenAuth('register')} className="btn btn-primary text-sm" title="Ücretsiz hesap oluştur">Ücretsiz Dene</button>
+              <button onClick={() => onOpenAuth('login')} className="btn btn-ghost text-sm">
+                Giriş Yap
+              </button>
+              <button
+                onClick={() => onOpenAuth('register')}
+                className="btn btn-primary text-sm"
+                title="Ücretsiz hesap oluştur"
+              >
+                Ücretsiz Dene
+              </button>
             </>
           )}
         </div>
@@ -125,21 +146,35 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
   const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleSubmit = async () => {
     setError('');
-    if (!email || !password) { setError('E-posta ve şifre zorunludur.'); return; }
-    if (mode === 'register' && password !== confirm) { setError('Şifreler eşleşmiyor.'); return; }
+    setSuccess('');
     setLoading(true);
+
     try {
-      if (mode === 'login') {
-        await giris({ email, sifre: password });
-      } else {
-        await kayit({ email, sifre: password });
+      const result = await submitAuthModal({
+        mode,
+        email,
+        password,
+        confirm,
+        giris,
+        kayit,
+      });
+
+      setError(result.error);
+      setSuccess(result.success);
+
+      if (result.nextMode !== mode) {
+        setMode(result.nextMode);
+        setPassword('');
+        setConfirm('');
       }
-      onSuccess();
-    } catch (e) {
-      setError(e?.response?.data?.detail || 'İşlem başarısız. Lütfen tekrar deneyin.');
+
+      if (result.shouldClose) {
+        onSuccess();
+      }
     } finally {
       setLoading(false);
     }
@@ -162,15 +197,21 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
         </p>
 
         <div className="flex items-center gap-1 hairline-b mb-6">
-          {[['login', 'Giriş Yap'], ['register', 'Kayıt Ol']].map(([k, l]) => (
+          {[['login', 'Giriş Yap'], ['register', 'Kayıt Ol']].map(([key, label]) => (
             <button
-              key={k}
-              onClick={() => { setMode(k); setError(''); }}
-              className={'px-3 py-2 text-sm -mb-px border-b-2 ' +
-                (mode === k ? 'text-ink' : 'text-ink-muted border-transparent')}
-              style={mode === k ? { borderColor: 'var(--accent)' } : {}}
+              key={key}
+              onClick={() => {
+                setMode(key);
+                setError('');
+                setSuccess('');
+              }}
+              className={
+                'px-3 py-2 text-sm -mb-px border-b-2 ' +
+                (mode === key ? 'text-ink' : 'text-ink-muted border-transparent')
+              }
+              style={mode === key ? { borderColor: 'var(--accent)' } : {}}
             >
-              {l}
+              {label}
             </button>
           ))}
         </div>
@@ -179,45 +220,68 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
           <label className="flex flex-col gap-1.5">
             <span className="label">E-posta</span>
             <input
-              type="email" placeholder="ad.soyad@eposta.com" value={email}
-              onChange={e => setEmail(e.target.value)}
+              type="email"
+              placeholder="ad.soyad@eposta.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               className="border border-line rounded-md bg-surface-muted px-3 py-2 text-sm focus:bg-surface focus:border-line-strong"
             />
           </label>
+
           <label className="flex flex-col gap-1.5">
             <span className="label">Şifre</span>
             <div className="flex items-center border border-line rounded-md bg-surface-muted focus-within:bg-surface focus-within:border-line-strong">
               <input
-                type={showPw ? 'text' : 'password'} placeholder="••••••••••" value={password}
-                onChange={e => setPassword(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleSubmit()}
+                type={showPw ? 'text' : 'password'}
+                placeholder="••••••••••"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                onKeyDown={(event) => event.key === 'Enter' && handleSubmit()}
                 className="flex-1 bg-transparent px-3 py-2 text-sm"
               />
-              <button onClick={() => setShowPw(v => !v)} type="button" className="pr-3 text-ink-muted">
+              <button onClick={() => setShowPw((value) => !value)} type="button" className="pr-3 text-ink-muted">
                 <Icon name={showPw ? 'eye-off' : 'eye'} size={14} />
               </button>
             </div>
           </label>
+
           {mode === 'register' && (
             <label className="flex flex-col gap-1.5">
               <span className="label">Şifre (Tekrar)</span>
               <input
-                type="password" placeholder="••••••••••" value={confirm}
-                onChange={e => setConfirm(e.target.value)}
+                type="password"
+                placeholder="••••••••••"
+                value={confirm}
+                onChange={(event) => setConfirm(event.target.value)}
                 className="border border-line rounded-md bg-surface-muted px-3 py-2 text-sm focus:bg-surface focus:border-line-strong"
               />
             </label>
           )}
+
           {mode === 'login' && (
             <div className="text-right">
-              <a className="text-xs hover:underline" style={{ color: 'var(--accent)' }} href="#">Şifremi unuttum</a>
+              <a className="text-xs hover:underline" style={{ color: 'var(--accent)' }} href="#">
+                Şifremi unuttum
+              </a>
             </div>
           )}
         </div>
 
         {error && (
-          <div className="mt-4 p-3 rounded-lg text-sm" style={{ background: 'color-mix(in srgb,var(--danger) 10%,var(--surface))', color: 'var(--danger)' }}>
+          <div
+            className="mt-4 p-3 rounded-lg text-sm"
+            style={{ background: 'color-mix(in srgb,var(--danger) 10%,var(--surface))', color: 'var(--danger)' }}
+          >
             {error}
+          </div>
+        )}
+
+        {success && (
+          <div
+            className="mt-4 p-3 rounded-lg text-sm"
+            style={{ background: 'color-mix(in srgb,var(--success) 10%,var(--surface))', color: 'var(--success)' }}
+          >
+            {success}
           </div>
         )}
 
@@ -226,12 +290,21 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
           disabled={loading}
           className="btn btn-primary w-full justify-center py-2.5 mt-6"
         >
-          {loading ? <><span className="dot" /><span className="dot" /><span className="dot" /></> :
-            mode === 'login' ? 'Giriş Yap' : 'Hesap Oluştur'}
+          {loading ? (
+            <>
+              <span className="dot" />
+              <span className="dot" />
+              <span className="dot" />
+            </>
+          ) : (
+            mode === 'login' ? 'Giriş Yap' : 'Hesap Oluştur'
+          )}
         </button>
+
         <button onClick={onClose} className="btn btn-ghost w-full justify-center py-2 mt-2 text-ink-muted">
           Misafir olarak devam et
         </button>
+
         <div className="hairline-t mt-6 pt-4 text-center">
           <div className="text-[11px] text-ink-faint">
             Devam ederek <a className="underline" href="#">Kullanım Şartları</a> ve{' '}
@@ -247,6 +320,7 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
 function DisclaimerBar() {
   const [visible, setVisible] = useState(!localStorage.getItem('hb_disclaimer_dismissed'));
   if (!visible) return null;
+
   return (
     <div className="sticky bottom-0 z-20 hairline-t" style={{ background: 'var(--surface)' }}>
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-3 text-sm">
@@ -256,7 +330,10 @@ function DisclaimerBar() {
           <strong>ALO 182</strong> (Türkiye Barolar Birliği)
         </span>
         <button
-          onClick={() => { setVisible(false); localStorage.setItem('hb_disclaimer_dismissed', '1'); }}
+          onClick={() => {
+            setVisible(false);
+            localStorage.setItem('hb_disclaimer_dismissed', '1');
+          }}
           className="p-1 rounded hover:bg-surface-muted"
         >
           <Icon name="x" size={14} />
@@ -269,7 +346,6 @@ function DisclaimerBar() {
 /* ── Main app shell ── */
 function AppIcerik() {
   const { tema, toggleTema } = useTema();
-  const { kullanici } = useAuth();
   const [page, setPage] = useState(() => localStorage.getItem('hb_page') || 'landing');
   const [authModal, setAuthModal] = useState(null);
   const [toasts, setToasts] = useState([]);
@@ -281,18 +357,24 @@ function AppIcerik() {
     document.documentElement.setAttribute('data-accent', 'navy');
   }, [theme]);
 
-  useEffect(() => { localStorage.setItem('hb_page', page); }, [page]);
+  useEffect(() => {
+    localStorage.setItem('hb_page', page);
+  }, [page]);
 
   useEffect(() => {
-    const handleCikis = () => { setPage('landing'); setAuthModal(null); };
+    const handleCikis = () => {
+      setPage('landing');
+      setAuthModal(null);
+    };
+
     window.addEventListener('auth-cikis', handleCikis);
     return () => window.removeEventListener('auth-cikis', handleCikis);
   }, []);
 
   const toast = (text, kind = 'success') => {
     const id = Math.random();
-    setToasts(t => [...t, { id, text, kind }]);
-    setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 2400);
+    setToasts((current) => [...current, { id, text, kind }]);
+    setTimeout(() => setToasts((current) => current.filter((item) => item.id !== id)), 2400);
   };
 
   const onAuthSuccess = () => {
@@ -308,17 +390,17 @@ function AppIcerik() {
         setPage={setPage}
         onOpenAuth={setAuthModal}
         theme={theme}
-        setTheme={v => toggleTema()}
+        setTheme={() => toggleTema()}
       />
 
       <main className="flex-1 min-h-0">
-        {page === 'landing'      && <LandingPage onOpenAuth={setAuthModal} setPage={setPage} />}
-        {page === 'sohbet'       && <SohbetSayfasi />}
-        {page === 'taslak'       && <TaslakSayfasi />}
-        {page === 'karsilastir'  && <KarsilastirmaSayfasi />}
-        {page === 'forum'        && <ForumSayfasi />}
-        {page === 'profil'       && <ProfilSayfasi onGeri={() => setPage('sohbet')} />}
-        {page === 'admin'        && <AdminSayfasi />}
+        {page === 'landing' && <LandingPage onOpenAuth={setAuthModal} setPage={setPage} />}
+        {page === 'sohbet' && <SohbetSayfasi />}
+        {page === 'taslak' && <TaslakSayfasi />}
+        {page === 'karsilastir' && <KarsilastirmaSayfasi />}
+        {page === 'forum' && <ForumSayfasi />}
+        {page === 'profil' && <ProfilSayfasi onGeri={() => setPage('sohbet')} />}
+        {page === 'admin' && <AdminSayfasi />}
       </main>
 
       {page === 'landing' && <DisclaimerBar />}

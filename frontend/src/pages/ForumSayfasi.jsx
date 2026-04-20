@@ -1,251 +1,181 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Plus, Lock, MessageSquare, ThumbsUp, ChevronRight } from 'lucide-react';
-import { useAuth } from '../context/useAuth';
-import { forumThreadListesiAPI, forumThreadOlusturAPI } from '../api/client';
+import { useState } from 'react';
+import { Icon, Avatar, SectionHeader, renderInline } from '../components/ui';
+import { forumThreads, forumReplies } from '../data/mockData';
 
-const KATEGORILER = [
-    'Tümü', 'İş Hukuku', 'Kira Hukuku', 'Tüketici Hukuku',
-    'Aile Hukuku', 'Ceza Hukuku', 'İdare Hukuku', 'Ticaret Hukuku', 'Genel Hukuk',
-];
+function ForumDetail({ thread, onBack }) {
+  return (
+    <div className="max-w-3xl mx-auto px-6 py-10">
+      <button onClick={onBack} className="text-sm text-ink-muted hover:text-ink flex items-center gap-1.5 mb-6">
+        <Icon name="arrow-left" size={14} /> Forum
+      </button>
+      <div className="flex items-center gap-2 mb-3">
+        <span className="chip text-[11px]">{thread.cat}</span>
+        {thread.verified && (
+          <span className="chip text-[11px]" style={{ color: 'var(--highlight)', borderColor: 'var(--highlight)' }}>
+            <Icon name="badge-check" size={11} /> Avukat Onaylı
+          </span>
+        )}
+      </div>
+      <h1 className="font-display text-[38px] leading-[1.1] mb-5" style={{ letterSpacing: '-0.02em' }}>
+        {thread.title}
+      </h1>
+      <div className="flex items-center gap-3 text-[13px] text-ink-muted mb-8">
+        <Avatar name={thread.author} size={22} />
+        <span className="text-ink">{thread.author}</span>
+        <span>·</span>
+        <span>{thread.time}</span>
+      </div>
+      <div className="text-[15px] leading-relaxed text-ink-soft mb-4">
+        Merhaba, evimi kiraladığım kişi 3 ay boyunca oturduktan sonra taşındı. Depozitonu iadesi için defalarca
+        mesaj attım ama yanıt vermiyor. Hangi yolları izlemem gerekiyor?
+      </div>
+      <div className="flex items-center gap-1 mb-10">
+        <button className="btn btn-outline text-xs">
+          <Icon name="chevron-up" size={14} /> {thread.votes}
+        </button>
+        <button className="btn btn-ghost text-xs"><Icon name="share-2" size={13} /> Paylaş</button>
+        <button className="btn btn-ghost text-xs"><Icon name="bookmark" size={13} /> Kaydet</button>
+      </div>
 
-function YeniThreadModal({ onKapat, onOlusturuldu }) {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    const [category, setCategory] = useState('Genel Hukuk');
-    const [yukleniyor, setYukleniyor] = useState(false);
-    const [hata, setHata] = useState('');
-
-    const handleGonder = async (e) => {
-        e.preventDefault();
-        setHata('');
-        setYukleniyor(true);
-        try {
-            const thread = await forumThreadOlusturAPI({ title, content, category });
-            onOlusturuldu(thread);
-        } catch (err) {
-            setHata(err.response?.data?.detail || 'Bir hata oluştu.');
-        } finally {
-            setYukleniyor(false);
-        }
-    };
-
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.5)' }}>
-            <div className="w-full max-w-lg rounded-2xl p-6" style={{ background: 'var(--tema-panel)', border: '1px solid var(--tema-border)' }}>
-                <h2 className="text-lg font-semibold mb-4" style={{ color: 'var(--tema-text)' }}>Yeni Başlık Aç</h2>
-                <form onSubmit={handleGonder} className="flex flex-col gap-3">
-                    <input
-                        className="w-full rounded-xl px-3 py-2 text-sm outline-none"
-                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
-                        placeholder="Başlık (en az 5 karakter)"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                        minLength={5}
-                        maxLength={200}
-                    />
-                    <select
-                        className="w-full rounded-xl px-3 py-2 text-sm outline-none"
-                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    >
-                        {KATEGORILER.filter((k) => k !== 'Tümü').map((k) => (
-                            <option key={k} value={k}>{k}</option>
-                        ))}
-                    </select>
-                    <textarea
-                        className="w-full rounded-xl px-3 py-2 text-sm outline-none resize-none"
-                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)', minHeight: '120px' }}
-                        placeholder="Sorunuzu veya konunuzu detaylı açıklayın (en az 10 karakter)"
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                        required
-                        minLength={10}
-                    />
-                    {hata && <p className="text-xs text-red-400">{hata}</p>}
-                    <div className="flex gap-2 justify-end mt-2">
-                        <button
-                            type="button"
-                            onClick={onKapat}
-                            className="px-4 py-2 rounded-xl text-sm"
-                            style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}
-                        >
-                            İptal
-                        </button>
-                        <button
-                            type="submit"
-                            disabled={yukleniyor}
-                            className="px-4 py-2 rounded-xl text-sm font-medium"
-                            style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)', opacity: yukleniyor ? 0.7 : 1 }}
-                        >
-                            {yukleniyor ? 'Gönderiliyor...' : 'Başlık Aç'}
-                        </button>
-                    </div>
-                </form>
+      <div className="label mb-3">{forumReplies.length} Yanıt · En çok oya göre</div>
+      <div className="space-y-0">
+        {forumReplies.map((r, i) => (
+          <div
+            key={i}
+            className={'py-5 hairline-b flex gap-4 ' + (r.verified ? '-mx-4 px-4 rounded-lg' : '')}
+            style={r.verified ? { background: 'color-mix(in srgb,var(--highlight) 8%,var(--surface))' } : {}}
+          >
+            <div className="flex flex-col items-center gap-1 w-10 shrink-0">
+              <Icon name="chevron-up" size={16} className="text-ink-muted" />
+              <span className="text-xs font-mono">{r.votes}</span>
             </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-2">
+                <Avatar name={r.author} size={22} role={r.role === 'lawyer' ? 'lawyer' : null} />
+                <span className="text-sm font-medium">{r.author}</span>
+                {r.verified && (
+                  <span
+                    className="text-[10px] font-medium px-1.5 py-0.5 rounded font-mono"
+                    style={{ background: 'var(--highlight)', color: '#fff' }}
+                  >
+                    AVUKAT ONAYLI
+                  </span>
+                )}
+                <span className="text-[11px] text-ink-faint ml-1">{r.time}</span>
+              </div>
+              <div className="text-[14.5px] leading-relaxed text-ink-soft prose-mini">
+                {renderInline(r.text)}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="card p-4 mt-8">
+        <textarea rows={3} placeholder="Yanıtınızı yazın…" className="w-full bg-transparent text-sm resize-none" />
+        <div className="flex items-center justify-between mt-2">
+          <span className="text-[11px] text-ink-faint">Markdown destekli</span>
+          <button className="btn btn-primary text-xs">Yanıt Gönder</button>
         </div>
-    );
-}
-
-function ThreadKarti({ thread, onClick }) {
-    return (
-        <div
-            className="p-4 rounded-xl cursor-pointer transition-all"
-            style={{ background: 'var(--tema-card)', border: '1px solid var(--tema-border)' }}
-            onClick={() => onClick(thread.id)}
-            onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--tema-accent)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--tema-border)'; }}
-        >
-            <div className="flex items-start justify-between gap-2">
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'var(--tema-surface)', color: 'var(--tema-accent)' }}>
-                            {thread.category}
-                        </span>
-                        {thread.is_locked && <Lock size={12} style={{ color: 'var(--tema-muted)' }} />}
-                    </div>
-                    <p className="text-sm font-medium line-clamp-2" style={{ color: 'var(--tema-text)' }}>{thread.title}</p>
-                    <p className="text-xs mt-1 line-clamp-1" style={{ color: 'var(--tema-muted)' }}>{thread.user_email}</p>
-                </div>
-                <ChevronRight size={16} style={{ color: 'var(--tema-dimmer)', flexShrink: 0 }} />
-            </div>
-            <div className="flex items-center gap-4 mt-3">
-                <span className="flex items-center gap-1 text-xs" style={{ color: 'var(--tema-muted)' }}>
-                    <MessageSquare size={12} /> {thread.reply_count}
-                </span>
-                <span className="flex items-center gap-1 text-xs" style={{ color: thread.vote_score >= 0 ? 'var(--tema-muted)' : '#f87171' }}>
-                    <ThumbsUp size={12} /> {thread.vote_score}
-                </span>
-            </div>
-        </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default function ForumSayfasi({ onThreadSec }) {
-    const { kullanici } = useAuth();
-    const [threads, setThreads] = useState([]);
-    const [total, setTotal] = useState(0);
-    const [page, setPage] = useState(1);
-    const [secilenKategori, setSecilenKategori] = useState('Tümü');
-    const [yukleniyor, setYukleniyor] = useState(false);
-    const [modalAcik, setModalAcik] = useState(false);
+  const [filter, setFilter] = useState('all');
+  const [thread, setThread] = useState(null);
 
-    const yukle = useCallback(async () => {
-        setYukleniyor(true);
-        try {
-            const category = secilenKategori === 'Tümü' ? null : secilenKategori;
-            const data = await forumThreadListesiAPI({ category, page, size: 20 });
-            setThreads(data.threads);
-            setTotal(data.total);
-        } catch (e) {
-            console.error('Forum yüklenemedi:', e);
-        } finally {
-            setYukleniyor(false);
+  const filtered =
+    filter === 'unanswered' ? forumThreads.filter(t => !t.answered) :
+    filter === 'verified'   ? forumThreads.filter(t => t.verified)  :
+    forumThreads;
+
+  const handleSelect = (t) => {
+    if (onThreadSec) { onThreadSec(t.id); return; }
+    setThread(t);
+  };
+
+  if (thread) return <ForumDetail thread={thread} onBack={() => setThread(null)} />;
+
+  return (
+    <div className="max-w-5xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
+      <SectionHeader
+        eyebrow="Topluluk"
+        title="Hukuki Forum"
+        sub="Soru sorun, deneyim paylaşın. Avukat onaylı yanıtlara altın rozete bakın."
+        actions={
+          <button className="btn btn-primary"><Icon name="plus" size={14} /> Yeni Soru Sor</button>
         }
-    }, [secilenKategori, page]);
+      />
 
-    useEffect(() => {
-        yukle();
-    }, [yukle]);
+      {/* Filters */}
+      <div className="flex items-center gap-1 hairline-b mb-2">
+        {[
+          ['all',        'Tümü',         forumThreads.length],
+          ['unanswered', 'Yanıtsız',     forumThreads.filter(t => !t.answered).length],
+          ['verified',   'Avukat Onaylı', forumThreads.filter(t => t.verified).length],
+        ].map(([k, l, n]) => (
+          <button
+            key={k}
+            onClick={() => setFilter(k)}
+            className={'px-4 py-2.5 text-sm -mb-px border-b-2 transition ' +
+              (filter === k ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
+            style={filter === k ? { borderColor: 'var(--accent)' } : {}}
+          >
+            {l} <span className="text-ink-faint font-mono text-[11px] ml-0.5">{n}</span>
+          </button>
+        ))}
+      </div>
 
-    const handleKategoriDegis = (kat) => {
-        setSecilenKategori(kat);
-        setPage(1);
-    };
-
-    const handleOlusturuldu = () => {
-        setModalAcik(false);
-        setPage(1);
-        yukle();
-    };
-
-    const toplamSayfa = Math.ceil(total / 20);
-
-    return (
-        <div className="flex-1 flex flex-col min-h-0 p-6 overflow-y-auto">
-            {modalAcik && (
-                <YeniThreadModal onKapat={() => setModalAcik(false)} onOlusturuldu={handleOlusturuldu} />
-            )}
-
-            <div className="flex items-center justify-between mb-6">
-                <div>
-                    <h1 className="text-xl font-bold" style={{ color: 'var(--tema-text)' }}>Forum</h1>
-                    <p className="text-sm mt-1" style={{ color: 'var(--tema-muted)' }}>
-                        {total} başlık · Hukuki sorularınızı toplulukla paylaşın
-                    </p>
-                </div>
-                {kullanici && (
-                    <button
-                        onClick={() => setModalAcik(true)}
-                        className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium"
-                        style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
-                    >
-                        <Plus size={14} /> Yeni Başlık
-                    </button>
+      {/* Thread list */}
+      <div>
+        {filtered.map(t => (
+          <button
+            key={t.id}
+            onClick={() => handleSelect(t)}
+            className="group w-full text-left flex items-start gap-4 py-5 hairline-b hover:bg-surface-muted px-4 -mx-4 transition"
+          >
+            <div className="flex flex-col items-center gap-0.5 pt-1 w-12 shrink-0">
+              <Icon name="chevron-up" size={16} className="text-ink-muted" />
+              <span className="text-sm font-medium font-mono">{t.votes}</span>
+              <Icon name="chevron-down" size={16} className="text-ink-faint" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                <span className="chip text-[11px] py-0.5">{t.cat}</span>
+                {t.verified && (
+                  <span className="chip text-[11px] py-0.5" style={{ color: 'var(--highlight)', borderColor: 'var(--highlight)' }}>
+                    <Icon name="badge-check" size={11} /> Avukat Onaylı
+                  </span>
                 )}
+                {t.answered && (
+                  <span className="chip text-[11px] py-0.5" style={{ color: 'var(--success)', borderColor: 'color-mix(in srgb,var(--success) 40%,var(--line))' }}>
+                    Yanıtlandı
+                  </span>
+                )}
+              </div>
+              <div
+                className="font-display text-[20px] leading-snug group-hover:text-accent transition"
+                style={{ letterSpacing: '-0.01em' }}
+              >
+                {t.title}
+              </div>
+              <div className="flex items-center gap-3 mt-2 text-[12px] text-ink-muted flex-wrap">
+                <span className="flex items-center gap-1.5">
+                  <Avatar name={t.author} size={16} /> {t.author}
+                </span>
+                <span>·</span>
+                <span>{t.time}</span>
+                <span>·</span>
+                <span className="flex items-center gap-1">
+                  <Icon name="message-square" size={12} /> {t.replies} yanıt
+                </span>
+              </div>
             </div>
-
-            <div className="flex gap-2 flex-wrap mb-4">
-                {KATEGORILER.map((kat) => (
-                    <button
-                        key={kat}
-                        onClick={() => handleKategoriDegis(kat)}
-                        className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
-                        style={{
-                            background: secilenKategori === kat ? 'var(--tema-accent)' : 'var(--tema-surface)',
-                            color: secilenKategori === kat ? '#fff' : 'var(--tema-text2)',
-                        }}
-                    >
-                        {kat}
-                    </button>
-                ))}
-            </div>
-
-            {yukleniyor ? (
-                <div className="flex-1 flex items-center justify-center">
-                    <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Yükleniyor...</p>
-                </div>
-            ) : threads.length === 0 ? (
-                <div className="flex-1 flex flex-col items-center justify-center gap-2">
-                    <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Bu kategoride henüz başlık yok.</p>
-                    {kullanici && (
-                        <button onClick={() => setModalAcik(true)} className="text-xs" style={{ color: 'var(--tema-accent)' }}>
-                            İlk başlığı sen aç →
-                        </button>
-                    )}
-                </div>
-            ) : (
-                <div className="flex flex-col gap-3">
-                    {threads.map((t) => (
-                        <ThreadKarti key={t.id} thread={t} onClick={onThreadSec} />
-                    ))}
-                </div>
-            )}
-
-            {toplamSayfa > 1 && (
-                <div className="flex justify-center gap-2 mt-6">
-                    <button
-                        onClick={() => setPage((p) => Math.max(1, p - 1))}
-                        disabled={page === 1}
-                        className="px-3 py-1.5 rounded-lg text-xs"
-                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', opacity: page === 1 ? 0.4 : 1 }}
-                    >
-                        ← Önceki
-                    </button>
-                    <span className="px-3 py-1.5 text-xs" style={{ color: 'var(--tema-muted)' }}>
-                        {page} / {toplamSayfa}
-                    </span>
-                    <button
-                        onClick={() => setPage((p) => Math.min(toplamSayfa, p + 1))}
-                        disabled={page === toplamSayfa}
-                        className="px-3 py-1.5 rounded-lg text-xs"
-                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', opacity: page === toplamSayfa ? 0.4 : 1 }}
-                    >
-                        Sonraki →
-                    </button>
-                </div>
-            )}
-        </div>
-    );
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 }

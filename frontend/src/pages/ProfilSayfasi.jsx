@@ -1,348 +1,148 @@
-import { useEffect, useState } from 'react';
-import { AlertCircle, ArrowLeft, CheckCircle, Eye, EyeOff, Lock, Mail, Trash2, User } from 'lucide-react';
-
-import { hesapSilAPI, profilGetirAPI, profilGuncelleAPI } from '../api/client';
+import { useState } from 'react';
+import { Icon, Avatar, SectionHeader, Field, Toggle } from '../components/ui';
 import { useAuth } from '../context/useAuth';
-import { useDil } from '../context/useDil';
-
-function InputAlan({
-    label,
-    type = 'text',
-    value,
-    onChange,
-    placeholder,
-    disabled,
-    showToggle,
-    onToggle,
-    name,
-    autoComplete,
-}) {
-    return (
-        <div>
-            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--tema-muted)' }}>
-                {label}
-            </label>
-            <div className="relative">
-                <input
-                    type={type}
-                    name={name}
-                    autoComplete={autoComplete}
-                    value={value}
-                    onChange={onChange}
-                    placeholder={placeholder}
-                    disabled={disabled}
-                    className="w-full px-3 py-2.5 rounded-xl text-sm outline-none transition-all"
-                    style={{
-                        background: 'var(--tema-surface)',
-                        border: '1px solid var(--tema-border)',
-                        color: 'var(--tema-text)',
-                        opacity: disabled ? 0.5 : 1,
-                    }}
-                    onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--tema-border-focus)'; }}
-                    onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--tema-border)'; }}
-                />
-                {showToggle && (
-                    <button
-                        type="button"
-                        onClick={onToggle}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                        style={{ color: 'var(--tema-muted)' }}
-                    >
-                        {type === 'password' ? <Eye size={15} /> : <EyeOff size={15} />}
-                    </button>
-                )}
-            </div>
-        </div>
-    );
-}
+import { conversations } from '../data/mockData';
 
 export default function ProfilSayfasi({ onGeri }) {
-    const { kullanici, cikis, kullaniciGuncelle } = useAuth();
-    const { t } = useDil();
-    const [profil, setProfil] = useState(null);
-    const [yukleniyor, setYukleniyor] = useState(true);
-    const [yeniEmail, setYeniEmail] = useState('');
-    const [mevcutSifre, setMevcutSifre] = useState('');
-    const [yeniSifre, setYeniSifre] = useState('');
-    const [yeniSifreTekrar, setYeniSifreTekrar] = useState('');
-    const [showSifre, setShowSifre] = useState(false);
-    const [silModu, setSilModu] = useState(false);
-    const [silSifre, setSilSifre] = useState('');
-    const [mesaj, setMesaj] = useState(null);
-    const [kaydetYukleniyor, setKaydetYukleniyor] = useState(false);
+  const { kullanici, cikis } = useAuth();
+  const [tab, setTab] = useState('account');
 
-    useEffect(() => {
-        profilGetirAPI()
-            .then((data) => {
-                setProfil(data);
-                setYeniEmail(data.email);
-            })
-            .catch(() => setMesaj({ tip: 'hata', metin: t('profileLoadFailed') }))
-            .finally(() => setYukleniyor(false));
-    }, [t]);
+  const email = kullanici?.email || 'kullanici@example.com';
+  const isim = email.split('@')[0];
 
-    const handleKaydet = async (e) => {
-        e.preventDefault();
-        setMesaj(null);
+  return (
+    <div className="max-w-4xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
+      {onGeri && (
+        <button onClick={onGeri} className="text-sm text-ink-muted hover:text-ink flex items-center gap-1.5 mb-6">
+          <Icon name="arrow-left" size={14} /> Geri
+        </button>
+      )}
 
-        if (yeniSifre && yeniSifre !== yeniSifreTekrar) {
-            setMesaj({ tip: 'hata', metin: t('passwordsMismatch') });
-            return;
-        }
-        if (!mevcutSifre) {
-            setMesaj({ tip: 'hata', metin: t('currentPasswordPrompt') });
-            return;
-        }
-
-        setKaydetYukleniyor(true);
-        try {
-            const payload = { mevcut_sifre: mevcutSifre };
-            if (yeniEmail !== profil?.email) payload.email = yeniEmail;
-            if (yeniSifre) payload.yeni_sifre = yeniSifre;
-
-            const updated = await profilGuncelleAPI(payload);
-            setProfil(updated);
-            kullaniciGuncelle({ email: updated.email, rol: updated.role || kullanici?.rol });
-            setMevcutSifre('');
-            setYeniSifre('');
-            setYeniSifreTekrar('');
-            setMesaj({ tip: 'basari', metin: t('profileUpdated') });
-        } catch (err) {
-            const status = err?.response?.status;
-            const metin =
-                status === 401 ? t('wrongCurrentPassword') :
-                status === 409 ? t('emailInUse') :
-                t('profileUpdateFailed');
-            setMesaj({ tip: 'hata', metin });
-        } finally {
-            setKaydetYukleniyor(false);
-        }
-    };
-
-    const handleHesapSil = async () => {
-        if (!silSifre) {
-            setMesaj({ tip: 'hata', metin: t('enterPassword') });
-            return;
-        }
-
-        setKaydetYukleniyor(true);
-        try {
-            await hesapSilAPI(silSifre);
-            await cikis();
-        } catch (err) {
-            const status = err?.response?.status;
-            setMesaj({ tip: 'hata', metin: status === 401 ? t('passwordWrong') : t('deleteFailed') });
-            setKaydetYukleniyor(false);
-        }
-    };
-
-    return (
-        <div className="flex flex-col h-full">
-            <header
-                className="flex-shrink-0 flex items-center gap-3 px-6 py-4"
-                style={{ background: 'var(--tema-panel)', borderBottom: '1px solid var(--tema-border)' }}
-            >
-                <button
-                    onClick={onGeri}
-                    className="p-2 rounded-xl transition-colors"
-                    style={{ color: 'var(--tema-muted)' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
-                >
-                    <ArrowLeft size={18} />
-                </button>
-                <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: 'rgba(var(--a), 0.1)', border: '1px solid rgba(var(--a), 0.2)' }}
-                >
-                    <User size={18} style={{ color: 'var(--tema-accent)' }} />
-                </div>
-                <div>
-                    <h1 className="font-semibold text-base leading-none" style={{ color: 'var(--tema-text)' }}>
-                        {t('profileTitle')}
-                    </h1>
-                    <p className="text-xs mt-0.5" style={{ color: 'var(--tema-muted)' }}>
-                        {profil?.email || kullanici?.email}
-                    </p>
-                </div>
-            </header>
-
-            <div className="flex-1 overflow-y-auto px-6 py-6">
-                <div className="max-w-lg mx-auto space-y-6">
-                    {yukleniyor ? (
-                        <div className="flex justify-center py-16">
-                            <div className="w-8 h-8 rounded-full border-2 border-t-transparent animate-spin" style={{ borderColor: 'var(--tema-accent)', borderTopColor: 'transparent' }} />
-                        </div>
-                    ) : (
-                        <>
-                            {mesaj && (
-                                <div
-                                    className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm"
-                                    style={{
-                                        background: mesaj.tip === 'basari' ? 'var(--tema-success-bg)' : 'var(--tema-danger-bg)',
-                                        border: `1px solid ${mesaj.tip === 'basari' ? 'var(--tema-success-border)' : 'var(--tema-danger-border)'}`,
-                                        color: mesaj.tip === 'basari' ? 'var(--tema-success-text)' : 'var(--tema-danger-text)',
-                                    }}
-                                >
-                                    {mesaj.tip === 'basari' ? <CheckCircle size={15} /> : <AlertCircle size={15} />}
-                                    {mesaj.metin}
-                                </div>
-                            )}
-
-                            <div
-                                className="rounded-2xl p-5 space-y-4"
-                                style={{ background: 'var(--tema-card)', border: '1px solid var(--tema-border)' }}
-                            >
-                                <h2 className="font-semibold text-sm flex items-center gap-2" style={{ color: 'var(--tema-text)' }}>
-                                    <Mail size={15} style={{ color: 'var(--tema-accent)' }} />
-                                    {t('profileInfo')}
-                                </h2>
-
-                                <form onSubmit={handleKaydet} autoComplete="off" className="space-y-3">
-                                    {/* Autofill tuzak alanlari: sifre yoneticilerinin profile formuna istemsiz sifre basmasini azaltir */}
-                                    <input
-                                        type="text"
-                                        name="fake_username"
-                                        autoComplete="username"
-                                        tabIndex={-1}
-                                        className="hidden"
-                                        value=""
-                                        onChange={() => {}}
-                                    />
-                                    <input
-                                        type="password"
-                                        name="fake_password"
-                                        autoComplete="current-password"
-                                        tabIndex={-1}
-                                        className="hidden"
-                                        value=""
-                                        onChange={() => {}}
-                                    />
-                                    <InputAlan
-                                        label={t('emailAddress')}
-                                        type="email"
-                                        name="profile_email"
-                                        autoComplete="email"
-                                        value={yeniEmail}
-                                        onChange={(e) => setYeniEmail(e.target.value)}
-                                        placeholder="ornek@email.com"
-                                        disabled={kaydetYukleniyor}
-                                    />
-
-                                    <div className="pt-1 border-t" style={{ borderColor: 'var(--tema-border)' }}>
-                                        <p className="text-xs mb-3 flex items-center gap-1.5" style={{ color: 'var(--tema-muted)' }}>
-                                            <Lock size={11} />
-                                            {t('passwordChange')}
-                                        </p>
-                                        <div className="space-y-3">
-                                            <InputAlan
-                                                label={t('newPassword')}
-                                                type={showSifre ? 'text' : 'password'}
-                                                name="new_password"
-                                                autoComplete="new-password"
-                                                value={yeniSifre}
-                                                onChange={(e) => setYeniSifre(e.target.value)}
-                                                placeholder="En az 8 karakter"
-                                                disabled={kaydetYukleniyor}
-                                                showToggle
-                                                onToggle={() => setShowSifre((value) => !value)}
-                                            />
-                                            <InputAlan
-                                                label={t('newPasswordRepeat')}
-                                                type={showSifre ? 'text' : 'password'}
-                                                name="new_password_repeat"
-                                                autoComplete="new-password"
-                                                value={yeniSifreTekrar}
-                                                onChange={(e) => setYeniSifreTekrar(e.target.value)}
-                                                placeholder={t('newPasswordRepeat')}
-                                                disabled={kaydetYukleniyor}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="pt-1 border-t" style={{ borderColor: 'var(--tema-border)' }}>
-                                        <InputAlan
-                                            label={t('currentPasswordRequired')}
-                                            type="password"
-                                            name="current_password"
-                                            autoComplete="current-password"
-                                            value={mevcutSifre}
-                                            onChange={(e) => setMevcutSifre(e.target.value)}
-                                            placeholder={t('currentPasswordRequired')}
-                                            disabled={kaydetYukleniyor}
-                                        />
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        disabled={kaydetYukleniyor}
-                                        className="w-full py-2.5 rounded-xl text-sm font-medium transition-all"
-                                        style={{
-                                            background: 'var(--tema-send-btn)',
-                                            color: 'var(--tema-send-icon)',
-                                            opacity: kaydetYukleniyor ? 0.6 : 1,
-                                        }}
-                                    >
-                                        {kaydetYukleniyor ? t('saving') : t('saveChanges')}
-                                    </button>
-                                </form>
-                            </div>
-
-                            <div
-                                className="rounded-2xl p-5 space-y-3"
-                                style={{ background: 'rgba(243,139,168,0.05)', border: '1px solid rgba(243,139,168,0.2)' }}
-                            >
-                                <h2 className="font-semibold text-sm flex items-center gap-2 text-red-400">
-                                    <Trash2 size={15} />
-                                    {t('deleteAccount')}
-                                </h2>
-                                <p className="text-xs" style={{ color: 'var(--tema-muted)' }}>
-                                    {t('deleteAccountWarning')}
-                                </p>
-                                {!silModu ? (
-                                    <button
-                                        onClick={() => setSilModu(true)}
-                                        className="px-4 py-2 rounded-xl text-sm font-medium transition-all"
-                                        style={{ background: 'rgba(243,139,168,0.1)', color: '#f38ba8', border: '1px solid rgba(243,139,168,0.3)' }}
-                                    >
-                                        {t('deleteAccount')}
-                                    </button>
-                                ) : (
-                                    <div className="space-y-3">
-                                        <InputAlan
-                                            label={t('confirmPassword')}
-                                            type="password"
-                                            name="delete_confirm_password"
-                                            autoComplete="current-password"
-                                            value={silSifre}
-                                            onChange={(e) => setSilSifre(e.target.value)}
-                                            placeholder={t('confirmPassword')}
-                                            disabled={kaydetYukleniyor}
-                                        />
-                                        <div className="flex gap-2">
-                                            <button
-                                                onClick={handleHesapSil}
-                                                disabled={kaydetYukleniyor}
-                                                className="flex-1 py-2 rounded-xl text-sm font-medium transition-all"
-                                                style={{ background: '#f38ba8', color: '#1e1e2e' }}
-                                            >
-                                                {t('confirmDelete')}
-                                            </button>
-                                            <button
-                                                onClick={() => { setSilModu(false); setSilSifre(''); }}
-                                                className="flex-1 py-2 rounded-xl text-sm font-medium"
-                                                style={{ background: 'var(--tema-card)', color: 'var(--tema-text2)', border: '1px solid var(--tema-border)' }}
-                                            >
-                                                {t('cancel')}
-                                            </button>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </>
-                    )}
-                </div>
-            </div>
+      {/* Profile header */}
+      <div className="flex items-center gap-5 mb-10">
+        <div className="relative">
+          <Avatar name={isim} size={72} />
+          <button
+            className="absolute bottom-0 right-0 w-7 h-7 rounded-full border border-line flex items-center justify-center"
+            style={{ background: 'var(--surface)' }}
+          >
+            <Icon name="camera" size={13} className="text-ink-muted" />
+          </button>
         </div>
-    );
+        <div>
+          <div className="label mb-1">Kullanıcı</div>
+          <h1 className="font-display text-[36px] leading-none" style={{ letterSpacing: '-0.02em' }}>
+            {isim}
+          </h1>
+          <div className="text-sm text-ink-muted mt-1.5 flex items-center gap-3 flex-wrap">
+            <span>{email}</span>
+            <span className="chip text-[11px] py-0.5">{kullanici?.rol?.toUpperCase() || 'USER'}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex items-center gap-1 hairline-b mb-8">
+        {[['account', 'Hesap'], ['security', 'Güvenlik'], ['history', 'Sohbet Geçmişi']].map(([k, l]) => (
+          <button
+            key={k}
+            onClick={() => setTab(k)}
+            className={'px-4 py-2.5 text-sm -mb-px border-b-2 transition ' +
+              (tab === k ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
+            style={tab === k ? { borderColor: 'var(--accent)' } : {}}
+          >
+            {l}
+          </button>
+        ))}
+      </div>
+
+      {/* Account tab */}
+      {tab === 'account' && (
+        <div className="max-w-xl space-y-5">
+          <Field label="Görünen Ad" ph={isim} />
+          <Field label="E-posta" ph={email} type="email" />
+          <Field label="Telefon (isteğe bağlı)" ph="+90 5XX XXX XX XX" />
+          <div className="hairline-t pt-5 flex items-center gap-3">
+            <button className="btn btn-primary">Değişiklikleri Kaydet</button>
+            <button className="btn btn-ghost text-ink-muted">İptal</button>
+          </div>
+
+          <div className="hairline-t pt-6 mt-8">
+            <div className="label mb-3" style={{ color: 'var(--danger)' }}>Tehlike Bölgesi</div>
+            <div
+              className="card p-5 flex items-center justify-between"
+              style={{ borderColor: 'color-mix(in srgb,var(--danger) 30%,var(--line))' }}
+            >
+              <div>
+                <div className="text-sm font-medium">Hesabı Sil</div>
+                <div className="text-xs text-ink-muted mt-0.5">
+                  Tüm sohbet geçmişi ve belgeleriniz silinir. Bu işlem geri alınamaz.
+                </div>
+              </div>
+              <button
+                className="btn btn-outline text-xs"
+                style={{ color: 'var(--danger)', borderColor: 'color-mix(in srgb,var(--danger) 40%,var(--line))' }}
+              >
+                Hesabı Sil
+              </button>
+            </div>
+          </div>
+
+          {cikis && (
+            <button onClick={cikis} className="btn btn-ghost text-ink-muted mt-2">
+              <Icon name="log-out" size={14} /> Çıkış Yap
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Security tab */}
+      {tab === 'security' && (
+        <div className="max-w-xl space-y-5">
+          <Field label="Mevcut Şifre" ph="••••••••••" type="password" />
+          <Field label="Yeni Şifre" ph="En az 8 karakter" type="password" />
+          <Field label="Yeni Şifre (Tekrar)" ph="••••••••••" type="password" />
+          <button className="btn btn-primary mt-2">Şifreyi Güncelle</button>
+
+          <div className="hairline-t pt-6 mt-8">
+            <div className="label mb-3">İki Faktörlü Doğrulama</div>
+            <div className="card p-5 flex items-center justify-between">
+              <div>
+                <div className="text-sm font-medium">SMS ile 2FA</div>
+                <div className="text-xs text-ink-muted mt-0.5">Girişte SMS doğrulama kodu istenir</div>
+              </div>
+              <Toggle />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* History tab */}
+      {tab === 'history' && (
+        <div>
+          <div className="flex items-center justify-between mb-3">
+            <div className="label">Sohbet Geçmişi · {conversations.length}</div>
+            <button className="btn btn-outline text-xs">
+              <Icon name="download" size={13} /> Tümünü Dışa Aktar
+            </button>
+          </div>
+          <div className="card divide-y" style={{ borderColor: 'var(--line)' }}>
+            {conversations.map(c => (
+              <div key={c.id} className="flex items-center gap-4 px-4 py-3 hover:bg-surface-muted">
+                <Icon name="message-circle" size={15} className="text-ink-muted shrink-0" />
+                <div className="flex-1 min-w-0 text-sm truncate">{c.title}</div>
+                <span className="text-xs text-ink-muted font-mono">{c.date}</span>
+                <button className="p-1.5 rounded hover:bg-surface text-ink-muted">
+                  <Icon name="download" size={13} />
+                </button>
+                <button className="p-1.5 rounded hover:bg-surface text-ink-muted">
+                  <Icon name="trash-2" size={13} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }

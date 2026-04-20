@@ -17,7 +17,7 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "kidem tazminat", "ihbar tazminat",
         "ihbar suresi", "is akdi", "is sozlesme", "is kanun", "fazla mesai",
         "ucret", "maas", "isci", "isveren", "sendika", "grev", "lokavt",
-        "tazminat", "istifa", "fesih", "mobbing", "izin", "yillik izin",
+        "tazminat", "istifa", "fesih", "mobbing", "yillik izin",
         "dogum izni", "babalik izni", "hastalik izni", "is kazasi",
         "meslek hastaligi", "haksiz fesih", "kidem", "ihbar",
         "calisabilir", "calisma", "calisti", "calistiril",
@@ -37,7 +37,7 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "vesayet", "vesayet davasi", "kayyum", "vasi atanmasi",
         "evlat edinme", "evlat", "soy bagı", "soyadi degisik",
         "vasiyet", "vasiyetname", "miras sozlesmesi",
-        "tuzel kisi", "dernek", "vakif",
+        "tuzel kisi", "vakif",
     ],
     "Ceza Hukuku": [
         "suc", "ceza", "hapis", "para cezasi", "suclanim", "savcilik",
@@ -83,7 +83,13 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "kadastro", "sinir", "sinir anlazmasi", "gecit hakki",
         "irtifak hakki", "uzuk edindirme", "zilyetlik",
         "hazine arazisi", "hazine taahhutu",
-        "ekrimisil", "mulk sahibinin hakki",
+        "ecrimisil", "mulk sahibinin hakki",
+        # --- YENİ EKLENENLER ---
+        "kira", "kiraci", "kira artis", "kira sozlesme", "tahliye",
+        "ipotek", "ipotek kaldirma",
+        "komsuluk", "komsu hakki",
+        "payli mulkiyet", "ortak mulkiyet", "arsa payi", "paydas",
+        "tapu iptal", "tescil davasi",
     ],
     "İdare Hukuku": [
         "devlet", "belediye", "kamu", "idare", "yontem",
@@ -95,6 +101,10 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "gorevli mahkeme", "yetki geni",
         "kamu hizmeti", "kamu kurumu",
         "valilik", "kaymakamlik", "muhtarlik",
+        # --- YENİ EKLENENLER ---
+        "tam yargi davasi", "tam yargi",
+        "idari sozlesme", "idari sozlesmesi",
+        "idari para ceza", "idari",
     ],
     "Vergi Hukuku": [
         "vergi", "vergi cezasi", "kdv", "gelir vergisi", "vergi beyan",
@@ -124,6 +134,14 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "eser sahibi", "eser hakki", "yapimci", "yayinci",
         "yazilim lisansi", "ticari sir",
         "kullanim hakki", "yayin hakki", "icra hakki",
+        # --- YENİ EKLENENLER ---
+        "bulus", "bulus koruma",
+        "cografi isaret",
+        "yazilim", "kaynak kod", "yazilim telif",
+        "lisans sozlesme", "kullanim hakki ihlal",
+        "yayinevi", "yayimlama", "yayim hakki",
+        "logo", "marka ihlal", "marka ihlali",
+        "fsek", "5846", "6769",
     ],
     "Bilişim Hukuku": [
         "bilisim", "bilisim hukuku", "kvkk", "kisisel veri", "veri koruma",
@@ -134,6 +152,14 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "5651", "internetsizlik", "erisim engelleme",
         "siber zorbalik", "kimlik hirsizligi",
         "kisisel verilerin korunmasi", "acik riza", "veri sorumlusu",
+        # --- YENİ EKLENENLER ---
+        "kisisel veriler",
+        "hack", "hacklendi", "hesap calindi", "hesap ele gecir",
+        "e-ticaret sitesi",
+        "internetten hakaret", "sosyal medya hakaret",
+        "internet ortaminda", "internet ortaminda hakaret",
+        "6563", "elektronik ticaret",
+        "siber dolandir", "siber sahtek",
     ],
     "Anayasa Hukuku": [
         "anayasa", "anayasa mahkemesi", "aym", "bireysel basvuru", "bireysel basvur",
@@ -150,6 +176,14 @@ KATEGORI_ANAHTAR_KELIMELERI: dict[str, list[str]] = {
         "olaganustu hal", "ohal",
         "kanunun anayasaya uygunluk", "iptal karari", "cumhurbaskanligi kararnamesi",
         "dernek kurma", "toplanma ozgurl",
+        # --- YENİ EKLENENLER ---
+        "khk", "khk ihrac", "olaganustu hal khk",
+        "arama karari", "ev arama", "konut arama",
+        "sendika ozgurlug", "sendika uyelik ozgurluk",
+        "kaynak gizlilig", "gazeteci kaynak",
+        "gozalti suresi", "gozaltina alindiktan sonra", "hakim karsisina", "hakim karsisina cikar",
+        "kaynaklarimi aciklamak",
+        "dernek uyelik",
     ],
     "Usul Hukuku": [
         "arabuluculuk", "arabulucu", "zorunlu arabuluculuk",

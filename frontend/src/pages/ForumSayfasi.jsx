@@ -106,7 +106,7 @@ function ThreadKarti({ thread, onClick }) {
                         {thread.is_locked && <Lock size={12} style={{ color: 'var(--tema-muted)' }} />}
                     </div>
                     <p className="text-sm font-medium line-clamp-2" style={{ color: 'var(--tema-text)' }}>{thread.title}</p>
-                    <p className="text-xs mt-1 line-clamp-1" style={{ color: 'var(--tema-muted)' }}>{thread.user_email}</p>
+                    <p className="text-xs mt-1 line-clamp-1" style={{ color: 'var(--tema-muted)' }}>{thread.display_name}</p>
                 </div>
                 <ChevronRight size={16} style={{ color: 'var(--tema-dimmer)', flexShrink: 0 }} />
             </div>

@@ -212,8 +212,18 @@ def _format_sources(chunks: list[dict], query: str = "") -> list[dict]:
     if not chunks:
         return []
 
+    raw_scores = []
+    for chunk in chunks:
+        try:
+            raw_scores.append(float(chunk.get("skor", 0.0)))
+        except (TypeError, ValueError):
+            raw_scores.append(0.0)
+
+    batch_max_score = max(raw_scores, default=0.0)
+    should_rescale = batch_max_score > 1.0
+
     sources = []
-    for c in chunks:
+    for c, raw_score in zip(chunks, raw_scores):
         p = c["payload"]
         kaynak_turu = p.get("kaynak_turu", "")
         fikra_no = p.get("fikra_no")
@@ -228,13 +238,14 @@ def _format_sources(chunks: list[dict], query: str = "") -> list[dict]:
             baslik = p.get("chunk_id", "?")
 
         url = _get_law_url(p.get("kanun_adi", ""), p.get("madde_no", "")) if kaynak_turu == "kanun" else None
+        normalized_score = raw_score / batch_max_score if should_rescale and batch_max_score > 0 else raw_score
 
         sources.append(
             {
                 "kaynak_turu": kaynak_turu,
                 "baslik": baslik,
                 "metin_ozet": _build_source_summary(p.get("metin", ""), query=query),
-                "skor": normalize_relevance_score(c.get("skor", 0.0)),
+                "skor": normalize_relevance_score(normalized_score),
                 "url": url,
             }
         )

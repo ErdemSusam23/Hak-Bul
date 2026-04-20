@@ -5,22 +5,41 @@ import { AuthContext } from './AuthContextValue';
 
 const ACCESS_KEY = 'hakbul_access';
 const EMAIL_KEY = 'hakbul_email';
+const ID_KEY = 'hakbul_user_id';
+
+function parseUserIdFromToken(token) {
+    if (!token) return null;
+    try {
+        const [, payload] = token.split('.');
+        if (!payload) return null;
+        const normalized = payload.replace(/-/g, '+').replace(/_/g, '/');
+        const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, '=');
+        const decoded = atob(padded);
+        const parsed = JSON.parse(decoded);
+        return parsed.sub || null;
+    } catch {
+        return null;
+    }
+}
 
 export function AuthProvider({ children }) {
     const [kullanici, setKullanici] = useState(() => {
         const email = sessionStorage.getItem(EMAIL_KEY);
         const token = sessionStorage.getItem(ACCESS_KEY);
+        const id = sessionStorage.getItem(ID_KEY) || parseUserIdFromToken(token);
         const rol = sessionStorage.getItem('hakbul_role') || 'user';
-        return token ? { email, token, rol } : null;
+        return token ? { id, email, token, rol } : null;
     });
     const [yukleniyor, setYukleniyor] = useState(false);
     const refreshPromiseRef = useRef(null);
 
     // Token'ları kaydet (refresh_token artık httpOnly cookie'de, sadece access_token saklanır)
-    const tokenlariKaydet = useCallback((access, _refresh, email, rol) => {
+    const tokenlariKaydet = useCallback((access, _refresh, email, rol, id) => {
         sessionStorage.setItem(ACCESS_KEY, access);
         if (email) sessionStorage.setItem(EMAIL_KEY, email);
         if (rol) sessionStorage.setItem('hakbul_role', rol);
+        const resolvedId = id || parseUserIdFromToken(access);
+        if (resolvedId) sessionStorage.setItem(ID_KEY, resolvedId);
     }, []);
 
     // Giriş yap
@@ -28,8 +47,9 @@ export function AuthProvider({ children }) {
         setYukleniyor(true);
         try {
             const data = await girisYap({ email, sifre });
-            tokenlariKaydet(data.access_token, data.refresh_token, email, data.role);
-            setKullanici({ email, token: data.access_token, rol: data.role || 'user' });
+            const id = parseUserIdFromToken(data.access_token);
+            tokenlariKaydet(data.access_token, data.refresh_token, email, data.role, id);
+            setKullanici({ id, email, token: data.access_token, rol: data.role || 'user' });
             return { basarili: true };
         } catch (err) {
             const mesaj =
@@ -67,6 +87,7 @@ export function AuthProvider({ children }) {
         try { await cikisYap(); } catch { /* sessiz */ }
         sessionStorage.removeItem(ACCESS_KEY);
         sessionStorage.removeItem(EMAIL_KEY);
+        sessionStorage.removeItem(ID_KEY);
         sessionStorage.removeItem('hakbul_role');
         setKullanici(null);
         window.dispatchEvent(new Event('auth-cikis'));
@@ -78,8 +99,9 @@ export function AuthProvider({ children }) {
 
         refreshPromiseRef.current = tokenYenile()
             .then((data) => {
-                tokenlariKaydet(data.access_token, "");
-                setKullanici((prev) => prev ? { ...prev, token: data.access_token } : null);
+                const id = parseUserIdFromToken(data.access_token);
+                tokenlariKaydet(data.access_token, "", null, data.role, id);
+                setKullanici((prev) => prev ? { ...prev, id: id || prev.id, token: data.access_token } : null);
                 return data.access_token;
             })
             .catch(() => {
@@ -100,6 +122,7 @@ export function AuthProvider({ children }) {
             const next = { ...prev, ...patch };
             if (next.token) sessionStorage.setItem(ACCESS_KEY, next.token);
             if (next.email) sessionStorage.setItem(EMAIL_KEY, next.email);
+            if (next.id) sessionStorage.setItem(ID_KEY, next.id);
             if (next.rol) sessionStorage.setItem('hakbul_role', next.rol);
             return next;
         });

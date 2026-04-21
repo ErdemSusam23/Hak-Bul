@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Icon, Logo, Avatar, Kbd } from '../components/ui';
+import { Icon, Logo, Avatar } from '../components/ui';
 import { renderInline } from '../components/ui/renderInline';
 import { useChat } from '../hooks/useChat';
 import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
 import { SOHBET_ONERILEN_SORULAR } from '../content/productContent';
+import { normalizeRoleName } from '../utils/adminFlow';
+import { CHAT_COMPOSER_MAX_LENGTH, prepareComposerSubmission } from '../utils/chatUi';
 import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
   sohbetGecmisiListeleAPI,
@@ -30,6 +32,19 @@ function tarihKisa(isoStr) {
   if (hours < 24) return `${hours}sa`;
   if (days < 7) return `${days}g`;
   return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+}
+
+function kullaniciRolEtiketi(kullanici) {
+  if (!kullanici) return 'Misafir';
+
+  switch (normalizeRoleName(kullanici.rol || kullanici.role)) {
+    case 'admin':
+      return 'Admin';
+    case 'lawyer':
+      return 'Avukat';
+    default:
+      return 'Kullanıcı';
+  }
 }
 
 function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
@@ -185,9 +200,8 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       style={{ background: 'var(--surface-muted)', borderRight: '1px solid var(--line)' }}
     >
       <div className="p-3 hairline-b">
-        <button onClick={onNew} className="btn btn-primary w-full justify-between">
+        <button onClick={onNew} className="btn btn-primary w-full justify-center">
           <span className="flex items-center gap-2"><Icon name="plus" size={15} /> Yeni Sohbet</span>
-          <Kbd>⌘N</Kbd>
         </button>
       </div>
 
@@ -267,11 +281,8 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
           <div className="text-[13px] font-medium truncate">
             {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanici') : 'Misafir'}
           </div>
-          <div className="text-[11px] text-ink-muted">{kullanici ? 'Uye' : 'Misafir oturumu'}</div>
+          <div className="text-[11px] text-ink-muted">{kullaniciRolEtiketi(kullanici)}</div>
         </div>
-        <button className="p-1.5 rounded hover:bg-surface" title="Ayarlar">
-          <Icon name="settings" size={15} className="text-ink-muted" />
-        </button>
       </div>
     </aside>
   );
@@ -471,21 +482,39 @@ export default function SohbetSayfasi({ toast }) {
   } = useChat(dil);
 
   const [input, setInput] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeId, setActiveId] = useState(null);
   const [convId, setConvId] = useState(null);
   const scrollRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   const guestSessionId = typeof window !== 'undefined'
     ? (localStorage.getItem('hakbul_guest_session_id') || undefined)
     : undefined;
 
-  const sendMessage = async (text) => {
-    if (!text?.trim()) return;
-    setInput('');
-    const result = await mesajGonder(text.trim(), {
+  const clearSelectedFile = useCallback(() => {
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  }, []);
+
+  const sendMessage = async (nextInput = input) => {
+    const submission = prepareComposerSubmission({
+      girdi: nextInput,
+      secilenDosya: selectedFile,
+      yukleniyor,
+    });
+    if (!submission) return;
+
+    setInput(submission.nextGirdi);
+    clearSelectedFile();
+
+    const result = await mesajGonder(submission.metin.trim(), {
       conversationId: convId || undefined,
       guestSessionId,
+      dosya: submission.dosya || undefined,
     });
     if (result?.conversation_id && !convId) {
       setConvId(result.conversation_id);
@@ -502,13 +531,35 @@ export default function SohbetSayfasi({ toast }) {
     setConvId(null);
     setActiveId(null);
     setInput('');
+    clearSelectedFile();
   };
 
   const handleSelect = (sohbet) => {
     mesajlariYukle(sohbet.mesajlar);
     setConvId(sohbet.id);
     setActiveId(sohbet.id);
+    clearSelectedFile();
   };
+
+  const handleFileSelect = (event) => {
+    const [file] = Array.from(event.target.files || []);
+    if (!file) return;
+
+    const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+    if (!isPdf) {
+      clearSelectedFile();
+      toast?.('Lutfen yalnizca PDF dosyasi yukleyin.', 'error');
+      return;
+    }
+
+    setSelectedFile(file);
+  };
+
+  const canSubmit = Boolean(prepareComposerSubmission({
+    girdi: input,
+    secilenDosya: selectedFile,
+    yukleniyor,
+  }));
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -612,34 +663,63 @@ export default function SohbetSayfasi({ toast }) {
         <div className="shrink-0 px-6 pb-6 pt-2" style={{ background: 'var(--surface)' }}>
           <div className="max-w-3xl mx-auto">
             <div className="card p-3 shadow-sm" style={{ borderColor: 'var(--line-strong)' }}>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="application/pdf,.pdf"
+                className="hidden"
+                onChange={handleFileSelect}
+              />
               <textarea
                 value={input}
-                onChange={(event) => setInput(event.target.value)}
+                onChange={(event) => setInput(event.target.value.slice(0, CHAT_COMPOSER_MAX_LENGTH))}
                 onKeyDown={(event) => {
-                  if (event.key === 'Enter' && !event.shiftKey) {
+                  if (event.key === 'Enter' && !event.shiftKey && canSubmit) {
                     event.preventDefault();
-                    sendMessage(input);
+                    sendMessage();
                   }
                 }}
                 rows={2}
                 placeholder="Hukuki sorunuzu yazin..."
                 disabled={yukleniyor}
+                maxLength={CHAT_COMPOSER_MAX_LENGTH}
                 className="w-full bg-transparent resize-none text-[15px] leading-relaxed"
               />
+              {selectedFile && (
+                <div className="mt-2 flex items-center gap-2 text-[12px]">
+                  <span className="chip inline-flex items-center gap-1.5">
+                    <Icon name="file-text" size={12} />
+                    {selectedFile.name}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={clearSelectedFile}
+                    className="text-ink-muted hover:text-ink"
+                    title="PDF secimini kaldir"
+                  >
+                    <Icon name="x" size={13} />
+                  </button>
+                </div>
+              )}
               <div className="flex items-center justify-between mt-1">
                 <div className="flex items-center gap-1">
-                  <button className="p-1.5 rounded hover:bg-surface-muted text-ink-muted" title="PDF yukle">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
+                    title="PDF yukle"
+                  >
                     <Icon name="paperclip" size={15} />
                   </button>
-                  <span className="text-[11px] text-ink-faint ml-2">{input.length}/2000</span>
+                  <span className="text-[11px] text-ink-faint ml-2">{input.length}/{CHAT_COMPOSER_MAX_LENGTH}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] text-ink-faint hidden md:block">
                     Enter ile gonder · Shift+Enter satir ekler
                   </span>
                   <button
-                    onClick={() => sendMessage(input)}
-                    disabled={!input.trim() || yukleniyor}
+                    onClick={() => sendMessage()}
+                    disabled={!canSubmit}
                     className="btn btn-primary text-xs px-3 py-1.5"
                   >
                     Sor <Icon name="arrow-up" size={13} />

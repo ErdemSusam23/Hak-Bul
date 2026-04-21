@@ -440,12 +440,12 @@ function AppIcerik() {
 
       <main className="flex-1 min-h-0">
         {page === 'landing' && <LandingPage onOpenAuth={setAuthModal} setPage={navigateToPage} />}
-        {page === 'sohbet' && <SohbetSayfasi />}
+        {page === 'sohbet' && <SohbetSayfasi toast={toast} />}
         {page === 'taslak' && <TaslakSayfasi />}
         {page === 'karsilastir' && <KarsilastirmaSayfasi />}
         {page === 'forum' && (
           forumThreadId ? (
-            <ForumBaslikSayfasi threadId={forumThreadId} onGeri={() => navigateToPage('forum')} />
+            <ForumBaslikSayfasi threadId={forumThreadId} onGeri={() => navigateToPage('forum')} toast={toast} />
           ) : (
             <ForumSayfasi
               onThreadSec={openForumThread}

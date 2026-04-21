@@ -5,6 +5,7 @@ import { useChat } from '../hooks/useChat';
 import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
 import { suggestedQuestions } from '../data/mockData';
+import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
   sohbetGecmisiListeleAPI,
   sohbetDetayGetirAPI,
@@ -19,24 +20,24 @@ import {
 
 function tarihKisa(isoStr) {
   if (!isoStr) return '';
-  const d = new Date(isoStr.endsWith('Z') ? isoStr : isoStr + 'Z');
-  const fark = Math.max(0, Date.now() - d);
-  const min = Math.floor(fark / 60000);
-  const saat = Math.floor(fark / 3600000);
-  const gun = Math.floor(fark / 86400000);
-  if (min < 1) return 'Az önce';
-  if (min < 60) return `${min}dk`;
-  if (saat < 24) return `${saat}sa`;
-  if (gun < 7) return `${gun}g`;
-  return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+  const date = new Date(isoStr.endsWith('Z') ? isoStr : `${isoStr}Z`);
+  const diff = Math.max(0, Date.now() - date);
+  const minutes = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+  const days = Math.floor(diff / 86400000);
+  if (minutes < 1) return 'Az once';
+  if (minutes < 60) return `${minutes}dk`;
+  if (hours < 24) return `${hours}sa`;
+  if (days < 7) return `${days}g`;
+  return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
 }
 
-/* ── Chat Sidebar ── */
-function ChatSidebar({ open, activeId, onSelect, onNew }) {
+function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
   const { kullanici } = useAuth();
   const [sohbetler, setSohbetler] = useState([]);
   const [duzenleId, setDuzenleId] = useState(null);
   const [duzenleMetin, setDuzenleMetin] = useState('');
+  const [silOnayId, setSilOnayId] = useState(null);
   const inputRef = useRef(null);
 
   const gecmisiCek = useCallback(async () => {
@@ -46,89 +47,135 @@ function ChatSidebar({ open, activeId, onSelect, onNew }) {
         ? await sohbetGecmisiListeleAPI()
         : await misafirSohbetGecmisiListeleAPI();
       setSohbetler(
-        (data.conversations || []).map(c => ({
-          id: c.conversation_id,
-          title: c.title || `Sohbet (${c.message_count} mesaj)`,
-          tarih: c.last_message_at,
+        (data.conversations || []).map((conversation) => ({
+          id: conversation.conversation_id,
+          title: conversation.title || `Sohbet (${conversation.message_count} mesaj)`,
+          tarih: conversation.last_message_at,
           misafir: !isAuth,
-        }))
+        })),
       );
-    } catch { /* ignore */ }
+    } catch {
+      // ignore sidebar refresh failures
+    }
   }, [kullanici]);
 
   useEffect(() => { gecmisiCek(); }, [gecmisiCek]);
+
   useEffect(() => {
-    const h = () => gecmisiCek();
-    window.addEventListener('gecmis-guncellendi', h);
-    return () => window.removeEventListener('gecmis-guncellendi', h);
+    const handleRefresh = () => gecmisiCek();
+    window.addEventListener('gecmis-guncellendi', handleRefresh);
+    return () => window.removeEventListener('gecmis-guncellendi', handleRefresh);
   }, [gecmisiCek]);
 
-  const handleTikla = async (s) => {
-    if (duzenleId === s.id) return;
+  const handleTikla = async (sohbet) => {
+    if (duzenleId === sohbet.id) return;
+
     try {
-      const detay = s.misafir
-        ? await misafirSohbetDetayGetirAPI(s.id)
-        : await sohbetDetayGetirAPI(s.id);
+      const detay = sohbet.misafir
+        ? await misafirSohbetDetayGetirAPI(sohbet.id)
+        : await sohbetDetayGetirAPI(sohbet.id);
+
       onSelect({
-        id: s.id,
-        mesajlar: detay.messages.map(m => ({
-          id: m.id,
-          rol: m.role === 'user' ? 'kullanici' : 'asistan',
-          icerik: m.content,
-          kaynaklar: m.kaynaklar || [],
-          zaman: m.created_at,
+        id: sohbet.id,
+        mesajlar: detay.messages.map((message) => ({
+          id: message.id,
+          rol: message.role === 'user' ? 'kullanici' : 'asistan',
+          icerik: message.content,
+          kaynaklar: message.kaynaklar || [],
+          zaman: message.created_at,
         })),
       });
-    } catch { /* ignore */ }
+      setSilOnayId(null);
+    } catch {
+      toast?.('Sohbet detaylari yuklenemedi.', 'error');
+    }
   };
 
-  const handleSil = async (e, s) => {
-    e.stopPropagation();
-    if (!confirm('Bu sohbeti silmek istiyor musunuz?')) return;
+  const handleSil = async (event, sohbet) => {
+    event.stopPropagation();
+    if (silOnayId !== sohbet.id) {
+      setSilOnayId(togglePendingAction(silOnayId, sohbet.id));
+      toast?.('Sohbeti silmek icin tekrar tiklayin.', 'info');
+      return;
+    }
+
     try {
-      s.misafir ? await misafirSohbetSilAPI(s.id) : await sohbetSilAPI(s.id);
-      setSohbetler(p => p.filter(x => x.id !== s.id));
+      if (sohbet.misafir) {
+        await misafirSohbetSilAPI(sohbet.id);
+      } else {
+        await sohbetSilAPI(sohbet.id);
+      }
+      setSohbetler((prev) => prev.filter((item) => item.id !== sohbet.id));
+      setSilOnayId(null);
       window.dispatchEvent(new Event('gecmis-guncellendi'));
-    } catch { /* ignore */ }
+      toast?.('Sohbet silindi.');
+    } catch {
+      toast?.('Sohbet silinemedi.', 'error');
+    }
   };
 
-  const handlePaylas = async (e, s) => {
-    e.stopPropagation();
+  const handlePaylas = async (event, sohbet) => {
+    event.stopPropagation();
     try {
-      const { share_token } = await sohbetPaylasAPI(s.id);
-      await navigator.clipboard.writeText(`${window.location.origin}/#/shared/${share_token}`);
-      alert('Paylaşım bağlantısı kopyalandı!');
-    } catch { /* ignore */ }
+      const { share_token: shareToken } = await sohbetPaylasAPI(sohbet.id);
+      const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
+      await navigator.clipboard.writeText(shareUrl);
+      toast?.('Paylasim baglantisi panoya kopyalandi.');
+    } catch {
+      toast?.('Paylasim baglantisi kopyalanamadi.', 'error');
+    }
   };
 
-  const handleIndir = async (e, s) => {
-    e.stopPropagation();
+  const handleIndir = async (event, sohbet) => {
+    event.stopPropagation();
     try {
-      const blob = await sohbetPDFIndirAPI(s.id);
+      const blob = await sohbetPDFIndirAPI(sohbet.id);
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `hak-bul-${s.id.slice(0, 8)}.pdf`;
-      document.body.appendChild(a); a.click(); a.remove();
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `hak-bul-${sohbet.id.slice(0, 8)}.pdf`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch { alert('PDF indirilemedi.'); }
+      toast?.('PDF indiriliyor.');
+    } catch {
+      toast?.('PDF indirilemedi.', 'error');
+    }
   };
 
-  const startDuzenle = (e, s) => {
-    e.stopPropagation();
-    setDuzenleId(s.id); setDuzenleMetin(s.title || '');
+  const startDuzenle = (event, sohbet) => {
+    event.stopPropagation();
+    setSilOnayId(null);
+    setDuzenleId(sohbet.id);
+    setDuzenleMetin(sohbet.title || '');
     setTimeout(() => inputRef.current?.focus(), 50);
   };
 
   const kaydetDuzenle = async (id) => {
-    if (!duzenleMetin.trim()) { setDuzenleId(null); return; }
+    if (!duzenleMetin.trim()) {
+      setDuzenleId(null);
+      return;
+    }
+
     try {
       await sohbetYenidenAdlandirAPI(id, duzenleMetin.trim());
-      setSohbetler(p => p.map(s => s.id === id ? { ...s, title: duzenleMetin.trim() } : s));
-    } catch { /* ignore */ } finally { setDuzenleId(null); }
+      setSohbetler((prev) => prev.map((sohbet) => (
+        sohbet.id === id ? { ...sohbet, title: duzenleMetin.trim() } : sohbet
+      )));
+      toast?.('Sohbet adi guncellendi.');
+    } catch {
+      toast?.('Sohbet adi guncellenemedi.', 'error');
+    } finally {
+      setDuzenleId(null);
+    }
   };
 
   const groups = {};
-  sohbetler.forEach(c => { (groups[c.tarih ? tarihKisa(c.tarih) : 'Geçmiş'] ||= []).push(c); });
+  sohbetler.forEach((conversation) => {
+    const label = conversation.tarih ? tarihKisa(conversation.tarih) : 'Gecmis';
+    (groups[label] ||= []).push(conversation);
+  });
 
   if (!open) return null;
 
@@ -137,7 +184,6 @@ function ChatSidebar({ open, activeId, onSelect, onNew }) {
       className="w-[280px] shrink-0 flex flex-col h-full"
       style={{ background: 'var(--surface-muted)', borderRight: '1px solid var(--line)' }}
     >
-      {/* New chat */}
       <div className="p-3 hairline-b">
         <button onClick={onNew} className="btn btn-primary w-full justify-between">
           <span className="flex items-center gap-2"><Icon name="plus" size={15} /> Yeni Sohbet</span>
@@ -145,68 +191,66 @@ function ChatSidebar({ open, activeId, onSelect, onNew }) {
         </button>
       </div>
 
-      {/* Search */}
       <div className="px-3 py-2.5 hairline-b">
         <div className="relative">
           <Icon name="search" size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-ink-faint" />
           <input
             className="w-full pl-8 pr-2 py-2 text-sm bg-surface rounded-md border border-line"
-            placeholder="Sohbetlerde ara…"
+            placeholder="Sohbetlerde ara..."
           />
         </div>
       </div>
 
-      {/* Conversation list */}
       <div className="flex-1 overflow-auto py-2">
         {Object.keys(groups).length === 0 ? (
           <div className="px-4 py-6 text-[13px] text-ink-muted text-center">
-            {kullanici ? 'Henüz sohbet yok.' : 'Geçmiş için giriş yapın.'}
+            {kullanici ? 'Henuz sohbet yok.' : 'Gecmis icin giris yapin.'}
           </div>
         ) : (
-          Object.entries(groups).map(([grp, items]) => (
-            <div key={grp} className="mb-3">
-              <div className="px-4 pt-2 pb-1.5 label">{grp}</div>
-              {items.map(s => (
+          Object.entries(groups).map(([group, items]) => (
+            <div key={group} className="mb-3">
+              <div className="px-4 pt-2 pb-1.5 label">{group}</div>
+              {items.map((sohbet) => (
                 <button
-                  key={s.id}
-                  onClick={() => handleTikla(s)}
+                  key={sohbet.id}
+                  onClick={() => handleTikla(sohbet)}
                   className="group relative w-full text-left px-3 mx-1 py-2 rounded-md flex items-start gap-2.5"
-                  style={activeId === s.id
+                  style={activeId === sohbet.id
                     ? { background: 'var(--surface)', boxShadow: 'inset 2px 0 0 var(--accent)' }
                     : {}}
                 >
                   <span className="text-[13px] leading-snug line-clamp-2 text-ink-soft flex-1">
-                    {duzenleId === s.id ? (
+                    {duzenleId === sohbet.id ? (
                       <input
                         ref={inputRef}
                         value={duzenleMetin}
-                        onChange={e => setDuzenleMetin(e.target.value)}
-                        onKeyDown={e => {
-                          if (e.key === 'Enter') kaydetDuzenle(s.id);
-                          if (e.key === 'Escape') setDuzenleId(null);
+                        onChange={(event) => setDuzenleMetin(event.target.value)}
+                        onKeyDown={(event) => {
+                          if (event.key === 'Enter') kaydetDuzenle(sohbet.id);
+                          if (event.key === 'Escape') setDuzenleId(null);
                         }}
-                        onClick={e => e.stopPropagation()}
+                        onClick={(event) => event.stopPropagation()}
                         className="w-full bg-surface border border-line rounded px-1 py-0.5 text-xs"
                       />
-                    ) : s.title}
+                    ) : sohbet.title}
                   </span>
-                  {duzenleId !== s.id && (
+                  {duzenleId !== sohbet.id && (
                     <span className="hidden group-hover:flex items-center gap-0.5 shrink-0">
-                      <span onClick={(e) => startDuzenle(e, s)} title="Yeniden Adlandır" className="p-1 rounded hover:bg-surface-muted">
+                      <span onClick={(event) => startDuzenle(event, sohbet)} title="Yeniden Adlandir" className="p-1 rounded hover:bg-surface-muted">
                         <Icon name="pencil" size={12} className="text-ink-muted" />
                       </span>
-                      {!s.misafir && (
+                      {!sohbet.misafir && (
                         <>
-                          <span onClick={(e) => handlePaylas(e, s)} title="Paylaş" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handlePaylas(event, sohbet)} title="Paylas" className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="link-2" size={12} className="text-ink-muted" />
                           </span>
-                          <span onClick={(e) => handleIndir(e, s)} title="PDF İndir" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handleIndir(event, sohbet)} title="PDF Indir" className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="download" size={12} className="text-ink-muted" />
                           </span>
                         </>
                       )}
-                      <span onClick={(e) => handleSil(e, s)} title="Sil" className="p-1 rounded hover:bg-surface-muted">
-                        <Icon name="trash-2" size={12} className="text-ink-muted" />
+                      <span onClick={(event) => handleSil(event, sohbet)} title={silOnayId === sohbet.id ? 'Silmeyi Onayla' : 'Sil'} className="p-1 rounded hover:bg-surface-muted">
+                        <Icon name={silOnayId === sohbet.id ? 'check' : 'trash-2'} size={12} className={silOnayId === sohbet.id ? 'text-accent' : 'text-ink-muted'} />
                       </span>
                     </span>
                   )}
@@ -217,14 +261,13 @@ function ChatSidebar({ open, activeId, onSelect, onNew }) {
         )}
       </div>
 
-      {/* User footer */}
       <div className="hairline-t p-3 flex items-center gap-2.5">
         <Avatar name={kullanici?.email || 'Misafir'} size={30} />
         <div className="flex-1 min-w-0">
           <div className="text-[13px] font-medium truncate">
-            {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanıcı') : 'Misafir'}
+            {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanici') : 'Misafir'}
           </div>
-          <div className="text-[11px] text-ink-muted">{kullanici ? 'Üye' : 'Misafir oturumu'}</div>
+          <div className="text-[11px] text-ink-muted">{kullanici ? 'Uye' : 'Misafir oturumu'}</div>
         </div>
         <button className="p-1.5 rounded hover:bg-surface" title="Ayarlar">
           <Icon name="settings" size={15} className="text-ink-muted" />
@@ -234,7 +277,6 @@ function ChatSidebar({ open, activeId, onSelect, onNew }) {
   );
 }
 
-/* ── Source card ── */
 function SourceCard({ s }) {
   const isCase = s.kind === 'case' || s.kaynak_turu === 'karar';
   const code = s.code || s.baslik || '';
@@ -254,7 +296,7 @@ function SourceCard({ s }) {
         >
           {code}
         </span>
-        <span className="text-[11px] text-ink-faint ml-auto">{isCase ? 'Yargıtay' : 'Kanun'}</span>
+        <span className="text-[11px] text-ink-faint ml-auto">{isCase ? 'Yargitay' : 'Kanun'}</span>
       </div>
       <div className="text-[12.5px] font-medium mb-1">{title}</div>
       <div className="text-[12px] text-ink-muted leading-relaxed line-clamp-2">{snippet}</div>
@@ -262,7 +304,6 @@ function SourceCard({ s }) {
   );
 }
 
-/* ── Message bubble ── */
 function MessageBubble({ m }) {
   const [feedback, setFeedback] = useState(null);
   const [expanded, setExpanded] = useState(true);
@@ -296,7 +337,7 @@ function MessageBubble({ m }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2 mb-2">
             <span className="text-[13px] font-medium">Hak-Bul</span>
-            <span className="text-[11px] text-ink-faint">Türk Hukuk Asistanı</span>
+            <span className="text-[11px] text-ink-faint">Turk Hukuk Asistani</span>
           </div>
 
           {(m.alert || m.uyari) && (
@@ -306,7 +347,7 @@ function MessageBubble({ m }) {
             >
               <Icon name="triangle-alert" size={15} className="shrink-0 mt-0.5" style={{ color: 'var(--warn)' }} />
               <div>
-                <strong>Ciddi konu uyarısı.</strong> Bu tür süreçlerde bir avukatla görüşmeniz önerilir.{' '}
+                <strong>Ciddi konu uyarisi.</strong> Bu tur sureclerde bir avukatla gorusmeniz onerilir.{' '}
                 <span className="underline cursor-pointer" style={{ color: 'var(--accent)' }}>ALO 182</span>
               </div>
             </div>
@@ -315,20 +356,22 @@ function MessageBubble({ m }) {
           {m.streaming ? (
             <div className="flex items-center gap-1 text-ink-muted py-2">
               <span className="dot" /><span className="dot" /><span className="dot" />
-              <span className="ml-2 text-[12px]">Kaynaklar taranıyor…</span>
+              <span className="ml-2 text-[12px]">Kaynaklar taraniyor...</span>
             </div>
           ) : (
             <div className="prose-mini text-[14.5px] text-ink-soft">
-              {body.map((b, i) => {
-                if (b.type === 'p') return <p key={i}>{renderInline(b.text)}</p>;
-                if (b.type === 'h') return <p key={i}><strong>{b.text}</strong></p>;
-                if (b.type === 'ul') return <ul key={i}>{b.items.map((it, j) => <li key={j}>{renderInline(it)}</li>)}</ul>;
-                if (b.type === 'callout') return (
-                  <div key={i} className="my-3 p-3 rounded-lg hairline text-[13.5px]" style={{ background: 'var(--surface-muted)' }}>
-                    <Icon name="info" size={13} className="inline-block mr-1.5 -mt-0.5 text-accent" />
-                    {renderInline(b.text)}
-                  </div>
-                );
+              {body.map((block, index) => {
+                if (block.type === 'p') return <p key={index}>{renderInline(block.text)}</p>;
+                if (block.type === 'h') return <p key={index}><strong>{block.text}</strong></p>;
+                if (block.type === 'ul') return <ul key={index}>{block.items.map((item, itemIndex) => <li key={itemIndex}>{renderInline(item)}</li>)}</ul>;
+                if (block.type === 'callout') {
+                  return (
+                    <div key={index} className="my-3 p-3 rounded-lg hairline text-[13.5px]" style={{ background: 'var(--surface-muted)' }}>
+                      <Icon name="info" size={13} className="inline-block mr-1.5 -mt-0.5 text-accent" />
+                      {renderInline(block.text)}
+                    </div>
+                  );
+                }
                 return null;
               })}
             </div>
@@ -336,16 +379,13 @@ function MessageBubble({ m }) {
 
           {sources.length > 0 && (
             <div className="mt-4">
-              <button
-                onClick={() => setExpanded(v => !v)}
-                className="label flex items-center gap-1.5"
-              >
+              <button onClick={() => setExpanded((value) => !value)} className="label flex items-center gap-1.5">
                 <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={11} />
                 {sources.length} Kaynak
               </button>
               {expanded && (
                 <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {sources.map((s, i) => <SourceCard key={i} s={s} />)}
+                  {sources.map((source, index) => <SourceCard key={index} s={source} />)}
                 </div>
               )}
             </div>
@@ -354,18 +394,21 @@ function MessageBubble({ m }) {
           <div className="mt-4 flex items-center gap-1">
             <button
               onClick={() => setFeedback('up')}
-              className={'p-1.5 rounded hover:bg-surface-muted ' + (feedback === 'up' ? 'text-accent' : 'text-ink-muted')}
+              className={`p-1.5 rounded hover:bg-surface-muted ${feedback === 'up' ? 'text-accent' : 'text-ink-muted'}`}
             >
               <Icon name="thumbs-up" size={14} />
             </button>
             <button
               onClick={() => setFeedback('down')}
-              className={'p-1.5 rounded hover:bg-surface-muted ' + (feedback === 'down' ? 'text-accent' : 'text-ink-muted')}
+              className={`p-1.5 rounded hover:bg-surface-muted ${feedback === 'down' ? 'text-accent' : 'text-ink-muted'}`}
             >
               <Icon name="thumbs-down" size={14} />
             </button>
             <button
-              onClick={() => { setCopied(true); setTimeout(() => setCopied(false), 1500); }}
+              onClick={() => {
+                setCopied(true);
+                setTimeout(() => setCopied(false), 1500);
+              }}
               className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
             >
               <Icon name={copied ? 'check' : 'copy'} size={14} />
@@ -377,42 +420,41 @@ function MessageBubble({ m }) {
   );
 }
 
-/* ── Empty state ── */
 function EmptyState({ onPick }) {
-  const quickCats = ['İş Hukuku', 'Kiracı Hakları', 'Boşanma', 'Tüketici', 'Trafik', 'Vergi'];
+  const quickCats = ['Is Hukuku', 'Kiraci Haklari', 'Bosanma', 'Tuketici', 'Trafik', 'Vergi'];
   return (
     <div className="py-12">
       <div className="flex flex-col items-center text-center mb-10">
         <Logo size={28} />
         <h2 className="font-display text-[42px] mt-6 leading-none" style={{ letterSpacing: '-0.02em' }}>
-          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Hoş geldiniz.</span>{' '}
-          Nasıl yardımcı olabilirim?
+          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Hos geldiniz.</span>{' '}
+          Nasil yardimci olabilirim?
         </h2>
         <p className="text-ink-muted mt-3 max-w-lg text-[14px]">
-          Hukuki sorunuzu yazın; kanun maddeleri ve Yargıtay kararlarıyla desteklenmiş bir yanıt alın.
+          Hukuki sorunuzu yazin; kanun maddeleri ve Yargitay kararlariyla desteklenmis bir yanit alin.
         </p>
       </div>
 
-      <div className="label mb-3">Hızlı başla</div>
+      <div className="label mb-3">Hizli basla</div>
       <div className="flex flex-wrap gap-2 mb-8">
-        {quickCats.map(c => (
-          <button key={c} onClick={() => onPick(c + ' hakkında sorum var.')} className="chip text-[13px]">
-            {c}
+        {quickCats.map((category) => (
+          <button key={category} onClick={() => onPick(`${category} hakkinda sorum var.`)} className="chip text-[13px]">
+            {category}
           </button>
         ))}
       </div>
 
-      <div className="label mb-3">Örnek sorular</div>
+      <div className="label mb-3">Ornek sorular</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        {suggestedQuestions.map((q, i) => (
+        {suggestedQuestions.map((question, index) => (
           <button
-            key={i}
-            onClick={() => onPick(q.q)}
+            key={index}
+            onClick={() => onPick(question.q)}
             className="card p-4 text-left hover:border-line-strong group"
           >
-            <div className="label mb-1.5" style={{ fontSize: '10px' }}>{q.cat}</div>
+            <div className="label mb-1.5" style={{ fontSize: '10px' }}>{question.cat}</div>
             <div className="text-[14px] leading-relaxed text-ink-soft group-hover:text-ink flex items-start justify-between gap-3">
-              <span>{q.q}</span>
+              <span>{question.q}</span>
               <Icon name="arrow-up-right" size={14} className="text-ink-faint mt-0.5 shrink-0" />
             </div>
           </button>
@@ -422,8 +464,7 @@ function EmptyState({ onPick }) {
   );
 }
 
-/* ── Main Chat Page ── */
-export default function SohbetSayfasi() {
+export default function SohbetSayfasi({ toast }) {
   const { dil } = useDil();
   const {
     mesajlar, yukleniyor, mesajGonder, sohbetiTemizle, mesajlariYukle,
@@ -476,29 +517,45 @@ export default function SohbetSayfasi() {
   }, [mesajlar, yukleniyor]);
 
   const handlePaylas = async () => {
-    if (!convId) { alert('Önce bir sohbet başlatın.'); return; }
+    if (!convId) {
+      toast?.('Once bir sohbet baslatin.', 'info');
+      return;
+    }
+
     try {
-      const { share_token } = await sohbetPaylasAPI(convId);
-      await navigator.clipboard.writeText(`${window.location.origin}/#/shared/${share_token}`);
-      alert('Paylaşım bağlantısı panoya kopyalandı!');
-    } catch { alert('Paylaşılamadı.'); }
+      const { share_token: shareToken } = await sohbetPaylasAPI(convId);
+      const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
+      await navigator.clipboard.writeText(shareUrl);
+      toast?.('Paylasim baglantisi panoya kopyalandi.');
+    } catch {
+      toast?.('Paylasim baglantisi olusturulamadi.', 'error');
+    }
   };
 
   const handlePDF = async () => {
-    if (!convId) { alert('Önce bir sohbet başlatın.'); return; }
+    if (!convId) {
+      toast?.('Once bir sohbet baslatin.', 'info');
+      return;
+    }
+
     try {
       const blob = await sohbetPDFIndirAPI(convId);
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url; a.download = `hak-bul-${convId.slice(0, 8)}.pdf`;
-      document.body.appendChild(a); a.click(); a.remove();
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `hak-bul-${convId.slice(0, 8)}.pdf`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-    } catch { alert('PDF indirilemedi.'); }
+      toast?.('PDF indiriliyor.');
+    } catch {
+      toast?.('PDF indirilemedi.', 'error');
+    }
   };
 
   return (
     <div className="flex h-[calc(100vh-56px)]" style={{ background: 'var(--surface)' }}>
-      {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-10 md:hidden"
@@ -512,16 +569,13 @@ export default function SohbetSayfasi() {
           activeId={activeId}
           onSelect={handleSelect}
           onNew={handleNew}
+          toast={toast}
         />
       </div>
 
       <main className="flex-1 flex flex-col min-w-0">
-        {/* Chat header */}
         <div className="hairline-b px-6 h-12 flex items-center gap-3 shrink-0">
-          <button
-            onClick={() => setSidebarOpen(v => !v)}
-            className="p-1 rounded hover:bg-surface-muted"
-          >
+          <button onClick={() => setSidebarOpen((value) => !value)} className="p-1 rounded hover:bg-surface-muted">
             <Icon
               name={sidebarOpen ? 'panel-left-close' : 'panel-left-open'}
               size={16}
@@ -533,53 +587,55 @@ export default function SohbetSayfasi() {
               {convId ? `Sohbet #${convId.slice(0, 8)}` : 'Yeni Sohbet'}
             </div>
           </div>
-          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet bağlantısını kopyala"><Icon name="link-2" size={14} /> Paylaş</button>
-          <button onClick={handlePDF} className="btn btn-ghost text-xs" title="PDF olarak indir"><Icon name="download" size={14} /> PDF</button>
+          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet baglantisini kopyala">
+            <Icon name="link-2" size={14} /> Paylas
+          </button>
+          <button onClick={handlePDF} className="btn btn-ghost text-xs" title="PDF olarak indir">
+            <Icon name="download" size={14} /> PDF
+          </button>
         </div>
 
-        {/* Messages */}
         <div ref={scrollRef} className="flex-1 overflow-auto">
           <div className="max-w-3xl mx-auto px-6 py-8">
             {mesajlar.length === 0 ? (
               <EmptyState onPick={sendMessage} />
             ) : (
               <div className="flex flex-col gap-6">
-                {mesajlar.map((m, i) => (
-                  <MessageBubble key={m.id || i} m={m} />
+                {mesajlar.map((message, index) => (
+                  <MessageBubble key={message.id || index} m={message} />
                 ))}
               </div>
             )}
           </div>
         </div>
 
-        {/* Input */}
         <div className="shrink-0 px-6 pb-6 pt-2" style={{ background: 'var(--surface)' }}>
           <div className="max-w-3xl mx-auto">
             <div className="card p-3 shadow-sm" style={{ borderColor: 'var(--line-strong)' }}>
               <textarea
                 value={input}
-                onChange={e => setInput(e.target.value)}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
+                onChange={(event) => setInput(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && !event.shiftKey) {
+                    event.preventDefault();
                     sendMessage(input);
                   }
                 }}
                 rows={2}
-                placeholder="Hukuki sorunuzu yazın…"
+                placeholder="Hukuki sorunuzu yazin..."
                 disabled={yukleniyor}
                 className="w-full bg-transparent resize-none text-[15px] leading-relaxed"
               />
               <div className="flex items-center justify-between mt-1">
                 <div className="flex items-center gap-1">
-                  <button className="p-1.5 rounded hover:bg-surface-muted text-ink-muted" title="PDF yükle">
+                  <button className="p-1.5 rounded hover:bg-surface-muted text-ink-muted" title="PDF yukle">
                     <Icon name="paperclip" size={15} />
                   </button>
                   <span className="text-[11px] text-ink-faint ml-2">{input.length}/2000</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] text-ink-faint hidden md:block">
-                    Enter ile gönder · Shift+Enter satır ekler
+                    Enter ile gonder · Shift+Enter satir ekler
                   </span>
                   <button
                     onClick={() => sendMessage(input)}
@@ -592,7 +648,7 @@ export default function SohbetSayfasi() {
               </div>
             </div>
             <div className="text-[11px] text-ink-faint text-center mt-2">
-              Yanıtlar bilgi amaçlıdır · Avukat görüşünün yerini tutmaz
+              Yanitlar bilgi amaclidir · Avukat gorusunun yerini tutmaz
             </div>
           </div>
         </div>

@@ -5,6 +5,9 @@ main.py - Hak-Bul backend entrypoint
 import os
 import warnings
 import logging
+import threading
+from time import perf_counter
+from uuid import uuid4
 
 import json
 import httpx
@@ -41,6 +44,7 @@ os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 
 limiter = Limiter(key_func=get_remote_address)
 logger = logging.getLogger(__name__)
+perf_logger = logging.getLogger("uvicorn.error")
 
 app = FastAPI(
     title="Hak-Bul API",
@@ -64,6 +68,11 @@ app.include_router(feedback_router)
 app.include_router(admin_router)
 app.include_router(templates_router)
 app.include_router(forum_router)
+
+
+@app.on_event("startup")
+async def preload_models_on_startup():
+    start_retrieval_warmup()
 
 
 @app.exception_handler(RateLimitExceeded)
@@ -98,6 +107,39 @@ def get_qdrant():
 
         _qdrant = _get_qdrant()
     return _qdrant
+
+
+def warm_retrieval_model() -> bool:
+    if settings.MOCK_RETRIEVAL:
+        return False
+
+    from rag.retriever import _get_model
+
+    started_at = perf_counter()
+    try:
+        _get_model()
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][warmup] retrieval_model_loaded_ms=%.1f",
+                (perf_counter() - started_at) * 1000,
+            )
+        return True
+    except Exception:
+        logger.warning("Retrieval model warm-up failed; lazy loading will be used.", exc_info=True)
+        return False
+
+
+def start_retrieval_warmup() -> bool:
+    if settings.MOCK_RETRIEVAL:
+        return False
+
+    thread = threading.Thread(
+        target=warm_retrieval_model,
+        name="retrieval-model-warmup",
+        daemon=True,
+    )
+    thread.start()
+    return True
 
 
 def _qdrant_collection_exists_via_rest(collection_name: str) -> None:
@@ -166,10 +208,17 @@ async def ask(
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user_optional),
 ):
+    request_id = uuid4().hex[:8]
+    started_at = perf_counter()
     try:
         assert_upstreams_ready_for_ask()
         pipeline = get_pipeline()
-        result = pipeline(soru=body.soru, max_kaynak=body.max_kaynak, language=body.language)
+        result = pipeline(
+            soru=body.soru,
+            max_kaynak=body.max_kaynak,
+            language=body.language,
+            request_id=request_id,
+        )
         conversation_id = resolve_conversation_id(body.conversation_id)
 
         guest_session_id: str | None = None
@@ -194,6 +243,7 @@ async def ask(
                 assistant_message=result["yanit"],
                 category=kategori,
                 kaynaklar=kaynaklar,
+                request_id=request_id,
             )
         else:
             guest_session_id = resolve_guest_session_for_request(request, body.guest_session_id)
@@ -206,6 +256,16 @@ async def ask(
                 assistant_message=result["yanit"],
                 category=kategori,
                 kaynaklar=kaynaklar,
+                request_id=request_id,
+            )
+
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][%s] /ask total_ms=%.1f auth=%s conversation_id=%s",
+                request_id,
+                (perf_counter() - started_at) * 1000,
+                bool(current_user),
+                conversation_id,
             )
 
         return AskResponse(
@@ -248,9 +308,11 @@ async def ask_stream(
     from rag.generator import generate_answer_stream
     from rag.pipeline import retrieve_context
 
+    request_id = uuid4().hex[:8]
+    started_at = perf_counter()
     try:
         assert_upstreams_ready_for_ask()
-        context = retrieve_context(body.soru, max_kaynak=body.max_kaynak)
+        context = retrieve_context(body.soru, max_kaynak=body.max_kaynak, request_id=request_id)
         kategori = context["kategori"]
         filtered = context["chunks"]
         kaynaklar = context["kaynaklar"]
@@ -259,6 +321,16 @@ async def ask_stream(
         guest_session_id: str | None = None
         if not current_user:
             guest_session_id = resolve_guest_session_for_request(request, body.guest_session_id)
+
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][%s] /ask/stream prepared_ms=%.1f auth=%s conversation_id=%s sources=%s",
+                request_id,
+                (perf_counter() - started_at) * 1000,
+                bool(current_user),
+                conversation_id,
+                len(kaynaklar),
+            )
 
     except RuntimeError as exc:
         detail = str(exc)
@@ -278,6 +350,7 @@ async def ask_stream(
         raise HTTPException(status_code=500, detail="Sunucu hatası oluştu.") from exc
 
     async def event_stream():
+        stream_started_at = perf_counter()
         # İlk SSE mesajı: meta (kaynaklar, kategori, conversation_id)
         meta = {
             "type": "meta",
@@ -286,13 +359,27 @@ async def ask_stream(
             "conversation_id": conversation_id,
             "guest_session_id": guest_session_id,
         }
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][%s] /ask/stream meta_emit_ms=%.1f",
+                request_id,
+                (perf_counter() - started_at) * 1000,
+            )
         yield f"data: {json.dumps(meta, ensure_ascii=False)}\n\n"
 
         # Token token yanıt
         full_answer_parts: list[str] = []
+        first_token_emitted = False
         try:
-            for token in generate_answer_stream(body.soru, filtered, language=body.language):
+            for token in generate_answer_stream(body.soru, filtered, language=body.language, request_id=request_id):
                 full_answer_parts.append(token)
+                if settings.PERF_LOG_ENABLED and not first_token_emitted:
+                    first_token_emitted = True
+                    perf_logger.info(
+                        "[perf][%s] /ask/stream first_token_emit_ms=%.1f",
+                        request_id,
+                        (perf_counter() - started_at) * 1000,
+                    )
                 payload = {"type": "token", "text": token}
                 yield f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
         except RuntimeError as exc:
@@ -313,6 +400,7 @@ async def ask_stream(
                     assistant_message=full_answer,
                     category=kategori,
                     kaynaklar=kaynaklar,
+                    request_id=request_id,
                 )
             else:
                 message_id = save_chat_pair(
@@ -323,10 +411,19 @@ async def ask_stream(
                     assistant_message=full_answer,
                     category=kategori,
                     kaynaklar=kaynaklar,
+                    request_id=request_id,
                 )
         except Exception:
             message_id = None
 
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][%s] /ask/stream done_emit_ms=%.1f stream_only_ms=%.1f answer_chars=%s",
+                request_id,
+                (perf_counter() - started_at) * 1000,
+                (perf_counter() - stream_started_at) * 1000,
+                len(full_answer),
+            )
         done_payload = {
             "type": "done",
             "message_id": message_id,

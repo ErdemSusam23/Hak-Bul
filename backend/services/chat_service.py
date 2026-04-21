@@ -1,12 +1,18 @@
 import uuid
 from datetime import datetime
+import logging
+from time import perf_counter
 
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
+from config import settings
 from models.chat_history import ChatHistory
 from models.enums import MessageRole
 from models.shared_conversation import SharedConversation
+
+logger = logging.getLogger(__name__)
+perf_logger = logging.getLogger("uvicorn.error")
 
 
 def resolve_conversation_id(conversation_id: str | None) -> str:
@@ -26,19 +32,23 @@ def save_chat_pair(
     guest_session_id: str | None = None,
     category: str | None = None,
     kaynaklar: list | None = None,
+    request_id: str | None = None,
 ) -> str:
     """Kullanıcı ve asistan mesajlarını kaydeder. Asistan mesajının ID'sini döndürür."""
+    total_started_at = perf_counter()
     # Exactly one owner type must be set for each row.
     if (user_id is None) == (guest_session_id is None):
         raise ValueError("Exactly one of user_id or guest_session_id must be provided.")
 
     # İlk mesajsa title oluştur (60 karakter, kelime ortasında kesmez)
+    first_check_started_at = perf_counter()
     filters = [ChatHistory.conversation_id == conversation_id, ChatHistory.deleted_at.is_(None)]
     if user_id:
         filters.append(ChatHistory.user_id == user_id)
     else:
         filters.append(ChatHistory.guest_session_id == guest_session_id)
     is_first = db.query(ChatHistory.id).filter(*filters).first() is None
+    first_check_ms = (perf_counter() - first_check_started_at) * 1000
     title = (user_message[:60].rsplit(" ", 1)[0] if len(user_message) > 60 else user_message) if is_first else None
 
     assistant_row = ChatHistory(
@@ -65,7 +75,19 @@ def save_chat_pair(
         assistant_row,
     ]
     db.add_all(rows)
+    commit_started_at = perf_counter()
     db.commit()
+    commit_ms = (perf_counter() - commit_started_at) * 1000
+    if settings.PERF_LOG_ENABLED:
+        perf_logger.info(
+            "[perf][%s] save_chat_pair total_ms=%.1f first_check_ms=%.1f commit_ms=%.1f is_first=%s sources=%s",
+            request_id or "-",
+            (perf_counter() - total_started_at) * 1000,
+            first_check_ms,
+            commit_ms,
+            is_first,
+            len(kaynaklar or []),
+        )
     return assistant_row.id
 
 

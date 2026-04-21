@@ -2,6 +2,7 @@ import { useState, useCallback, useRef } from 'react';
 import { apiFetch, dokumanAnalizAPI } from '../api/client';
 
 const MOCK_MODE = import.meta.env?.VITE_MOCK_MODE === 'true';
+const PERF_LOG = import.meta.env?.VITE_PERF_LOG === 'true';
 
 let mesajSayac = 0;
 const yeniId = () => `msg_${++mesajSayac}_${Date.now()}`;
@@ -31,6 +32,11 @@ const CHAT_COPY = {
 };
 
 const getChatCopy = (language) => CHAT_COPY[language] || CHAT_COPY.tr;
+
+function logPerf(event, details = {}) {
+    if (!PERF_LOG) return;
+    console.info(`[perf][chat] ${event}`, details);
+}
 
 export function useChat(language = 'tr') {
     const [mesajlar, setMesajlar] = useState([]);
@@ -150,6 +156,15 @@ export function useChat(language = 'tr') {
 
         let resultConvId = null;
         let resultGuestId = null;
+        const timings = {
+            startedAt: performance.now(),
+            responseAt: null,
+            firstChunkAt: null,
+            firstMetaAt: null,
+            firstTokenAt: null,
+            doneAt: null,
+            tokenCount: 0,
+        };
 
         try {
             const resp = await apiFetch('/ask/stream', {
@@ -159,6 +174,11 @@ export function useChat(language = 'tr') {
                 },
                 body: JSON.stringify(payload),
                 signal: controller.signal,
+            });
+            timings.responseAt = performance.now();
+            logPerf('response_headers', {
+                durationMs: Number((timings.responseAt - timings.startedAt).toFixed(1)),
+                status: resp.status,
             });
 
             if (!resp.ok) {
@@ -174,6 +194,12 @@ export function useChat(language = 'tr') {
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
+                if (timings.firstChunkAt === null) {
+                    timings.firstChunkAt = performance.now();
+                    logPerf('first_chunk', {
+                        durationMs: Number((timings.firstChunkAt - timings.startedAt).toFixed(1)),
+                    });
+                }
 
                 buffer += decoder.decode(value, { stream: true });
                 const lines = buffer.split('\n');
@@ -188,6 +214,13 @@ export function useChat(language = 'tr') {
                     try { event = JSON.parse(raw); } catch { continue; }
 
                     if (event.type === 'meta') {
+                        if (timings.firstMetaAt === null) {
+                            timings.firstMetaAt = performance.now();
+                            logPerf('meta', {
+                                durationMs: Number((timings.firstMetaAt - timings.startedAt).toFixed(1)),
+                                sources: (event.kaynaklar || []).length,
+                            });
+                        }
                         resultConvId = event.conversation_id;
                         resultGuestId = event.guest_session_id;
                         setMesajlar((onceki) =>
@@ -198,6 +231,13 @@ export function useChat(language = 'tr') {
                             )
                         );
                     } else if (event.type === 'token') {
+                        timings.tokenCount += 1;
+                        if (timings.firstTokenAt === null) {
+                            timings.firstTokenAt = performance.now();
+                            logPerf('first_token', {
+                                durationMs: Number((timings.firstTokenAt - timings.startedAt).toFixed(1)),
+                            });
+                        }
                         setMesajlar((onceki) =>
                             onceki.map((m) =>
                                 m.id === streamMesajId
@@ -206,6 +246,11 @@ export function useChat(language = 'tr') {
                             )
                         );
                     } else if (event.type === 'done') {
+                        timings.doneAt = performance.now();
+                        logPerf('done', {
+                            totalMs: Number((timings.doneAt - timings.startedAt).toFixed(1)),
+                            tokenCount: timings.tokenCount,
+                        });
                         setMesajlar((onceki) =>
                             onceki.map((m) =>
                                 m.id === streamMesajId

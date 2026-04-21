@@ -3,12 +3,17 @@ generator.py
 Answer generation helpers for chat and document workflows.
 """
 
+import logging
+from time import perf_counter
+
 from groq import Groq
 
 from config import settings
 from services.language_service import informational_warning, normalize_language, pick_text
 
 _client: Groq | None = None
+logger = logging.getLogger(__name__)
+perf_logger = logging.getLogger("uvicorn.error")
 
 GENERAL_SYSTEM_PROMPT_TR = """Sen bir Turk hukuku bilgi sistemisin. Sana verilen kanun
 maddeleri ve Yargitay kararlarini kaynak alarak kullanicinin sorusunu Turkce
@@ -273,17 +278,20 @@ def _document_system_prompt(language: str) -> str:
     return DOCUMENT_SYSTEM_PROMPT_EN if language == "en" else DOCUMENT_SYSTEM_PROMPT_TR
 
 
-def generate_answer(soru: str, chunks: list[dict], language: str = "tr") -> str:
+def generate_answer(soru: str, chunks: list[dict], language: str = "tr", request_id: str | None = None) -> str:
+    total_started_at = perf_counter()
     language = normalize_language(language)
     if settings.MOCK_MODE or settings.MOCK_LLM or not settings.GROQ_API_KEY:
         return _extractive_fallback_answer(chunks, language)
 
+    context_started_at = perf_counter()
     context = _build_source_context(
         chunks,
         language=language,
         max_chars_per_source=2200,
         max_total_chars=8500,
     )
+    context_ms = (perf_counter() - context_started_at) * 1000
 
     user_prompt = pick_text(
         language,
@@ -292,18 +300,30 @@ def generate_answer(soru: str, chunks: list[dict], language: str = "tr") -> str:
     )
 
     try:
+        completion_started_at = perf_counter()
         response = _chat_completion(
             system_prompt=_general_system_prompt(language),
             user_prompt=user_prompt,
             max_tokens=1000,
         )
+        completion_ms = (perf_counter() - completion_started_at) * 1000
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][%s] generate_answer total_ms=%.1f context_ms=%.1f completion_ms=%.1f chunks=%s",
+                request_id or "-",
+                (perf_counter() - total_started_at) * 1000,
+                context_ms,
+                completion_ms,
+                len(chunks),
+            )
         return _strip_artifacts(response.choices[0].message.content.strip())
     except Exception as exc:
         raise RuntimeError(f"Groq yanit uretme hatasi: {exc}") from exc
 
 
-def generate_answer_stream(soru: str, chunks: list[dict], language: str = "tr"):
+def generate_answer_stream(soru: str, chunks: list[dict], language: str = "tr", request_id: str | None = None):
     """Groq streaming yanit uretici. Her token icin str yield eder."""
+    total_started_at = perf_counter()
     language = normalize_language(language)
     if settings.MOCK_MODE or settings.MOCK_LLM or not settings.GROQ_API_KEY:
         full = _extractive_fallback_answer(chunks, language)
@@ -311,12 +331,14 @@ def generate_answer_stream(soru: str, chunks: list[dict], language: str = "tr"):
             yield word + " "
         return
 
+    context_started_at = perf_counter()
     context = _build_source_context(
         chunks,
         language=language,
         max_chars_per_source=2200,
         max_total_chars=8500,
     )
+    context_ms = (perf_counter() - context_started_at) * 1000
 
     user_prompt = pick_text(
         language,
@@ -325,16 +347,34 @@ def generate_answer_stream(soru: str, chunks: list[dict], language: str = "tr"):
     )
 
     try:
+        stream_started_at = perf_counter()
         stream = _chat_completion(
             system_prompt=_general_system_prompt(language),
             user_prompt=user_prompt,
             max_tokens=1000,
             stream=True,
         )
+        stream_create_ms = (perf_counter() - stream_started_at) * 1000
+        first_token_ms = None
+        token_count = 0
         for chunk in stream:
             delta = chunk.choices[0].delta.content
             if delta:
+                token_count += 1
+                if first_token_ms is None:
+                    first_token_ms = (perf_counter() - total_started_at) * 1000
                 yield _strip_artifacts(delta, strip_whitespace=False)
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][%s] generate_answer_stream total_ms=%.1f context_ms=%.1f stream_create_ms=%.1f first_token_ms=%s token_events=%s chunks=%s",
+                request_id or "-",
+                (perf_counter() - total_started_at) * 1000,
+                context_ms,
+                stream_create_ms,
+                f"{first_token_ms:.1f}" if first_token_ms is not None else "none",
+                token_count,
+                len(chunks),
+            )
     except Exception as exc:
         raise RuntimeError(f"Groq streaming hatasi: {exc}") from exc
 

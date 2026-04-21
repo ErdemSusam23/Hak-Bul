@@ -194,6 +194,11 @@ Notlar:
 
 `/ask` ile ayni request body'yi alir, yaniti SSE olarak akar.
 
+Istek sekli:
+
+- Method `POST` kalir; request body `/ask` ile aynidir.
+- SSE payload'lari named event yerine yalnizca `data: <json>` satirlari olarak gonderilir.
+
 Response content type:
 
 ```text
@@ -241,6 +246,9 @@ Notlar:
 - `done.message_id` feedback icin kullanilir.
 - Guest akislarda uygun durumda `guest_session_id` cookie'si set edilir.
 - Streaming baslamadan onceki upstream hatalari normal HTTP `503` olarak donebilir.
+- Basarili akis `meta -> token* -> done` seklindedir.
+- `error` event'i emit edilirse stream hemen kapanir; bu durumda `done` event'i gelmez.
+- Endpoint `POST` tabanli oldugu icin browser istemcileri genelde native `EventSource` yerine `fetch` + `ReadableStream` ile tuketir.
 
 ---
 

@@ -1,308 +1,218 @@
 # RAG Pipeline
 
-`backend-docs.md`'den bölündü — v2.0`
+Bu belge `backend/rag/*` ve `/ask`, `/ask/stream` akislarinin guncel teknik ozetidir.
 
 ---
 
-## Genel Akış
+## Genel Akis
 
-```
-Kullanıcı sorusu
-      │
-      ▼
-[1] categorize()              ← Uygulama içi keyword eşleme
-      │
-      ▼
-[2] rewrite_query()           ← Groq API → llama-3.1-8b-instant
-      │
-      ▼
-[3] retrieve_chunks()         ← Qdrant hukuk_chunks_v2 (kanunlar, PRIMARY)
-      │                          + Qdrant hukuk_chunks (kararlar, SECONDARY ×0.9)
-      │                          + local JSON fallback (Qdrant başarısız olursa)
-      │
-      ▼
-[4] apply_category_penalty()  ← Kategoriye uymayan kanunlara ×0.5 soft penalty
-      │
-      ▼
-[5] rerank_chunks()           ← BAAI/bge-reranker-v2-m3 CrossEncoder sıralaması
-      │                          (RERANKER_ENABLED=true ise aktif)
-      │
-      ▼
-[6] filter_by_score()         ← Mulga filtreleme + SCORE_THRESHOLD eşiği
-      │
-      ▼
-[7] generate_answer()         ← Groq API → llama-3.3-70b-versatile
-      │
-      ▼
-[8] format_response()         ← AskResponse JSON
+```text
+Kullanici sorusu
+      |
+      v
+[1] kategorize et
+      |
+      v
+[2] query rewrite
+      |
+      v
+[3] retrieval
+      |   - default Qdrant collection
+      |   - opsiyonel law collection merge
+      |   - local corpus fallback / law merge
+      v
+[4] category penalty
+      |
+      v
+[5] conditional rerank
+      |
+      v
+[6] score filter + source dedupe
+      |
+      v
+[7] answer generation
+      |
+      v
+[8] source summary + response format
 ```
 
-| Adım | Fonksiyon | Girdi | Çıktı | Servis |
-|------|-----------|-------|-------|--------|
-| 1 | `get_kategorilendirici().kategorile()` | Kullanıcı sorusu | 14 kategoriden biri | Uygulama içi |
-| 2 | `rewrite_query()` | Kullanıcı sorusu | Vektör aramaya uygun kısa sorgu | Groq — llama-3.1-8b-instant |
-| 3 | `retrieve_chunks()` | Rewrite edilmiş sorgu | Kanunlar (primary) + kararlar (secondary) + local fallback | Qdrant Cloud + local corpus |
-| 4 | `apply_category_penalty()` | Chunk listesi + kategori | Kategoriye uymayan kanunlara ×0.5 penalty uygulanmış liste | Uygulama içi |
-| 5 | `rerank_chunks()` | Chunk listesi + orijinal soru | CrossEncoder'la yeniden sıralanmış liste (skor Qdrant'tan korunur) | Uygulama içi |
-| 6 | `filter_by_score()` | Chunk listesi | Mulga maddeler ayıklandı, eşik uygulandı | Uygulama içi |
-| 7 | `generate_answer()` | Filtreli chunk'lar + orijinal soru | Kaynak atıflı TR/EN yanıt | Groq — llama-3.3-70b-versatile |
-| 8 | `format_response()` | Yanıt + chunk metadata | AskResponse JSON | Uygulama içi |
+| Adim | Fonksiyon | Girdi | Cikti | Servis |
+|---|---|---|---|---|
+| 1 | `get_kategorilendirici().kategorile()` | Kullanici sorusu | 14 kategoriden biri | Uygulama ici |
+| 2 | `rewrite_query()` | Kullanici sorusu | Retrieval icin kisa sorgu veya orijinal soru | Groq llama-3.1-8b-instant |
+| 3 | `retrieve_chunks()` | Rewrite edilmis sorgu | Qdrant/local corpus chunk listesi | Qdrant Cloud + local corpus |
+| 4 | `apply_category_penalty()` | Chunk listesi + kategori | Beklenmeyen kanunlara soft penalty uygulanmis liste | Uygulama ici |
+| 5 | `rerank_chunks()` | Chunk listesi + orijinal soru | Gerektiginde yeniden siralanmis liste | Uygulama ici |
+| 6 | `filter_by_score()` | Chunk listesi | Esik uygulanmis, mulga filtrelenmis liste | Uygulama ici |
+| 7 | `generate_answer()` / `generate_answer_stream()` | Filtreli chunk'lar + orijinal soru | TR/EN yanit veya token akisi | Groq llama-3.3-70b-versatile |
+| 8 | `_format_sources()` + response modelleri | Chunk metadata + yanit | `AskResponse` veya SSE event payload'lari | Uygulama ici |
 
 ---
 
-## Adım Adım Detay
+## Adim Adim Detay
 
-### Adım 1 — Kategori Tespiti
+### 1. Kategori Tespiti
 
-`pipeline.retrieve_context()` ilk olarak soruyu keyword tabanlı kategorizer'dan geçirir. Bu adım retrieval'dan bağımsızdır ve admin istatistikleri ile weak query loglarında kullanılır.
+- `pipeline.retrieve_context()` ilk adimda soruyu keyword tabanli kategorizer'dan gecirir.
+- Kategori bilgisi retrieval cezalari, admin istatistikleri ve weak query loglarinda kullanilir.
+- Kategori kumesi 14 basliktan olusur: Is, Medeni, Ceza, Ticaret, Tuketici, Tasinmaz Mulk, Idare, Vergi, Sosyal Guvenlik, Fikri Mulkiyet, Bilisim, Anayasa, Usul, Genel.
 
-Kategori kümesi 14 başlıktan oluşur: İş, Medeni, Ceza, Ticaret, Tüketici, Taşınmaz Mülk, İdare, Vergi, Sosyal Güvenlik, Fikri Mülkiyet, Bilişim, Anayasa, Usul, Genel.
+### 2. Query Rewriting
 
-### Adım 2 — Query Rewriting
+- `rewrite_query()` normal durumda Groq `llama-3.1-8b-instant` ile retrieval dostu kisa bir sorgu uretir.
+- Kullanici sorusunda acik kanun/madde referansi varsa rewrite atlanir ve orijinal soru kullanilir.
+- `MOCK_MODE`, `MOCK_LLM` veya eksik `GROQ_API_KEY` durumunda rewrite atlanir.
+- Groq hatasi, asiri uzun cikti veya tekrarli cikti gorulurse pipeline kirilmaz; orijinal sorguyla devam edilir.
 
-```python
-# rag/query_rewriter.py
+### 3. Retrieval
 
-SYSTEM_PROMPT = """
-Sen bir Türk hukuku uzmanısın. Kullanıcının sorusunu,
-vektör arama için optimize edilmiş kısa bir arama sorgusuna dönüştür.
-"""
+`retrieve_chunks()` uc kaynagi birlestirebilir:
 
-def rewrite_query(soru: str) -> str:
-    if _has_explicit_legal_reference(soru):
-        return soru
+1. Varsayilan Qdrant collection (`settings.COLLECTION_NAME`)
+2. Opsiyonel law collection (`settings.COLLECTION_KANUN_NAME`)
+3. Local JSON corpus (`backend/data/processed_backup_*`)
 
-    response = groq_client.chat.completions.create(
-        model="llama-3.1-8b-instant",
-        messages=[{"role": "system", "content": SYSTEM_PROMPT},
-                  {"role": "user", "content": soru}],
-        max_tokens=60,
-        temperature=0.0,
-    )
-    return response.choices[0].message.content
-```
+Davranis kurallari:
 
-Davranış notları:
+- Default collection her zaman ilk sorgulanan kaynaktir.
+- `COLLECTION_KANUN_NAME` set edilirse ikinci bir Qdrant sorgusu yapilir; kanun sonuclari varsa merge edilerek one alinabilir.
+- Qdrant hic yapilandirilmamissa ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=true` ise yalnizca local corpus kullanilir.
+- Law collection kullanilamazsa, kanun/madde ipucu tasiyan sorgularda local corpus'tan kanun chunk'lari merge edilir.
+- Qdrant cagrisi exception verirse ve local fallback aciksa local corpus ile devam edilir.
+- Ham payload korunur; mulga filtreleme ve source ozetleme sonraki adimlarda yapilir.
 
-- Kullanıcı soru içinde açık kanun/madde referansı verdiyse (`madde`, `md`, 3-4 haneli kanun no), rewrite atlanır ve orijinal sorgu kullanılır.
-- Groq yapılandırılmamışsa veya çağrı hata verirse pipeline kırılmaz; orijinal sorguyla devam edilir.
+### 4. Category Penalty
 
-### Adım 3 — Retrieval
+- `apply_category_penalty()` yalnizca `kanun` turundeki chunk'lari etkiler.
+- `KATEGORI_EXPECTED_LAWS` disindaki kanunlarin skoru varsayilan olarak `x0.5` ile dusurulur.
+- Yargitay kararlari ve `Genel` kategori etkilenmez.
+- Penalty sonrasi liste yeniden skora gore siralanir.
 
-Dual-collection stratejisi: kanunlar primary, Yargıtay kararları secondary, local JSON son çare.
+### 5. Conditional Rerank
 
-```python
-# rag/retriever.py (özet)
+`rerank_chunks()` her istekte zorunlu calismaz.
 
-def retrieve_chunks(query: str, top_n: int = 5) -> list[dict]:
-    embedding = model.encode(f"query: {query}").tolist()
+Guncel kurallar:
 
-    # PRIMARY: kararlar collection (hukuk_chunks)
-    qdrant_results = _query_qdrant(embedding=embedding, top_n=top_n * 2)
-    raw = [{"payload": r.payload, "skor": r.score} for r in qdrant_results]
-    deduped = _deduplicate_chunks(raw)
+- `RERANKER_ENABLED=false` ise rerank hic uygulanmaz.
+- `RERANKER_ENABLED=true` olsa bile sadece ilk retrieval sonucunun skoru `SCORE_THRESHOLD` altindaysa rerank devreye girer.
+- Rerank adayi sayisi `min(len(chunks), max(8, max_kaynak + 3))` ile sinirlanir.
+- Sira cross-encoder tarafindan belirlenir; `skor` alani ise downstream filtreler bozulmasin diye retrieval skorunu korur.
+- Model: `BAAI/bge-reranker-v2-m3`
 
-    # SECONDARY: kanunlar collection (hukuk_chunks_v2) — COLLECTION_KANUN_NAME ile kontrol
-    if settings.COLLECTION_KANUN_NAME:
-        kanun_results = _query_qdrant(
-            embedding=embedding,
-            top_n=top_n * 2,
-            collection_name=settings.COLLECTION_KANUN_NAME,
-        )
-        raw_kanunlar = [{"payload": r.payload, "skor": r.score} for r in kanun_results]
-        deduped = _merge_scored_chunks(
-            _deduplicate_chunks(raw_kanunlar),  # primary
-            deduped,                             # secondary ×0.9
-            secondary_boost=0.9,
-        )
+### 6. Score Filter ve Weak Query
 
-    # FALLBACK: local JSON — sadece kanunlar collection sorgulanamadıysa
-    if not got_qdrant_kanunlar and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
-        local_kanun = _retrieve_local(query=query, top_n=top_n * 2)
-        deduped = _merge_scored_chunks(local_kanun, deduped, secondary_boost=0.85)
+- `filter_by_score()` once tamamen mulga maddeleri eler.
+- Sonra `SCORE_THRESHOLD` esigi uygulanir.
+- Esik ustunde hic sonuc kalmazsa, en yuksek skorlu ilk 5 chunk fallback olarak dondurulur.
+- `/ask` tarafinda `kaynaklar` bossa veya `max_skor < SCORE_THRESHOLD` ise sorgu `weak_queries` tablosuna loglanabilir.
 
-    return deduped[:top_n]
-```
+### 7. Answer Generation
 
-Davranış notları:
+- `generate_answer()` ve `generate_answer_stream()` Groq `llama-3.3-70b-versatile` kullanir.
+- Sistem prompt'u kaynak disi madde/hukum uydurmayi yasaklar.
+- Kritik ve kisisel hukuki senaryolarda ALO 182 yonlendirmesi eklenebilir.
+- `generate_answer_stream()` ayni cevabi token token yield eder; `/ask/stream` bu fonksiyonu kullanir.
+- Basarili SSE akisinda `done`, generator hatasinda ise `error` event'i gonderilip stream kapanir.
 
-- `COLLECTION_KANUN_NAME` env var boşsa sadece kararlar collection sorgulanır (geriye dönük uyumlu).
-- Kanunlar collection başarısız olursa uyarı loglanır ve local JSON fallback devreye girer.
-- Retrieval katmanı tamamen mulga metinleri sonradan filtreleyebilmek için ham payload'ı taşır.
+### 8. Source Summary
 
-### Adım 4 — Kategori Penalty
+`pipeline._format_sources()` her kaynak icin `metin_ozet` uretir.
 
-```python
-# rag/retriever.py
+Kurallar:
 
-def apply_category_penalty(chunks, kategori, penalty=0.5):
-    expected = KATEGORI_EXPECTED_LAWS.get(kategori)
-    # Kategoriye uymayan kanun chunk'larına ×0.5 soft penalty
-    # Yargıtay kararları ve "Genel" kategorisi etkilenmez
-```
-
-`KATEGORI_EXPECTED_LAWS` dict'i her kategori için beklenen kanun numaralarını tanımlar (örn. İş Hukuku → 4857, 1475, 5510). Beklenmeyenler penalize edilerek sıralamanın altına iner; threshold altına düşerlerse `filter_by_score` tarafından elenirler.
-
-### Adım 5 — Reranker
-
-```python
-# rag/reranker.py
-
-def rerank_chunks(query, chunks, top_n):
-    if not settings.RERANKER_ENABLED:
-        return chunks[:top_n]  # sıfır ek maliyet
-
-    reranker = CrossEncoder("BAAI/bge-reranker-v2-m3")  # lazy-load, ~270MB
-    scores = reranker.predict([(query, c["payload"]["metin"]) for c in chunks])
-    reranked = sorted(zip(chunks, scores), key=lambda x: x[1], reverse=True)
-
-    # Sıralama cross-encoder'dan, skor Qdrant cosine similarity'den korunur
-    return [{"payload": c["payload"], "skor": c["skor"]} for c, _ in reranked[:top_n]]
-```
-
-`RERANKER_ENABLED=false` ise fonksiyon `chunks[:top_n]` döndürür — model yüklenmez, gecikme eklenmez.
-
-### Adım 6 — Skor Filtresi ve Zayıf Sorgu Tespiti
-
-```python
-# rag/retriever.py
-
-def filter_by_score(chunks: list[dict], threshold: float = settings.SCORE_THRESHOLD) -> list[dict]:
-    chunks = [c for c in chunks if not _is_tamamen_mulga(c["payload"].get("metin", ""))]
-    filtered = [c for c in chunks if c["skor"] >= threshold]
-    if not filtered:
-        # Hiç chunk kalmadıysa en yüksek skorlu ilk 5 taneyi döndür
-        return sorted(chunks, key=lambda c: c["skor"], reverse=True)[:5]
-    return filtered
-```
-
-Tüm chunk'ların `max_skor < SCORE_THRESHOLD` ise sorgu `weak_queries` tablosuna loglanır (soru metni, max skor, kategori). Bu veriler admin panelinden izlenebilir (`GET /admin/weak-queries`).
-
-### Adım 7 — Yanıt Üretme
-
-`rag/generator.py` — `GENERAL_SYSTEM_PROMPT_TR` / `GENERAL_SYSTEM_PROMPT_EN` sabitleri kullanılır.
-
-Sistem prompt'u üç katmandan oluşur:
-
-**Katman 1 — Temel kural:** Yalnızca verilen kaynaklara dayan; kaynaklarda geçmeyen madde numarası, tarih veya hüküm ekleme. Kanun numarasını kaynakta görmüyorsan yazma; yalnızca kanun adını belirt.
-
-**Katman 2 — Avukat yönlendirmesi (koşullu):** Yönlendirme yalnızca kullanıcının KİŞİSEL hukuki durumuyla ilgili soru sorduğu durumlarda (ör. "benim hakkımda ne yapabilirim") eklenir:
-- Ceza davası, tutukluluk, gözaltı, yargılama süreci
-- Boşanma, velayet, nafaka davası
-- İş mahkemesi, tazminat davası
-- İcra ve iflas hukuku, haciz
-
-Genel bilgi soruları ("istinaf nedir", "zamanaşımı nedir") için yönlendirme **eklenmez**.
-
-Format: "Adalet Bakanlığı ALO 182 hattından ücretsiz hukuki danışmanlık alabilirsiniz."
-
-**Katman 3 — Kaynak Yetersizliği Kuralları:** Kaynaklar soruyu karşılamıyorsa asla boşluk doldurma:
-- Kaynaklarda geçmeyen madde numarası ("m.X", "X. madde") yazma
-- Kaynaklarda geçmeyen ceza sınırı (ay, yıl, TL tutarı) yazma
-- Kaynaklar yetersizse: hangi kanunun geçerli olduğunu kısaca belirt, ALO 182'ye yönlendir
-
-**SSE Streaming:** `generate_answer_stream()` ile aynı Groq çağrısı token token yield edilir; `/ask/stream` endpoint'i bu fonksiyonu kullanır.
-
-### Adım 8 — Kaynak Özetleme (Source Summary)
-
-`pipeline._format_sources()` her chunk için `metin_ozet` alanı üretir. Sorguya göre en ilgili cümleler seçilir:
-
-- Metindeki cümleler sorgu token örtüşmesiyle puanlanır
-- Süreli sorularda ("süre nedir", "kaç gün") sayı içeren veya "iş günü / gün / ay / yıl" geçen cümleler ek puan alır
-- En yüksek puanlı 3 cümle seçilir, kaynak sırasıyla sıralanır, 280 karakter sınırına kesilir
-- `metin_ozet` API yanıtında chat kartlarında gösterilir; tam `metin` alanı frontend'e gönderilmez
+- Cumleler query token ortusmesine gore puanlanir.
+- Sure odakli sorularda sayi ve zaman birimi iceren cumleler ek puan alir.
+- En ilgili en fazla 3 cumle secilir.
+- Ozet 280 karaktere kirpilir.
+- API yanitinda tam `metin` yerine `metin_ozet` gosterilir.
 
 ---
 
-## Hata Yönetimi
+## `/ask` ve `/ask/stream`
 
-| Senaryo | Davranış | HTTP Yanıt |
-|---------|----------|------------|
-| Groq API timeout (>10s) | 503 döner, retry önerilir | `503 + retry_after` |
-| Qdrant bağlantı hatası | `ALLOW_LOCAL_RETRIEVAL_FALLBACK=true` ise local corpus fallback; `false` ise 503 | `200` veya `503 + retry_after` |
-| Hiç chunk eşik üstüne çıkmadı | Mulga olmayan en yüksek skorlu ilk 5 chunk ile devam et | `200` (düşük güven riski ile) |
-| Groq çağrısı hata verdi | Rewrite aşamasında orijinal sorguya düşer; üretim aşamasında `RuntimeError` → HTTP hata katmanı | `500` veya `503` |
-| Soru çok kısa (<10 karakter) | Validasyon hatası | `422` |
+### `/ask`
 
-### Production Hard-Fail Politikası
+- `run_pipeline()` cagrilir.
+- Sonuc chat history'ye kaydedilir.
+- Basarili durumda tek parca `AskResponse` JSON doner.
 
-Production'da dış bağımlılık kesintisinde sessiz fallback yerine kontrollü hata döndürmek için:
+### `/ask/stream`
+
+- Retrieval ve kaynak hazirligi once tamamlanir.
+- Ardindan SSE uzerinden asagidaki event tipleri gonderilir:
+  - `meta`
+  - `token`
+  - `error`
+  - `done`
+- Basarili akista event sirasi `meta -> token* -> done` seklindedir.
+- Generator hatasinda `error` emit edilir ve stream kapanir; `done` gonderilmez.
+
+---
+
+## Hata Yonetimi
+
+| Senaryo | Davranis | HTTP |
+|---|---|---|
+| Groq rewrite hatasi | Orijinal sorguya duser | `200` akis devam eder |
+| Groq generation hatasi (`/ask`) | RuntimeError -> HTTP katmani | `500` veya `503` |
+| Groq generation hatasi (`/ask/stream`) | `error` SSE event'i gonderilir | `200` stream kapanisi |
+| Qdrant yok, local fallback acik | Local corpus ile devam | `200` |
+| Qdrant yok, local fallback kapali | Kontrollu hata | `503` |
+| Esik ustu chunk yok | En yuksek skorlu ilk 5 ile devam | `200` |
+| `STRICT_UPSTREAMS=true` ve upstream kapali | Sessiz fallback yerine hard-fail | `503` |
+
+Production hard-fail kombinasyonu:
 
 ```env
 STRICT_UPSTREAMS=true
 ALLOW_LOCAL_RETRIEVAL_FALLBACK=false
 ```
 
-Bu kombinasyonda `/ask` ve `/ask/stream` endpoint'leri Groq/Qdrant erişilemiyorsa `503` döner.
+---
+
+## Isletim Notlari
+
+### Retrieval warm-up
+
+- FastAPI startup sirasinda `start_retrieval_warmup()` arka planda embedding modelini yuklemeyi dener.
+- Warm-up basarisiz olursa uygulama acilmaz; ilk gercek retrieval isteginde lazy-load yapilir.
+
+### Performans loglari
+
+Asagidaki flag acik oldugunda asama bazli sure loglari `uvicorn.error` logger'ina yazilir:
+
+```env
+HAKBUL_PERF_LOG=true
+```
+
+Loglanan baslica noktalar:
+
+- retrieval model warm-up
+- query rewrite sureleri ve fallback nedenleri
+- retrieval, category penalty, rerank, filter ve source format sureleri
+- answer generation ve streaming sureleri
+- `/ask`, `/ask/stream` ve `save_chat_pair()` toplam sureleri
+
+Her istek zincirine kisa bir `request_id` eklenir; boylece ayni istegin rewrite, retrieval, generation ve stream loglari birlikte izlenebilir.
 
 ---
 
-## Groq API Kullanım Özeti
+## Modeller ve Ayarlar
 
-| Endpoint | Model | Maks Token | Tahmini Süre |
-|----------|-------|------------|--------------|
-| Query Rewriting | `llama-3.1-8b-instant` | 200 | < 1 saniye |
-| Yanıt Üretme | `llama-3.3-70b-versatile` | 1000 | 2-4 saniye |
-| **Toplam p95 yanıt süresi** | — | — | **< 10 saniye (hedef)** |
+| Alan | Deger |
+|---|---|
+| Rewrite modeli | `llama-3.1-8b-instant` |
+| Generation modeli | `llama-3.3-70b-versatile` |
+| Embedding modeli | `intfloat/multilingual-e5-base` |
+| Reranker modeli | `BAAI/bge-reranker-v2-m3` |
+| Esik | `SCORE_THRESHOLD` |
 
-> **Groq Free Tier:** Dakikada 30 istek, günde 14.400 istek. Geliştirme sırasında query rewriting adımı için `MOCK_MODE=true` kullanılması önerilir — böylece 70B model harcaması azalır.
+Onemli flag'ler:
 
----
+- `STRICT_UPSTREAMS`
+- `ALLOW_LOCAL_RETRIEVAL_FALLBACK`
+- `RERANKER_ENABLED`
+- `COLLECTION_KANUN_NAME`
+- `HAKBUL_PERF_LOG`
 
-## Backend Dizin Yapısı
-
-```
-backend/
-├── main.py                  # FastAPI app, rate limiter, /ask + /search + /health
-├── schemas.py               # Tüm Pydantic modelleri
-├── config.py                # Environment variables (Settings sınıfı)
-├── rag/
-│   ├── pipeline.py          # run_pipeline() — adımları zincirler
-│   ├── categorizer.py       # Keyword tabanlı kategori tespiti (14 kategori)
-│   ├── query_rewriter.py    # Groq llama-3.1-8b-instant ile sorgu optimizasyonu
-│   ├── retriever.py         # Qdrant dual-collection + local JSON fallback; category penalty
-│   ├── reranker.py          # BAAI/bge-reranker-v2-m3 CrossEncoder; RERANKER_ENABLED ile kontrol
-│   └── generator.py         # Groq llama-3.3-70b-versatile ile yanıt üretimi
-├── auth/
-│   ├── dependencies.py      # get_current_user_optional, require_roles
-│   ├── jwt_service.py       # JWT üretimi / doğrulama
-│   └── security.py          # bcrypt hash
-├── models/
-│   ├── user.py                   # User SQLAlchemy modeli
-│   ├── refresh_token.py          # RefreshToken modeli
-│   ├── chat_history.py           # ChatHistory + save_chat_pair()
-│   ├── feedback.py               # MessageFeedback modeli
-│   ├── weak_query.py             # WeakQuery modeli — düşük skorlu sorgu loglama
-│   ├── shared_conversation.py    # SharedConversation modeli — paylaşım token'ları
-│   ├── forum.py                  # ForumThread / ForumReply / ForumVote
-│   └── enums.py                  # UserRole, MessageRole, ForumVoteType enum'ları
-├── routers/
-│   ├── auth.py              # /auth/* (profil + hesap silme dahil)
-│   ├── chat.py              # /chat/* (export, share, delete, rename dahil)
-│   ├── feedback.py          # /feedback
-│   ├── documents.py         # /documents/analyze + /documents/compare
-│   ├── admin.py             # /admin/stats/*, /admin/users/*, /admin/weak-queries
-│   ├── templates.py         # /templates/*
-│   └── forum.py             # /forum/*
-├── services/
-│   ├── chat_service.py      # resolve_conversation_id, save_chat_pair
-│   ├── document_service.py  # pdf_metin_cikar (pypdf, 10MB/15k char limit)
-│   ├── feedback_service.py  # upsert feedback
-│   ├── admin_service.py     # istatistik sorguları + kullanıcı yönetimi
-│   ├── template_service.py  # TEMPLATES dict + reportlab PDF üretimi
-│   └── forum_service.py     # Thread/reply/vote iş mantığı
-├── db/
-│   └── session.py           # SQLAlchemy engine + get_db()
-├── migrations/versions/
-│   ├── 20260305_0001_*      # auth tabloları
-│   ├── 20260305_0002_*      # chat_history + misafir desteği
-│   ├── 20260316_0003_*      # category kolonu
-│   ├── 20260317_0004_*      # message_feedback tablosu
-│   ├── 20260317_0005_*      # title kolonu (sohbet başlıkları)
-│   ├── 20260326_0006_*      # weak_queries + shared_conversations tabloları
-│   ├── 20260326_0007_*      # chat_history.deleted_at
-│   ├── 20260330_0008_*      # lawyer role
-│   └── 20260330_0009_*      # forum tabloları
-└── tests/
-    └── test_*.py            # pytest testleri (local veya Docker)
-```

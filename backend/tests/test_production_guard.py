@@ -66,3 +66,29 @@ def test_assert_upstreams_ready_raises_when_sdk_and_rest_checks_fail(monkeypatch
 
     with pytest.raises(RuntimeError, match="Qdrant is unreachable"):
         main.assert_upstreams_ready_for_ask()
+
+
+def test_start_retrieval_warmup_starts_background_thread(monkeypatch):
+    monkeypatch.setattr(main.settings, "MOCK_RETRIEVAL", False)
+
+    started = {"value": False}
+
+    class _FakeThread:
+        def __init__(self, target, name, daemon):
+            self.target = target
+            self.name = name
+            self.daemon = daemon
+
+        def start(self):
+            started["value"] = True
+
+    monkeypatch.setattr(main.threading, "Thread", _FakeThread)
+
+    assert main.start_retrieval_warmup() is True
+    assert started["value"] is True
+
+
+def test_start_retrieval_warmup_skips_in_mock_mode(monkeypatch):
+    monkeypatch.setattr(main.settings, "MOCK_RETRIEVAL", True)
+
+    assert main.start_retrieval_warmup() is False

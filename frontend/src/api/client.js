@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchWithAuthRetry, runWithMockMode } from './requestHelpers';
+import { fetchWithAuthRetry, runWithMockMode, streamSseJsonWithAuthRetry } from './requestHelpers';
 
 const API_URL = import.meta.env?.VITE_API_URL || 'http://localhost:8000';
 const MOCK_MODE = import.meta.env?.VITE_MOCK_MODE === 'true';
@@ -118,6 +118,15 @@ export async function apiFetch(path, init = {}) {
         init,
         getAccessToken,
         refreshAccessToken,
+    });
+}
+
+export async function apiStream(path, options = {}) {
+    return streamSseJsonWithAuthRetry({
+        url: `${API_URL}${path}`,
+        getAccessToken,
+        refreshAccessToken,
+        ...options,
     });
 }
 

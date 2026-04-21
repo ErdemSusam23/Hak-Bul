@@ -515,5 +515,5 @@ Backend test paketi şu alanları kapsar:
 ---
 
 <div align="center">
-  <sub>Hak-Bul Projesi • Son Güncelleme: 09.04.2026</sub>
+  <sub>Hak-Bul Projesi • Son Güncelleme: 21.04.2026</sub>
 </div>

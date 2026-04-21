@@ -26,6 +26,38 @@
   --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, monospace;
   --radius: 10px;
+
+  /* Legacy theme token aliases for migrated screens */
+  --tema-bg: var(--bg);
+  --tema-panel: var(--surface);
+  --tema-surface: var(--surface);
+  --tema-card: var(--surface);
+  --tema-card-hover: var(--surface-muted);
+  --tema-bubble: var(--surface);
+  --tema-text: var(--ink);
+  --tema-text2: var(--ink-soft);
+  --tema-muted: var(--ink-muted);
+  --tema-dimmer: var(--ink-faint);
+  --tema-border: var(--line);
+  --tema-border-card: var(--line-strong);
+  --tema-accent: var(--accent);
+  --tema-send-btn: var(--accent);
+  --tema-send-icon: var(--accent-ink);
+  --tema-soft-bg: var(--accent-soft);
+  --tema-soft-bg-subtle: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  --tema-user-bg: color-mix(in srgb, var(--accent) 8%, var(--surface));
+  --tema-user-border: color-mix(in srgb, var(--accent) 20%, var(--line));
+  --tema-user-avatar: var(--surface-muted);
+  --tema-success-bg: color-mix(in srgb, var(--success) 10%, var(--surface));
+  --tema-success-border: color-mix(in srgb, var(--success) 22%, var(--line));
+  --tema-success-text: var(--success);
+  --tema-danger-bg: color-mix(in srgb, var(--danger) 10%, var(--surface));
+  --tema-danger-border: color-mix(in srgb, var(--danger) 22%, var(--line));
+  --tema-danger-text: var(--danger);
+  --tema-overlay: rgba(10, 10, 10, 0.42);
+  --tema-dialog-bg: var(--surface);
+  --tema-dialog-border: var(--line);
+  --tema-dialog-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
 }
 
 /* Dark theme */

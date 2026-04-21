@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import * as LucideIcons from 'lucide-react';
 
 /* ── Dynamic Lucide icon wrapper ── */
@@ -209,15 +209,5 @@ export function FieldArea({ label, ph, rows = 3, value, onChange }) {
         className="bg-surface-muted border border-line rounded-md px-3 py-2 text-sm resize-none focus:bg-surface focus:border-line-strong"
       />
     </label>
-  );
-}
-
-/* ── Inline bold parser ── */
-export function renderInline(text = '') {
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
-  return parts.map((p, i) =>
-    p.startsWith('**')
-      ? <strong key={i}>{p.slice(2, -2)}</strong>
-      : <span key={i}>{p}</span>
   );
 }

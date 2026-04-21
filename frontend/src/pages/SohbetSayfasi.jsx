@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Icon, Logo, Avatar, Kbd, renderInline } from '../components/ui';
+import { Icon, Logo, Avatar, Kbd } from '../components/ui';
+import { renderInline } from '../components/ui/renderInline';
 import { useChat } from '../hooks/useChat';
 import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';

@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { fetchWithAuthRetry, runWithMockMode } from './requestHelpers';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true';
+const API_URL = import.meta.env?.VITE_API_URL || 'http://localhost:8000';
+const MOCK_MODE = import.meta.env?.VITE_MOCK_MODE === 'true';
 
 // --- Mock veriler ---
 const MOCK_DELAY = 1800;
@@ -69,6 +70,32 @@ const MOCK_SEARCH_RESULTS = [
     },
 ];
 
+const createMockForumThread = (overrides = {}) => ({
+    id: 'mock-thread',
+    title: 'Mock forum başlığı',
+    content: 'Forum işlemleri mock modda ortak API sözleşmesiyle çalışıyor.',
+    category: 'Genel',
+    user_id: 'mock-user',
+    display_name: 'Mock User',
+    vote_score: 0,
+    is_locked: false,
+    created_at: new Date().toISOString(),
+    ...overrides,
+});
+
+const createMockForumReply = (overrides = {}) => ({
+    id: 'mock-reply',
+    thread_id: 'mock-thread',
+    content: 'Mock forum yanıtı',
+    user_id: 'mock-user',
+    display_name: 'Mock User',
+    user_role: 'user',
+    vote_score: 0,
+    is_verified: false,
+    created_at: new Date().toISOString(),
+    ...overrides,
+});
+
 // --- Gerçek API ---
 const client = axios.create({
     baseURL: API_URL,
@@ -84,6 +111,15 @@ export const setAuthHandlers = (getToken, refreshToken) => {
     getAccessToken = getToken;
     refreshAccessToken = refreshToken;
 };
+
+export async function apiFetch(path, init = {}) {
+    return fetchWithAuthRetry({
+        url: `${API_URL}${path}`,
+        init,
+        getAccessToken,
+        refreshAccessToken,
+    });
+}
 
 // İstek interceptor: Her isteğe Authorization başlığı ekler
 client.interceptors.request.use((config) => {
@@ -371,55 +407,151 @@ export async function forumThreadListesiAPI({ category = null, page = 1, size = 
 }
 
 export async function forumThreadOlusturAPI({ title, content, category }) {
-    const { data } = await client.post('/forum/threads', { title, content, category });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => createMockForumThread({
+            id: 'mock-thread-created',
+            title,
+            content,
+            category,
+        }),
+        request: async () => {
+            const { data } = await client.post('/forum/threads', { title, content, category });
+            return data;
+        },
+    });
 }
 
 export async function forumThreadDetayAPI(threadId) {
-    const { data } = await client.get(`/forum/threads/${threadId}`);
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => ({
+            thread: createMockForumThread({
+                id: threadId,
+                content: 'Forum detay görünümü mock modda çalışıyor.',
+            }),
+            replies: [],
+        }),
+        request: async () => {
+            const { data } = await client.get(`/forum/threads/${threadId}`);
+            return data;
+        },
+    });
 }
 
 export async function forumThreadGuncelleAPI(threadId, { title, content }) {
-    const { data } = await client.put(`/forum/threads/${threadId}`, { title, content });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => createMockForumThread({
+            id: threadId,
+            title,
+            content,
+        }),
+        request: async () => {
+            const { data } = await client.put(`/forum/threads/${threadId}`, { title, content });
+            return data;
+        },
+    });
 }
 
 export async function forumThreadSilAPI(threadId) {
-    await client.delete(`/forum/threads/${threadId}`);
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => ({ ok: true, id: threadId }),
+        request: async () => {
+            await client.delete(`/forum/threads/${threadId}`);
+            return { ok: true };
+        },
+    });
 }
 
 export async function forumThreadKilitleAPI(threadId, locked) {
-    const { data } = await client.patch(`/forum/threads/${threadId}/lock`, null, { params: { locked } });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => createMockForumThread({
+            id: threadId,
+            is_locked: locked,
+        }),
+        request: async () => {
+            const { data } = await client.patch(`/forum/threads/${threadId}/lock`, null, { params: { locked } });
+            return data;
+        },
+    });
 }
 
 export async function forumYanitOlusturAPI(threadId, content) {
-    const { data } = await client.post(`/forum/threads/${threadId}/replies`, { content });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => createMockForumReply({
+            id: 'mock-reply-created',
+            thread_id: threadId,
+            content,
+        }),
+        request: async () => {
+            const { data } = await client.post(`/forum/threads/${threadId}/replies`, { content });
+            return data;
+        },
+    });
 }
 
 export async function forumYanitGuncelleAPI(replyId, content) {
-    const { data } = await client.put(`/forum/replies/${replyId}`, { content });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => createMockForumReply({
+            id: replyId,
+            content,
+        }),
+        request: async () => {
+            const { data } = await client.put(`/forum/replies/${replyId}`, { content });
+            return data;
+        },
+    });
 }
 
 export async function forumYanitSilAPI(replyId) {
-    await client.delete(`/forum/replies/${replyId}`);
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => ({ ok: true, id: replyId }),
+        request: async () => {
+            await client.delete(`/forum/replies/${replyId}`);
+            return { ok: true };
+        },
+    });
 }
 
 export async function forumYanitDogrulaAPI(replyId, verified) {
-    const { data } = await client.patch(`/forum/replies/${replyId}/verify`, null, { params: { verified } });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => createMockForumReply({
+            id: replyId,
+            is_verified: verified,
+        }),
+        request: async () => {
+            const { data } = await client.patch(`/forum/replies/${replyId}/verify`, null, { params: { verified } });
+            return data;
+        },
+    });
 }
 
 export async function forumThreadOyAPI(threadId, value) {
-    const { data } = await client.post(`/forum/threads/${threadId}/vote`, { value });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => ({ yeni_skor: value }),
+        request: async () => {
+            const { data } = await client.post(`/forum/threads/${threadId}/vote`, { value });
+            return data;
+        },
+    });
 }
 
 export async function forumReplyOyAPI(replyId, value) {
-    const { data } = await client.post(`/forum/replies/${replyId}/vote`, { value });
-    return data;
+    return runWithMockMode({
+        mockMode: MOCK_MODE,
+        mockResponse: () => ({ yeni_skor: value }),
+        request: async () => {
+            const { data } = await client.post(`/forum/replies/${replyId}/vote`, { value });
+            return data;
+        },
+    });
 }
 

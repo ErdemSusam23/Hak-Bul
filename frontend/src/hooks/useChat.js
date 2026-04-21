@@ -1,8 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
-import { dokumanAnalizAPI } from '../api/client';
+import { apiFetch, dokumanAnalizAPI } from '../api/client';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-const MOCK_MODE = import.meta.env.VITE_MOCK_MODE === 'true';
+const MOCK_MODE = import.meta.env?.VITE_MOCK_MODE === 'true';
 
 let mesajSayac = 0;
 const yeniId = () => `msg_${++mesajSayac}_${Date.now()}`;
@@ -138,7 +137,6 @@ export function useChat(language = 'tr') {
             },
         ]);
 
-        const accessToken = sessionStorage.getItem('hakbul_access');
         const payload = {
             soru: metinVar,
             max_kaynak: 5,
@@ -154,12 +152,10 @@ export function useChat(language = 'tr') {
         let resultGuestId = null;
 
         try {
-            const resp = await fetch(`${API_URL}/ask/stream`, {
+            const resp = await apiFetch('/ask/stream', {
                 method: 'POST',
-                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
                 },
                 body: JSON.stringify(payload),
                 signal: controller.signal,

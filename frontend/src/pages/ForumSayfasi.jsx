@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Icon, Avatar, SectionHeader, renderInline } from '../components/ui';
+import { Icon, Avatar, SectionHeader } from '../components/ui';
+import { renderInline } from '../components/ui/renderInline';
 import { forumThreads, forumReplies } from '../data/mockData';
 import { useAuth } from '../context/useAuth';
 

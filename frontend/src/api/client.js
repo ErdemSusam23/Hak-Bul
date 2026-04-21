@@ -303,7 +303,21 @@ export async function sohbetYenidenAdlandirAPI(conversationId, title) {
 
 // REST API TASLAK METOTLARI
 export async function taslakListesiAPI(language = 'tr') {
-    if (MOCK_MODE) return [{ id: 1, title: 'Kira Sözleşmesi Taslağı', description: 'Kiracı ve Ev Sahibi arasında temel kontrat.', alanlar: ['Kiracı Adı', 'Mülk Adresi'] }];
+    if (MOCK_MODE) {
+        return {
+            taslaklar: [
+                {
+                    id: 'kira_sozlesmesi',
+                    baslik: 'Kira Sözleşmesi',
+                    aciklama: 'Kiracı ve ev sahibi arasında temel kira sözleşmesi.',
+                    alanlar: [
+                        { ad: 'kiraci_ad_soyad', etiket: 'Kiracı Adı Soyadı', zorunlu: true },
+                        { ad: 'mal_sahibi_ad_soyad', etiket: 'Kiraya Veren Adı Soyadı', zorunlu: true },
+                    ],
+                },
+            ],
+        };
+    }
     const { data } = await client.get('/templates', { params: { language: normalizeLanguage(language) } });
     return data;
 }

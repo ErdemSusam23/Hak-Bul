@@ -1,169 +1,255 @@
-import { useState } from 'react';
-import { Icon, SectionHeader, Field, FieldArea } from '../components/ui';
-import { templates } from '../data/mockData';
+import { useEffect, useMemo, useState } from 'react';
+import { Field, FieldArea, Icon, SectionHeader } from '../components/ui';
+import { useDil } from '../context/useDil';
+import { taslakListesiAPI, taslakPdfUretAPI } from '../api/client';
+import {
+  buildTemplateDownloadName,
+  buildTemplateFieldState,
+  buildTemplatePayload,
+} from '../utils/templateFlow';
 
-export default function TaslakSayfasi() {
-  const [selected, setSelected] = useState(null);
-  const [generated, setGenerated] = useState(false);
-  const [generating, setGenerating] = useState(false);
+function downloadBlob(blob, fileName) {
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = fileName;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
 
-  const startGenerate = () => {
-    setGenerating(true);
-    setTimeout(() => { setGenerating(false); setGenerated(true); }, 1500);
+function isLongField(field) {
+  return /adres|metin|gerekce|talep|kapsam|konu/i.test(field.ad);
+}
+
+export default function TaslakSayfasi({ toast }) {
+  const { dil } = useDil();
+  const [templates, setTemplates] = useState([]);
+  const [selectedId, setSelectedId] = useState('');
+  const [fieldValues, setFieldValues] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [lastDownloaded, setLastDownloaded] = useState('');
+
+  useEffect(() => {
+    let active = true;
+
+    const loadTemplates = async () => {
+      setLoading(true);
+      setError('');
+
+      try {
+        const response = await taslakListesiAPI(dil);
+        const nextTemplates = response.taslaklar || response || [];
+        if (!active) return;
+
+        setTemplates(nextTemplates);
+        if (nextTemplates[0]) {
+          setSelectedId(nextTemplates[0].id);
+          setFieldValues(buildTemplateFieldState(nextTemplates[0]));
+        }
+      } catch (loadError) {
+        if (!active) return;
+        setError(loadError?.response?.data?.detail || loadError.message || 'Taslak listesi yüklenemedi.');
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadTemplates();
+
+    return () => {
+      active = false;
+    };
+  }, [dil]);
+
+  const selectedTemplate = useMemo(
+    () => templates.find((template) => template.id === selectedId) || null,
+    [selectedId, templates],
+  );
+
+  const handleTemplateSelect = (template) => {
+    setSelectedId(template.id);
+    setFieldValues(buildTemplateFieldState(template));
+    setLastDownloaded('');
+    setError('');
+  };
+
+  const handleGenerate = async () => {
+    if (!selectedTemplate) return;
+
+    setSubmitting(true);
+    setError('');
+
+    try {
+      const payload = buildTemplatePayload({ fields: fieldValues });
+      const blob = await taslakPdfUretAPI(selectedTemplate.id, payload, dil);
+      const fileName = buildTemplateDownloadName(selectedTemplate.id);
+      downloadBlob(blob, fileName);
+      setLastDownloaded(fileName);
+      toast?.('PDF oluşturuldu ve indirildi.');
+    } catch (generateError) {
+      const detail = generateError?.response?.data?.detail || generateError.message || 'PDF oluşturulamadı.';
+      setError(detail);
+      toast?.(detail, 'error');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
       <SectionHeader
         eyebrow="Belge Taslakları"
-        title="Hukuki belgenizi dakikalar içinde hazırlayın"
-        sub="Profesyonel avukatlar tarafından hazırlanmış şablonlarla, alanları doldurarak anında PDF elde edin."
-        actions={
-          <button className="btn btn-outline" onClick={() => alert('Özel şablon özelliği yakında aktif olacak!')}>
+        title="Hukuki belgenizi gerçek şablonlarla hazırlayın"
+        sub="Taslak listesi ve PDF üretimi doğrudan backend template API sözleşmesiyle çalışır."
+        actions={(
+          <button
+            className="btn btn-outline"
+            onClick={() => toast?.('Özel şablonlar henüz ürün akışına eklenmedi.', 'info')}
+          >
             <Icon name="plus" size={14} /> Özel Şablon
           </button>
-        }
+        )}
       />
 
-      <div className="grid grid-cols-12 gap-6">
-        {/* Template grid */}
-        <div className="col-span-12 lg:col-span-7">
-          <div className="label mb-4">Mevcut Taslaklar · {templates.length}</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {templates.map(t => (
-              <button
-                key={t.id}
-                onClick={() => { setSelected(t); setGenerated(false); }}
-                className="card p-5 text-left hover:border-line-strong transition group relative"
-                style={selected?.id === t.id
-                  ? { borderColor: 'var(--accent)', boxShadow: '0 0 0 3px var(--accent-soft)' }
-                  : {}}
-              >
-                {t.popular && (
-                  <span
-                    className="absolute top-3 right-3 text-[10px] px-1.5 py-0.5 rounded font-mono"
-                    style={{ background: 'var(--highlight)', color: '#fff' }}
-                  >
-                    POPÜLER
-                  </span>
-                )}
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                  style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}
-                >
-                  <Icon name={t.icon} size={18} />
-                </div>
-                <div className="font-display text-[22px] leading-tight mb-1" style={{ letterSpacing: '-0.01em' }}>
-                  {t.name}
-                </div>
-                <div className="text-[13px] text-ink-muted leading-relaxed">{t.desc}</div>
-                <div className="mt-4 flex items-center justify-between text-[11px] text-ink-faint">
-                  <span className="font-mono">{t.fields} alan</span>
-                  <span className="flex items-center gap-1 group-hover:text-ink-soft">
-                    Oluştur <Icon name="arrow-right" size={11} />
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
+      {loading && (
+        <div className="card p-4 text-sm text-ink-muted mb-6">
+          Taslaklar yükleniyor…
         </div>
+      )}
 
-        {/* Form panel */}
-        <div className="col-span-12 lg:col-span-5">
-          <div className="sticky top-20">
-            {selected ? (
-              <div className="card p-6 slide-in">
-                <div className="flex items-center justify-between mb-5">
-                  <div>
-                    <div className="label">Şablon</div>
-                    <div className="font-display text-[26px] mt-1" style={{ letterSpacing: '-0.01em' }}>
-                      {selected.name}
-                    </div>
-                  </div>
-                  <button onClick={() => setSelected(null)} className="p-1.5 rounded hover:bg-surface-muted">
-                    <Icon name="x" size={16} />
-                  </button>
-                </div>
+      {!loading && error && !selectedTemplate && (
+        <div className="card p-4 text-sm mb-6" style={{ color: 'var(--danger)' }}>
+          {error}
+        </div>
+      )}
 
-                <div className="flex flex-col gap-3.5 text-sm">
-                  {selected.id === 't1' && (
-                    <>
-                      <Field label="Kiraya veren" ph="Mehmet Yılmaz" />
-                      <Field label="Kiracı" ph="Ayşe Kaya" />
-                      <Field label="Taşınmaz adresi" ph="Cumhuriyet Cad. No:14/5, Çankaya/Ankara" />
-                      <div className="grid grid-cols-2 gap-3">
-                        <Field label="Aylık kira" ph="25.000" suffix="₺" />
-                        <Field label="Depozito" ph="50.000" suffix="₺" />
-                      </div>
-                      <Field label="Başlangıç tarihi" ph="01.05.2026" type="date" />
-                      <Field label="Süre (ay)" ph="12" type="number" />
-                    </>
-                  )}
-                  {selected.id === 't3' && (
-                    <>
-                      <Field label="İhtar eden" ph="Ad Soyad" />
-                      <Field label="İhtar edilen" ph="Ad Soyad" />
-                      <Field label="Konu" ph="Ödenmemiş kira bedeli" />
-                      <FieldArea label="İhtarın esası" ph="Ödenmesi gereken meblağ ve dayanak…" />
-                      <Field label="Tanınan süre (gün)" ph="30" type="number" />
-                    </>
-                  )}
-                  {selected.id !== 't1' && selected.id !== 't3' && (
-                    <div className="p-8 rounded-lg placeholder-stripe text-center text-[12px] text-ink-muted font-mono">
-                      [ {selected.fields} alanlı form ]
-                    </div>
-                  )}
-                </div>
-
-                <div className="hairline-t mt-5 pt-5 flex items-center gap-3">
+      {!loading && !error && (
+        <div className="grid grid-cols-12 gap-6">
+          <div className="col-span-12 lg:col-span-5">
+            <div className="card p-5">
+              <div className="label mb-4">Mevcut Taslaklar · {templates.length}</div>
+              <div className="space-y-3">
+                {templates.map((template) => (
                   <button
-                    onClick={startGenerate}
-                    disabled={generating}
-                    className="btn btn-primary flex-1 justify-center py-2.5"
+                    key={template.id}
+                    onClick={() => handleTemplateSelect(template)}
+                    className="w-full card p-4 text-left hover:border-line-strong transition"
+                    style={selectedTemplate?.id === template.id
+                      ? { borderColor: 'var(--accent)', boxShadow: '0 0 0 3px var(--accent-soft)' }
+                      : {}}
                   >
-                    {generating ? (
-                      <><span className="dot" /><span className="dot" /><span className="dot" /> Hazırlanıyor…</>
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="font-display text-[24px] leading-tight mb-1" style={{ letterSpacing: '-0.01em' }}>
+                          {template.baslik}
+                        </div>
+                        <div className="text-[13px] text-ink-muted leading-relaxed">{template.aciklama}</div>
+                      </div>
+                      <span className="chip text-[10px] py-0.5 px-1.5">{template.alanlar.length} alan</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="col-span-12 lg:col-span-7">
+            {selectedTemplate ? (
+              <div className="card p-6">
+                <div className="flex items-center justify-between gap-4 mb-5">
+                  <div>
+                    <div className="label">Seçili Taslak</div>
+                    <div className="font-display text-[30px] mt-1" style={{ letterSpacing: '-0.02em' }}>
+                      {selectedTemplate.baslik}
+                    </div>
+                    <p className="text-sm text-ink-muted mt-2 max-w-2xl">{selectedTemplate.aciklama}</p>
+                  </div>
+                  <span className="chip text-[11px] py-1 px-2">{selectedTemplate.alanlar.length} alan</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {selectedTemplate.alanlar.map((field) => (
+                    <div key={field.ad} className={isLongField(field) ? 'md:col-span-2' : ''}>
+                      {isLongField(field) ? (
+                        <FieldArea
+                          label={`${field.etiket}${field.zorunlu ? ' *' : ''}`}
+                          ph={field.etiket}
+                          rows={4}
+                          value={fieldValues[field.ad] || ''}
+                          onChange={(event) => setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }))}
+                        />
+                      ) : (
+                        <Field
+                          label={`${field.etiket}${field.zorunlu ? ' *' : ''}`}
+                          ph={field.etiket}
+                          value={fieldValues[field.ad] || ''}
+                          onChange={(event) => setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }))}
+                        />
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-5 p-4 rounded-lg text-sm" style={{ background: 'var(--surface-muted)' }}>
+                  PDF doğrudan backend tarafından üretilir ve cihazınıza indirilir. Boş bırakılan zorunlu alanlar
+                  backend doğrulamasında hata döndürür.
+                </div>
+
+                {error && (
+                  <div className="mt-4 text-sm" style={{ color: 'var(--danger)' }}>
+                    {error}
+                  </div>
+                )}
+
+                {lastDownloaded && (
+                  <div className="mt-4 text-sm" style={{ color: 'var(--success)' }}>
+                    Son indirilen dosya: <strong>{lastDownloaded}</strong>
+                  </div>
+                )}
+
+                <div className="hairline-t mt-6 pt-5 flex items-center justify-end gap-3">
+                  <button
+                    onClick={() => setFieldValues(buildTemplateFieldState(selectedTemplate))}
+                    className="btn btn-ghost"
+                  >
+                    Formu Temizle
+                  </button>
+                  <button
+                    onClick={handleGenerate}
+                    disabled={submitting}
+                    className="btn btn-primary"
+                  >
+                    {submitting ? (
+                      <><span className="dot" /><span className="dot" /><span className="dot" /> PDF oluşturuluyor…</>
                     ) : (
                       <><Icon name="file-down" size={15} /> PDF Oluştur</>
                     )}
                   </button>
-                  <button className="btn btn-outline"><Icon name="eye" size={14} /> Önizle</button>
                 </div>
-
-                {generated && (
-                  <div
-                    className="mt-4 p-4 rounded-lg flex items-center gap-3 fade-in"
-                    style={{
-                      background: 'color-mix(in srgb,var(--success) 10%,var(--surface))',
-                      border: '1px solid color-mix(in srgb,var(--success) 25%,var(--line))',
-                    }}
-                  >
-                    <Icon name="file-check-2" size={20} style={{ color: 'var(--success)' }} />
-                    <div className="flex-1">
-                      <div className="text-sm font-medium">Belgeniz hazır</div>
-                      <div className="text-xs text-ink-muted">
-                        {selected.name.toLowerCase().replace(' ', '-')}-{Date.now().toString().slice(-4)}.pdf · 42 KB
-                      </div>
-                    </div>
-                    <button className="btn btn-outline text-xs"><Icon name="download" size={13} /> İndir</button>
-                  </div>
-                )}
               </div>
             ) : (
               <div className="card p-10 text-center" style={{ background: 'var(--surface-muted)' }}>
-                <div className="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4"
-                  style={{ background: 'var(--surface)', color: 'var(--ink-muted)' }}>
+                <div
+                  className="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-4"
+                  style={{ background: 'var(--surface)', color: 'var(--ink-muted)' }}
+                >
                   <Icon name="file-text" size={20} />
                 </div>
-                <div className="font-display text-[22px] mb-1">Soldan bir taslak seçiniz</div>
+                <div className="font-display text-[22px] mb-1">Kullanılabilir bir taslak bulunamadı</div>
                 <div className="text-[13px] text-ink-muted max-w-xs mx-auto">
-                  Alanları doldurarak profesyonel hukuki belgenizi anında PDF olarak oluşturabilirsiniz.
+                  Backend template servisi yanıt vermediğinde taslak formu burada görünür.
                 </div>
               </div>
             )}
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

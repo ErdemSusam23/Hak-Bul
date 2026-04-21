@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Icon, Logo } from '../components/ui';
-import { categories } from '../data/mockData';
+import { LANDING_CATEGORY_LABELS } from '../content/productContent';
 import { createNewsletterNotice } from '../utils/phase2Flow';
 
 export default function LandingPage({ onOpenAuth, setPage }) {
@@ -132,10 +132,9 @@ export default function LandingPage({ onOpenAuth, setPage }) {
           <span className="text-xs text-ink-muted">her alanda binlerce emsal karar</span>
         </div>
         <div className="flex flex-wrap gap-2">
-          {categories.map((category) => (
-            <button key={category.key} onClick={() => setPage('sohbet')} className="chip text-[13px] py-2 px-3.5">
-              {category.label}
-              <span className="text-ink-faint font-mono text-[11px]">{category.count.toLocaleString('tr-TR')}</span>
+          {LANDING_CATEGORY_LABELS.map((label) => (
+            <button key={label} onClick={() => setPage('sohbet')} className="chip text-[13px] py-2 px-3.5">
+              {label}
             </button>
           ))}
         </div>

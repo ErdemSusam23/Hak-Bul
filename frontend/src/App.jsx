@@ -441,7 +441,7 @@ function AppIcerik() {
       <main className="flex-1 min-h-0">
         {page === 'landing' && <LandingPage onOpenAuth={setAuthModal} setPage={navigateToPage} />}
         {page === 'sohbet' && <SohbetSayfasi toast={toast} />}
-        {page === 'taslak' && <TaslakSayfasi />}
+        {page === 'taslak' && <TaslakSayfasi toast={toast} />}
         {page === 'karsilastir' && <KarsilastirmaSayfasi />}
         {page === 'forum' && (
           forumThreadId ? (
@@ -455,7 +455,7 @@ function AppIcerik() {
           )
         )}
         {page === 'profil' && <ProfilSayfasi onGeri={() => navigateToPage('sohbet')} />}
-        {page === 'admin' && <AdminSayfasi />}
+        {page === 'admin' && <AdminSayfasi toast={toast} />}
       </main>
 
       {page === 'landing' && <DisclaimerBar />}

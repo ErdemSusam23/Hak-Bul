@@ -4,7 +4,7 @@ import { renderInline } from '../components/ui/renderInline';
 import { useChat } from '../hooks/useChat';
 import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
-import { suggestedQuestions } from '../data/mockData';
+import { SOHBET_ONERILEN_SORULAR } from '../content/productContent';
 import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
   sohbetGecmisiListeleAPI,
@@ -446,7 +446,7 @@ function EmptyState({ onPick }) {
 
       <div className="label mb-3">Ornek sorular</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        {suggestedQuestions.map((question, index) => (
+        {SOHBET_ONERILEN_SORULAR.map((question, index) => (
           <button
             key={index}
             onClick={() => onPick(question.q)}

@@ -12,8 +12,8 @@ import {
   normalizeProfileState,
 } from '../utils/profileFlow';
 
-export default function ProfilSayfasi({ onGeri }) {
-  const { kullanici, kullaniciGuncelle, cikis } = useAuth();
+export default function ProfilSayfasi({ onGeri, toast }) {
+  const { kullanici, cikis } = useAuth();
   const [tab, setTab] = useState('account');
   const [profile, setProfile] = useState(() => normalizeProfileState({ profile: null, authUser: kullanici }));
   const [loading, setLoading] = useState(true);
@@ -79,8 +79,9 @@ export default function ProfilSayfasi({ onGeri }) {
       setProfile(normalized);
       setAccountEmail(normalized.email);
       setAccountPassword('');
-      kullaniciGuncelle?.({ email: normalized.email, rol: normalized.role });
-      setAccountMessage('Profil bilgileri güncellendi.');
+      setAccountMessage('Profil bilgileri güncellendi. Güvenlik nedeniyle yeniden giriş yapılıyor.');
+      toast?.('Profil bilgileri güncellendi. Lütfen yeniden giriş yapın.', 'info');
+      await cikis?.();
     } catch (error) {
       setAccountMessage(error?.response?.data?.detail || error.message || 'Profil güncellenemedi.');
     } finally {
@@ -102,7 +103,9 @@ export default function ProfilSayfasi({ onGeri }) {
       setSecurityCurrentPassword('');
       setSecurityNextPassword('');
       setSecurityConfirmPassword('');
-      setSecurityMessage('Şifre güncellendi.');
+      setSecurityMessage('Şifre güncellendi. Güvenlik nedeniyle yeniden giriş yapılıyor.');
+      toast?.('Şifreniz güncellendi. Lütfen yeniden giriş yapın.', 'info');
+      await cikis?.();
     } catch (error) {
       setSecurityMessage(error?.response?.data?.detail || error.message || 'Şifre güncellenemedi.');
     } finally {

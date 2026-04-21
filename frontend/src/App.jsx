@@ -347,6 +347,7 @@ function DisclaimerBar() {
 
 /* ── Main app shell ── */
 function AppIcerik() {
+  const { authHazir } = useAuth();
   const { tema, toggleTema } = useTema();
   const [routeState, setRouteState] = useState(() => parseAppLocation(
     window.location.hash,
@@ -423,6 +424,16 @@ function AppIcerik() {
     toast('Hoş geldiniz!');
   };
 
+  if (!authHazir) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-bg text-ink">
+        <div className="card px-5 py-4 text-sm text-ink-muted">
+          Oturum hazırlanıyor...
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-bg text-ink">
       <Navbar
@@ -449,7 +460,7 @@ function AppIcerik() {
             />
           )
         )}
-        {page === 'profil' && <ProfilSayfasi onGeri={() => navigateToPage('sohbet')} />}
+        {page === 'profil' && <ProfilSayfasi onGeri={() => navigateToPage('sohbet')} toast={toast} />}
         {page === 'admin' && <AdminSayfasi toast={toast} />}
       </main>
 

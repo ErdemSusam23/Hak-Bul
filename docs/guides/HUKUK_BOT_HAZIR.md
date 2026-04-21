@@ -118,7 +118,7 @@ docker run -d -p 6379:6379 redis:latest
 ```
 
 ### İMLEMENTASYON DOSYALARI
-👉 Detaylı kod örnek: `HUKUK_BOT_IMPROVEMENTS.md`
+👉 Detaylı kod örnek: [HUKUK_BOT_IMPROVEMENTS.md](HUKUK_BOT_IMPROVEMENTS.md)
 
 ---
 
@@ -137,7 +137,7 @@ docker run -d -p 6379:6379 redis:latest
 1. **Qdrant'ta veri**: ✅ Hazır (57,765 vektör)
 2. **Backend**: ✅ Çalışıyor (uvicorn 8000)
 3. **Uygulanacak**: 
-   - `HUKUK_BOT_IMPROVEMENTS.md` dosyasındaki kod parçacıklarını entegre et
+   - [HUKUK_BOT_IMPROVEMENTS.md](HUKUK_BOT_IMPROVEMENTS.md) dosyasındaki kod parçacıklarını entegre et
    - Test ve deploy et
    - Cache + Batch API ekle (opsiyonel)
 

@@ -40,3 +40,9 @@ test('App passes the shared toast helper into the Phase 2 pages', async () => {
   assert.match(source, /<SohbetSayfasi toast=\{toast\} \/>/, 'App should pass toast into SohbetSayfasi');
   assert.match(source, /<ForumBaslikSayfasi threadId=\{forumThreadId\} onGeri=\{\(\) => navigateToPage\('forum'\)\} toast=\{toast\} \/>/, 'App should pass toast into ForumBaslikSayfasi');
 });
+
+test('Navbar normalizes admin roles before deciding whether to show the admin panel link', async () => {
+  const source = await readSource('App.jsx');
+
+  assert.match(source, /normalizeRoleName\(kullanici\?\.rol \|\| kullanici\?\.role\) === 'admin'/, 'Navbar should normalize the role before admin-gating the menu entry');
+});

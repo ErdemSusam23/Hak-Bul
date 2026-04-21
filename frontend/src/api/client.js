@@ -355,21 +355,21 @@ export async function hesapSilAPI(mevcut_sifre) {
 }
 
 // REST API ADMIN METOTLARI
-export async function adminIstatistikAPI() {
+export async function adminIstatistikAPI(gun = 7) {
     if (MOCK_MODE) return { toplam_kullanici: 42, toplam_mesaj: 1280, toplam_konusma: 310 };
-    const { data } = await client.get('/admin/stats');
+    const { data } = await client.get('/admin/stats', { params: { gun } });
     return data;
 }
 
-export async function adminKategoriDagilimiAPI() {
+export async function adminKategoriDagilimiAPI(gun = 7) {
     if (MOCK_MODE) return [{ kategori: 'İş Hukuku', sayi: 45 }, { kategori: 'Sözleşme', sayi: 28 }];
-    const { data } = await client.get('/admin/stats/categories');
+    const { data } = await client.get('/admin/stats/categories', { params: { gun } });
     return data;
 }
 
-export async function adminFeedbackOzetiAPI() {
+export async function adminFeedbackOzetiAPI(gun = 7) {
     if (MOCK_MODE) return { begeni: 12, begenmeme: 3, toplam: 15, oran: 0.8 };
-    const { data } = await client.get('/admin/stats/feedback');
+    const { data } = await client.get('/admin/stats/feedback', { params: { gun } });
     return data;
 }
 
@@ -407,9 +407,9 @@ export async function adminKullaniciDurumAPI(userId, aktif) {
     return data;
 }
 
-export async function adminZayifSorguListesiAPI(limit = 100) {
-    if (MOCK_MODE) return [];
-    const { data } = await client.get('/admin/weak-queries', { params: { limit } });
+export async function adminZayifSorguListesiAPI({ limit = 100, offset = 0 } = {}) {
+    if (MOCK_MODE) return { sorgular: [], total: 0, limit, offset };
+    const { data } = await client.get('/admin/weak-queries', { params: { limit, offset } });
     return data;
 }
 

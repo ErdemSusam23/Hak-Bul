@@ -11,17 +11,50 @@ from models.user import User
 from models.weak_query import WeakQuery
 
 
-def genel_istatistikler(db: Session) -> dict:
-    toplam_kullanici = db.query(func.count(User.id)).filter(User.role == UserRole.USER).scalar() or 0
-    toplam_mesaj = db.query(func.count(ChatHistory.id)).scalar() or 0
+def _period_start(gun: int) -> datetime:
+    return datetime.utcnow() - timedelta(days=gun)
+
+
+def genel_istatistikler(db: Session, gun: int) -> dict:
+    baslangic = _period_start(gun)
+    toplam_kullanici = (
+        db.query(func.count(User.id))
+        .filter(
+            User.role == UserRole.USER,
+            User.created_at >= baslangic,
+        )
+        .scalar()
+        or 0
+    )
+    toplam_mesaj = (
+        db.query(func.count(ChatHistory.id))
+        .filter(ChatHistory.created_at >= baslangic)
+        .scalar()
+        or 0
+    )
     toplam_konusma = (
-        db.query(func.count(func.distinct(ChatHistory.conversation_id))).scalar() or 0
+        db.query(func.count(func.distinct(ChatHistory.conversation_id)))
+        .filter(ChatHistory.created_at >= baslangic)
+        .scalar()
+        or 0
     )
     toplam_begeni = (
-        db.query(func.count(MessageFeedback.id)).filter(MessageFeedback.puan == 1).scalar() or 0
+        db.query(func.count(MessageFeedback.id))
+        .filter(
+            MessageFeedback.puan == 1,
+            MessageFeedback.created_at >= baslangic,
+        )
+        .scalar()
+        or 0
     )
     toplam_begenmeme = (
-        db.query(func.count(MessageFeedback.id)).filter(MessageFeedback.puan == -1).scalar() or 0
+        db.query(func.count(MessageFeedback.id))
+        .filter(
+            MessageFeedback.puan == -1,
+            MessageFeedback.created_at >= baslangic,
+        )
+        .scalar()
+        or 0
     )
     return {
         "toplam_kullanici": toplam_kullanici,
@@ -32,13 +65,15 @@ def genel_istatistikler(db: Session) -> dict:
     }
 
 
-def kategori_dagilimi(db: Session) -> list[dict]:
+def kategori_dagilimi(db: Session, gun: int) -> list[dict]:
+    baslangic = _period_start(gun)
     satirlar = (
         db.query(
             ChatHistory.category,
             func.count(ChatHistory.id).label("sayi"),
         )
         .filter(
+            ChatHistory.created_at >= baslangic,
             ChatHistory.role == MessageRole.USER,
             ChatHistory.category.isnot(None),
         )
@@ -49,12 +84,25 @@ def kategori_dagilimi(db: Session) -> list[dict]:
     return [{"kategori": kategori or "Genel Hukuk", "sayi": sayi} for kategori, sayi in satirlar]
 
 
-def feedback_ozeti(db: Session) -> dict:
+def feedback_ozeti(db: Session, gun: int) -> dict:
+    baslangic = _period_start(gun)
     toplam_begeni = (
-        db.query(func.count(MessageFeedback.id)).filter(MessageFeedback.puan == 1).scalar() or 0
+        db.query(func.count(MessageFeedback.id))
+        .filter(
+            MessageFeedback.puan == 1,
+            MessageFeedback.created_at >= baslangic,
+        )
+        .scalar()
+        or 0
     )
     toplam_begenmeme = (
-        db.query(func.count(MessageFeedback.id)).filter(MessageFeedback.puan == -1).scalar() or 0
+        db.query(func.count(MessageFeedback.id))
+        .filter(
+            MessageFeedback.puan == -1,
+            MessageFeedback.created_at >= baslangic,
+        )
+        .scalar()
+        or 0
     )
     toplam = toplam_begeni + toplam_begenmeme
     oran = round(toplam_begeni / toplam * 100, 1) if toplam > 0 else None
@@ -120,13 +168,17 @@ def kullanici_askiya_al(db: Session, user_id: str, aktif: bool) -> User | None:
     return user
 
 
-def zayif_sorgular_listele(db: Session, limit: int = 100) -> list[WeakQuery]:
-    return (
-        db.query(WeakQuery)
+def zayif_sorgular_listele(db: Session, limit: int = 100, offset: int = 0) -> tuple[list[WeakQuery], int]:
+    query = db.query(WeakQuery)
+    total = query.count()
+    rows = (
+        query
         .order_by(WeakQuery.created_at.desc())
+        .offset(offset)
         .limit(limit)
         .all()
     )
+    return rows, total
 
 
 def zayif_sorgu_kaydet(db: Session, soru: str, max_skor: float, kategori: str | None) -> None:
@@ -135,7 +187,7 @@ def zayif_sorgu_kaydet(db: Session, soru: str, max_skor: float, kategori: str | 
 
 
 def gunluk_aktivite(db: Session, gun: int) -> list[dict]:
-    baslangic = datetime.utcnow() - timedelta(days=gun)
+    baslangic = _period_start(gun)
     satirlar = (
         db.query(
             func.date(ChatHistory.created_at).label("tarih"),

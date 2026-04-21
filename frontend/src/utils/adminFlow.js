@@ -12,6 +12,23 @@ function formatCount(value) {
   return Number(value || 0).toLocaleString('tr-TR');
 }
 
+export function normalizeRoleName(role) {
+  return String(role || 'user').trim().toLowerCase();
+}
+
+function toRoleOptionValue(role) {
+  return normalizeRoleName(role).toUpperCase();
+}
+
+function normalizePositiveRatio(feedback) {
+  const rawRatio = feedback?.begeni_orani;
+  if (typeof rawRatio === 'number') {
+    return rawRatio > 1 ? rawRatio / 100 : rawRatio;
+  }
+
+  return feedback?.toplam ? (feedback.begeni / feedback.toplam) : 0;
+}
+
 function formatPercent(value) {
   return `%${Math.round((value || 0) * 100)}`;
 }
@@ -24,14 +41,13 @@ export function buildAdminDashboardModel({
   weakQueries = [],
   users = [],
 }) {
-  const positiveRatio = feedback?.begeni_orani
-    ?? (feedback?.toplam ? (feedback.begeni / feedback.toplam) : 0);
+  const positiveRatio = normalizePositiveRatio(feedback);
 
   return {
     cards: [
-      { label: 'Toplam Kullanıcı', value: formatCount(stats?.toplam_kullanici) },
-      { label: 'Toplam Mesaj', value: formatCount(stats?.toplam_mesaj) },
-      { label: 'Toplam Konuşma', value: formatCount(stats?.toplam_konusma) },
+      { label: 'Yeni Kullanıcı', value: formatCount(stats?.toplam_kullanici) },
+      { label: 'Mesaj', value: formatCount(stats?.toplam_mesaj) },
+      { label: 'Konuşma', value: formatCount(stats?.toplam_konusma) },
       { label: 'Beğeni Oranı', value: formatPercent(positiveRatio) },
     ],
     categories: categories.map((item) => ({
@@ -60,7 +76,7 @@ export function buildAdminDashboardModel({
     users: users.map((item) => ({
       id: item.id,
       email: item.email,
-      role: item.role,
+      role: toRoleOptionValue(item.role),
       active: item.is_active,
       joined: new Date(item.created_at).toLocaleDateString('tr-TR', {
         day: 'numeric',

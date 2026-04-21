@@ -6,6 +6,11 @@ import { AuthContext } from './AuthContextValue';
 const ACCESS_KEY = 'hakbul_access';
 const EMAIL_KEY = 'hakbul_email';
 const ID_KEY = 'hakbul_user_id';
+const ROLE_KEY = 'hakbul_role';
+
+function normalizeRole(role) {
+    return String(role || 'user').trim().toLowerCase();
+}
 
 function parseUserIdFromToken(token) {
     if (!token) return null;
@@ -27,7 +32,7 @@ export function AuthProvider({ children }) {
         const email = sessionStorage.getItem(EMAIL_KEY);
         const token = sessionStorage.getItem(ACCESS_KEY);
         const id = sessionStorage.getItem(ID_KEY) || parseUserIdFromToken(token);
-        const rol = sessionStorage.getItem('hakbul_role') || 'user';
+        const rol = normalizeRole(sessionStorage.getItem(ROLE_KEY) || 'user');
         return token ? { id, email, token, rol } : null;
     });
     const [yukleniyor, setYukleniyor] = useState(false);
@@ -37,7 +42,7 @@ export function AuthProvider({ children }) {
     const tokenlariKaydet = useCallback((access, _refresh, email, rol, id) => {
         sessionStorage.setItem(ACCESS_KEY, access);
         if (email) sessionStorage.setItem(EMAIL_KEY, email);
-        if (rol) sessionStorage.setItem('hakbul_role', rol);
+        if (rol) sessionStorage.setItem(ROLE_KEY, normalizeRole(rol));
         const resolvedId = id || parseUserIdFromToken(access);
         if (resolvedId) sessionStorage.setItem(ID_KEY, resolvedId);
     }, []);
@@ -49,7 +54,7 @@ export function AuthProvider({ children }) {
             const data = await girisYap({ email, sifre });
             const id = parseUserIdFromToken(data.access_token);
             tokenlariKaydet(data.access_token, data.refresh_token, email, data.role, id);
-            setKullanici({ id, email, token: data.access_token, rol: data.role || 'user' });
+            setKullanici({ id, email, token: data.access_token, rol: normalizeRole(data.role || 'user') });
             return { basarili: true };
         } catch (err) {
             const mesaj =
@@ -88,7 +93,7 @@ export function AuthProvider({ children }) {
         sessionStorage.removeItem(ACCESS_KEY);
         sessionStorage.removeItem(EMAIL_KEY);
         sessionStorage.removeItem(ID_KEY);
-        sessionStorage.removeItem('hakbul_role');
+        sessionStorage.removeItem(ROLE_KEY);
         setKullanici(null);
         window.dispatchEvent(new Event('auth-cikis'));
     }, []);
@@ -100,8 +105,9 @@ export function AuthProvider({ children }) {
         refreshPromiseRef.current = tokenYenile()
             .then((data) => {
                 const id = parseUserIdFromToken(data.access_token);
-                tokenlariKaydet(data.access_token, "", null, data.role, id);
-                setKullanici((prev) => prev ? { ...prev, id: id || prev.id, token: data.access_token } : null);
+                const normalizedRole = normalizeRole(data.role);
+                tokenlariKaydet(data.access_token, "", null, normalizedRole, id);
+                setKullanici((prev) => prev ? { ...prev, id: id || prev.id, token: data.access_token, rol: normalizedRole || prev.rol } : null);
                 return data.access_token;
             })
             .catch(() => {
@@ -119,11 +125,11 @@ export function AuthProvider({ children }) {
         if (!patch) return;
         setKullanici((prev) => {
             if (!prev) return prev;
-            const next = { ...prev, ...patch };
+            const next = patch.rol ? { ...prev, ...patch, rol: normalizeRole(patch.rol) } : { ...prev, ...patch };
             if (next.token) sessionStorage.setItem(ACCESS_KEY, next.token);
             if (next.email) sessionStorage.setItem(EMAIL_KEY, next.email);
             if (next.id) sessionStorage.setItem(ID_KEY, next.id);
-            if (next.rol) sessionStorage.setItem('hakbul_role', next.rol);
+            if (next.rol) sessionStorage.setItem(ROLE_KEY, normalizeRole(next.rol));
             return next;
         });
     }, []);

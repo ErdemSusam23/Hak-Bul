@@ -31,6 +31,7 @@ test('AdminSayfasi uses live admin APIs instead of mock dashboard data', async (
   assert.match(source, /adminRolGuncelleAPI/, 'AdminSayfasi should update user roles through the API');
   assert.match(source, /adminKullaniciDurumAPI/, 'AdminSayfasi should update user status through the API');
   assert.match(source, /adminZayifSorguListesiAPI/, 'AdminSayfasi should fetch live weak queries');
+  assert.match(source, /adminZayifSorguListesiAPI\(\{ limit: WEAK_QUERY_PAGE_SIZE, offset: weakQueryPage \* WEAK_QUERY_PAGE_SIZE \}\)/, 'AdminSayfasi should request weak queries page-by-page from the backend');
 });
 
 test('TaslakSayfasi uses live template APIs and removes simulated browser-dialog UX', async () => {

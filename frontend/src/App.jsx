@@ -22,6 +22,7 @@ import {
   isForumHash,
   parseAppLocation,
 } from './utils/appRoutes';
+import { normalizeRoleName } from './utils/adminFlow';
 
 /* ── Navbar ── */
 function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
@@ -99,7 +100,7 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
                   >
                     <Icon name="user" size={14} /> Profilim
                   </button>
-                  {kullanici.rol === 'admin' && (
+                  {normalizeRoleName(kullanici?.rol || kullanici?.role) === 'admin' && (
                     <button
                       onClick={() => {
                         setPage('admin');

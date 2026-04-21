@@ -12,11 +12,14 @@ import {
 } from '../api/client';
 import { buildAdminDashboardModel } from '../utils/adminFlow';
 
-function LineChart({ data, labels }) {
+const WEAK_QUERY_PAGE_SIZE = 10;
+const DASHBOARD_RANGES = [7, 30, 90];
+
+function LineChart({ data, labels, rangeDays }) {
   if (!data.length) {
     return (
       <div className="h-48 grid place-items-center text-sm text-ink-muted">
-        Son 7 güne ait aktivite verisi henüz oluşmadı.
+        Son {rangeDays} güne ait aktivite verisi henüz oluşmadı.
       </div>
     );
   }
@@ -107,7 +110,7 @@ function mapAdminUser(updatedUser) {
   return {
     id: updatedUser.id,
     email: updatedUser.email,
-    role: updatedUser.role,
+    role: String(updatedUser.role || 'USER').toUpperCase(),
     active: updatedUser.is_active,
     joined: new Date(updatedUser.created_at).toLocaleDateString('tr-TR', {
       day: 'numeric',
@@ -120,7 +123,10 @@ function mapAdminUser(updatedUser) {
 export default function AdminSayfasi({ toast }) {
   const [search, setSearch] = useState('');
   const deferredSearch = useDeferredValue(search);
+  const [selectedRange, setSelectedRange] = useState(7);
+  const [weakQueryPage, setWeakQueryPage] = useState(0);
   const [model, setModel] = useState(() => emptyModel());
+  const [weakQueryTotal, setWeakQueryTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [busyKey, setBusyKey] = useState('');
@@ -141,12 +147,12 @@ export default function AdminSayfasi({ toast }) {
           usersResponse,
           weakQueries,
         ] = await Promise.all([
-          adminIstatistikAPI(),
-          adminKategoriDagilimiAPI(),
-          adminFeedbackOzetiAPI(),
-          adminGunlukAktiviteAPI(7),
+          adminIstatistikAPI(selectedRange),
+          adminKategoriDagilimiAPI(selectedRange),
+          adminFeedbackOzetiAPI(selectedRange),
+          adminGunlukAktiviteAPI(selectedRange),
           adminKullaniciListesiAPI({ q: deferredSearch }),
-          adminZayifSorguListesiAPI(8),
+          adminZayifSorguListesiAPI({ limit: WEAK_QUERY_PAGE_SIZE, offset: weakQueryPage * WEAK_QUERY_PAGE_SIZE }),
         ]);
 
         if (!active) return;
@@ -156,9 +162,10 @@ export default function AdminSayfasi({ toast }) {
           categories,
           feedback,
           daily,
-          weakQueries,
+          weakQueries: weakQueries.sorgular || [],
           users: usersResponse.kullanicilar || [],
         }));
+        setWeakQueryTotal(weakQueries.total || 0);
       } catch (loadError) {
         if (!active) return;
         setError(loadError?.response?.data?.detail || loadError.message || 'Admin verileri yüklenemedi.');
@@ -174,6 +181,10 @@ export default function AdminSayfasi({ toast }) {
     return () => {
       active = false;
     };
+  }, [deferredSearch, weakQueryPage, selectedRange]);
+
+  useEffect(() => {
+    setWeakQueryPage(0);
   }, [deferredSearch]);
 
   const replaceUser = (updatedUser) => {
@@ -217,6 +228,9 @@ export default function AdminSayfasi({ toast }) {
   };
 
   const maxCategoryCount = Math.max(...model.categories.map((item) => item.count), 1);
+  const weakQueryPageCount = Math.max(1, Math.ceil(weakQueryTotal / WEAK_QUERY_PAGE_SIZE));
+  const weakQueryPageStart = weakQueryTotal === 0 ? 0 : (weakQueryPage * WEAK_QUERY_PAGE_SIZE) + 1;
+  const weakQueryPageEnd = Math.min(weakQueryTotal, (weakQueryPage + 1) * WEAK_QUERY_PAGE_SIZE);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
@@ -226,21 +240,31 @@ export default function AdminSayfasi({ toast }) {
           <h1 className="font-display text-[40px] leading-[1.05]" style={{ letterSpacing: '-0.02em' }}>
             Kontrol Paneli
           </h1>
-          <p className="text-ink-muted text-sm mt-2">Canlı sistem verileri ve moderasyon işlemleri</p>
+          <p className="text-ink-muted text-sm mt-2">Seçili zaman aralığına göre sistem verileri ve moderasyon işlemleri</p>
         </div>
         <div className="flex gap-2 shrink-0">
-          <div className="chip text-[11px] py-1.5 px-3">
-            <Icon name="activity" size={12} /> Son 7 gün
-          </div>
-          <div className="chip text-[11px] py-1.5 px-3">
-            <Icon name="database" size={12} /> Gerçek API
-          </div>
+          {DASHBOARD_RANGES.map((range) => (
+            <button
+              key={range}
+              type="button"
+              onClick={() => setSelectedRange(range)}
+              className="chip text-[11px] py-1.5 px-3"
+              aria-pressed={selectedRange === range}
+              style={{
+                background: selectedRange === range ? 'color-mix(in srgb, var(--accent) 16%, var(--surface))' : undefined,
+                borderColor: selectedRange === range ? 'color-mix(in srgb, var(--accent) 38%, var(--line))' : undefined,
+                color: selectedRange === range ? 'var(--ink)' : undefined,
+              }}
+            >
+              <Icon name="activity" size={12} /> Son {range} gün
+            </button>
+          ))}
         </div>
       </div>
 
       {loading && (
         <div className="card p-4 text-sm text-ink-muted mb-6">
-          Admin verileri yükleniyor…
+          Admin verileri yükleniyor...
         </div>
       )}
 
@@ -268,18 +292,19 @@ export default function AdminSayfasi({ toast }) {
               <div className="flex items-center justify-between mb-5">
                 <div>
                   <div className="label">Günlük Aktivite</div>
-                  <div className="text-sm text-ink-muted mt-0.5">Son 7 gün içindeki toplam mesaj sayısı</div>
+                  <div className="text-sm text-ink-muted mt-0.5">Son {selectedRange} gün içindeki toplam mesaj sayısı</div>
                 </div>
                 <div className="text-[11px] text-ink-muted flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full" style={{ background: 'var(--accent)' }} />
                   Mesaj
                 </div>
               </div>
-              <LineChart data={model.daily.messages} labels={model.daily.labels} />
+              <LineChart data={model.daily.messages} labels={model.daily.labels} rangeDays={selectedRange} />
             </div>
 
             <div className="col-span-12 lg:col-span-4 card p-5">
               <div className="label">Geri Bildirim Özeti</div>
+              <div className="text-sm text-ink-muted mt-0.5">Son {selectedRange} gün içindeki puanlamalar</div>
               <div className="flex items-center gap-6 mt-4">
                 <Donut up={model.feedback.up} down={model.feedback.down} />
                 <div className="space-y-3 text-sm">
@@ -304,10 +329,11 @@ export default function AdminSayfasi({ toast }) {
 
           <div className="grid grid-cols-12 gap-4 mb-8">
             <div className="col-span-12 lg:col-span-7 card p-5">
-              <div className="label mb-4">Kategori Dağılımı</div>
+              <div className="label">Kategori Dağılımı</div>
+              <div className="text-sm text-ink-muted mt-0.5 mb-4">Son {selectedRange} gün içindeki kullanıcı mesajları</div>
               <div className="space-y-2">
                 {model.categories.length === 0 ? (
-                  <div className="text-sm text-ink-muted">Kategori verisi henüz yok.</div>
+                  <div className="text-sm text-ink-muted">Bu aralık için kategori verisi henüz yok.</div>
                 ) : (
                   model.categories.map((item) => (
                     <div key={item.key} className="flex items-center gap-3 text-sm">
@@ -327,7 +353,12 @@ export default function AdminSayfasi({ toast }) {
 
             <div className="col-span-12 lg:col-span-5 card p-5">
               <div className="flex items-center justify-between mb-4">
-                <div className="label">Zayıf Sorgular</div>
+                <div>
+                  <div className="label">Zayıf Sorgular</div>
+                  <div className="text-[11px] text-ink-muted mt-1">
+                    {weakQueryPageStart}-{weakQueryPageEnd} / {weakQueryTotal || 0} kayıt
+                  </div>
+                </div>
                 <span className="text-[11px] text-ink-muted">maks. skor &lt; 0.6</span>
               </div>
               <div className="space-y-3">
@@ -350,6 +381,29 @@ export default function AdminSayfasi({ toast }) {
                   ))
                 )}
               </div>
+              {weakQueryTotal > WEAK_QUERY_PAGE_SIZE && (
+                <div className="hairline-t mt-4 pt-4 flex items-center justify-between gap-3">
+                  <span className="text-[11px] text-ink-muted">
+                    Sayfa {weakQueryPage + 1} / {weakQueryPageCount}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setWeakQueryPage((current) => Math.max(0, current - 1))}
+                      disabled={weakQueryPage === 0 || loading}
+                      className="btn btn-outline text-xs"
+                    >
+                      Önceki
+                    </button>
+                    <button
+                      onClick={() => setWeakQueryPage((current) => current + 1)}
+                      disabled={weakQueryPage >= weakQueryPageCount - 1 || loading}
+                      className="btn btn-outline text-xs"
+                    >
+                      Sonraki
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -365,7 +419,7 @@ export default function AdminSayfasi({ toast }) {
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   className="pl-8 pr-2 py-1.5 text-sm bg-surface-muted rounded-md border border-line w-56"
-                  placeholder="E-posta ara…"
+                  placeholder="E-posta ara..."
                 />
               </div>
             </div>

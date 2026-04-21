@@ -15,6 +15,7 @@ from schemas import (
     AdminKullaniciListeCevap,
     AdminRolGuncelle,
     AdminZayifSorguItem,
+    AdminZayifSorguListeCevap,
 )
 from services.admin_service import (
     feedback_ozeti,
@@ -34,26 +35,29 @@ _admin_required = require_roles([UserRole.ADMIN])
 
 @router.get("/stats", response_model=AdminGenelIstatistik)
 def admin_genel_istatistik(
+    gun: int = Query(default=7, ge=1, le=90),
     db: Session = Depends(get_db),
     _: User = Depends(_admin_required),
 ):
-    return AdminGenelIstatistik(**genel_istatistikler(db))
+    return AdminGenelIstatistik(**genel_istatistikler(db, gun))
 
 
 @router.get("/stats/categories", response_model=list[AdminKategoriItem])
 def admin_kategori_dagilimi(
+    gun: int = Query(default=7, ge=1, le=90),
     db: Session = Depends(get_db),
     _: User = Depends(_admin_required),
 ):
-    return [AdminKategoriItem(**row) for row in kategori_dagilimi(db)]
+    return [AdminKategoriItem(**row) for row in kategori_dagilimi(db, gun)]
 
 
 @router.get("/stats/feedback", response_model=AdminFeedbackOzet)
 def admin_feedback_ozeti(
+    gun: int = Query(default=7, ge=1, le=90),
     db: Session = Depends(get_db),
     _: User = Depends(_admin_required),
 ):
-    return AdminFeedbackOzet(**feedback_ozeti(db))
+    return AdminFeedbackOzet(**feedback_ozeti(db, gun))
 
 
 @router.get("/stats/daily", response_model=list[AdminGunlukAktiviteItem])
@@ -109,23 +113,28 @@ def admin_rol_guncelle(
     return AdminKullaniciItem(id=user.id, email=user.email, role=user.role.value, is_active=user.is_active, created_at=user.created_at.isoformat())
 
 
-@router.get("/weak-queries", response_model=list[AdminZayifSorguItem])
+@router.get("/weak-queries", response_model=AdminZayifSorguListeCevap)
 def admin_zayif_sorgular(
     limit: int = Query(default=100, ge=1, le=500),
+    offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
     _: User = Depends(_admin_required),
 ):
-    rows = zayif_sorgular_listele(db=db, limit=limit)
-    return [
-        AdminZayifSorguItem(
-            id=r.id,
-            soru=r.soru,
-            max_skor=round(r.max_skor, 4),
-            kategori=r.kategori,
-            created_at=r.created_at.isoformat(),
-        )
-        for r in rows
-    ]
+    rows, total = zayif_sorgular_listele(db=db, limit=limit, offset=offset)
+    return AdminZayifSorguListeCevap(
+        sorgular=[
+            AdminZayifSorguItem(
+                id=r.id,
+                soru=r.soru,
+                max_skor=round(r.max_skor, 4),
+                kategori=r.kategori,
+            )
+            for r in rows
+        ],
+        total=total,
+        limit=limit,
+        offset=offset,
+    )
 
 
 @router.patch("/users/{user_id}/status", response_model=AdminKullaniciItem)

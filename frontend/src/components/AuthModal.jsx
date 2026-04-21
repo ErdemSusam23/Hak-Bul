@@ -3,239 +3,244 @@ import { X, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Loader2 } from 'l
 import { useAuth } from '../context/useAuth';
 
 const SIFRE_KURALLARI = [
-    { test: (s) => s.length >= 8, label: 'En az 8 karakter' },
-    { test: (s) => /[A-Z]/.test(s), label: 'En az 1 büyük harf' },
-    { test: (s) => /[0-9]/.test(s), label: 'En az 1 rakam' },
+  { test: (value) => value.length >= 8, label: 'En az 8 karakter' },
+  { test: (value) => /[A-Z]/.test(value), label: 'En az 1 büyük harf' },
+  { test: (value) => /[0-9]/.test(value), label: 'En az 1 rakam' },
 ];
 
+const INPUT_CLASS = 'w-full rounded-lg border border-line bg-surface-muted px-3 py-2 text-sm focus:bg-surface focus:border-line-strong';
+
 export default function AuthModal({ onKapat }) {
-    const { giris, kayit, yukleniyor } = useAuth();
-    const [sekme, setSekme] = useState('giris');
-    const [email, setEmail] = useState('');
-    const [sifre, setSifre] = useState('');
-    const [sifreTekrar, setSifreTekrar] = useState('');
-    const [sifreGoster, setSifreGoster] = useState(false);
-    const [hata, setHata] = useState('');
-    const [basarili, setBasarili] = useState(false);
+  const { giris, kayit, yukleniyor } = useAuth();
+  const [sekme, setSekme] = useState('giris');
+  const [email, setEmail] = useState('');
+  const [sifre, setSifre] = useState('');
+  const [sifreTekrar, setSifreTekrar] = useState('');
+  const [sifreGoster, setSifreGoster] = useState(false);
+  const [hata, setHata] = useState('');
+  const [basarili, setBasarili] = useState(false);
 
-    const temizle = (yeniSekme) => {
-        setSekme(yeniSekme);
-        setEmail('');
-        setSifre('');
-        setSifreTekrar('');
-        setHata('');
-        setBasarili(false);
-    };
+  const temizle = (yeniSekme) => {
+    setSekme(yeniSekme);
+    setEmail('');
+    setSifre('');
+    setSifreTekrar('');
+    setHata('');
+    setBasarili(false);
+  };
 
-    const sifreGecerli = SIFRE_KURALLARI.every((k) => k.test(sifre));
-    const sifreslerEsit = sifre === sifreTekrar && sifreTekrar.length > 0;
+  const sifreGecerli = SIFRE_KURALLARI.every((kural) => kural.test(sifre));
+  const sifrelerEsit = sifre === sifreTekrar && sifreTekrar.length > 0;
 
-    const gonder = async (e) => {
-        e.preventDefault();
-        setHata('');
+  const gonder = async (event) => {
+    event.preventDefault();
+    setHata('');
 
-        if (sekme === 'giris') {
-            const sonuc = await giris(email, sifre);
-            if (sonuc.basarili) {
-                onKapat();
-            } else {
-                setHata(sonuc.mesaj);
-            }
-            return;
-        }
+    if (sekme === 'giris') {
+      const sonuc = await giris(email, sifre);
+      if (sonuc.basarili) {
+        onKapat();
+      } else {
+        setHata(sonuc.mesaj);
+      }
+      return;
+    }
 
-        if (!sifreGecerli) {
-            setHata('Şifre güvenlik gereksinimlerini karşılamıyor.');
-            return;
-        }
+    if (!sifreGecerli) {
+      setHata('Şifre güvenlik gereksinimlerini karşılamıyor.');
+      return;
+    }
 
-        if (!sifreslerEsit) {
-            setHata('Şifreler eşleşmiyor.');
-            return;
-        }
+    if (!sifrelerEsit) {
+      setHata('Şifreler eşleşmiyor.');
+      return;
+    }
 
-        const sonuc = await kayit(email, sifre);
-        if (sonuc.basarili) {
-            setBasarili(true);
-            setTimeout(() => temizle('giris'), 1800);
-        } else {
-            setHata(sonuc.mesaj);
-        }
-    };
+    const sonuc = await kayit(email, sifre);
+    if (sonuc.basarili) {
+      setBasarili(true);
+      setTimeout(() => temizle('giris'), 1800);
+    } else {
+      setHata(sonuc.mesaj);
+    }
+  };
 
-    return (
-        <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            style={{ background: 'var(--tema-overlay)', backdropFilter: 'blur(4px)' }}
-            onClick={(e) => e.target === e.currentTarget && onKapat()}
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background: 'rgba(10, 10, 10, 0.42)', backdropFilter: 'blur(4px)' }}
+      onClick={(event) => event.target === event.currentTarget && onKapat()}
+    >
+      <div
+        className="relative w-full max-w-sm fade-in rounded-xl p-6"
+        style={{
+          background: 'var(--surface)',
+          border: '1px solid var(--line)',
+          boxShadow: '0 24px 80px rgba(0, 0, 0, 0.18)',
+        }}
+      >
+        <button
+          onClick={onKapat}
+          className="absolute top-4 right-4 transition-colors hover:text-ink"
+          style={{ color: 'var(--ink-muted)' }}
         >
-            <div
-                className="relative w-full max-w-sm animate-fade-in rounded-xl p-6"
-                style={{
-                    background: 'var(--tema-dialog-bg)',
-                    border: '1px solid var(--tema-dialog-border)',
-                    boxShadow: 'var(--tema-dialog-shadow)',
-                }}
+          <X size={18} />
+        </button>
+
+        <div className="mb-6 flex" style={{ borderBottom: '1px solid var(--line)' }}>
+          {['giris', 'kayit'].map((item) => (
+            <button
+              key={item}
+              onClick={() => temizle(item)}
+              className="flex-1 -mb-px border-b-2 py-2.5 text-sm font-medium transition-all hover:text-ink"
+              style={
+                sekme === item
+                  ? {
+                    borderColor: 'var(--accent)',
+                    color: 'var(--accent)',
+                    background: 'var(--accent-soft)',
+                  }
+                  : {
+                    borderColor: 'transparent',
+                    color: 'var(--ink-muted)',
+                  }
+              }
             >
-                <button
-                    onClick={onKapat}
-                    className="absolute top-4 right-4 transition-colors hover:text-[var(--tema-text)]"
-                    style={{ color: 'var(--tema-muted)' }}
-                >
-                    <X size={18} />
-                </button>
-
-                <div className="mb-6 flex" style={{ borderBottom: '1px solid var(--tema-border)' }}>
-                    {['giris', 'kayit'].map((s) => (
-                        <button
-                            key={s}
-                            onClick={() => temizle(s)}
-                            className="flex-1 -mb-px border-b-2 py-2.5 text-sm font-medium transition-all hover:text-[var(--tema-text)]"
-                            style={
-                                sekme === s
-                                    ? {
-                                        borderColor: 'var(--tema-accent)',
-                                        color: 'var(--tema-accent)',
-                                        background: 'rgba(var(--a), 0.06)',
-                                    }
-                                    : {
-                                        borderColor: 'transparent',
-                                        color: 'var(--tema-muted)',
-                                    }
-                            }
-                        >
-                            {s === 'giris' ? 'Giriş Yap' : 'Kayıt Ol'}
-                        </button>
-                    ))}
-                </div>
-
-                {basarili && (
-                    <div
-                        className="mb-4 flex items-center gap-2 rounded-xl p-3 animate-fade-in"
-                        style={{ background: 'var(--tema-success-bg)', border: '1px solid var(--tema-success-border)' }}
-                    >
-                        <CheckCircle size={15} className="flex-shrink-0" style={{ color: 'var(--tema-success-text)' }} />
-                        <p className="text-sm" style={{ color: 'var(--tema-success-text)' }}>Hesap oluşturuldu. Giriş sekmesine geçiliyor...</p>
-                    </div>
-                )}
-
-                {hata && !basarili && (
-                    <div
-                        className="mb-4 flex items-center gap-2 rounded-xl p-3 animate-fade-in"
-                        style={{ background: 'var(--tema-danger-bg)', border: '1px solid var(--tema-danger-border)' }}
-                    >
-                        <AlertCircle size={15} className="flex-shrink-0" style={{ color: 'var(--tema-danger-text)' }} />
-                        <p className="text-sm" style={{ color: 'var(--tema-danger-text)' }}>{hata}</p>
-                    </div>
-                )}
-
-                <form onSubmit={gonder} className="space-y-4">
-                    <div>
-                        <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                            E-posta
-                        </label>
-                        <div className="relative">
-                            <Mail
-                                size={15}
-                                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
-                                style={{ color: 'var(--tema-dimmer)' }}
-                            />
-                            <input
-                                type="email"
-                                required
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="ornek@email.com"
-                                className="input-field w-full pl-9 text-sm"
-                            />
-                        </div>
-                    </div>
-
-                    <div>
-                        <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                            Şifre
-                        </label>
-                        <div className="relative">
-                            <Lock
-                                size={15}
-                                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
-                                style={{ color: 'var(--tema-dimmer)' }}
-                            />
-                            <input
-                                type={sifreGoster ? 'text' : 'password'}
-                                required
-                                value={sifre}
-                                onChange={(e) => setSifre(e.target.value)}
-                                placeholder="••••••••"
-                                className="input-field w-full pl-9 pr-9 text-sm"
-                            />
-                            <button
-                                type="button"
-                                onClick={() => setSifreGoster(!sifreGoster)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors hover:text-[var(--tema-text)]"
-                                style={{ color: 'var(--tema-dimmer)' }}
-                            >
-                                {sifreGoster ? <EyeOff size={15} /> : <Eye size={15} />}
-                            </button>
-                        </div>
-
-                        {sekme === 'kayit' && sifre && (
-                            <ul className="mt-1.5 space-y-0.5">
-                                {SIFRE_KURALLARI.map((k) => (
-                                    <li key={k.label} className="flex items-center gap-1.5">
-                                        <CheckCircle
-                                            size={11}
-                                            style={{ color: k.test(sifre) ? 'var(--tema-success-text)' : 'var(--tema-dimmer)' }}
-                                        />
-                                        <span
-                                            className="text-xs"
-                                            style={{ color: k.test(sifre) ? 'var(--tema-success-text)' : 'var(--tema-dimmer)' }}
-                                        >
-                                            {k.label}
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-
-                    {sekme === 'kayit' && (
-                        <div>
-                            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>
-                            Şifre Tekrar
-                            </label>
-                            <div className="relative">
-                                <Lock
-                                    size={15}
-                                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
-                                    style={{ color: 'var(--tema-dimmer)' }}
-                                />
-                                <input
-                                    type={sifreGoster ? 'text' : 'password'}
-                                    required
-                                    value={sifreTekrar}
-                                    onChange={(e) => setSifreTekrar(e.target.value)}
-                                    placeholder="••••••••"
-                                    className={`input-field w-full pl-9 text-sm ${sifreTekrar && !sifreslerEsit ? 'border-red-500/40' : sifreTekrar && sifreslerEsit ? 'border-emerald-500/40' : ''}`}
-                                />
-                            </div>
-                        </div>
-                    )}
-
-                    <button
-                        type="submit"
-                        disabled={yukleniyor || !email || !sifre || (sekme === 'kayit' && (!sifreGecerli || !sifreslerEsit)) || basarili}
-                        className="mt-1 flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50"
-                        style={{ background: 'var(--tema-send-btn)', color: 'var(--tema-send-icon)' }}
-                    >
-                        {yukleniyor ? (
-                            <><Loader2 size={16} className="animate-spin" />{sekme === 'giris' ? 'Giriş yapılıyor...' : 'Kayıt oluşturuluyor...'}</>
-                        ) : (
-                            sekme === 'giris' ? 'Giriş Yap' : 'Kayıt Ol'
-                        )}
-                    </button>
-                </form>
-            </div>
+              {item === 'giris' ? 'Giriş Yap' : 'Kayıt Ol'}
+            </button>
+          ))}
         </div>
-    );
+
+        {basarili && (
+          <div
+            className="mb-4 flex items-center gap-2 rounded-xl p-3 fade-in"
+            style={{
+              background: 'color-mix(in srgb, var(--success) 10%, var(--surface))',
+              border: '1px solid color-mix(in srgb, var(--success) 22%, var(--line))',
+            }}
+          >
+            <CheckCircle size={15} className="flex-shrink-0" style={{ color: 'var(--success)' }} />
+            <p className="text-sm" style={{ color: 'var(--success)' }}>Hesap oluşturuldu. Giriş sekmesine geçiliyor...</p>
+          </div>
+        )}
+
+        {hata && !basarili && (
+          <div
+            className="mb-4 flex items-center gap-2 rounded-xl p-3 fade-in"
+            style={{
+              background: 'color-mix(in srgb, var(--danger) 10%, var(--surface))',
+              border: '1px solid color-mix(in srgb, var(--danger) 22%, var(--line))',
+            }}
+          >
+            <AlertCircle size={15} className="flex-shrink-0" style={{ color: 'var(--danger)' }} />
+            <p className="text-sm" style={{ color: 'var(--danger)' }}>{hata}</p>
+          </div>
+        )}
+
+        <form onSubmit={gonder} className="space-y-4">
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--ink-muted)' }}>
+              E-posta
+            </label>
+            <div className="relative">
+              <Mail
+                size={15}
+                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
+                style={{ color: 'var(--ink-faint)' }}
+              />
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="ornek@email.com"
+                className={`${INPUT_CLASS} pl-9`}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--ink-muted)' }}>
+              Şifre
+            </label>
+            <div className="relative">
+              <Lock
+                size={15}
+                className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
+                style={{ color: 'var(--ink-faint)' }}
+              />
+              <input
+                type={sifreGoster ? 'text' : 'password'}
+                required
+                value={sifre}
+                onChange={(event) => setSifre(event.target.value)}
+                placeholder="••••••••"
+                className={`${INPUT_CLASS} pl-9 pr-9`}
+              />
+              <button
+                type="button"
+                onClick={() => setSifreGoster((value) => !value)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors hover:text-ink"
+                style={{ color: 'var(--ink-faint)' }}
+              >
+                {sifreGoster ? <EyeOff size={15} /> : <Eye size={15} />}
+              </button>
+            </div>
+
+            {sekme === 'kayit' && sifre && (
+              <ul className="mt-1.5 space-y-0.5">
+                {SIFRE_KURALLARI.map((kural) => {
+                  const aktif = kural.test(sifre);
+                  return (
+                    <li key={kural.label} className="flex items-center gap-1.5">
+                      <CheckCircle size={11} style={{ color: aktif ? 'var(--success)' : 'var(--ink-faint)' }} />
+                      <span className="text-xs" style={{ color: aktif ? 'var(--success)' : 'var(--ink-faint)' }}>
+                        {kural.label}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+
+          {sekme === 'kayit' && (
+            <div>
+              <label className="mb-1.5 block text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--ink-muted)' }}>
+                Şifre Tekrar
+              </label>
+              <div className="relative">
+                <Lock
+                  size={15}
+                  className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2"
+                  style={{ color: 'var(--ink-faint)' }}
+                />
+                <input
+                  type={sifreGoster ? 'text' : 'password'}
+                  required
+                  value={sifreTekrar}
+                  onChange={(event) => setSifreTekrar(event.target.value)}
+                  placeholder="••••••••"
+                  className={`${INPUT_CLASS} pl-9 ${sifreTekrar && !sifrelerEsit ? 'border-red-500/40' : sifreTekrar && sifrelerEsit ? 'border-emerald-500/40' : ''}`}
+                />
+              </div>
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={yukleniyor || !email || !sifre || (sekme === 'kayit' && (!sifreGecerli || !sifrelerEsit)) || basarili}
+            className="mt-1 flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold transition-all disabled:cursor-not-allowed disabled:opacity-50"
+            style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}
+          >
+            {yukleniyor ? (
+              <><Loader2 size={16} className="animate-spin" />{sekme === 'giris' ? 'Giriş yapılıyor...' : 'Kayıt oluşturuluyor...'}</>
+            ) : (
+              sekme === 'giris' ? 'Giriş Yap' : 'Kayıt Ol'
+            )}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 }

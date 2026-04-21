@@ -224,6 +224,13 @@ class AdminZayifSorguItem(BaseModel):
     kategori: str | None = None
 
 
+class AdminZayifSorguListeCevap(BaseModel):
+    sorgular: list[AdminZayifSorguItem]
+    total: int
+    limit: int
+    offset: int
+
+
 class ForumThreadOlustur(BaseModel):
     title: str = Field(..., min_length=5, max_length=200)
     content: str = Field(..., min_length=10)

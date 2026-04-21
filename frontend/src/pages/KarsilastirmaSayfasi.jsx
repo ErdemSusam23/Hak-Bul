@@ -1,221 +1,201 @@
 import { useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { AlertTriangle, FileText, GitCompare, RotateCcw, Upload } from 'lucide-react';
-
+import { Icon, SectionHeader } from '../components/ui';
 import { dokumanKarsilastirAPI } from '../api/client';
-import { useDil } from '../context/useDil';
+import { buildCompareRequest, pickFirstPdfFile } from '../utils/compareFlow';
+
+function formatFileSize(size) {
+  if (!size && size !== 0) return '';
+  if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} KB`;
+  return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function DropZone({ label, file, setFile }) {
+  const [hover, setHover] = useState(false);
+  const inputRef = useRef(null);
+
+  const handleSelectedFiles = (fileList) => {
+    const fileObject = pickFirstPdfFile(fileList);
+    if (fileObject) {
+      setFile(fileObject);
+    }
+  };
+
+  return (
+    <div
+      onDragOver={(event) => { event.preventDefault(); setHover(true); }}
+      onDragLeave={() => setHover(false)}
+      onDrop={(event) => {
+        event.preventDefault();
+        setHover(false);
+        handleSelectedFiles(event.dataTransfer.files);
+      }}
+      onClick={() => inputRef.current?.click()}
+      className={'card p-8 h-48 flex flex-col items-center justify-center text-center cursor-pointer transition ' + (hover ? 'border-accent' : '')}
+      style={hover
+        ? { borderColor: 'var(--accent)', background: 'var(--accent-soft)' }
+        : file ? { background: 'var(--surface-muted)' } : {}}
+    >
+      <input
+        ref={inputRef}
+        type="file"
+        accept="application/pdf,.pdf"
+        className="hidden"
+        onChange={(event) => handleSelectedFiles(event.target.files)}
+      />
+      <div className="label mb-2">{label}</div>
+      {file ? (
+        <>
+          <Icon name="file-text" size={28} className="mb-2 text-accent" />
+          <div className="text-sm font-medium">{file.name}</div>
+          <div className="text-xs text-ink-muted mt-0.5">{formatFileSize(file.size)}</div>
+          <button
+            onClick={(event) => {
+              event.stopPropagation();
+              setFile(null);
+            }}
+            className="mt-2 text-xs text-ink-muted underline"
+          >
+            Kaldır
+          </button>
+        </>
+      ) : (
+        <>
+          <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2" style={{ background: 'var(--surface)' }}>
+            <Icon name="upload-cloud" size={18} className="text-ink-muted" />
+          </div>
+          <div className="text-sm">PDF sürükle veya <span className="underline">tıkla</span></div>
+          <div className="text-[11px] text-ink-faint mt-1">Maks. 10 MB</div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function CompareResult({ file1, file2, result }) {
+  return (
+    <div className="fade-in space-y-6">
+      <div className="card p-6">
+        <div className="flex items-center gap-2 mb-3">
+          <Icon name="sparkles" size={15} className="text-accent" />
+          <span className="label">Yapay Zeka Özeti</span>
+        </div>
+        <div className="prose prose-sm max-w-none text-ink-soft">
+          <ReactMarkdown>{result.yanit}</ReactMarkdown>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        {[
+          { file: file1, summary: result.belge1_ozet, label: '1. belge' },
+          { file: file2, summary: result.belge2_ozet, label: '2. belge' },
+        ].map((item) => (
+          <div key={item.label} className="card overflow-hidden">
+            <div className="hairline-b px-4 py-2.5 flex items-center justify-between bg-surface-muted">
+              <div className="text-sm font-medium font-mono">{item.file.name}</div>
+              <span className="label">{item.label}</span>
+            </div>
+            <div className="p-5 text-[13px] leading-relaxed text-ink-soft">
+              {item.summary}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {result.kaynaklar?.length > 0 && (
+        <div className="card p-6">
+          <div className="label mb-4">Kaynaklar</div>
+          <div className="space-y-3">
+            {result.kaynaklar.map((kaynak, index) => (
+              <div key={`${kaynak.id || kaynak.baslik}-${index}`} className="py-3 hairline-b last:border-b-0">
+                <div className="text-sm font-medium">{kaynak.baslik}</div>
+                <div className="text-[12px] text-ink-muted mt-1">{kaynak.metin_ozet}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {result.uyari && (
+        <div className="card p-5 text-sm" style={{ color: 'var(--warn)' }}>
+          {result.uyari}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function KarsilastirmaSayfasi() {
-    const { t, dil } = useDil();
-    const [dosya1, setDosya1] = useState(null);
-    const [dosya2, setDosya2] = useState(null);
-    const [soru, setSoru] = useState('');
-    const [sonuc, setSonuc] = useState(null);
-    const [yukleniyor, setYukleniyor] = useState(false);
-    const [hata, setHata] = useState(null);
-    const ref1 = useRef();
-    const ref2 = useRef();
+  const [f1, setF1] = useState(null);
+  const [f2, setF2] = useState(null);
+  const [question, setQuestion] = useState('');
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-    const handleKarsilastir = async () => {
-        if (!dosya1 || !dosya2) {
-            setHata(t('compareNeedTwoFiles'));
-            return;
-        }
+  const run = async () => {
+    if (!f1 || !f2) return;
 
-        setHata(null);
-        setSonuc(null);
-        setYukleniyor(true);
-        try {
-            const data = await dokumanKarsilastirAPI({
-                dosya1,
-                dosya2,
-                soru: soru.trim() || undefined,
-                language: dil,
-            });
-            setSonuc(data);
-        } catch (err) {
-            const detail = err?.response?.data?.detail;
-            const detailText = typeof detail === 'string' ? detail : detail?.detail;
-            setHata(detailText || t('compareFailed'));
-        } finally {
-            setYukleniyor(false);
-        }
-    };
+    setLoading(true);
+    setError('');
 
-    const DosyaSecici = ({ label, dosya, setDosya, inputRef }) => (
-        <div
-            className="flex-1 border-2 border-dashed rounded-xl p-6 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all"
-            style={{
-                borderColor: dosya ? 'var(--tema-accent)' : 'var(--tema-border)',
-                background: dosya ? 'var(--tema-card)' : 'transparent',
-            }}
-            onClick={() => inputRef.current?.click()}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => {
-                e.preventDefault();
-                const file = e.dataTransfer.files[0];
-                if (file?.type === 'application/pdf') setDosya(file);
-            }}
-        >
-            <input
-                ref={inputRef}
-                type="file"
-                accept=".pdf,application/pdf"
-                className="hidden"
-                onChange={(e) => setDosya(e.target.files[0] || null)}
-            />
-            {dosya ? (
-                <>
-                    <FileText size={28} style={{ color: 'var(--tema-accent)' }} />
-                    <div className="text-center">
-                        <p className="text-sm font-medium" style={{ color: 'var(--tema-text)' }}>{dosya.name}</p>
-                        <p className="text-xs" style={{ color: 'var(--tema-muted)' }}>
-                            {(dosya.size / 1024).toFixed(1)} KB
-                        </p>
-                    </div>
-                    <button
-                        onClick={(e) => { e.stopPropagation(); setDosya(null); }}
-                        className="text-xs px-2 py-1 rounded transition-colors"
-                        style={{ color: 'var(--tema-muted)' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.color = '#f87171'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
-                    >
-                        {t('removeFile')}
-                    </button>
-                </>
+    try {
+      const payload = buildCompareRequest({
+        file1: f1,
+        file2: f2,
+        question,
+        language: 'tr',
+      });
+      const response = await dokumanKarsilastirAPI(payload);
+      setResult(response);
+    } catch (compareError) {
+      setError(compareError?.response?.data?.detail || compareError.message || 'Karşılaştırma yapılamadı.');
+      setResult(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
+      <SectionHeader
+        eyebrow="Belge Karşılaştırma"
+        title="İki belgeyi yükleyin, farkları dakikalar içinde görün."
+        sub="Sözleşme revizyonları, iki teklif, taslak ve son versiyon için gerçek compare API akışı kullanılır."
+      />
+
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <DropZone label="1. Belge" file={f1} setFile={setF1} />
+        <DropZone label="2. Belge" file={f2} setFile={setF2} />
+      </div>
+
+      <div className="card p-5 mb-8">
+        <div className="label mb-2">Karşılaştırma sorusu (opsiyonel)</div>
+        <textarea
+          rows={2}
+          placeholder="Örn. Feshe ilişkin madde değişmiş mi? Kira artış oranı nasıl değişmiş?"
+          className="w-full bg-transparent text-sm resize-none"
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
+        />
+        <div className="flex items-center justify-between mt-3">
+          <span className="text-[11px] text-ink-faint">Boş bırakırsanız varsayılan analiz yapılır.</span>
+          <button onClick={run} disabled={!f1 || !f2 || loading} className="btn btn-primary">
+            {loading ? (
+              <><span className="dot" /><span className="dot" /><span className="dot" /> Analiz ediliyor…</>
             ) : (
-                <>
-                    <Upload size={24} style={{ color: 'var(--tema-dimmer)' }} />
-                    <div className="text-center">
-                        <p className="text-sm font-medium" style={{ color: 'var(--tema-text2)' }}>{label}</p>
-                        <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>{t('dragPdf')}</p>
-                    </div>
-                </>
+              <><Icon name="git-compare" size={15} /> Analiz Et</>
             )}
+          </button>
         </div>
-    );
+        {error && (
+          <p className="mt-3 text-sm" style={{ color: 'var(--danger)' }}>
+            {error}
+          </p>
+        )}
+      </div>
 
-    return (
-        <div className="flex-1 flex flex-col h-full overflow-y-auto">
-            <header
-                className="flex-shrink-0 flex items-center gap-3 px-6 py-4"
-                style={{ background: 'var(--tema-panel)', borderBottom: '1px solid var(--tema-border)' }}
-            >
-                <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: 'rgba(var(--a), 0.12)', border: '1px solid rgba(var(--a), 0.25)' }}
-                >
-                    <GitCompare size={18} style={{ color: 'var(--tema-accent)' }} />
-                </div>
-                <div>
-                    <h2 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>{t('compareTitle')}</h2>
-                    <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>{t('compareSubtitle')}</p>
-                </div>
-            </header>
-
-            <main className="flex-1 p-6 flex flex-col gap-5 max-w-4xl mx-auto w-full">
-                <div className="flex gap-4">
-                    <DosyaSecici label={t('documentOne')} dosya={dosya1} setDosya={setDosya1} inputRef={ref1} />
-                    <DosyaSecici label={t('documentTwo')} dosya={dosya2} setDosya={setDosya2} inputRef={ref2} />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                    <label className="text-xs font-medium" style={{ color: 'var(--tema-muted)' }}>
-                        {t('compareQuestion')}
-                    </label>
-                    <textarea
-                        value={soru}
-                        onChange={(e) => setSoru(e.target.value)}
-                        rows={2}
-                        placeholder={t('compareQuestionPlaceholder')}
-                        className="w-full rounded-xl px-4 py-3 text-sm resize-none outline-none transition-all"
-                        style={{
-                            background: 'var(--tema-surface)',
-                            color: 'var(--tema-text)',
-                            border: '1px solid var(--tema-border)',
-                        }}
-                        onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--tema-border-focus)'; }}
-                        onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--tema-border)'; }}
-                    />
-                </div>
-
-                <button
-                    onClick={handleKarsilastir}
-                    disabled={yukleniyor || !dosya1 || !dosya2}
-                    className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all"
-                    style={{
-                        background: 'var(--tema-send-btn)',
-                        color: 'var(--tema-send-icon)',
-                        opacity: (yukleniyor || !dosya1 || !dosya2) ? 0.5 : 1,
-                        cursor: (yukleniyor || !dosya1 || !dosya2) ? 'not-allowed' : 'pointer',
-                    }}
-                >
-                    {yukleniyor ? (
-                        <><RotateCcw size={16} className="animate-spin" /> {t('compareLoading')}</>
-                    ) : (
-                        <><GitCompare size={16} /> {t('compareButton')}</>
-                    )}
-                </button>
-
-                {hata && (
-                    <div
-                        className="flex items-start gap-2 rounded-xl px-4 py-3"
-                        style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)' }}
-                    >
-                        <AlertTriangle size={16} className="flex-shrink-0 mt-0.5" style={{ color: '#f87171' }} />
-                        <p className="text-sm" style={{ color: '#f87171' }}>{hata}</p>
-                    </div>
-                )}
-
-                {sonuc && (
-                    <div className="flex flex-col gap-4">
-                        <div className="grid grid-cols-2 gap-3">
-                            {[
-                                { baslik: `📄 ${dosya1?.name}`, ozet: sonuc.belge1_ozet },
-                                { baslik: `📄 ${dosya2?.name}`, ozet: sonuc.belge2_ozet },
-                            ].map((belge, index) => (
-                                <div
-                                    key={index}
-                                    className="rounded-xl p-4 border"
-                                    style={{ background: 'var(--tema-card)', borderColor: 'var(--tema-border)' }}
-                                >
-                                    <p className="text-xs font-semibold mb-2 truncate" style={{ color: 'var(--tema-accent)' }}>
-                                        {belge.baslik}
-                                    </p>
-                                    <p className="text-xs leading-relaxed" style={{ color: 'var(--tema-muted)' }}>
-                                        {belge.ozet}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div
-                            className="rounded-xl p-5 border"
-                            style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}
-                        >
-                            <div className="flex items-center gap-2 mb-3">
-                                <GitCompare size={14} style={{ color: 'var(--tema-accent)' }} />
-                                <h3 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>
-                                    {t('compareAnalysis')}
-                                </h3>
-                                <span
-                                    className="ml-auto text-xs px-2 py-0.5 rounded-full"
-                                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}
-                                >
-                                    {sonuc.kategori}
-                                </span>
-                            </div>
-                            <div className="prose prose-sm max-w-none text-sm" style={{ color: 'var(--tema-text)' }}>
-                                <ReactMarkdown>{sonuc.yanit}</ReactMarkdown>
-                            </div>
-                        </div>
-
-                        <p className="text-xs text-center" style={{ color: 'var(--tema-dimmer)' }}>
-                            {t('compareInfo')}
-                        </p>
-                    </div>
-                )}
-            </main>
-        </div>
-    );
+      {result && <CompareResult file1={f1} file2={f2} result={result} />}
+    </div>
+  );
 }

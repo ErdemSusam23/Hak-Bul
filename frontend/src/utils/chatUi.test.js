@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+    CHAT_COMPOSER_MAX_LENGTH,
     CHAT_TEXT_WRAP_STYLE,
     prepareComposerSubmission,
     scoreToPercentage,
@@ -52,4 +53,8 @@ test('scoreToPercentage clamps invalid and oversized scores into 0-100 range', (
 test('CHAT_TEXT_WRAP_STYLE forces long streaming content to wrap', () => {
     assert.equal(CHAT_TEXT_WRAP_STYLE.overflowWrap, 'anywhere');
     assert.equal(CHAT_TEXT_WRAP_STYLE.wordBreak, 'break-word');
+});
+
+test('CHAT_COMPOSER_MAX_LENGTH keeps the sohbet composer capped at 1000 characters', () => {
+    assert.equal(CHAT_COMPOSER_MAX_LENGTH, 1000);
 });

@@ -24,16 +24,24 @@ export async function girisYap({ email, sifre }) {
         email,
         password: sifre,
     });
-    return data; // { access_token, refresh_token, token_type }
+    return data; // { access_token, refresh_token: '', token_type, role }
 }
 
 // POST /auth/refresh — uses httpOnly cookie automatically (withCredentials: true)
 export async function tokenYenile() {
     const { data } = await authClient.post('/auth/refresh');
-    return data; // { access_token, token_type, role }
+    return data; // { access_token, refresh_token: '', token_type, role }
 }
 
 // POST /auth/logout — uses httpOnly cookie automatically
 export async function cikisYap() {
     await authClient.post('/auth/logout');
+}
+
+// GET /auth/profile — bootstrap uses the refreshed access token explicitly
+export async function tokenIleProfilGetir(accessToken) {
+    const { data } = await authClient.get('/auth/profile', {
+        headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    return data;
 }

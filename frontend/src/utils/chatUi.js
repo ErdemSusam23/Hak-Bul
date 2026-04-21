@@ -3,6 +3,8 @@ export const CHAT_TEXT_WRAP_STYLE = Object.freeze({
     wordBreak: 'break-word',
 });
 
+export const CHAT_COMPOSER_MAX_LENGTH = 1000;
+
 export function prepareComposerSubmission({ girdi = '', secilenDosya = null, yukleniyor = false }) {
     const metin = typeof girdi === 'string' ? girdi : '';
 

@@ -1,592 +1,492 @@
-import { createElement, useState, useEffect } from 'react';
-import { BarChart2, Users, MessageSquare, ThumbsUp, TrendingUp, RotateCcw, ShieldOff, UserCheck, AlertTriangle } from 'lucide-react';
+import { useDeferredValue, useEffect, useState } from 'react';
+import { Icon } from '../components/ui';
 import {
-    adminIstatistikAPI,
-    adminKategoriDagilimiAPI,
-    adminFeedbackOzetiAPI,
-    adminGunlukAktiviteAPI,
-    adminKullaniciListesiAPI,
-    adminRolGuncelleAPI,
-    adminKullaniciDurumAPI,
-    adminZayifSorguListesiAPI,
+  adminFeedbackOzetiAPI,
+  adminGunlukAktiviteAPI,
+  adminIstatistikAPI,
+  adminKategoriDagilimiAPI,
+  adminKullaniciDurumAPI,
+  adminKullaniciListesiAPI,
+  adminRolGuncelleAPI,
+  adminZayifSorguListesiAPI,
 } from '../api/client';
-import { useAuth } from '../context/useAuth';
+import { buildAdminDashboardModel } from '../utils/adminFlow';
 
-function StatKarti({ ikon, baslik, deger, renk }) {
+const WEAK_QUERY_PAGE_SIZE = 10;
+const DASHBOARD_RANGES = [7, 30, 90];
+
+function LineChart({ data, labels, rangeDays }) {
+  if (!data.length) {
     return (
-        <div
-            className="rounded-xl p-5 border flex items-center gap-4"
-            style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}
-        >
-            <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ background: `${renk}20`, border: `1px solid ${renk}40` }}
-            >
-                {createElement(ikon, { size: 22, style: { color: renk } })}
-            </div>
-            <div>
-                <p className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--tema-muted)' }}>{baslik}</p>
-                <p className="text-2xl font-bold mt-0.5" style={{ color: 'var(--tema-text)' }}>
-                    {deger !== null && deger !== undefined ? deger.toLocaleString('tr-TR') : '—'}
-                </p>
-            </div>
-        </div>
+      <div className="h-48 grid place-items-center text-sm text-ink-muted">
+        Son {rangeDays} güne ait aktivite verisi henüz oluşmadı.
+      </div>
     );
+  }
+
+  const w = 640;
+  const h = 180;
+  const pad = 24;
+  const max = Math.max(...data, 1) * 1.15;
+  const points = data.map((value, index) => ([
+    pad + ((w - (pad * 2)) * index) / Math.max(data.length - 1, 1),
+    h - pad - ((value / max) * (h - (pad * 2))),
+  ]));
+  const path = points.map((point, index) => `${index === 0 ? 'M' : 'L'}${point[0].toFixed(1)},${point[1].toFixed(1)}`).join(' ');
+  const area = `${path} L${w - pad},${h - pad} L${pad},${h - pad} Z`;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-48">
+      <defs>
+        <linearGradient id="admin-chart" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="var(--accent)" stopOpacity="0.18" />
+          <stop offset="1" stopColor="var(--accent)" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {[0.25, 0.5, 0.75].map((tick) => (
+        <line
+          key={tick}
+          x1={pad}
+          x2={w - pad}
+          y1={pad + ((h - (pad * 2)) * tick)}
+          y2={pad + ((h - (pad * 2)) * tick)}
+          stroke="var(--line)"
+          strokeDasharray="2 4"
+        />
+      ))}
+      <path d={area} fill="url(#admin-chart)" />
+      <path d={path} fill="none" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      {points.map((point, index) => (
+        <circle key={labels[index]} cx={point[0]} cy={point[1]} r="3" fill="var(--surface)" stroke="var(--accent)" strokeWidth="1.6" />
+      ))}
+      {labels.map((label, index) => (
+        <text key={label} x={points[index][0]} y={h - 6} fontSize="10" textAnchor="middle" fill="var(--ink-muted)">
+          {label}
+        </text>
+      ))}
+    </svg>
+  );
 }
 
-function KullaniciYonetimi() {
-    const { kullanici } = useAuth();
-    const [kullanicilar, setKullanicilar] = useState([]);
-    const [toplam, setToplam] = useState(0);
-    const [yukleniyor, setYukleniyor] = useState(true);
-    const [hata, setHata] = useState('');
-    const [sayfa, setSayfa] = useState(1);
-    const [aramaInput, setAramaInput] = useState('');
-    const [arama, setArama] = useState('');
-    const [rolFiltre, setRolFiltre] = useState('tum');
-    const [durumFiltre, setDurumFiltre] = useState('tum');
-    const [rolTaslaklari, setRolTaslaklari] = useState({});
-    const [rolKaydedilenId, setRolKaydedilenId] = useState(null);
-    const sayfaBoyutu = 20;
+function Donut({ up, down }) {
+  const total = Math.max(up + down, 1);
+  const upFraction = up / total;
+  const radius = 42;
+  const circumference = 2 * Math.PI * radius;
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setSayfa(1);
-            setArama(aramaInput.trim());
-        }, 300);
-        return () => clearTimeout(timer);
-    }, [aramaInput]);
+  return (
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r={radius} fill="none" stroke="var(--line)" strokeWidth="12" />
+      <circle
+        cx="60"
+        cy="60"
+        r={radius}
+        fill="none"
+        stroke="var(--accent)"
+        strokeWidth="12"
+        strokeDasharray={`${circumference * upFraction} ${circumference}`}
+        transform="rotate(-90 60 60)"
+      />
+      <text x="60" y="58" textAnchor="middle" fontSize="18" fontWeight="500" fill="var(--ink)" fontFamily="var(--font-display)">
+        %{Math.round(upFraction * 100)}
+      </text>
+      <text x="60" y="76" textAnchor="middle" fontSize="10" fill="var(--ink-muted)">olumlu</text>
+    </svg>
+  );
+}
 
-    useEffect(() => {
-        let aktif = true;
-        const yukle = async () => {
-            setYukleniyor(true);
-            setHata('');
-            try {
-                const data = await adminKullaniciListesiAPI({
-                    limit: sayfaBoyutu,
-                    offset: (sayfa - 1) * sayfaBoyutu,
-                    q: arama || null,
-                    rol: rolFiltre === 'tum' ? null : rolFiltre,
-                    aktif: durumFiltre === 'tum' ? null : durumFiltre === 'aktif',
-                });
-                if (!aktif) return;
-                const liste = data.kullanicilar || [];
-                setKullanicilar(liste);
-                setToplam(data.total || 0);
-                setRolTaslaklari((prev) => {
-                    const next = {};
-                    liste.forEach((u) => {
-                        next[u.id] = prev[u.id] || u.role;
-                    });
-                    return next;
-                });
-            } catch (err) {
-                if (!aktif) return;
-                setHata(err?.response?.data?.detail || 'Kullanıcı listesi yüklenemedi.');
-            } finally {
-                if (aktif) setYukleniyor(false);
-            }
-        };
-        yukle();
-        return () => {
-            aktif = false;
-        };
-    }, [sayfa, arama, rolFiltre, durumFiltre]);
+function emptyModel() {
+  return buildAdminDashboardModel({
+    stats: null,
+    categories: [],
+    feedback: null,
+    daily: [],
+    weakQueries: [],
+    users: [],
+  });
+}
 
-    const toplamSayfa = Math.max(1, Math.ceil(toplam / sayfaBoyutu));
+function mapAdminUser(updatedUser) {
+  return {
+    id: updatedUser.id,
+    email: updatedUser.email,
+    role: String(updatedUser.role || 'USER').toUpperCase(),
+    active: updatedUser.is_active,
+    joined: new Date(updatedUser.created_at).toLocaleDateString('tr-TR', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    }),
+  };
+}
 
-    useEffect(() => {
-        if (sayfa > toplamSayfa) {
-            setSayfa(toplamSayfa);
+export default function AdminSayfasi({ toast }) {
+  const [search, setSearch] = useState('');
+  const deferredSearch = useDeferredValue(search);
+  const [selectedRange, setSelectedRange] = useState(7);
+  const [weakQueryPage, setWeakQueryPage] = useState(0);
+  const [model, setModel] = useState(() => emptyModel());
+  const [weakQueryTotal, setWeakQueryTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [busyKey, setBusyKey] = useState('');
+
+  useEffect(() => {
+    let active = true;
+
+    const loadDashboard = async () => {
+      setLoading(true);
+      setError('');
+
+      try {
+        const [
+          stats,
+          categories,
+          feedback,
+          daily,
+          usersResponse,
+          weakQueries,
+        ] = await Promise.all([
+          adminIstatistikAPI(selectedRange),
+          adminKategoriDagilimiAPI(selectedRange),
+          adminFeedbackOzetiAPI(selectedRange),
+          adminGunlukAktiviteAPI(selectedRange),
+          adminKullaniciListesiAPI({ q: deferredSearch }),
+          adminZayifSorguListesiAPI({ limit: WEAK_QUERY_PAGE_SIZE, offset: weakQueryPage * WEAK_QUERY_PAGE_SIZE }),
+        ]);
+
+        if (!active) return;
+
+        setModel(buildAdminDashboardModel({
+          stats,
+          categories,
+          feedback,
+          daily,
+          weakQueries: weakQueries.sorgular || [],
+          users: usersResponse.kullanicilar || [],
+        }));
+        setWeakQueryTotal(weakQueries.total || 0);
+      } catch (loadError) {
+        if (!active) return;
+        setError(loadError?.response?.data?.detail || loadError.message || 'Admin verileri yüklenemedi.');
+      } finally {
+        if (active) {
+          setLoading(false);
         }
-    }, [sayfa, toplamSayfa]);
-
-    const handleRolKaydet = async (u) => {
-        const hedefRol = rolTaslaklari[u.id] || u.role;
-        const kendiHesabi = kullanici?.email === u.email;
-        if (kendiHesabi) {
-            alert('Kendi rolünüzü değiştiremezsiniz.');
-            return;
-        }
-        if (hedefRol === u.role) return;
-        if (!confirm(`"${u.email}" kullanıcısının rolü "${hedefRol}" olarak güncellensin mi?`)) return;
-        setRolKaydedilenId(u.id);
-        try {
-            const updated = await adminRolGuncelleAPI(u.id, hedefRol);
-            setKullanicilar((prev) => prev.map((row) => (row.id === u.id ? { ...row, role: updated.role } : row)));
-            setRolTaslaklari((prev) => ({ ...prev, [u.id]: updated.role }));
-        } catch (err) {
-            alert('Rol güncellenemedi: ' + (err?.response?.data?.detail || err.message));
-        } finally {
-            setRolKaydedilenId(null);
-        }
+      }
     };
 
-    const handleDurumDegistir = async (u, aktifMi) => {
-        if (kullanici?.email === u.email) {
-            alert('Kendi hesabınızı askıya alamazsınız.');
-            return;
-        }
-        if (!confirm(aktifMi ? 'Hesap aktif edilsin mi?' : 'Hesap askıya alınsın mı?')) return;
-        try {
-            const updated = await adminKullaniciDurumAPI(u.id, aktifMi);
-            setKullanicilar((prev) => prev.map((row) => (row.id === u.id ? { ...row, is_active: updated.is_active } : row)));
-        } catch (err) {
-            alert('Durum güncellenemedi: ' + (err?.response?.data?.detail || err.message));
-        }
+    loadDashboard();
+
+    return () => {
+      active = false;
     };
+  }, [deferredSearch, weakQueryPage, selectedRange]);
 
-    const filtreleriTemizle = () => {
-        setAramaInput('');
-        setArama('');
-        setRolFiltre('tum');
-        setDurumFiltre('tum');
-        setSayfa(1);
-    };
+  useEffect(() => {
+    setWeakQueryPage(0);
+  }, [deferredSearch]);
 
-    if (yukleniyor) return <div className="flex justify-center py-8"><RotateCcw size={20} className="animate-spin" style={{ color: 'var(--tema-muted)' }} /></div>;
+  const replaceUser = (updatedUser) => {
+    setModel((current) => ({
+      ...current,
+      users: current.users.map((item) => (
+        item.id === updatedUser.id ? mapAdminUser(updatedUser) : item
+      )),
+    }));
+  };
 
-    const baslangic = toplam === 0 ? 0 : (sayfa - 1) * sayfaBoyutu + 1;
-    const bitis = Math.min(toplam, sayfa * sayfaBoyutu);
-    const sayfaBaslangic = Math.max(1, sayfa - 2);
-    const sayfaBitis = Math.min(toplamSayfa, sayfa + 2);
-    const sayfalar = [];
-    for (let i = sayfaBaslangic; i <= sayfaBitis; i += 1) {
-        sayfalar.push(i);
+  const handleRoleChange = async (userId, nextRole) => {
+    const user = model.users.find((item) => item.id === userId);
+    if (!user || user.role === nextRole) return;
+
+    setBusyKey(`${userId}:role`);
+
+    try {
+      const updatedUser = await adminRolGuncelleAPI(userId, nextRole);
+      replaceUser(updatedUser);
+      toast?.('Kullanıcı rolü güncellendi.');
+    } catch (actionError) {
+      toast?.(actionError?.response?.data?.detail || 'Kullanıcı rolü güncellenemedi.', 'error');
+    } finally {
+      setBusyKey('');
     }
+  };
 
-    return (
-        <div className="rounded-xl border overflow-hidden" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
-            <div className="px-5 py-4 border-b flex items-center gap-2" style={{ borderColor: 'var(--tema-border)' }}>
-                <UserCheck size={16} style={{ color: 'var(--tema-accent)' }} />
-                <h3 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>Kullanıcı Yönetimi</h3>
-                <span className="ml-auto text-xs px-2 py-0.5 rounded-full" style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}>
-                    {toplam} kullanıcı
-                </span>
-            </div>
+  const handleStatusChange = async (userId, nextActive) => {
+    setBusyKey(`${userId}:status`);
 
-            <div className="px-5 py-3 border-b flex flex-wrap items-center gap-2" style={{ borderColor: 'var(--tema-border)' }}>
-                <input
-                    value={aramaInput}
-                    onChange={(e) => setAramaInput(e.target.value)}
-                    placeholder="E-posta ara..."
-                    className="min-w-[220px] flex-1 rounded-lg px-3 py-1.5 text-sm outline-none"
-                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
-                />
-                <select
-                    value={rolFiltre}
-                    onChange={(e) => { setRolFiltre(e.target.value); setSayfa(1); }}
-                    className="rounded-lg px-3 py-1.5 text-sm outline-none"
-                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
-                >
-                    <option value="tum">Tüm Roller</option>
-                    <option value="user">Kullanıcı</option>
-                    <option value="lawyer">Avukat</option>
-                    <option value="admin">Admin</option>
-                </select>
-                <select
-                    value={durumFiltre}
-                    onChange={(e) => { setDurumFiltre(e.target.value); setSayfa(1); }}
-                    className="rounded-lg px-3 py-1.5 text-sm outline-none"
-                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-text)', border: '1px solid var(--tema-border)' }}
-                >
-                    <option value="tum">Tüm Durumlar</option>
-                    <option value="aktif">Aktif</option>
-                    <option value="askida">Askıda</option>
-                </select>
-                <button
-                    onClick={filtreleriTemizle}
-                    className="px-3 py-1.5 rounded-lg text-xs"
-                    style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}
-                >
-                    Temizle
-                </button>
-            </div>
-
-            {hata && (
-                <p className="px-5 py-3 text-xs text-red-400 border-b" style={{ borderColor: 'var(--tema-border)' }}>
-                    {hata}
-                </p>
-            )}
-
-            {kullanicilar.length === 0 ? (
-                <p className="px-5 py-4 text-sm" style={{ color: 'var(--tema-muted)' }}>Henüz kayıtlı kullanıcı yok.</p>
-            ) : (
-                <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                        <thead>
-                            <tr style={{ borderBottom: '1px solid var(--tema-border)', background: 'var(--tema-surface)' }}>
-                                <th className="text-left px-5 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>E-posta</th>
-                                <th className="text-left px-3 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>Rol</th>
-                                <th className="text-left px-3 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>Durum</th>
-                                <th className="text-left px-3 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>Kayıt</th>
-                                <th className="text-right px-5 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>İşlem</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {kullanicilar.map((u) => (
-                                <tr key={u.id} className="border-b transition-colors" style={{ borderColor: 'var(--tema-border)' }}
-                                    onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
-                                >
-                                    <td className="px-5 py-3" style={{ color: 'var(--tema-text)' }}>{u.email}</td>
-                                    <td className="px-3 py-3">
-                                        <div className="flex items-center gap-2">
-                                            <select
-                                                value={rolTaslaklari[u.id] || u.role}
-                                                onChange={(e) => setRolTaslaklari((prev) => ({ ...prev, [u.id]: e.target.value }))}
-                                                className="rounded-md px-2 py-1 text-xs outline-none"
-                                                style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', border: '1px solid var(--tema-border)' }}
-                                                disabled={kullanici?.email === u.email}
-                                            >
-                                                <option value="user">Kullanıcı</option>
-                                                <option value="lawyer">Avukat</option>
-                                                <option value="admin">Admin</option>
-                                            </select>
-                                            <button
-                                                onClick={() => handleRolKaydet(u)}
-                                                className="px-2 py-1 rounded-md text-xs font-medium"
-                                                style={{
-                                                    background: 'var(--tema-surface)',
-                                                    color: 'var(--tema-accent)',
-                                                    opacity: rolKaydedilenId === u.id || (rolTaslaklari[u.id] || u.role) === u.role ? 0.5 : 1,
-                                                }}
-                                                disabled={rolKaydedilenId === u.id || (rolTaslaklari[u.id] || u.role) === u.role || kullanici?.email === u.email}
-                                            >
-                                                {rolKaydedilenId === u.id ? 'Kaydediliyor...' : 'Kaydet'}
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td className="px-3 py-3">
-                                        <span className="text-xs font-medium" style={{ color: u.is_active ? '#a6e3a1' : '#f38ba8' }}>
-                                            {u.is_active ? 'Aktif' : 'Askıda'}
-                                        </span>
-                                    </td>
-                                    <td className="px-3 py-3 text-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                                        {new Date(u.created_at).toLocaleDateString('tr-TR')}
-                                    </td>
-                                    <td className="px-5 py-3 text-right">
-                                        <div className="flex items-center justify-end gap-1.5">
-                                            <button
-                                                onClick={() => handleDurumDegistir(u, !u.is_active)}
-                                                title={u.is_active ? 'Askıya al' : 'Aktif et'}
-                                                className="p-1.5 rounded-lg transition-colors"
-                                                style={{ color: 'var(--tema-muted)' }}
-                                                onMouseEnter={(e) => { e.currentTarget.style.color = u.is_active ? '#f38ba8' : '#a6e3a1'; }}
-                                                onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--tema-muted)'; }}
-                                                disabled={kullanici?.email === u.email}
-                                            >
-                                                <ShieldOff size={14} />
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}
-
-            <div className="px-5 py-3 border-t flex items-center justify-between gap-3" style={{ borderColor: 'var(--tema-border)' }}>
-                <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                    {baslangic}-{bitis} / {toplam} kayıt
-                </p>
-                <div className="flex items-center gap-1">
-                    <button
-                        onClick={() => setSayfa((p) => Math.max(1, p - 1))}
-                        disabled={sayfa === 1}
-                        className="px-2 py-1 rounded text-xs"
-                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', opacity: sayfa === 1 ? 0.4 : 1 }}
-                    >
-                        ←
-                    </button>
-                    {sayfalar.map((p) => (
-                        <button
-                            key={p}
-                            onClick={() => setSayfa(p)}
-                            className="px-2 py-1 rounded text-xs min-w-7"
-                            style={{
-                                background: p === sayfa ? 'var(--tema-accent)' : 'var(--tema-surface)',
-                                color: p === sayfa ? '#fff' : 'var(--tema-text2)',
-                            }}
-                        >
-                            {p}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => setSayfa((p) => Math.min(toplamSayfa, p + 1))}
-                        disabled={sayfa === toplamSayfa}
-                        className="px-2 py-1 rounded text-xs"
-                        style={{ background: 'var(--tema-surface)', color: 'var(--tema-text2)', opacity: sayfa === toplamSayfa ? 0.4 : 1 }}
-                    >
-                        →
-                    </button>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function ZayifSorgular() {
-    const [sorgular, setSorgular] = useState([]);
-    const [yukleniyor, setYukleniyor] = useState(true);
-
-    useEffect(() => {
-        adminZayifSorguListesiAPI()
-            .then(data => setSorgular(data || []))
-            .catch(() => {})
-            .finally(() => setYukleniyor(false));
-    }, []);
-
-    if (yukleniyor) return <div className="flex justify-center py-8"><RotateCcw size={20} className="animate-spin" style={{ color: 'var(--tema-muted)' }} /></div>;
-
-    return (
-        <div className="rounded-xl border overflow-hidden" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
-            <div className="px-5 py-4 border-b flex items-center gap-2" style={{ borderColor: 'var(--tema-border)' }}>
-                <AlertTriangle size={16} style={{ color: '#f59e0b' }} />
-                <h3 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>Zayıf Sorgular</h3>
-                <span className="text-xs px-2 py-0.5 rounded-full ml-auto" style={{ background: 'var(--tema-surface)', color: 'var(--tema-muted)' }}>
-                    {sorgular.length} sorgu
-                </span>
-            </div>
-            <p className="px-5 py-2 text-xs" style={{ color: 'var(--tema-dimmer)', borderBottom: '1px solid var(--tema-border)' }}>
-                Kaynak bulunamayan veya düşük skorlu sorgular — içerik zenginleştirmesi için fırsat.
-            </p>
-            {sorgular.length === 0 ? (
-                <p className="px-5 py-4 text-sm" style={{ color: 'var(--tema-muted)' }}>Henüz zayıf sorgu kaydı yok.</p>
-            ) : (
-                <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                        <thead>
-                            <tr style={{ borderBottom: '1px solid var(--tema-border)', background: 'var(--tema-surface)' }}>
-                                <th className="text-left px-5 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>Sorgu</th>
-                                <th className="text-left px-3 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>Maks. Skor</th>
-                                <th className="text-left px-3 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>Kategori</th>
-                                <th className="text-left px-3 py-2.5 font-medium text-xs" style={{ color: 'var(--tema-muted)' }}>Tarih</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {sorgular.map((s) => (
-                                <tr key={s.id} className="border-b" style={{ borderColor: 'var(--tema-border)' }}
-                                    onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--tema-card-hover)'; }}
-                                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
-                                >
-                                    <td className="px-5 py-3 max-w-xs" style={{ color: 'var(--tema-text)' }}>
-                                        <span className="line-clamp-2">{s.soru}</span>
-                                    </td>
-                                    <td className="px-3 py-3">
-                                        <span className="text-xs font-mono px-2 py-0.5 rounded" style={{
-                                            background: s.max_skor < 0.2 ? 'rgba(239,68,68,0.15)' : 'rgba(245,158,11,0.15)',
-                                            color: s.max_skor < 0.2 ? '#f87171' : '#fbbf24',
-                                        }}>
-                                            {s.max_skor.toFixed(3)}
-                                        </span>
-                                    </td>
-                                    <td className="px-3 py-3 text-xs" style={{ color: 'var(--tema-muted)' }}>{s.kategori || '—'}</td>
-                                    <td className="px-3 py-3 text-xs" style={{ color: 'var(--tema-dimmer)' }}>
-                                        {new Date(s.created_at).toLocaleDateString('tr-TR')}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}
-        </div>
-    );
-}
-
-export default function AdminSayfasi() {
-    const [istatistik, setIstatistik] = useState(null);
-    const [kategoriler, setKategoriler] = useState([]);
-    const [feedback, setFeedback] = useState(null);
-    const [gunluk, setGunluk] = useState([]);
-    const [yukleniyor, setYukleniyor] = useState(true);
-    const [aktifSekme, setAktifSekme] = useState('istatistik');
-
-    useEffect(() => {
-        Promise.all([
-            adminIstatistikAPI(),
-            adminKategoriDagilimiAPI(),
-            adminFeedbackOzetiAPI(),
-            adminGunlukAktiviteAPI(7),
-        ]).then(([ist, kat, fb, gun]) => {
-            setIstatistik(ist);
-            setKategoriler(kat);
-            setFeedback(fb);
-            setGunluk(gun);
-            setYukleniyor(false);
-        }).catch(err => {
-            console.error('Admin istatistikleri yüklenemedi:', err);
-            setYukleniyor(false);
-        });
-    }, []);
-
-    if (yukleniyor) {
-        return (
-            <div className="flex-1 flex items-center justify-center">
-                <RotateCcw size={28} className="animate-spin" style={{ color: 'var(--tema-muted)' }} />
-            </div>
-        );
+    try {
+      const updatedUser = await adminKullaniciDurumAPI(userId, nextActive);
+      replaceUser(updatedUser);
+      toast?.(nextActive ? 'Kullanıcı yeniden aktifleştirildi.' : 'Kullanıcı pasife alındı.');
+    } catch (actionError) {
+      toast?.(actionError?.response?.data?.detail || 'Kullanıcı durumu güncellenemedi.', 'error');
+    } finally {
+      setBusyKey('');
     }
+  };
 
-    const begenOrani = feedback?.toplam > 0
-        ? Math.round((feedback.begeni / feedback.toplam) * 100)
-        : 0;
+  const maxCategoryCount = Math.max(...model.categories.map((item) => item.count), 1);
+  const weakQueryPageCount = Math.max(1, Math.ceil(weakQueryTotal / WEAK_QUERY_PAGE_SIZE));
+  const weakQueryPageStart = weakQueryTotal === 0 ? 0 : (weakQueryPage * WEAK_QUERY_PAGE_SIZE) + 1;
+  const weakQueryPageEnd = Math.min(weakQueryTotal, (weakQueryPage + 1) * WEAK_QUERY_PAGE_SIZE);
 
-    return (
-        <div className="flex-1 flex flex-col h-full overflow-y-auto">
-            {/* Header */}
-            <header
-                className="flex-shrink-0 flex items-center gap-3 px-6 py-4"
-                style={{
-                    background: 'var(--tema-panel)',
-                    borderBottom: '1px solid var(--tema-border)',
-                }}
+  return (
+    <div className="max-w-7xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
+      <div className="flex items-end justify-between gap-6 mb-8">
+        <div>
+          <div className="label mb-2 flex items-center gap-2"><Icon name="shield" size={12} /> Admin</div>
+          <h1 className="font-display text-[40px] leading-[1.05]" style={{ letterSpacing: '-0.02em' }}>
+            Kontrol Paneli
+          </h1>
+          <p className="text-ink-muted text-sm mt-2">Seçili zaman aralığına göre sistem verileri ve moderasyon işlemleri</p>
+        </div>
+        <div className="flex gap-2 shrink-0">
+          {DASHBOARD_RANGES.map((range) => (
+            <button
+              key={range}
+              type="button"
+              onClick={() => setSelectedRange(range)}
+              className="chip text-[11px] py-1.5 px-3"
+              aria-pressed={selectedRange === range}
+              style={{
+                background: selectedRange === range ? 'color-mix(in srgb, var(--accent) 16%, var(--surface))' : undefined,
+                borderColor: selectedRange === range ? 'color-mix(in srgb, var(--accent) 38%, var(--line))' : undefined,
+                color: selectedRange === range ? 'var(--ink)' : undefined,
+              }}
             >
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                    style={{ background: 'rgba(var(--a), 0.12)', border: '1px solid rgba(var(--a), 0.25)' }}>
-                    <BarChart2 size={18} style={{ color: 'var(--tema-accent)' }} />
+              <Icon name="activity" size={12} /> Son {range} gün
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {loading && (
+        <div className="card p-4 text-sm text-ink-muted mb-6">
+          Admin verileri yükleniyor...
+        </div>
+      )}
+
+      {!loading && error && (
+        <div className="card p-4 text-sm mb-6" style={{ color: 'var(--danger)' }}>
+          {error}
+        </div>
+      )}
+
+      {!error && (
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+            {model.cards.map((card) => (
+              <div key={card.label} className="card p-5">
+                <div className="label">{card.label}</div>
+                <div className="font-display text-[36px] mt-2 leading-none" style={{ letterSpacing: '-0.02em' }}>
+                  {card.value}
                 </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-12 gap-4 mb-8">
+            <div className="col-span-12 lg:col-span-8 card p-5">
+              <div className="flex items-center justify-between mb-5">
                 <div>
-                    <h2 className="text-sm font-semibold" style={{ color: 'var(--tema-text)' }}>Admin Paneli</h2>
-                    <p className="text-xs" style={{ color: 'var(--tema-dimmer)' }}>Sistem istatistikleri</p>
+                  <div className="label">Günlük Aktivite</div>
+                  <div className="text-sm text-ink-muted mt-0.5">Son {selectedRange} gün içindeki toplam mesaj sayısı</div>
                 </div>
-            </header>
-
-            {/* Sekmeler */}
-            <div className="flex gap-1 px-6 pt-4" style={{ borderBottom: '1px solid var(--tema-border)' }}>
-                {[{ id: 'istatistik', label: 'İstatistikler' }, { id: 'kullanicilar', label: 'Kullanıcılar' }, { id: 'zayif', label: 'Zayıf Sorgular' }].map(s => (
-                    <button
-                        key={s.id}
-                        onClick={() => setAktifSekme(s.id)}
-                        className="px-4 py-2 text-sm font-medium rounded-t-xl transition-all"
-                        style={{
-                            background: aktifSekme === s.id ? 'var(--tema-surface)' : 'transparent',
-                            color: aktifSekme === s.id ? 'var(--tema-accent)' : 'var(--tema-muted)',
-                            borderBottom: aktifSekme === s.id ? '2px solid var(--tema-accent)' : '2px solid transparent',
-                        }}
-                    >{s.label}</button>
-                ))}
+                <div className="text-[11px] text-ink-muted flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full" style={{ background: 'var(--accent)' }} />
+                  Mesaj
+                </div>
+              </div>
+              <LineChart data={model.daily.messages} labels={model.daily.labels} rangeDays={selectedRange} />
             </div>
 
-            <main className="flex-1 p-6 flex flex-col gap-6 max-w-5xl mx-auto w-full">
-                {aktifSekme === 'kullanicilar' ? (
-                    <KullaniciYonetimi />
-                ) : aktifSekme === 'zayif' ? (
-                    <ZayifSorgular />
-                ) : null}
-
-                {aktifSekme !== 'istatistik' ? null : <>
-                {/* İstatistik Kartları */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <StatKarti ikon={Users} baslik="Toplam Kullanıcı" deger={istatistik?.toplam_kullanici} renk="#6366f1" />
-                    <StatKarti ikon={MessageSquare} baslik="Toplam Mesaj" deger={istatistik?.toplam_mesaj} renk="#22c55e" />
-                    <StatKarti ikon={TrendingUp} baslik="Konuşma" deger={istatistik?.toplam_konusma} renk="#f59e0b" />
-                    <StatKarti ikon={ThumbsUp} baslik="Feedback" deger={feedback ? feedback.toplam : null} renk="#ec4899" />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Kategori Dağılımı */}
-                    <div className="rounded-xl border p-5" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
-                        <h3 className="text-sm font-semibold mb-4" style={{ color: 'var(--tema-text)' }}>Kategori Dağılımı</h3>
-                        {kategoriler.length === 0 ? (
-                            <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Henüz veri yok.</p>
-                        ) : (
-                            <div className="flex flex-col gap-3">
-                                {kategoriler.map((kat, i) => {
-                                    const maks = Math.max(...kategoriler.map(k => k.sayi));
-                                    const yuzde = maks > 0 ? (kat.sayi / maks) * 100 : 0;
-                                    return (
-                                        <div key={i}>
-                                            <div className="flex justify-between text-xs mb-1" style={{ color: 'var(--tema-text2)' }}>
-                                                <span>{kat.kategori}</span>
-                                                <span className="font-semibold">{kat.sayi}</span>
-                                            </div>
-                                            <div className="w-full rounded-full h-1.5" style={{ background: 'var(--tema-border)' }}>
-                                                <div
-                                                    className="h-1.5 rounded-full transition-all duration-500"
-                                                    style={{ width: `${yuzde}%`, background: 'var(--tema-accent)' }}
-                                                />
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        )}
+            <div className="col-span-12 lg:col-span-4 card p-5">
+              <div className="label">Geri Bildirim Özeti</div>
+              <div className="text-sm text-ink-muted mt-0.5">Son {selectedRange} gün içindeki puanlamalar</div>
+              <div className="flex items-center gap-6 mt-4">
+                <Donut up={model.feedback.up} down={model.feedback.down} />
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="thumbs-up" size={13} className="text-accent" />
+                      <span className="text-ink-muted text-xs">Olumlu</span>
                     </div>
-
-                    {/* Feedback Özeti */}
-                    <div className="rounded-xl border p-5" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
-                        <h3 className="text-sm font-semibold mb-4" style={{ color: 'var(--tema-text)' }}>Geri Bildirim Özeti</h3>
-                        {!feedback || feedback.toplam === 0 ? (
-                            <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Henüz geri bildirim yok.</p>
-                        ) : (
-                            <div className="flex flex-col gap-4">
-                                <div className="flex items-center justify-center">
-                                    <div className="relative w-28 h-28">
-                                        <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                                            <circle cx="50" cy="50" r="40" fill="none" stroke="var(--tema-border)" strokeWidth="12" />
-                                            <circle
-                                                cx="50" cy="50" r="40" fill="none"
-                                                stroke="var(--tema-accent)" strokeWidth="12"
-                                                strokeDasharray={`${2 * Math.PI * 40 * begenOrani / 100} ${2 * Math.PI * 40 * (1 - begenOrani / 100)}`}
-                                                strokeLinecap="round"
-                                            />
-                                        </svg>
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-2xl font-bold" style={{ color: 'var(--tema-text)' }}>{begenOrani}%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="grid grid-cols-2 gap-3 text-center">
-                                    <div className="rounded-xl p-3" style={{ background: 'var(--tema-surface)' }}>
-                                        <p className="text-xl font-bold text-green-500">👍 {feedback.begeni}</p>
-                                        <p className="text-xs mt-1" style={{ color: 'var(--tema-dimmer)' }}>Beğendi</p>
-                                    </div>
-                                    <div className="rounded-xl p-3" style={{ background: 'var(--tema-surface)' }}>
-                                        <p className="text-xl font-bold text-red-400">👎 {feedback.begenmeme}</p>
-                                        <p className="text-xs mt-1" style={{ color: 'var(--tema-dimmer)' }}>Beğenmedi</p>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+                    <div className="font-display text-[22px]">{model.feedback.up.toLocaleString('tr-TR')}</div>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="thumbs-down" size={13} style={{ color: 'var(--danger)' }} />
+                      <span className="text-ink-muted text-xs">Olumsuz</span>
                     </div>
+                    <div className="font-display text-[22px]">{model.feedback.down.toLocaleString('tr-TR')}</div>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                {/* Günlük Aktivite */}
-                <div className="rounded-xl border p-5" style={{ background: 'var(--tema-panel)', borderColor: 'var(--tema-border)' }}>
-                    <h3 className="text-sm font-semibold mb-4" style={{ color: 'var(--tema-text)' }}>Son 7 Gün — Günlük Aktivite</h3>
-                    {gunluk.length === 0 ? (
-                        <p className="text-sm" style={{ color: 'var(--tema-muted)' }}>Henüz aktivite verisi yok.</p>
-                    ) : (
-                        <div className="overflow-x-auto">
-                            <table className="w-full text-sm">
-                                <thead>
-                                    <tr style={{ borderBottom: '1px solid var(--tema-border)' }}>
-                                        <th className="text-left pb-2 font-medium" style={{ color: 'var(--tema-muted)' }}>Tarih</th>
-                                        <th className="text-right pb-2 font-medium" style={{ color: 'var(--tema-muted)' }}>Mesaj</th>
-                                        <th className="text-right pb-2 font-medium" style={{ color: 'var(--tema-muted)' }}>Konuşma</th>
-                                        <th className="text-right pb-2 font-medium" style={{ color: 'var(--tema-muted)' }}>Kullanıcı</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {gunluk.map((g, i) => (
-                                        <tr key={i} style={{ borderBottom: '1px solid var(--tema-border)' }}>
-                                            <td className="py-2" style={{ color: 'var(--tema-text2)' }}>{g.tarih}</td>
-                                            <td className="py-2 text-right" style={{ color: 'var(--tema-text)' }}>{g.mesaj_sayisi ?? '—'}</td>
-                                            <td className="py-2 text-right" style={{ color: 'var(--tema-text)' }}>{g.konusma_sayisi ?? '—'}</td>
-                                            <td className="py-2 text-right" style={{ color: 'var(--tema-text)' }}>{g.kullanici_sayisi ?? '—'}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
+          <div className="grid grid-cols-12 gap-4 mb-8">
+            <div className="col-span-12 lg:col-span-7 card p-5">
+              <div className="label">Kategori Dağılımı</div>
+              <div className="text-sm text-ink-muted mt-0.5 mb-4">Son {selectedRange} gün içindeki kullanıcı mesajları</div>
+              <div className="space-y-2">
+                {model.categories.length === 0 ? (
+                  <div className="text-sm text-ink-muted">Bu aralık için kategori verisi henüz yok.</div>
+                ) : (
+                  model.categories.map((item) => (
+                    <div key={item.key} className="flex items-center gap-3 text-sm">
+                      <div className="w-32 text-ink-soft truncate">{item.label}</div>
+                      <div className="flex-1 h-5 rounded-sm relative overflow-hidden" style={{ background: 'var(--surface-muted)' }}>
+                        <div
+                          className="h-full rounded-sm"
+                          style={{ width: `${(item.count / maxCategoryCount) * 100}%`, background: 'var(--accent)' }}
+                        />
+                      </div>
+                      <div className="w-14 text-right font-mono text-[11px] text-ink-muted">{item.count.toLocaleString('tr-TR')}</div>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+
+            <div className="col-span-12 lg:col-span-5 card p-5">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <div className="label">Zayıf Sorgular</div>
+                  <div className="text-[11px] text-ink-muted mt-1">
+                    {weakQueryPageStart}-{weakQueryPageEnd} / {weakQueryTotal || 0} kayıt
+                  </div>
                 </div>
-                </>}
-            </main>
-        </div>
-    );
+                <span className="text-[11px] text-ink-muted">maks. skor &lt; 0.6</span>
+              </div>
+              <div className="space-y-3">
+                {model.weak.length === 0 ? (
+                  <div className="text-sm text-ink-muted">Zayıf sorgu kaydı bulunmuyor.</div>
+                ) : (
+                  model.weak.map((item) => (
+                    <div key={item.id} className="p-3 hairline rounded-lg">
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <span className="chip text-[10px] py-0 px-1.5">{item.cat}</span>
+                        <span
+                          className="font-mono text-[11px]"
+                          style={{ color: item.score < 0.45 ? 'var(--danger)' : 'var(--warn)' }}
+                        >
+                          {item.score.toFixed(2)}
+                        </span>
+                      </div>
+                      <div className="text-[13px] text-ink-soft leading-snug">{item.q}</div>
+                    </div>
+                  ))
+                )}
+              </div>
+              {weakQueryTotal > WEAK_QUERY_PAGE_SIZE && (
+                <div className="hairline-t mt-4 pt-4 flex items-center justify-between gap-3">
+                  <span className="text-[11px] text-ink-muted">
+                    Sayfa {weakQueryPage + 1} / {weakQueryPageCount}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setWeakQueryPage((current) => Math.max(0, current - 1))}
+                      disabled={weakQueryPage === 0 || loading}
+                      className="btn btn-outline text-xs"
+                    >
+                      Önceki
+                    </button>
+                    <button
+                      onClick={() => setWeakQueryPage((current) => current + 1)}
+                      disabled={weakQueryPage >= weakQueryPageCount - 1 || loading}
+                      className="btn btn-outline text-xs"
+                    >
+                      Sonraki
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="card overflow-hidden">
+            <div className="flex items-center justify-between p-5 hairline-b gap-4">
+              <div>
+                <div className="label">Kullanıcı Yönetimi</div>
+                <div className="text-sm text-ink-muted mt-0.5">{model.users.length} kullanıcı</div>
+              </div>
+              <div className="relative">
+                <Icon name="search" size={13} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-ink-faint" />
+                <input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  className="pl-8 pr-2 py-1.5 text-sm bg-surface-muted rounded-md border border-line w-56"
+                  placeholder="E-posta ara..."
+                />
+              </div>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-[11px] uppercase tracking-wide text-ink-muted bg-surface-muted">
+                    {['E-posta', 'Rol', 'Durum', 'Katılım', 'İşlem'].map((heading) => (
+                      <th key={heading} className="text-left font-medium px-5 py-3">{heading}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {model.users.length === 0 ? (
+                    <tr>
+                      <td colSpan={5} className="px-5 py-6 text-sm text-ink-muted">
+                        Bu filtre için kullanıcı bulunamadı.
+                      </td>
+                    </tr>
+                  ) : (
+                    model.users.map((user) => (
+                      <tr key={user.id} className="hairline-b last:border-b-0 hover:bg-surface-muted">
+                        <td className="px-5 py-3 font-mono text-[12.5px]">{user.email}</td>
+                        <td className="px-5 py-3">
+                          <select
+                            value={user.role}
+                            disabled={busyKey === `${user.id}:role`}
+                            onChange={(event) => handleRoleChange(user.id, event.target.value)}
+                            className="text-[11px] font-medium px-2 py-1 rounded border border-line bg-transparent"
+                          >
+                            <option value="USER">USER</option>
+                            <option value="LAWYER">LAWYER</option>
+                            <option value="ADMIN">ADMIN</option>
+                          </select>
+                        </td>
+                        <td className="px-5 py-3">
+                          <span
+                            className="chip text-[11px] py-1 px-2"
+                            style={{
+                              color: user.active ? 'var(--success)' : 'var(--danger)',
+                              borderColor: user.active ? 'color-mix(in srgb,var(--success) 40%,var(--line))' : 'color-mix(in srgb,var(--danger) 40%,var(--line))',
+                            }}
+                          >
+                            {user.active ? 'Aktif' : 'Pasif'}
+                          </span>
+                        </td>
+                        <td className="px-5 py-3 text-ink-muted font-mono text-[12px]">{user.joined}</td>
+                        <td className="px-5 py-3">
+                          <button
+                            onClick={() => handleStatusChange(user.id, !user.active)}
+                            disabled={busyKey === `${user.id}:status`}
+                            className="btn btn-outline text-xs"
+                          >
+                            <Icon name={user.active ? 'user-x' : 'user-check'} size={13} />
+                            {user.active ? 'Pasife Al' : 'Aktifleştir'}
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
 }

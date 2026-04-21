@@ -1,41 +1,41 @@
-# Ortam Değişkenleri Kurulum Rehberi
+# Ortam Degiskenleri Kurulum Rehberi
 
-Bu proje iki farklı ortam için ayrı `.env` dosyası kullanır: local geliştirme ve Docker.
+Bu proje local gelistirme ve Docker icin ayri env dosyalari kullanir.
 
 ---
 
-## Dosya Yapısı
+## Dosya Yapisi
 
-```
+```text
 backend/
-├── .env               # Local geliştirme (git'e eklenmez)
-├── .env.docker        # Docker ortamı (git'e eklenmez)
-├── .env.example       # Local için şablon (git'te tutulur)
-└── .env.docker.example  # Docker için şablon (git'te tutulur)
+|-- .env
+|-- .env.docker
+|-- .env.example
+`-- .env.docker.example
 ```
 
-> `.env` ve `.env.docker` dosyaları asla git'e commit edilmez. Şablonları kopyalayarak oluşturulur.
+Notlar:
+
+- `.env` ve `.env.docker` dosyalari git'e commit edilmez.
+- Gercek kurulumlar `.example` dosyalarinin kopyasi uzerinden yapilir.
 
 ---
 
-## Kurulum
+## Local Gelistirme
 
-### 1. Local Geliştirme
-
-`.env.example` dosyasını kopyala:
+`.env.example` dosyasini kopyala:
 
 ```bash
 cp backend/.env.example backend/.env
 ```
 
-`backend/.env` dosyasını düzenle:
+Temel local ornegi:
 
 ```env
 DATABASE_URL=postgresql+psycopg://db_user:db_password@localhost:5432/db_name
-#                                                       ↑ localhost
 ```
 
-Local çalıştırma:
+Backend local calistirma:
 
 ```bash
 cd backend
@@ -44,24 +44,25 @@ uvicorn main:app --reload
 
 ---
 
-### 2. Docker ile Çalıştırma
+## Docker
 
-`.env.docker.example` dosyasını kopyala:
+`.env.docker.example` dosyasini kopyala:
 
 ```bash
 cp backend/.env.docker.example backend/.env.docker
 ```
 
-`backend/.env.docker` dosyasını düzenle:
+Temel Docker ornegi:
 
 ```env
 DATABASE_URL=postgresql+psycopg://db_user:db_password@postgres:5432/db_name
-#                                                       ↑ postgres (container servis adı)
 ```
 
-> ⚠️ `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` ile `DATABASE_URL` içindeki değerlerin birbiriyle tutarlı olması gerekir.
+Not:
 
-Docker ile çalıştırma:
+- `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` ile `DATABASE_URL` icindeki degerler birbiriyle tutarli olmalidir.
+
+Docker calistirma:
 
 ```bash
 docker compose up -d --build
@@ -69,18 +70,18 @@ docker compose up -d --build
 
 ---
 
-## Local ve Docker Arasındaki Tek Fark
+## Local ve Docker Arasindaki Temel Fark
 
-| | Local (`.env`) | Docker (`.env.docker`) |
+| Alan | Local (`.env`) | Docker (`.env.docker`) |
 |---|---|---|
 | `DATABASE_URL` host | `localhost` | `postgres` |
-| Postgres credentials | — | `POSTGRES_*` değişkenleri eklenir |
+| Postgres credentials | Haricen verilir | `POSTGRES_*` ile birlikte tutulur |
 
 ---
 
-## Production Önerilen Flag'ler
+## Production Onerilen Flag'ler
 
-Production ortamında aşağıdaki ayarları açıkça set et:
+Production ortaminda asagidaki ayarlari acikca set et:
 
 ```env
 CORS_ORIGINS=https://<your-project>.vercel.app
@@ -91,33 +92,58 @@ STRICT_UPSTREAMS=true
 ALLOW_LOCAL_RETRIEVAL_FALLBACK=false
 MOCK_RETRIEVAL=false
 MOCK_LLM=false
+HAKBUL_PERF_LOG=false
 ```
 
-Production kurulumunda embedding backend icinde calisir; ayri embedding servisi gerekmez.
+Notlar:
 
-`STRICT_UPSTREAMS=true` ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=false` birlikte kullanıldığında,
-Qdrant/Groq erişilemezse `/ask` ve `/ask/stream` endpoint'leri 503 döner (hard-fail politika).
+- Embedding backend icinde calisir; ayri embedding servisi gerekmez.
+- `STRICT_UPSTREAMS=true` ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=false` birlikte kullanildiginda, Qdrant/Groq erisilemezse `/ask` ve `/ask/stream` endpoint'leri `503` doner.
+- `HAKBUL_PERF_LOG=true` yalnizca gecici tanilama icin acilmalidir; rewrite, retrieval, generation ve `/ask`/`/ask/stream` surelerini backend loglarina yazar.
 
 ---
 
-## ⚠️ Önemli Notlar
+## Frontend Opsiyonel Flag'ler
 
-**Volume sıfırlama:** `.env.docker`'da Postgres credentials'ı değiştirirsen eski volume'u silmen gerekir, aksi halde şifre uyuşmazlığı yaşanır:
+Frontend `.env` icin ilgili opsiyonel debug flag'i:
+
+```env
+VITE_PERF_LOG=false
+```
+
+Not:
+
+- `VITE_PERF_LOG=true` yapildiginda chat istemcisi browser console'a stream kilometre taslarini (`response_headers`, `first_chunk`, `meta`, `first_token`, `done`) loglar.
+
+---
+
+## Onemli Notlar
+
+### Volume sifirlama
+
+`.env.docker` icindeki Postgres credentials degisirse eski volume ile sifre uyusmazligi yasanabilir:
 
 ```bash
-docker compose down -v   # ⚠️ Tüm veritabanı verisini siler
+docker compose down -v
 docker compose up -d --build
 ```
 
-**`load_dotenv` davranışı:** Backend kodu `load_dotenv(override=False)` kullanır. Bu sayede Docker tarafından inject edilen env variable'lar `.env` dosyasıyla ezilmez. `.env` dosyası yalnızca set edilmemiş değişkenler için fallback görevi görür.
+### `load_dotenv` davranisi
+
+Backend `load_dotenv(override=False)` kullanir.
+
+Bu sayede:
+
+- Docker tarafindan inject edilen env variable'lar `.env` ile ezilmez.
+- `.env` yalnizca set edilmemis degiskenler icin fallback gorevi gorur.
 
 ---
 
-## Sık Yapılan Hatalar
+## Sik Yapilan Hatalar
 
-| Hata | Sebep | Çözüm |
+| Hata | Sebep | Cozum |
 |---|---|---|
-| `password authentication failed` | Volume eski şifreyle initialize edilmiş | `docker compose down -v` ile volume'u sıfırla |
-| `No address associated with hostname` | `DATABASE_URL`'de `localhost` kullanılmış | Docker env'de host'u `postgres` yap |
-| Env değişkeni geçersiz kalıyor | `load_dotenv()` Docker env'i eziyor | `load_dotenv(override=False)` kullan |
+| `password authentication failed` | Volume eski sifreyle initialize edilmistir | `docker compose down -v` ile volume'u sifirla |
+| `No address associated with hostname` | Docker icinde `localhost` kullanilmistir | Docker env'de host'u `postgres` yap |
+| Env degiskeni gecersiz kaliyor | `load_dotenv()` Docker env'ini eziyordur | `load_dotenv(override=False)` kullan |
 

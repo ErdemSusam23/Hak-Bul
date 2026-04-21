@@ -1,30 +1,59 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Icon, SectionHeader } from '../components/ui';
+import { dokumanKarsilastirAPI } from '../api/client';
+import { buildCompareRequest, pickFirstPdfFile } from '../utils/compareFlow';
+
+function formatFileSize(size) {
+  if (!size && size !== 0) return '';
+  if (size < 1024 * 1024) return `${Math.max(1, Math.round(size / 1024))} KB`;
+  return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+}
 
 function DropZone({ label, file, setFile }) {
   const [hover, setHover] = useState(false);
+  const inputRef = useRef(null);
+
+  const handleSelectedFiles = (fileList) => {
+    const fileObject = pickFirstPdfFile(fileList);
+    if (fileObject) {
+      setFile(fileObject);
+    }
+  };
+
   return (
     <div
-      onDragOver={e => { e.preventDefault(); setHover(true); }}
+      onDragOver={(event) => { event.preventDefault(); setHover(true); }}
       onDragLeave={() => setHover(false)}
-      onDrop={e => {
-        e.preventDefault(); setHover(false);
-        setFile({ name: e.dataTransfer.files[0]?.name || 'belge.pdf', size: '146 KB' });
+      onDrop={(event) => {
+        event.preventDefault();
+        setHover(false);
+        handleSelectedFiles(event.dataTransfer.files);
       }}
-      onClick={() => !file && setFile({ name: label === '1. Belge' ? 'sozlesme-v1.pdf' : 'sozlesme-v2.pdf', size: '132 KB' })}
+      onClick={() => inputRef.current?.click()}
       className={'card p-8 h-48 flex flex-col items-center justify-center text-center cursor-pointer transition ' + (hover ? 'border-accent' : '')}
       style={hover
         ? { borderColor: 'var(--accent)', background: 'var(--accent-soft)' }
         : file ? { background: 'var(--surface-muted)' } : {}}
     >
+      <input
+        ref={inputRef}
+        type="file"
+        accept="application/pdf,.pdf"
+        className="hidden"
+        onChange={(event) => handleSelectedFiles(event.target.files)}
+      />
       <div className="label mb-2">{label}</div>
       {file ? (
         <>
           <Icon name="file-text" size={28} className="mb-2 text-accent" />
           <div className="text-sm font-medium">{file.name}</div>
-          <div className="text-xs text-ink-muted mt-0.5">{file.size}</div>
+          <div className="text-xs text-ink-muted mt-0.5">{formatFileSize(file.size)}</div>
           <button
-            onClick={e => { e.stopPropagation(); setFile(null); }}
+            onClick={(event) => {
+              event.stopPropagation();
+              setFile(null);
+            }}
             className="mt-2 text-xs text-ink-muted underline"
           >
             Kaldır
@@ -43,7 +72,7 @@ function DropZone({ label, file, setFile }) {
   );
 }
 
-function CompareResult({ f1, f2 }) {
+function CompareResult({ file1, file2, result }) {
   return (
     <div className="fade-in space-y-6">
       <div className="card p-6">
@@ -51,77 +80,47 @@ function CompareResult({ f1, f2 }) {
           <Icon name="sparkles" size={15} className="text-accent" />
           <span className="label">Yapay Zeka Özeti</span>
         </div>
-        <div className="font-display text-[22px] leading-snug mb-2">
-          İki belge arasında <span style={{ color: 'var(--accent)' }}>7 önemli</span> ve{' '}
-          <span className="text-ink-muted">12 yüzeysel</span> fark tespit edildi.
+        <div className="prose prose-sm max-w-none text-ink-soft">
+          <ReactMarkdown>{result.yanit}</ReactMarkdown>
         </div>
-        <p className="text-ink-muted text-sm leading-relaxed">
-          Başlıca değişiklikler fesih prosedürü (md. 14), kira artış oranı (md. 6) ve depozito iade süresi (md. 11)
-          etrafında yoğunlaşıyor. Fesih tarafı için cezai şart kaldırılmış.
-        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        {[f1, f2].map((f, idx) => (
-          <div key={idx} className="card overflow-hidden">
+        {[
+          { file: file1, summary: result.belge1_ozet, label: '1. belge' },
+          { file: file2, summary: result.belge2_ozet, label: '2. belge' },
+        ].map((item) => (
+          <div key={item.label} className="card overflow-hidden">
             <div className="hairline-b px-4 py-2.5 flex items-center justify-between bg-surface-muted">
-              <div className="text-sm font-medium font-mono">{f.name}</div>
-              <span className="label">{idx === 0 ? 'eski' : 'yeni'}</span>
+              <div className="text-sm font-medium font-mono">{item.file.name}</div>
+              <span className="label">{item.label}</span>
             </div>
-            <div className="p-5 text-[13px] leading-relaxed space-y-3">
-              <div className="font-mono text-[11px] text-ink-muted">MADDE 6 — Kira Artışı</div>
-              <p style={idx === 0
-                ? { background: 'color-mix(in srgb,var(--danger) 15%,transparent)', padding: '2px 4px' }
-                : { background: 'color-mix(in srgb,var(--success) 15%,transparent)', padding: '2px 4px' }}>
-                {idx === 0
-                  ? 'Kira bedeli her yıl TÜFE oranında artırılır.'
-                  : "Kira bedeli her yıl TÜFE oranında artırılır, ancak %25'i geçemez."}
-              </p>
-              <div className="font-mono text-[11px] text-ink-muted mt-4">MADDE 11 — Depozito İadesi</div>
-              <p style={idx === 0
-                ? { background: 'color-mix(in srgb,var(--danger) 15%,transparent)', padding: '2px 4px' }
-                : { background: 'color-mix(in srgb,var(--success) 15%,transparent)', padding: '2px 4px' }}>
-                {idx === 0
-                  ? 'Sözleşme sona erdiğinde 60 gün içinde iade edilir.'
-                  : 'Sözleşme sona erdiğinde 30 gün içinde iade edilir.'}
-              </p>
+            <div className="p-5 text-[13px] leading-relaxed text-ink-soft">
+              {item.summary}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="card p-6">
-        <div className="label mb-4">Önemli Farklar</div>
-        <div className="space-y-3">
-          {[
-            { md: 'Madde 6',  title: 'Kira artış tavanı eklendi',  note: '%25 sınır, kiracı lehine', tone: 'good' },
-            { md: 'Madde 11', title: 'Depozito iade süresi kısaldı', note: '60 gün → 30 gün',         tone: 'good' },
-            { md: 'Madde 14', title: 'Cezai şart kaldırıldı',       note: 'Kiraya veren aleyhine',    tone: 'warn' },
-            { md: 'Madde 17', title: 'Tebligat adresi güncellendi', note: 'Yapısal değişiklik',       tone: 'info' },
-          ].map((d, i) => (
-            <div key={i} className="flex items-start gap-4 py-3 hairline-b last:border-b-0">
-              <span className="font-mono text-[11px] text-ink-muted w-16 pt-0.5">{d.md}</span>
-              <div className="flex-1">
-                <div className="text-sm">{d.title}</div>
-                <div className="text-[12px] text-ink-muted">{d.note}</div>
+      {result.kaynaklar?.length > 0 && (
+        <div className="card p-6">
+          <div className="label mb-4">Kaynaklar</div>
+          <div className="space-y-3">
+            {result.kaynaklar.map((kaynak, index) => (
+              <div key={`${kaynak.id || kaynak.baslik}-${index}`} className="py-3 hairline-b last:border-b-0">
+                <div className="text-sm font-medium">{kaynak.baslik}</div>
+                <div className="text-[12px] text-ink-muted mt-1">{kaynak.metin_ozet}</div>
               </div>
-              <span
-                className="text-[10px] px-1.5 py-0.5 rounded font-medium"
-                style={{
-                  background: d.tone === 'good' ? 'color-mix(in srgb,var(--success) 15%,transparent)'
-                    : d.tone === 'warn' ? 'color-mix(in srgb,var(--warn) 15%,transparent)'
-                    : 'var(--accent-soft)',
-                  color: d.tone === 'good' ? 'var(--success)'
-                    : d.tone === 'warn' ? 'var(--warn)'
-                    : 'var(--accent)',
-                }}
-              >
-                {d.tone === 'good' ? 'Lehine' : d.tone === 'warn' ? 'Aleyhine' : 'Bilgi'}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
+      {result.uyari && (
+        <div className="card p-5 text-sm" style={{ color: 'var(--warn)' }}>
+          {result.uyari}
+        </div>
+      )}
     </div>
   );
 }
@@ -129,13 +128,32 @@ function CompareResult({ f1, f2 }) {
 export default function KarsilastirmaSayfasi() {
   const [f1, setF1] = useState(null);
   const [f2, setF2] = useState(null);
-  const [analyzed, setAnalyzed] = useState(false);
+  const [question, setQuestion] = useState('');
+  const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const run = () => {
+  const run = async () => {
     if (!f1 || !f2) return;
+
     setLoading(true);
-    setTimeout(() => { setLoading(false); setAnalyzed(true); }, 2000);
+    setError('');
+
+    try {
+      const payload = buildCompareRequest({
+        file1: f1,
+        file2: f2,
+        question,
+        language: 'tr',
+      });
+      const response = await dokumanKarsilastirAPI(payload);
+      setResult(response);
+    } catch (compareError) {
+      setError(compareError?.response?.data?.detail || compareError.message || 'Karşılaştırma yapılamadı.');
+      setResult(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -143,7 +161,7 @@ export default function KarsilastirmaSayfasi() {
       <SectionHeader
         eyebrow="Belge Karşılaştırma"
         title="İki belgeyi yükleyin, farkları dakikalar içinde görün."
-        sub="Sözleşme revizyonları, iki teklif, taslak ve son versiyon — Hak-Bul yapısal farklılıkları ve hukuki önemi birlikte raporlar."
+        sub="Sözleşme revizyonları, iki teklif, taslak ve son versiyon için gerçek compare API akışı kullanılır."
       />
 
       <div className="grid grid-cols-2 gap-4 mb-6">
@@ -157,6 +175,8 @@ export default function KarsilastirmaSayfasi() {
           rows={2}
           placeholder="Örn. Feshe ilişkin madde değişmiş mi? Kira artış oranı nasıl değişmiş?"
           className="w-full bg-transparent text-sm resize-none"
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
         />
         <div className="flex items-center justify-between mt-3">
           <span className="text-[11px] text-ink-faint">Boş bırakırsanız varsayılan analiz yapılır.</span>
@@ -168,9 +188,14 @@ export default function KarsilastirmaSayfasi() {
             )}
           </button>
         </div>
+        {error && (
+          <p className="mt-3 text-sm" style={{ color: 'var(--danger)' }}>
+            {error}
+          </p>
+        )}
       </div>
 
-      {analyzed && <CompareResult f1={f1} f2={f2} />}
+      {result && <CompareResult file1={f1} file2={f2} result={result} />}
     </div>
   );
 }

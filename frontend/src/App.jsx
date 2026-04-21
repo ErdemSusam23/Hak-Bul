@@ -15,6 +15,13 @@ import ProfilSayfasi from './pages/ProfilSayfasi';
 import PaylasimSayfasi from './pages/PaylasimSayfasi';
 import KarsilastirmaSayfasi from './pages/KarsilastirmaSayfasi';
 import ForumSayfasi from './pages/ForumSayfasi';
+import ForumBaslikSayfasi from './pages/ForumBaslikSayfasi';
+import {
+  formatForumListHash,
+  formatForumThreadHash,
+  isForumHash,
+  parseAppLocation,
+} from './utils/appRoutes';
 
 /* ── Navbar ── */
 function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
@@ -346,11 +353,15 @@ function DisclaimerBar() {
 /* ── Main app shell ── */
 function AppIcerik() {
   const { tema, toggleTema } = useTema();
-  const [page, setPage] = useState(() => localStorage.getItem('hb_page') || 'landing');
+  const [routeState, setRouteState] = useState(() => parseAppLocation(
+    window.location.hash,
+    localStorage.getItem('hb_page') || 'landing',
+  ));
   const [authModal, setAuthModal] = useState(null);
   const [toasts, setToasts] = useState([]);
 
   const theme = tema === 'acik' ? 'light' : 'dark';
+  const { page, forumThreadId } = routeState;
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -362,8 +373,23 @@ function AppIcerik() {
   }, [page]);
 
   useEffect(() => {
+    const syncRouteState = () => {
+      setRouteState(parseAppLocation(
+        window.location.hash,
+        localStorage.getItem('hb_page') || 'landing',
+      ));
+    };
+
+    window.addEventListener('hashchange', syncRouteState);
+    return () => window.removeEventListener('hashchange', syncRouteState);
+  }, []);
+
+  useEffect(() => {
     const handleCikis = () => {
-      setPage('landing');
+      if (isForumHash(window.location.hash)) {
+        window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+      }
+      setRouteState({ page: 'landing', forumThreadId: null });
       setAuthModal(null);
     };
 
@@ -377,9 +403,28 @@ function AppIcerik() {
     setTimeout(() => setToasts((current) => current.filter((item) => item.id !== id)), 2400);
   };
 
+  const navigateToPage = (nextPage) => {
+    if (nextPage === 'forum') {
+      window.location.hash = formatForumListHash();
+      setRouteState({ page: 'forum', forumThreadId: null });
+      return;
+    }
+
+    if (isForumHash(window.location.hash)) {
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+    }
+
+    setRouteState({ page: nextPage, forumThreadId: null });
+  };
+
+  const openForumThread = (threadId) => {
+    window.location.hash = formatForumThreadHash(threadId);
+    setRouteState({ page: 'forum', forumThreadId: threadId });
+  };
+
   const onAuthSuccess = () => {
     setAuthModal(null);
-    setPage('sohbet');
+    navigateToPage('sohbet');
     toast('Hoş geldiniz!');
   };
 
@@ -387,19 +432,29 @@ function AppIcerik() {
     <div className="min-h-screen flex flex-col bg-bg text-ink">
       <Navbar
         page={page}
-        setPage={setPage}
+        setPage={navigateToPage}
         onOpenAuth={setAuthModal}
         theme={theme}
         setTheme={() => toggleTema()}
       />
 
       <main className="flex-1 min-h-0">
-        {page === 'landing' && <LandingPage onOpenAuth={setAuthModal} setPage={setPage} />}
+        {page === 'landing' && <LandingPage onOpenAuth={setAuthModal} setPage={navigateToPage} />}
         {page === 'sohbet' && <SohbetSayfasi />}
         {page === 'taslak' && <TaslakSayfasi />}
         {page === 'karsilastir' && <KarsilastirmaSayfasi />}
-        {page === 'forum' && <ForumSayfasi />}
-        {page === 'profil' && <ProfilSayfasi onGeri={() => setPage('sohbet')} />}
+        {page === 'forum' && (
+          forumThreadId ? (
+            <ForumBaslikSayfasi threadId={forumThreadId} onGeri={() => navigateToPage('forum')} />
+          ) : (
+            <ForumSayfasi
+              onThreadSec={openForumThread}
+              onOpenAuth={setAuthModal}
+              toast={toast}
+            />
+          )
+        )}
+        {page === 'profil' && <ProfilSayfasi onGeri={() => navigateToPage('sohbet')} />}
         {page === 'admin' && <AdminSayfasi />}
       </main>
 

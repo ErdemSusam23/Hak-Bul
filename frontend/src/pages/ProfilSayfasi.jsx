@@ -1,14 +1,133 @@
-import { useState } from 'react';
-import { Icon, Avatar, SectionHeader, Field, Toggle } from '../components/ui';
+import { useEffect, useState } from 'react';
+import { Avatar, Field, Icon } from '../components/ui';
 import { useAuth } from '../context/useAuth';
-import { conversations } from '../data/mockData';
+import {
+  hesapSilAPI,
+  profilGetirAPI,
+  profilGuncelleAPI,
+} from '../api/client';
+import {
+  buildAccountUpdatePayload,
+  buildPasswordUpdatePayload,
+  normalizeProfileState,
+} from '../utils/profileFlow';
 
 export default function ProfilSayfasi({ onGeri }) {
-  const { kullanici, cikis } = useAuth();
+  const { kullanici, kullaniciGuncelle, cikis } = useAuth();
   const [tab, setTab] = useState('account');
+  const [profile, setProfile] = useState(() => normalizeProfileState({ profile: null, authUser: kullanici }));
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+  const [accountEmail, setAccountEmail] = useState(profile.email);
+  const [accountPassword, setAccountPassword] = useState('');
+  const [securityCurrentPassword, setSecurityCurrentPassword] = useState('');
+  const [securityNextPassword, setSecurityNextPassword] = useState('');
+  const [securityConfirmPassword, setSecurityConfirmPassword] = useState('');
+  const [deletePassword, setDeletePassword] = useState('');
+  const [savingAccount, setSavingAccount] = useState(false);
+  const [savingSecurity, setSavingSecurity] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(false);
+  const [accountMessage, setAccountMessage] = useState('');
+  const [securityMessage, setSecurityMessage] = useState('');
+  const [deleteMessage, setDeleteMessage] = useState('');
 
-  const email = kullanici?.email || 'kullanici@example.com';
-  const isim = email.split('@')[0];
+  useEffect(() => {
+    let active = true;
+
+    const loadProfile = async () => {
+      setLoading(true);
+      setLoadError('');
+
+      try {
+        const response = await profilGetirAPI();
+        if (!active) return;
+
+        const normalized = normalizeProfileState({ profile: response, authUser: kullanici });
+        setProfile(normalized);
+        setAccountEmail(normalized.email);
+      } catch {
+        if (!active) return;
+        setLoadError('Profil bilgileri yüklenemedi.');
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadProfile();
+
+    return () => {
+      active = false;
+    };
+  }, [kullanici]);
+
+  const email = profile.email;
+  const isim = email.split('@')[0] || 'Kullanıcı';
+
+  const handleAccountSave = async () => {
+    setAccountMessage('');
+    setSavingAccount(true);
+
+    try {
+      const payload = buildAccountUpdatePayload({
+        email: accountEmail,
+        currentPassword: accountPassword,
+      });
+      const response = await profilGuncelleAPI(payload);
+      const normalized = normalizeProfileState({ profile: response, authUser: kullanici });
+      setProfile(normalized);
+      setAccountEmail(normalized.email);
+      setAccountPassword('');
+      kullaniciGuncelle?.({ email: normalized.email, rol: normalized.role });
+      setAccountMessage('Profil bilgileri güncellendi.');
+    } catch (error) {
+      setAccountMessage(error?.response?.data?.detail || error.message || 'Profil güncellenemedi.');
+    } finally {
+      setSavingAccount(false);
+    }
+  };
+
+  const handleSecuritySave = async () => {
+    setSecurityMessage('');
+    setSavingSecurity(true);
+
+    try {
+      const payload = buildPasswordUpdatePayload({
+        currentPassword: securityCurrentPassword,
+        nextPassword: securityNextPassword,
+        confirmPassword: securityConfirmPassword,
+      });
+      await profilGuncelleAPI(payload);
+      setSecurityCurrentPassword('');
+      setSecurityNextPassword('');
+      setSecurityConfirmPassword('');
+      setSecurityMessage('Şifre güncellendi.');
+    } catch (error) {
+      setSecurityMessage(error?.response?.data?.detail || error.message || 'Şifre güncellenemedi.');
+    } finally {
+      setSavingSecurity(false);
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    setDeleteMessage('');
+    setDeletingAccount(true);
+
+    try {
+      if (!deletePassword.trim()) {
+        throw new Error('Hesabı silmek için mevcut şifre gerekli.');
+      }
+
+      await hesapSilAPI(deletePassword.trim());
+      await cikis?.();
+      onGeri?.();
+    } catch (error) {
+      setDeleteMessage(error?.response?.data?.detail || error.message || 'Hesap silinemedi.');
+    } finally {
+      setDeletingAccount(false);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
@@ -18,7 +137,6 @@ export default function ProfilSayfasi({ onGeri }) {
         </button>
       )}
 
-      {/* Profile header */}
       <div className="flex items-center gap-5 mb-10">
         <div className="relative">
           <Avatar name={isim} size={72} />
@@ -36,56 +154,91 @@ export default function ProfilSayfasi({ onGeri }) {
           </h1>
           <div className="text-sm text-ink-muted mt-1.5 flex items-center gap-3 flex-wrap">
             <span>{email}</span>
-            <span className="chip text-[11px] py-0.5">{kullanici?.rol?.toUpperCase() || 'USER'}</span>
+            <span className="chip text-[11px] py-0.5">{profile.role?.toUpperCase() || 'USER'}</span>
           </div>
         </div>
       </div>
 
-      {/* Tabs */}
+      {loading && <div className="text-sm text-ink-muted mb-6">Profil yükleniyor…</div>}
+      {loadError && <div className="text-sm mb-6" style={{ color: 'var(--danger)' }}>{loadError}</div>}
+
       <div className="flex items-center gap-1 hairline-b mb-8">
-        {[['account', 'Hesap'], ['security', 'Güvenlik'], ['history', 'Sohbet Geçmişi']].map(([k, l]) => (
+        {[['account', 'Hesap'], ['security', 'Güvenlik'], ['history', 'Sohbet Geçmişi']].map(([key, label]) => (
           <button
-            key={k}
-            onClick={() => setTab(k)}
+            key={key}
+            onClick={() => setTab(key)}
             className={'px-4 py-2.5 text-sm -mb-px border-b-2 transition ' +
-              (tab === k ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
-            style={tab === k ? { borderColor: 'var(--accent)' } : {}}
+              (tab === key ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
+            style={tab === key ? { borderColor: 'var(--accent)' } : {}}
           >
-            {l}
+            {label}
           </button>
         ))}
       </div>
 
-      {/* Account tab */}
-      {tab === 'account' && (
+      {!loading && tab === 'account' && (
         <div className="max-w-xl space-y-5">
-          <Field label="Görünen Ad" ph={isim} />
-          <Field label="E-posta" ph={email} type="email" />
-          <Field label="Telefon (isteğe bağlı)" ph="+90 5XX XXX XX XX" />
+          <Field label="Görünen Ad" ph={isim} value={isim} onChange={() => {}} />
+          <Field label="E-posta" ph={email} type="email" value={accountEmail} onChange={(event) => setAccountEmail(event.target.value)} />
+          <Field
+            label="Mevcut Şifre"
+            ph="Kimlik doğrulama için gerekli"
+            type="password"
+            value={accountPassword}
+            onChange={(event) => setAccountPassword(event.target.value)}
+          />
           <div className="hairline-t pt-5 flex items-center gap-3">
-            <button className="btn btn-primary">Değişiklikleri Kaydet</button>
-            <button className="btn btn-ghost text-ink-muted">İptal</button>
+            <button onClick={handleAccountSave} disabled={savingAccount} className="btn btn-primary">
+              {savingAccount ? 'Kaydediliyor…' : 'Değişiklikleri Kaydet'}
+            </button>
+            <button
+              onClick={() => {
+                setAccountEmail(profile.email);
+                setAccountPassword('');
+                setAccountMessage('');
+              }}
+              className="btn btn-ghost text-ink-muted"
+            >
+              İptal
+            </button>
           </div>
+          {accountMessage && (
+            <p className="text-sm" style={{ color: accountMessage.includes('güncellendi') ? 'var(--success)' : 'var(--danger)' }}>
+              {accountMessage}
+            </p>
+          )}
 
           <div className="hairline-t pt-6 mt-8">
             <div className="label mb-3" style={{ color: 'var(--danger)' }}>Tehlike Bölgesi</div>
             <div
-              className="card p-5 flex items-center justify-between"
+              className="card p-5 flex items-center justify-between gap-6"
               style={{ borderColor: 'color-mix(in srgb,var(--danger) 30%,var(--line))' }}
             >
-              <div>
+              <div className="flex-1">
                 <div className="text-sm font-medium">Hesabı Sil</div>
                 <div className="text-xs text-ink-muted mt-0.5">
                   Tüm sohbet geçmişi ve belgeleriniz silinir. Bu işlem geri alınamaz.
                 </div>
+                <div className="mt-3 max-w-sm">
+                  <Field
+                    label="Mevcut Şifre"
+                    ph="Hesabı kalıcı olarak sil"
+                    type="password"
+                    value={deletePassword}
+                    onChange={(event) => setDeletePassword(event.target.value)}
+                  />
+                </div>
               </div>
               <button
+                onClick={handleDeleteAccount}
+                disabled={deletingAccount}
                 className="btn btn-outline text-xs"
                 style={{ color: 'var(--danger)', borderColor: 'color-mix(in srgb,var(--danger) 40%,var(--line))' }}
               >
-                Hesabı Sil
+                {deletingAccount ? 'Siliniyor…' : 'Hesabı Sil'}
               </button>
             </div>
+            {deleteMessage && <p className="text-sm mt-3" style={{ color: 'var(--danger)' }}>{deleteMessage}</p>}
           </div>
 
           {cikis && (
@@ -96,50 +249,31 @@ export default function ProfilSayfasi({ onGeri }) {
         </div>
       )}
 
-      {/* Security tab */}
-      {tab === 'security' && (
+      {!loading && tab === 'security' && (
         <div className="max-w-xl space-y-5">
-          <Field label="Mevcut Şifre" ph="••••••••••" type="password" />
-          <Field label="Yeni Şifre" ph="En az 8 karakter" type="password" />
-          <Field label="Yeni Şifre (Tekrar)" ph="••••••••••" type="password" />
-          <button className="btn btn-primary mt-2">Şifreyi Güncelle</button>
-
-          <div className="hairline-t pt-6 mt-8">
-            <div className="label mb-3">İki Faktörlü Doğrulama</div>
-            <div className="card p-5 flex items-center justify-between">
-              <div>
-                <div className="text-sm font-medium">SMS ile 2FA</div>
-                <div className="text-xs text-ink-muted mt-0.5">Girişte SMS doğrulama kodu istenir</div>
-              </div>
-              <Toggle />
-            </div>
-          </div>
+          <Field label="Mevcut Şifre" ph="••••••••••" type="password" value={securityCurrentPassword} onChange={(event) => setSecurityCurrentPassword(event.target.value)} />
+          <Field label="Yeni Şifre" ph="En az 8 karakter" type="password" value={securityNextPassword} onChange={(event) => setSecurityNextPassword(event.target.value)} />
+          <Field label="Yeni Şifre (Tekrar)" ph="••••••••••" type="password" value={securityConfirmPassword} onChange={(event) => setSecurityConfirmPassword(event.target.value)} />
+          <button onClick={handleSecuritySave} disabled={savingSecurity} className="btn btn-primary mt-2">
+            {savingSecurity ? 'Güncelleniyor…' : 'Şifreyi Güncelle'}
+          </button>
+          {securityMessage && (
+            <p className="text-sm" style={{ color: securityMessage.includes('güncellendi') ? 'var(--success)' : 'var(--danger)' }}>
+              {securityMessage}
+            </p>
+          )}
         </div>
       )}
 
-      {/* History tab */}
       {tab === 'history' && (
         <div>
-          <div className="flex items-center justify-between mb-3">
-            <div className="label">Sohbet Geçmişi · {conversations.length}</div>
-            <button className="btn btn-outline text-xs">
-              <Icon name="download" size={13} /> Tümünü Dışa Aktar
-            </button>
-          </div>
-          <div className="card divide-y" style={{ borderColor: 'var(--line)' }}>
-            {conversations.map(c => (
-              <div key={c.id} className="flex items-center gap-4 px-4 py-3 hover:bg-surface-muted">
-                <Icon name="message-circle" size={15} className="text-ink-muted shrink-0" />
-                <div className="flex-1 min-w-0 text-sm truncate">{c.title}</div>
-                <span className="text-xs text-ink-muted font-mono">{c.date}</span>
-                <button className="p-1.5 rounded hover:bg-surface text-ink-muted">
-                  <Icon name="download" size={13} />
-                </button>
-                <button className="p-1.5 rounded hover:bg-surface text-ink-muted">
-                  <Icon name="trash-2" size={13} />
-                </button>
-              </div>
-            ))}
+          <div className="label mb-3">Sohbet Geçmişi</div>
+          <div className="card p-5" style={{ borderColor: 'var(--line)' }}>
+            <p className="text-sm text-ink-muted leading-relaxed">
+              Sohbet geçmişiniz aktif olarak sohbet ekranındaki kenar çubuğunda yönetiliyor. Bu sekme mock içerik
+              göstermemesi için sadeleştirildi; geçmiş, yeniden adlandırma, paylaşım ve PDF dışa aktarma akışları
+              doğrudan sohbet sayfasında çalışıyor.
+            </p>
           </div>
         </div>
       )}

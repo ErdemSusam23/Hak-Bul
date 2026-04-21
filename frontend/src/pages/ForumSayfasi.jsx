@@ -1,123 +1,115 @@
-import { useState } from 'react';
-import { Icon, Avatar, SectionHeader } from '../components/ui';
-import { renderInline } from '../components/ui/renderInline';
-import { forumThreads, forumReplies } from '../data/mockData';
+import { useEffect, useState } from 'react';
+import { Field, FieldArea, Icon, Modal, SectionHeader } from '../components/ui';
 import { useAuth } from '../context/useAuth';
+import {
+  forumThreadListesiAPI,
+  forumThreadOlusturAPI,
+} from '../api/client';
+import {
+  buildForumCreatePayload,
+  FORUM_CATEGORIES,
+  normalizeForumThread,
+} from '../utils/forumFlow';
 
-function ForumDetail({ thread, onBack }) {
-  return (
-    <div className="max-w-3xl mx-auto px-6 py-10">
-      <button onClick={onBack} className="text-sm text-ink-muted hover:text-ink flex items-center gap-1.5 mb-6">
-        <Icon name="arrow-left" size={14} /> Forum
-      </button>
-      <div className="flex items-center gap-2 mb-3">
-        <span className="chip text-[11px]">{thread.cat}</span>
-        {thread.verified && (
-          <span className="chip text-[11px]" style={{ color: 'var(--highlight)', borderColor: 'var(--highlight)' }}>
-            <Icon name="badge-check" size={11} /> Avukat Onaylı
-          </span>
-        )}
-      </div>
-      <h1 className="font-display text-[38px] leading-[1.1] mb-5" style={{ letterSpacing: '-0.02em' }}>
-        {thread.title}
-      </h1>
-      <div className="flex items-center gap-3 text-[13px] text-ink-muted mb-8">
-        <Avatar name={thread.author} size={22} />
-        <span className="text-ink">{thread.author}</span>
-        <span>·</span>
-        <span>{thread.time}</span>
-      </div>
-      <div className="text-[15px] leading-relaxed text-ink-soft mb-4">
-        Merhaba, evimi kiraladığım kişi 3 ay boyunca oturduktan sonra taşındı. Depozitonu iadesi için defalarca
-        mesaj attım ama yanıt vermiyor. Hangi yolları izlemem gerekiyor?
-      </div>
-      <div className="flex items-center gap-1 mb-10">
-        <button className="btn btn-outline text-xs">
-          <Icon name="chevron-up" size={14} /> {thread.votes}
-        </button>
-        <button className="btn btn-ghost text-xs"><Icon name="share-2" size={13} /> Paylaş</button>
-        <button className="btn btn-ghost text-xs"><Icon name="bookmark" size={13} /> Kaydet</button>
-      </div>
+function formatForumDate(iso) {
+  if (!iso) return '';
 
-      <div className="label mb-3">{forumReplies.length} Yanıt · En çok oya göre</div>
-      <div className="space-y-0">
-        {forumReplies.map((r, i) => (
-          <div
-            key={i}
-            className={'py-5 hairline-b flex gap-4 ' + (r.verified ? '-mx-4 px-4 rounded-lg' : '')}
-            style={r.verified ? { background: 'color-mix(in srgb,var(--highlight) 8%,var(--surface))' } : {}}
-          >
-            <div className="flex flex-col items-center gap-1 w-10 shrink-0">
-              <Icon name="chevron-up" size={16} className="text-ink-muted" />
-              <span className="text-xs font-mono">{r.votes}</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                <Avatar name={r.author} size={22} role={r.role === 'lawyer' ? 'lawyer' : null} />
-                <span className="text-sm font-medium">{r.author}</span>
-                {r.verified && (
-                  <span
-                    className="text-[10px] font-medium px-1.5 py-0.5 rounded font-mono"
-                    style={{ background: 'var(--highlight)', color: '#fff' }}
-                  >
-                    AVUKAT ONAYLI
-                  </span>
-                )}
-                <span className="text-[11px] text-ink-faint ml-1">{r.time}</span>
-              </div>
-              <div className="text-[14.5px] leading-relaxed text-ink-soft prose-mini">
-                {renderInline(r.text)}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="card p-4 mt-8">
-        <textarea rows={3} placeholder="Yanıtınızı yazın…" className="w-full bg-transparent text-sm resize-none" />
-        <div className="flex items-center justify-between mt-2">
-          <span className="text-[11px] text-ink-faint">Markdown destekli</span>
-          <button className="btn btn-primary text-xs">Yanıt Gönder</button>
-        </div>
-      </div>
-    </div>
-  );
+  return new Date(iso.endsWith('Z') || iso.includes('+') ? iso : `${iso}Z`).toLocaleDateString('tr-TR', {
+    day: 'numeric',
+    month: 'short',
+  });
 }
 
-export default function ForumSayfasi({ onThreadSec }) {
+export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
   const { kullanici } = useAuth();
-  const [filter, setFilter] = useState('all');
-  const [thread, setThread] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [threads, setThreads] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [composerOpen, setComposerOpen] = useState(false);
+  const [composerState, setComposerState] = useState({
+    title: '',
+    category: 'Genel',
+    content: '',
+  });
+  const [composerError, setComposerError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadThreads = async () => {
+      setLoading(true);
+      setError('');
+
+      try {
+        const response = await forumThreadListesiAPI({
+          category: selectedCategory === 'all' ? null : selectedCategory,
+          page: 1,
+          size: 20,
+        });
+
+        if (!active) return;
+        setThreads((response.threads || []).map(normalizeForumThread));
+      } catch {
+        if (!active) return;
+        setError('Forum başlıkları yüklenemedi. Lütfen tekrar deneyin.');
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadThreads();
+
+    return () => {
+      active = false;
+    };
+  }, [selectedCategory]);
 
   const handleYeniSoru = () => {
     if (!kullanici) {
-      alert('Soru sormak için lütfen giriş yapın.');
+      onOpenAuth?.('login');
       return;
     }
-    alert('Forum sorma özelliği yakında aktif olacak!');
+
+    setComposerOpen(true);
   };
 
-  const filtered =
-    filter === 'unanswered' ? forumThreads.filter(t => !t.answered) :
-    filter === 'verified'   ? forumThreads.filter(t => t.verified)  :
-    forumThreads;
+  const handleComposerSubmit = async () => {
+    setComposerError('');
+    setSubmitting(true);
 
-  const handleSelect = (t) => {
-    if (onThreadSec) { onThreadSec(t.id); return; }
-    setThread(t);
+    try {
+      const payload = buildForumCreatePayload(composerState);
+      const createdThread = await forumThreadOlusturAPI(payload);
+      setComposerOpen(false);
+      setComposerState({
+        title: '',
+        category: 'Genel',
+        content: '',
+      });
+      toast?.('Forum başlığı oluşturuldu.');
+      onThreadSec?.(createdThread.id);
+    } catch (submitError) {
+      setComposerError(submitError?.response?.data?.detail || 'Başlık oluşturulamadı.');
+    } finally {
+      setSubmitting(false);
+    }
   };
-
-  if (thread) return <ForumDetail thread={thread} onBack={() => setThread(null)} />;
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
       <SectionHeader
         eyebrow="Topluluk"
         title="Hukuki Forum"
-        sub="Soru sorun, deneyim paylaşın. Avukat onaylı yanıtlara altın rozete bakın."
-        actions={
-          <button onClick={handleYeniSoru} className="btn btn-primary"><Icon name="plus" size={14} /> Yeni Soru Sor</button>
-        }
+        sub="Soru sorun, deneyim paylaşın. Detay sayfaları gerçek forum API akışıyla çalışır."
+        actions={(
+          <button onClick={handleYeniSoru} className="btn btn-primary">
+            <Icon name="plus" size={14} /> Yeni Soru Sor
+          </button>
+        )}
       />
 
       {!kullanici && (
@@ -132,49 +124,57 @@ export default function ForumSayfasi({ onThreadSec }) {
         </div>
       )}
 
-      {/* Filters */}
-      <div className="flex items-center gap-1 hairline-b mb-2">
+      <div className="flex items-center gap-1 hairline-b mb-2 overflow-x-auto scrollbar-hide">
         {[
-          ['all',        'Tümü',         forumThreads.length],
-          ['unanswered', 'Yanıtsız',     forumThreads.filter(t => !t.answered).length],
-          ['verified',   'Avukat Onaylı', forumThreads.filter(t => t.verified).length],
-        ].map(([k, l, n]) => (
+          { key: 'all', label: 'Tümü' },
+          ...FORUM_CATEGORIES.map((category) => ({ key: category, label: category })),
+        ].map(({ key, label }) => (
           <button
-            key={k}
-            onClick={() => setFilter(k)}
-            className={'px-4 py-2.5 text-sm -mb-px border-b-2 transition ' +
-              (filter === k ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
-            style={filter === k ? { borderColor: 'var(--accent)' } : {}}
+            key={key}
+            onClick={() => setSelectedCategory(key)}
+            className={'px-4 py-2.5 text-sm -mb-px border-b-2 transition whitespace-nowrap ' +
+              (selectedCategory === key ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
+            style={selectedCategory === key ? { borderColor: 'var(--accent)' } : {}}
           >
-            {l} <span className="text-ink-faint font-mono text-[11px] ml-0.5">{n}</span>
+            {label}
           </button>
         ))}
       </div>
 
-      {/* Thread list */}
       <div>
-        {filtered.map(t => (
+        {loading && (
+          <div className="py-10 text-sm text-ink-muted">Forum başlıkları yükleniyor…</div>
+        )}
+
+        {!loading && error && (
+          <div className="card p-4 text-sm" style={{ color: 'var(--danger)' }}>
+            {error}
+          </div>
+        )}
+
+        {!loading && !error && threads.length === 0 && (
+          <div className="card p-6 text-sm text-ink-muted">
+            Bu filtre için henüz forum başlığı yok.
+          </div>
+        )}
+
+        {!loading && !error && threads.map((thread) => (
           <button
-            key={t.id}
-            onClick={() => handleSelect(t)}
+            key={thread.id}
+            onClick={() => onThreadSec?.(thread.id)}
             className="group w-full text-left flex items-start gap-4 py-5 hairline-b hover:bg-surface-muted px-4 -mx-4 transition"
           >
             <div className="flex flex-col items-center gap-0.5 pt-1 w-12 shrink-0">
               <Icon name="chevron-up" size={16} className="text-ink-muted" />
-              <span className="text-sm font-medium font-mono">{t.votes}</span>
-              <Icon name="chevron-down" size={16} className="text-ink-faint" />
+              <span className="text-sm font-medium font-mono">{thread.voteScore}</span>
+              <Icon name="message-square" size={14} className="text-ink-faint mt-1" />
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                <span className="chip text-[11px] py-0.5">{t.cat}</span>
-                {t.verified && (
-                  <span className="chip text-[11px] py-0.5" style={{ color: 'var(--highlight)', borderColor: 'var(--highlight)' }}>
-                    <Icon name="badge-check" size={11} /> Avukat Onaylı
-                  </span>
-                )}
-                {t.answered && (
-                  <span className="chip text-[11px] py-0.5" style={{ color: 'var(--success)', borderColor: 'color-mix(in srgb,var(--success) 40%,var(--line))' }}>
-                    Yanıtlandı
+                <span className="chip text-[11px] py-0.5">{thread.category}</span>
+                {thread.isLocked && (
+                  <span className="chip text-[11px] py-0.5">
+                    <Icon name="lock" size={11} /> Kilitli
                   </span>
                 )}
               </div>
@@ -182,23 +182,82 @@ export default function ForumSayfasi({ onThreadSec }) {
                 className="font-display text-[20px] leading-snug group-hover:text-accent transition"
                 style={{ letterSpacing: '-0.01em' }}
               >
-                {t.title}
+                {thread.title}
               </div>
               <div className="flex items-center gap-3 mt-2 text-[12px] text-ink-muted flex-wrap">
-                <span className="flex items-center gap-1.5">
-                  <Avatar name={t.author} size={16} /> {t.author}
-                </span>
+                <span>{thread.displayName}</span>
                 <span>·</span>
-                <span>{t.time}</span>
+                <span>{formatForumDate(thread.createdAt)}</span>
                 <span>·</span>
                 <span className="flex items-center gap-1">
-                  <Icon name="message-square" size={12} /> {t.replies} yanıt
+                  <Icon name="message-square" size={12} /> {thread.replyCount} yanıt
                 </span>
               </div>
             </div>
           </button>
         ))}
       </div>
+
+      <Modal open={composerOpen} onClose={() => setComposerOpen(false)}>
+        <div className="p-6">
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <div className="label mb-2">Forum</div>
+              <h2 className="font-display text-[28px]" style={{ letterSpacing: '-0.02em' }}>
+                Yeni Başlık Oluştur
+              </h2>
+            </div>
+            <button onClick={() => setComposerOpen(false)} className="p-1 rounded hover:bg-surface-muted">
+              <Icon name="x" size={16} />
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            <Field
+              label="Başlık"
+              ph="Sorunuzu kısa ve açık yazın"
+              value={composerState.title}
+              onChange={(event) => setComposerState((current) => ({ ...current, title: event.target.value }))}
+            />
+
+            <label className="flex flex-col gap-1.5">
+              <span className="label">Kategori</span>
+              <select
+                value={composerState.category}
+                onChange={(event) => setComposerState((current) => ({ ...current, category: event.target.value }))}
+                className="border border-line rounded-md bg-surface-muted px-3 py-2 text-sm focus:bg-surface focus:border-line-strong"
+              >
+                {FORUM_CATEGORIES.map((category) => (
+                  <option key={category} value={category}>{category}</option>
+                ))}
+              </select>
+            </label>
+
+            <FieldArea
+              label="Detay"
+              ph="Durumu, zaman çizelgesini ve ne öğrenmek istediğinizi yazın"
+              rows={6}
+              value={composerState.content}
+              onChange={(event) => setComposerState((current) => ({ ...current, content: event.target.value }))}
+            />
+          </div>
+
+          {composerError && (
+            <div className="mt-4 text-sm" style={{ color: 'var(--danger)' }}>
+              {composerError}
+            </div>
+          )}
+
+          <div className="mt-6 flex items-center justify-end gap-3">
+            <button onClick={() => setComposerOpen(false)} className="btn btn-ghost">
+              Vazgeç
+            </button>
+            <button onClick={handleComposerSubmit} disabled={submitting} className="btn btn-primary">
+              {submitting ? 'Oluşturuluyor…' : 'Başlığı Yayınla'}
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

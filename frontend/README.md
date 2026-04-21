@@ -1,16 +1,47 @@
-# React + Vite
+# Hak-Bul Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite tabanli frontend uygulamasi. Bu klasordeki resmi gelistirme ve dogrulama komutlari `package.json` uzerinden calisir.
 
-Currently, two official plugins are available:
+## Kurulum
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+```
 
-## React Compiler
+## Gelistirme
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Vite gelistirme sunucusu varsayilan olarak `http://localhost:5173` adresinde acilir.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Dogrulama Komutlari
+
+```bash
+npm run test:contracts
+npm run test:unit
+npm run test
+npm run lint
+npm run verify
+```
+
+- `npm run test:contracts`: `src/` kokundeki kontrat ve mimari checklist testlerini calistirir.
+- `npm run test:unit`: `src/utils` ve `src/api` altindaki yardimci davranis testlerini calistirir.
+- `npm run test`: tum frontend testlerini tek komutta toplar.
+- `npm run verify`: standart teslim zinciridir; sirasiyla `test`, `lint` ve `build` calisir.
+
+## Standart Akis
+
+Frontend refactor veya bugfix sirasinda izlenecek resmi sira:
+
+1. `npm run test:contracts`
+2. ilgili degisiklikten sonra `npm run test:unit`
+3. `npm run lint`
+4. teslim oncesi `npm run verify`
+
+Bu sira kontratlari referans belge gibi kullanir, sonra dosya temizligini kontrol eder, en sonda build ile paketleme denetimini yapar.
+
+## Build Notu
+
+Kisitli sandbox veya bazi CI-benzeri shell oturumlarinda `vite build` ya da `npm run verify` son adimda `spawn EPERM` hatasi verebilir. Bu durumda kontrat testleri ve lint gectiyse kodu once normal lokal terminalde tekrar dogrulamak gerekir; hata her zaman uygulama kodundan kaynaklanmaz.

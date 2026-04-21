@@ -6,6 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "node ./scripts/run-tests.mjs all",
+    "test:contracts": "node ./scripts/run-tests.mjs contracts",
+    "test:unit": "node ./scripts/run-tests.mjs unit",
+    "verify": "npm run test && npm run lint && npm run build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

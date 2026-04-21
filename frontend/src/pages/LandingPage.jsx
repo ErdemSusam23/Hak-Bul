@@ -22,7 +22,7 @@ export default function LandingPage({ onOpenAuth, setPage }) {
     <div className="bg-bg text-ink">
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-20">
         <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-12 lg:col-span-7">
+          <div className="col-span-12 lg:col-span-8">
             <div className="label mb-5 flex items-center gap-2">
               <span className="w-8 h-px" style={{ background: 'var(--ink-faint)' }} />
               Turk Hukuku · Yapay Zeka Destekli
@@ -52,41 +52,7 @@ export default function LandingPage({ onOpenAuth, setPage }) {
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink-muted">
               <span className="flex items-center gap-1.5"><Icon name="scale" size={14} /> 14 Hukuki Alan</span>
               <span className="flex items-center gap-1.5"><Icon name="book-open" size={14} /> 200+ Kanun Taramasi</span>
-              <span className="flex items-center gap-1.5"><Icon name="shield-check" size={14} /> KVKK Uyumlu</span>
-            </div>
-          </div>
-
-          <div className="col-span-12 lg:col-span-5">
-            <div className="card p-5 shadow-sm">
-              <div className="flex items-center gap-2 mb-4 text-xs text-ink-muted">
-                <span className="w-2 h-2 rounded-full bg-accent" />
-                Canli ornek
-              </div>
-              <div
-                className="text-sm mb-3 p-3 rounded-lg"
-                style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}
-              >
-                Isten cikarilirken haklarim nelerdir?
-              </div>
-              <div className="text-[13.5px] text-ink-soft leading-relaxed">
-                4857 sayili Is Kanunu kapsaminda, <strong>gecerli bir neden gosterilmeksizin</strong> is akdinizin
-                feshedilmesi halinde su haklara sahipsinizdir:
-                <ul className="mt-2 space-y-1 list-disc pl-4 text-ink-muted">
-                  <li>Ihbar tazminati (calisma suresine gore 2-8 hafta)</li>
-                  <li>Kidem tazminati (her yil icin 30 gunluk ucret)</li>
-                  <li>Ise iade davasi (6 ay icinde)</li>
-                </ul>
-              </div>
-              <div className="mt-3 flex items-center gap-1.5 flex-wrap">
-                <span className="chip font-mono text-[10.5px]"><Icon name="book-open" size={11} /> IK md. 18</span>
-                <span className="chip font-mono text-[10.5px]"><Icon name="book-open" size={11} /> IK md. 20</span>
-                <span
-                  className="chip font-mono text-[10.5px]"
-                  style={{ color: 'var(--highlight)', borderColor: 'var(--highlight)' }}
-                >
-                  <Icon name="gavel" size={11} /> Y. 9. HD. 2021/4287
-                </span>
-              </div>
+              <span className="flex items-center gap-1.5"><Icon name="message-circle" size={14} /> Misafir Modu</span>
             </div>
           </div>
         </div>

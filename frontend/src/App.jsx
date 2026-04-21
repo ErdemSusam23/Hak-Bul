@@ -313,12 +313,6 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
           Misafir olarak devam et
         </button>
 
-        <div className="hairline-t mt-6 pt-4 text-center">
-          <div className="text-[11px] text-ink-faint">
-            Devam ederek <a className="underline" href="#">Kullanım Şartları</a> ve{' '}
-            <a className="underline" href="#">KVKK</a> metnini kabul etmiş olursunuz.
-          </div>
-        </div>
       </div>
     </Modal>
   );

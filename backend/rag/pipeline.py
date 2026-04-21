@@ -3,7 +3,9 @@ pipeline.py
 Main RAG pipeline orchestration.
 """
 
+import logging
 import re
+from time import perf_counter
 
 from config import settings
 from rag.categorizer import get_kategorilendirici
@@ -12,6 +14,11 @@ from rag.query_rewriter import rewrite_query
 from rag.reranker import rerank_chunks
 from rag.retriever import apply_category_penalty, filter_by_score, normalize_relevance_score, retrieve_chunks
 from services.language_service import informational_warning
+
+logger = logging.getLogger(__name__)
+perf_logger = logging.getLogger("uvicorn.error")
+
+DEFAULT_RERANK_CANDIDATE_FLOOR = 8
 
 LAW_MEVZUAT_URLS: dict[str, str] = {
     "193":  "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=193&MevzuatTur=1&MevzuatTertip=5",
@@ -179,15 +186,86 @@ def _deduplicate_sources(chunks: list[dict]) -> list[dict]:
     return unique
 
 
-def retrieve_context(soru: str, max_kaynak: int = 5) -> dict:
+def _score_of(chunk: dict) -> float:
+    try:
+        return float(chunk.get("skor", 0.0))
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def _should_rerank(chunks: list[dict]) -> bool:
+    if not settings.RERANKER_ENABLED or not chunks:
+        return False
+    return _score_of(chunks[0]) < settings.SCORE_THRESHOLD
+
+
+def _select_rerank_candidates(chunks: list[dict], max_kaynak: int) -> list[dict]:
+    candidate_limit = min(len(chunks), max(DEFAULT_RERANK_CANDIDATE_FLOOR, max_kaynak + 3))
+    return chunks[:candidate_limit]
+
+
+def retrieve_context(soru: str, max_kaynak: int = 5, request_id: str | None = None) -> dict:
+    total_started_at = perf_counter()
+
+    stage_started_at = perf_counter()
     kategori = get_kategorilendirici().kategorile(soru)
-    rewritten = rewrite_query(soru)
-    chunks = retrieve_chunks(rewritten, top_n=max_kaynak * 4)
+    kategori_ms = (perf_counter() - stage_started_at) * 1000
+
+    stage_started_at = perf_counter()
+    rewritten = rewrite_query(soru, request_id=request_id)
+    rewrite_ms = (perf_counter() - stage_started_at) * 1000
+
+    stage_started_at = perf_counter()
+    chunks = retrieve_chunks(rewritten, top_n=max_kaynak * 4, request_id=request_id)
+    retrieve_ms = (perf_counter() - stage_started_at) * 1000
+
+    stage_started_at = perf_counter()
     chunks = apply_category_penalty(chunks, kategori)
-    chunks = rerank_chunks(soru, chunks, top_n=max_kaynak * 2)
+    category_penalty_ms = (perf_counter() - stage_started_at) * 1000
+
+    stage_started_at = perf_counter()
+    rerank_applied = False
+    rerank_candidate_count = 0
+    rerank_top_score_before = _score_of(chunks[0]) if chunks else 0.0
+    if _should_rerank(chunks):
+        rerank_candidates = _select_rerank_candidates(chunks, max_kaynak=max_kaynak)
+        rerank_candidate_count = len(rerank_candidates)
+        chunks = rerank_chunks(
+            soru,
+            rerank_candidates,
+            top_n=min(len(rerank_candidates), max_kaynak * 2),
+        )
+        rerank_applied = True
+    rerank_ms = (perf_counter() - stage_started_at) * 1000
+
+    stage_started_at = perf_counter()
     filtered = filter_by_score(chunks, threshold=settings.SCORE_THRESHOLD)
+    filter_ms = (perf_counter() - stage_started_at) * 1000
+
+    stage_started_at = perf_counter()
     filtered = _deduplicate_sources(filtered)[:max_kaynak]
     kaynaklar = _format_sources(filtered, query=soru)
+    format_ms = (perf_counter() - stage_started_at) * 1000
+
+    if settings.PERF_LOG_ENABLED:
+        perf_logger.info(
+            "[perf][%s] retrieve_context total_ms=%.1f categorize_ms=%.1f rewrite_ms=%.1f retrieve_ms=%.1f category_penalty_ms=%.1f rerank_ms=%.1f rerank_applied=%s rerank_candidates=%s rerank_top_score_before=%.3f filter_ms=%.1f format_ms=%.1f chunks=%s filtered=%s sources=%s",
+            request_id or "-",
+            (perf_counter() - total_started_at) * 1000,
+            kategori_ms,
+            rewrite_ms,
+            retrieve_ms,
+            category_penalty_ms,
+            rerank_ms,
+            rerank_applied,
+            rerank_candidate_count,
+            rerank_top_score_before,
+            filter_ms,
+            format_ms,
+            len(chunks),
+            len(filtered),
+            len(kaynaklar),
+        )
 
     return {
         "kategori": kategori,
@@ -196,9 +274,25 @@ def retrieve_context(soru: str, max_kaynak: int = 5) -> dict:
     }
 
 
-def run_pipeline(soru: str, max_kaynak: int = 5, language: str = "tr") -> dict:
-    context = retrieve_context(soru, max_kaynak=max_kaynak)
-    yanit = generate_answer(soru, context["chunks"], language=language)
+def run_pipeline(soru: str, max_kaynak: int = 5, language: str = "tr", request_id: str | None = None) -> dict:
+    total_started_at = perf_counter()
+
+    stage_started_at = perf_counter()
+    context = retrieve_context(soru, max_kaynak=max_kaynak, request_id=request_id)
+    context_ms = (perf_counter() - stage_started_at) * 1000
+
+    stage_started_at = perf_counter()
+    yanit = generate_answer(soru, context["chunks"], language=language, request_id=request_id)
+    answer_ms = (perf_counter() - stage_started_at) * 1000
+
+    if settings.PERF_LOG_ENABLED:
+        perf_logger.info(
+            "[perf][%s] run_pipeline total_ms=%.1f context_ms=%.1f answer_ms=%.1f",
+            request_id or "-",
+            (perf_counter() - total_started_at) * 1000,
+            context_ms,
+            answer_ms,
+        )
 
     return {
         "yanit": yanit,

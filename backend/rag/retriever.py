@@ -11,6 +11,7 @@ import re
 import logging
 import warnings
 from pathlib import Path
+from time import perf_counter
 from typing import Any
 
 from qdrant_client import QdrantClient
@@ -20,6 +21,7 @@ from config import settings
 warnings.filterwarnings("ignore")
 os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
 logger = logging.getLogger(__name__)
+perf_logger = logging.getLogger("uvicorn.error")
 
 _qdrant: QdrantClient | None = None
 _model: Any | None = None
@@ -618,7 +620,13 @@ def _deduplicate_chunks(chunks: list[dict]) -> list[dict]:
     return unique
 
 
-def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) -> list[dict]:
+def retrieve_chunks(
+    query: str,
+    top_n: int = 5,
+    kaynak_turu: str | None = None,
+    request_id: str | None = None,
+) -> list[dict]:
+    total_started_at = perf_counter()
     if settings.MOCK_RETRIEVAL:
         if not kaynak_turu:
             return MOCK_CHUNKS
@@ -626,31 +634,50 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
 
     if not is_qdrant_configured():
         if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
-            return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+            local_started_at = perf_counter()
+            local_results = _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+            if settings.PERF_LOG_ENABLED:
+                perf_logger.info(
+                    "[perf][%s] retrieve_chunks local_only total_ms=%.1f local_ms=%.1f results=%s",
+                    request_id or "-",
+                    (perf_counter() - total_started_at) * 1000,
+                    (perf_counter() - local_started_at) * 1000,
+                    len(local_results),
+                )
+            return local_results
         raise RuntimeError("Qdrant is not configured and local fallback is disabled")
 
     # Qdrant for semantic search + local corpus for kanun maddeleri
     try:
+        model_started_at = perf_counter()
         model = _get_model()
+        model_ms = (perf_counter() - model_started_at) * 1000
+        encode_started_at = perf_counter()
         embedding = model.encode(f"query: {query}").tolist()
+        encode_ms = (perf_counter() - encode_started_at) * 1000
+        primary_qdrant_started_at = perf_counter()
         qdrant_results = _query_qdrant(
             embedding=embedding,
             top_n=top_n * 2,
             kaynak_turu=kaynak_turu,
         )
+        primary_qdrant_ms = (perf_counter() - primary_qdrant_started_at) * 1000
         raw = [{"payload": r.payload, "skor": r.score} for r in qdrant_results]
         deduped = _deduplicate_chunks(raw)
 
         # Kanunlar collection'ı yapılandırılmışsa ayrıca sorgula ve merge et.
         # kaynak_turu filtresi uygulanmaz — kanunlar collection'ındaki tüm kayıtlar kanundur.
         got_qdrant_kanunlar = False
+        secondary_qdrant_ms = 0.0
         if settings.COLLECTION_KANUN_NAME:
             try:
+                secondary_qdrant_started_at = perf_counter()
                 kanun_results = _query_qdrant(
                     embedding=embedding,
                     top_n=top_n * 4,
                     collection_name=settings.COLLECTION_KANUN_NAME,
                 )
+                secondary_qdrant_ms = (perf_counter() - secondary_qdrant_started_at) * 1000
                 raw_kanunlar = [{"payload": r.payload, "skor": r.score} for r in kanun_results]
                 if raw_kanunlar:
                     # Kanunlar primary (semantik), kararlar secondary (0.9 boost)
@@ -668,17 +695,35 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
                 )
 
         should_merge_local_laws = _should_merge_local_law_results(query, kaynak_turu=kaynak_turu)
+        local_merge_ms = 0.0
 
         if not deduped and not should_merge_local_laws:
             if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
-                return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+                local_started_at = perf_counter()
+                local_results = _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+                local_merge_ms = (perf_counter() - local_started_at) * 1000
+                if settings.PERF_LOG_ENABLED:
+                    perf_logger.info(
+                        "[perf][%s] retrieve_chunks qdrant_empty_fallback total_ms=%.1f model_ms=%.1f encode_ms=%.1f primary_qdrant_ms=%.1f secondary_qdrant_ms=%.1f local_ms=%.1f results=%s",
+                        request_id or "-",
+                        (perf_counter() - total_started_at) * 1000,
+                        model_ms,
+                        encode_ms,
+                        primary_qdrant_ms,
+                        secondary_qdrant_ms,
+                        local_merge_ms,
+                        len(local_results),
+                    )
+                return local_results
             raise RuntimeError("Qdrant returned no retrieval results")
 
         # Local kanun merge — sadece Qdrant kanunlar collection'ı kullanılamadıysa devreye girer.
         if not got_qdrant_kanunlar \
                 and (should_merge_local_laws or kaynak_turu is None) \
                 and settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
+            local_started_at = perf_counter()
             local_kanun = _retrieve_local(query=query, top_n=top_n * 2, kaynak_turu="kanun")
+            local_merge_ms = (perf_counter() - local_started_at) * 1000
             if local_kanun:
                 if kaynak_turu == "kanun":
                     boost = 0.85 if _extract_query_madde_numbers(_normalize(query)) else 0.95
@@ -691,7 +736,22 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
                     if not has_kanun:
                         deduped = _merge_scored_chunks(deduped, local_kanun, secondary_boost=0.9)
 
-        return deduped[:top_n]
+        result = deduped[:top_n]
+        if settings.PERF_LOG_ENABLED:
+            perf_logger.info(
+                "[perf][%s] retrieve_chunks total_ms=%.1f model_ms=%.1f encode_ms=%.1f primary_qdrant_ms=%.1f secondary_qdrant_ms=%.1f local_merge_ms=%.1f raw=%s deduped=%s result=%s",
+                request_id or "-",
+                (perf_counter() - total_started_at) * 1000,
+                model_ms,
+                encode_ms,
+                primary_qdrant_ms,
+                secondary_qdrant_ms,
+                local_merge_ms,
+                len(raw),
+                len(deduped),
+                len(result),
+            )
+        return result
     except Exception as exc:
         logger.warning(
             "Qdrant retrieval failed; using local fallback. collection=%s error=%s",
@@ -701,7 +761,17 @@ def retrieve_chunks(query: str, top_n: int = 5, kaynak_turu: str | None = None) 
         )
         # Qdrant unavailable — optionally fall back to local keyword index.
         if settings.ALLOW_LOCAL_RETRIEVAL_FALLBACK:
-            return _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+            local_started_at = perf_counter()
+            local_results = _retrieve_local(query=query, top_n=top_n, kaynak_turu=kaynak_turu)
+            if settings.PERF_LOG_ENABLED:
+                perf_logger.info(
+                    "[perf][%s] retrieve_chunks exception_fallback total_ms=%.1f local_ms=%.1f results=%s",
+                    request_id or "-",
+                    (perf_counter() - total_started_at) * 1000,
+                    (perf_counter() - local_started_at) * 1000,
+                    len(local_results),
+                )
+            return local_results
         raise RuntimeError("Qdrant retrieval failed and local fallback is disabled") from exc
 
 

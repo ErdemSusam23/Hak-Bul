@@ -1,36 +1,42 @@
 import { useState, useCallback, useRef } from 'react';
-import { apiFetch, dokumanAnalizAPI } from '../api/client';
+import { apiStream, dokumanAnalizAPI } from '../api/client';
 
 const MOCK_MODE = import.meta.env?.VITE_MOCK_MODE === 'true';
+const PERF_LOG = import.meta.env?.VITE_PERF_LOG === 'true';
 
 let mesajSayac = 0;
 const yeniId = () => `msg_${++mesajSayac}_${Date.now()}`;
 
 const MOCK_YANIT = {
-    yanit: `**4857 Sayılı İş Kanunu** kapsamında kıdem tazminatı alabilmek için iş sözleşmenizin asgari **1 yıl** sürmüş olması ve işveren tarafından haksız fesih gibi kanunda sayılan hallerden biriyle sona ermesi gerekmektedir.`,
+    yanit: `**4857 SayÄ±lÄ± Ä°ÅŸ Kanunu** kapsamÄ±nda kÄ±dem tazminatÄ± alabilmek iÃ§in iÅŸ sÃ¶zleÅŸmenizin asgari **1 yÄ±l** sÃ¼rmÃ¼ÅŸ olmasÄ± ve iÅŸveren tarafÄ±ndan haksÄ±z fesih gibi kanunda sayÄ±lan hallerden biriyle sona ermesi gerekmektedir.`,
     kaynaklar: [
-        { kaynak_turu: 'kanun', baslik: '4857 Sayılı İş Kanunu — Madde 17', metin_ozet: 'Belirsiz süreli iş sözleşmelerinin feshinde bildirim şartı.', skor: 0.94, url: null },
+        { kaynak_turu: 'kanun', baslik: '4857 SayÄ±lÄ± Ä°ÅŸ Kanunu â€” Madde 17', metin_ozet: 'Belirsiz sÃ¼reli iÅŸ sÃ¶zleÅŸmelerinin feshinde bildirim ÅŸartÄ±.', skor: 0.94, url: null },
     ],
-    kategori: 'İş Hukuku',
-    uyari: 'Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.',
+    kategori: 'Ä°ÅŸ Hukuku',
+    uyari: 'Bu yanÄ±t bilgi amaÃ§lÄ±dÄ±r ve hukuki tavsiye niteliÄŸi taÅŸÄ±maz.',
 };
 
 const CHAT_COPY = {
     tr: {
-        minLength: '⚠️ Sorunuz en az 10 karakter olmalıdır. Lütfen daha ayrıntılı yazın.',
-        tooManyRequests: (retryAfter) => `⏳ Çok fazla istek gönderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`,
-        unavailable: '🔧 Sunucu geçici olarak erişilemiyor. Lütfen 30 saniye sonra tekrar deneyin.',
-        generic: '⚠️ Yanıt alınamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.',
+        minLength: 'âš ï¸ Sorunuz en az 10 karakter olmalÄ±dÄ±r. LÃ¼tfen daha ayrÄ±ntÄ±lÄ± yazÄ±n.',
+        tooManyRequests: (retryAfter) => `â³ Ã‡ok fazla istek gÃ¶nderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`,
+        unavailable: 'ğŸ”§ Sunucu geÃ§ici olarak eriÅŸilemiyor. LÃ¼tfen 30 saniye sonra tekrar deneyin.',
+        generic: 'âš ï¸ YanÄ±t alÄ±namadÄ±. LÃ¼tfen baÄŸlantÄ±nÄ±zÄ± kontrol edip tekrar deneyin.',
     },
     en: {
-        minLength: '⚠️ Your question must be at least 10 characters long. Please provide a bit more detail.',
-        tooManyRequests: (retryAfter) => `⏳ Too many requests were sent. Please wait ${retryAfter ? `${retryAfter} seconds` : '1 minute'} and try again.`,
-        unavailable: '🔧 The server is temporarily unavailable. Please try again in 30 seconds.',
-        generic: '⚠️ No response was received. Please check your connection and try again.',
+        minLength: 'âš ï¸ Your question must be at least 10 characters long. Please provide a bit more detail.',
+        tooManyRequests: (retryAfter) => `â³ Too many requests were sent. Please wait ${retryAfter ? `${retryAfter} seconds` : '1 minute'} and try again.`,
+        unavailable: 'ğŸ”§ The server is temporarily unavailable. Please try again in 30 seconds.',
+        generic: 'âš ï¸ No response was received. Please check your connection and try again.',
     },
 };
 
 const getChatCopy = (language) => CHAT_COPY[language] || CHAT_COPY.tr;
+
+function logPerf(event, details = {}) {
+    if (!PERF_LOG) return;
+    console.info(`[perf][chat] ${event}`, details);
+}
 
 export function useChat(language = 'tr') {
     const [mesajlar, setMesajlar] = useState([]);
@@ -50,13 +56,13 @@ export function useChat(language = 'tr') {
         if ((!metinVar && !dosyaVar) || yukleniyor) return null;
 
         if (!dosyaVar && metinVar.length < 10) {
-                const hataMesaj = {
-                    id: yeniId(),
-                    rol: 'asistan',
-                    icerik: ui.minLength,
-                    kaynaklar: [],
-                    hata: true,
-                    zaman: new Date(),
+            const hataMesaj = {
+                id: yeniId(),
+                rol: 'asistan',
+                icerik: ui.minLength,
+                kaynaklar: [],
+                hata: true,
+                zaman: new Date(),
             };
             setMesajlar((onceki) => [...onceki, hataMesaj]);
             return null;
@@ -74,7 +80,7 @@ export function useChat(language = 'tr') {
         setMesajlar((onceki) => [...onceki, kullaniciMesaj]);
         setYukleniyor(true);
 
-        // PDF analizi — streaming yok, normal POST
+        // PDF analizi â€” streaming yok, normal POST
         if (dosyaVar) {
             try {
                 const yanit = await dokumanAnalizAPI({
@@ -105,7 +111,7 @@ export function useChat(language = 'tr') {
 
         // Mock mode
         if (MOCK_MODE) {
-            await new Promise(r => setTimeout(r, 1200));
+            await new Promise((resolve) => setTimeout(resolve, 1200));
             const asistanMesaj = {
                 id: yeniId(),
                 rol: 'asistan',
@@ -123,7 +129,7 @@ export function useChat(language = 'tr') {
         // SSE Streaming
         const streamMesajId = yeniId();
 
-        // Placeholder asistan mesajı — boş, streaming başlayınca dolacak
+        // Placeholder asistan mesajÄ± â€” boÅŸ, streaming baÅŸlayÄ±nca dolacak
         setMesajlar((onceki) => [
             ...onceki,
             {
@@ -150,44 +156,50 @@ export function useChat(language = 'tr') {
 
         let resultConvId = null;
         let resultGuestId = null;
+        const timings = {
+            startedAt: performance.now(),
+            responseAt: null,
+            firstChunkAt: null,
+            firstMetaAt: null,
+            firstTokenAt: null,
+            doneAt: null,
+            tokenCount: 0,
+        };
 
         try {
-            const resp = await apiFetch('/ask/stream', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
+            await apiStream('/ask/stream', {
+                init: {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                    signal: controller.signal,
                 },
-                body: JSON.stringify(payload),
-                signal: controller.signal,
-            });
-
-            if (!resp.ok) {
-                const errData = await resp.json().catch(() => ({}));
-                const detail = typeof errData.detail === 'string' ? errData.detail : errData.detail?.detail || 'Sunucu hatası';
-                throw Object.assign(new Error(detail), { response: { status: resp.status, data: errData } });
-            }
-
-            const reader = resp.body.getReader();
-            const decoder = new TextDecoder();
-            let buffer = '';
-
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-
-                buffer += decoder.decode(value, { stream: true });
-                const lines = buffer.split('\n');
-                buffer = lines.pop(); // Son satır tamamlanmamış olabilir
-
-                for (const line of lines) {
-                    if (!line.startsWith('data: ')) continue;
-                    const raw = line.slice(6).trim();
-                    if (!raw) continue;
-
-                    let event;
-                    try { event = JSON.parse(raw); } catch { continue; }
-
+                onResponse: (resp) => {
+                    timings.responseAt = performance.now();
+                    logPerf('response_headers', {
+                        durationMs: Number((timings.responseAt - timings.startedAt).toFixed(1)),
+                        status: resp.status,
+                    });
+                },
+                onChunk: () => {
+                    if (timings.firstChunkAt === null) {
+                        timings.firstChunkAt = performance.now();
+                        logPerf('first_chunk', {
+                            durationMs: Number((timings.firstChunkAt - timings.startedAt).toFixed(1)),
+                        });
+                    }
+                },
+                onEvent: (event) => {
                     if (event.type === 'meta') {
+                        if (timings.firstMetaAt === null) {
+                            timings.firstMetaAt = performance.now();
+                            logPerf('meta', {
+                                durationMs: Number((timings.firstMetaAt - timings.startedAt).toFixed(1)),
+                                sources: (event.kaynaklar || []).length,
+                            });
+                        }
                         resultConvId = event.conversation_id;
                         resultGuestId = event.guest_session_id;
                         setMesajlar((onceki) =>
@@ -197,7 +209,17 @@ export function useChat(language = 'tr') {
                                     : m
                             )
                         );
-                    } else if (event.type === 'token') {
+                        return;
+                    }
+
+                    if (event.type === 'token') {
+                        timings.tokenCount += 1;
+                        if (timings.firstTokenAt === null) {
+                            timings.firstTokenAt = performance.now();
+                            logPerf('first_token', {
+                                durationMs: Number((timings.firstTokenAt - timings.startedAt).toFixed(1)),
+                            });
+                        }
                         setMesajlar((onceki) =>
                             onceki.map((m) =>
                                 m.id === streamMesajId
@@ -205,7 +227,15 @@ export function useChat(language = 'tr') {
                                     : m
                             )
                         );
-                    } else if (event.type === 'done') {
+                        return;
+                    }
+
+                    if (event.type === 'done') {
+                        timings.doneAt = performance.now();
+                        logPerf('done', {
+                            totalMs: Number((timings.doneAt - timings.startedAt).toFixed(1)),
+                            tokenCount: timings.tokenCount,
+                        });
                         setMesajlar((onceki) =>
                             onceki.map((m) =>
                                 m.id === streamMesajId
@@ -218,21 +248,24 @@ export function useChat(language = 'tr') {
                                     : m
                             )
                         );
-                    } else if (event.type === 'error') {
-                        throw new Error(event.detail || 'Streaming hatası');
+                        return;
                     }
-                }
-            }
+
+                    if (event.type === 'error') {
+                        throw new Error(event.detail || 'Streaming hatasÄ±');
+                    }
+                },
+            });
         } catch (err) {
             if (err.name === 'AbortError') {
-                // Kullanıcı iptal etti — mesajı olduğu gibi bırak
+                // KullanÄ±cÄ± iptal etti â€” mesajÄ± olduÄŸu gibi bÄ±rak
                 setMesajlar((onceki) =>
                     onceki.map((m) =>
                         m.id === streamMesajId ? { ...m, streaming: false } : m
                     )
                 );
             } else {
-                // Streaming başlamışsa placeholder'ı hata mesajına dönüştür
+                // Streaming baÅŸlamÄ±ÅŸsa placeholder'Ä± hata mesajÄ±na dÃ¶nÃ¼ÅŸtÃ¼r
                 setMesajlar((onceki) =>
                     onceki.map((m) => {
                         if (m.id !== streamMesajId) return m;

@@ -516,11 +516,11 @@ export default function AdminSayfasi({ toast }) {
                             value={user.role}
                             disabled={busyKey === `${user.id}:role`}
                             onChange={(event) => handleRoleChange(user.id, event.target.value)}
-                            className="text-[11px] font-medium px-2 py-1 rounded border border-line bg-transparent"
+                            className="text-[11px] font-medium px-2 py-1 rounded border border-line bg-surface text-ink focus:bg-surface focus:border-line-strong"
                           >
-                            <option value="USER">USER</option>
-                            <option value="LAWYER">LAWYER</option>
-                            <option value="ADMIN">ADMIN</option>
+                            <option className="bg-surface text-ink" value="USER">USER</option>
+                            <option className="bg-surface text-ink" value="LAWYER">LAWYER</option>
+                            <option className="bg-surface text-ink" value="ADMIN">ADMIN</option>
                           </select>
                         </td>
                         <td className="px-5 py-3">

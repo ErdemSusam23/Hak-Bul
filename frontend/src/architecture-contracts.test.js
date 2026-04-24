@@ -33,6 +33,17 @@ test('forum API methods in client.js apply the shared mock-mode guard', async ()
   assert.ok(forumSection.includes('runWithMockMode('), 'forum API methods should route through the shared mock-mode helper');
 });
 
+test('admin role updates send backend enum values instead of display labels', async () => {
+  const source = await readSource('api', 'client.js');
+  const adminRoleSection = source.slice(
+    source.indexOf('export async function adminRolGuncelleAPI'),
+    source.indexOf('export async function adminKullaniciDurumAPI'),
+  );
+
+  assert.match(adminRoleSection, /const normalizedRole = String\(rol \|\| ''\)\.trim\(\)\.toLowerCase\(\);/, 'admin role updates should normalize select values before sending them');
+  assert.match(adminRoleSection, /\{ rol: normalizedRole \}/, 'admin role updates should send lowercase backend enum values');
+});
+
 test('local development API calls go through the Vite reverse proxy by default', async () => {
   const clientSource = await readSource('api', 'client.js');
   const authSource = await readSource('api', 'auth.js');

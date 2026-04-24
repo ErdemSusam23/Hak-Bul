@@ -56,6 +56,14 @@ test('AdminSayfasi exposes backend-supported user filters and pagination', async
   assert.match(source, /setUserPage\(\(current\) => current \+ 1\)/, 'AdminSayfasi should provide next user page control');
 });
 
+test('AdminSayfasi renders role update controls with readable contrast', async () => {
+  const source = await readSource('pages', 'AdminSayfasi.jsx');
+
+  assert.match(source, /className="text-\[11px\] font-medium px-2 py-1 rounded border border-line bg-surface text-ink focus:bg-surface focus:border-line-strong"/, 'Role update select should use explicit surface and text colors');
+  assert.match(source, /<option className="bg-surface text-ink" value="USER">USER<\/option>/, 'Role update options should use readable option colors');
+  assert.ok(!source.includes('className="text-[11px] font-medium px-2 py-1 rounded border border-line bg-transparent"'), 'Role update select should not be transparent over table hover backgrounds');
+});
+
 test('TaslakSayfasi uses live template APIs and removes simulated browser-dialog UX', async () => {
   const source = await readSource('pages', 'TaslakSayfasi.jsx');
 

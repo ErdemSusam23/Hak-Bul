@@ -406,7 +406,8 @@ export async function adminKullaniciListesiAPI({
 
 export async function adminRolGuncelleAPI(userId, rol) {
     if (MOCK_MODE) return {};
-    const { data } = await client.patch(`/admin/users/${userId}/role`, { rol });
+    const normalizedRole = String(rol || '').trim().toLowerCase();
+    const { data } = await client.patch(`/admin/users/${userId}/role`, { rol: normalizedRole });
     return data;
 }
 

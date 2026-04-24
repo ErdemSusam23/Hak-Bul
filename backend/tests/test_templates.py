@@ -3,6 +3,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from main import app
+from services import template_service
 
 client = TestClient(app)
 
@@ -74,6 +75,11 @@ def test_taslak_listesi_english_localization_supports_labels():
     kira = next(t for t in r.json()["taslaklar"] if t["id"] == "kira_sozlesmesi")
     assert kira["baslik"] == "Lease Agreement"
     assert kira["alanlar"][0]["etiket"] == "Tenant Full Name"
+
+
+def test_pdf_fontu_unicode_destekli_ttf_olarak_kayitli():
+    assert template_service._FONT != "Helvetica"
+    assert template_service._FONT_BOLD != "Helvetica-Bold"
 
 
 @pytest.mark.parametrize("template_id", list(ZORUNLU_ALANLAR.keys()))

@@ -37,3 +37,11 @@ test('SohbetSayfasi wires PDF upload into the composer and caps text input at 10
   assert.match(source, /maxLength=\{CHAT_COMPOSER_MAX_LENGTH\}/, 'SohbetSayfasi should apply the shared 1000-char limit');
   assert.match(source, /\{input\.length\}\/\{CHAT_COMPOSER_MAX_LENGTH\}/, 'SohbetSayfasi should show the live 1000-char counter');
 });
+
+test('SohbetSayfasi shows the selected conversation title in the chat header', async () => {
+  const source = await readSource('pages', 'SohbetSayfasi.jsx');
+
+  assert.match(source, /selectedConversationTitle/, 'SohbetSayfasi should keep the selected conversation title in parent state');
+  assert.match(source, /title: sohbet\.title/, 'ChatSidebar should pass the sidebar title when selecting a conversation');
+  assert.ok(!source.includes('Sohbet #'), 'SohbetSayfasi should not render the conversation id prefix as the header title');
+});

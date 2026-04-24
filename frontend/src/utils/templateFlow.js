@@ -12,6 +12,12 @@ export function buildTemplatePayload({ fields }) {
   return { alanlar };
 }
 
+export function getMissingRequiredTemplateFields(template, fields) {
+  return (template?.alanlar || [])
+    .filter((field) => field.zorunlu && !(fields?.[field.ad] || '').trim())
+    .map((field) => field.etiket || field.ad);
+}
+
 export function buildTemplateDownloadName(templateId) {
   return `${templateId}.pdf`;
 }

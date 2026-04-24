@@ -92,6 +92,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
 
       onSelect({
         id: sohbet.id,
+        title: sohbet.title,
         mesajlar: detay.messages.map((message) => ({
           id: message.id,
           rol: message.role === 'user' ? 'kullanici' : 'asistan',
@@ -486,6 +487,7 @@ export default function SohbetSayfasi({ toast }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [activeId, setActiveId] = useState(null);
   const [convId, setConvId] = useState(null);
+  const [selectedConversationTitle, setSelectedConversationTitle] = useState('');
   const scrollRef = useRef(null);
   const fileInputRef = useRef(null);
 
@@ -530,6 +532,7 @@ export default function SohbetSayfasi({ toast }) {
     sohbetiTemizle();
     setConvId(null);
     setActiveId(null);
+    setSelectedConversationTitle('');
     setInput('');
     clearSelectedFile();
   };
@@ -538,6 +541,7 @@ export default function SohbetSayfasi({ toast }) {
     mesajlariYukle(sohbet.mesajlar);
     setConvId(sohbet.id);
     setActiveId(sohbet.id);
+    setSelectedConversationTitle(sohbet.title || '');
     clearSelectedFile();
   };
 
@@ -635,7 +639,7 @@ export default function SohbetSayfasi({ toast }) {
           </button>
           <div className="flex-1 min-w-0">
             <div className="text-sm truncate text-ink-muted">
-              {convId ? `Sohbet #${convId.slice(0, 8)}` : 'Yeni Sohbet'}
+              {selectedConversationTitle || (convId ? 'Sohbet' : 'Yeni Sohbet')}
             </div>
           </div>
           <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet baglantisini kopyala">

@@ -179,11 +179,11 @@ export function Toggle({ defaultOn, onChange }) {
 }
 
 /* ── Form field ── */
-export function Field({ label, ph, type = 'text', suffix, value, onChange }) {
+export function Field({ label, ph, type = 'text', suffix, value, onChange, className = '' }) {
   return (
     <label className="flex flex-col gap-1.5">
       <span className="label">{label}</span>
-      <div className="flex items-center border border-line rounded-md bg-surface-muted focus-within:bg-surface focus-within:border-line-strong">
+      <div className={`flex items-center border border-line rounded-md bg-surface-muted focus-within:bg-surface focus-within:border-line-strong ${className}`}>
         <input
           type={type}
           placeholder={ph}
@@ -197,7 +197,7 @@ export function Field({ label, ph, type = 'text', suffix, value, onChange }) {
   );
 }
 
-export function FieldArea({ label, ph, rows = 3, value, onChange }) {
+export function FieldArea({ label, ph, rows = 3, value, onChange, className = '' }) {
   return (
     <label className="flex flex-col gap-1.5">
       <span className="label">{label}</span>
@@ -206,7 +206,7 @@ export function FieldArea({ label, ph, rows = 3, value, onChange }) {
         placeholder={ph}
         value={value}
         onChange={onChange}
-        className="bg-surface-muted border border-line rounded-md px-3 py-2 text-sm resize-none focus:bg-surface focus:border-line-strong"
+        className={`bg-surface-muted border border-line rounded-md px-3 py-2 text-sm resize-none focus:bg-surface focus:border-line-strong ${className}`}
       />
     </label>
   );

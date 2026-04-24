@@ -9,6 +9,7 @@ from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+import reportlab
 
 from services.language_service import normalize_language
 
@@ -17,6 +18,8 @@ from services.language_service import normalize_language
 # ---------------------------------------------------------------------------
 _FONT = "Helvetica"
 _FONT_BOLD = "Helvetica-Bold"
+_REPORTLAB_FONTS = Path(reportlab.__file__).parent / "fonts"
+_WINDOWS_FONTS = Path("C:/Windows/Fonts")
 
 _TTF_CANDIDATES = [
     ("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
@@ -25,6 +28,12 @@ _TTF_CANDIDATES = [
      "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"),
     ("/usr/share/fonts/truetype/freefont/FreeSans.ttf",
      "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf"),
+    (_WINDOWS_FONTS / "arial.ttf",
+     _WINDOWS_FONTS / "arialbd.ttf"),
+    (_WINDOWS_FONTS / "segoeui.ttf",
+     _WINDOWS_FONTS / "segoeuib.ttf"),
+    (_REPORTLAB_FONTS / "Vera.ttf",
+     _REPORTLAB_FONTS / "VeraBd.ttf"),
 ]
 
 for _reg, _bold in _TTF_CANDIDATES:
@@ -427,7 +436,7 @@ def _pdf_kira_sozlesmesi(a: dict[str, str]) -> bytes:
         Spacer(1, 1.5 * cm),
         Paragraph("İmza: ______________________ &nbsp;&nbsp;&nbsp;&nbsp; İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge bilgi amaçlı taslak niteliğindedir. Hukuki geçerlilik için noter veya avukattan destek alınız.",
+            "UYARI: Bu belge bilgi amaçlı taslak niteliğindedir. Hukuki geçerlilik için noter veya avukattan destek alınız.",
             _uyari_stili(),
         ),
     ]
@@ -479,7 +488,7 @@ def _pdf_is_sozlesmesi(a: dict[str, str]) -> bytes:
         Spacer(1, 1.5 * cm),
         Paragraph("İmza: ______________________ &nbsp;&nbsp;&nbsp;&nbsp; İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge bilgi amaçlı taslak niteliğindedir. Hukuki geçerlilik için noter veya avukattan destek alınız.",
+            "UYARI: Bu belge bilgi amaçlı taslak niteliğindedir. Hukuki geçerlilik için noter veya avukattan destek alınız.",
             _uyari_stili(),
         ),
     ]
@@ -511,7 +520,7 @@ def _pdf_ihtarname(a: dict[str, str]) -> bytes:
         Paragraph(f"{a['gonderen_ad_soyad']}", _normal_stili()),
         Paragraph("İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge bilgi amaçlı taslak niteliğindedir. Resmi ihtarname için noter kanalıyla gönderilmesi önerilir.",
+            "UYARI: Bu belge bilgi amaçlı taslak niteliğindedir. Resmi ihtarname için noter kanalıyla gönderilmesi önerilir.",
             _uyari_stili(),
         ),
     ]
@@ -540,7 +549,7 @@ def _pdf_taahhutname(a: dict[str, str]) -> bytes:
         Paragraph(f"{a['taahut_eden_ad_soyad']}", _normal_stili()),
         Paragraph("İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge bilgi amaçlı taslak niteliğindedir. Hukuki geçerlilik için noter veya avukattan destek alınız.",
+            "UYARI: Bu belge bilgi amaçlı taslak niteliğindedir. Hukuki geçerlilik için noter veya avukattan destek alınız.",
             _uyari_stili(),
         ),
     ]
@@ -573,7 +582,7 @@ def _pdf_vekaletname(a: dict[str, str]) -> bytes:
         Paragraph(f"Vekil Veren: {a['vekil_veren_ad_soyad']}", _normal_stili()),
         Paragraph("İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge taslak niteliğindedir. Vekaletname hukuki geçerlilik kazanması için noter onayı gerektirir.",
+            "UYARI: Bu belge taslak niteliğindedir. Vekaletname hukuki geçerlilik kazanması için noter onayı gerektirir.",
             _uyari_stili(),
         ),
     ]
@@ -624,7 +633,7 @@ def _pdf_bosanma_dilekce(a: dict[str, str]) -> bytes:
         Paragraph(f"Davacı: {a['davaci_ad_soyad']}", _normal_stili()),
         Paragraph("İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge taslak niteliğindedir. Boşanma davası için avukat desteği önerilir; "
+            "UYARI: Bu belge taslak niteliğindedir. Boşanma davası için avukat desteği önerilir; "
             "anlaşmalı boşanmada protokol ayrıca hazırlanmalıdır.",
             _uyari_stili(),
         ),
@@ -665,7 +674,7 @@ def _pdf_icra_itiraz_dilekce(a: dict[str, str]) -> bytes:
         Paragraph(f"Borçlu: {a['borclunun_ad_soyad']}", _normal_stili()),
         Paragraph("İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge taslak niteliğindedir. İtiraz dilekçesi tebliğden itibaren 7 gün içinde "
+            "UYARI: Bu belge taslak niteliğindedir. İtiraz dilekçesi tebliğden itibaren 7 gün içinde "
             "icra müdürlüğüne şahsen veya posta yoluyla ulaştırılmalıdır.",
             _uyari_stili(),
         ),
@@ -711,7 +720,7 @@ def _pdf_tuketici_sikayet_dilekce(a: dict[str, str]) -> bytes:
         Paragraph(f"Şikayetçi: {a['tuketici_ad_soyad']}", _normal_stili()),
         Paragraph("İmza: ______________________", _normal_stili()),
         Paragraph(
-            "⚠ Bu belge taslak niteliğindedir. Dilekçeyi ikamet ettiğiniz yerdeki "
+            "UYARI: Bu belge taslak niteliğindedir. Dilekçeyi ikamet ettiğiniz yerdeki "
             "Tüketici Hakem Heyeti'ne şahsen veya e-Devlet üzerinden iletebilirsiniz.",
             _uyari_stili(),
         ),

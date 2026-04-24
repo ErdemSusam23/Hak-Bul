@@ -42,6 +42,7 @@ test('TaslakSayfasi uses live template APIs and removes simulated browser-dialog
   assert.match(source, /taslakPdfUretAPI/, 'TaslakSayfasi should generate PDFs through the API');
   assert.ok(!source.includes('alert('), 'TaslakSayfasi should not use alert-based placeholder UX');
   assert.ok(!source.includes('setGenerated(true)'), 'TaslakSayfasi should not simulate PDF generation success in local state');
+  assert.ok(!source.includes('actions={'), 'TaslakSayfasi should not show a custom template placeholder action');
 });
 
 test('Active product surface text no longer contains garbled encoding artifacts', async () => {

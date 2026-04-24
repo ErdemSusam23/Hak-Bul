@@ -6,6 +6,7 @@ import {
   buildTemplateDownloadName,
   buildTemplateFieldState,
   buildTemplatePayload,
+  getMissingRequiredTemplateFields,
 } from '../utils/templateFlow';
 
 function downloadBlob(blob, fileName) {
@@ -32,6 +33,7 @@ export default function TaslakSayfasi({ toast }) {
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [lastDownloaded, setLastDownloaded] = useState('');
+  const [missingFields, setMissingFields] = useState([]);
 
   useEffect(() => {
     let active = true;
@@ -76,14 +78,25 @@ export default function TaslakSayfasi({ toast }) {
     setSelectedId(template.id);
     setFieldValues(buildTemplateFieldState(template));
     setLastDownloaded('');
+    setMissingFields([]);
     setError('');
   };
 
   const handleGenerate = async () => {
     if (!selectedTemplate) return;
 
+    const nextMissingFields = getMissingRequiredTemplateFields(selectedTemplate, fieldValues);
+    if (nextMissingFields.length) {
+      const detail = `Lütfen zorunlu alanları doldurun: ${nextMissingFields.join(', ')}`;
+      setMissingFields(nextMissingFields);
+      setError(detail);
+      toast?.(detail, 'error');
+      return;
+    }
+
     setSubmitting(true);
     setError('');
+    setMissingFields([]);
 
     try {
       const payload = buildTemplatePayload({ fields: fieldValues });
@@ -107,14 +120,6 @@ export default function TaslakSayfasi({ toast }) {
         eyebrow="Belge Taslakları"
         title="Hukuki belgenizi gerçek şablonlarla hazırlayın"
         sub="Taslak listesi ve PDF üretimi doğrudan backend template API sözleşmesiyle çalışır."
-        actions={(
-          <button
-            className="btn btn-outline"
-            onClick={() => toast?.('Özel şablonlar henüz ürün akışına eklenmedi.', 'info')}
-          >
-            <Icon name="plus" size={14} /> Özel Şablon
-          </button>
-        )}
       />
 
       {loading && (
@@ -129,7 +134,7 @@ export default function TaslakSayfasi({ toast }) {
         </div>
       )}
 
-      {!loading && !error && (
+      {!loading && templates.length > 0 && (
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-5">
             <div className="card p-5">
@@ -174,26 +179,40 @@ export default function TaslakSayfasi({ toast }) {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {selectedTemplate.alanlar.map((field) => (
-                    <div key={field.ad} className={isLongField(field) ? 'md:col-span-2' : ''}>
-                      {isLongField(field) ? (
-                        <FieldArea
-                          label={`${field.etiket}${field.zorunlu ? ' *' : ''}`}
-                          ph={field.etiket}
-                          rows={4}
-                          value={fieldValues[field.ad] || ''}
-                          onChange={(event) => setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }))}
-                        />
-                      ) : (
-                        <Field
-                          label={`${field.etiket}${field.zorunlu ? ' *' : ''}`}
-                          ph={field.etiket}
-                          value={fieldValues[field.ad] || ''}
-                          onChange={(event) => setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }))}
-                        />
-                      )}
-                    </div>
-                  ))}
+                  {selectedTemplate.alanlar.map((field) => {
+                    const isMissing = missingFields.includes(field.etiket || field.ad);
+                    const fieldLabel = `${field.etiket}${field.zorunlu ? ' *' : ''}`;
+                    const fieldClassName = isMissing ? 'border-[var(--danger)]' : '';
+
+                    return (
+                      <div key={field.ad} className={isLongField(field) ? 'md:col-span-2' : ''}>
+                        {isLongField(field) ? (
+                          <FieldArea
+                            label={fieldLabel}
+                            ph={field.etiket}
+                            rows={4}
+                            value={fieldValues[field.ad] || ''}
+                            onChange={(event) => {
+                              setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }));
+                              setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
+                            }}
+                            className={fieldClassName}
+                          />
+                        ) : (
+                          <Field
+                            label={fieldLabel}
+                            ph={field.etiket}
+                            value={fieldValues[field.ad] || ''}
+                            onChange={(event) => {
+                              setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }));
+                              setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
+                            }}
+                            className={fieldClassName}
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="mt-5 p-4 rounded-lg text-sm" style={{ background: 'var(--surface-muted)' }}>
@@ -215,7 +234,11 @@ export default function TaslakSayfasi({ toast }) {
 
                 <div className="hairline-t mt-6 pt-5 flex items-center justify-end gap-3">
                   <button
-                    onClick={() => setFieldValues(buildTemplateFieldState(selectedTemplate))}
+                    onClick={() => {
+                      setFieldValues(buildTemplateFieldState(selectedTemplate));
+                      setMissingFields([]);
+                      setError('');
+                    }}
                     className="btn btn-ghost"
                   >
                     Formu Temizle

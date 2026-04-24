@@ -63,3 +63,16 @@ test('SohbetSayfasi opens source URLs from source cards without toggling expansi
   assert.match(source, /title="Kaynağı aç"|title="Kaynagi ac"/, 'SourceCard should expose the source link through the top-right icon');
   assert.ok(!source.includes('inline-flex items-center gap-1 text-[11px]'), 'SourceCard should not render a second lower source link action');
 });
+
+test('recommended chat questions use high-confidence law and article retrieval examples', async () => {
+  const source = await readSource('content', 'productContent.js');
+
+  assert.match(source, /Medeni Hukuk/, 'Recommended questions should include the top law-and-article retrieval category');
+  assert.match(source, /Ticaret Hukuku/, 'Recommended questions should include the other top law-and-article retrieval category');
+  assert.ok(source.includes('Boşanma davası açmak istiyorum, hangi sebeplere dayanabilirim ve süreç nasıl başlar?'));
+  assert.ok(source.includes('Mirasçılık belgesi nasıl alınır ve miras payımı göstermek için hangi hükme bakılır?'));
+  assert.ok(source.includes('Şirket kurmak istiyorum, kuruluş ve ticaret siciline tescil için hangi temel kurallara bakmalıyım?'));
+  assert.ok(source.includes('Tacir sayılmanın hukuki sonuçları nelerdir, basiretli davranma ve ticaret unvanı yükümlülüğü ne demektir?'));
+  assert.ok(!source.includes('Trafik cezasına itiraz nasıl yapılır?'));
+  assert.ok(!source.includes('İhtarname örneğini nasıl hazırlayabilirim?'));
+});

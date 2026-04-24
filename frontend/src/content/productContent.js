@@ -16,10 +16,10 @@ export const LANDING_CATEGORY_LABELS = [
 ];
 
 export const SOHBET_ONERILEN_SORULAR = [
-  { cat: 'İş Hukuku', q: 'İşten çıkarılırken haklarım nelerdir?' },
-  { cat: 'Taşınmaz Hukuku', q: 'Kiracım kira ödemediğinde ne yapabilirim?' },
-  { cat: 'Aile Hukuku', q: 'Boşanma davasında nafaka nasıl belirlenir?' },
-  { cat: 'Tüketici Hukuku', q: 'Ayıplı ürün iadesi için süre ne kadar?' },
-  { cat: 'Trafik Hukuku', q: 'Trafik cezasına itiraz nasıl yapılır?' },
-  { cat: 'Belge Taslakları', q: 'İhtarname örneğini nasıl hazırlayabilirim?' },
+  { cat: 'Medeni Hukuk', q: 'Boşanma davası açmak istiyorum, hangi sebeplere dayanabilirim ve süreç nasıl başlar?' },
+  { cat: 'Medeni Hukuk', q: 'Mirasçılık belgesi nasıl alınır ve miras payımı göstermek için hangi hükme bakılır?' },
+  { cat: 'Medeni Hukuk', q: 'Vasiyetnameye hangi sebeplerle itiraz edebilir veya iptal davası açabilirim?' },
+  { cat: 'Ticaret Hukuku', q: 'Şirket kurmak istiyorum, kuruluş ve ticaret siciline tescil için hangi temel kurallara bakmalıyım?' },
+  { cat: 'Ticaret Hukuku', q: 'Tacir sayılmanın hukuki sonuçları nelerdir, basiretli davranma ve ticaret unvanı yükümlülüğü ne demektir?' },
+  { cat: 'Ticaret Hukuku', q: 'Anonim şirket genel kurul kararına karşı iptal davası açmak için kimler, hangi sürede dava açabilir?' },
 ];

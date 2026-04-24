@@ -37,6 +37,8 @@ Temel local ornegi:
 
 ```env
 DATABASE_URL=postgresql+psycopg://db_user:db_password@localhost:5432/db_name
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=guclu_bir_admin_sifresi
 ```
 
 Backend local calistirma:
@@ -45,6 +47,15 @@ Backend local calistirma:
 cd backend
 uvicorn main:app --reload
 ```
+
+Local ortamda ilk admin kullanicisini seed etmek icin:
+
+```bash
+cd backend
+python scripts/seed_admin.py
+```
+
+`ADMIN_EMAIL` ile kullanici zaten varsa rol `admin` yapilir; mevcut sifre degistirilmez.
 
 Frontend local `.env` ornegi:
 
@@ -74,16 +85,28 @@ Temel Docker ornegi:
 
 ```env
 DATABASE_URL=postgresql+psycopg://db_user:db_password@postgres:5432/db_name
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=guclu_bir_admin_sifresi
 ```
 
 Not:
 
 - `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` ile `DATABASE_URL` icindeki degerler birbiriyle tutarli olmalidir.
+- `ADMIN_EMAIL` ve `ADMIN_PASSWORD`, Docker `migrate` servisinin ilk admin seed'i icin zorunludur.
 
 Docker calistirma:
 
 ```bash
 docker compose up -d --build
+```
+
+Compose icinde `migrate` servisi backend baslamadan once `alembic upgrade head` ve `python scripts/seed_admin.py` calistirir. Bu servis backend runtime image'i yerine `backend/migration-Dockerfile` ve `backend/requirements-migration.txt` ile uretilen hafif migration image'ini kullanir.
+
+Sadece migration + admin seed adimini yeniden calistirmak icin:
+
+```bash
+docker compose rm -f migrate
+docker compose up --build --force-recreate migrate
 ```
 
 Docker frontend reverse proxy notu:
@@ -100,6 +123,7 @@ Docker frontend reverse proxy notu:
 |---|---|---|
 | `DATABASE_URL` host | `localhost` | `postgres` |
 | Postgres credentials | Haricen verilir | `POSTGRES_*` ile birlikte tutulur |
+| Admin seed | `python scripts/seed_admin.py` ile manuel | `migrate` servisi ile otomatik |
 | Frontend proxy target | `http://localhost:8000` | `http://backend:8000` |
 
 ---

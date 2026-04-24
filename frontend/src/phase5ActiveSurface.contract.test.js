@@ -67,6 +67,21 @@ test('Active product surface text no longer contains garbled encoding artifacts'
   }
 });
 
+test('Active product surface does not reference ALO 182 as legal support', async () => {
+  const files = [
+    ['App.jsx'],
+    ['pages', 'LandingPage.jsx'],
+    ['pages', 'SohbetSayfasi.jsx'],
+  ];
+
+  for (const segments of files) {
+    const source = await readSource(...segments);
+    assert.ok(!source.includes('ALO 182'), `${segments.join('/')} should not mention ALO 182`);
+    assert.ok(!source.includes('Türkiye Barolar Birliği'), `${segments.join('/')} should not tie ALO 182 to the bar association`);
+    assert.ok(!source.includes('Turkiye Barolar Birligi'), `${segments.join('/')} should not tie ALO 182 to the bar association`);
+  }
+});
+
 test('AsistanBot is retired from the active product surface', async () => {
   await assert.rejects(
     access(path.join(__dirname, 'components', 'AsistanBot.jsx')),

@@ -328,8 +328,7 @@ function DisclaimerBar() {
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-3 text-sm">
         <Icon name="info" size={14} className="text-accent shrink-0" />
         <span className="flex-1 text-ink-soft">
-          Hak-Bul <strong>bilgi verir, hukuki tavsiye vermez</strong>. Avukat yönlendirme için:{' '}
-          <strong>ALO 182</strong> (Türkiye Barolar Birliği)
+          Hak-Bul <strong>bilgi verir, hukuki tavsiye vermez</strong>. Ciddi hukuki konularda bir avukata danismaniz onerilir.
         </span>
         <button
           onClick={() => {

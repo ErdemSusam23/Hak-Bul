@@ -359,8 +359,7 @@ function MessageBubble({ m }) {
             >
               <Icon name="triangle-alert" size={15} className="shrink-0 mt-0.5" style={{ color: 'var(--warn)' }} />
               <div>
-                <strong>Ciddi konu uyarisi.</strong> Bu tur sureclerde bir avukatla gorusmeniz onerilir.{' '}
-                <span className="underline cursor-pointer" style={{ color: 'var(--accent)' }}>ALO 182</span>
+                <strong>Ciddi konu uyarisi.</strong> Bu tur sureclerde bir avukatla gorusmeniz onerilir.
               </div>
             </div>
           )}

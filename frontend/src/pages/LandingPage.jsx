@@ -113,13 +113,6 @@ export default function LandingPage({ onOpenAuth, setPage }) {
             <p className="text-ink-muted text-sm mt-3 max-w-sm leading-relaxed">
               Hak-Bul bilgi verir, hukuki tavsiye vermez. Ciddi hukuki konularda bir avukata danismaniz onerilir.
             </p>
-            <div
-              className="mt-4 text-xs flex items-center gap-2 p-3 rounded-lg"
-              style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}
-            >
-              <Icon name="phone" size={14} />
-              <span>Avukat yonlendirme hatti: <strong>ALO 182</strong> · Turkiye Barolar Birligi</span>
-            </div>
           </div>
           <div className="col-span-6 md:col-span-2">
             <div className="label mb-3">Urun</div>

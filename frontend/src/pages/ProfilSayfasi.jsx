@@ -141,15 +141,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
       )}
 
       <div className="flex items-center gap-5 mb-10">
-        <div className="relative">
-          <Avatar name={isim} size={72} />
-          <button
-            className="absolute bottom-0 right-0 w-7 h-7 rounded-full border border-line flex items-center justify-center"
-            style={{ background: 'var(--surface)' }}
-          >
-            <Icon name="camera" size={13} className="text-ink-muted" />
-          </button>
-        </div>
+        <Avatar name={isim} size={72} />
         <div>
           <div className="label mb-1">Kullanıcı</div>
           <h1 className="font-display text-[36px] leading-none" style={{ letterSpacing: '-0.02em' }}>
@@ -189,6 +181,10 @@ export default function ProfilSayfasi({ onGeri, toast }) {
             type="password"
             value={accountPassword}
             onChange={(event) => setAccountPassword(event.target.value)}
+            inputProps={{
+              autoComplete: 'new-password',
+              name: 'profile-current-password',
+            }}
           />
           <div className="hairline-t pt-5 flex items-center gap-3">
             <button onClick={handleAccountSave} disabled={savingAccount} className="btn btn-primary">
@@ -229,6 +225,10 @@ export default function ProfilSayfasi({ onGeri, toast }) {
                     type="password"
                     value={deletePassword}
                     onChange={(event) => setDeletePassword(event.target.value)}
+                    inputProps={{
+                      autoComplete: 'new-password',
+                      name: 'delete-account-password',
+                    }}
                   />
                 </div>
               </div>
@@ -254,9 +254,39 @@ export default function ProfilSayfasi({ onGeri, toast }) {
 
       {!loading && tab === 'security' && (
         <div className="max-w-xl space-y-5">
-          <Field label="Mevcut Şifre" ph="••••••••••" type="password" value={securityCurrentPassword} onChange={(event) => setSecurityCurrentPassword(event.target.value)} />
-          <Field label="Yeni Şifre" ph="En az 8 karakter" type="password" value={securityNextPassword} onChange={(event) => setSecurityNextPassword(event.target.value)} />
-          <Field label="Yeni Şifre (Tekrar)" ph="••••••••••" type="password" value={securityConfirmPassword} onChange={(event) => setSecurityConfirmPassword(event.target.value)} />
+          <Field
+            label="Mevcut Şifre"
+            ph="••••••••••"
+            type="password"
+            value={securityCurrentPassword}
+            onChange={(event) => setSecurityCurrentPassword(event.target.value)}
+            inputProps={{
+              autoComplete: 'new-password',
+              name: 'security-current-password',
+            }}
+          />
+          <Field
+            label="Yeni Şifre"
+            ph="En az 8 karakter"
+            type="password"
+            value={securityNextPassword}
+            onChange={(event) => setSecurityNextPassword(event.target.value)}
+            inputProps={{
+              autoComplete: 'new-password',
+              name: 'security-new-password',
+            }}
+          />
+          <Field
+            label="Yeni Şifre (Tekrar)"
+            ph="••••••••••"
+            type="password"
+            value={securityConfirmPassword}
+            onChange={(event) => setSecurityConfirmPassword(event.target.value)}
+            inputProps={{
+              autoComplete: 'new-password',
+              name: 'security-confirm-password',
+            }}
+          />
           <button onClick={handleSecuritySave} disabled={savingSecurity} className="btn btn-primary mt-2">
             {savingSecurity ? 'Güncelleniyor…' : 'Şifreyi Güncelle'}
           </button>

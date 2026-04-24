@@ -443,7 +443,7 @@ function AppIcerik() {
         setTheme={() => toggleTema()}
       />
 
-      <main className="flex-1 min-h-0">
+      <main className="flex-1 min-h-0 overflow-hidden">
         {page === 'landing' && <LandingPage onOpenAuth={setAuthModal} setPage={navigateToPage} />}
         {page === 'sohbet' && <SohbetSayfasi toast={toast} />}
         {page === 'taslak' && <TaslakSayfasi toast={toast} />}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Field, FieldArea, Icon, Modal, SectionHeader } from '../components/ui';
 import { useAuth } from '../context/useAuth';
 import {
@@ -22,6 +22,7 @@ function formatForumDate(iso) {
 
 export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
   const { kullanici } = useAuth();
+  const categoryScrollRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [threads, setThreads] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -77,6 +78,10 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
     setComposerOpen(true);
   };
 
+  const scrollCategories = (direction) => {
+    categoryScrollRef.current?.scrollBy({ left: direction * 240, behavior: 'smooth' });
+  };
+
   const handleComposerSubmit = async () => {
     setComposerError('');
     setSubmitting(true);
@@ -100,7 +105,7 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
+    <div className="max-w-5xl mx-auto px-6 py-10 h-full min-h-0 flex flex-col overflow-hidden" style={{ background: 'var(--bg)' }}>
       <SectionHeader
         eyebrow="Topluluk"
         title="Hukuki Forum"
@@ -124,24 +129,44 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
         </div>
       )}
 
-      <div className="flex items-center gap-1 hairline-b mb-2 overflow-x-auto scrollbar-hide">
-        {[
-          { key: 'all', label: 'Tümü' },
-          ...FORUM_CATEGORIES.map((category) => ({ key: category, label: category })),
-        ].map(({ key, label }) => (
-          <button
-            key={key}
-            onClick={() => setSelectedCategory(key)}
-            className={'px-4 py-2.5 text-sm -mb-px border-b-2 transition whitespace-nowrap ' +
-              (selectedCategory === key ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
-            style={selectedCategory === key ? { borderColor: 'var(--accent)' } : {}}
-          >
-            {label}
-          </button>
-        ))}
+      <div className="flex items-center gap-1 hairline-b mb-2">
+        <button
+          type="button"
+          onClick={() => scrollCategories(-1)}
+          className="btn btn-ghost px-2 shrink-0 text-ink-muted"
+          title="Kategorileri sola kaydır"
+        >
+          <Icon name="chevron-left" size={16} />
+        </button>
+        <div className="flex-1 min-w-0 overflow-hidden">
+          <div ref={categoryScrollRef} className="flex items-center gap-1 overflow-x-auto scrollbar-hide scroll-smooth">
+            {[
+              { key: 'all', label: 'Tümü' },
+              ...FORUM_CATEGORIES.map((category) => ({ key: category, label: category })),
+            ].map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setSelectedCategory(key)}
+                className={'px-4 py-2.5 text-sm -mb-px border-b-2 transition whitespace-nowrap shrink-0 ' +
+                  (selectedCategory === key ? 'text-ink' : 'text-ink-muted border-transparent hover:text-ink')}
+                style={selectedCategory === key ? { borderColor: 'var(--accent)' } : {}}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => scrollCategories(1)}
+          className="btn btn-ghost px-2 shrink-0 text-ink-muted"
+          title="Kategorileri sağa kaydır"
+        >
+          <Icon name="chevron-right" size={16} />
+        </button>
       </div>
 
-      <div>
+      <div className="flex-1 min-h-0 overflow-y-auto pr-1">
         {loading && (
           <div className="py-10 text-sm text-ink-muted">Forum başlıkları yükleniyor…</div>
         )}

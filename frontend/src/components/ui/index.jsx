@@ -179,7 +179,7 @@ export function Toggle({ defaultOn, onChange }) {
 }
 
 /* ── Form field ── */
-export function Field({ label, ph, type = 'text', suffix, value, onChange, className = '' }) {
+export function Field({ label, ph, type = 'text', suffix, value, onChange, className = '', inputProps = {} }) {
   return (
     <label className="flex flex-col gap-1.5">
       <span className="label">{label}</span>
@@ -190,6 +190,7 @@ export function Field({ label, ph, type = 'text', suffix, value, onChange, class
           value={value}
           onChange={onChange}
           className="flex-1 bg-transparent px-3 py-2 text-sm"
+          {...inputProps}
         />
         {suffix && <span className="pr-3 text-xs text-ink-faint font-mono">{suffix}</span>}
       </div>

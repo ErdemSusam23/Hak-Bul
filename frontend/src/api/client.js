@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { fetchWithAuthRetry, runWithMockMode, streamSseJsonWithAuthRetry } from './requestHelpers';
 
-const API_URL = import.meta.env?.VITE_API_URL || 'http://localhost:8000';
+const API_URL = import.meta.env?.VITE_API_URL || '';
 const MOCK_MODE = import.meta.env?.VITE_MOCK_MODE === 'true';
 
 // --- Mock veriler ---

@@ -12,6 +12,10 @@ backend/
 |-- .env.docker
 |-- .env.example
 `-- .env.docker.example
+
+frontend/
+|-- .env
+`-- .env.example
 ```
 
 Notlar:
@@ -42,6 +46,20 @@ cd backend
 uvicorn main:app --reload
 ```
 
+Frontend local `.env` ornegi:
+
+```env
+VITE_API_URL=
+VITE_PROXY_TARGET=http://localhost:8000
+VITE_MOCK_MODE=false
+```
+
+Not:
+
+- `VITE_API_URL` bos kalirsa frontend API isteklerini ayni origin'e yollar.
+- `VITE_PROXY_TARGET`, Vite gelistirme sunucusunun istekleri iletecegi backend adresidir.
+- Bu yapida tarayici `http://localhost:5173/auth/profile` gibi frontend origin'li istekleri gorur; Vite bu istegi arkada `http://localhost:8000/auth/profile` adresine proxy'ler.
+
 ---
 
 ## Docker
@@ -68,6 +86,12 @@ Docker calistirma:
 docker compose up -d --build
 ```
 
+Docker frontend reverse proxy notu:
+
+- Compose icinde frontend container'i icin `VITE_API_URL=` ve `VITE_PROXY_TARGET=http://backend:8000` kullanilir.
+- Docker network'unde `backend`, FastAPI servis adidir; container icinden `localhost:8000` backend'i degil frontend container'inin kendisini ifade eder.
+- Tarayici yine `http://localhost:5173/...` origin'ini gorur; Vite container icinden istegi `http://backend:8000/...` adresine iletir.
+
 ---
 
 ## Local ve Docker Arasindaki Temel Fark
@@ -76,6 +100,7 @@ docker compose up -d --build
 |---|---|---|
 | `DATABASE_URL` host | `localhost` | `postgres` |
 | Postgres credentials | Haricen verilir | `POSTGRES_*` ile birlikte tutulur |
+| Frontend proxy target | `http://localhost:8000` | `http://backend:8000` |
 
 ---
 

@@ -32,3 +32,18 @@ test('forum API methods in client.js apply the shared mock-mode guard', async ()
 
   assert.ok(forumSection.includes('runWithMockMode('), 'forum API methods should route through the shared mock-mode helper');
 });
+
+test('local development API calls go through the Vite reverse proxy by default', async () => {
+  const clientSource = await readSource('api', 'client.js');
+  const authSource = await readSource('api', 'auth.js');
+  const viteConfig = await readFile(path.join(__dirname, '..', 'vite.config.js'), 'utf8');
+
+  assert.match(clientSource, /const API_URL = import\.meta\.env\?\.VITE_API_URL \|\| '';/);
+  assert.match(authSource, /const API_URL = import\.meta\.env\.VITE_API_URL \|\| '';/);
+  assert.ok(!clientSource.includes("|| 'http://localhost:8000'"), 'client.js should not expose the backend origin by default');
+  assert.ok(!authSource.includes("|| 'http://localhost:8000'"), 'auth.js should not expose the backend origin by default');
+  assert.match(viteConfig, /VITE_PROXY_TARGET/);
+  for (const route of ['/ask', '/auth', '/chat', '/documents', '/feedback', '/templates', '/admin', '/forum', '/search', '/health']) {
+    assert.ok(viteConfig.includes(route), `vite.config.js should proxy ${route}`);
+  }
+});

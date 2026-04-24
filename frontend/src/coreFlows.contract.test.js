@@ -82,6 +82,15 @@ test('ProfilSayfasi marks password verification fields to avoid browser autofill
   assert.match(source, /name:\s*'delete-account-password'/, 'Delete confirmation password should use a non-login field name');
 });
 
+test('Login modal keeps the password visibility control aligned and removes the forgotten password link', async () => {
+  const source = await readSource('App.jsx');
+
+  assert.match(source, /className="relative"/, 'Password input should use a relative wrapper for absolute icon placement');
+  assert.match(source, /className="w-full bg-transparent px-3 py-2 pr-10 text-sm outline-none"/, 'Password input should reserve room for the visibility icon');
+  assert.match(source, /className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-ink-muted hover:text-ink"/, 'Password visibility button should be centered in a fixed-width hit area');
+  assert.ok(!source.includes('Şifremi unuttum') && !source.includes('Åifremi unuttum'), 'Login modal should not show a forgotten password link');
+});
+
 test('KarsilastirmaSayfasi uses the real compare API and real File objects', async () => {
   const source = await readSource('pages', 'KarsilastirmaSayfasi.jsx');
 

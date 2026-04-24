@@ -238,16 +238,21 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
 
           <label className="flex flex-col gap-1.5">
             <span className="label">Şifre</span>
-            <div className="flex items-center border border-line rounded-md bg-surface-muted focus-within:bg-surface focus-within:border-line-strong">
+            <div className="relative rounded-md border border-line bg-surface-muted focus-within:bg-surface focus-within:border-line-strong">
               <input
                 type={showPw ? 'text' : 'password'}
                 placeholder="••••••••••"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 onKeyDown={(event) => event.key === 'Enter' && handleSubmit()}
-                className="flex-1 bg-transparent px-3 py-2 text-sm"
+                className="w-full bg-transparent px-3 py-2 pr-10 text-sm outline-none"
               />
-              <button onClick={() => setShowPw((value) => !value)} type="button" className="pr-3 text-ink-muted">
+              <button
+                onClick={() => setShowPw((value) => !value)}
+                type="button"
+                className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-ink-muted hover:text-ink"
+                aria-label={showPw ? 'Şifreyi gizle' : 'Şifreyi göster'}
+              >
                 <Icon name={showPw ? 'eye-off' : 'eye'} size={14} />
               </button>
             </div>
@@ -264,14 +269,6 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
                 className="border border-line rounded-md bg-surface-muted px-3 py-2 text-sm focus:bg-surface focus:border-line-strong"
               />
             </label>
-          )}
-
-          {mode === 'login' && (
-            <div className="text-right">
-              <a className="text-xs hover:underline" style={{ color: 'var(--accent)' }} href="#">
-                Şifremi unuttum
-              </a>
-            </div>
           )}
         </div>
 

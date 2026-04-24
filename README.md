@@ -143,6 +143,8 @@ docker compose logs frontend
 | API       | http://localhost:8000         |
 | Swagger   | http://localhost:8000/docs    |
 
+> **Not:** Frontend container'i API isteklerini Vite reverse proxy ile backend container'ina iletir. Tarayicida istekler `http://localhost:5173/auth/...` gibi gorunur; container icinde hedef `http://backend:8000` olur.
+
 > **Not:** `alembic upgrade head` backend container açılışında otomatik çalışır, migration'ları elle uygulamana gerek yok.
 
 ### Konteynerleri durdur / sil
@@ -323,9 +325,12 @@ Copy-Item .env.example .env
 `frontend/.env` içeriği:
 
 ```env
-VITE_API_URL=http://localhost:8000
+VITE_API_URL=
+VITE_PROXY_TARGET=http://localhost:8000
 VITE_MOCK_MODE=false
 ```
+
+`VITE_API_URL` bos birakildiginda frontend istekleri ayni origin'e (`http://localhost:5173`) atar. Vite reverse proxy bu istekleri `VITE_PROXY_TARGET` degerindeki backend'e iletir; bu sayede tarayici Network tab'inda backend origin'i `localhost:8000` olarak gorunmez.
 
 ### Adım 9 — Frontend'i local'de başlat
 

@@ -18,6 +18,14 @@ test('SohbetSayfasi removes sidebar chrome that no longer carries product value'
   assert.ok(!source.includes('title="Ayarlar"'), 'SohbetSayfasi should remove the sidebar settings button');
 });
 
+test('SohbetSayfasi does not render the quick start prompt panel', async () => {
+  const source = await readSource('pages', 'SohbetSayfasi.jsx');
+
+  assert.ok(!source.includes('quickCats'), 'SohbetSayfasi should not keep quick-start categories');
+  assert.ok(!source.includes('Hizli basla'), 'SohbetSayfasi should not render the quick-start panel label');
+  assert.ok(!source.includes('setInput(`'), 'SohbetSayfasi should not inject category prompts from quick-start buttons');
+});
+
 test('SohbetSayfasi shows the authenticated user role from the normalized auth payload', async () => {
   const source = await readSource('pages', 'SohbetSayfasi.jsx');
 
@@ -44,4 +52,14 @@ test('SohbetSayfasi shows the selected conversation title in the chat header', a
   assert.match(source, /selectedConversationTitle/, 'SohbetSayfasi should keep the selected conversation title in parent state');
   assert.match(source, /title: sohbet\.title/, 'ChatSidebar should pass the sidebar title when selecting a conversation');
   assert.ok(!source.includes('Sohbet #'), 'SohbetSayfasi should not render the conversation id prefix as the header title');
+});
+
+test('SohbetSayfasi opens source URLs from source cards without toggling expansion', async () => {
+  const source = await readSource('pages', 'SohbetSayfasi.jsx');
+
+  assert.match(source, /const sourceUrl = s\.url;/, 'SourceCard should read the source URL from the API payload');
+  assert.match(source, /window\.open\(sourceUrl, '_blank', 'noopener,noreferrer'\)/, 'SourceCard should open source URLs in a safe new tab');
+  assert.match(source, /event\.stopPropagation\(\);/, 'SourceCard link clicks should not toggle card expansion');
+  assert.match(source, /title="Kaynağı aç"|title="Kaynagi ac"/, 'SourceCard should expose the source link through the top-right icon');
+  assert.ok(!source.includes('inline-flex items-center gap-1 text-[11px]'), 'SourceCard should not render a second lower source link action');
 });

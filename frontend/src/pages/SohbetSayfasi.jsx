@@ -294,6 +294,13 @@ function SourceCard({ s }) {
   const code = s.code || s.baslik || '';
   const title = s.title || s.baslik || '';
   const snippet = s.snippet || s.metin_ozet || '';
+  const sourceUrl = s.url;
+
+  const openSourceUrl = (event) => {
+    event.stopPropagation();
+    window.open(sourceUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="p-3 rounded-lg border border-line hover:border-line-strong cursor-pointer">
       <div className="flex items-center gap-1.5 mb-1.5">
@@ -309,6 +316,16 @@ function SourceCard({ s }) {
           {code}
         </span>
         <span className="text-[11px] text-ink-faint ml-auto">{isCase ? 'Yargitay' : 'Kanun'}</span>
+        {sourceUrl && (
+          <button
+            type="button"
+            onClick={openSourceUrl}
+            className="p-1 -mr-1 rounded hover:bg-surface-muted text-ink-muted hover:text-accent"
+            title="Kaynağı aç"
+          >
+            <Icon name="external-link" size={12} />
+          </button>
+        )}
       </div>
       <div className="text-[12.5px] font-medium mb-1">{title}</div>
       <div className="text-[12px] text-ink-muted leading-relaxed line-clamp-2">{snippet}</div>
@@ -349,7 +366,7 @@ function MessageBubble({ m }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2 mb-2">
             <span className="text-[13px] font-medium">Hak-Bul</span>
-            <span className="text-[11px] text-ink-faint">Turk Hukuk Asistani</span>
+            <span className="text-[11px] text-ink-faint">Hukuki Bilgi Platformu</span>
           </div>
 
           {(m.alert || m.uyari) && (
@@ -432,7 +449,6 @@ function MessageBubble({ m }) {
 }
 
 function EmptyState({ onPick }) {
-  const quickCats = ['Is Hukuku', 'Kiraci Haklari', 'Bosanma', 'Tuketici', 'Trafik', 'Vergi'];
   return (
     <div className="py-12">
       <div className="flex flex-col items-center text-center mb-10">
@@ -444,15 +460,6 @@ function EmptyState({ onPick }) {
         <p className="text-ink-muted mt-3 max-w-lg text-[14px]">
           Hukuki sorunuzu yazin; kanun maddeleri ve Yargitay kararlariyla desteklenmis bir yanit alin.
         </p>
-      </div>
-
-      <div className="label mb-3">Hizli basla</div>
-      <div className="flex flex-wrap gap-2 mb-8">
-        {quickCats.map((category) => (
-          <button key={category} onClick={() => onPick(`${category} hakkinda sorum var.`)} className="chip text-[13px]">
-            {category}
-          </button>
-        ))}
       </div>
 
       <div className="label mb-3">Ornek sorular</div>

@@ -14,6 +14,7 @@ import { buildAdminDashboardModel } from '../utils/adminFlow';
 
 const WEAK_QUERY_PAGE_SIZE = 10;
 const DASHBOARD_RANGES = [7, 30, 90];
+const USER_PAGE_SIZES = [25, 50, 100, 200];
 
 function LineChart({ data, labels, rangeDays }) {
   if (!data.length) {
@@ -123,10 +124,15 @@ function mapAdminUser(updatedUser) {
 export default function AdminSayfasi({ toast }) {
   const [search, setSearch] = useState('');
   const deferredSearch = useDeferredValue(search);
+  const [userRoleFilter, setUserRoleFilter] = useState('');
+  const [userStatusFilter, setUserStatusFilter] = useState('');
+  const [userPageSize, setUserPageSize] = useState(50);
+  const [userPage, setUserPage] = useState(0);
   const [selectedRange, setSelectedRange] = useState(7);
   const [weakQueryPage, setWeakQueryPage] = useState(0);
   const [model, setModel] = useState(() => emptyModel());
   const [weakQueryTotal, setWeakQueryTotal] = useState(0);
+  const [userTotal, setUserTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [busyKey, setBusyKey] = useState('');
@@ -151,7 +157,13 @@ export default function AdminSayfasi({ toast }) {
           adminKategoriDagilimiAPI(selectedRange),
           adminFeedbackOzetiAPI(selectedRange),
           adminGunlukAktiviteAPI(selectedRange),
-          adminKullaniciListesiAPI({ q: deferredSearch }),
+          adminKullaniciListesiAPI({
+            limit: userPageSize,
+            offset: userPage * userPageSize,
+            q: deferredSearch,
+            rol: userRoleFilter || null,
+            aktif: userStatusFilter === 'active' ? true : userStatusFilter === 'inactive' ? false : null,
+          }),
           adminZayifSorguListesiAPI({ limit: WEAK_QUERY_PAGE_SIZE, offset: weakQueryPage * WEAK_QUERY_PAGE_SIZE }),
         ]);
 
@@ -166,6 +178,7 @@ export default function AdminSayfasi({ toast }) {
           users: usersResponse.kullanicilar || [],
         }));
         setWeakQueryTotal(weakQueries.total || 0);
+        setUserTotal(usersResponse.total || 0);
       } catch (loadError) {
         if (!active) return;
         setError(loadError?.response?.data?.detail || loadError.message || 'Admin verileri yüklenemedi.');
@@ -181,11 +194,15 @@ export default function AdminSayfasi({ toast }) {
     return () => {
       active = false;
     };
-  }, [deferredSearch, weakQueryPage, selectedRange]);
+  }, [deferredSearch, weakQueryPage, selectedRange, userRoleFilter, userStatusFilter, userPageSize, userPage]);
 
   useEffect(() => {
     setWeakQueryPage(0);
   }, [deferredSearch]);
+
+  useEffect(() => {
+    setUserPage(0);
+  }, [deferredSearch, userRoleFilter, userStatusFilter, userPageSize]);
 
   const replaceUser = (updatedUser) => {
     setModel((current) => ({
@@ -231,6 +248,9 @@ export default function AdminSayfasi({ toast }) {
   const weakQueryPageCount = Math.max(1, Math.ceil(weakQueryTotal / WEAK_QUERY_PAGE_SIZE));
   const weakQueryPageStart = weakQueryTotal === 0 ? 0 : (weakQueryPage * WEAK_QUERY_PAGE_SIZE) + 1;
   const weakQueryPageEnd = Math.min(weakQueryTotal, (weakQueryPage + 1) * WEAK_QUERY_PAGE_SIZE);
+  const userPageCount = Math.max(1, Math.ceil(userTotal / userPageSize));
+  const userPageStart = userTotal === 0 ? 0 : (userPage * userPageSize) + 1;
+  const userPageEnd = Math.min(userTotal, (userPage + 1) * userPageSize);
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
@@ -408,12 +428,15 @@ export default function AdminSayfasi({ toast }) {
           </div>
 
           <div className="card overflow-hidden">
-            <div className="flex items-center justify-between p-5 hairline-b gap-4">
+            <div className="flex flex-col xl:flex-row xl:items-center justify-between p-5 hairline-b gap-4">
               <div>
                 <div className="label">Kullanıcı Yönetimi</div>
-                <div className="text-sm text-ink-muted mt-0.5">{model.users.length} kullanıcı</div>
+                <div className="text-sm text-ink-muted mt-0.5">
+                  {userPageStart}-{userPageEnd} / {userTotal || 0} kullanıcı
+                </div>
               </div>
-              <div className="relative">
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="relative">
                 <Icon name="search" size={13} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-ink-faint" />
                 <input
                   value={search}
@@ -421,6 +444,50 @@ export default function AdminSayfasi({ toast }) {
                   className="pl-8 pr-2 py-1.5 text-sm bg-surface-muted rounded-md border border-line w-56"
                   placeholder="E-posta ara..."
                 />
+                </div>
+                <select
+                  value={userRoleFilter}
+                  onChange={(event) => setUserRoleFilter(event.target.value)}
+                  className="text-xs px-2 py-1.5 rounded-md border border-line bg-surface-muted"
+                  aria-label="Rol filtresi"
+                >
+                  <option value="">Tüm roller</option>
+                  <option value="user">Kullanıcı</option>
+                  <option value="lawyer">Avukat</option>
+                  <option value="admin">Admin</option>
+                </select>
+                <select
+                  value={userStatusFilter}
+                  onChange={(event) => setUserStatusFilter(event.target.value)}
+                  className="text-xs px-2 py-1.5 rounded-md border border-line bg-surface-muted"
+                  aria-label="Durum filtresi"
+                >
+                  <option value="">Tüm durumlar</option>
+                  <option value="active">Aktif</option>
+                  <option value="inactive">Pasif</option>
+                </select>
+                <select
+                  value={userPageSize}
+                  onChange={(event) => setUserPageSize(Number(event.target.value))}
+                  className="text-xs px-2 py-1.5 rounded-md border border-line bg-surface-muted"
+                  aria-label="Sayfa boyutu"
+                >
+                  {USER_PAGE_SIZES.map((size) => (
+                    <option key={size} value={size}>{size} / sayfa</option>
+                  ))}
+                </select>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearch('');
+                    setUserRoleFilter('');
+                    setUserStatusFilter('');
+                    setUserPageSize(50);
+                  }}
+                  className="btn btn-outline text-xs"
+                >
+                  Temizle
+                </button>
               </div>
             </div>
 
@@ -484,6 +551,31 @@ export default function AdminSayfasi({ toast }) {
                 </tbody>
               </table>
             </div>
+            {userTotal > userPageSize && (
+              <div className="hairline-t p-4 flex items-center justify-between gap-3">
+                <span className="text-[11px] text-ink-muted">
+                  Sayfa {userPage + 1} / {userPageCount}
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setUserPage((current) => Math.max(0, current - 1))}
+                    disabled={userPage === 0 || loading}
+                    className="btn btn-outline text-xs"
+                  >
+                    Önceki
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setUserPage((current) => current + 1)}
+                    disabled={userPage >= userPageCount - 1 || loading}
+                    className="btn btn-outline text-xs"
+                  >
+                    Sonraki
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </>
       )}

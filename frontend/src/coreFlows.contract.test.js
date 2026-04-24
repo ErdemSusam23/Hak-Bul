@@ -36,6 +36,14 @@ test('ProfilSayfasi is backed by profile APIs rather than mock conversation data
   assert.match(source, /hesapSilAPI/, 'ProfilSayfasi should submit account deletion');
 });
 
+test('ProfilSayfasi does not show a chat history tab or placeholder panel', async () => {
+  const source = await readSource('pages', 'ProfilSayfasi.jsx');
+
+  assert.ok(!source.includes("['history'"), 'ProfilSayfasi should not expose a chat history tab');
+  assert.ok(!source.includes("tab === 'history'"), 'ProfilSayfasi should not render a chat history panel');
+  assert.ok(!source.includes('Sohbet Geçmişi'), 'ProfilSayfasi should not label a profile chat history section');
+});
+
 test('KarsilastirmaSayfasi uses the real compare API and real File objects', async () => {
   const source = await readSource('pages', 'KarsilastirmaSayfasi.jsx');
 

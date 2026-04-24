@@ -47,7 +47,7 @@ export default function HukukiUyariModal({ onKabul }) {
               Hak-Bul
             </h1>
             <p className="text-[13px] tracking-[0.14em] uppercase" style={{ color: 'var(--ink-muted)' }}>
-              Türk Hukuk Asistanı
+              Hukuki Bilgi Platformu
             </p>
           </div>
 

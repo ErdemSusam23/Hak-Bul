@@ -26,8 +26,8 @@ export default {
     silOnay: 'Bu sohbeti silmek istediğinizden emin misiniz?',
     language: 'TR',
     // SohbetSayfasi
-    turkHukukAsistani: 'Türk Hukuk Asistanı',
-    assistantChatLabel: 'Türk hukuk asistanı ile sohbet',
+    turkHukukAsistani: 'Hukuki Bilgi Platformu',
+    assistantChatLabel: 'Hak-Bul ile sohbet',
     hosGeldiniz: "Hak-Bul'a Hoş Geldiniz",
     hosGeldinizAlt: 'Hukuki sorularınızı sorun; kanun maddeleri ve Yargıtay kararlarıyla desteklenmiş yanıtlar alın.',
     bilgiAmacliAvukat: 'Bilgi amaçlıdır · Avukat görüşünün yerini tutmaz',

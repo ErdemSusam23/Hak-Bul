@@ -166,7 +166,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
       {loadError && <div className="text-sm mb-6" style={{ color: 'var(--danger)' }}>{loadError}</div>}
 
       <div className="flex items-center gap-1 hairline-b mb-8">
-        {[['account', 'Hesap'], ['security', 'Güvenlik'], ['history', 'Sohbet Geçmişi']].map(([key, label]) => (
+        {[['account', 'Hesap'], ['security', 'Güvenlik']].map(([key, label]) => (
           <button
             key={key}
             onClick={() => setTab(key)}
@@ -268,18 +268,6 @@ export default function ProfilSayfasi({ onGeri, toast }) {
         </div>
       )}
 
-      {tab === 'history' && (
-        <div>
-          <div className="label mb-3">Sohbet Geçmişi</div>
-          <div className="card p-5" style={{ borderColor: 'var(--line)' }}>
-            <p className="text-sm text-ink-muted leading-relaxed">
-              Sohbet geçmişiniz aktif olarak sohbet ekranındaki kenar çubuğunda yönetiliyor. Bu sekme mock içerik
-              göstermemesi için sadeleştirildi; geçmiş, yeniden adlandırma, paylaşım ve PDF dışa aktarma akışları
-              doğrudan sohbet sayfasında çalışıyor.
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

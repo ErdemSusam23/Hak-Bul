@@ -26,8 +26,8 @@ export default {
     silOnay: 'Are you sure you want to delete this conversation?',
     language: 'EN',
     // SohbetSayfasi
-    turkHukukAsistani: 'Turkish Legal Assistant',
-    assistantChatLabel: 'Chat with the Turkish legal assistant',
+    turkHukukAsistani: 'Legal Information Platform',
+    assistantChatLabel: 'Chat with Hak-Bul',
     hosGeldiniz: 'Welcome to Hak-Bul',
     hosGeldinizAlt: 'Ask your legal questions; get answers backed by Turkish law articles and Supreme Court decisions.',
     bilgiAmacliAvukat: 'Informational only · Does not replace legal advice',

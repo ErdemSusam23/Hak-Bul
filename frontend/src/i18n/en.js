@@ -168,6 +168,7 @@ export default {
     templatesBackendNotice: 'Before creating the PDF, make sure all required fields are complete.',
     templatesLastDownloaded: 'Last downloaded file:',
     templatesClearForm: 'Clear Form',
+    templatesConfirmClear: 'Confirm Clear',
     templatesCreatingPdf: 'Creating PDF...',
     templatesCreatePdf: 'Create PDF',
     templatesNoneAvailable: 'No usable template was found',

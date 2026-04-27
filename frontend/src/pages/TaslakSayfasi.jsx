@@ -34,6 +34,7 @@ export default function TaslakSayfasi({ toast }) {
   const [submitting, setSubmitting] = useState(false);
   const [lastDownloaded, setLastDownloaded] = useState('');
   const [missingFields, setMissingFields] = useState([]);
+  const [clearPending, setClearPending] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -80,11 +81,34 @@ export default function TaslakSayfasi({ toast }) {
     setLastDownloaded('');
     setMissingFields([]);
     setError('');
+    setClearPending(false);
+  };
+
+  const handleFieldChange = (field, value) => {
+    setFieldValues((current) => ({ ...current, [field.ad]: value }));
+    setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
+    setClearPending(false);
+  };
+
+  const handleClearForm = () => {
+    if (!selectedTemplate) return;
+
+    if (!clearPending) {
+      setClearPending(true);
+      return;
+    }
+
+    setFieldValues(buildTemplateFieldState(selectedTemplate));
+    setMissingFields([]);
+    setError('');
+    setLastDownloaded('');
+    setClearPending(false);
   };
 
   const handleGenerate = async () => {
     if (!selectedTemplate) return;
 
+    setClearPending(false);
     const nextMissingFields = getMissingRequiredTemplateFields(selectedTemplate, fieldValues);
     if (nextMissingFields.length) {
       const detail = `${t('templatesFillRequiredFields')} ${nextMissingFields.join(', ')}`;
@@ -192,10 +216,7 @@ export default function TaslakSayfasi({ toast }) {
                             ph={field.etiket}
                             rows={4}
                             value={fieldValues[field.ad] || ''}
-                            onChange={(event) => {
-                              setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }));
-                              setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
-                            }}
+                            onChange={(event) => handleFieldChange(field, event.target.value)}
                             className={fieldClassName}
                           />
                         ) : (
@@ -203,10 +224,7 @@ export default function TaslakSayfasi({ toast }) {
                             label={fieldLabel}
                             ph={field.etiket}
                             value={fieldValues[field.ad] || ''}
-                            onChange={(event) => {
-                              setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }));
-                              setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
-                            }}
+                            onChange={(event) => handleFieldChange(field, event.target.value)}
                             className={fieldClassName}
                           />
                         )}
@@ -231,21 +249,18 @@ export default function TaslakSayfasi({ toast }) {
                   </div>
                 )}
 
-                <div className="hairline-t mt-6 pt-5 flex items-center justify-end gap-3">
+                <div className="hairline-t mt-6 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <button
-                    onClick={() => {
-                      setFieldValues(buildTemplateFieldState(selectedTemplate));
-                      setMissingFields([]);
-                      setError('');
-                    }}
+                    onClick={handleClearForm}
                     className="btn btn-ghost"
+                    style={clearPending ? { color: 'var(--danger)', borderColor: 'var(--danger)' } : {}}
                   >
-                    {t('templatesClearForm')}
+                    {clearPending ? t('templatesConfirmClear') : t('templatesClearForm')}
                   </button>
                   <button
                     onClick={handleGenerate}
                     disabled={submitting}
-                    className="btn btn-primary"
+                    className="btn btn-primary sm:ml-auto"
                   >
                     {submitting ? (
                       <><span className="dot" /><span className="dot" /><span className="dot" /> {t('templatesCreatingPdf')}</>

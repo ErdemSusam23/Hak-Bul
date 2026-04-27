@@ -168,6 +168,7 @@ export default {
     templatesBackendNotice: 'PDF oluşturmadan önce zorunlu alanları eksiksiz doldurduğunuzdan emin olun.',
     templatesLastDownloaded: 'Son indirilen dosya:',
     templatesClearForm: 'Formu Temizle',
+    templatesConfirmClear: 'Temizlemeyi Onayla',
     templatesCreatingPdf: 'PDF oluşturuluyor...',
     templatesCreatePdf: 'PDF Oluştur',
     templatesNoneAvailable: 'Kullanılabilir bir taslak bulunamadı',

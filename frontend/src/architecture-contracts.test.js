@@ -22,7 +22,7 @@ test('Docker Compose runs Alembic migrations in a dedicated one-shot service bef
 
   assert.match(source, /\r?\n {2}migrate:\r?\n/, 'Compose should define a dedicated migrate service');
   assert.match(source, /dockerfile:\s*migration-Dockerfile/, 'Migrate service should use the lightweight migration image');
-  assert.match(source, /command:\s*sh -c "alembic upgrade head && python scripts\/seed_admin\.py"/, 'Migrate service should run Alembic before admin seed');
+  assert.match(migrationDockerfile, /CMD \["sh", "-c", "alembic upgrade head && python scripts\/seed_admin\.py"\]/, 'Migration Dockerfile CMD should run Alembic before admin seed');
   assert.match(source, /migrate:\s*\r?\n\s*condition:\s*service_completed_successfully/, 'Backend should wait for successful migration completion');
   assert.doesNotMatch(source, /backend:[\s\S]*command:\s*>\s*\r?\n\s*sh -c "alembic upgrade head &&/, 'Backend startup command should not run migrations inline');
   assert.match(migrationDockerfile, /COPY requirements-migration\.txt \./, 'Migration Dockerfile should install a minimal dependency set');

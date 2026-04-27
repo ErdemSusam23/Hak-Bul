@@ -1,6 +1,7 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 
 from auth.security import hash_password, verify_password
 from db.base import Base
@@ -10,8 +11,11 @@ from models.user import User
 from scripts.seed_admin import AdminSeedConfig, seed_admin
 
 
-TEST_DB_URL = "sqlite:///./test_seed_admin.db"
-engine = create_engine(TEST_DB_URL, connect_args={"check_same_thread": False})
+engine = create_engine(
+    "sqlite:///:memory:",
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool,
+)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 

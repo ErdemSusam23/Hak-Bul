@@ -54,9 +54,6 @@ services:
     container_name: hak-bul-migrate
     env_file:
       - ./backend/.env.docker
-    volumes:
-      - ./backend:/app
-    command: sh -c "alembic upgrade head && python scripts/seed_admin.py"
     restart: "no"
     depends_on:
       postgres:

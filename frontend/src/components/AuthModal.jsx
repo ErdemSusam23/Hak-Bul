@@ -47,7 +47,8 @@ export default function AuthModal({ onKapat }) {
     }
 
     if (!sifreGecerli) {
-      setHata('Şifre güvenlik gereksinimlerini karşılamıyor.');
+      const eksikKural = SIFRE_KURALLARI.find((kural) => !kural.test(sifre));
+      setHata(eksikKural ? `Şifre ${eksikKural.label.toLocaleLowerCase('tr-TR')} olmalıdır.` : 'Şifre gereksinimleri karşılanmıyor.');
       return;
     }
 

@@ -46,6 +46,15 @@ test('SohbetSayfasi wires PDF upload into the composer and caps text input at 10
   assert.match(source, /\{input\.length\}\/\{CHAT_COMPOSER_MAX_LENGTH\}/, 'SohbetSayfasi should show the live 1000-char counter');
 });
 
+test('short chat question warning uses readable Turkish characters', async () => {
+  const source = await readSource('hooks', 'useChat.js');
+  const minLengthLine = source.split('\n').find((line) => line.includes('minLength:'));
+
+  assert.match(minLengthLine, /Sorunuz en az 10 karakter olmalıdır\. Lütfen daha ayrıntılı yazın\./);
+  assert.ok(!minLengthLine.includes('olmalÄ±dÄ±r'), 'Short-question warning should not contain mojibake');
+  assert.ok(!minLengthLine.includes('LÃ¼tfen'), 'Short-question warning should not contain mojibake');
+});
+
 test('SohbetSayfasi shows the selected conversation title in the chat header', async () => {
   const source = await readSource('pages', 'SohbetSayfasi.jsx');
 

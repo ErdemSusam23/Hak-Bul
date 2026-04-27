@@ -18,7 +18,7 @@ const MOCK_YANIT = {
 
 const CHAT_COPY = {
     tr: {
-        minLength: 'âš ï¸ Sorunuz en az 10 karakter olmalÄ±dÄ±r. LÃ¼tfen daha ayrÄ±ntÄ±lÄ± yazÄ±n.',
+        minLength: 'Sorunuz en az 10 karakter olmalıdır. Lütfen daha ayrıntılı yazın.',
         tooManyRequests: (retryAfter) => `â³ Ã‡ok fazla istek gÃ¶nderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`,
         unavailable: 'ğŸ”§ Sunucu geÃ§ici olarak eriÅŸilemiyor. LÃ¼tfen 30 saniye sonra tekrar deneyin.',
         generic: 'âš ï¸ YanÄ±t alÄ±namadÄ±. LÃ¼tfen baÄŸlantÄ±nÄ±zÄ± kontrol edip tekrar deneyin.',

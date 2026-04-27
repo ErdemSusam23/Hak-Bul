@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Icon, SectionHeader } from '../components/ui';
 import { dokumanKarsilastirAPI } from '../api/client';
-import { buildCompareRequest, pickFirstPdfFile } from '../utils/compareFlow';
+import { buildCompareRequest, pickFirstPdfFile, shouldClearCompareResult } from '../utils/compareFlow';
 
 function formatFileSize(size) {
   if (!size && size !== 0) return '';
@@ -133,6 +133,24 @@ export default function KarsilastirmaSayfasi() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const handleSetFile1 = (nextFile) => {
+    setF1((previousFile) => {
+      if (shouldClearCompareResult({ previousFile, nextFile })) {
+        setResult(null);
+      }
+      return nextFile;
+    });
+  };
+
+  const handleSetFile2 = (nextFile) => {
+    setF2((previousFile) => {
+      if (shouldClearCompareResult({ previousFile, nextFile })) {
+        setResult(null);
+      }
+      return nextFile;
+    });
+  };
+
   const run = async () => {
     if (!f1 || !f2) return;
 
@@ -165,8 +183,8 @@ export default function KarsilastirmaSayfasi() {
       />
 
       <div className="grid grid-cols-2 gap-4 mb-6">
-        <DropZone label="1. Belge" file={f1} setFile={setF1} />
-        <DropZone label="2. Belge" file={f2} setFile={setF2} />
+        <DropZone label="1. Belge" file={f1} setFile={handleSetFile1} />
+        <DropZone label="2. Belge" file={f2} setFile={handleSetFile2} />
       </div>
 
       <div className="card p-5 mb-8">
@@ -195,7 +213,7 @@ export default function KarsilastirmaSayfasi() {
         )}
       </div>
 
-      {result && <CompareResult file1={f1} file2={f2} result={result} />}
+      {result && f1 && f2 && <CompareResult file1={f1} file2={f2} result={result} />}
     </div>
   );
 }

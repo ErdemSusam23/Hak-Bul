@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useRef, useCallback } from 'react';
 import { Icon, Logo, Avatar } from '../components/ui';
 import { renderInline } from '../components/ui/renderInline';
 import { useChat } from '../hooks/useChat';
@@ -7,6 +7,7 @@ import { useDil } from '../context/useDil';
 import { SOHBET_ONERILEN_SORULAR } from '../content/productContent';
 import { normalizeRoleName } from '../utils/adminFlow';
 import { CHAT_COMPOSER_MAX_LENGTH, prepareComposerSubmission } from '../utils/chatUi';
+import FeedbackButonlari from '../components/FeedbackButonlari';
 import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
   sohbetGecmisiListeleAPI,
@@ -334,7 +335,6 @@ function SourceCard({ s }) {
 }
 
 function MessageBubble({ m }) {
-  const [feedback, setFeedback] = useState(null);
   const [expanded, setExpanded] = useState(true);
   const [copied, setCopied] = useState(false);
 
@@ -420,27 +420,19 @@ function MessageBubble({ m }) {
           )}
 
           <div className="mt-4 flex items-center gap-1">
-            <button
-              onClick={() => setFeedback('up')}
-              className={`p-1.5 rounded hover:bg-surface-muted ${feedback === 'up' ? 'text-accent' : 'text-ink-muted'}`}
-            >
-              <Icon name="thumbs-up" size={14} />
-            </button>
-            <button
-              onClick={() => setFeedback('down')}
-              className={`p-1.5 rounded hover:bg-surface-muted ${feedback === 'down' ? 'text-accent' : 'text-ink-muted'}`}
-            >
-              <Icon name="thumbs-down" size={14} />
-            </button>
-            <button
-              onClick={() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 1500);
-              }}
-              className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
-            >
-              <Icon name={copied ? 'check' : 'copy'} size={14} />
-            </button>
+            {m.id && !m.streaming && <FeedbackButonlari mesajId={m.id} />}
+            {!m.streaming && (
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(m.icerik || '').catch(() => {});
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 1500);
+                }}
+                className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
+              >
+                <Icon name={copied ? 'check' : 'copy'} size={14} />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -448,21 +440,21 @@ function MessageBubble({ m }) {
   );
 }
 
-function EmptyState({ onPick }) {
+function EmptyState({ onPick, t }) {
   return (
     <div className="py-12">
       <div className="flex flex-col items-center text-center mb-10">
         <Logo size={28} />
         <h2 className="font-display text-[42px] mt-6 leading-none" style={{ letterSpacing: '-0.02em' }}>
-          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Hoş geldiniz.</span>{' '}
-          Nasıl yardımcı olabilirim?
+          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>{t('chatWelcomePrefix')}</span>{' '}
+          {t('chatWelcomeSuffix')}
         </h2>
         <p className="text-ink-muted mt-3 max-w-lg text-[14px]">
-          Hukuki sorunuzu yazın; kanun maddeleri ve Yargıtay kararlarıyla desteklenmiş bir yanıt alın.
+          {t('chatWelcomeSubtitle')}
         </p>
       </div>
 
-      <div className="label mb-3">Örnek sorular</div>
+      <div className="label mb-3">{t('ornekSorular')}</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {SOHBET_ONERILEN_SORULAR.map((question, index) => (
           <button
@@ -483,7 +475,7 @@ function EmptyState({ onPick }) {
 }
 
 export default function SohbetSayfasi({ toast }) {
-  const { dil } = useDil();
+  const { dil, t } = useDil();
   const {
     mesajlar, yukleniyor, mesajGonder, sohbetiTemizle, mesajlariYukle,
   } = useChat(dil);
@@ -659,7 +651,7 @@ export default function SohbetSayfasi({ toast }) {
         <div ref={scrollRef} className="flex-1 overflow-auto">
           <div className="max-w-3xl mx-auto px-6 py-8">
             {mesajlar.length === 0 ? (
-              <EmptyState onPick={sendMessage} />
+              <EmptyState onPick={sendMessage} t={t} />
             ) : (
               <div className="flex flex-col gap-6">
                 {mesajlar.map((message, index) => (
@@ -690,7 +682,7 @@ export default function SohbetSayfasi({ toast }) {
                   }
                 }}
                 rows={2}
-                placeholder="Hukuki sorunuzu yazın..."
+                placeholder={t('sorununuzu')}
                 disabled={yukleniyor}
                 maxLength={CHAT_COMPOSER_MAX_LENGTH}
                 className="w-full bg-transparent resize-none text-[15px] leading-relaxed"

@@ -1,9 +1,11 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Icon, Logo } from '../components/ui';
+import { useDil } from '../context/useDil';
 import { LANDING_CATEGORY_LABELS } from '../content/productContent';
 import { createNewsletterNotice } from '../utils/phase2Flow';
 
 export default function LandingPage({ onOpenAuth, setPage }) {
+  const { t } = useDil();
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterNotice, setNewsletterNotice] = useState(null);
 
@@ -25,34 +27,33 @@ export default function LandingPage({ onOpenAuth, setPage }) {
           <div className="col-span-12 lg:col-span-8">
             <div className="label mb-5 flex items-center gap-2">
               <span className="w-8 h-px" style={{ background: 'var(--ink-faint)' }} />
-              Türk Hukuku · Yapay Zeka Destekli
+              {t('landingEyebrow')}
             </div>
             <h1
               className="font-display text-[58px] leading-[0.98] text-ink"
               style={{ letterSpacing: '-0.025em' }}
             >
-              Hukuki sorularına
+              {t('landingHeroTitleLine1')}
               <br />
-              <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>anında, </span>
-              <span style={{ fontStyle: 'italic' }}>kanun dayanaklı</span> yanıt.
+              <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>{t('landingHeroTitleAccent')} </span>
+              <span style={{ fontStyle: 'italic' }}>{t('landingHeroTitleProof')}</span> {t('landingHeroTitleSuffix')}
             </h1>
             <p className="text-ink-muted mt-6 text-[17px] leading-relaxed max-w-xl">
-              Hak-Bul, her yanıtı ilgili kanun maddesi ve Yargıtay kararıyla birlikte sunan bir hukuki asistanıdır.
-              Bilgi verir, avukatın yerini tutmaz.
+              {t('landingHeroSubtitle')}
             </p>
             <div className="mt-8 flex items-center gap-3">
               <button onClick={() => onOpenAuth('register')} className="btn btn-primary text-[15px] px-5 py-3">
-                Ücretsiz Dene
+                {t('authTryFree')}
                 <Icon name="arrow-right" size={16} />
               </button>
               <button onClick={scrollToHowItWorks} className="btn btn-outline text-[15px] px-5 py-3">
-                Nasıl Çalışır?
+                {t('landingHowItWorks')}
               </button>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink-muted">
-              <span className="flex items-center gap-1.5"><Icon name="scale" size={14} /> 14 Hukuki Alan</span>
-              <span className="flex items-center gap-1.5"><Icon name="book-open" size={14} /> 200+ Kanun Taraması</span>
-              <span className="flex items-center gap-1.5"><Icon name="message-circle" size={14} /> Misafir Modu</span>
+              <span className="flex items-center gap-1.5"><Icon name="scale" size={14} /> {t('landingMetricAreas')}</span>
+              <span className="flex items-center gap-1.5"><Icon name="book-open" size={14} /> {t('landingMetricLaws')}</span>
+              <span className="flex items-center gap-1.5"><Icon name="message-circle" size={14} /> {t('landingMetricGuest')}</span>
             </div>
           </div>
         </div>
@@ -94,7 +95,7 @@ export default function LandingPage({ onOpenAuth, setPage }) {
 
       <section className="max-w-6xl mx-auto px-6 pb-20">
         <div className="flex items-end justify-between mb-6">
-          <h2 className="font-display text-3xl" style={{ letterSpacing: '-0.02em' }}>14 Hukuki Alan</h2>
+          <h2 className="font-display text-3xl" style={{ letterSpacing: '-0.02em' }}>{t('landingMetricAreas')}</h2>
           <span className="text-xs text-ink-muted">her alanda binlerce emsal karar</span>
         </div>
         <div className="flex flex-wrap gap-2">

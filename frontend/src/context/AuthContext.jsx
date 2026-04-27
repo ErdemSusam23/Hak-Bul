@@ -178,7 +178,7 @@ export function AuthProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        setAuthHandlers(accessToken, tokenYenileFn);
+        setAuthHandlers(accessToken, () => tokenYenileFn({ notifyOnFailure: false }));
     }, [accessToken, tokenYenileFn]);
 
     useEffect(() => {

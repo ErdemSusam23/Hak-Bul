@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { TemaProvider } from './context/TemaContext';
 import { AuthProvider } from './context/AuthContext';
 import { DilProvider } from './context/DilContext';
 import { useTema } from './context/useTema';
 import { useAuth } from './context/useAuth';
 import { useAuth as useAuthInModal } from './context/useAuth';
+import { useDil } from './context/useDil';
 import { Icon, Logo, Avatar, Modal, Toast } from './components/ui';
 import { submitAuthModal } from './utils/authFlow';
 import LandingPage from './pages/LandingPage';
@@ -24,16 +25,17 @@ import {
 } from './utils/appRoutes';
 import { normalizeRoleName } from './utils/adminFlow';
 
-/* ── Navbar ── */
+/* Navbar */
 function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
   const { kullanici, cikis } = useAuth();
+  const { dil, dilDegistir, t } = useDil();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { key: 'sohbet', label: 'Sohbet' },
-    { key: 'taslak', label: 'Taslak' },
-    { key: 'forum', label: 'Forum' },
-    { key: 'karsilastir', label: 'Karşılaştır' },
+    { key: 'sohbet', label: t('navChat') },
+    { key: 'taslak', label: t('navTemplates') },
+    { key: 'forum', label: t('navForum') },
+    { key: 'karsilastir', label: t('navCompare') },
   ];
 
   return (
@@ -68,9 +70,18 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="btn btn-ghost text-ink-muted"
-            title={theme === 'dark' ? 'Açık temaya geç' : 'Koyu temaya geç'}
+            title={theme === 'dark' ? t('themeLight') : t('themeDark')}
           >
             <Icon name={theme === 'dark' ? 'sun' : 'moon'} size={16} />
+          </button>
+
+          <button
+            onClick={() => dilDegistir(dil === 'tr' ? 'en' : 'tr')}
+            className="btn btn-ghost min-w-11 justify-center px-2 text-xs font-semibold text-ink-muted"
+            title={dil === 'tr' ? t('languageSwitchToEnglish') : t('languageSwitchToTurkish')}
+            aria-label={dil === 'tr' ? 'Switch to English' : 'Türkçeye geç'}
+          >
+            {dil === 'tr' ? 'EN' : 'TR'}
           </button>
 
           {kullanici ? (
@@ -98,7 +109,7 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
                     }}
                     className="w-full text-left px-3 py-2 text-sm hover:bg-surface-muted flex items-center gap-2"
                   >
-                    <Icon name="user" size={14} /> Profilim
+                    <Icon name="user" size={14} /> {t('profilim')}
                   </button>
                   {normalizeRoleName(kullanici?.rol || kullanici?.role) === 'admin' && (
                     <button
@@ -108,7 +119,7 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
                       }}
                       className="w-full text-left px-3 py-2 text-sm hover:bg-surface-muted flex items-center gap-2"
                     >
-                      <Icon name="shield" size={14} /> Admin Paneli
+                      <Icon name="shield" size={14} /> {t('adminPaneli')}
                     </button>
                   )}
                   <div className="hairline-t my-1" />
@@ -120,7 +131,7 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
                     }}
                     className="w-full text-left px-3 py-2 text-sm hover:bg-surface-muted flex items-center gap-2 text-ink-soft"
                   >
-                    <Icon name="log-out" size={14} /> Çıkış Yap
+                    <Icon name="log-out" size={14} /> {t('cikisYap')}
                   </button>
                 </div>
               )}
@@ -128,14 +139,14 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
           ) : (
             <>
               <button onClick={() => onOpenAuth('login')} className="btn btn-ghost text-sm">
-                Giriş Yap
+                {t('giriYap')}
               </button>
               <button
                 onClick={() => onOpenAuth('register')}
                 className="btn btn-primary text-sm"
-                title="Ücretsiz hesap oluştur"
+                title={t('authCreateFreeAccount')}
               >
-                Ücretsiz Dene
+                {t('authTryFree')}
               </button>
             </>
           )}
@@ -145,9 +156,10 @@ function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
   );
 }
 
-/* ── Auth Modal ── */
+/* Auth Modal */
 function AuthModal({ mode, setMode, onClose, onSuccess }) {
   const { giris, kayit } = useAuthInModal();
+  const { t } = useDil();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
@@ -198,14 +210,17 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
           </button>
         </div>
         <h2 className="font-display text-[32px] leading-none mb-2" style={{ letterSpacing: '-0.02em' }}>
-          {mode === 'login' ? 'Tekrar hoş geldiniz' : 'Hesap oluştur'}
+          {mode === 'login' ? t('authWelcomeBack') : t('authCreateAccount')}
         </h2>
         <p className="text-ink-muted text-sm mb-6">
-          {mode === 'login' ? 'E-posta ve şifrenizle giriş yapın.' : 'Saniyeler içinde kaydolun; ücretsiz.'}
+          {mode === 'login' ? t('authLoginSubtitle') : t('authRegisterSubtitle')}
         </p>
 
         <div className="flex items-center gap-1 hairline-b mb-6">
-          {[['login', 'Giriş Yap'], ['register', 'Kayıt Ol']].map(([key, label]) => (
+          {[
+            ['login', t('giriYap')],
+            ['register', t('kayitOl')],
+          ].map(([key, label]) => (
             <button
               key={key}
               onClick={() => {
@@ -226,7 +241,7 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
 
         <div className="space-y-4">
           <label className="flex flex-col gap-1.5">
-            <span className="label">E-posta</span>
+            <span className="label">{t('emailAddress')}</span>
             <input
               type="email"
               placeholder="ad.soyad@eposta.com"
@@ -237,11 +252,11 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
           </label>
 
           <label className="flex flex-col gap-1.5">
-            <span className="label">Şifre</span>
+            <span className="label">{t('passwordLabel')}</span>
             <div className="relative rounded-md border border-line bg-surface-muted focus-within:bg-surface focus-within:border-line-strong">
               <input
                 type={showPw ? 'text' : 'password'}
-                placeholder="••••••••••"
+                placeholder="**********"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 onKeyDown={(event) => event.key === 'Enter' && handleSubmit()}
@@ -251,7 +266,7 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
                 onClick={() => setShowPw((value) => !value)}
                 type="button"
                 className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-ink-muted hover:text-ink"
-                aria-label={showPw ? 'Şifreyi gizle' : 'Şifreyi göster'}
+                aria-label={showPw ? t('passwordHide') : t('passwordShow')}
               >
                 <Icon name={showPw ? 'eye-off' : 'eye'} size={14} />
               </button>
@@ -260,10 +275,10 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
 
           {mode === 'register' && (
             <label className="flex flex-col gap-1.5">
-              <span className="label">Şifre (Tekrar)</span>
+              <span className="label">{t('passwordRepeatLabel')}</span>
               <input
                 type="password"
-                placeholder="••••••••••"
+                placeholder="**********"
                 value={confirm}
                 onChange={(event) => setConfirm(event.target.value)}
                 className="border border-line rounded-md bg-surface-muted px-3 py-2 text-sm focus:bg-surface focus:border-line-strong"
@@ -302,12 +317,12 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
               <span className="dot" />
             </>
           ) : (
-            mode === 'login' ? 'Giriş Yap' : 'Hesap Oluştur'
+            mode === 'login' ? t('giriYap') : t('authCreateAccount')
           )}
         </button>
 
         <button onClick={onClose} className="btn btn-ghost w-full justify-center py-2 mt-2 text-ink-muted">
-          Misafir olarak devam et
+          {t('authGuestContinue')}
         </button>
 
       </div>
@@ -315,8 +330,9 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
   );
 }
 
-/* ── Disclaimer bar ── */
+/* Disclaimer bar */
 function DisclaimerBar() {
+  const { t } = useDil();
   const [visible, setVisible] = useState(!localStorage.getItem('hb_disclaimer_dismissed'));
   if (!visible) return null;
 
@@ -325,7 +341,7 @@ function DisclaimerBar() {
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-3 text-sm">
         <Icon name="info" size={14} className="text-accent shrink-0" />
         <span className="flex-1 text-ink-soft">
-          Hak-Bul <strong>bilgi verir, hukuki tavsiye vermez</strong>. Ciddi hukuki konularda bir avukata danışmanız önerilir.
+          {t('disclaimerPrefix')} <strong>{t('disclaimerStrong')}</strong>. {t('disclaimerText')}
         </span>
         <button
           onClick={() => {
@@ -341,10 +357,11 @@ function DisclaimerBar() {
   );
 }
 
-/* ── Main app shell ── */
+/* Main app shell */
 function AppIcerik() {
   const { authHazir } = useAuth();
   const { tema, toggleTema } = useTema();
+  const { t } = useDil();
   const [routeState, setRouteState] = useState(() => parseAppLocation(
     window.location.hash,
     localStorage.getItem('hb_page') || 'landing',
@@ -417,14 +434,14 @@ function AppIcerik() {
   const onAuthSuccess = () => {
     setAuthModal(null);
     navigateToPage('sohbet');
-    toast('Hoş geldiniz!');
+    toast(t('authWelcomeToast'));
   };
 
   if (!authHazir) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-bg text-ink">
         <div className="card px-5 py-4 text-sm text-ink-muted">
-          Oturum hazırlanıyor...
+          {t('sessionPreparing')}
         </div>
       </div>
     );

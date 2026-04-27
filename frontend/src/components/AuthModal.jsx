@@ -17,6 +17,7 @@ export default function AuthModal({ onKapat }) {
   const [sifre, setSifre] = useState('');
   const [sifreTekrar, setSifreTekrar] = useState('');
   const [sifreGoster, setSifreGoster] = useState(false);
+  const [sifreTekrarGoster, setSifreTekrarGoster] = useState(false);
   const [hata, setHata] = useState('');
   const [basarili, setBasarili] = useState(false);
 
@@ -25,6 +26,8 @@ export default function AuthModal({ onKapat }) {
     setEmail('');
     setSifre('');
     setSifreTekrar('');
+    setSifreGoster(false);
+    setSifreTekrarGoster(false);
     setHata('');
     setBasarili(false);
   };
@@ -217,13 +220,21 @@ export default function AuthModal({ onKapat }) {
                   style={{ color: 'var(--ink-faint)' }}
                 />
                 <input
-                  type={sifreGoster ? 'text' : 'password'}
+                  type={sifreTekrarGoster ? 'text' : 'password'}
                   required
                   value={sifreTekrar}
                   onChange={(event) => setSifreTekrar(event.target.value)}
                   placeholder="••••••••"
-                  className={`${INPUT_CLASS} pl-9 ${sifreTekrar && !sifrelerEsit ? 'border-red-500/40' : sifreTekrar && sifrelerEsit ? 'border-emerald-500/40' : ''}`}
+                  className={`${INPUT_CLASS} pl-9 pr-9 ${sifreTekrar && !sifrelerEsit ? 'border-red-500/40' : sifreTekrar && sifrelerEsit ? 'border-emerald-500/40' : ''}`}
                 />
+                <button
+                  type="button"
+                  onClick={() => setSifreTekrarGoster((value) => !value)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors hover:text-ink"
+                  style={{ color: 'var(--ink-faint)' }}
+                >
+                  {sifreTekrarGoster ? <EyeOff size={15} /> : <Eye size={15} />}
+                </button>
               </div>
             </div>
           )}

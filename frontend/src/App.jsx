@@ -164,6 +164,7 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
   const [showPw, setShowPw] = useState(false);
+  const [showConfirmPw, setShowConfirmPw] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -190,6 +191,8 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
         setMode(result.nextMode);
         setPassword('');
         setConfirm('');
+        setShowPw(false);
+        setShowConfirmPw(false);
       }
 
       if (result.shouldClose) {
@@ -276,13 +279,24 @@ function AuthModal({ mode, setMode, onClose, onSuccess }) {
           {mode === 'register' && (
             <label className="flex flex-col gap-1.5">
               <span className="label">{t('passwordRepeatLabel')}</span>
-              <input
-                type="password"
-                placeholder="**********"
-                value={confirm}
-                onChange={(event) => setConfirm(event.target.value)}
-                className="border border-line rounded-md bg-surface-muted px-3 py-2 text-sm focus:bg-surface focus:border-line-strong"
-              />
+              <div className="relative rounded-md border border-line bg-surface-muted focus-within:bg-surface focus-within:border-line-strong">
+                <input
+                  type={showConfirmPw ? 'text' : 'password'}
+                  placeholder="**********"
+                  value={confirm}
+                  onChange={(event) => setConfirm(event.target.value)}
+                  onKeyDown={(event) => event.key === 'Enter' && handleSubmit()}
+                  className="w-full bg-transparent px-3 py-2 pr-10 text-sm outline-none"
+                />
+                <button
+                  onClick={() => setShowConfirmPw((value) => !value)}
+                  type="button"
+                  className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-ink-muted hover:text-ink"
+                  aria-label={showConfirmPw ? t('passwordHide') : t('passwordShow')}
+                >
+                  <Icon name={showConfirmPw ? 'eye-off' : 'eye'} size={14} />
+                </button>
+              </div>
             </label>
           )}
         </div>

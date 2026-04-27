@@ -25,33 +25,33 @@ export default function LandingPage({ onOpenAuth, setPage }) {
           <div className="col-span-12 lg:col-span-8">
             <div className="label mb-5 flex items-center gap-2">
               <span className="w-8 h-px" style={{ background: 'var(--ink-faint)' }} />
-              Turk Hukuku · Yapay Zeka Destekli
+              Türk Hukuku · Yapay Zeka Destekli
             </div>
             <h1
               className="font-display text-[58px] leading-[0.98] text-ink"
               style={{ letterSpacing: '-0.025em' }}
             >
-              Hukuki sorularina
+              Hukuki sorularına
               <br />
-              <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>aninda, </span>
-              <span style={{ fontStyle: 'italic' }}>kanun dayanakli</span> yanit.
+              <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>anında, </span>
+              <span style={{ fontStyle: 'italic' }}>kanun dayanaklı</span> yanıt.
             </h1>
             <p className="text-ink-muted mt-6 text-[17px] leading-relaxed max-w-xl">
-              Hak-Bul, her yaniti ilgili kanun maddesi ve Yargitay karariyla birlikte sunan bir hukuki asistandir.
-              Bilgi verir, avukatin yerini tutmaz.
+              Hak-Bul, her yanıtı ilgili kanun maddesi ve Yargıtay kararıyla birlikte sunan bir hukuki asistanıdır.
+              Bilgi verir, avukatın yerini tutmaz.
             </p>
             <div className="mt-8 flex items-center gap-3">
               <button onClick={() => onOpenAuth('register')} className="btn btn-primary text-[15px] px-5 py-3">
-                Ucretsiz Dene
+                Ücretsiz Dene
                 <Icon name="arrow-right" size={16} />
               </button>
               <button onClick={scrollToHowItWorks} className="btn btn-outline text-[15px] px-5 py-3">
-                Nasil Calisir?
+                Nasıl Çalışır?
               </button>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink-muted">
               <span className="flex items-center gap-1.5"><Icon name="scale" size={14} /> 14 Hukuki Alan</span>
-              <span className="flex items-center gap-1.5"><Icon name="book-open" size={14} /> 200+ Kanun Taramasi</span>
+              <span className="flex items-center gap-1.5"><Icon name="book-open" size={14} /> 200+ Kanun Taraması</span>
               <span className="flex items-center gap-1.5"><Icon name="message-circle" size={14} /> Misafir Modu</span>
             </div>
           </div>
@@ -64,20 +64,20 @@ export default function LandingPage({ onOpenAuth, setPage }) {
             {
               icon: 'message-circle',
               kicker: '01',
-              title: 'Kanun Dayanakli Yanitlar',
-              desc: 'Her cevap ilgili madde ve karar ozetiyle birlikte gelir. Kaynaksiz spekulasyon yok.',
+              title: 'Kanun Dayanaklı Yanıtlar',
+              desc: 'Her cevap ilgili madde ve karar özetiyle birlikte gelir. Kaynaksız spekülasyon yok.',
             },
             {
               icon: 'file-search',
               kicker: '02',
-              title: 'Belge Analizi ve Karsilastirma',
-              desc: 'Iki sozlesmeyi yukleyin, Hak-Bul farkliliklari ve onemli hukumleri sizin icin cikarsin.',
+              title: 'Belge Analizi ve Karşılaştırma',
+              desc: 'İki sözleşmeyi yükleyin, Hak-Bul farklılıkları ve önemli hükümleri sizin için çıkarsın.',
             },
             {
               icon: 'users',
               kicker: '03',
-              title: 'Avukat Onayli Forum',
-              desc: 'Topluluk yanitlarini lisansli avukatlar inceleyip onaylar. Altin rozetlere dikkat edin.',
+              title: 'Avukat Onaylı Forum',
+              desc: 'Topluluk yanıtlarını lisanslı avukatlar inceleyip onaylar. Altın rozetlere dikkat edin.',
             },
           ].map((feature, index) => (
             <div key={feature.kicker} className={`p-8 ${index < 2 ? 'md:border-r md:border-line ' : ''}`}>
@@ -111,13 +111,13 @@ export default function LandingPage({ onOpenAuth, setPage }) {
           <div className="col-span-12 md:col-span-5">
             <Logo size={20} />
             <p className="text-ink-muted text-sm mt-3 max-w-sm leading-relaxed">
-              Hak-Bul bilgi verir, hukuki tavsiye vermez. Ciddi hukuki konularda bir avukata danismaniz onerilir.
+              Hak-Bul bilgi verir, hukuki tavsiye vermez. Ciddi hukuki konularda bir avukata danışmanız önerilir.
             </p>
           </div>
           <div className="col-span-6 md:col-span-2">
-            <div className="label mb-3">Urun</div>
+            <div className="label mb-3">Ürün</div>
             <ul className="text-sm text-ink-muted space-y-2">
-              {['Sohbet', 'Taslak', 'Karsilastir', 'Forum'].map((label) => (
+              {['Sohbet', 'Taslak', 'Karşılaştır', 'Forum'].map((label) => (
                 <li key={label}><a href="#" className="hover:text-ink">{label}</a></li>
               ))}
             </ul>
@@ -125,13 +125,13 @@ export default function LandingPage({ onOpenAuth, setPage }) {
           <div className="col-span-6 md:col-span-2">
             <div className="label mb-3">Kurumsal</div>
             <ul className="text-sm text-ink-muted space-y-2">
-              {['Hakkinda', 'KVKK', 'Aydinlatma', 'Iletisim'].map((label) => (
+              {['Hakkında', 'KVKK', 'Aydınlatma', 'İletişim'].map((label) => (
                 <li key={label}><a href="#" className="hover:text-ink">{label}</a></li>
               ))}
             </ul>
           </div>
           <div className="col-span-12 md:col-span-3">
-            <div className="label mb-3">Bulten</div>
+            <div className="label mb-3">Bülten</div>
             <div className="flex gap-0 border border-line rounded-lg overflow-hidden">
               <input
                 className="flex-1 min-w-0 px-3 py-2 bg-transparent text-sm"
@@ -164,7 +164,7 @@ export default function LandingPage({ onOpenAuth, setPage }) {
         </div>
         <div className="hairline-t">
           <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-xs text-ink-muted">
-            <span>© 2026 Hak-Bul. Tum haklari saklidir.</span>
+            <span>© 2026 Hak-Bul. Tüm hakları saklıdır.</span>
             <span className="font-mono">v2.0 · new-ui</span>
           </div>
         </div>

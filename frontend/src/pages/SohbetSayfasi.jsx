@@ -27,7 +27,7 @@ function tarihKisa(isoStr) {
   const minutes = Math.floor(diff / 60000);
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
-  if (minutes < 1) return 'Az once';
+  if (minutes < 1) return 'Az önce';
   if (minutes < 60) return `${minutes}dk`;
   if (hours < 24) return `${hours}sa`;
   if (days < 7) return `${days}g`;
@@ -103,7 +103,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       });
       setSilOnayId(null);
     } catch {
-      toast?.('Sohbet detaylari yuklenemedi.', 'error');
+      toast?.('Sohbet detayları yüklenemedi.', 'error');
     }
   };
 
@@ -111,7 +111,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
     event.stopPropagation();
     if (silOnayId !== sohbet.id) {
       setSilOnayId(togglePendingAction(silOnayId, sohbet.id));
-      toast?.('Sohbeti silmek icin tekrar tiklayin.', 'info');
+      toast?.('Sohbeti silmek için tekrar tıklayın.', 'info');
       return;
     }
 
@@ -136,9 +136,9 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       const { share_token: shareToken } = await sohbetPaylasAPI(sohbet.id);
       const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
       await navigator.clipboard.writeText(shareUrl);
-      toast?.('Paylasim baglantisi panoya kopyalandi.');
+      toast?.('Paylaşım bağlantısı panoya kopyalandı.');
     } catch {
-      toast?.('Paylasim baglantisi kopyalanamadi.', 'error');
+      toast?.('Paylaşım bağlantısı kopyalanamadı.', 'error');
     }
   };
 
@@ -179,9 +179,9 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       setSohbetler((prev) => prev.map((sohbet) => (
         sohbet.id === id ? { ...sohbet, title: duzenleMetin.trim() } : sohbet
       )));
-      toast?.('Sohbet adi guncellendi.');
+      toast?.('Sohbet adı güncellendi.');
     } catch {
-      toast?.('Sohbet adi guncellenemedi.', 'error');
+      toast?.('Sohbet adı güncellenemedi.', 'error');
     } finally {
       setDuzenleId(null);
     }
@@ -189,7 +189,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
 
   const groups = {};
   sohbetler.forEach((conversation) => {
-    const label = conversation.tarih ? tarihKisa(conversation.tarih) : 'Gecmis';
+    const label = conversation.tarih ? tarihKisa(conversation.tarih) : 'Geçmiş';
     (groups[label] ||= []).push(conversation);
   });
 
@@ -219,7 +219,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       <div className="flex-1 overflow-auto py-2">
         {Object.keys(groups).length === 0 ? (
           <div className="px-4 py-6 text-[13px] text-ink-muted text-center">
-            {kullanici ? 'Henuz sohbet yok.' : 'Gecmis icin giris yapin.'}
+            {kullanici ? 'Henüz sohbet yok.' : 'Geçmiş için giriş yapın.'}
           </div>
         ) : (
           Object.entries(groups).map(([group, items]) => (
@@ -251,15 +251,15 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
                   </span>
                   {duzenleId !== sohbet.id && (
                     <span className="hidden group-hover:flex items-center gap-0.5 shrink-0">
-                      <span onClick={(event) => startDuzenle(event, sohbet)} title="Yeniden Adlandir" className="p-1 rounded hover:bg-surface-muted">
+                      <span onClick={(event) => startDuzenle(event, sohbet)} title="Yeniden Adlandır" className="p-1 rounded hover:bg-surface-muted">
                         <Icon name="pencil" size={12} className="text-ink-muted" />
                       </span>
                       {!sohbet.misafir && (
                         <>
-                          <span onClick={(event) => handlePaylas(event, sohbet)} title="Paylas" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handlePaylas(event, sohbet)} title="Paylaş" className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="link-2" size={12} className="text-ink-muted" />
                           </span>
-                          <span onClick={(event) => handleIndir(event, sohbet)} title="PDF Indir" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handleIndir(event, sohbet)} title="PDF İndir" className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="download" size={12} className="text-ink-muted" />
                           </span>
                         </>
@@ -280,7 +280,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
         <Avatar name={kullanici?.email || 'Misafir'} size={30} />
         <div className="flex-1 min-w-0">
           <div className="text-[13px] font-medium truncate">
-            {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanici') : 'Misafir'}
+            {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanıcı') : 'Misafir'}
           </div>
           <div className="text-[11px] text-ink-muted">{kullaniciRolEtiketi(kullanici)}</div>
         </div>
@@ -376,7 +376,7 @@ function MessageBubble({ m }) {
             >
               <Icon name="triangle-alert" size={15} className="shrink-0 mt-0.5" style={{ color: 'var(--warn)' }} />
               <div>
-                <strong>Ciddi konu uyarisi.</strong> Bu tur sureclerde bir avukatla gorusmeniz onerilir.
+                <strong>Ciddi konu uyarısı.</strong> Bu tür süreçlerde bir avukatla görüşmeniz önerilir.
               </div>
             </div>
           )}
@@ -454,15 +454,15 @@ function EmptyState({ onPick }) {
       <div className="flex flex-col items-center text-center mb-10">
         <Logo size={28} />
         <h2 className="font-display text-[42px] mt-6 leading-none" style={{ letterSpacing: '-0.02em' }}>
-          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Hos geldiniz.</span>{' '}
-          Nasil yardimci olabilirim?
+          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Hoş geldiniz.</span>{' '}
+          Nasıl yardımcı olabilirim?
         </h2>
         <p className="text-ink-muted mt-3 max-w-lg text-[14px]">
-          Hukuki sorunuzu yazin; kanun maddeleri ve Yargitay kararlariyla desteklenmis bir yanit alin.
+          Hukuki sorunuzu yazın; kanun maddeleri ve Yargıtay kararlarıyla desteklenmiş bir yanıt alın.
         </p>
       </div>
 
-      <div className="label mb-3">Ornek sorular</div>
+      <div className="label mb-3">Örnek sorular</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {SOHBET_ONERILEN_SORULAR.map((question, index) => (
           <button
@@ -558,7 +558,7 @@ export default function SohbetSayfasi({ toast }) {
     const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
     if (!isPdf) {
       clearSelectedFile();
-      toast?.('Lutfen yalnizca PDF dosyasi yukleyin.', 'error');
+      toast?.('Lütfen yalnızca PDF dosyası yükleyin.', 'error');
       return;
     }
 
@@ -579,7 +579,7 @@ export default function SohbetSayfasi({ toast }) {
 
   const handlePaylas = async () => {
     if (!convId) {
-      toast?.('Once bir sohbet baslatin.', 'info');
+      toast?.('Önce bir sohbet başlatın.', 'info');
       return;
     }
 
@@ -587,15 +587,15 @@ export default function SohbetSayfasi({ toast }) {
       const { share_token: shareToken } = await sohbetPaylasAPI(convId);
       const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
       await navigator.clipboard.writeText(shareUrl);
-      toast?.('Paylasim baglantisi panoya kopyalandi.');
+      toast?.('Paylaşım bağlantısı panoya kopyalandı.');
     } catch {
-      toast?.('Paylasim baglantisi olusturulamadi.', 'error');
+      toast?.('Paylaşım bağlantısı oluşturulamadı.', 'error');
     }
   };
 
   const handlePDF = async () => {
     if (!convId) {
-      toast?.('Once bir sohbet baslatin.', 'info');
+      toast?.('Önce bir sohbet başlatın.', 'info');
       return;
     }
 
@@ -648,8 +648,8 @@ export default function SohbetSayfasi({ toast }) {
               {selectedConversationTitle || (convId ? 'Sohbet' : 'Yeni Sohbet')}
             </div>
           </div>
-          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet baglantisini kopyala">
-            <Icon name="link-2" size={14} /> Paylas
+          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet bağlantısını kopyala">
+            <Icon name="link-2" size={14} /> Paylaş
           </button>
           <button onClick={handlePDF} className="btn btn-ghost text-xs" title="PDF olarak indir">
             <Icon name="download" size={14} /> PDF
@@ -690,7 +690,7 @@ export default function SohbetSayfasi({ toast }) {
                   }
                 }}
                 rows={2}
-                placeholder="Hukuki sorunuzu yazin..."
+                placeholder="Hukuki sorunuzu yazın..."
                 disabled={yukleniyor}
                 maxLength={CHAT_COMPOSER_MAX_LENGTH}
                 className="w-full bg-transparent resize-none text-[15px] leading-relaxed"
@@ -705,7 +705,7 @@ export default function SohbetSayfasi({ toast }) {
                     type="button"
                     onClick={clearSelectedFile}
                     className="text-ink-muted hover:text-ink"
-                    title="PDF secimini kaldir"
+                    title="PDF seçimini kaldır"
                   >
                     <Icon name="x" size={13} />
                   </button>
@@ -717,7 +717,7 @@ export default function SohbetSayfasi({ toast }) {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
-                    title="PDF yukle"
+                    title="PDF yükle"
                   >
                     <Icon name="paperclip" size={15} />
                   </button>
@@ -725,7 +725,7 @@ export default function SohbetSayfasi({ toast }) {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] text-ink-faint hidden md:block">
-                    Enter ile gonder · Shift+Enter satir ekler
+                    Enter ile gönder · Shift+Enter satır ekler
                   </span>
                   <button
                     onClick={() => sendMessage()}
@@ -738,7 +738,7 @@ export default function SohbetSayfasi({ toast }) {
               </div>
             </div>
             <div className="text-[11px] text-ink-faint text-center mt-2">
-              Yanitlar bilgi amaclidir · Avukat gorusunun yerini tutmaz
+              Yanıtlar bilgi amaçlıdır · Avukat görüşünün yerini tutmaz
             </div>
           </div>
         </div>

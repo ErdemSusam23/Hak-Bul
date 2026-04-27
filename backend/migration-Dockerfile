@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements-migration.txt .
+
+RUN pip install --no-cache-dir -r requirements-migration.txt \
+    && find /usr/local -type d -name __pycache__ -exec rm -rf {} +
+
+COPY alembic.ini .
+COPY alembic ./alembic
+COPY auth ./auth
+COPY db ./db
+COPY models ./models
+COPY scripts ./scripts
+COPY config.py .
+
+CMD ["sh", "-c", "alembic upgrade head && python scripts/seed_admin.py"]

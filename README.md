@@ -23,7 +23,7 @@ Vatandaşların Türkçe hukuki sorularına, mevzuat ve ilgili kaynaklar üzerin
 - Çoklu dil arayüzü (Türkçe / İngilizce)
 - Rate limiting (`/ask` ve `/ask/stream` için 20/dk, `/documents/compare` için 5/dk)
 - Alembic migration altyapısı (9 migration)
-- Docker Compose ile tek komutla `postgres + backend + frontend` çalıştırma
+- Docker Compose ile `postgres + migrate + backend + frontend` çalıştırma; migration ve ilk admin seed'i ayrı hafif image ile uygulanır
 
 ## Proje Yapısı
 
@@ -102,9 +102,15 @@ GROQ_API_KEY=gsk_...
 # Qdrant Cloud bilgilerin (https://cloud.qdrant.io)
 QDRANT_URL=https://xxxx.qdrant.io
 QDRANT_API_KEY=...
+
+# İlk admin seed bilgileri
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=guclu_bir_admin_sifresi
 ```
 
 > **Not:** `CORS_ORIGINS`, `MOCK_*`, `EMBEDDING_MODEL`, `SCORE_THRESHOLD` alanlarını değiştirmene gerek yok, varsayılanlar çalışır.
+
+> **Not:** `ADMIN_EMAIL` ve `ADMIN_PASSWORD`, migration sonrası çalışan seed adımında ilk admin kullanıcısını oluşturmak için zorunludur. Aynı e-posta zaten varsa kullanıcı admin rolüne yükseltilir; mevcut şifresi değiştirilmez.
 
 ### Adım 3 — Konteynerleri başlat
 
@@ -114,16 +120,19 @@ docker compose up -d --build
 
 İlk çalıştırmada embedding modeli (`intfloat/multilingual-e5-base`) indirilir, bu birkaç dakika sürebilir.
 
+Compose açılışında `migrate` servisi önce `alembic upgrade head`, sonra `python scripts/seed_admin.py` çalıştırır. Bu servis backend'in ağır runtime image'ı yerine `backend/migration-Dockerfile` ve `backend/requirements-migration.txt` ile üretilen hafif migration image'ını kullanır.
+
 ### Adım 4 — Çalışıp çalışmadığını kontrol et
 
 ```bash
 docker compose ps
 ```
 
-Üç servis de `healthy` görünmeli:
+Dört servisli akış şu şekildedir: `migrate` tek seferlik çalışır ve `Exited (0)` olur; diğer servisler çalışmaya devam eder.
 
 ```
 hak-bul-postgres   Up (healthy)
+hak-bul-migrate    Exited (0)
 hak-bul-backend    Up (healthy)
 hak-bul-frontend   Up (healthy)
 ```
@@ -133,6 +142,7 @@ Sorun çıkarsa logları incele:
 ```bash
 docker compose logs backend
 docker compose logs frontend
+docker compose logs migrate
 ```
 
 ### Adım 5 — Tarayıcıda aç
@@ -145,7 +155,26 @@ docker compose logs frontend
 
 > **Not:** Frontend container'i API isteklerini Vite reverse proxy ile backend container'ina iletir. Tarayicida istekler `http://localhost:5173/auth/...` gibi gorunur; container icinde hedef `http://backend:8000` olur.
 
-> **Not:** `alembic upgrade head` backend container açılışında otomatik çalışır, migration'ları elle uygulamana gerek yok.
+> **Not:** Migration'lar backend container açılışında değil, ayrı `migrate` servisinde uygulanır. Backend, `migrate` başarıyla tamamlanmadan başlamaz.
+
+### Migration ve admin seed'i manuel tekrar çalıştırma
+
+Sadece migration + admin seed adımını yeniden çalıştırmak için:
+
+```bash
+docker compose rm -f migrate
+docker compose up --build --force-recreate migrate
+```
+
+Başarılı çalışmada `docker compose logs migrate` çıktısında şu satırlardan biri görülür:
+
+```text
+Admin seed completed: created
+Admin seed completed: promoted
+Admin seed completed: exists
+```
+
+`created`: admin kullanıcısı oluşturuldu. `promoted`: aynı e-posta ile var olan kullanıcı admin yapıldı. `exists`: kullanıcı zaten admin.
 
 ### Konteynerleri durdur / sil
 
@@ -195,9 +224,12 @@ POSTGRES_USER=postgres
 POSTGRES_PASSWORD=guclu_bir_sifre
 
 DATABASE_URL=postgresql+psycopg://postgres:guclu_bir_sifre@postgres:5432/hak_bul
+
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=guclu_bir_admin_sifresi
 ```
 
-> `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` ve `DATABASE_URL` içindeki değerler birbiriyle uyumlu olmalıdır.
+> `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` ve `DATABASE_URL` içindeki değerler birbiriyle uyumlu olmalıdır. `ADMIN_EMAIL` ve `ADMIN_PASSWORD`, Docker `migrate` servisinin ilk admin seed'i için zorunludur.
 
 ### Adım 2 — Sadece PostgreSQL container'ını başlat
 
@@ -280,6 +312,14 @@ pip install -r requirements.txt
 ```bash
 alembic upgrade head
 ```
+
+İlk admin kullanıcısını local ortamda seed etmek için:
+
+```bash
+python scripts/seed_admin.py
+```
+
+Bu komut `backend/.env` içindeki `ADMIN_EMAIL` ve `ADMIN_PASSWORD` değerlerini kullanır. Aynı e-posta zaten varsa kullanıcıyı admin rolüne yükseltir, mevcut şifreyi değiştirmez.
 
 Bu komut local geliştirmede şu senaryolarda çalıştırılmalıdır:
 

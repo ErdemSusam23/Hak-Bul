@@ -33,9 +33,7 @@ services:
       - /app/venv
       - /app/__pycache__
       - model_data:/model_cache
-    command: >
-      sh -c "alembic upgrade head &&
-             uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
@@ -43,6 +41,20 @@ services:
       retries: 3
       start_period: 180s
     restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+
+  migrate:
+    build:
+      context: ./backend
+      dockerfile: migration-Dockerfile
+    container_name: hak-bul-migrate
+    env_file:
+      - ./backend/.env.docker
+    restart: "no"
     depends_on:
       postgres:
         condition: service_healthy

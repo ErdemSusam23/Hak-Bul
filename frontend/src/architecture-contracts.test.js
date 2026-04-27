@@ -11,6 +11,37 @@ async function readSource(...segments) {
   return readFile(path.join(__dirname, ...segments), 'utf8');
 }
 
+async function readRepoFile(...segments) {
+  return readFile(path.join(__dirname, '..', '..', ...segments), 'utf8');
+}
+
+test('Docker Compose runs Alembic migrations in a dedicated one-shot service before backend startup', async () => {
+  const source = await readRepoFile('docker-compose.yml');
+  const migrationDockerfile = await readRepoFile('backend', 'migration-Dockerfile');
+  const migrationRequirements = await readRepoFile('backend', 'requirements-migration.txt');
+
+  assert.match(source, /\r?\n {2}migrate:\r?\n/, 'Compose should define a dedicated migrate service');
+  assert.match(source, /dockerfile:\s*migration-Dockerfile/, 'Migrate service should use the lightweight migration image');
+  assert.match(migrationDockerfile, /CMD \["sh", "-c", "alembic upgrade head && python scripts\/seed_admin\.py"\]/, 'Migration Dockerfile CMD should run Alembic before admin seed');
+  assert.match(source, /migrate:\s*\r?\n\s*condition:\s*service_completed_successfully/, 'Backend should wait for successful migration completion');
+  assert.doesNotMatch(source, /backend:[\s\S]*command:\s*>\s*\r?\n\s*sh -c "alembic upgrade head &&/, 'Backend startup command should not run migrations inline');
+  assert.match(migrationDockerfile, /COPY requirements-migration\.txt \./, 'Migration Dockerfile should install a minimal dependency set');
+  assert.doesNotMatch(migrationRequirements, /torch|transformers|sentence-transformers|langchain/i, 'Migration dependencies should not include heavy RAG/ML packages');
+});
+
+test('Admin seed documents required Docker environment variables', async () => {
+  const dockerEnvExample = await readRepoFile('backend', '.env.docker.example');
+  const localEnvExample = await readRepoFile('backend', '.env.example');
+  const seedSource = await readRepoFile('backend', 'scripts', 'seed_admin.py');
+
+  for (const source of [dockerEnvExample, localEnvExample]) {
+    assert.match(source, /ADMIN_EMAIL=/, 'Example env files should document ADMIN_EMAIL');
+    assert.match(source, /ADMIN_PASSWORD=/, 'Example env files should document ADMIN_PASSWORD');
+  }
+  assert.match(seedSource, /ADMIN_EMAIL/, 'Seed script should read ADMIN_EMAIL');
+  assert.match(seedSource, /ADMIN_PASSWORD/, 'Seed script should read ADMIN_PASSWORD');
+});
+
 test('streaming chat uses the shared API layer instead of reading auth state directly', async () => {
   const source = await readSource('hooks', 'useChat.js');
 

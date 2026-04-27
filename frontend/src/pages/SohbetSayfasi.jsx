@@ -6,7 +6,7 @@ import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
 import { SOHBET_ONERILEN_SORULAR } from '../content/productContent';
 import { normalizeRoleName } from '../utils/adminFlow';
-import { CHAT_COMPOSER_MAX_LENGTH, prepareComposerSubmission } from '../utils/chatUi';
+import { CHAT_COMPOSER_MAX_LENGTH, filterChatConversations, prepareComposerSubmission } from '../utils/chatUi';
 import FeedbackButonlari from '../components/FeedbackButonlari';
 import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
@@ -54,6 +54,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
   const [duzenleId, setDuzenleId] = useState(null);
   const [duzenleMetin, setDuzenleMetin] = useState('');
   const [silOnayId, setSilOnayId] = useState(null);
+  const [aramaMetni, setAramaMetni] = useState('');
   const inputRef = useRef(null);
 
   const gecmisiCek = useCallback(async () => {
@@ -188,8 +189,9 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
     }
   };
 
+  const gorunenSohbetler = filterChatConversations(sohbetler, aramaMetni);
   const groups = {};
-  sohbetler.forEach((conversation) => {
+  gorunenSohbetler.forEach((conversation) => {
     const label = conversation.tarih ? tarihKisa(conversation.tarih) : 'Geçmiş';
     (groups[label] ||= []).push(conversation);
   });
@@ -211,6 +213,8 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
         <div className="relative">
           <Icon name="search" size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-ink-faint" />
           <input
+            value={aramaMetni}
+            onChange={(event) => setAramaMetni(event.target.value)}
             className="w-full pl-8 pr-2 py-2 text-sm bg-surface rounded-md border border-line"
             placeholder="Sohbetlerde ara..."
           />
@@ -220,7 +224,9 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       <div className="flex-1 overflow-auto py-2">
         {Object.keys(groups).length === 0 ? (
           <div className="px-4 py-6 text-[13px] text-ink-muted text-center">
-            {kullanici ? 'Henüz sohbet yok.' : 'Geçmiş için giriş yapın.'}
+            {sohbetler.length > 0 && aramaMetni.trim()
+              ? 'Aramanızla eşleşen sohbet bulunamadı.'
+              : kullanici ? 'Henüz sohbet yok.' : 'Geçmiş için giriş yapın.'}
           </div>
         ) : (
           Object.entries(groups).map(([group, items]) => (

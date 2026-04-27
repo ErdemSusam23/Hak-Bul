@@ -30,6 +30,32 @@ export function scoreToPercentage(skor) {
     return Math.max(0, Math.min(100, Math.round(numericScore * 100)));
 }
 
+export function normalizeConversationSearch(value = '') {
+    return String(value)
+        .toLocaleLowerCase('tr-TR')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ı/g, 'i')
+        .trim();
+}
+
+export function filterChatConversations(conversations = [], query = '') {
+    const normalizedQuery = normalizeConversationSearch(query);
+
+    if (!normalizedQuery) {
+        return conversations;
+    }
+
+    return conversations.filter((conversation) => {
+        const searchableText = [
+            conversation.title,
+            conversation.id,
+        ].filter(Boolean).join(' ');
+
+        return normalizeConversationSearch(searchableText).includes(normalizedQuery);
+    });
+}
+
 export function getKaynakPreviewText(kaynak = {}) {
     if (typeof kaynak.metin_ozet === 'string' && kaynak.metin_ozet.trim()) {
         return kaynak.metin_ozet;

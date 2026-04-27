@@ -124,7 +124,15 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
         >
           <Icon name="info" size={16} style={{ color: 'var(--accent)' }} />
           <span style={{ color: 'var(--ink-soft)' }}>
-            Soru sormak veya yorum yapmak için <strong style={{ color: 'var(--accent)' }}>giriş yapın</strong>. Göz atmak için giriş gerekmez.
+            Soru sormak veya yorum yapmak için{' '}
+            <button
+              onClick={() => onOpenAuth?.('login')}
+              className="font-semibold underline underline-offset-2 hover:opacity-80 transition-opacity"
+              style={{ color: 'var(--accent)' }}
+            >
+              giriş yapın
+            </button>
+            . Göz atmak için giriş gerekmez.
           </span>
         </div>
       )}

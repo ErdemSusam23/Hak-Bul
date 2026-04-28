@@ -8,6 +8,7 @@ import {
 import {
   buildForumCreatePayload,
   FORUM_CATEGORIES,
+  normalizeForumCategory,
   normalizeForumThread,
 } from '../utils/forumFlow';
 
@@ -45,7 +46,7 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
 
       try {
         const response = await forumThreadListesiAPI({
-          category: selectedCategory === 'all' ? null : selectedCategory,
+          category: selectedCategory === 'all' ? null : normalizeForumCategory(selectedCategory),
           page: 1,
           size: 20,
         });
@@ -89,6 +90,10 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
     try {
       const payload = buildForumCreatePayload(composerState);
       const createdThread = await forumThreadOlusturAPI(payload);
+      const createdThreadId = createdThread?.id;
+      if (!createdThreadId) {
+        throw new Error('Thread response invalid');
+      }
       setComposerOpen(false);
       setComposerState({
         title: '',
@@ -96,7 +101,7 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
         content: '',
       });
       toast?.('Forum başlığı oluşturuldu.');
-      onThreadSec?.(createdThread.id);
+      onThreadSec?.(createdThreadId);
     } catch (submitError) {
       setComposerError(submitError?.response?.data?.detail || 'Başlık oluşturulamadı.');
     } finally {

@@ -52,6 +52,13 @@ def _insert_if_missing(bind: sa.Connection, table: str, values: dict[str, Any]) 
     bind.execute(sa.text(f"INSERT INTO {table} ({cols}) VALUES ({params})"), values)
 
 
+def _update_forum_thread_category(bind: sa.Connection, row_id: str, category: str) -> None:
+    bind.execute(
+        sa.text("UPDATE forum_threads SET category = :category WHERE id = :id"),
+        {"id": row_id, "category": category},
+    )
+
+
 def _build_users() -> list[dict[str, Any]]:
     users: list[dict[str, Any]] = []
     roles = ["user", "lawyer", "user", "user", "lawyer", "user", "user", "user", "lawyer", "user", "user", "user"]
@@ -73,16 +80,16 @@ def _build_users() -> list[dict[str, Any]]:
 
 def _build_threads(users: list[dict[str, Any]]) -> list[dict[str, Any]]:
     topics = [
-        ("Kira artisi siniri", "Ev sahibim yillik artis oraninin ustune cikmak istiyor. Ne yapmaliyim?", "Kira"),
-        ("Isten cikarilma bildirimi", "Bildirim suresi verilmeden isten cikarildim. Haklarim nelerdir?", "Is"),
-        ("Tuketici iadesi", "Online alisveriste ayipli urun iadesi kabul edilmiyor.", "Tuketici"),
-        ("Bosanma sureci", "Anlasmali bosanma icin temel belgeler nelerdir?", "Aile"),
-        ("Trafik cezasi itirazi", "Haksiz trafik cezasi icin nereye itiraz etmeliyim?", "Idare"),
-        ("Kredi karti borcu", "Yasal takip oncesi yapilandirma secenekleri neler?", "Ticaret"),
+        ("Kira artisi siniri", "Ev sahibim yillik artis oraninin ustune cikmak istiyor. Ne yapmaliyim?", "Taşınmaz Mülk"),
+        ("Isten cikarilma bildirimi", "Bildirim suresi verilmeden isten cikarildim. Haklarim nelerdir?", "İş Hukuku"),
+        ("Tuketici iadesi", "Online alisveriste ayipli urun iadesi kabul edilmiyor.", "Tüketici Hukuku"),
+        ("Bosanma sureci", "Anlasmali bosanma icin temel belgeler nelerdir?", "Medeni Hukuk"),
+        ("Trafik cezasi itirazi", "Haksiz trafik cezasi icin nereye itiraz etmeliyim?", "İdare Hukuku"),
+        ("Kredi karti borcu", "Yasal takip oncesi yapilandirma secenekleri neler?", "Ticaret Hukuku"),
         ("Miras paylasimi", "Kardesler arasinda miras paylasimi nasil yapilir?", "Genel"),
         ("Icra takibi mesaji", "SMS ile gelen icra bildirimi gercek mi nasil anlarim?", "Genel"),
-        ("Is kazasi raporu", "Is kazasinda tutanak ve rapor suresi kac gun?", "Is"),
-        ("Tahliye taahhutnamesi", "Tahliye taahhutnamesi gecerlilik kosullari nelerdir?", "Kira"),
+        ("Is kazasi raporu", "Is kazasinda tutanak ve rapor suresi kac gun?", "İş Hukuku"),
+        ("Tahliye taahhutnamesi", "Tahliye taahhutnamesi gecerlilik kosullari nelerdir?", "Taşınmaz Mülk"),
     ]
     rows: list[dict[str, Any]] = []
     for i, (title, content, category) in enumerate(topics):
@@ -263,7 +270,10 @@ def upgrade() -> None:
     for row in payload["users"]:
         _insert_if_missing(bind, "users", row)
     for row in payload["threads"]:
-        _insert_if_missing(bind, "forum_threads", row)
+        if _exists(bind, "forum_threads", str(row["id"])):
+            _update_forum_thread_category(bind, str(row["id"]), str(row["category"]))
+        else:
+            _insert_if_missing(bind, "forum_threads", row)
     for row in payload["replies"]:
         _insert_if_missing(bind, "forum_replies", row)
     for row in payload["votes"]:

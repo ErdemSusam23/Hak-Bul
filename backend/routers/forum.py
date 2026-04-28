@@ -19,6 +19,7 @@ from schemas import (
     ForumThreadOlustur,
 )
 from services.forum_service import (
+    normalize_forum_category,
     oy_ver,
     thread_getir,
     thread_guncelle,
@@ -50,7 +51,10 @@ def forum_thread_listele(
     size: int = Query(default=20, ge=1, le=100),
     db: Session = Depends(get_db),
 ):
-    threads, total = thread_listele(db=db, category=category, page=page, size=size)
+    try:
+        threads, total = thread_listele(db=db, category=category, page=page, size=size)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
     return ForumThreadListeCevap(threads=threads, total=total, page=page, size=size)
 
 
@@ -60,12 +64,17 @@ def forum_thread_olustur(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
+    try:
+        normalized_category = normalize_forum_category(body.category)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
     thread = thread_olustur(
         db=db,
         user_id=current_user.id,
         title=body.title,
         content=body.content,
-        category=body.category,
+        category=normalized_category,
     )
     return _thread_to_dict(db, thread, current_user)
 

@@ -5,6 +5,7 @@ import {
     CHAT_COMPOSER_MAX_LENGTH,
     CHAT_TEXT_WRAP_STYLE,
     prepareComposerSubmission,
+    scoreToBandLabel,
     scoreToPercentage,
 } from './chatUi.js';
 
@@ -48,6 +49,21 @@ test('scoreToPercentage clamps invalid and oversized scores into 0-100 range', (
     assert.equal(scoreToPercentage(1.73), 100);
     assert.equal(scoreToPercentage(-4), 0);
     assert.equal(scoreToPercentage(Number.NaN), 0);
+});
+
+test('scoreToBandLabel maps scores to the expected confidence bands', () => {
+    assert.equal(scoreToBandLabel(0.59), 'Çok düşük');
+    assert.equal(scoreToBandLabel(0.60), 'Düşük');
+    assert.equal(scoreToBandLabel(0.69), 'Düşük');
+    assert.equal(scoreToBandLabel(0.70), 'Orta');
+    assert.equal(scoreToBandLabel(0.79), 'Orta');
+    assert.equal(scoreToBandLabel(0.80), 'İyi');
+    assert.equal(scoreToBandLabel(0.89), 'İyi');
+    assert.equal(scoreToBandLabel(0.90), 'Çok iyi');
+    assert.equal(scoreToBandLabel(1.0), 'Çok iyi');
+    assert.equal(scoreToBandLabel(-1), 'Çok düşük');
+    assert.equal(scoreToBandLabel(Number.NaN), 'Çok düşük');
+    assert.equal(scoreToBandLabel(1.7), 'Çok iyi');
 });
 
 test('CHAT_TEXT_WRAP_STYLE forces long streaming content to wrap', () => {

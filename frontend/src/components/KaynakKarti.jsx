@@ -1,6 +1,6 @@
 import { BookOpen, Gavel, ExternalLink, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { CHAT_TEXT_WRAP_STYLE, getKaynakPreviewText, scoreToPercentage } from '../utils/chatUi';
+import { CHAT_TEXT_WRAP_STYLE, getKaynakPreviewText, scoreToBandLabel, scoreToPercentage } from '../utils/chatUi';
 
 const KAYNAK_TURU_KONFIG = {
   kanun: {
@@ -43,6 +43,7 @@ const KAYNAK_TURU_KONFIG = {
 
 function SkorCubugu({ skor }) {
   const yuzde = scoreToPercentage(skor);
+  const etiket = scoreToBandLabel(skor);
   let bgColor = 'var(--warn)';
   if (yuzde >= 85) bgColor = 'var(--success)';
   else if (yuzde >= 70) bgColor = 'var(--accent)';
@@ -55,8 +56,8 @@ function SkorCubugu({ skor }) {
           style={{ width: `${yuzde}%`, background: bgColor }}
         />
       </div>
-      <span className="text-xs tabular-nums" style={{ color: 'var(--ink-muted)' }}>
-        {yuzde}%
+      <span className="text-xs" style={{ color: 'var(--ink-muted)' }}>
+        Doğruluk: {etiket}
       </span>
     </div>
   );

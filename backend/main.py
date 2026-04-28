@@ -72,6 +72,11 @@ app.include_router(forum_router)
 
 @app.on_event("startup")
 async def preload_models_on_startup():
+    perf_logger.info(
+        "Runtime config | RERANKER_ENABLED=%s | RERANKER_MODEL=%s",
+        settings.RERANKER_ENABLED,
+        settings.RERANKER_MODEL,
+    )
     start_retrieval_warmup()
 
 
@@ -313,6 +318,7 @@ async def ask_stream(
     try:
         assert_upstreams_ready_for_ask()
         context = retrieve_context(body.soru, max_kaynak=body.max_kaynak, request_id=request_id)
+        is_gibberish = context.get("gibberish", False)
         kategori = context["kategori"]
         filtered = context["chunks"]
         kaynaklar = context["kaynaklar"]
@@ -368,6 +374,18 @@ async def ask_stream(
         yield f"data: {json.dumps(meta, ensure_ascii=False)}\n\n"
 
         # Token token yanıt
+        if is_gibberish:
+            from services.language_service import pick_text as _pick_text
+            rejection = _pick_text(
+                body.language,
+                "Sorunuzu anlayamadım. Lütfen hukuki sorunuzu Türkçe ve anlaşılır biçimde yazınız.",
+                "I couldn't understand your question. Please write your legal question clearly in Turkish or English.",
+            )
+            yield f"data: {json.dumps({'type': 'token', 'text': rejection}, ensure_ascii=False)}\n\n"
+            done_payload = {"type": "done", "message_id": None, "uyari": informational_warning(body.language)}
+            yield f"data: {json.dumps(done_payload, ensure_ascii=False)}\n\n"
+            return
+
         full_answer_parts: list[str] = []
         first_token_emitted = False
         try:

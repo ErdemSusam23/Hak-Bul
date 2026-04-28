@@ -6,7 +6,7 @@ import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
 import { SOHBET_ONERILEN_SORULAR } from '../content/productContent';
 import { normalizeRoleName } from '../utils/adminFlow';
-import { CHAT_COMPOSER_MAX_LENGTH, filterChatConversations, prepareComposerSubmission } from '../utils/chatUi';
+import { CHAT_COMPOSER_MAX_LENGTH, filterChatConversations, prepareComposerSubmission, scoreToBandLabel, scoreToPercentage } from '../utils/chatUi';
 import FeedbackButonlari from '../components/FeedbackButonlari';
 import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
@@ -372,6 +372,22 @@ function SourceCard({ s }) {
       </div>
       <div className="text-[12.5px] font-medium mb-1">{title}</div>
       <div className="text-[12px] text-ink-muted leading-relaxed line-clamp-2">{snippet}</div>
+      {s.skor != null && (
+        <div className="flex items-center gap-2 mt-2">
+          <div className="flex-1 h-0.5 rounded-full overflow-hidden" style={{ background: 'var(--line)' }}>
+            <div
+              className="h-full rounded-full transition-all duration-700"
+              style={{
+                width: `${scoreToPercentage(s.skor)}%`,
+                background: scoreToPercentage(s.skor) >= 85 ? 'var(--success)' : scoreToPercentage(s.skor) >= 70 ? 'var(--accent)' : 'var(--warn)',
+              }}
+            />
+          </div>
+          <span className="text-[10px] shrink-0" style={{ color: 'var(--ink-muted)' }}>
+            Doğruluk: {scoreToBandLabel(s.skor)}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

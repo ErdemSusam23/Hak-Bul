@@ -13,7 +13,7 @@ from rag.generator import generate_answer
 from rag.query_rewriter import rewrite_query
 from rag.reranker import rerank_chunks
 from rag.retriever import apply_category_penalty, filter_by_score, normalize_relevance_score, retrieve_chunks
-from services.language_service import informational_warning
+from services.language_service import informational_warning, pick_text
 
 logger = logging.getLogger(__name__)
 perf_logger = logging.getLogger("uvicorn.error")
@@ -204,7 +204,34 @@ def _select_rerank_candidates(chunks: list[dict], max_kaynak: int) -> list[dict]
     return chunks[:candidate_limit]
 
 
+_VOWELS_NORMALIZED = frozenset("aeiou")
+
+
+def _is_gibberish_query(soru: str) -> bool:
+    """Klavye ezme veya rastgele karakter dizilerini tespit eder."""
+    from rag.retriever import _normalize, TOKEN_RE, LAW_NUMBERS
+    normalized = _normalize(soru.strip())
+    tokens = [t for t in TOKEN_RE.findall(normalized) if len(t) >= 2]
+    if not tokens:
+        return True
+    # Bilinen kanun numarası içeriyorsa geçerli say (örn. "4857 nedir")
+    if any(t in LAW_NUMBERS for t in tokens):
+        return False
+    # Tek token 18 karakterden uzunsa klavye ezme
+    if len(tokens) == 1 and len(tokens[0]) > 18:
+        return True
+    # Sesli harf oranı %18'in altındaysa anlamsız
+    all_chars = "".join(tokens)
+    vowel_count = sum(1 for c in all_chars if c in _VOWELS_NORMALIZED)
+    if len(all_chars) >= 4 and vowel_count / len(all_chars) < 0.18:
+        return True
+    return False
+
+
 def retrieve_context(soru: str, max_kaynak: int = 5, request_id: str | None = None) -> dict:
+    if _is_gibberish_query(soru):
+        return {"kategori": "Genel", "chunks": [], "kaynaklar": [], "gibberish": True}
+
     total_started_at = perf_counter()
 
     stage_started_at = perf_counter()
@@ -240,6 +267,11 @@ def retrieve_context(soru: str, max_kaynak: int = 5, request_id: str | None = No
 
     stage_started_at = perf_counter()
     filtered = filter_by_score(chunks, threshold=settings.SCORE_THRESHOLD)
+    # Tüm chunk'ların skoru çok düşükse (hukuki içerik yok, fallback tetiklendi)
+    # kaynakları bastır — alakasız kanun maddeleri göstermek yanıltıcı olur.
+    LOW_RELEVANCE_FLOOR = 0.05
+    if filtered and all(_score_of(c) < LOW_RELEVANCE_FLOOR for c in filtered):
+        filtered = []
     filter_ms = (perf_counter() - stage_started_at) * 1000
 
     stage_started_at = perf_counter()
@@ -280,6 +312,19 @@ def run_pipeline(soru: str, max_kaynak: int = 5, language: str = "tr", request_i
     stage_started_at = perf_counter()
     context = retrieve_context(soru, max_kaynak=max_kaynak, request_id=request_id)
     context_ms = (perf_counter() - stage_started_at) * 1000
+
+    if context.get("gibberish"):
+        rejection = pick_text(
+            language,
+            "Sorunuzu anlayamadım. Lütfen hukuki sorunuzu Türkçe ve anlaşılır biçimde yazınız.",
+            "I couldn't understand your question. Please write your legal question clearly in Turkish or English.",
+        )
+        return {
+            "yanit": rejection,
+            "kaynaklar": [],
+            "kategori": "Genel",
+            "uyari": informational_warning(language),
+        }
 
     stage_started_at = perf_counter()
     yanit = generate_answer(soru, context["chunks"], language=language, request_id=request_id)

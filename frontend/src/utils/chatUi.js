@@ -30,6 +30,16 @@ export function scoreToPercentage(skor) {
     return Math.max(0, Math.min(100, Math.round(numericScore * 100)));
 }
 
+export function scoreToBandLabel(skor) {
+    const yuzde = scoreToPercentage(skor);
+
+    if (yuzde >= 90) return 'Çok iyi';
+    if (yuzde >= 80) return 'İyi';
+    if (yuzde >= 70) return 'Orta';
+    if (yuzde >= 60) return 'Düşük';
+    return 'Çok düşük';
+}
+
 export function normalizeConversationSearch(value = '') {
     return String(value)
         .toLocaleLowerCase('tr-TR')

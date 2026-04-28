@@ -182,12 +182,17 @@ function AsistanMesaji({ mesaj }) {
 
         {varKaynak && (
           <div className="space-y-2 fade-in">
-            <div className="flex items-center gap-2 px-1 mb-2">
-              <div className="h-px flex-1" style={{ background: 'var(--line)' }} />
-              <span className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--ink-muted)' }}>
-                {mesaj.kaynaklar.length} Hukuki Kaynak
-              </span>
-              <div className="h-px flex-1" style={{ background: 'var(--line)' }} />
+            <div className="px-1 mb-2">
+              <div className="flex items-center gap-2">
+                <div className="h-px flex-1" style={{ background: 'var(--line)' }} />
+                <span className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--ink-muted)' }}>
+                  {mesaj.kaynaklar.length} Hukuki Kaynak
+                </span>
+                <div className="h-px flex-1" style={{ background: 'var(--line)' }} />
+              </div>
+              <p className="mt-1 text-[11px]" style={{ color: 'var(--ink-faint)' }}>
+                Kaynaklar sorunuzla ilgililik düzeyine göre sıralanmıştır.
+              </p>
             </div>
             {mesaj.kaynaklar.map((kaynak, index) => (
               <KaynakKarti key={`${kaynak.baslik}-${index}`} kaynak={kaynak} />

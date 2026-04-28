@@ -48,6 +48,42 @@ function kullaniciRolEtiketi(kullanici) {
   }
 }
 
+const CRITICAL_CATEGORY_KEYWORDS = ['ceza', 'aile', 'medeni', 'icra', 'is hukuku'];
+const PERSONAL_INTENT_KEYWORDS = [
+  'ben',
+  'bana',
+  'benim',
+  'hakkimda',
+  'ne yapmaliyim',
+  'ne yapabilirim',
+  'dava acabilir miyim',
+  'itiraz edebilir miyim',
+  'hangi mahkeme',
+  'kac gun',
+  'sure',
+];
+const GENERAL_INFO_PATTERNS = [' nedir', 'ne demek', 'genel olarak', 'aciklar misin', 'aciklayabilir misin'];
+
+function normalizeWarningText(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isCriticalClientSide(message) {
+  const text = normalizeWarningText(message?.icerik || message?.text || '');
+  const category = normalizeWarningText(message?.kategori || '');
+
+  if (!text || text.length < 20) return false;
+  if (GENERAL_INFO_PATTERNS.some((pattern) => text.includes(pattern))) return false;
+
+  const hasCriticalCategory = CRITICAL_CATEGORY_KEYWORDS.some((keyword) => category.includes(keyword));
+  const hasPersonalIntent = PERSONAL_INTENT_KEYWORDS.some((keyword) => text.includes(keyword));
+  return hasCriticalCategory && hasPersonalIntent;
+}
+
 function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
   const { kullanici } = useAuth();
   const [sohbetler, setSohbetler] = useState([]);
@@ -375,7 +411,7 @@ function MessageBubble({ m }) {
             <span className="text-[11px] text-ink-faint">Hukuki Bilgi Platformu</span>
           </div>
 
-          {(m.alert || m.uyari) && (
+          {(m.alert || isCriticalClientSide(m)) && (
             <div
               className="mb-3 p-3 rounded-lg flex items-start gap-2.5 text-[13px]"
               style={{ background: 'color-mix(in srgb,var(--warn) 10%,var(--surface))', borderLeft: '2px solid var(--warn)' }}
@@ -408,6 +444,13 @@ function MessageBubble({ m }) {
                 }
                 return null;
               })}
+            </div>
+          )}
+
+          {m.uyari && !m.hata && (
+            <div className="mt-3 text-[12px] text-ink-muted flex items-start gap-1.5">
+              <Icon name="info" size={12} className="shrink-0 mt-0.5" />
+              <span>{m.uyari}</span>
             </div>
           )}
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
 import { Field, FieldArea, Icon, SectionHeader } from '../components/ui';
 import { useDil } from '../context/useDil';
 import { taslakListesiAPI, taslakPdfUretAPI } from '../api/client';
@@ -25,7 +25,7 @@ function isLongField(field) {
 }
 
 export default function TaslakSayfasi({ toast }) {
-  const { dil } = useDil();
+  const { dil, t } = useDil();
   const [templates, setTemplates] = useState([]);
   const [selectedId, setSelectedId] = useState('');
   const [fieldValues, setFieldValues] = useState({});
@@ -34,6 +34,7 @@ export default function TaslakSayfasi({ toast }) {
   const [submitting, setSubmitting] = useState(false);
   const [lastDownloaded, setLastDownloaded] = useState('');
   const [missingFields, setMissingFields] = useState([]);
+  const [clearPending, setClearPending] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -54,7 +55,7 @@ export default function TaslakSayfasi({ toast }) {
         }
       } catch (loadError) {
         if (!active) return;
-        setError(loadError?.response?.data?.detail || loadError.message || 'Taslak listesi yüklenemedi.');
+        setError(loadError?.response?.data?.detail || loadError.message || t('templatesLoadFailed'));
       } finally {
         if (active) {
           setLoading(false);
@@ -67,7 +68,7 @@ export default function TaslakSayfasi({ toast }) {
     return () => {
       active = false;
     };
-  }, [dil]);
+  }, [dil, t]);
 
   const selectedTemplate = useMemo(
     () => templates.find((template) => template.id === selectedId) || null,
@@ -80,14 +81,37 @@ export default function TaslakSayfasi({ toast }) {
     setLastDownloaded('');
     setMissingFields([]);
     setError('');
+    setClearPending(false);
+  };
+
+  const handleFieldChange = (field, value) => {
+    setFieldValues((current) => ({ ...current, [field.ad]: value }));
+    setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
+    setClearPending(false);
+  };
+
+  const handleClearForm = () => {
+    if (!selectedTemplate) return;
+
+    if (!clearPending) {
+      setClearPending(true);
+      return;
+    }
+
+    setFieldValues(buildTemplateFieldState(selectedTemplate));
+    setMissingFields([]);
+    setError('');
+    setLastDownloaded('');
+    setClearPending(false);
   };
 
   const handleGenerate = async () => {
     if (!selectedTemplate) return;
 
+    setClearPending(false);
     const nextMissingFields = getMissingRequiredTemplateFields(selectedTemplate, fieldValues);
     if (nextMissingFields.length) {
-      const detail = `Lütfen zorunlu alanları doldurun: ${nextMissingFields.join(', ')}`;
+      const detail = `${t('templatesFillRequiredFields')} ${nextMissingFields.join(', ')}`;
       setMissingFields(nextMissingFields);
       setError(detail);
       toast?.(detail, 'error');
@@ -104,9 +128,9 @@ export default function TaslakSayfasi({ toast }) {
       const fileName = buildTemplateDownloadName(selectedTemplate.id);
       downloadBlob(blob, fileName);
       setLastDownloaded(fileName);
-      toast?.('PDF oluşturuldu ve indirildi.');
+      toast?.(t('templatesPdfDownloaded'));
     } catch (generateError) {
-      const detail = generateError?.response?.data?.detail || generateError.message || 'PDF oluşturulamadı.';
+      const detail = generateError?.response?.data?.detail || generateError.message || t('templatesPdfFailed');
       setError(detail);
       toast?.(detail, 'error');
     } finally {
@@ -117,14 +141,14 @@ export default function TaslakSayfasi({ toast }) {
   return (
     <div className="max-w-6xl mx-auto px-6 py-10 overflow-auto h-full" style={{ background: 'var(--bg)' }}>
       <SectionHeader
-        eyebrow="Belge Taslakları"
-        title="Hukuki belgenizi gerçek şablonlarla hazırlayın"
-        sub="Taslak listesi ve PDF üretimi doğrudan backend template API sözleşmesiyle çalışır."
+        eyebrow={t('templatesTitle')}
+        title={t('templatesHeroTitle')}
+        sub={t('templatesHeroSubtitle')}
       />
 
       {loading && (
         <div className="card p-4 text-sm text-ink-muted mb-6">
-          Taslaklar yükleniyor…
+          {t('templatesLoading')}
         </div>
       )}
 
@@ -138,7 +162,7 @@ export default function TaslakSayfasi({ toast }) {
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-5">
             <div className="card p-5">
-              <div className="label mb-4">Mevcut Taslaklar · {templates.length}</div>
+              <div className="label mb-4">{t('templatesAvailable')} · {templates.length}</div>
               <div className="space-y-3">
                 {templates.map((template) => (
                   <button
@@ -156,7 +180,7 @@ export default function TaslakSayfasi({ toast }) {
                         </div>
                         <div className="text-[13px] text-ink-muted leading-relaxed">{template.aciklama}</div>
                       </div>
-                      <span className="chip text-[10px] py-0.5 px-1.5">{template.alanlar.length} alan</span>
+                      <span className="chip text-[10px] py-0.5 px-1.5">{template.alanlar.length} {t('templatesFieldCount')}</span>
                     </div>
                   </button>
                 ))}
@@ -169,13 +193,13 @@ export default function TaslakSayfasi({ toast }) {
               <div className="card p-6">
                 <div className="flex items-center justify-between gap-4 mb-5">
                   <div>
-                    <div className="label">Seçili Taslak</div>
+                    <div className="label">{t('templatesSelected')}</div>
                     <div className="font-display text-[30px] mt-1" style={{ letterSpacing: '-0.02em' }}>
                       {selectedTemplate.baslik}
                     </div>
                     <p className="text-sm text-ink-muted mt-2 max-w-2xl">{selectedTemplate.aciklama}</p>
                   </div>
-                  <span className="chip text-[11px] py-1 px-2">{selectedTemplate.alanlar.length} alan</span>
+                  <span className="chip text-[11px] py-1 px-2">{selectedTemplate.alanlar.length} {t('templatesFieldCount')}</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -192,10 +216,7 @@ export default function TaslakSayfasi({ toast }) {
                             ph={field.etiket}
                             rows={4}
                             value={fieldValues[field.ad] || ''}
-                            onChange={(event) => {
-                              setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }));
-                              setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
-                            }}
+                            onChange={(event) => handleFieldChange(field, event.target.value)}
                             className={fieldClassName}
                           />
                         ) : (
@@ -203,10 +224,7 @@ export default function TaslakSayfasi({ toast }) {
                             label={fieldLabel}
                             ph={field.etiket}
                             value={fieldValues[field.ad] || ''}
-                            onChange={(event) => {
-                              setFieldValues((current) => ({ ...current, [field.ad]: event.target.value }));
-                              setMissingFields((current) => current.filter((item) => item !== (field.etiket || field.ad)));
-                            }}
+                            onChange={(event) => handleFieldChange(field, event.target.value)}
                             className={fieldClassName}
                           />
                         )}
@@ -216,8 +234,7 @@ export default function TaslakSayfasi({ toast }) {
                 </div>
 
                 <div className="mt-5 p-4 rounded-lg text-sm" style={{ background: 'var(--surface-muted)' }}>
-                  PDF doğrudan backend tarafından üretilir ve cihazınıza indirilir. Boş bırakılan zorunlu alanlar
-                  backend doğrulamasında hata döndürür.
+                  {t('templatesBackendNotice')}
                 </div>
 
                 {error && (
@@ -228,30 +245,27 @@ export default function TaslakSayfasi({ toast }) {
 
                 {lastDownloaded && (
                   <div className="mt-4 text-sm" style={{ color: 'var(--success)' }}>
-                    Son indirilen dosya: <strong>{lastDownloaded}</strong>
+                    {t('templatesLastDownloaded')} <strong>{lastDownloaded}</strong>
                   </div>
                 )}
 
-                <div className="hairline-t mt-6 pt-5 flex items-center justify-end gap-3">
+                <div className="hairline-t mt-6 pt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <button
-                    onClick={() => {
-                      setFieldValues(buildTemplateFieldState(selectedTemplate));
-                      setMissingFields([]);
-                      setError('');
-                    }}
+                    onClick={handleClearForm}
                     className="btn btn-ghost"
+                    style={clearPending ? { color: 'var(--danger)', borderColor: 'var(--danger)' } : {}}
                   >
-                    Formu Temizle
+                    {clearPending ? t('templatesConfirmClear') : t('templatesClearForm')}
                   </button>
                   <button
                     onClick={handleGenerate}
                     disabled={submitting}
-                    className="btn btn-primary"
+                    className="btn btn-primary sm:ml-auto"
                   >
                     {submitting ? (
-                      <><span className="dot" /><span className="dot" /><span className="dot" /> PDF oluşturuluyor…</>
+                      <><span className="dot" /><span className="dot" /><span className="dot" /> {t('templatesCreatingPdf')}</>
                     ) : (
-                      <><Icon name="file-down" size={15} /> PDF Oluştur</>
+                      <><Icon name="file-down" size={15} /> {t('templatesCreatePdf')}</>
                     )}
                   </button>
                 </div>
@@ -264,9 +278,9 @@ export default function TaslakSayfasi({ toast }) {
                 >
                   <Icon name="file-text" size={20} />
                 </div>
-                <div className="font-display text-[22px] mb-1">Kullanılabilir bir taslak bulunamadı</div>
+                <div className="font-display text-[22px] mb-1">{t('templatesNoneAvailable')}</div>
                 <div className="text-[13px] text-ink-muted max-w-xs mx-auto">
-                  Backend template servisi yanıt vermediğinde taslak formu burada görünür.
+                  {t('templatesNoneHint')}
                 </div>
               </div>
             )}

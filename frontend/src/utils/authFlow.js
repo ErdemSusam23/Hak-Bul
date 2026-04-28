@@ -18,6 +18,15 @@ export async function submitAuthModal({
         };
     }
 
+    if (mode === REGISTER_MODE && password.length < 8) {
+        return {
+            shouldClose: false,
+            error: 'Şifre en az 8 karakter olmalıdır.',
+            success: '',
+            nextMode: REGISTER_MODE,
+        };
+    }
+
     if (mode === REGISTER_MODE && password !== confirm) {
         return {
             shouldClose: false,

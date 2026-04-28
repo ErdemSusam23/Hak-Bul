@@ -28,7 +28,7 @@ function OyButonlari({ skor, onOy, disabled }) {
         onClick={() => onOy(1)}
         disabled={disabled}
         className="p-1 rounded transition-colors hover:bg-green-500/10 text-ink-muted"
-        title="Begen"
+        title="Beğen"
       >
         <ThumbsUp size={14} />
       </button>
@@ -39,7 +39,7 @@ function OyButonlari({ skor, onOy, disabled }) {
         onClick={() => onOy(-1)}
         disabled={disabled}
         className="p-1 rounded transition-colors hover:bg-red-500/10 text-ink-muted"
-        title="Begenme"
+        title="Beğenme"
       >
         <ThumbsDown size={14} />
       </button>
@@ -68,7 +68,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
     } catch (error) {
       console.error('Thread yuklenemedi:', error);
       setDetay(null);
-      setHata('Baslik yuklenemedi.');
+      setHata('Başlık yüklenemedi.');
     } finally {
       setYukleniyor(false);
     }
@@ -82,18 +82,18 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
     if (!threadSilOnayli) {
       setThreadSilOnayli(true);
       setYanitSilOnayId(null);
-      toast?.('Basligi silmek icin tekrar tiklayin.', 'info');
+      toast?.('Başlığı silmek için tekrar tıklayın.', 'info');
       return;
     }
 
     try {
       await forumThreadSilAPI(threadId);
       setThreadSilOnayli(false);
-      toast?.('Baslik silindi.');
+      toast?.('Başlık silindi.');
       onGeri();
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Baslik silinemedi.');
-      toast?.('Baslik silinemedi.', 'error');
+      setHata(error.response?.data?.detail || 'Başlık silinemedi.');
+      toast?.('Başlık silinemedi.', 'error');
     }
   };
 
@@ -104,10 +104,10 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       setDetay((prev) => ({ ...prev, thread: guncellenen }));
       setThreadSilOnayli(false);
       setYanitSilOnayId(null);
-      toast?.(yeniDurum ? 'Baslik kilitlendi.' : 'Baslik yeniden acildi.');
+      toast?.(yeniDurum ? 'Başlık kilitlendi.' : 'Başlık yeniden açıldı.');
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Islem basarisiz.');
-      toast?.('Baslik guncellenemedi.', 'error');
+      setHata(error.response?.data?.detail || 'İşlem başarısız.');
+      toast?.('Başlık güncellenemedi.', 'error');
     }
   };
 
@@ -122,9 +122,9 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       setYanitMetin('');
       setThreadSilOnayli(false);
       setYanitSilOnayId(null);
-      toast?.('Yanit eklendi.');
+      toast?.('Yanıt eklendi.');
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Yanit gonderilemedi.');
+      setHata(error.response?.data?.detail || 'Yanıt gönderilemedi.');
     } finally {
       setYanitGonderiliyor(false);
     }
@@ -134,7 +134,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
     if (yanitSilOnayId !== replyId) {
       setYanitSilOnayId(togglePendingAction(yanitSilOnayId, replyId));
       setThreadSilOnayli(false);
-      toast?.('Yaniti silmek icin tekrar tiklayin.', 'info');
+      toast?.('Yanıtı silmek için tekrar tıklayın.', 'info');
       return;
     }
 
@@ -142,10 +142,10 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       await forumYanitSilAPI(replyId);
       setDetay((prev) => ({ ...prev, replies: prev.replies.filter((reply) => reply.id !== replyId) }));
       setYanitSilOnayId(null);
-      toast?.('Yanit silindi.');
+      toast?.('Yanıt silindi.');
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Yanit silinemedi.');
-      toast?.('Yanit silinemedi.', 'error');
+      setHata(error.response?.data?.detail || 'Yanıt silinemedi.');
+      toast?.('Yanıt silinemedi.', 'error');
     }
   };
 
@@ -156,10 +156,10 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
         ...prev,
         replies: prev.replies.map((reply) => (reply.id === replyId ? guncellenen : reply)),
       }));
-      toast?.(!mevcutDurum ? 'Yanit onaylandi.' : 'Yanit onayi kaldirildi.');
+      toast?.(!mevcutDurum ? 'Yanıt onaylandı.' : 'Yanıt onayı kaldırıldı.');
     } catch (error) {
       setHata(error.response?.data?.detail || 'Islem basarisiz.');
-      toast?.('Yanit dogrulanamadi.', 'error');
+      toast?.('Yanıt doğrulanamadı.', 'error');
     }
   };
 
@@ -191,7 +191,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
   if (yukleniyor) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <p className="text-sm text-ink-muted">Yukleniyor...</p>
+        <p className="text-sm text-ink-muted">Yükleniyor...</p>
       </div>
     );
   }
@@ -199,8 +199,8 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
   if (!detay) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center gap-3">
-        <p className="text-sm text-ink-muted">Baslik bulunamadi.</p>
-        <button onClick={onGeri} className="text-xs text-accent">← Geri don</button>
+        <p className="text-sm text-ink-muted">Başlık bulunamadı.</p>
+        <button onClick={onGeri} className="text-xs text-accent">← Geri dön</button>
       </div>
     );
   }
@@ -211,7 +211,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
   return (
     <div className="flex-1 flex flex-col min-h-0 p-6 overflow-y-auto">
       <button onClick={onGeri} className="flex items-center gap-1 text-sm mb-4 self-start text-ink-muted">
-        <ArrowLeft size={14} /> Forum'a don
+        <ArrowLeft size={14} /> Forum'a dön
       </button>
 
       {hata && (
@@ -256,7 +256,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       </div>
 
       <h2 className="text-sm font-semibold mb-3 text-ink-muted">
-        {replies.length} Yanit
+        {replies.length} Yanıt
       </h2>
 
       <div className="flex flex-col gap-3 mb-6">
@@ -282,7 +282,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
                   )}
                   {reply.is_verified && (
                     <span className="flex items-center gap-0.5 text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#4ade80' }}>
-                      <CheckCircle size={10} /> Onayli Cevap
+                      <CheckCircle size={10} /> Onaylı Cevap
                     </span>
                   )}
                 </div>
@@ -293,7 +293,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
                       onClick={() => handleYanitDogrula(reply.id, reply.is_verified)}
                       className="p-1 rounded"
                       style={{ color: reply.is_verified ? '#4ade80' : 'var(--ink-muted)' }}
-                      title={reply.is_verified ? 'Onayi Kaldir' : 'Onayli Isaretle'}
+                      title={reply.is_verified ? 'Onayı Kaldır' : 'Onaylı İşaretle'}
                     >
                       <CheckCircle size={14} />
                     </button>
@@ -324,7 +324,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
           <textarea
             className="w-full rounded-xl px-3 py-2 text-sm outline-none resize-none"
             style={{ background: 'var(--surface-muted)', color: 'var(--ink)', border: '1px solid var(--line)', minHeight: '80px' }}
-            placeholder="Yanitinizi yazin..."
+            placeholder="Yanıtınızı yazın..."
             value={yanitMetin}
             onChange={(event) => setYanitMetin(event.target.value)}
             required
@@ -337,20 +337,20 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
             className="btn btn-primary self-end"
             style={{ opacity: yanitGonderiliyor ? 0.7 : 1 }}
           >
-            {yanitGonderiliyor ? 'Gonderiliyor...' : 'Yanitla'}
+            {yanitGonderiliyor ? 'Gönderiliyor...' : 'Yanıtla'}
           </button>
         </form>
       )}
 
       {!kullanici && (
         <p className="text-sm text-center py-3 text-ink-muted">
-          Yanit yazmak icin giris yapin.
+          Yanıt yazmak için giriş yapın.
         </p>
       )}
 
       {kullanici && thread.is_locked && (
         <p className="text-sm text-center py-3 text-ink-muted">
-          Bu baslik kilitli, yeni yanit yazilamaz.
+          Bu başlık kilitli, yeni yanıt yazılamaz.
         </p>
       )}
     </div>

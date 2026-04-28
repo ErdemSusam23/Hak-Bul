@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+﻿import { useState, useEffect, useRef, useCallback } from 'react';
 import { Icon, Logo, Avatar } from '../components/ui';
 import { renderInline } from '../components/ui/renderInline';
 import { useChat } from '../hooks/useChat';
@@ -6,7 +6,8 @@ import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
 import { SOHBET_ONERILEN_SORULAR } from '../content/productContent';
 import { normalizeRoleName } from '../utils/adminFlow';
-import { CHAT_COMPOSER_MAX_LENGTH, prepareComposerSubmission } from '../utils/chatUi';
+import { CHAT_COMPOSER_MAX_LENGTH, filterChatConversations, prepareComposerSubmission } from '../utils/chatUi';
+import FeedbackButonlari from '../components/FeedbackButonlari';
 import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
   sohbetGecmisiListeleAPI,
@@ -27,7 +28,7 @@ function tarihKisa(isoStr) {
   const minutes = Math.floor(diff / 60000);
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
-  if (minutes < 1) return 'Az once';
+  if (minutes < 1) return 'Az önce';
   if (minutes < 60) return `${minutes}dk`;
   if (hours < 24) return `${hours}sa`;
   if (days < 7) return `${days}g`;
@@ -47,12 +48,49 @@ function kullaniciRolEtiketi(kullanici) {
   }
 }
 
+const CRITICAL_CATEGORY_KEYWORDS = ['ceza', 'aile', 'medeni', 'icra', 'is hukuku'];
+const PERSONAL_INTENT_KEYWORDS = [
+  'ben',
+  'bana',
+  'benim',
+  'hakkimda',
+  'ne yapmaliyim',
+  'ne yapabilirim',
+  'dava acabilir miyim',
+  'itiraz edebilir miyim',
+  'hangi mahkeme',
+  'kac gun',
+  'sure',
+];
+const GENERAL_INFO_PATTERNS = [' nedir', 'ne demek', 'genel olarak', 'aciklar misin', 'aciklayabilir misin'];
+
+function normalizeWarningText(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isCriticalClientSide(message) {
+  const text = normalizeWarningText(message?.icerik || message?.text || '');
+  const category = normalizeWarningText(message?.kategori || '');
+
+  if (!text || text.length < 20) return false;
+  if (GENERAL_INFO_PATTERNS.some((pattern) => text.includes(pattern))) return false;
+
+  const hasCriticalCategory = CRITICAL_CATEGORY_KEYWORDS.some((keyword) => category.includes(keyword));
+  const hasPersonalIntent = PERSONAL_INTENT_KEYWORDS.some((keyword) => text.includes(keyword));
+  return hasCriticalCategory && hasPersonalIntent;
+}
+
 function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
   const { kullanici } = useAuth();
   const [sohbetler, setSohbetler] = useState([]);
   const [duzenleId, setDuzenleId] = useState(null);
   const [duzenleMetin, setDuzenleMetin] = useState('');
   const [silOnayId, setSilOnayId] = useState(null);
+  const [aramaMetni, setAramaMetni] = useState('');
   const inputRef = useRef(null);
 
   const gecmisiCek = useCallback(async () => {
@@ -103,7 +141,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       });
       setSilOnayId(null);
     } catch {
-      toast?.('Sohbet detaylari yuklenemedi.', 'error');
+      toast?.('Sohbet detayları yüklenemedi.', 'error');
     }
   };
 
@@ -111,7 +149,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
     event.stopPropagation();
     if (silOnayId !== sohbet.id) {
       setSilOnayId(togglePendingAction(silOnayId, sohbet.id));
-      toast?.('Sohbeti silmek icin tekrar tiklayin.', 'info');
+      toast?.('Sohbeti silmek için tekrar tıklayın.', 'info');
       return;
     }
 
@@ -136,9 +174,9 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       const { share_token: shareToken } = await sohbetPaylasAPI(sohbet.id);
       const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
       await navigator.clipboard.writeText(shareUrl);
-      toast?.('Paylasim baglantisi panoya kopyalandi.');
+      toast?.('Paylaşım bağlantısı panoya kopyalandı.');
     } catch {
-      toast?.('Paylasim baglantisi kopyalanamadi.', 'error');
+      toast?.('Paylaşım bağlantısı kopyalanamadı.', 'error');
     }
   };
 
@@ -179,17 +217,18 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       setSohbetler((prev) => prev.map((sohbet) => (
         sohbet.id === id ? { ...sohbet, title: duzenleMetin.trim() } : sohbet
       )));
-      toast?.('Sohbet adi guncellendi.');
+      toast?.('Sohbet adı güncellendi.');
     } catch {
-      toast?.('Sohbet adi guncellenemedi.', 'error');
+      toast?.('Sohbet adı güncellenemedi.', 'error');
     } finally {
       setDuzenleId(null);
     }
   };
 
+  const gorunenSohbetler = filterChatConversations(sohbetler, aramaMetni);
   const groups = {};
-  sohbetler.forEach((conversation) => {
-    const label = conversation.tarih ? tarihKisa(conversation.tarih) : 'Gecmis';
+  gorunenSohbetler.forEach((conversation) => {
+    const label = conversation.tarih ? tarihKisa(conversation.tarih) : 'Geçmiş';
     (groups[label] ||= []).push(conversation);
   });
 
@@ -210,6 +249,8 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
         <div className="relative">
           <Icon name="search" size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-ink-faint" />
           <input
+            value={aramaMetni}
+            onChange={(event) => setAramaMetni(event.target.value)}
             className="w-full pl-8 pr-2 py-2 text-sm bg-surface rounded-md border border-line"
             placeholder="Sohbetlerde ara..."
           />
@@ -219,7 +260,9 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
       <div className="flex-1 overflow-auto py-2">
         {Object.keys(groups).length === 0 ? (
           <div className="px-4 py-6 text-[13px] text-ink-muted text-center">
-            {kullanici ? 'Henuz sohbet yok.' : 'Gecmis icin giris yapin.'}
+            {sohbetler.length > 0 && aramaMetni.trim()
+              ? 'Aramanızla eşleşen sohbet bulunamadı.'
+              : kullanici ? 'Henüz sohbet yok.' : 'Geçmiş için giriş yapın.'}
           </div>
         ) : (
           Object.entries(groups).map(([group, items]) => (
@@ -251,15 +294,15 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
                   </span>
                   {duzenleId !== sohbet.id && (
                     <span className="hidden group-hover:flex items-center gap-0.5 shrink-0">
-                      <span onClick={(event) => startDuzenle(event, sohbet)} title="Yeniden Adlandir" className="p-1 rounded hover:bg-surface-muted">
+                      <span onClick={(event) => startDuzenle(event, sohbet)} title="Yeniden Adlandır" className="p-1 rounded hover:bg-surface-muted">
                         <Icon name="pencil" size={12} className="text-ink-muted" />
                       </span>
                       {!sohbet.misafir && (
                         <>
-                          <span onClick={(event) => handlePaylas(event, sohbet)} title="Paylas" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handlePaylas(event, sohbet)} title="Paylaş" className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="link-2" size={12} className="text-ink-muted" />
                           </span>
-                          <span onClick={(event) => handleIndir(event, sohbet)} title="PDF Indir" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handleIndir(event, sohbet)} title="PDF İndir" className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="download" size={12} className="text-ink-muted" />
                           </span>
                         </>
@@ -280,7 +323,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
         <Avatar name={kullanici?.email || 'Misafir'} size={30} />
         <div className="flex-1 min-w-0">
           <div className="text-[13px] font-medium truncate">
-            {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanici') : 'Misafir'}
+            {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanıcı') : 'Misafir'}
           </div>
           <div className="text-[11px] text-ink-muted">{kullaniciRolEtiketi(kullanici)}</div>
         </div>
@@ -334,7 +377,6 @@ function SourceCard({ s }) {
 }
 
 function MessageBubble({ m }) {
-  const [feedback, setFeedback] = useState(null);
   const [expanded, setExpanded] = useState(true);
   const [copied, setCopied] = useState(false);
 
@@ -369,14 +411,14 @@ function MessageBubble({ m }) {
             <span className="text-[11px] text-ink-faint">Hukuki Bilgi Platformu</span>
           </div>
 
-          {(m.alert || m.uyari) && (
+          {(m.alert || isCriticalClientSide(m)) && (
             <div
               className="mb-3 p-3 rounded-lg flex items-start gap-2.5 text-[13px]"
               style={{ background: 'color-mix(in srgb,var(--warn) 10%,var(--surface))', borderLeft: '2px solid var(--warn)' }}
             >
               <Icon name="triangle-alert" size={15} className="shrink-0 mt-0.5" style={{ color: 'var(--warn)' }} />
               <div>
-                <strong>Ciddi konu uyarisi.</strong> Bu tur sureclerde bir avukatla gorusmeniz onerilir.
+                <strong>Ciddi konu uyarısı.</strong> Bu tür süreçlerde bir avukatla görüşmeniz önerilir.
               </div>
             </div>
           )}
@@ -405,6 +447,13 @@ function MessageBubble({ m }) {
             </div>
           )}
 
+          {m.uyari && !m.hata && (
+            <div className="mt-3 text-[12px] text-ink-muted flex items-start gap-1.5">
+              <Icon name="info" size={12} className="shrink-0 mt-0.5" />
+              <span>{m.uyari}</span>
+            </div>
+          )}
+
           {sources.length > 0 && (
             <div className="mt-4">
               <button onClick={() => setExpanded((value) => !value)} className="label flex items-center gap-1.5">
@@ -420,27 +469,19 @@ function MessageBubble({ m }) {
           )}
 
           <div className="mt-4 flex items-center gap-1">
-            <button
-              onClick={() => setFeedback('up')}
-              className={`p-1.5 rounded hover:bg-surface-muted ${feedback === 'up' ? 'text-accent' : 'text-ink-muted'}`}
-            >
-              <Icon name="thumbs-up" size={14} />
-            </button>
-            <button
-              onClick={() => setFeedback('down')}
-              className={`p-1.5 rounded hover:bg-surface-muted ${feedback === 'down' ? 'text-accent' : 'text-ink-muted'}`}
-            >
-              <Icon name="thumbs-down" size={14} />
-            </button>
-            <button
-              onClick={() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 1500);
-              }}
-              className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
-            >
-              <Icon name={copied ? 'check' : 'copy'} size={14} />
-            </button>
+            {m.id && !m.streaming && <FeedbackButonlari mesajId={m.id} />}
+            {!m.streaming && (
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(m.icerik || '').catch(() => {});
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 1500);
+                }}
+                className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
+              >
+                <Icon name={copied ? 'check' : 'copy'} size={14} />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -448,21 +489,21 @@ function MessageBubble({ m }) {
   );
 }
 
-function EmptyState({ onPick }) {
+function EmptyState({ onPick, t }) {
   return (
     <div className="py-12">
       <div className="flex flex-col items-center text-center mb-10">
         <Logo size={28} />
         <h2 className="font-display text-[42px] mt-6 leading-none" style={{ letterSpacing: '-0.02em' }}>
-          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Hos geldiniz.</span>{' '}
-          Nasil yardimci olabilirim?
+          <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>{t('chatWelcomePrefix')}</span>{' '}
+          {t('chatWelcomeSuffix')}
         </h2>
         <p className="text-ink-muted mt-3 max-w-lg text-[14px]">
-          Hukuki sorunuzu yazin; kanun maddeleri ve Yargitay kararlariyla desteklenmis bir yanit alin.
+          {t('chatWelcomeSubtitle')}
         </p>
       </div>
 
-      <div className="label mb-3">Ornek sorular</div>
+      <div className="label mb-3">{t('ornekSorular')}</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {SOHBET_ONERILEN_SORULAR.map((question, index) => (
           <button
@@ -483,7 +524,7 @@ function EmptyState({ onPick }) {
 }
 
 export default function SohbetSayfasi({ toast }) {
-  const { dil } = useDil();
+  const { dil, t } = useDil();
   const {
     mesajlar, yukleniyor, mesajGonder, sohbetiTemizle, mesajlariYukle,
   } = useChat(dil);
@@ -558,7 +599,7 @@ export default function SohbetSayfasi({ toast }) {
     const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
     if (!isPdf) {
       clearSelectedFile();
-      toast?.('Lutfen yalnizca PDF dosyasi yukleyin.', 'error');
+      toast?.('Lütfen yalnızca PDF dosyası yükleyin.', 'error');
       return;
     }
 
@@ -579,7 +620,7 @@ export default function SohbetSayfasi({ toast }) {
 
   const handlePaylas = async () => {
     if (!convId) {
-      toast?.('Once bir sohbet baslatin.', 'info');
+      toast?.('Önce bir sohbet başlatın.', 'info');
       return;
     }
 
@@ -587,15 +628,15 @@ export default function SohbetSayfasi({ toast }) {
       const { share_token: shareToken } = await sohbetPaylasAPI(convId);
       const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
       await navigator.clipboard.writeText(shareUrl);
-      toast?.('Paylasim baglantisi panoya kopyalandi.');
+      toast?.('Paylaşım bağlantısı panoya kopyalandı.');
     } catch {
-      toast?.('Paylasim baglantisi olusturulamadi.', 'error');
+      toast?.('Paylaşım bağlantısı oluşturulamadı.', 'error');
     }
   };
 
   const handlePDF = async () => {
     if (!convId) {
-      toast?.('Once bir sohbet baslatin.', 'info');
+      toast?.('Önce bir sohbet başlatın.', 'info');
       return;
     }
 
@@ -648,8 +689,8 @@ export default function SohbetSayfasi({ toast }) {
               {selectedConversationTitle || (convId ? 'Sohbet' : 'Yeni Sohbet')}
             </div>
           </div>
-          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet baglantisini kopyala">
-            <Icon name="link-2" size={14} /> Paylas
+          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet bağlantısını kopyala">
+            <Icon name="link-2" size={14} /> Paylaş
           </button>
           <button onClick={handlePDF} className="btn btn-ghost text-xs" title="PDF olarak indir">
             <Icon name="download" size={14} /> PDF
@@ -659,7 +700,7 @@ export default function SohbetSayfasi({ toast }) {
         <div ref={scrollRef} className="flex-1 overflow-auto">
           <div className="max-w-3xl mx-auto px-6 py-8">
             {mesajlar.length === 0 ? (
-              <EmptyState onPick={sendMessage} />
+              <EmptyState onPick={sendMessage} t={t} />
             ) : (
               <div className="flex flex-col gap-6">
                 {mesajlar.map((message, index) => (
@@ -690,7 +731,7 @@ export default function SohbetSayfasi({ toast }) {
                   }
                 }}
                 rows={2}
-                placeholder="Hukuki sorunuzu yazin..."
+                placeholder={t('sorununuzu')}
                 disabled={yukleniyor}
                 maxLength={CHAT_COMPOSER_MAX_LENGTH}
                 className="w-full bg-transparent resize-none text-[15px] leading-relaxed"
@@ -705,7 +746,7 @@ export default function SohbetSayfasi({ toast }) {
                     type="button"
                     onClick={clearSelectedFile}
                     className="text-ink-muted hover:text-ink"
-                    title="PDF secimini kaldir"
+                    title="PDF seçimini kaldır"
                   >
                     <Icon name="x" size={13} />
                   </button>
@@ -717,7 +758,7 @@ export default function SohbetSayfasi({ toast }) {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
-                    title="PDF yukle"
+                    title="PDF yükle"
                   >
                     <Icon name="paperclip" size={15} />
                   </button>
@@ -725,7 +766,7 @@ export default function SohbetSayfasi({ toast }) {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] text-ink-faint hidden md:block">
-                    Enter ile gonder · Shift+Enter satir ekler
+                    Enter ile gönder · Shift+Enter satır ekler
                   </span>
                   <button
                     onClick={() => sendMessage()}
@@ -738,7 +779,7 @@ export default function SohbetSayfasi({ toast }) {
               </div>
             </div>
             <div className="text-[11px] text-ink-faint text-center mt-2">
-              Yanitlar bilgi amaclidir · Avukat gorusunun yerini tutmaz
+              Yanıtlar bilgi amaçlıdır · Avukat görüşünün yerini tutmaz
             </div>
           </div>
         </div>

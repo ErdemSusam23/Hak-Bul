@@ -424,6 +424,13 @@ export async function adminZayifSorguListesiAPI({ limit = 100, offset = 0 } = {}
 }
 
 // --- FORUM API ---
+function ensureForumThreadResponse(thread) {
+    if (!thread || typeof thread !== 'object' || !thread.id) {
+        throw new Error('Thread response invalid');
+    }
+    return thread;
+}
+
 export async function forumThreadListesiAPI({ category = null, page = 1, size = 20 } = {}) {
     if (MOCK_MODE) return { threads: [], total: 0, page, size };
     const params = { page, size };
@@ -433,7 +440,7 @@ export async function forumThreadListesiAPI({ category = null, page = 1, size = 
 }
 
 export async function forumThreadOlusturAPI({ title, content, category }) {
-    return runWithMockMode({
+    const thread = await runWithMockMode({
         mockMode: MOCK_MODE,
         mockResponse: () => createMockForumThread({
             id: 'mock-thread-created',
@@ -446,6 +453,7 @@ export async function forumThreadOlusturAPI({ title, content, category }) {
             return data;
         },
     });
+    return ensureForumThreadResponse(thread);
 }
 
 export async function forumThreadDetayAPI(threadId) {

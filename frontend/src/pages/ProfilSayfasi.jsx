@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Avatar, Field, Icon } from '../components/ui';
 import { useAuth } from '../context/useAuth';
-import {
-  hesapSilAPI,
-  profilGetirAPI,
-  profilGuncelleAPI,
-} from '../api/client';
+import { hesapSilAPI, profilGetirAPI, profilGuncelleAPI } from '../api/client';
 import {
   buildAccountUpdatePayload,
   buildPasswordUpdatePayload,
@@ -47,7 +43,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
         setAccountEmail(normalized.email);
       } catch {
         if (!active) return;
-        setLoadError('Profil bilgileri yüklenemedi.');
+        setLoadError('Profil bilgileri yuklenemedi.');
       } finally {
         if (active) {
           setLoading(false);
@@ -63,7 +59,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
   }, [kullanici]);
 
   const email = profile.email;
-  const isim = email.split('@')[0] || 'Kullanıcı';
+  const avatarLabel = email.split('@')[0] || 'Kullanici';
 
   const handleAccountSave = async () => {
     setAccountMessage('');
@@ -79,11 +75,11 @@ export default function ProfilSayfasi({ onGeri, toast }) {
       setProfile(normalized);
       setAccountEmail(normalized.email);
       setAccountPassword('');
-      setAccountMessage('Profil bilgileri güncellendi. Güvenlik nedeniyle yeniden giriş yapılıyor.');
-      toast?.('Profil bilgileri güncellendi. Lütfen yeniden giriş yapın.', 'info');
+      setAccountMessage('Profil bilgileri guncellendi. Guvenlik nedeniyle yeniden giris yapiliyor.');
+      toast?.('Profil bilgileri guncellendi. Lutfen yeniden giris yapin.', 'info');
       await cikis?.();
     } catch (error) {
-      setAccountMessage(error?.response?.data?.detail || error.message || 'Profil güncellenemedi.');
+      setAccountMessage(error?.response?.data?.detail || error.message || 'Profil guncellenemedi.');
     } finally {
       setSavingAccount(false);
     }
@@ -103,11 +99,11 @@ export default function ProfilSayfasi({ onGeri, toast }) {
       setSecurityCurrentPassword('');
       setSecurityNextPassword('');
       setSecurityConfirmPassword('');
-      setSecurityMessage('Şifre güncellendi. Güvenlik nedeniyle yeniden giriş yapılıyor.');
-      toast?.('Şifreniz güncellendi. Lütfen yeniden giriş yapın.', 'info');
+      setSecurityMessage('Sifre guncellendi. Guvenlik nedeniyle yeniden giris yapiliyor.');
+      toast?.('Sifreniz guncellendi. Lutfen yeniden giris yapin.', 'info');
       await cikis?.();
     } catch (error) {
-      setSecurityMessage(error?.response?.data?.detail || error.message || 'Şifre güncellenemedi.');
+      setSecurityMessage(error?.response?.data?.detail || error.message || 'Sifre guncellenemedi.');
     } finally {
       setSavingSecurity(false);
     }
@@ -119,7 +115,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
 
     try {
       if (!deletePassword.trim()) {
-        throw new Error('Hesabı silmek için mevcut şifre gerekli.');
+        throw new Error('Hesabi silmek icin mevcut sifre gerekli.');
       }
 
       await hesapSilAPI(deletePassword.trim());
@@ -141,24 +137,18 @@ export default function ProfilSayfasi({ onGeri, toast }) {
       )}
 
       <div className="flex items-center gap-5 mb-10">
-        <Avatar name={isim} size={72} />
-        <div>
-          <div className="label mb-1">Kullanıcı</div>
-          <h1 className="font-display text-[36px] leading-none" style={{ letterSpacing: '-0.02em' }}>
-            {isim}
-          </h1>
-          <div className="text-sm text-ink-muted mt-1.5 flex items-center gap-3 flex-wrap">
-            <span>{email}</span>
-            <span className="chip text-[11px] py-0.5">{profile.role?.toUpperCase() || 'USER'}</span>
-          </div>
+        <Avatar name={avatarLabel} size={72} />
+        <div className="text-sm text-ink-muted flex items-center gap-3 flex-wrap">
+          <span>{email}</span>
+          <span className="chip text-[11px] py-0.5">{profile.role?.toUpperCase() || 'USER'}</span>
         </div>
       </div>
 
-      {loading && <div className="text-sm text-ink-muted mb-6">Profil yükleniyor…</div>}
+      {loading && <div className="text-sm text-ink-muted mb-6">Profil yukleniyor...</div>}
       {loadError && <div className="text-sm mb-6" style={{ color: 'var(--danger)' }}>{loadError}</div>}
 
       <div className="flex items-center gap-1 hairline-b mb-8">
-        {[['account', 'Hesap'], ['security', 'Güvenlik']].map(([key, label]) => (
+        {[['account', 'Hesap'], ['security', 'Guvenlik']].map(([key, label]) => (
           <button
             key={key}
             onClick={() => setTab(key)}
@@ -173,11 +163,10 @@ export default function ProfilSayfasi({ onGeri, toast }) {
 
       {!loading && tab === 'account' && (
         <div className="max-w-xl space-y-5">
-          <Field label="Görünen Ad" ph={isim} value={isim} onChange={() => {}} />
           <Field label="E-posta" ph={email} type="email" value={accountEmail} onChange={(event) => setAccountEmail(event.target.value)} />
           <Field
-            label="Mevcut Şifre"
-            ph="Kimlik doğrulama için gerekli"
+            label="Mevcut Sifre"
+            ph="Kimlik dogrulama icin gerekli"
             type="password"
             value={accountPassword}
             onChange={(event) => setAccountPassword(event.target.value)}
@@ -188,7 +177,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
           />
           <div className="hairline-t pt-5 flex items-center gap-3">
             <button onClick={handleAccountSave} disabled={savingAccount} className="btn btn-primary">
-              {savingAccount ? 'Kaydediliyor…' : 'Değişiklikleri Kaydet'}
+              {savingAccount ? 'Kaydediliyor...' : 'Degisiklikleri Kaydet'}
             </button>
             <button
               onClick={() => {
@@ -198,30 +187,30 @@ export default function ProfilSayfasi({ onGeri, toast }) {
               }}
               className="btn btn-ghost text-ink-muted"
             >
-              İptal
+              Iptal
             </button>
           </div>
           {accountMessage && (
-            <p className="text-sm" style={{ color: accountMessage.includes('güncellendi') ? 'var(--success)' : 'var(--danger)' }}>
+            <p className="text-sm" style={{ color: accountMessage.includes('guncellendi') ? 'var(--success)' : 'var(--danger)' }}>
               {accountMessage}
             </p>
           )}
 
           <div className="hairline-t pt-6 mt-8">
-            <div className="label mb-3" style={{ color: 'var(--danger)' }}>Tehlike Bölgesi</div>
+            <div className="label mb-3" style={{ color: 'var(--danger)' }}>Tehlike Bolgesi</div>
             <div
               className="card p-5 flex items-center justify-between gap-6"
               style={{ borderColor: 'color-mix(in srgb,var(--danger) 30%,var(--line))' }}
             >
               <div className="flex-1">
-                <div className="text-sm font-medium">Hesabı Sil</div>
+                <div className="text-sm font-medium">Hesabi Sil</div>
                 <div className="text-xs text-ink-muted mt-0.5">
-                  Tüm sohbet geçmişi ve belgeleriniz silinir. Bu işlem geri alınamaz.
+                  Tum sohbet gecmisi ve belgeleriniz silinir. Bu islem geri alinamaz.
                 </div>
                 <div className="mt-3 max-w-sm">
                   <Field
-                    label="Mevcut Şifre"
-                    ph="Hesabı kalıcı olarak sil"
+                    label="Mevcut Sifre"
+                    ph="Hesabi kalici olarak sil"
                     type="password"
                     value={deletePassword}
                     onChange={(event) => setDeletePassword(event.target.value)}
@@ -238,7 +227,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
                 className="btn btn-outline text-xs"
                 style={{ color: 'var(--danger)', borderColor: 'color-mix(in srgb,var(--danger) 40%,var(--line))' }}
               >
-                {deletingAccount ? 'Siliniyor…' : 'Hesabı Sil'}
+                {deletingAccount ? 'Siliniyor...' : 'Hesabi Sil'}
               </button>
             </div>
             {deleteMessage && <p className="text-sm mt-3" style={{ color: 'var(--danger)' }}>{deleteMessage}</p>}
@@ -246,7 +235,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
 
           {cikis && (
             <button onClick={cikis} className="btn btn-ghost text-ink-muted mt-2">
-              <Icon name="log-out" size={14} /> Çıkış Yap
+              <Icon name="log-out" size={14} /> Cikis Yap
             </button>
           )}
         </div>
@@ -255,8 +244,8 @@ export default function ProfilSayfasi({ onGeri, toast }) {
       {!loading && tab === 'security' && (
         <div className="max-w-xl space-y-5">
           <Field
-            label="Mevcut Şifre"
-            ph="••••••••••"
+            label="Mevcut Sifre"
+            ph="**********"
             type="password"
             value={securityCurrentPassword}
             onChange={(event) => setSecurityCurrentPassword(event.target.value)}
@@ -266,7 +255,7 @@ export default function ProfilSayfasi({ onGeri, toast }) {
             }}
           />
           <Field
-            label="Yeni Şifre"
+            label="Yeni Sifre"
             ph="En az 8 karakter"
             type="password"
             value={securityNextPassword}
@@ -277,8 +266,8 @@ export default function ProfilSayfasi({ onGeri, toast }) {
             }}
           />
           <Field
-            label="Yeni Şifre (Tekrar)"
-            ph="••••••••••"
+            label="Yeni Sifre (Tekrar)"
+            ph="**********"
             type="password"
             value={securityConfirmPassword}
             onChange={(event) => setSecurityConfirmPassword(event.target.value)}
@@ -288,16 +277,15 @@ export default function ProfilSayfasi({ onGeri, toast }) {
             }}
           />
           <button onClick={handleSecuritySave} disabled={savingSecurity} className="btn btn-primary mt-2">
-            {savingSecurity ? 'Güncelleniyor…' : 'Şifreyi Güncelle'}
+            {savingSecurity ? 'Guncelleniyor...' : 'Sifreyi Guncelle'}
           </button>
           {securityMessage && (
-            <p className="text-sm" style={{ color: securityMessage.includes('güncellendi') ? 'var(--success)' : 'var(--danger)' }}>
+            <p className="text-sm" style={{ color: securityMessage.includes('guncellendi') ? 'var(--success)' : 'var(--danger)' }}>
               {securityMessage}
             </p>
           )}
         </div>
       )}
-
     </div>
   );
 }

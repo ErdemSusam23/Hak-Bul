@@ -1,19 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { Field, FieldArea, Icon, Modal, SectionHeader } from '../components/ui';
 import { useAuth } from '../context/useAuth';
-import {
-  forumThreadListesiAPI,
-  forumThreadOlusturAPI,
-} from '../api/client';
+import { forumThreadListesiAPI, forumThreadOlusturAPI } from '../api/client';
 import {
   buildForumCreatePayload,
   FORUM_CATEGORIES,
+  normalizeForumCategory,
   normalizeForumThread,
 } from '../utils/forumFlow';
+import { extractApiErrorMessage } from '../utils/apiError';
 
 function formatForumDate(iso) {
   if (!iso) return '';
-
   return new Date(iso.endsWith('Z') || iso.includes('+') ? iso : `${iso}Z`).toLocaleDateString('tr-TR', {
     day: 'numeric',
     month: 'short',
@@ -42,28 +40,27 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
     const loadThreads = async () => {
       setLoading(true);
       setError('');
-
       try {
+        const normalizedCategory = normalizeForumCategory(selectedCategory);
+        const categoryParam = selectedCategory === 'all'
+          ? null
+          : (FORUM_CATEGORIES.includes(normalizedCategory) ? normalizedCategory : null);
         const response = await forumThreadListesiAPI({
-          category: selectedCategory === 'all' ? null : selectedCategory,
+          category: categoryParam,
           page: 1,
           size: 20,
         });
-
         if (!active) return;
         setThreads((response.threads || []).map(normalizeForumThread));
-      } catch {
+      } catch (loadError) {
         if (!active) return;
-        setError('Forum başlıkları yüklenemedi. Lütfen tekrar deneyin.');
+        setError(extractApiErrorMessage(loadError, 'Forum başlıkları yüklenemedi. Lütfen tekrar deneyin.'));
       } finally {
-        if (active) {
-          setLoading(false);
-        }
+        if (active) setLoading(false);
       }
     };
 
     loadThreads();
-
     return () => {
       active = false;
     };
@@ -74,7 +71,6 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
       onOpenAuth?.('login');
       return;
     }
-
     setComposerOpen(true);
   };
 
@@ -85,10 +81,13 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
   const handleComposerSubmit = async () => {
     setComposerError('');
     setSubmitting(true);
-
     try {
       const payload = buildForumCreatePayload(composerState);
       const createdThread = await forumThreadOlusturAPI(payload);
+      const createdThreadId = createdThread?.id;
+      if (!createdThreadId) {
+        throw new Error('Thread response invalid');
+      }
       setComposerOpen(false);
       setComposerState({
         title: '',
@@ -96,9 +95,9 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
         content: '',
       });
       toast?.('Forum başlığı oluşturuldu.');
-      onThreadSec?.(createdThread.id);
+      onThreadSec?.(createdThreadId);
     } catch (submitError) {
-      setComposerError(submitError?.response?.data?.detail || 'Başlık oluşturulamadı.');
+      setComposerError(extractApiErrorMessage(submitError, 'Başlık oluşturulamadı.'));
     } finally {
       setSubmitting(false);
     }
@@ -124,7 +123,15 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
         >
           <Icon name="info" size={16} style={{ color: 'var(--accent)' }} />
           <span style={{ color: 'var(--ink-soft)' }}>
-            Soru sormak veya yorum yapmak için <strong style={{ color: 'var(--accent)' }}>giriş yapın</strong>. Göz atmak için giriş gerekmez.
+            Soru sormak veya yorum yapmak için{' '}
+            <button
+              onClick={() => onOpenAuth?.('login')}
+              className="font-semibold underline underline-offset-2 hover:opacity-80 transition-opacity"
+              style={{ color: 'var(--accent)' }}
+            >
+              giriş yapın
+            </button>
+            . Göz atmak için giriş gerekmez.
           </span>
         </div>
       )}
@@ -140,10 +147,7 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
         </button>
         <div className="flex-1 min-w-0 overflow-hidden">
           <div ref={categoryScrollRef} className="flex items-center gap-1 overflow-x-auto scrollbar-hide scroll-smooth">
-            {[
-              { key: 'all', label: 'Tümü' },
-              ...FORUM_CATEGORIES.map((category) => ({ key: category, label: category })),
-            ].map(({ key, label }) => (
+            {[{ key: 'all', label: 'Tümü' }, ...FORUM_CATEGORIES.map((category) => ({ key: category, label: category }))].map(({ key, label }) => (
               <button
                 key={key}
                 onClick={() => setSelectedCategory(key)}
@@ -167,22 +171,17 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
       </div>
 
       <div className="flex-1 min-h-0 overflow-y-auto pr-1">
-        {loading && (
-          <div className="py-10 text-sm text-ink-muted">Forum başlıkları yükleniyor…</div>
-        )}
-
+        {loading && <div className="py-10 text-sm text-ink-muted">Forum başlıkları yükleniyor…</div>}
         {!loading && error && (
           <div className="card p-4 text-sm" style={{ color: 'var(--danger)' }}>
             {error}
           </div>
         )}
-
         {!loading && !error && threads.length === 0 && (
           <div className="card p-6 text-sm text-ink-muted">
             Bu filtre için henüz forum başlığı yok.
           </div>
         )}
-
         {!loading && !error && threads.map((thread) => (
           <button
             key={thread.id}
@@ -203,10 +202,7 @@ export default function ForumSayfasi({ onThreadSec, onOpenAuth, toast }) {
                   </span>
                 )}
               </div>
-              <div
-                className="font-display text-[20px] leading-snug group-hover:text-accent transition"
-                style={{ letterSpacing: '-0.01em' }}
-              >
+              <div className="font-display text-[20px] leading-snug group-hover:text-accent transition" style={{ letterSpacing: '-0.01em' }}>
                 {thread.title}
               </div>
               <div className="flex items-center gap-3 mt-2 text-[12px] text-ink-muted flex-wrap">

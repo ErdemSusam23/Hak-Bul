@@ -5,6 +5,10 @@ export function pickFirstPdfFile(fileList) {
   return files[0] || null;
 }
 
+export function shouldClearCompareResult({ previousFile, nextFile }) {
+  return previousFile !== nextFile;
+}
+
 export function buildCompareRequest({ file1, file2, question, language = 'tr' }) {
   if (!file1 || !file2) {
     throw new Error('İki PDF dosyası gerekli.');

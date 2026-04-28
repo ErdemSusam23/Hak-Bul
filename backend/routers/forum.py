@@ -76,6 +76,8 @@ def forum_thread_olustur(
         content=body.content,
         category=normalized_category,
     )
+    if not thread or not getattr(thread, "id", None):
+        raise HTTPException(status_code=500, detail="Forum başlığı oluşturulamadı.")
     return _thread_to_dict(db, thread, current_user)
 
 

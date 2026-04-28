@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import { TemaProvider } from './context/TemaContext';
+import React from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { DilProvider } from './context/DilContext';
 import { useTema } from './context/useTema';
@@ -24,6 +25,35 @@ import {
   parseAppLocation,
 } from './utils/appRoutes';
 import { normalizeRoleName } from './utils/adminFlow';
+
+class ForumErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error) {
+    // Keep console trace for fast diagnosis in local/dev.
+    console.error('Forum render error:', error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="max-w-3xl mx-auto px-6 py-10">
+          <div className="card p-4 text-sm" style={{ color: 'var(--danger)' }}>
+            Forum sayfası yüklenirken bir hata oluştu. Sayfayı yenileyip tekrar deneyin.
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 /* Navbar */
 function Navbar({ page, setPage, onOpenAuth, theme, setTheme }) {
@@ -477,15 +507,17 @@ function AppIcerik() {
         {page === 'taslak' && <TaslakSayfasi toast={toast} />}
         {page === 'karsilastir' && <KarsilastirmaSayfasi />}
         {page === 'forum' && (
-          forumThreadId ? (
-            <ForumBaslikSayfasi threadId={forumThreadId} onGeri={() => navigateToPage('forum')} toast={toast} />
-          ) : (
-            <ForumSayfasi
-              onThreadSec={openForumThread}
-              onOpenAuth={setAuthModal}
-              toast={toast}
-            />
-          )
+          <ForumErrorBoundary>
+            {forumThreadId ? (
+              <ForumBaslikSayfasi threadId={forumThreadId} onGeri={() => navigateToPage('forum')} toast={toast} />
+            ) : (
+              <ForumSayfasi
+                onThreadSec={openForumThread}
+                onOpenAuth={setAuthModal}
+                toast={toast}
+              />
+            )}
+          </ForumErrorBoundary>
         )}
         {page === 'profil' && <ProfilSayfasi onGeri={() => navigateToPage('sohbet')} toast={toast} />}
         {page === 'admin' && <AdminSayfasi toast={toast} />}

@@ -84,7 +84,9 @@ function isCriticalClientSide(message) {
   return hasCriticalCategory && hasPersonalIntent;
 }
 
-function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
+function ChatSidebar({
+  open, activeId, onSelect, onNew, onDeleteConversation, toast,
+}) {
   const { kullanici } = useAuth();
   const [sohbetler, setSohbetler] = useState([]);
   const [duzenleId, setDuzenleId] = useState(null);
@@ -160,6 +162,7 @@ function ChatSidebar({ open, activeId, onSelect, onNew, toast }) {
         await sohbetSilAPI(sohbet.id);
       }
       setSohbetler((prev) => prev.filter((item) => item.id !== sohbet.id));
+      onDeleteConversation?.(sohbet.id);
       setSilOnayId(null);
       window.dispatchEvent(new Event('gecmis-guncellendi'));
       toast?.('Sohbet silindi.');
@@ -608,6 +611,11 @@ export default function SohbetSayfasi({ toast }) {
     clearSelectedFile();
   };
 
+  const handleConversationDeleted = useCallback((deletedConversationId) => {
+    if (deletedConversationId !== activeId) return;
+    handleNew();
+  }, [activeId]);
+
   const handleFileSelect = (event) => {
     const [file] = Array.from(event.target.files || []);
     if (!file) return;
@@ -687,6 +695,7 @@ export default function SohbetSayfasi({ toast }) {
           activeId={activeId}
           onSelect={handleSelect}
           onNew={handleNew}
+          onDeleteConversation={handleConversationDeleted}
           toast={toast}
         />
       </div>

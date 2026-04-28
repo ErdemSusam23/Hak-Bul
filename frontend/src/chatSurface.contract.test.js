@@ -63,6 +63,15 @@ test('SohbetSayfasi shows the selected conversation title in the chat header', a
   assert.ok(!source.includes('Sohbet #'), 'SohbetSayfasi should not render the conversation id prefix as the header title');
 });
 
+test('SohbetSayfasi resets active surface when the currently open conversation is deleted', async () => {
+  const source = await readSource('pages', 'SohbetSayfasi.jsx');
+
+  assert.match(source, /onDeleteConversation\?\.\(sohbet\.id\);/, 'ChatSidebar should notify parent when a conversation is deleted');
+  assert.match(source, /const handleConversationDeleted = useCallback\(\(deletedConversationId\) => \{/, 'SohbetSayfasi should define an explicit deletion handler');
+  assert.match(source, /if \(deletedConversationId !== activeId\) return;/, 'SohbetSayfasi should only reset for the active conversation');
+  assert.match(source, /handleNew\(\);/, 'SohbetSayfasi should clear the chat surface when active conversation is deleted');
+});
+
 test('SohbetSayfasi opens source URLs from source cards without toggling expansion', async () => {
   const source = await readSource('pages', 'SohbetSayfasi.jsx');
 

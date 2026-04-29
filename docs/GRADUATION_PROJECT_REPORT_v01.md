@@ -33,7 +33,7 @@ Son olarak, bu süreç boyunca bize gösterdikleri sabır ve destekten dolayı a
 
 Hukuki bilgiye erişim, Türkiye'de vatandaşların büyük çoğunluğu için hâlâ güçtür. Çok sayıda kanun, yönetmelik ve içtihat kararının karmaşık yapısı, hukuki yardım almak isteyen bireyler için ciddi bir engel oluşturmaktadır. Bu bitirme projesi, söz konusu problemi yapay zeka teknolojileriyle ele alan **Hak-Bul** adlı bir web uygulaması geliştirmeyi amaçlamıştır.
 
-Hak-Bul, vatandaşların Türkçe hukuki sorularını doğal dille sorabildiği ve Türk mevzuatına dayalı kaynak gösterimli yanıtlar alabileceği bir sistemdir. Sistemin temelinde **RAG (Retrieval-Augmented Generation)** mimarisi yatmaktadır: kullanıcının sorusu önce 14 hukuki kategoriden birine sınıflandırılmakta, ardından sorgu yeniden yazılmakta, **Qdrant** vektör veritabanından (57.765 hukuki metin parçası) ilgili kaynaklar getirilmekte ve **Groq API** üzerinden çalışan **Llama-3.3-70b-versatile** büyük dil modeli tarafından yanıt üretilmektedir.
+Hak-Bul, vatandaşların Türkçe hukuki sorularını doğal dille sorabildiği ve Türk mevzuatına dayalı kaynak gösterimli yanıtlar alabileceği bir sistemdir. Sistemin temelinde **RAG (Retrieval-Augmented Generation)** mimarisi yatmaktadır: kullanıcının sorusu önce 14 hukuki kategoriden birine sınıflandırılmakta, ardından sorgu yeniden yazılmakta, **Qdrant** vektör veritabanından (75.789 hukuki metin parçası — 66.755 Yargıtay kararı ve 9.034 kanun maddesi) ilgili kaynaklar getirilmekte ve **Groq API** üzerinden çalışan **Llama-3.3-70b-versatile** büyük dil modeli tarafından yanıt üretilmektedir.
 
 Uygulama; **FastAPI** tabanlı bir REST API, **React 19 + Vite** ile geliştirilmiş modern bir frontend ve **PostgreSQL** veritabanından oluşmaktadır. JWT kimlik doğrulama, misafir oturum desteği, SSE ile gerçek zamanlı streaming yanıt, PDF belge analizi ve karşılaştırma, hukuki belge şablonu üretimi, topluluk forumu ve bir admin analitik paneli gibi özellikler sisteme entegre edilmiştir. Tüm altyapı Docker Compose ile üç servis olarak konteynerize edilmiştir.
 
@@ -81,7 +81,7 @@ Proje kapsamı şu bileşenlerden oluşmaktadır:
 
 - **Backend:** FastAPI ile geliştirilmiş REST API (8 router, 77+ endpoint)
 - **Frontend:** React 19 + Vite ile geliştirilmiş SPA (9 sayfa, 9 bileşen)
-- **Vektör veritabanı:** Qdrant Cloud (57.765 hukuki chunk, `intfloat/multilingual-e5-base` embedding modeli)
+- **Vektör veritabanı:** Qdrant Cloud (75.789 hukuki chunk — 66.755 Yargıtay kararı + 9.034 kanun maddesi, `intfloat/multilingual-e5-base` embedding modeli)
 - **İlişkisel veritabanı:** PostgreSQL (10 tablo, 9 Alembic migrasyonu)
 - **LLM entegrasyonu:** Groq API üzerinden Llama-3.3-70b-versatile
 - **Konteynerizasyon:** Docker Compose (3 servis)
@@ -126,7 +126,7 @@ Hak-Bul'un RAG pipeline'ı şu adımlardan oluşmaktadır:
 
 1. **Kategorizasyon:** Gelen soru anahtar kelime tabanlı olarak 14 hukuki kategoriden birine atanır.
 2. **Sorgu Yeniden Yazma:** Groq API ile soru, vektör araması için optimize edilmiş bir forma dönüştürülür; hata durumunda orijinal soru kullanılır.
-3. **Retrieval:** Yeniden yazılmış soru, embedding modeli (`intfloat/multilingual-e5-base`) ile vektöre dönüştürülür ve Qdrant Cloud'daki 57.765 hukuki chunk arasından en yakın parçalar getirilir.
+3. **Retrieval:** Yeniden yazılmış soru, embedding modeli (`intfloat/multilingual-e5-base`) ile vektöre dönüştürülür ve Qdrant Cloud'daki 75.789 hukuki chunk (66.755 Yargıtay kararı + 9.034 kanun maddesi) arasından en yakın parçalar getirilir.
 4. **Reranking:** Getirilen parçalar, ilgililik skoruna göre yeniden sıralanır.
 5. **Yanıt Üretimi:** Seçilen parçalar bağlam olarak eklenerek Groq API'den yanıt üretilir.
 
@@ -136,7 +136,7 @@ Düşük benzerlik skoruyla dönen sorgular (retrieval güveni yetersiz) ayrıca
 
 Vektör veritabanları, metinlerin veya diğer veri türlerinin yüksek boyutlu sayısal temsilleri (embedding) üzerinde hızlı yakın komşu araması (nearest neighbor search) yapmak için tasarlanmış özel veritabanlarıdır. Geleneksel tam metin aramasından farklı olarak, anlamsal benzerliğe dayalı sonuçlar üretirler.
 
-Bu projede **Qdrant Cloud** kullanılmaktadır. Qdrant, yüksek performanslı yakın komşu araması sunan açık kaynaklı bir vektör veritabanıdır. Sistemde 57.765 hukuki chunk bu veritabanında saklanmakta; Qdrant'a erişilememesi durumunda `backend/data/processed_backup_*/` altındaki 33 kanunun yerel JSON kopyasına fallback yapılmaktadır.
+Bu projede **Qdrant Cloud** kullanılmaktadır. Qdrant, yüksek performanslı yakın komşu araması sunan açık kaynaklı bir vektör veritabanıdır. Sistemde 75.789 hukuki chunk (66.755 Yargıtay kararı + 9.034 kanun maddesi) bu veritabanında saklanmakta; Qdrant'a erişilememesi durumunda `backend/data/processed_backup_*/` altındaki 33 kanunun yerel JSON kopyasına fallback yapılmaktadır.
 
 Embedding üretimi için `intfloat/multilingual-e5-base` modeli tercih edilmiştir; bu model Türkçe dahil çok sayıda dili desteklemekte ve semantik aramada yüksek başarı göstermektedir.
 
@@ -205,7 +205,7 @@ Bu projede kullanılan model: **Llama-3.3-70b-versatile**
 
 **Qdrant**, Rust ile yazılmış yüksek performanslı açık kaynaklı bir vektör veritabanıdır. Bu projede **Qdrant Cloud** (yönetilen servis) kullanılmaktadır.
 
-- **57.765 hukuki chunk** indekslenmiştir
+- **75.789 hukuki chunk** (66.755 Yargıtay kararı + 9.034 kanun maddesi) indekslenmiştir
 - Embedding modeli: `intfloat/multilingual-e5-base` (768 boyutlu vektörler)
 - Benzerlik ölçütü: kosinüs benzerliği
 - Düşük skor eşiği (`SCORE_THRESHOLD`) altındaki sorgular `weak_queries` tablosuna loglanır
@@ -476,51 +476,65 @@ Test soru seti şu kategorileri kapsamaktadır: iş hukuku, ceza hukuku, kira hu
 
 ### 7.1 Sonuçlar
 
-Bu bitirme projesi kapsamında, Türk hukuku özelinde çalışan eksiksiz bir yapay zeka destekli hukuk asistanı web uygulaması geliştirilmiş ve işlevsel hale getirilmiştir. Elde edilen temel çıktılar şunlardır:
+Bu bitirme projesi kapsamında, Türk hukuku özelinde çalışan, kaynak gösterimli yanıt üretebilen ve kritik konularda kullanıcıyı profesyonel hukuki destek kanallarına yönlendirebilen bir yapay zeka destekli hukuk asistanı web uygulaması geliştirilmiş ve uçtan uca işlevsel hale getirilmiştir. Projenin somut çıktıları aşağıda özetlenmiştir.
 
 **1. Çalışan RAG Pipeline**
-57.765 hukuki chunk üzerinde arama yapabilen, 14 kategori sınıflandırması gerçekleştiren, sorgu yeniden yazma ve reranking adımlarını içeren eksiksiz bir RAG pipeline hayata geçirilmiştir.
+Türk mevzuatından üretilen **75.789 hukuki chunk** (66.755 Yargıtay kararı + 9.034 kanun maddesi), `intfloat/multilingual-e5-base` embedding modeliyle (768 boyutlu vektörler) Qdrant Cloud üzerinde indekslenmiştir. Pipeline; (i) anahtar kelime tabanlı kategorizasyon (14 hukuki kategori), (ii) Groq API üzerinden sorgu yeniden yazımı, (iii) vektör retrieval, (iv) reranking ve (v) Llama-3.3-70b-versatile ile yanıt üretimi olmak üzere beş aşamadan oluşmaktadır. Qdrant erişiminin kesilmesi durumunda sistem, `backend/data/processed_backup_*/` altındaki **33 kanunluk yerel JSON corpus**'a otomatik fallback yapmaktadır.
 
-**2. Güvenli ve Ölçeklenebilir Backend**
-JWT + refresh token rotation, rol tabanlı yetkilendirme, rate limiting ve dual-mode (auth/misafir) desteğiyle endüstri standartlarına uygun bir API altyapısı oluşturulmuştur. 9 Alembic migrasyonu ile veritabanı şeması yönetimi sağlanmıştır.
+**2. Güvenli Backend Altyapısı**
+FastAPI üzerine kurulu REST API; JWT access token (30 dk) + refresh token rotation (14 gün), `user` / `lawyer` / `admin` rol tabanlı yetkilendirme, slowapi tabanlı rate limiting (örn. `/ask` için 20/dk, `/documents/compare` için 5/dk) ve dual-mode (kimlik doğrulamalı / misafir) erişim desteğiyle çalışmaktadır. PostgreSQL şeması, **10 sıralı Alembic migrasyonu** ile yönetilen 10 tablodan oluşmaktadır.
 
-**3. Kapsamlı Frontend**
-9 tam işlevli sayfa ve 9 bileşenden oluşan, Türkçe/İngilizce dil desteği içeren modern bir React uygulaması geliştirilmiştir. SSE ile gerçek zamanlı token streaming kullanıcı deneyimini iyileştirmektedir.
+**3. Modern Frontend**
+React 19 + Vite tabanlı SPA; **9 sayfa ve 8 ana bileşen** üzerine inşa edilmiştir. `DilContext` ile Türkçe/İngilizce çift dil desteği, `useChat` hook'u ile SSE üzerinden token bazlı yanıt akışı, hash-based routing ile kimlik doğrulama gerektirmeyen sohbet paylaşımı ve `localStorage` üzerinden misafir oturum kalıcılığı sağlanmıştır.
 
-**4. Ek Özellikler**
-PDF analizi ve karşılaştırma, hukuki belge şablonu üretimi, topluluk forumu, sohbet paylaşma ve admin analitik paneli sisteme değer katan tamamlayıcı özellikler olarak hayata geçirilmiştir.
+**4. Tamamlayıcı Özellikler**
+Çekirdek soru-cevap akışına ek olarak; PDF belge analizi (10 MB sınır, 15k karakter truncation), iki PDF arasında karşılaştırma, ReportLab tabanlı hukuki belge şablonu üretimi (kira sözleşmesi, iş sözleşmesi, ihtarname, taahhütname), topluluk forumu (kullanıcı/avukat/admin rol kuralları, oy mekanizması) ve admin analitik paneli (kategori dağılımı, feedback oranı, günlük aktivite, zayıf sorgu izleme) sisteme entegre edilmiştir.
 
 **5. Test Kapsamı**
-64 otomatik test (%100 başarı), 100 soruluk sistem testi ve retrieval baseline ölçümleriyle yazılım kalitesi belgelenmiştir.
+Backend tarafında `backend/tests/` altında **17 test dosyasında 115 otomatik test** bulunmakta ve tamamı başarıyla geçmektedir. Bunlara ek olarak; 100 soruluk manuel sistem testi (kategori bazlı yanıt kalitesi ve kaynak tutarlılığı değerlendirmesi) ve `docs/tests/FAZ4_RETRIEVAL_BASELINE.md` altında belgelenen retrieval baseline ölçümleri yapılmıştır.
 
-**6. Kullanıcı Güvenliği**
-Ceza, boşanma, icra, tazminat ve mültecilik gibi kritik hukuki konularda sistem otomatik olarak kullanıcıyı Adalet Bakanlığı ALO 182 hattına yönlendirmektedir.
+**6. Kritik Konularda Kullanıcı Yönlendirmesi**
+Ceza, boşanma, icra, tazminat ve mültecilik gibi profesyonel hukuki destek gerektiren konular tespit edildiğinde; sistem yanıtın sonuna otomatik olarak Adalet Bakanlığı **ALO 182** hattı yönlendirmesi ekleyerek kullanıcıyı yetkili kanallara iletmektedir.
+
+**7. Konteynerize Edilebilir Dağıtım**
+Tüm sistem (PostgreSQL, FastAPI backend, React frontend) Docker Compose ile üç servisli, sağlık kontrolü zincirine sahip, tek komutla ayağa kaldırılabilen bir altyapı olarak paketlenmiştir.
 
 ### 7.2 Gelecek Çalışmalar
 
-- **RAGAS Değerlendirme Pipeline'ı:** Groq/Llama tabanlı otomatik değerlendirme (faithfulness, answer relevancy, context precision metrikleri) — Yağız Han Aslan ve Mustafa Şahin tarafından planlanmaktadır.
-- **Production Deployment:** Frontend için Vercel, backend için Render/Railway üzerinde canlı ortama alınması
-- **Demo Senaryosu ve Jüri Hazırlığı:** Gerçek kullanıcı senaryolarına dayalı demo akışının hazırlanması
-- **Mobil Uyumluluk:** Responsive tasarımın mobil öncelikli yaklaşımla iyileştirilmesi
-- **Veri Seti Genişletme:** Mevcut 57.765 chunk'ın yeni kanun ve içtihat kararlarıyla zenginleştirilmesi
+Projenin mevcut sürümü işlevsel olmakla birlikte, aşağıdaki başlıklar gelecek çalışma olarak planlanmıştır:
+
+- **RAGAS Tabanlı Otomatik Değerlendirme:** Faithfulness, answer relevancy, context precision ve context recall metriklerini ölçen, Groq/Llama tabanlı bir değerlendirme pipeline'ının kurulması.
+- **Production Deployment:** Frontend için Vercel, backend için Render veya Railway üzerinde canlı ortama alınması; özel alan adı ve HTTPS yapılandırılması.
+- **Veri Seti Genişletme:** Mevcut **75.789 chunk**'lık corpus'un (66.755 Yargıtay kararı + 9.034 kanun maddesi), güncel kanun değişiklikleri ve yeni içtihat kararlarıyla zenginleştirilmesi; chunk-id tabanlı versiyonlama ile yeniden indeksleme akışının otomatikleştirilmesi.
+- **Reranker Modeli Yükseltmesi:** Mevcut skor tabanlı reranking adımının, cross-encoder tabanlı (örn. `bge-reranker`) bir modelle değiştirilerek Türkçe sorgu-chunk eşleşme isabetinin artırılması.
+- **Mobil Uyumluluk:** Responsive tasarımın mobile-first yaklaşımla yeniden ele alınması ve PWA desteğinin eklenmesi.
+- **Demo Senaryosu ve Jüri Hazırlığı:** Gerçek kullanıcı senaryolarına dayalı uçtan uca demo akışının hazırlanması ve sunum materyallerinin tamamlanması.
 
 ---
 
 ## Kaynakça
 
-[EKLENECEK — Aşağıdaki kaynak başlıkları ekip tarafından doldurulacaktır]
-
-1. FastAPI Dokümantasyonu. *FastAPI — Modern, fast web framework for building APIs with Python.* https://fastapi.tiangolo.com/
-2. Meta AI. *Llama 3 Model Card.* (2024). https://ai.meta.com/blog/meta-llama-3/
-3. Groq Inc. *GroqCloud API Documentation.* (2024). https://console.groq.com/docs
-4. Qdrant. *Qdrant Vector Database Documentation.* (2024). https://qdrant.tech/documentation/
-5. Wang, L. et al. *Text Embeddings by Weakly-Supervised Contrastive Pre-training* (intfloat/multilingual-e5-base). arXiv:2212.03533 (2022).
-6. Lewis, P. et al. *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.* NeurIPS 2020. arXiv:2005.11401.
-7. React Documentation. *React 19.* (2024). https://react.dev/
-8. Vite. *Vite Next Generation Frontend Tooling.* (2024). https://vitejs.dev/
-9. SQLAlchemy. *SQLAlchemy Documentation.* (2024). https://docs.sqlalchemy.org/
-10. PostgreSQL Global Development Group. *PostgreSQL 16 Documentation.* (2024). https://www.postgresql.org/docs/16/
-11. Docker Inc. *Docker Compose Documentation.* (2024). https://docs.docker.com/compose/
-12. Adalet Bakanlığı. *ALO 182 Adalet Hattı.* https://alo182.adalet.gov.tr/
-13. [EKLENECEK — Türk Hukuku kaynakları]
-14. [EKLENECEK — LegalTech alanı literatür kaynakları]
+1. Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., ... & Kiela, D. (2020). *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.* Advances in Neural Information Processing Systems (NeurIPS), 33, 9459–9474. arXiv:2005.11401.
+2. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). *Attention Is All You Need.* Advances in Neural Information Processing Systems (NeurIPS), 30. arXiv:1706.03762.
+3. Wang, L., Yang, N., Huang, X., Yang, L., Majumder, R., & Wei, F. (2022). *Text Embeddings by Weakly-Supervised Contrastive Pre-training.* arXiv:2212.03533. (intfloat/multilingual-e5-base)
+4. Meta AI. (2024). *Introducing Llama 3.3.* https://ai.meta.com/blog/meta-llama-3/
+5. Groq, Inc. (2024). *GroqCloud API Documentation.* https://console.groq.com/docs
+6. Qdrant. (2024). *Qdrant — Vector Database Documentation.* https://qdrant.tech/documentation/
+7. Es, S., James, J., Espinosa-Anke, L., & Schockaert, S. (2024). *RAGAS: Automated Evaluation of Retrieval Augmented Generation.* In Proceedings of the European Chapter of the Association for Computational Linguistics (EACL): System Demonstrations. arXiv:2309.15217.
+8. FastAPI. (2024). *FastAPI — Modern, fast web framework for building APIs with Python 3.7+ based on standard Python type hints.* https://fastapi.tiangolo.com/
+9. Pydantic. (2024). *Pydantic — Data validation using Python type hints.* https://docs.pydantic.dev/
+10. React. (2024). *React 19 Documentation.* https://react.dev/
+11. Vite. (2024). *Vite — Next Generation Frontend Tooling.* https://vitejs.dev/
+12. Tailwind Labs. (2024). *Tailwind CSS v3.4 Documentation.* https://tailwindcss.com/docs
+13. SQLAlchemy. (2024). *SQLAlchemy Documentation.* https://docs.sqlalchemy.org/
+14. Bauer, M. (2024). *Alembic — Database Migration Tool for SQLAlchemy.* https://alembic.sqlalchemy.org/
+15. PostgreSQL Global Development Group. (2024). *PostgreSQL 16 Documentation.* https://www.postgresql.org/docs/16/
+16. Docker, Inc. (2024). *Docker Compose Documentation.* https://docs.docker.com/compose/
+17. Internet Engineering Task Force (IETF). (2015). *RFC 7519 — JSON Web Token (JWT).* https://datatracker.ietf.org/doc/html/rfc7519
+18. WHATWG. (2024). *HTML Living Standard — Server-Sent Events.* https://html.spec.whatwg.org/multipage/server-sent-events.html
+19. Türkiye Cumhuriyeti Cumhurbaşkanlığı Mevzuat Bilgi Sistemi. *Mevzuat.gov.tr — Resmî Mevzuat Veritabanı.* https://www.mevzuat.gov.tr/
+20. Yargıtay Başkanlığı. *Yargıtay Karar Arama Sistemi.* https://karararama.yargitay.gov.tr/
+21. T.C. Adalet Bakanlığı. *ALO 182 Adalet Çağrı Merkezi.* https://alo182.adalet.gov.tr/
+22. Susskind, R. (2019). *Online Courts and the Future of Justice.* Oxford University Press.
+23. Ashley, K. D. (2017). *Artificial Intelligence and Legal Analytics: New Tools for Law Practice in the Digital Age.* Cambridge University Press.
+24. Chalkidis, I., Fergadiotis, M., Malakasiotis, P., Aletras, N., & Androutsopoulos, I. (2020). *LEGAL-BERT: The Muppets straight out of Law School.* Findings of EMNLP 2020. arXiv:2010.02559.

@@ -9,7 +9,7 @@
 | | Mustafa Şahin — [EKLENECEK] |
 | | Ömer Faruk Güneş — [EKLENECEK] |
 | | Yağız Han Aslan — [EKLENECEK] |
-| **Bölüm** | Yazılım Mühendisliği |
+| **Bölüm** | Bilgisayar Mühendisliği |
 | **Proje Danışmanı** | Dr. Nergiz Khankishiyeva Hati |
 | **Ders** | SENG 400 Bitirme Projesi |
 | **Projeye Başlama Tarihi** | [EKLENECEK] |

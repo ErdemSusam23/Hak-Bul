@@ -37,7 +37,7 @@ Hak-Bul, vatandaşların Türkçe hukuki sorularını doğal dille sorabildiği 
 
 Uygulama; **FastAPI** tabanlı bir REST API, **React 19 + Vite** ile geliştirilmiş modern bir frontend ve **PostgreSQL** veritabanından oluşmaktadır. JWT kimlik doğrulama, misafir oturum desteği, SSE ile gerçek zamanlı streaming yanıt, PDF belge analizi ve karşılaştırma, hukuki belge şablonu üretimi, topluluk forumu ve bir admin analitik paneli gibi özellikler sisteme entegre edilmiştir. Tüm altyapı Docker Compose ile üç servis olarak konteynerize edilmiştir.
 
-Uygulama, ceza, boşanma ve icra gibi kritik konularda otomatik olarak kullanıcıyı Adalet Bakanlığı ALO 182 hattına yönlendirmektedir. Sistem; 64 otomatik test (%100 başarı), 100 soruluk sistem testi ve retrieval baseline ölçümleriyle kapsamlı biçimde değerlendirilmiştir.
+Uygulama, ceza, boşanma ve icra gibi kritik konularda otomatik olarak kullanıcıyı baro hukuki yardım bürolarına veya uzman bir avukata yönlendirmektedir. Sistem; 115 otomatik test (%100 başarı), 100 soruluk sistem testi ve retrieval baseline ölçümleriyle kapsamlı biçimde değerlendirilmiştir.
 
 ---
 
@@ -375,6 +375,7 @@ Kullanıcılar hem kimlik doğrulamalı hem de misafir olarak Türkçe hukuki so
 | `PATCH /chat/conversations/{id}/title` | Başlık yeniden adlandır |
 | `GET /chat/conversations/{id}/export` | PDF olarak dışa aktar |
 | `POST /chat/conversations/{id}/share` | Paylaşım linki oluştur |
+| `DELETE /chat/conversations/{id}/share` | Paylaşımı kaldır |
 | `GET /chat/shared/{share_token}` | Herkese açık sohbet görüntüleme |
 
 ### 5.2 PDF Analizi ve Karşılaştırma
@@ -395,8 +396,13 @@ Kullanıcılar PDF belgelerini yükleyerek hukuki analiz yaptırabilmektedir.
 |----------|----------|
 | `GET /forum/threads` | Başlıkları listele |
 | `POST /forum/threads` | Başlık oluştur (auth gerekir) |
-| `POST /forum/threads/{id}/replies` | Yanıt yaz |
+| `GET /forum/threads/{id}` | Başlık detayını getir |
+| `PUT /forum/threads/{id}` | Başlığı güncelle |
+| `DELETE /forum/threads/{id}` | Başlığı sil |
 | `PATCH /forum/threads/{id}/lock` | Başlığı kilitle/aç (`LAWYER`/`ADMIN`) |
+| `POST /forum/threads/{id}/replies` | Yanıt yaz |
+| `PUT /forum/replies/{id}` | Yanıtı güncelle |
+| `DELETE /forum/replies/{id}` | Yanıtı sil |
 | `PATCH /forum/replies/{id}/verify` | Yanıtı doğrula (`LAWYER`/`ADMIN`) |
 | `POST /forum/threads/{id}/vote` | Başlığa oy ver |
 | `POST /forum/replies/{id}/vote` | Yanıta oy ver |
@@ -439,7 +445,7 @@ Tüm endpoint'ler `ADMIN` rolü gerektirir.
 
 ### 6.1 Birim Test Sonuçları
 
-Backend test paketi `backend/tests/` altında 16 dosya ve 64 testten oluşmaktadır. Tüm testler başarıyla geçmektedir.
+Backend test paketi `backend/tests/` altında 17 dosya ve 115 testten oluşmaktadır. Tüm testler başarıyla geçmektedir.
 
 Test kapsamı:
 
@@ -466,7 +472,7 @@ Test soru seti şu kategorileri kapsamaktadır: iş hukuku, ceza hukuku, kira hu
 
 ### 6.3 Retrieval Baseline (Phase 4)
 
-`docs/tests/retrieval-baseline-phase4.md` içinde Qdrant retrieval performansının ölçüldüğü baseline sonuçları belgelenmiştir. Bu ölçümler; getirilen chunk'ların soruyla ilgililik oranını ve `SCORE_THRESHOLD` parametresinin ayarlanması için kullanılan temel metrikleri içermektedir.
+`docs/tests/FAZ4_RETRIEVAL_BASELINE.md` içinde Qdrant retrieval performansının ölçüldüğü baseline sonuçları belgelenmiştir. Bu ölçümler; getirilen chunk'ların soruyla ilgililik oranını ve `SCORE_THRESHOLD` parametresinin ayarlanması için kullanılan temel metrikleri içermektedir.
 
 > **Not:** RAGAS tabanlı otomatik değerlendirme pipeline'ı (precision, recall, faithfulness metrikleri) gelecek çalışma olarak planlanmıştır.
 

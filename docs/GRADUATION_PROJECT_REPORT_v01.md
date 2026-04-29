@@ -461,20 +461,50 @@ Test kapsamı:
 | Forum | Endpoint ve rol kuralları (user/lawyer/admin) |
 | Dil desteği | Türkçe/İngilizce i18n regresyonları |
 | Streaming / source-summary | SSE yanıt ve kaynak özeti regresyonları |
-| Production guard | Kritik konularda ALO 182 yönlendirmesi doğrulaması |
+| Production guard | Kritik konularda baro/avukat yönlendirmesi doğrulaması |
 | Retrieval | RAG pipeline retrieval regresyonları |
 
-### 6.2 100 Soruluk Sistem Testi
+### 6.2 Retrieval Testi Metodolojisi
 
-`docs/tests/` altında gerçek kullanıcı senaryolarına dayalı 100 soruluk bir sistem testi gerçekleştirilmiştir. Bu test; farklı hukuki kategorilerdeki soruları kapsayan, yanıt kalitesini ve kaynak tutarlılığını değerlendiren manuel bir değerlendirme sürecidir.
+`backend/test_sorular/` altında 14 hukuki kategorinin her biri için 12 soruluk JSON dosyaları hazırlanmıştır; toplamda **168 soru** ile retrieval kalitesi değerlendirilmiştir. Soru formatı; `soru`, `beklenen_kanunlar` ve `beklenen_maddeler` alanlarından oluşmakta, madde numaraları mevzuat.gov.tr kaynağından doğrulanmıştır.
 
-Test soru seti şu kategorileri kapsamaktadır: iş hukuku, ceza hukuku, kira hukuku, tüketici hukuku, aile hukuku ve boşanma, sosyal güvenlik.
+Test süreci iki aşamada çalışmaktadır:
 
-### 6.3 Retrieval Baseline (Phase 4)
+1. **`test_api_otomatik.py`** — Her soruyu `POST /ask` endpointine gönderir, yanıtı ve getirilen kaynakları `backend/test_results/<kategori>/test_sonuclari_<zaman>.json` dosyasına kaydeder.
+2. **`scripts/evaluate_retrieval.py`** — Kaydedilen sonuçları `beklenen_kanunlar` ve `beklenen_maddeler` ile karşılaştırarak iki metrik hesaplar:
 
-`docs/tests/FAZ4_RETRIEVAL_BASELINE.md` içinde Qdrant retrieval performansının ölçüldüğü baseline sonuçları belgelenmiştir. Bu ölçümler; getirilen chunk'ların soruyla ilgililik oranını ve `SCORE_THRESHOLD` parametresinin ayarlanması için kullanılan temel metrikleri içermektedir.
+| Metrik | Tanım | Kabul Eşiği |
+|--------|-------|-------------|
+| `retrieval@5_kanun` | Beklenen kanunlardan en az biri top-5 kaynakta var mı? | ≥ %70 |
+| `retrieval@5_kanun_madde` | Beklenen kanun + madde aynı chunk'ta mı? | ≥ %30 |
 
-> **Not:** RAGAS tabanlı otomatik değerlendirme pipeline'ı (precision, recall, faithfulness metrikleri) gelecek çalışma olarak planlanmıştır.
+### 6.3 Retrieval Test Sonuçları
+
+Aşağıdaki tablo, tüm 14 kategori için `backend/test_results/` altındaki en güncel test çalıştırma sonuçlarını (20 Nisan 2026) özetlemektedir.
+
+| Kategori | `retrieval@5_kanun` | `retrieval@5_kanun_madde` |
+|----------|--------------------|-----------------------------|
+| İş Hukuku | 8/12 — %66,7 | 3/9 — %33,3 |
+| Medeni Hukuk | 12/12 — %100,0 | 10/12 — %83,3 |
+| Ceza Hukuku | 10/12 — %83,3 | 9/12 — %75,0 |
+| Ticaret Hukuku | 12/12 — %100,0 | 10/12 — %83,3 |
+| Tüketici Hukuku | 10/12 — %83,3 | 6/12 — %50,0 |
+| Taşınmaz Mülkiyet | 9/12 — %75,0 | 5/12 — %41,7 |
+| İdare Hukuku | 9/12 — %75,0 | 5/12 — %41,7 |
+| Vergi Hukuku | 8/11 — %72,7 | 3/11 — %27,3 |
+| Sosyal Güvenlik | 12/12 — %100,0 | 7/11 — %63,6 |
+| Fikri Mülkiyet | 9/12 — %75,0 | 3/12 — %25,0 |
+| Bilişim Hukuku | 11/12 — %91,7 | 8/11 — %72,7 |
+| Anayasa Hukuku | 4/12 — %33,3 | 2/12 — %16,7 |
+| Usul Hukuku | 12/12 — %100,0 | 8/11 — %72,7 |
+| Genel Hukuk | 10/12 — %83,3 | 3/6 — %50,0 |
+| **Toplam** | **136/167 — %81,4** | **82/155 — %52,9** |
+
+Genel `retrieval@5_kanun` oranı **%81,4** ile kabul eşiğinin (%70) belirgin biçimde üzerindedir. `retrieval@5_kanun_madde` oranı ise **%52,9** ile hedef eşiği (%30) aşmaktadır.
+
+Anayasa Hukuku kategorisi %33,3 ile en düşük kanun isabetini sergilemiştir. Bu kategorideki soruların önemli bir bölümü, Anayasa Mahkemesi Kanunu (6216), siyasi partiler kanunu (2820) ve seçim kanunları (298, 2839) gibi Qdrant corpus'una henüz alınmamış kanunları kapsamaktadır; corpus dışı kanunlara yönelik sorgular değerlendirmede "miss" olarak sayılmaktadır.
+
+> **Not:** RAGAS tabanlı otomatik değerlendirme pipeline'ı (faithfulness, answer relevancy, context precision ve context recall metrikleri) gelecek çalışma olarak planlanmıştır.
 
 ---
 

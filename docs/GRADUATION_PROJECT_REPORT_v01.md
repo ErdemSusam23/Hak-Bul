@@ -21,7 +21,7 @@
 
 Bu projenin tamamlanmasında bize rehberlik eden, desteğini ve bilgisini hiçbir zaman esirgemeyen danışman hocamız **Dr. Nergiz Khankishiyeva Hati**'ye en içten teşekkürlerimizi sunuyoruz. Proje süresince yaptığı yapıcı eleştiriler ve yönlendirmeler, çalışmamızın kalitesini doğrudan etkiledi.
 
-OSTİM Teknik Üniversitesi Yazılım Mühendisliği Bölümü'nün tüm akademik ve idari kadrosuna, bize sağladıkları eğitim ortamı ve destek için teşekkür ederiz.
+OSTİM Teknik Üniversitesi Bilgisayar Mühendisliği Bölümü'nün tüm akademik ve idari kadrosuna, bize sağladıkları eğitim ortamı ve destek için teşekkür ederiz.
 
 Proje geliştirme sürecinde fikir ve geri bildirimleriyle katkıda bulunan sınıf arkadaşlarımıza ve çevremize şükranlarımızı iletiyoruz.
 
@@ -80,7 +80,7 @@ Bu projenin temel hedefleri şunlardır:
 Proje kapsamı şu bileşenlerden oluşmaktadır:
 
 - **Backend:** FastAPI ile geliştirilmiş REST API (8 router, 77+ endpoint)
-- **Frontend:** React 19 + Vite ile geliştirilmiş SPA (9 sayfa, 9 bileşen)
+- **Frontend:** React 19 + Vite ile geliştirilmiş SPA (9 sayfa, 8 bileşen)
 - **Vektör veritabanı:** Qdrant Cloud (75.789 hukuki chunk — 66.755 Yargıtay kararı + 9.034 kanun maddesi, `intfloat/multilingual-e5-base` embedding modeli)
 - **İlişkisel veritabanı:** PostgreSQL (10 tablo, 9 Alembic migrasyonu)
 - **LLM entegrasyonu:** Groq API üzerinden Llama-3.3-70b-versatile

@@ -6,14 +6,14 @@
 | | |
 |---|---|
 | **Öğrenciler** | Erdem Susam — 210201014 |
-| | Mustafa Şahin — [EKLENECEK] |
-| | Ömer Faruk Güneş — [EKLENECEK] |
-| | Yağız Han Aslan — [EKLENECEK] |
+| | Mustafa Şahin — 210201025 |
+| | Ömer Faruk Güneş — 210201027 |
+| | Yağız Han Aslan — 210208002 |
 | **Bölüm** | Bilgisayar Mühendisliği |
 | **Proje Danışmanı** | Dr. Nergiz Khankishiyeva Hati |
 | **Ders** | SENG 400 Bitirme Projesi |
-| **Projeye Başlama Tarihi** | [EKLENECEK] |
-| **Rapor Sunum Tarihi** | [EKLENECEK] |
+| **Projeye Başlama Tarihi** | 2 Şubat 2026 |
+| **Rapor Sunum Tarihi** | 18 Mayıs 2026 |
 
 ---
 

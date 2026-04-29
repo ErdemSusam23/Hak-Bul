@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **Öğrenciler** | Erdem Susam — [EKLENECEK] |
+| **Öğrenciler** | Erdem Susam — 210201014 |
 | | Mustafa Şahin — [EKLENECEK] |
 | | Ömer Faruk Güneş — [EKLENECEK] |
 | | Yağız Han Aslan — [EKLENECEK] |

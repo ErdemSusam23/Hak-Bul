@@ -11,7 +11,7 @@
 | | Yağız Han Aslan — 210208002 |
 | **Bölüm** | Bilgisayar Mühendisliği |
 | **Proje Danışmanı** | Dr. Nergiz Khankishiyeva Hati |
-| **Ders** | SENG 400 Bitirme Projesi |
+| **Ders** | MFBP 402 Mezuniyet Projesi |
 | **Projeye Başlama Tarihi** | 2 Şubat 2026 |
 | **Rapor Sunum Tarihi** | 18 Mayıs 2026 |
 

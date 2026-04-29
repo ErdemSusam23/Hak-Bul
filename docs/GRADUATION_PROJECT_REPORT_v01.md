@@ -35,7 +35,7 @@ Hukuki bilgiye erişim, Türkiye'de vatandaşların büyük çoğunluğu için h
 
 Hak-Bul, vatandaşların Türkçe hukuki sorularını doğal dille sorabildiği ve Türk mevzuatına dayalı kaynak gösterimli yanıtlar alabileceği bir sistemdir. Sistemin temelinde **RAG (Retrieval-Augmented Generation)** mimarisi yatmaktadır: kullanıcının sorusu önce 14 hukuki kategoriden birine sınıflandırılmakta, ardından sorgu yeniden yazılmakta, **Qdrant** vektör veritabanından (75.789 hukuki metin parçası — 66.755 Yargıtay kararı ve 9.034 kanun maddesi) ilgili kaynaklar getirilmekte ve **Groq API** üzerinden çalışan **Llama-3.3-70b-versatile** büyük dil modeli tarafından yanıt üretilmektedir.
 
-Uygulama; **FastAPI** tabanlı bir REST API, **React 19 + Vite** ile geliştirilmiş modern bir frontend ve **PostgreSQL** veritabanından oluşmaktadır. JWT kimlik doğrulama, misafir oturum desteği, SSE ile gerçek zamanlı streaming yanıt, PDF belge analizi ve karşılaştırma, hukuki belge şablonu üretimi, topluluk forumu ve bir admin analitik paneli gibi özellikler sisteme entegre edilmiştir. Tüm altyapı Docker Compose ile üç servis olarak konteynerize edilmiştir.
+Uygulama; **FastAPI** tabanlı bir REST API, **React 19 + Vite** ile geliştirilmiş modern bir frontend ve **PostgreSQL** veritabanından oluşmaktadır. JWT kimlik doğrulama, misafir oturum desteği, SSE ile gerçek zamanlı streaming yanıt, PDF belge analizi ve karşılaştırma, hukuki belge şablonu üretimi, topluluk forumu ve bir admin analitik paneli gibi özellikler sisteme entegre edilmiştir. Tüm altyapı Docker Compose ile dört servis olarak konteynerize edilmiştir.
 
 Uygulama, ceza, boşanma ve icra gibi kritik konularda otomatik olarak kullanıcıyı baro hukuki yardım bürolarına veya uzman bir avukata yönlendirmektedir. Sistem; 115 otomatik test (%100 başarı), 100 soruluk sistem testi ve retrieval baseline ölçümleriyle kapsamlı biçimde değerlendirilmiştir.
 
@@ -84,7 +84,7 @@ Proje kapsamı şu bileşenlerden oluşmaktadır:
 - **Vektör veritabanı:** Qdrant Cloud (75.789 hukuki chunk — 66.755 Yargıtay kararı + 9.034 kanun maddesi, `intfloat/multilingual-e5-base` embedding modeli)
 - **İlişkisel veritabanı:** PostgreSQL (10 tablo, 9 Alembic migrasyonu)
 - **LLM entegrasyonu:** Groq API üzerinden Llama-3.3-70b-versatile
-- **Konteynerizasyon:** Docker Compose (3 servis)
+- **Konteynerizasyon:** Docker Compose (4 servis)
 
 > **Not:** Proje kapsamı sistemi geliştirme ve işlevsel testlerini kapsamaktadır. RAGAS tabanlı otomatik değerlendirme pipeline'ı ve production ortamına deploy gelecek çalışma olarak planlanmıştır.
 
@@ -235,15 +235,16 @@ Embedding modeli, ilk Docker başlatmasında `model_data` volume'una indirilip �
 
 ### 3.6 Docker
 
-Uygulama, **Docker Compose** ile üç servis olarak konteynerize edilmiştir:
+Uygulama, **Docker Compose** ile dört servis olarak konteynerize edilmiştir:
 
 | Servis | İmaj / Build | Port | Açıklama |
 |--------|-------------|------|----------|
 | `postgres` | `postgres:16-alpine` | 5433→5432 | İlişkisel veritabanı |
 | `backend` | `./backend/dev-Dockerfile` | 8000 | FastAPI + Uvicorn |
 | `frontend` | `./frontend/dev-Dockerfile` | 5173 | Vite dev server |
+| `migrate` | `./backend/dev-Dockerfile` | — | `alembic upgrade head` çalıştırır, ardından kapanır |
 
-Servisler arasında sağlık kontrolleri (`healthcheck`) tanımlanmıştır; backend postgres sağlıklı olmadan, frontend ise backend sağlıklı olmadan başlamamaktadır. Backend konteynerı açılışta otomatik olarak `alembic upgrade head` komutunu çalıştırır.
+Servisler arasında sağlık kontrolleri (`healthcheck`) tanımlanmıştır; migrate ve backend postgres sağlıklı olmadan, frontend ise backend sağlıklı olmadan başlamamaktadır. `migrate` servisi açılışta `alembic upgrade head` komutunu çalıştırır ve tamamlanınca kendiliğinden kapanır.
 
 **Docker volume'ları:**
 - `postgres_data` — veritabanı kalıcılığı
@@ -533,7 +534,7 @@ Backend tarafında `backend/tests/` altında **17 test dosyasında 115 otomatik 
 Ceza, boşanma, icra, tazminat ve mültecilik gibi profesyonel hukuki destek gerektiren konular tespit edildiğinde; sistem yanıtın sonuna otomatik olarak Adalet Bakanlığı **ALO 182** hattı yönlendirmesi ekleyerek kullanıcıyı yetkili kanallara iletmektedir.
 
 **7. Konteynerize Edilebilir Dağıtım**
-Tüm sistem (PostgreSQL, FastAPI backend, React frontend) Docker Compose ile üç servisli, sağlık kontrolü zincirine sahip, tek komutla ayağa kaldırılabilen bir altyapı olarak paketlenmiştir.
+Tüm sistem (PostgreSQL, FastAPI backend, React frontend, Alembic migrate) Docker Compose ile dört servisli, sağlık kontrolü zincirine sahip, tek komutla ayağa kaldırılabilen bir altyapı olarak paketlenmiştir.
 
 ### 7.2 Gelecek Çalışmalar
 

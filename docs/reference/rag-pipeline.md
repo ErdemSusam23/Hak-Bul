@@ -1,218 +1,202 @@
 # RAG Pipeline
 
-Bu belge `backend/rag/*` ve `/ask`, `/ask/stream` akislarinin guncel teknik ozetidir.
+Bu belge `backend/rag/*`, `backend/main.py` ve `/ask` - `/ask/stream` akışlarının güncel teknik özetidir.
 
----
-
-## Genel Akis
+## Genel Akış
 
 ```text
-Kullanici sorusu
-      |
-      v
-[1] kategorize et
-      |
-      v
-[2] query rewrite
-      |
-      v
-[3] retrieval
-      |   - default Qdrant collection
-      |   - opsiyonel law collection merge
-      |   - local corpus fallback / law merge
-      v
-[4] category penalty
-      |
-      v
-[5] conditional rerank
-      |
-      v
-[6] score filter + source dedupe
-      |
-      v
-[7] answer generation
-      |
-      v
-[8] source summary + response format
+Kullanıcı sorusu
+  -> gibberish kontrolü
+  -> kategori tespiti
+  -> query rewrite
+  -> retrieval
+  -> category penalty
+  -> koşullu rerank
+  -> score filter
+  -> source dedupe
+  -> source summary
+  -> answer generation
 ```
 
-| Adim | Fonksiyon | Girdi | Cikti | Servis |
-|---|---|---|---|---|
-| 1 | `get_kategorilendirici().kategorile()` | Kullanici sorusu | 14 kategoriden biri | Uygulama ici |
-| 2 | `rewrite_query()` | Kullanici sorusu | Retrieval icin kisa sorgu veya orijinal soru | Groq llama-3.1-8b-instant |
-| 3 | `retrieve_chunks()` | Rewrite edilmis sorgu | Qdrant/local corpus chunk listesi | Qdrant Cloud + local corpus |
-| 4 | `apply_category_penalty()` | Chunk listesi + kategori | Beklenmeyen kanunlara soft penalty uygulanmis liste | Uygulama ici |
-| 5 | `rerank_chunks()` | Chunk listesi + orijinal soru | Gerektiginde yeniden siralanmis liste | Uygulama ici |
-| 6 | `filter_by_score()` | Chunk listesi | Esik uygulanmis, mulga filtrelenmis liste | Uygulama ici |
-| 7 | `generate_answer()` / `generate_answer_stream()` | Filtreli chunk'lar + orijinal soru | TR/EN yanit veya token akisi | Groq llama-3.3-70b-versatile |
-| 8 | `_format_sources()` + response modelleri | Chunk metadata + yanit | `AskResponse` veya SSE event payload'lari | Uygulama ici |
+## Adımlar
 
----
+### 1. Gibberish Kontrolü
 
-## Adim Adim Detay
+`pipeline._is_gibberish_query()` şu tip girişleri erken yakalar:
+- klavye ezmesi
+- aşırı uzun anlamsız tek token
+- çok düşük sesli harf oranı
 
-### 1. Kategori Tespiti
+Bu durumda pipeline kaynak üretmez ve açıklayıcı reddetme yanıtı döner.
 
-- `pipeline.retrieve_context()` ilk adimda soruyu keyword tabanli kategorizer'dan gecirir.
-- Kategori bilgisi retrieval cezalari, admin istatistikleri ve weak query loglarinda kullanilir.
-- Kategori kumesi 14 basliktan olusur: Is, Medeni, Ceza, Ticaret, Tuketici, Tasinmaz Mulk, Idare, Vergi, Sosyal Guvenlik, Fikri Mulkiyet, Bilisim, Anayasa, Usul, Genel.
+### 2. Kategori Tespiti
 
-### 2. Query Rewriting
+`get_kategorilendirici().kategorile()` keyword tabanlı çalışır.
 
-- `rewrite_query()` normal durumda Groq `llama-3.1-8b-instant` ile retrieval dostu kisa bir sorgu uretir.
-- Kullanici sorusunda acik kanun/madde referansi varsa rewrite atlanir ve orijinal soru kullanilir.
-- `MOCK_MODE`, `MOCK_LLM` veya eksik `GROQ_API_KEY` durumunda rewrite atlanir.
-- Groq hatasi, asiri uzun cikti veya tekrarli cikti gorulurse pipeline kirilmaz; orijinal sorguyla devam edilir.
+Desteklenen 14 kategori:
+- İş Hukuku
+- Medeni Hukuk
+- Ceza Hukuku
+- Ticaret Hukuku
+- Tüketici Hukuku
+- Taşınmaz Mülk
+- İdare Hukuku
+- Vergi Hukuku
+- Sosyal Güvenlik Hukuku
+- Fikri Mülkiyet
+- Bilişim Hukuku
+- Anayasa Hukuku
+- Usul Hukuku
+- Genel Hukuk
 
-### 3. Retrieval
+### 3. Query Rewrite
 
-`retrieve_chunks()` uc kaynagi birlestirebilir:
+`rewrite_query()` normal koşulda Groq `llama-3.1-8b-instant` ile kısa retrieval sorgusu üretir.
 
-1. Varsayilan Qdrant collection (`settings.COLLECTION_NAME`)
-2. Opsiyonel law collection (`settings.COLLECTION_KANUN_NAME`)
-3. Local JSON corpus (`backend/data/processed_backup_*`)
+Rewrite atlanır:
+- kullanıcı açık kanun / madde referansı verdiyse
+- `MOCK_MODE` veya `MOCK_LLM` açıksa
+- `GROQ_API_KEY` yoksa
+- Groq hatası olursa
 
-Davranis kurallari:
+Fallback davranışı: orijinal soru kullanılır.
 
-- Default collection her zaman ilk sorgulanan kaynaktir.
-- `COLLECTION_KANUN_NAME` set edilirse ikinci bir Qdrant sorgusu yapilir; kanun sonuclari varsa merge edilerek one alinabilir.
-- Qdrant hic yapilandirilmamissa ve `ALLOW_LOCAL_RETRIEVAL_FALLBACK=true` ise yalnizca local corpus kullanilir.
-- Law collection kullanilamazsa, kanun/madde ipucu tasiyan sorgularda local corpus'tan kanun chunk'lari merge edilir.
-- Qdrant cagrisi exception verirse ve local fallback aciksa local corpus ile devam edilir.
-- Ham payload korunur; mulga filtreleme ve source ozetleme sonraki adimlarda yapilir.
+### 4. Retrieval
 
-### 4. Category Penalty
+`retrieve_chunks()` aşağıdaki kaynakları kullanabilir:
+- ana Qdrant collection
+- opsiyonel kanun collection
+- local JSON corpus fallback
 
-- `apply_category_penalty()` yalnizca `kanun` turundeki chunk'lari etkiler.
-- `KATEGORI_EXPECTED_LAWS` disindaki kanunlarin skoru varsayilan olarak `x0.5` ile dusurulur.
-- Yargitay kararlari ve `Genel` kategori etkilenmez.
-- Penalty sonrasi liste yeniden skora gore siralanir.
+Davranış özeti:
+- Qdrant yapılandırılmamışsa ve fallback açıksa local corpus kullanılır.
+- Qdrant sonuçları boşsa veya erişim hatası varsa local fallback devreye girebilir.
+- Kanun / madde ipucu taşıyan sorgularda local kanun chunk'ları merge edilebilir.
+- Sonuçlar `payload + skor` biçiminde taşınır.
 
-### 5. Conditional Rerank
+### 5. Category Penalty
 
-`rerank_chunks()` her istekte zorunlu calismaz.
-
-Guncel kurallar:
-
-- `RERANKER_ENABLED=false` ise rerank hic uygulanmaz.
-- `RERANKER_ENABLED=true` olsa bile sadece ilk retrieval sonucunun skoru `SCORE_THRESHOLD` altindaysa rerank devreye girer.
-- Rerank adayi sayisi `min(len(chunks), max(8, max_kaynak + 3))` ile sinirlanir.
-- Sira cross-encoder tarafindan belirlenir; `skor` alani ise downstream filtreler bozulmasin diye retrieval skorunu korur.
-- Model: `BAAI/bge-reranker-v2-m3`
-
-### 6. Score Filter ve Weak Query
-
-- `filter_by_score()` once tamamen mulga maddeleri eler.
-- Sonra `SCORE_THRESHOLD` esigi uygulanir.
-- Esik ustunde hic sonuc kalmazsa, en yuksek skorlu ilk 5 chunk fallback olarak dondurulur.
-- `/ask` tarafinda `kaynaklar` bossa veya `max_skor < SCORE_THRESHOLD` ise sorgu `weak_queries` tablosuna loglanabilir.
-
-### 7. Answer Generation
-
-- `generate_answer()` ve `generate_answer_stream()` Groq `llama-3.3-70b-versatile` kullanir.
-- Sistem prompt'u kaynak disi madde/hukum uydurmayi yasaklar.
-- Kritik ve kisisel hukuki senaryolarda ALO 182 yonlendirmesi eklenebilir.
-- `generate_answer_stream()` ayni cevabi token token yield eder; `/ask/stream` bu fonksiyonu kullanir.
-- Basarili SSE akisinda `done`, generator hatasinda ise `error` event'i gonderilip stream kapanir.
-
-### 8. Source Summary
-
-`pipeline._format_sources()` her kaynak icin `metin_ozet` uretir.
+`apply_category_penalty()` beklenmeyen kanun chunk'larının skorunu düşürür.
 
 Kurallar:
+- sadece `kanun` türüne uygulanır
+- beklenmeyen kanunlar varsayılan `x0.5` ceza alır
+- `Genel` kategoride ceza uygulanmaz
+- karar chunk'ları etkilenmez
 
-- Cumleler query token ortusmesine gore puanlanir.
-- Sure odakli sorularda sayi ve zaman birimi iceren cumleler ek puan alir.
-- En ilgili en fazla 3 cumle secilir.
-- Ozet 280 karaktere kirpilir.
-- API yanitinda tam `metin` yerine `metin_ozet` gosterilir.
+### 6. Koşullu Rerank
 
----
+`rerank_chunks()` yalnızca gerekli olduğunda çalışır.
 
-## `/ask` ve `/ask/stream`
+Aktivasyon:
+- `RERANKER_ENABLED=true`
+- ilk retrieval sonucunun skoru `SCORE_THRESHOLD` altındaysa
 
-### `/ask`
+Model:
+- `BAAI/bge-reranker-v2-m3`
 
-- `run_pipeline()` cagrilir.
-- Sonuc chat history'ye kaydedilir.
-- Basarili durumda tek parca `AskResponse` JSON doner.
+Not:
+- Reranker sıralamayı değiştirir, fakat downstream eşikler için retrieval skoru korunur.
 
-### `/ask/stream`
+### 7. Score Filter
 
-- Retrieval ve kaynak hazirligi once tamamlanir.
-- Ardindan SSE uzerinden asagidaki event tipleri gonderilir:
-  - `meta`
-  - `token`
-  - `error`
-  - `done`
-- Basarili akista event sirasi `meta -> token* -> done` seklindedir.
-- Generator hatasinda `error` emit edilir ve stream kapanir; `done` gonderilmez.
+`filter_by_score()`:
+- tamamen mulga maddeleri eler
+- `SCORE_THRESHOLD` uygular
+- eşik üstü sonuç yoksa en yüksek skorlu ilk 5 sonucu fallback olarak döndürür
 
----
+Ek kural:
+- tüm skorlar çok düşükse (`< 0.05`) kaynaklar tamamen bastırılır
 
-## Hata Yonetimi
+### 8. Source Dedupe ve Summary
 
-| Senaryo | Davranis | HTTP |
-|---|---|---|
-| Groq rewrite hatasi | Orijinal sorguya duser | `200` akis devam eder |
-| Groq generation hatasi (`/ask`) | RuntimeError -> HTTP katmani | `500` veya `503` |
-| Groq generation hatasi (`/ask/stream`) | `error` SSE event'i gonderilir | `200` stream kapanisi |
-| Qdrant yok, local fallback acik | Local corpus ile devam | `200` |
-| Qdrant yok, local fallback kapali | Kontrollu hata | `503` |
-| Esik ustu chunk yok | En yuksek skorlu ilk 5 ile devam | `200` |
-| `STRICT_UPSTREAMS=true` ve upstream kapali | Sessiz fallback yerine hard-fail | `503` |
+`_deduplicate_sources()` duplicate kaynakları kaldırır.
 
-Production hard-fail kombinasyonu:
+`_format_sources()` her kaynak için:
+- başlık
+- `metin_ozet`
+- normalize edilmiş skor
+- kanunsa resmi mevzuat URL'si
+üretir.
 
-```env
-STRICT_UPSTREAMS=true
-ALLOW_LOCAL_RETRIEVAL_FALLBACK=false
-```
+Özet üretimi `query` ile örtüşen cümleleri tercih eder ve maksimum 280 karaktere kırpar.
 
----
+### 9. Answer Generation
 
-## Isletim Notlari
+Chat answer:
+- `generate_answer()`
+- `generate_answer_stream()`
+- model: `llama-3.3-70b-versatile`
 
-### Retrieval warm-up
+Document answer:
+- `generate_document_answer()`
+- `generate_document_compare_answer()`
+- aynı temel model kullanılır
 
-- FastAPI startup sirasinda `start_retrieval_warmup()` arka planda embedding modelini yuklemeyi dener.
-- Warm-up basarisiz olursa uygulama acilmaz; ilk gercek retrieval isteginde lazy-load yapilir.
+Fallback:
+- `MOCK_MODE`, `MOCK_LLM` veya `GROQ_API_KEY` yoksa extractive / document fallback çalışır.
 
-### Performans loglari
+## `/ask`
 
-Asagidaki flag acik oldugunda asama bazli sure loglari `uvicorn.error` logger'ina yazilir:
+Akış:
+- upstream kontrolü (`STRICT_UPSTREAMS=true` ise)
+- `run_pipeline()`
+- conversation çözümü
+- auth ise `user_id`, değilse guest cookie çözümü
+- `save_chat_pair()` ile chat history kaydı
+- kaynak yoksa veya skor düşükse `weak_queries` kaydı
 
-```env
-HAKBUL_PERF_LOG=true
-```
+Response modeli `AskResponse`.
 
-Loglanan baslica noktalar:
+## `/ask/stream`
 
-- retrieval model warm-up
-- query rewrite sureleri ve fallback nedenleri
-- retrieval, category penalty, rerank, filter ve source format sureleri
-- answer generation ve streaming sureleri
-- `/ask`, `/ask/stream` ve `save_chat_pair()` toplam sureleri
+Akış:
+- retrieval hazırlığı önce tamamlanır
+- ilk event `meta`
+- sonra `token` eventleri gelir
+- başarılı bitişte `done`
+- generation hatasında `error`
 
-Her istek zincirine kisa bir `request_id` eklenir; boylece ayni istegin rewrite, retrieval, generation ve stream loglari birlikte izlenebilir.
+Başarılı sıra:
+- `meta -> token* -> done`
 
----
+## Health ve Warm-up
 
-## Modeller ve Ayarlar
+`main.py` startup'ında:
+- retrieval model warm-up arka planda denenir
+- başarısız warm-up uygulamayı kapatmaz, lazy-load devam eder
 
-| Alan | Deger |
+## Perf Logging
+
+`HAKBUL_PERF_LOG=true` olduğunda loglanan başlıca adımlar:
+- warm-up
+- query rewrite
+- retrieval
+- category penalty
+- rerank
+- filter
+- source formatting
+- answer generation
+- `/ask` ve `/ask/stream` toplam süreleri
+
+Her istekte kısa bir `request_id` kullanılır.
+
+## Önemli Ayarlar
+
+| Ayar | Amaç |
 |---|---|
-| Rewrite modeli | `llama-3.1-8b-instant` |
-| Generation modeli | `llama-3.3-70b-versatile` |
-| Embedding modeli | `intfloat/multilingual-e5-base` |
-| Reranker modeli | `BAAI/bge-reranker-v2-m3` |
-| Esik | `SCORE_THRESHOLD` |
+| `STRICT_UPSTREAMS` | Fallback yerine hard-fail davranışı |
+| `ALLOW_LOCAL_RETRIEVAL_FALLBACK` | Local corpus fallback aç/kapat |
+| `RERANKER_ENABLED` | Koşullu rerank aç/kapat |
+| `COLLECTION_KANUN_NAME` | İkinci kanun collection adı |
+| `SCORE_THRESHOLD` | Kaynak eşik skoru |
+| `HAKBUL_PERF_LOG` | Perf logları |
 
-Onemli flag'ler:
+## Modeller
 
-- `STRICT_UPSTREAMS`
-- `ALLOW_LOCAL_RETRIEVAL_FALLBACK`
-- `RERANKER_ENABLED`
-- `COLLECTION_KANUN_NAME`
-- `HAKBUL_PERF_LOG`
-
+| İş | Model |
+|---|---|
+| Rewrite | `llama-3.1-8b-instant` |
+| Chat / document generation | `llama-3.3-70b-versatile` |
+| Embedding | `intfloat/multilingual-e5-base` |
+| Reranker | `BAAI/bge-reranker-v2-m3` |

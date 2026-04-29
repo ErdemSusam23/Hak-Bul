@@ -1,183 +1,207 @@
 # Veri Şeması
 
-`backend-docs.md`'den bölündü — v2.0`
+Bu belge PostgreSQL tablolarını, migration zincirini ve retrieval veri yüzeyini özetler.
 
----
+## Alembic Zinciri
 
-## PostgreSQL Şeması (Alembic)
+```text
+20260305_0001  auth tabloları
+    ->
+20260305_0002  chat_history + guest support
+    ->
+20260316_0003  chat_history.category
+    ->
+20260317_0004  message_feedback
+    ->
+20260317_0005  chat_history.title
+    ->
+20260326_0006  weak_queries + shared_conversations
+    ->
+20260326_0007  chat_history.deleted_at
+    ->
+20260330_0008  user role: lawyer
+    ->
+20260330_0009  forum tabloları
+    ->
+20260428_0010  local/dev demo seed verisi
+```
 
-Migrasyon zinciri: `20260305_0001` → `20260305_0002` → `20260316_0003` → `20260317_0004` → `20260317_0005` → `20260326_0006` → `20260326_0007` → `20260330_0008` → `20260330_0009`
+Not:
+- `20260428_0010` şema değiştirmez.
+- Sadece `APP_ENV=local|dev|development` olduğunda demo kullanıcı, forum, chat, feedback ve shared conversation verisi üretir.
+
+## PostgreSQL Tabloları
 
 | Tablo | Açıklama |
-|-------|----------|
-| `users` | Kayıtlı kullanıcılar (email, bcrypt hash, rol) |
-| `refresh_tokens` | JWT refresh token'ları (rotation destekli) |
-| `chat_history` | Kullanıcı + misafir mesajları; `user_id` XOR `guest_session_id` |
-| `message_feedback` | `chat_history.id` FK; `puan` 1 / -1 |
-| `weak_queries` | Düşük güven skorlu sorgular — retrieval kalitesi izleme için loglanır |
-| `shared_conversations` | Sohbet paylaşma token'ları; `share_token` URL-safe, `is_active` ile devre dışı bırakılır |
-| `forum_threads` | Forum başlıkları; sahip kullanıcı, kategori, kilit ve soft-delete alanları içerir |
-| `forum_replies` | Forum yanıtları; başlığa ve kullanıcıya bağlıdır, doğrulama ve soft-delete destekler |
-| `forum_votes` | Thread/reply oyları; kullanıcı başına hedef başına tek oy, değer 1 / -1 |
+|---|---|
+| `users` | Kayıtlı kullanıcılar |
+| `refresh_tokens` | Refresh token rotation kayıtları |
+| `chat_history` | Kullanıcı ve guest mesaj geçmişi |
+| `message_feedback` | Asistan mesajı puanları |
+| `weak_queries` | Düşük retrieval güven skorlu sorular |
+| `shared_conversations` | Sohbet paylaşım tokenları |
+| `forum_threads` | Forum başlıkları |
+| `forum_replies` | Forum yanıtları |
+| `forum_votes` | Forum oyları |
 
-`users` tablosunda rol alanı `user | lawyer | admin` değerlerini alır.
+## `users`
 
-`chat_history` önemli alanlar: `conversation_id`, `role` (user/assistant), `content`, `category`, `title`, `metadata_json` (asistan mesajlarında `{"kaynaklar": [...]}`), `deleted_at` (soft-delete; `NULL` = aktif, dolu = silinmiş).
+Önemli alanlar:
+- `id`
+- `email` unique
+- `password_hash`
+- `is_active`
+- `role`: `user | lawyer | admin`
+- `created_at`
+- `updated_at`
 
-### `weak_queries` Alanları
+## `refresh_tokens`
 
-| Alan | Tip | Açıklama |
-|------|-----|----------|
-| `id` | UUID | PK |
-| `soru` | text | Kullanıcının orijinal sorusu |
-| `max_skor` | float | Retrieval sonucundaki en yüksek skor |
-| `kategori` | string\|null | Tespit edilen hukuk kategorisi |
-| `created_at` | datetime | Kayıt zamanı |
+Amaç:
+- Refresh token hash saklama
+- Rotation ve revocation izleme
 
-### `shared_conversations` Alanları
+Tipik alanlar:
+- `id`
+- `user_id`
+- `jti`
+- `token_hash`
+- `expires_at`
+- `revoked_at`
+- `replaced_by_jti`
 
-| Alan | Tip | Açıklama |
-|------|-----|----------|
-| `id` | UUID | PK |
-| `share_token` | string(64) | URL-safe token (`secrets.token_urlsafe(24)`) |
-| `conversation_id` | UUID | Paylaşılan sohbetin ID'si |
-| `user_id` | UUID FK | Paylaşımı oluşturan kullanıcı (`users.id`, CASCADE) |
-| `is_active` | bool | `false` yapılarak paylaşım devre dışı bırakılır |
-| `created_at` | datetime | Oluşturulma zamanı |
+## `chat_history`
 
-### `forum_threads` Alanları
+Önemli alanlar:
+- `id`
+- `user_id` veya `guest_session_id`
+- `conversation_id`
+- `role`: `user | assistant`
+- `content`
+- `title`
+- `category`
+- `metadata_json`
+- `created_at`
+- `deleted_at`
 
-| Alan | Tip | Açıklama |
-|------|-----|----------|
-| `id` | UUID | PK |
-| `user_id` | UUID FK | Başlığı açan kullanıcı (`users.id`, CASCADE) |
-| `title` | string(200) | Başlık |
-| `content` | text | İlk mesaj / başlık içeriği |
-| `category` | string(50) | Forum kategorisi |
-| `is_locked` | bool | Kilitliyse yeni yanıt yazılamaz |
-| `created_at` | datetime | Oluşturulma zamanı |
-| `updated_at` | datetime | Son güncelleme zamanı |
-| `deleted_at` | datetime\|null | Soft-delete alanı |
+Kurallar:
+- `user_id` ve `guest_session_id` için XOR constraint vardır.
+- Silme işlemleri `deleted_at` ile soft-delete olarak yapılır.
+- Asistan mesajlarında `metadata_json` içinde `{"kaynaklar": [...]}` saklanır.
 
-### `forum_replies` Alanları
+## `message_feedback`
 
-| Alan | Tip | Açıklama |
-|------|-----|----------|
-| `id` | UUID | PK |
-| `thread_id` | UUID FK | Yanıtın ait olduğu başlık (`forum_threads.id`, CASCADE) |
-| `user_id` | UUID FK | Yanıtı yazan kullanıcı (`users.id`, CASCADE) |
-| `content` | text | Yanıt içeriği |
-| `is_verified` | bool | `LAWYER`/`ADMIN` doğrulaması |
-| `created_at` | datetime | Oluşturulma zamanı |
-| `updated_at` | datetime | Son güncelleme zamanı |
-| `deleted_at` | datetime\|null | Soft-delete alanı |
+| Alan | Açıklama |
+|---|---|
+| `message_id` | `chat_history.id` FK |
+| `puan` | `1` veya `-1` |
+| `user_id` | Auth kullanıcı için |
+| `guest_session_id` | Guest kullanım için |
+| `created_at` | Kayıt zamanı |
 
-### `forum_votes` Alanları
+Davranış:
+- Aynı kullanıcı veya guest oturumu aynı mesaja yeniden oy verirse kayıt güncellenir.
 
-| Alan | Tip | Açıklama |
-|------|-----|----------|
-| `id` | UUID | PK |
-| `user_id` | UUID FK | Oyu veren kullanıcı (`users.id`, CASCADE) |
-| `target_type` | enum | `thread` veya `reply` |
-| `target_id` | UUID | Oy verilen thread/reply ID'si |
-| `value` | int | `1` veya `-1` |
-| `created_at` | datetime | Oluşturulma zamanı |
+## `weak_queries`
 
----
+| Alan | Açıklama |
+|---|---|
+| `id` | PK |
+| `soru` | Orijinal kullanıcı sorusu |
+| `max_skor` | En yüksek retrieval skoru |
+| `kategori` | Tespit edilen kategori |
+| `created_at` | Oluşturulma zamanı |
 
-## Qdrant Koleksiyon Konfigürasyonu
+## `shared_conversations`
 
-| Parametre | Değer | Açıklama |
-|-----------|-------|----------|
-| Koleksiyon adı | `hukuk_chunks` | Tek koleksiyon, tüm chunk türleri burada |
-| Vector size | `768` | intfloat/multilingual-e5-base |
-| Distance metric | `Cosine` | Semantic benzerlik için en uygun metrik |
-| Quantization | Kapalı (MVP) | Free tier için yeterli performans |
-| Indexing threshold | 20.000 vektör | Qdrant default, MVP için sorun yok |
+| Alan | Açıklama |
+|---|---|
+| `id` | PK |
+| `share_token` | URL-safe token |
+| `conversation_id` | Paylaşılan sohbet ID'si |
+| `user_id` | Sahip kullanıcı |
+| `is_active` | Paylaşım açık mı |
+| `created_at` | Oluşturulma zamanı |
 
----
+## Forum Tabloları
 
-## Chunk Metadata Şeması
+### `forum_threads`
 
-> Her chunk Qdrant'a hem embedding vektörü hem de aşağıdaki payload (metadata) ile birlikte yüklenir. Retrieval sonrasında kaynak atıfı bu alanlardan oluşturulur.
+| Alan | Açıklama |
+|---|---|
+| `id` | PK |
+| `user_id` | Başlığı açan kullanıcı |
+| `title` | Başlık |
+| `content` | İlk mesaj |
+| `category` | Forum kategorisi |
+| `is_locked` | Kilitli mi |
+| `created_at` | Oluşturulma zamanı |
+| `updated_at` | Güncellenme zamanı |
+| `deleted_at` | Soft-delete |
 
-### Zorunlu Alanlar (tüm chunk türleri)
+### `forum_replies`
 
-| Alan | Tip | Örnek Değer | Açıklama |
-|------|-----|-------------|----------|
-| `kaynak_turu` | string | `"kanun"` | `kanun` \| `yonetmelik` \| `yargitay_karari` |
-| `hukuk_alani` | string | `"is_hukuku"` | MVP'de sabit, ilerleyen fazda genişler |
-| `yil` | integer | `2003` | Yürürlük yılı veya karar yılı |
-| `metin` | string | `"Madde 17 — ..."` | Chunk'un ham metni |
-| `url` | string \| null | `"https://www.mevzuat.gov.tr/..."` | Kaynağın resmi bağlantısı (yoksa `null`) |
-| `chunk_id` | string | `"kanun_4857_m17"` | Benzersiz ID, debug ve loglama için |
+| Alan | Açıklama |
+|---|---|
+| `id` | PK |
+| `thread_id` | Ait olduğu başlık |
+| `user_id` | Yanıt sahibi |
+| `content` | Yanıt içeriği |
+| `is_verified` | `LAWYER`/`ADMIN` doğrulaması |
+| `created_at` | Oluşturulma zamanı |
+| `updated_at` | Güncellenme zamanı |
+| `deleted_at` | Soft-delete |
 
-### Kanun Chunk'larına Özel Alanlar
+### `forum_votes`
 
-| Alan | Tip | Örnek Değer |
-|------|-----|-------------|
-| `kanun_adi` | string | `"4857 Sayılı İş Kanunu"` |
-| `kanun_no` | string | `"4857"` |
-| `madde_no` | string | `"Madde 17"` |
-| `fikra_no` | string \| null | `"Fıkra 2"` veya `null` |
+| Alan | Açıklama |
+|---|---|
+| `id` | PK |
+| `user_id` | Oyu veren kullanıcı |
+| `target_type` | `thread` veya `reply` |
+| `target_id` | Hedef kayıt ID'si |
+| `value` | `1` veya `-1` |
+| `created_at` | Oluşturulma zamanı |
 
-### Yargıtay Kararı Chunk'larına Özel Alanlar
+Kurallar:
+- `user_id + target_type + target_id` unique constraint vardır.
+- `value IN (1, -1)` check constraint vardır.
 
-| Alan | Tip | Örnek Değer |
-|------|-----|-------------|
-| `karar_no` | string | `"2023/1234"` |
-| `daire` | string | `"9. Hukuk Dairesi"` |
-| `karar_bolumu` | string | `ozet` \| `gerekce` \| `sonuc` |
-| `tarih` | string | `"2023-05-12"` |
+## Qdrant Yapısı
 
-### Örnek Chunk — Kanun
+Güncel yapı:
+- Ana collection: `settings.COLLECTION_NAME` varsayılan `hukuk_chunks`
+- Opsiyonel ikinci collection: `settings.COLLECTION_KANUN_NAME`
+- Distance metric: cosine
+- Embedding model: `intfloat/multilingual-e5-base`
 
-```json
-{
-  "id": "kanun_4857_m17",
-  "vector": [0.023, -0.441, "..."],
-  "payload": {
-    "kaynak_turu": "kanun",
-    "hukuk_alani": "is_hukuku",
-    "kanun_adi": "4857 Sayılı İş Kanunu",
-    "kanun_no": "4857",
-    "madde_no": "Madde 17",
-    "fikra_no": null,
-    "yil": 2003,
-    "metin": "Madde 17 — Belirsiz süreli iş sözleşmelerinin...",
-    "url": "https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=4857&MevzuatTur=1&MevzuatTertip=5",
-    "chunk_id": "kanun_4857_m17"
-  }
-}
-```
+## Local Retrieval Corpus
 
-### Örnek Chunk — Yargıtay Kararı
+- Dizin: `backend/data/processed_backup_*`
+- Güncel fallback seti: 33 JSON dosyası
+- Qdrant yoksa veya erişilemiyorsa `ALLOW_LOCAL_RETRIEVAL_FALLBACK=true` ile devreye girer.
 
-```json
-{
-  "id": "yargitay_2023_1234_gerekce",
-  "vector": [0.091, 0.317, "..."],
-  "payload": {
-    "kaynak_turu": "yargitay_karari",
-    "hukuk_alani": "is_hukuku",
-    "karar_no": "2023/1234",
-    "daire": "9. Hukuk Dairesi",
-    "karar_bolumu": "gerekce",
-    "tarih": "2023-05-12",
-    "yil": 2023,
-    "metin": "...kıdem tazminatına hak kazanabilmek için...",
-    "url": "https://karararama.yargitay.gov.tr/",
-    "chunk_id": "yargitay_2023_1234_gerekce"
-  }
-}
-```
+## Chunk Metadata
 
----
+Sık kullanılan payload alanları:
+- `chunk_id`
+- `kaynak_turu`
+- `kanun_adi`
+- `kanun_no`
+- `madde_no`
+- `fikra_no`
+- `metin`
+- `hukuk_alani`
+- `yil`
+- `daire`
+- `karar_no`
 
-## Veri Hacmi Tahmini
+`kaynak_turu` pratikte en sık:
+- `kanun`
+- `yargitay_karari`
 
-| İçerik | Adet | Tahmini Chunk | Vektör Boyutu |
-|--------|------|---------------|---------------|
-| Kanun metinleri | 3-5 kanun | ~1.000-2.000 | ~6-12 MB |
-| Yargıtay kararları | 500-1.000 karar | ~2.000-3.000 | ~12-18 MB |
-| **Toplam** | — | **~3.000-5.000** | **~18-30 MB** (Qdrant 1GB free tier içinde) |
+## Notlar
+
+- `/search` ve `/ask` response'larında kaynak başlıkları payload verisinden üretilir.
+- Kanun URL'leri sabit mevzuat haritasından türetilir; Qdrant payload içinde zorunlu değildir.
+- Mulga maddeler retrieval sonrası filtrelenir; tamamen mulga metinler local index'e alınmaz.

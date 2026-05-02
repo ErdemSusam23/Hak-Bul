@@ -175,31 +175,32 @@ Bu projede FastAPI'nin tercih edilme nedenleri:
 - SSE (Server-Sent Events) desteği — streaming yanıt için zorunlu
 - Async endpoint desteği — Qdrant ve Groq API çağrıları için
 
-Projede 8 router dosyası üzerinden 77'den fazla endpoint sunulmaktadır. Uvicorn ASGI sunucusu kullanılarak çalıştırılmaktadır.
+Projede ana uygulama dosyasındaki çekirdek endpoint'lere ek olarak `auth`, `chat`, `documents`, `feedback`, `admin`, `templates` ve `forum` olmak üzere 7 router modülü kullanılmaktadır. Kod tabanında 47 HTTP endpoint'i tanımlıdır. Uygulama, Uvicorn ASGI sunucusu ile çalıştırılmaktadır.
 
 ### 3.2 React 19 + Vite
 
 Frontend, **React 19** bileşen mimarisi ve **Vite 7.3.1** build aracıyla geliştirilmiştir.
 
-- **React 19:** Hook tabanlı fonksiyonel bileşenler, `useContext` ile global durum yönetimi (`DilContext`, auth state)
+- **React 19:** Hook tabanlı fonksiyonel bileşenler, `useContext` ile global durum yönetimi (`DilContext`, `TemaContext`, `AuthContext`)
 - **Vite:** Geliştirme ortamında HMR (Hot Module Replacement) desteği; üretim için optimize edilmiş bundle çıktısı
 - **Tailwind CSS 3.4:** Utility-first CSS framework; tutarlı ve responsive tasarım
 - **Axios 1.13.6:** HTTP client — API istekleri ve interceptor tabanlı token yönetimi
 - **react-markdown 9.1.0:** LLM yanıtlarını Markdown olarak render etmek için
 - **lucide-react 0.576.0:** Icon kütüphanesi
 
-Frontend, 9 sayfa ve 9 bileşenden oluşmaktadır.
+Frontend, 9 sayfa, 8 ana bileşen dosyası, ortak `ui/` bileşenleri, API yardımcıları, context katmanı ve akış yardımcı fonksiyonlarıyla organize edilmiştir.
 
 ### 3.3 Groq API
 
 **Groq**, LPU (Language Processing Unit) tabanlı özel donanım altyapısı üzerinden LLM çıkarım hizmeti sunan bir platformdur. Geleneksel GPU tabanlı çözümlere kıyasla çok daha düşük gecikme süreleri sağlar.
 
-Bu projede kullanılan model: **Llama-3.3-70b-versatile**
+Bu projede iki farklı Groq modeli kullanılmaktadır:
 
 - Türkçe dahil çok dilli metin anlama ve üretme
-- 128k token bağlam penceresi
+- Sorgu yeniden yazma için `llama-3.1-8b-instant`
+- Yanıt ve belge analizi üretimi için `llama-3.3-70b-versatile`
 - SSE ile token bazlı streaming çıktı (`generate_answer_stream()`)
-- Kritik konularda (ceza, boşanma, icra, tazminat, mültecilik) yanıt sonuna otomatik avukat yönlendirmesi eklenmesi (ALO 182)
+- Kullanıcının kişisel hukuki durumuna ilişkin ceza, boşanma/velayet/nafaka, iş mahkemesi/tazminat ve icra-iflas konularında baro adli yardım bürosu veya avukat yönlendirmesi
 
 ### 3.4 Qdrant
 
@@ -217,7 +218,7 @@ Embedding modeli, ilk Docker başlatmasında `model_data` volume'una indirilip �
 
 **PostgreSQL 16** ilişkisel veritabanı olarak kullanılmaktadır. Docker ortamında `postgres:16-alpine` imajı, geliştirme ortamında ise host port `5433` üzerinden erişilmektedir.
 
-**Alembic**, SQLAlchemy ORM ile entegre çalışan bir veritabanı migration aracıdır. Projede 9 sıralı migrasyon bulunmakta; migration zinciri şu tabloları oluşturmaktadır:
+**Alembic**, SQLAlchemy ORM ile entegre çalışan bir veritabanı migration aracıdır. Projede 10 sıralı migrasyon bulunmakta; migration zinciri kullanıcı, sohbet, geri bildirim, paylaşım, zayıf sorgu ve forum tablolarını oluşturmaktadır. Son migrasyon, yalnızca local/dev ortamında demo forum, sohbet ve paylaşım verisi üretir.
 
 | Tablo | Açıklama |
 |-------|----------|
@@ -242,9 +243,9 @@ Uygulama, **Docker Compose** ile dört servis olarak konteynerize edilmiştir:
 | `postgres` | `postgres:16-alpine` | 5433→5432 | İlişkisel veritabanı |
 | `backend` | `./backend/dev-Dockerfile` | 8000 | FastAPI + Uvicorn |
 | `frontend` | `./frontend/dev-Dockerfile` | 5173 | Vite dev server |
-| `migrate` | `./backend/dev-Dockerfile` | — | `alembic upgrade head` çalıştırır, ardından kapanır |
+| `migrate` | `./backend/migration-Dockerfile` | — | `alembic upgrade head` ve admin seed işlemlerini çalıştırır, ardından kapanır |
 
-Servisler arasında sağlık kontrolleri (`healthcheck`) tanımlanmıştır; migrate ve backend postgres sağlıklı olmadan, frontend ise backend sağlıklı olmadan başlamamaktadır. `migrate` servisi açılışta `alembic upgrade head` komutunu çalıştırır ve tamamlanınca kendiliğinden kapanır.
+Servisler arasında sağlık kontrolleri (`healthcheck`) tanımlanmıştır. `migrate` ve `backend` servisleri PostgreSQL sağlıklı olmadan başlamaz; `frontend` servisi ise backend sağlıklı olduktan sonra ayağa kalkar. `migrate` servisi açılışta `alembic upgrade head` ve `python scripts/seed_admin.py` komutlarını çalıştırır, tamamlanınca kendiliğinden kapanır.
 
 **Docker volume'ları:**
 - `postgres_data` — veritabanı kalıcılığı
@@ -265,25 +266,28 @@ Hak-Bul üç katmanlı bir mimari üzerine inşa edilmiştir:
 [React 19 + Vite Frontend — port 5173]
         ↓ REST API çağrıları (Axios)
 [FastAPI Backend — port 8000]
-    ├── RAG Pipeline (Qdrant + Groq)
-    ├── Auth (JWT)
+    ├── RAG Pipeline (kategori + rewrite + Qdrant/local fallback + opsiyonel rerank + Groq)
+    ├── Auth (JWT + HttpOnly cookie tabanlı refresh ve guest session)
     ├── PostgreSQL (SQLAlchemy + Alembic)
     └── Harici Servisler: Groq API, Qdrant Cloud
 ```
 
-Frontend, tüm API isteklerini `VITE_API_URL` ortam değişkeniyle tanımlı backend adresine yönlendirir. Backend, `/ask/stream` endpoint'i üzerinden SSE protokolüyle token bazlı yanıt akışı sağlar.
+Frontend, tüm API isteklerini `VITE_API_URL` ortam değişkeniyle tanımlı backend adresine yönlendirir; Docker geliştirme ortamında Vite proxy hedefi `VITE_PROXY_TARGET=http://backend:8000` olarak ayarlanmıştır. Backend, `/ask/stream` endpoint'i üzerinden önce kaynak ve kategori metadatasını, ardından token bazlı yanıtı SSE protokolüyle gönderir.
 
 ### 4.2 RAG Pipeline Detayı
 
-RAG pipeline'ı `backend/rag/pipeline.py` içindeki `run_pipeline(soru, max_kaynak)` fonksiyonu koordine eder. Bileşenler:
+RAG pipeline'ı `backend/rag/pipeline.py` içindeki `run_pipeline(soru, max_kaynak, language, request_id)` fonksiyonu koordine eder. Streaming endpoint'i aynı retrieval akışını `retrieve_context()` üzerinden kullanır. Bileşenler:
 
 | Adım | Modül | Açıklama |
 |------|-------|----------|
 | 1. Kategorizasyon | `categorizer.py` | Anahtar kelime tabanlı, 14 kategori |
-| 2. Sorgu Yeniden Yazma | `query_rewriter.py` | Groq API ile optimize; hata → orijinal soru |
-| 3. Retrieval | `retriever.py` | Qdrant Cloud'dan chunk getirme; Qdrant yoksa yerel JSON fallback; düşük skor → `weak_queries` |
-| 4. Reranking | `reranker.py` | Benzerlik skoruna göre yeniden sıralama |
-| 5. Yanıt Üretimi | `generator.py` | Groq llama-3.3-70b-versatile; kritik konularda ALO 182 eklenir; `generate_answer_stream()` SSE desteği |
+| 2. Sorgu Yeniden Yazma | `query_rewriter.py` | `llama-3.1-8b-instant` ile optimize; açık kanun/madde referansı veya hata durumunda orijinal soru korunur |
+| 3. Retrieval | `retriever.py` | Qdrant Cloud'dan chunk getirme; Qdrant yapılandırılmamışsa veya erişilemezse 33 kanunluk yerel JSON corpus fallback'i |
+| 4. Kategori Cezası ve Filtreleme | `retriever.py`, `pipeline.py` | Kategoriyle uyumsuz kanunlara soft penalty; `SCORE_THRESHOLD` altı sonuçları süzme; alakasız çok düşük skorları bastırma |
+| 5. Opsiyonel Reranking | `reranker.py` | `RERANKER_ENABLED=true` olduğunda `BAAI/bge-reranker-v2-m3` CrossEncoder ile düşük güvenli adayları yeniden sıralama |
+| 6. Yanıt Üretimi | `generator.py` | `llama-3.3-70b-versatile`; kaynaklara bağlı cevap üretimi; `generate_answer_stream()` ile SSE desteği |
+
+Zayıf sorgu kaydı `main.py` içinde yapılır: `/ask` endpoint'i kaynak bulamazsa veya en yüksek kaynak skoru `SCORE_THRESHOLD` altında kalırsa soru, kategori ve maksimum skor `weak_queries` tablosuna yazılır.
 
 `/ask` endpoint'inin yanıt şeması:
 
@@ -308,16 +312,19 @@ Kimlik doğrulama `backend/auth/` modülü tarafından yönetilmektedir. JWT (JS
 - **Kullanıcı rolleri:** `user` (standart), `lawyer` (avukat), `admin` (yönetici)
 - **Dual-mode:** `get_current_user_optional` ile hem kimlik doğrulamalı hem misafir kullanıcılar desteklenir
 
-Misafir kullanıcılar, `guest_session_id` (UUID) ile tanımlanır; bu değer frontend tarafından `localStorage`'da saklanır.
+Misafir kullanıcılar, `guest_session_id` (UUID) ile tanımlanır. Backend bu değeri `guest_session_id` adlı HttpOnly cookie üzerinden yönetir; request body içinde gelen geçerli misafir UUID'si de geriye dönük uyumluluk için kabul edilir. Frontend tarafındaki Axios ve fetch akışları `withCredentials` / cookie destekli isteklerle çalışır.
 
 ### 4.4 Veritabanı Tasarımı
 
 **Tablo ilişkileri:**
 
-- `chat_history`: `user_id` (auth) veya `guest_session_id` (misafir) — XOR constraint; `category` ve `metadata_json` kolonları; `deleted_at` ile soft-delete
+- `users`: e-posta, bcrypt hash, aktiflik durumu, rol (`user`, `lawyer`, `admin`) ve zaman damgaları
+- `refresh_tokens`: refresh token hash'i, iptal/son kullanım bilgisi ve kullanıcı ilişkisi
+- `chat_history`: `user_id` (auth) veya `guest_session_id` (misafir) — XOR constraint; `conversation_id`, `role`, `title`, `category`, `metadata_json` kolonları; `deleted_at` ile soft-delete
 - `message_feedback`: `message_id` FK → `chat_history.id`; `puan` CHECK constraint (1 veya -1); aynı kullanıcı/oturum tekrar oy verirse günceller
 - `shared_conversations`: `share_token` (URL-safe, 24 byte), `is_active` flag
-- `forum_threads`, `forum_replies`, `forum_votes`: forum içeriği ve oy mekanizması
+- `weak_queries`: düşük güvenli sorgunun metni, maksimum skoru, kategorisi ve kayıt zamanı
+- `forum_threads`, `forum_replies`, `forum_votes`: forum başlıkları, yanıtları, avukat/admin doğrulaması, kilitleme ve tekil oy mekanizması
 
 **Migration zinciri:**
 
@@ -331,6 +338,7 @@ Misafir kullanıcılar, `guest_session_id` (UUID) ile tanımlanır; bu değer fr
 20260326_0007  → chat_history.deleted_at (soft-delete)
 20260330_0008  → lawyer rolü
 20260330_0009  → forum tabloları
+20260428_0010  → local/dev demo forum, sohbet ve paylaşım verisi
 ```
 
 ### 4.5 Frontend Yapısı
@@ -353,11 +361,13 @@ Frontend, `frontend/src/` altında sayfa ve bileşen ayrımıyla organize edilmi
 
 **Bileşenler (`components/`):**
 
-`AuthModal`, `DirekArama`, `FeedbackButonlari`, `GecmisPanel`, `HukukiUyariModal`, `KaynakKarti`, `SohbetMesaji`, `YukleniyorGostergesi`, `AsistanBot`
+`AuthModal`, `DirekArama`, `FeedbackButonlari`, `GecmisPanel`, `HukukiUyariModal`, `KaynakKarti`, `SohbetMesaji`, `YukleniyorGostergesi`
 
 **Global durum:**
 - `DilContext.jsx`: Türkçe/İngilizce dil seçimi (`i18n/tr.js`, `i18n/en.js`)
-- Custom hook `useChat.js`: SSE streaming, `conversation_id` ve `guest_session_id` yönetimi
+- `TemaContext.jsx`: açık/koyu tema yönetimi
+- `AuthContext.jsx`: access token, refresh akışı, kullanıcı profili ve çıkış işlemleri
+- Custom hook `useChat.js`: SSE streaming, belge analizi çağrısı, `conversation_id` ve backend'den dönen misafir oturumu bilgisi yönetimi
 
 ---
 

@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hak-Bul - Rotakur Baslik Sablonu</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #07111f;
+  --bg2: #0d1e33;
+  --bg3: #112540;
+  --gold: #c8a84b;
+  --gold-l: #e0c278;
+  --gold-d: rgba(200,168,75,0.14);
+  --white: #ede9dc;
+  --white2: #b8b4a8;
+  --muted: #5a7088;
+  --blue: #4a8fd4;
+  --green: #4caf7d;
+  --red: #d95555;
+  --border: rgba(200,168,75,0.17);
+  --card: rgba(13,30,51,0.85);
+  --shadow: 0 8px 40px rgba(0,0,0,0.5);
+  --ostim: #9e1b32;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', Calibri, 'Segoe UI', sans-serif;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(200,168,75,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.bg-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: .08;
+}
+
+.bg-glow.tr { top: -120px; right: -120px; width: 480px; height: 480px; background: var(--gold); }
+.bg-glow.bl { bottom: -120px; left: -120px; width: 400px; height: 400px; background: var(--blue); }
+
+.slideshow { position: fixed; inset: 0; z-index: 1; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 72px 78px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+.slide.active { opacity: 1; pointer-events: all; }
+
+.slide:not(.cover-slide):not(.outro-slide)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 25%, var(--gold) 75%, transparent 100%);
+}
+
+.slide-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+.wordmark {
+  color: var(--white);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+.wordmark span { color: var(--gold); }
+
+.slide-header-divider { width: 1px; height: 28px; background: var(--border); }
+
+.slide-header-tag {
+  flex: 1;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.slide-page-num {
+  background: var(--ostim);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+.tag {
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+
+.h1 {
+  color: var(--white);
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.17;
+  margin-bottom: 26px;
+}
+
+.h1 em { color: var(--gold); font-style: normal; }
+
+p { color: var(--white2); font-size: 14px; line-height: 1.65; }
+
+.fill { flex: 1; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.col { display: flex; flex-direction: column; gap: 14px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+}
+
+.card-gold { border-color: var(--gold); }
+.card-blue { border-color: var(--blue); }
+.card-green { border-color: var(--green); }
+.card-red { border-color: var(--red); }
+
+.placeholder {
+  min-height: 142px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  border-style: dashed;
+}
+
+.placeholder strong {
+  color: var(--white);
+  font-size: 13px;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.placeholder span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.mini-label {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.outline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 22px;
+}
+
+.outline-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.outline-item strong {
+  color: var(--gold);
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.outline-item span {
+  color: var(--white2);
+  display: block;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.diagram-box {
+  flex: 1;
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(rgba(200,168,75,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,168,75,0.045) 1px, transparent 1px),
+    var(--card);
+  background-size: 34px 34px;
+  border: 1px dashed rgba(200,168,75,.4);
+  border-radius: 10px;
+}
+
+.diagram-box span {
+  color: var(--muted);
+  font-size: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.tight-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.tight-list li {
+  color: var(--white2);
+  font-size: 12px;
+  line-height: 1.35;
+  padding-left: 14px;
+  position: relative;
+}
+
+.tight-list li::before {
+  color: var(--gold);
+  content: '•';
+  left: 0;
+  position: absolute;
+}
+
+.er-diagram {
+  align-items: center;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1.1fr 1.2fr 1.1fr;
+  padding: 22px;
+  width: 100%;
+}
+
+.er-stack { display: flex; flex-direction: column; gap: 10px; }
+
+.er-node {
+  background: rgba(7,17,31,.82);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.er-node strong {
+  color: var(--white);
+  display: block;
+  font-size: 12px;
+  letter-spacing: .7px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.er-node small {
+  color: var(--muted);
+  display: block;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.er-node.main { border-color: var(--gold); text-align: center; }
+.er-node.vector { border-color: var(--blue); }
+
+.er-arrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.cover-slide {
+  justify-content: center;
+  padding: 64px 76px;
+}
+
+.cover-kicker {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.cover-title {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  font-size: 76px;
+  line-height: .95;
+  margin-bottom: 18px;
+}
+
+.cover-title span { color: var(--gold); }
+
+.cover-subtitle {
+  color: var(--white2);
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 680px;
+}
+
+.cover-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 64px;
+}
+
+.meta-box {
+  background: rgba(13,30,51,.72);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.meta-box .lbl {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.meta-box .val {
+  color: var(--white);
+  font-size: 14px;
+}
+
+.outro-slide {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.outro-thanks {
+  color: var(--white);
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  font-size: 56px;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.nav-dots {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  z-index: 5;
+  display: flex;
+  gap: 7px;
+  transform: translateX(-50%);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(237,233,220,.25);
+  cursor: pointer;
+}
+
+.dot.active { background: var(--gold); }
+
+.counter {
+  position: fixed;
+  right: 26px;
+  bottom: 22px;
+  z-index: 5;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.key-hint {
+  position: fixed;
+  left: 26px;
+  bottom: 22px;
+  z-index: 5;
+  color: rgba(184,180,168,.55);
+  font-size: 11px;
+}
+
+@media (max-width: 860px) {
+  .slide { padding: 34px 28px 76px; }
+  .h1 { font-size: 32px; }
+  .cover-title { font-size: 54px; }
+  .g2, .g3, .g4, .outline, .cover-meta { grid-template-columns: 1fr; }
+  .diagram-box { min-height: 320px; }
+  .key-hint { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow tr"></div>
+<div class="bg-glow bl"></div>
+
+<main class="slideshow" id="slideshow">
+  <section class="slide cover-slide active">
+    <div class="cover-kicker">OSTİM Technical University · Computer Engineering</div>
+    <h1 class="cover-title">Hak<span>-Bul</span></h1>
+    <p class="cover-subtitle">AI-Powered Legal Assistant for Turkish Law — RAG-based web application that answers citizens' legal questions with cited sources from Turkish legislation and Supreme Court decisions.</p>
+    <div class="cover-meta">
+      <div class="meta-box"><div class="lbl">Team</div><div class="val" style="font-size:11px;line-height:1.4;">Erdem Susam<br>Mustafa Şahin<br>Ömer Faruk Güneş<br>Yağız Han Arslan</div></div>
+      <div class="meta-box"><div class="lbl">Course</div><div class="val">MFBP 402<br>Graduation Project II</div></div>
+      <div class="meta-box"><div class="lbl">Date</div><div class="val">May 18, 2026</div></div>
+      <div class="meta-box"><div class="lbl">Advisor</div><div class="val">Dr. Nergiz<br>Khankishiyeva Hati</div></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header">
+      <div class="wordmark">Hak<span>-Bul</span></div>
+      <div class="slide-header-divider"></div>
+      <div class="slide-header-tag">Table of Contents</div>
+      <div class="slide-page-num">01</div>
+    </div>
+    <div class="tag">Table of Contents</div>
+    <h1 class="h1">Table of <em>Contents</em></h1>
+    <div class="outline fill">
+      <div class="outline-item"><strong>1. Introduction</strong><span>1.1 Problem Statement<br>1.2 Purpose and Target Audience<br>1.3 Significance Of The Project<br>1.4 Literature Research<br>1.5 Innovative Aspects</span></div>
+      <div class="outline-item"><strong>2. Software Development</strong><span>2.1 Requirements Analysis<br>2.2 Software Process<br>2.3 Architectural Design<br>2.4 Context Diagram</span></div>
+      <div class="outline-item"><strong>2. Software Development</strong><span>2.5 Use Case Diagram<br>2.6 Sequence Diagram<br>2.7 Data Flow Diagram<br>2.8 Behavioral Model</span></div>
+      <div class="outline-item"><strong>3. Database Design</strong><span>3.1 Key Tables<br>3.2 ER Diagram</span></div>
+      <div class="outline-item"><strong>4. Result</strong><span>4.1 Used Technologies<br>4.2 Conclusion and Future Plans</span></div>
+      <div class="outline-item"><strong>Closing</strong><span>Thank you for listening!</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">1. Introduction</div><div class="slide-page-num">02</div></div>
+    <div class="tag">1. Introduction</div>
+    <h1 class="h1">1. <em>Introduction</em></h1>
+    <div class="g2 fill">
+      <div class="card card-red">
+        <div class="mini-label">🎯 1.1 Problem Statement</div>
+        <p>Access to legal information in Turkey is economically and practically difficult. Attorney fees are often unaffordable; hundreds of statutes, thousands of regulations, and ever-updating Supreme Court decisions make navigation nearly impossible for ordinary citizens.</p>
+        <ul style="margin-top:14px;list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:12.5px;color:var(--white2);padding-left:20px;position:relative;"><span style="position:absolute;left:0;">💸</span>High cost of professional legal consultation</li>
+          <li style="font-size:12.5px;color:var(--white2);padding-left:20px;position:relative;"><span style="position:absolute;left:0;">📚</span>Complex, fragmented Turkish legislation (33+ core laws)</li>
+          <li style="font-size:12.5px;color:var(--white2);padding-left:20px;position:relative;"><span style="position:absolute;left:0;">🤖</span>No reliable AI tool for Turkish legal domain</li>
+        </ul>
+      </div>
+      <div class="card card-green">
+        <div class="mini-label">🚀 1.2 Purpose &amp; Target Audience</div>
+        <p>Hak-Bul enables citizens to ask legal questions in plain Turkish and receive cited, source-backed answers drawn from Turkish legislation and Yargıtay (Supreme Court) decisions.</p>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">
+          <div style="background:rgba(76,175,125,.08);border-left:3px solid var(--green);padding:8px 12px;border-radius:0 6px 6px 0;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:3px;">👥 Primary Users</div>
+            <p style="font-size:12px;">Citizens with everyday legal questions (tenancy, employment, consumer rights)</p>
+          </div>
+          <div style="background:rgba(76,175,125,.08);border-left:3px solid var(--green);padding:8px 12px;border-radius:0 6px 6px 0;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:3px;">💡 Solution</div>
+            <p style="font-size:12px;">RAG pipeline · 75,789 legal chunks · 14 law categories · Groq Llama-3.3-70b</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">1.3 Significance Of The Project</div><div class="slide-page-num">03</div></div>
+    <div class="tag">1. Introduction</div>
+    <h1 class="h1">1.3 Significance Of <em>The Project</em></h1>
+    <div class="g3 fill">
+      <div class="card card-gold">
+        <div class="mini-label">⚖️ Access to Justice</div>
+        <div style="font-size:24px;margin-bottom:10px;text-align:center;">🏛️</div>
+        <p>Democratizes legal knowledge by providing <em style="color:var(--gold);">free, instant</em> guidance to citizens who cannot afford attorneys — aligned with the UN's SDG 16 (Peace, Justice &amp; Strong Institutions).</p>
+      </div>
+      <div class="card card-blue">
+        <div class="mini-label">🤖 AI for Turkish Law</div>
+        <div style="font-size:24px;margin-bottom:10px;text-align:center;">🧠</div>
+        <p>First Turkish-specific legal RAG system with a <em style="color:var(--blue);">75,789-chunk corpus</em> (66,755 Supreme Court decisions + 9,034 statute articles) and verified retrieval@5 accuracy of <strong style="color:var(--gold);">81.4%</strong>.</p>
+      </div>
+      <div class="card card-green">
+        <div class="mini-label">🛡️ Responsible AI</div>
+        <div style="font-size:24px;margin-bottom:10px;text-align:center;">⚖️</div>
+        <p>Integrates strict ethical guidelines and guardrails, explicitly advising users to consult professional legal counsel for high-stakes matters to ensure safety and compliance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">1.4 Literature Research</div><div class="slide-page-num">04</div></div>
+    <div class="tag">1. Introduction</div>
+    <h1 class="h1">1.4 Literature <em>Research</em></h1>
+    <div class="g2 fill">
+      <div class="card">
+        <div class="mini-label">💬 General Purpose LLMs (GPT-4)</div>
+        <p>Provide robust reasoning and natural language generation. While highly capable, they require domain-specific grounding (RAG) to ensure accuracy and provide exact citations for Turkish legal texts.</p>
+      </div>
+      <div class="card">
+        <div class="mini-label">📚 Domain-Specific Models (LEGAL-BERT)</div>
+        <p>Pioneering works by Chalkidis et al. established the effectiveness of specialized embeddings for legal NLP, primarily focusing on classification and representation in English contexts.</p>
+      </div>
+      <div class="card">
+        <div class="mini-label">🏛️ Traditional Legal Portals</div>
+        <p>Official platforms like Mevzuat.gov.tr offer comprehensive, authoritative archives of Turkish law, relying on exact-match keyword search paradigms for document retrieval.</p>
+      </div>
+      <div class="card card-gold">
+        <div class="mini-label">🏆 Hak-Bul's Contribution</div>
+        <p>Synergizes the reasoning power of LLMs with a <strong style="color:var(--gold);">custom RAG architecture</strong>. It utilizes semantic embeddings over a vast Turkish legal corpus to deliver accurate, context-aware, and fully cited responses.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">1.5 Innovative Aspects</div><div class="slide-page-num">05</div></div>
+    <div class="tag">1. Introduction</div>
+    <h1 class="h1">1.5 Innovative <em>Aspects</em></h1>
+    <div class="g2 fill">
+      <div class="card card-gold">
+        <div class="mini-label">🔍 8-Step RAG Pipeline</div>
+        <div style="font-size:28px; float:right; margin:-5px -5px 5px 15px;">🔄</div>
+        <p>Query categorization (14 legal domains) → rewriting → dual-collection Qdrant retrieval → cross-encoder reranking → Llama generation. Category penalty suppresses off-topic results by <strong style="color:var(--gold);">50%</strong>.</p>
+      </div>
+      <div class="card card-blue">
+        <div class="mini-label">📡 Real-Time SSE Streaming</div>
+        <div style="font-size:28px; float:right; margin:-5px -5px 5px 15px;">⚡</div>
+        <p>Answers stream token-by-token via Server-Sent Events, providing a <em>near-instant</em> response feel powered by Groq's LPU inference (<strong style="color:var(--blue);">Llama-3.3-70b-versatile</strong>, 128k context window).</p>
+      </div>
+      <div class="card card-green">
+        <div class="mini-label">🛡️ Reliable Guardrails</div>
+        <div style="font-size:28px; float:right; margin:-5px -5px 5px 15px;">🛡️</div>
+        <p>Implements ethical AI safeguards for sensitive legal matters. Features continuous weak-query logging to monitor low-confidence retrievals and actively expand the legal corpus.</p>
+      </div>
+      <div class="card card-red">
+        <div class="mini-label">📄 Beyond Chat</div>
+        <div style="font-size:28px; float:right; margin:-5px -5px 5px 15px;">🧩</div>
+        <p>PDF document analysis &amp; comparison, legal document template generation (ReportLab), community forum with lawyer-verified replies, and an admin analytics dashboard — all in one platform.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2. Software Development</div><div class="slide-page-num">06</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2. Software <em>Development</em></h1>
+    <div class="g2 fill">
+      <div class="card placeholder"><strong>2.1 Requirements Analysis</strong><span>Requirements analysis content will be added here.</span></div>
+      <div class="card placeholder"><strong>2.1.1 User Requirements</strong><span>User requirements content will be added here.</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.1.2 System Requirements</div><div class="slide-page-num">07</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.1.2 System <em>Requirements</em></h1>
+    <div class="g2 fill">
+      <div class="card placeholder"><strong>Functional System Requirements</strong><span>Functional requirements will be added here.</span></div>
+      <div class="card placeholder"><strong>Non-Functional System Requirements</strong><span>Non-functional requirements will be added here.</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.2 Software Process</div><div class="slide-page-num">08</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.2 Software <em>Process</em></h1>
+    <div class="g3 fill">
+      <div class="card placeholder"><strong>Process Model</strong><span>Fill with process model.</span></div>
+      <div class="card placeholder"><strong>Workflow</strong><span>Fill with workflow details.</span></div>
+      <div class="card placeholder"><strong>Project Evidence</strong><span>Fill with sprint / commit / delivery evidence.</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.3 Architectural Design</div><div class="slide-page-num">09</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.3 Architectural <em>Design</em></h1>
+    <div class="g3 fill">
+      <div class="card placeholder"><strong>Layer / Module 1</strong><span>Fill architectural layer or module.</span></div>
+      <div class="card placeholder"><strong>Layer / Module 2</strong><span>Fill architectural layer or module.</span></div>
+      <div class="card placeholder"><strong>Layer / Module 3</strong><span>Fill architectural layer or module.</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.4 Context Diagram</div><div class="slide-page-num">10</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.4 Context <em>Diagram</em></h1>
+    <div class="diagram-box"><span>Context diagram placeholder</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.5 Use Case Diagram</div><div class="slide-page-num">11</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.5 Use Case <em>Diagram</em></h1>
+    <div class="diagram-box"><span>Use case diagram placeholder</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.6 Sequence Diagram</div><div class="slide-page-num">12</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.6 Sequence <em>Diagram</em></h1>
+    <div class="diagram-box"><span>Sequence diagram placeholder</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.7 Data Flow Diagram</div><div class="slide-page-num">13</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.7 Data Flow <em>Diagram</em></h1>
+    <div class="diagram-box"><span>Data flow diagram placeholder</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.8 Behavioral Model</div><div class="slide-page-num">14</div></div>
+    <div class="tag">2. Software Development</div>
+    <h1 class="h1">2.8 Behavioral <em>Model</em></h1>
+    <div class="diagram-box"><span>Behavioral model placeholder</span></div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">3. Database Design</div><div class="slide-page-num">15</div></div>
+    <div class="tag">3. Database Design</div>
+    <h1 class="h1">3. Database <em>Design</em></h1>
+    <div class="g2 fill">
+      <div class="card card-gold">
+        <div class="mini-label">3.1 Key Tables</div>
+        <p>PostgreSQL (dev &amp; production) stores all relational application data across 9 tables managed via Alembic migrations.</p>
+        <ul class="tight-list">
+          <li><strong>Identity:</strong> users, refresh_tokens</li>
+          <li><strong>Chat:</strong> chat_history, message_feedback, shared_conversations</li>
+          <li><strong>Quality:</strong> weak_queries — low-confidence retrieval logging</li>
+          <li><strong>Forum:</strong> forum_threads, forum_replies, forum_votes</li>
+        </ul>
+      </div>
+      <div class="card card-blue">
+        <div class="mini-label">Database Notes</div>
+        <p>10 Alembic migrations (0001–0010) govern the schema. Soft-delete via <code style="color:var(--gold);font-size:11px;">deleted_at</code> is used in chat_history, forum_threads, and forum_replies.</p>
+        <ul class="tight-list">
+          <li>chat_history and message_feedback support both authenticated users and guests (XOR on user_id / guest_session_id).</li>
+          <li>message_feedback uniqueness is enforced at the <strong>service layer</strong>, not DB-level constraint.</li>
+          <li><strong>Qdrant is separate:</strong> vector store for legal chunks — no FK to PostgreSQL.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">3.2 ER Diagram</div><div class="slide-page-num">16</div></div>
+    <div class="tag">3. Database Design</div>
+    <h1 class="h1">3.2 ER <em>Diagram</em></h1>
+    <div class="diagram-box" style="padding:0; place-items:stretch; overflow:hidden;">
+      <svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;" font-family="'Gill Sans','Trebuchet MS',Calibri,'Segoe UI',sans-serif">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+            <path d="M0,0 L0,7 L8,3.5 Z" fill="#c8a84b" opacity=".75"/>
+          </marker>
+          <marker id="arr-b" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+            <path d="M0,0 L0,7 L8,3.5 Z" fill="#4a8fd4" opacity=".75"/>
+          </marker>
+          <marker id="arr-g" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+            <path d="M0,0 L0,7 L8,3.5 Z" fill="#4caf7d" opacity=".75"/>
+          </marker>
+          <marker id="arr-d" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+            <path d="M0,0 L0,7 L8,3.5 Z" fill="#5a7088" opacity=".75"/>
+          </marker>
+        </defs>
+
+        <!-- ═══════════ NODES ═══════════ -->
+
+        <!-- USERS (center) -->
+        <rect x="390" y="185" width="200" height="70" rx="8" fill="rgba(7,17,31,.9)" stroke="#c8a84b" stroke-width="1.8"/>
+        <text x="490" y="207" text-anchor="middle" fill="#c8a84b" font-size="10" font-weight="700" letter-spacing="1.5">USERS</text>
+        <line x1="405" y1="212" x2="575" y2="212" stroke="#c8a84b" stroke-width=".5" opacity=".4"/>
+        <text x="490" y="226" text-anchor="middle" fill="#b8b4a8" font-size="9.5">id · email · password_hash</text>
+        <text x="490" y="239" text-anchor="middle" fill="#b8b4a8" font-size="9.5">role · is_active · created_at · updated_at</text>
+
+        <!-- refresh_tokens -->
+        <rect x="30" y="20" width="178" height="62" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="119" y="39" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">REFRESH_TOKENS</text>
+        <line x1="44" y1="44" x2="194" y2="44" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="119" y="57" text-anchor="middle" fill="#5a7088" font-size="9">user_id · jti · token_hash</text>
+        <text x="119" y="69" text-anchor="middle" fill="#5a7088" font-size="9">expires_at · revoked_at · replaced_by_jti</text>
+
+        <!-- chat_history -->
+        <rect x="30" y="150" width="178" height="68" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="119" y="169" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">CHAT_HISTORY</text>
+        <line x1="44" y1="174" x2="194" y2="174" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="119" y="187" text-anchor="middle" fill="#5a7088" font-size="9">user_id / guest_session_id (XOR)</text>
+        <text x="119" y="199" text-anchor="middle" fill="#5a7088" font-size="9">conversation_id · role* · title · category</text>
+        <text x="119" y="211" text-anchor="middle" fill="#5a7088" font-size="9">metadata_json · deleted_at</text>
+
+        <!-- message_feedback -->
+        <rect x="30" y="285" width="178" height="62" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="119" y="303" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">MESSAGE_FEEDBACK</text>
+        <line x1="44" y1="308" x2="194" y2="308" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="119" y="321" text-anchor="middle" fill="#5a7088" font-size="9">message_id · puan (1 / -1)</text>
+        <text x="119" y="333" text-anchor="middle" fill="#5a7088" font-size="9">user_id / guest_session_id †</text>
+
+        <!-- shared_conversations -->
+        <rect x="30" y="390" width="178" height="62" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="119" y="408" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">SHARED_CONVERSATIONS</text>
+        <line x1="44" y1="413" x2="194" y2="413" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="119" y="426" text-anchor="middle" fill="#5a7088" font-size="9">user_id · conversation_id</text>
+        <text x="119" y="438" text-anchor="middle" fill="#5a7088" font-size="9">share_token · is_active · created_at</text>
+
+        <!-- forum_threads -->
+        <rect x="772" y="20" width="178" height="68" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="861" y="39" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">FORUM_THREADS</text>
+        <line x1="786" y1="44" x2="936" y2="44" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="861" y="57" text-anchor="middle" fill="#5a7088" font-size="9">user_id · title · content · category</text>
+        <text x="861" y="69" text-anchor="middle" fill="#5a7088" font-size="9">is_locked · updated_at · deleted_at</text>
+
+        <!-- forum_replies -->
+        <rect x="772" y="155" width="178" height="68" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="861" y="174" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">FORUM_REPLIES</text>
+        <line x1="786" y1="179" x2="936" y2="179" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="861" y="192" text-anchor="middle" fill="#5a7088" font-size="9">thread_id · user_id · content</text>
+        <text x="861" y="204" text-anchor="middle" fill="#5a7088" font-size="9">is_verified · updated_at · deleted_at</text>
+
+        <!-- forum_votes -->
+        <rect x="772" y="290" width="178" height="74" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="861" y="309" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">FORUM_VOTES</text>
+        <line x1="786" y1="314" x2="936" y2="314" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="861" y="327" text-anchor="middle" fill="#5a7088" font-size="9">user_id · target_type</text>
+        <text x="861" y="339" text-anchor="middle" fill="#5a7088" font-size="9">target_id · value (±1)</text>
+        <text x="861" y="351" text-anchor="middle" fill="#5a7088" font-size="9">→ "thread" | "reply"</text>
+
+        <!-- weak_queries -->
+        <rect x="390" y="390" width="200" height="62" rx="7" fill="rgba(7,17,31,.9)" stroke="rgba(200,168,75,.3)" stroke-width="1"/>
+        <text x="490" y="409" text-anchor="middle" fill="#ede9dc" font-size="9.5" font-weight="700" letter-spacing="1">WEAK_QUERIES</text>
+        <line x1="405" y1="414" x2="575" y2="414" stroke="rgba(200,168,75,.25)" stroke-width=".5"/>
+        <text x="490" y="427" text-anchor="middle" fill="#5a7088" font-size="9">soru · max_skor · kategori</text>
+        <text x="490" y="439" text-anchor="middle" fill="#5a7088" font-size="9">created_at (no user FK)</text>
+
+        <!-- Qdrant (external) -->
+        <rect x="390" y="20" width="200" height="80" rx="7" fill="rgba(7,17,31,.9)" stroke="#4a8fd4" stroke-width="1.4" stroke-dasharray="5,3"/>
+        <text x="490" y="41" text-anchor="middle" fill="#4a8fd4" font-size="9.5" font-weight="700" letter-spacing="1">QDRANT VECTOR STORE</text>
+        <line x1="405" y1="46" x2="575" y2="46" stroke="#4a8fd4" stroke-width=".5" opacity=".4"/>
+        <text x="490" y="59" text-anchor="middle" fill="#5a7088" font-size="9">hukuk_chunks collection</text>
+        <text x="490" y="71" text-anchor="middle" fill="#5a7088" font-size="9">embeddings · legal metadata</text>
+        <text x="490" y="83" text-anchor="middle" fill="#4a8fd4" font-size="8.5" font-style="italic">No FK to PostgreSQL</text>
+
+        <!-- ═══════════ RELATIONS ═══════════ -->
+
+        <!-- users → refresh_tokens -->
+        <path d="M390,207 L230,51" fill="none" stroke="#c8a84b" stroke-width="1.1" opacity=".6" marker-end="url(#arr)"/>
+        <text x="300" y="118" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- users → chat_history -->
+        <path d="M390,215 L208,184" fill="none" stroke="#c8a84b" stroke-width="1.1" opacity=".6" marker-end="url(#arr)"/>
+        <text x="295" y="196" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- users → message_feedback -->
+        <path d="M390,225 L208,316" fill="none" stroke="#c8a84b" stroke-width="1.1" opacity=".6" marker-end="url(#arr)"/>
+        <text x="290" y="278" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- users → shared_conversations -->
+        <path d="M390,230 L208,421" fill="none" stroke="#c8a84b" stroke-width="1.1" opacity=".6" marker-end="url(#arr)"/>
+        <text x="285" y="345" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- users → forum_threads -->
+        <path d="M590,207 L772,54" fill="none" stroke="#c8a84b" stroke-width="1.1" opacity=".6" marker-end="url(#arr)"/>
+        <text x="690" y="118" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- users → forum_replies -->
+        <path d="M590,215 L772,189" fill="none" stroke="#c8a84b" stroke-width="1.1" opacity=".6" marker-end="url(#arr)"/>
+        <text x="690" y="200" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- users → forum_votes -->
+        <path d="M590,225 L772,327" fill="none" stroke="#c8a84b" stroke-width="1.1" opacity=".6" marker-end="url(#arr)"/>
+        <text x="700" y="285" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- chat_history → message_feedback -->
+        <path d="M119,285 L119,347" fill="none" stroke="#4caf7d" stroke-width="1.1" opacity=".7" marker-end="url(#arr-g)"/>
+        <text x="133" y="319" fill="#4caf7d" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- forum_threads → forum_replies -->
+        <path d="M861,88 L861,155" fill="none" stroke="#4caf7d" stroke-width="1.1" opacity=".7" marker-end="url(#arr-g)"/>
+        <text x="875" y="124" fill="#4caf7d" font-size="8.5" opacity=".8">1:N</text>
+
+        <!-- forum_votes → forum_threads (polymorphic) -->
+        <path d="M861,290 C861,260 861,180 861,138" fill="none" stroke="#5a7088" stroke-width="1" opacity=".6" stroke-dasharray="4,2" marker-end="url(#arr-d)"/>
+
+        <!-- forum_votes → forum_replies (polymorphic) -->
+        <path d="M880,290 C900,270 900,240 880,223" fill="none" stroke="#5a7088" stroke-width="1" opacity=".6" stroke-dasharray="4,2" marker-end="url(#arr-d)"/>
+
+        <!-- polymorphic label -->
+        <text x="918" y="258" fill="#5a7088" font-size="8" font-style="italic">poly</text>
+
+        <!-- RAG arrow: Qdrant → chat_history (dashed blue) -->
+        <path d="M390,80 C300,80 250,100 208,165" fill="none" stroke="#4a8fd4" stroke-width="1" opacity=".5" stroke-dasharray="5,3" marker-end="url(#arr-b)"/>
+        <text x="285" y="96" text-anchor="middle" fill="#4a8fd4" font-size="8" font-style="italic" opacity=".8">RAG retrieval</text>
+
+        <!-- ═══════════ LEGEND ═══════════ -->
+        <rect x="600" y="390" width="350" height="68" rx="6" fill="rgba(7,17,31,.7)" stroke="rgba(200,168,75,.2)" stroke-width=".8"/>
+        <text x="775" y="407" text-anchor="middle" fill="#5a7088" font-size="8.5" font-weight="700" letter-spacing="1.5">LEGEND</text>
+        <line x1="615" y1="422" x2="640" y2="422" stroke="#c8a84b" stroke-width="1.2" opacity=".7" marker-end="url(#arr)"/>
+        <text x="648" y="426" fill="#b8b4a8" font-size="8.5">FK relation (1:N)</text>
+        <line x1="726" y1="422" x2="751" y2="422" stroke="#4caf7d" stroke-width="1.2" opacity=".7" marker-end="url(#arr-g)"/>
+        <text x="759" y="426" fill="#b8b4a8" font-size="8.5">Parent→Child</text>
+        <line x1="615" y1="442" x2="640" y2="442" stroke="#5a7088" stroke-width="1" opacity=".7" stroke-dasharray="4,2" marker-end="url(#arr-d)"/>
+        <text x="648" y="443" fill="#b8b4a8" font-size="8.5">Polymorphic</text>
+        <text x="648" y="453" fill="#5a7088" font-size="7.5">(target_type)</text>
+        <line x1="726" y1="442" x2="751" y2="442" stroke="#4a8fd4" stroke-width="1" opacity=".7" stroke-dasharray="5,3" marker-end="url(#arr-b)"/>
+        <text x="759" y="446" fill="#b8b4a8" font-size="8.5">RAG / no FK</text>
+
+        <!-- footnotes -->
+        <text x="30" y="462" fill="#5a7088" font-size="8">* role: system | user | assistant</text>
+        <text x="240" y="462" fill="#5a7088" font-size="8">† uniqueness enforced at service layer, not DB-level</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">4.1 Used Technologies</div><div class="slide-page-num">17</div></div>
+    <div class="tag">4. Result</div>
+    <h1 class="h1">4.1 Used <em>Technologies</em></h1>
+    <div class="g4 fill">
+      <div class="card card-gold"><div class="mini-label">Programming Languages</div><p>Python 3.11 powers the backend and RAG pipeline. JavaScript/JSX builds the frontend. SQL is used for relational persistence and migrations.</p></div>
+      <div class="card card-blue"><div class="mini-label">Frameworks</div><p>FastAPI, SQLAlchemy, and Alembic form the API and database layer. React 19, Vite, Tailwind CSS, and ESLint support the user interface.</p></div>
+      <div class="card card-green"><div class="mini-label">Databases / Retrieval</div><p>PostgreSQL stores application records. Qdrant performs vector search over legal chunks. Local JSON corpus fallback supports development and resilience.</p></div>
+      <div class="card card-red"><div class="mini-label">Security / AI</div><p>JWT access tokens, refresh rotation, HttpOnly cookies, and bcrypt protect accounts. Groq Llama models generate answers and rewrite queries.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">4.2 Conclusion and Future Plans</div><div class="slide-page-num">18</div></div>
+    <div class="tag">4. Result</div>
+    <h1 class="h1">4.2 Conclusion and <em>Future Plans</em></h1>
+    <div class="g3 fill">
+      <div class="card card-gold"><div class="mini-label">Conclusion</div><p>Hak-Bul delivers a source-backed legal assistant for Turkish law with chat, streaming answers, PDF analysis, document templates, forum workflows, and admin analytics.</p></div>
+      <div class="card card-blue"><div class="mini-label">Future Plan 1</div><p>Improve retrieval quality by expanding the legal corpus, tuning category penalties, enabling reranker workflows, and tracking objective retrieval metrics.</p></div>
+      <div class="card card-green"><div class="mini-label">Future Plan 2</div><p>Harden production with monitoring, retry and failover behavior, response caching, deployment smoke tests, and clearer operational dashboards.</p></div>
+    </div>
+  </section>
+
+  <section class="slide outro-slide">
+    <div class="tag">Closing</div>
+    <div class="outro-thanks">Thank you for<br>listening!</div>
+    <div class="wordmark">Hak<span>-Bul</span></div>
+    <p style="margin-top: 16px;">Contact / team / institution information placeholder.</p>
+  </section>
+</main>
+
+<div class="nav-dots" id="navDots"></div>
+<div class="counter" id="counter"></div>
+<div class="key-hint">Left / Right - Space - navigation</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const navDots = document.getElementById('navDots');
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    navDots.appendChild(dot);
+  });
+
+  function updateUI() {
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+    document.querySelectorAll('.dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(index) {
+    if (index < 0 || index >= slides.length || index === current) return;
+    slides[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    updateUI();
+  }
+
+  document.addEventListener('keydown', event => {
+    if (['ArrowRight', 'ArrowDown', ' '].includes(event.key)) {
+      event.preventDefault();
+      goTo(current + 1);
+    } else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) {
+      event.preventDefault();
+      goTo(current - 1);
+    } else if (event.key === 'Home') {
+      goTo(0);
+    } else if (event.key === 'End') {
+      goTo(slides.length - 1);
+    }
+  });
+
+  let touchX = 0;
+  document.addEventListener('touchstart', event => {
+    touchX = event.touches[0].clientX;
+  }, { passive: true });
+
+  document.addEventListener('touchend', event => {
+    const diff = touchX - event.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+  });
+
+  updateUI();
+})();
+</script>
+</body>
+</html>

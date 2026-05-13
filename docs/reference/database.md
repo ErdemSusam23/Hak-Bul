@@ -1,6 +1,8 @@
 # Veri Şeması
 
-Bu belge PostgreSQL tablolarını, migration zincirini ve retrieval veri yüzeyini özetler.
+Bu belge ilişkisel uygulama verisini, migration zincirini ve retrieval veri yüzeyini özetler.
+Production ortamında ana ilişkisel veritabanı PostgreSQL olarak hedeflenir; local geliştirmede
+`DATABASE_URL` verilmezse varsayılan bağlantı `sqlite:///./hakbul.db` olur.
 
 ## Alembic Zinciri
 
@@ -30,7 +32,7 @@ Not:
 - `20260428_0010` şema değiştirmez.
 - Sadece `APP_ENV=local|dev|development` olduğunda demo kullanıcı, forum, chat, feedback ve shared conversation verisi üretir.
 
-## PostgreSQL Tabloları
+## İlişkisel Veritabanı Tabloları
 
 | Tablo | Açıklama |
 |---|---|
@@ -76,7 +78,7 @@ Tipik alanlar:
 - `id`
 - `user_id` veya `guest_session_id`
 - `conversation_id`
-- `role`: `user | assistant`
+- `role`: `system | user | assistant`
 - `content`
 - `title`
 - `category`
@@ -100,7 +102,9 @@ Kurallar:
 | `created_at` | Kayıt zamanı |
 
 Davranış:
-- Aynı kullanıcı veya guest oturumu aynı mesaja yeniden oy verirse kayıt güncellenir.
+- Aynı kullanıcı veya guest oturumu aynı mesaja yeniden oy verirse servis katmanı mevcut kaydı günceller.
+- Bu davranış DB-level unique constraint ile değil, `feedback_service.py` içindeki sorgu mantığıyla sağlanır.
+- `user_id` ve `guest_session_id` için `chat_history` tablosundaki gibi DB-level XOR constraint yoktur.
 
 ## `weak_queries`
 
@@ -174,6 +178,13 @@ Güncel yapı:
 - Opsiyonel ikinci collection: `settings.COLLECTION_KANUN_NAME`
 - Distance metric: cosine
 - Embedding model: `intfloat/multilingual-e5-base`
+
+Konumlandırma:
+- Qdrant ilişkisel uygulama veritabanı değildir; vector database / retrieval store olarak kullanılır.
+- PostgreSQL/SQLite tarafındaki tablolarla foreign key ilişkisi yoktur.
+- Kullanıcı, sohbet, forum, token ve paylaşım state'i ilişkisel veritabanında tutulur.
+- Hukuki kaynak parçaları, embedding vektörleri ve kaynak metadata'sı Qdrant payload'larında tutulur.
+- Asistan cevaplarında kullanılan kaynak özetleri `chat_history.metadata_json` içine yazılabilir.
 
 ## Local Retrieval Corpus
 

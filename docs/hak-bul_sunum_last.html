@@ -167,6 +167,77 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
 .card-green { border-color: var(--green); }
 .card-red { border-color: var(--red); }
 
+.info-card {
+  min-height: 178px;
+}
+
+.info-card strong {
+  color: var(--white);
+  display: block;
+  font-size: 17px;
+  letter-spacing: 1.4px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.info-card p {
+  font-size: 18px;
+  line-height: 1.42;
+  margin-bottom: 12px;
+}
+
+.info-card ul {
+  display: grid;
+  gap: 9px;
+  list-style: none;
+}
+
+.info-card li {
+  color: var(--white2);
+  font-size: 16px;
+  line-height: 1.34;
+  padding-left: 18px;
+  position: relative;
+}
+
+.info-card li::before {
+  background: var(--gold);
+  border-radius: 50%;
+  content: '';
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: .62em;
+  width: 5px;
+}
+
+.process-step {
+  min-height: 230px;
+  position: relative;
+}
+
+.step-num {
+  color: rgba(224,194,120,.16);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  position: absolute;
+  right: 18px;
+  top: 14px;
+}
+
+.tech-stack-note {
+  border-top: 1px solid rgba(200,168,75,.18);
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  margin-top: 12px;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+
 .placeholder {
   min-height: 142px;
   display: flex;
@@ -237,6 +308,8 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
   background-size: 34px 34px;
   border: 1px dashed rgba(200,168,75,.4);
   border-radius: 10px;
+  overflow: hidden;
+  padding: 16px;
 }
 
 .diagram-box span {
@@ -245,6 +318,54 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+
+.svg-diagram {
+  height: 100%;
+  min-height: 398px;
+  width: 100%;
+}
+
+.svg-title {
+  fill: var(--gold);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.svg-label {
+  fill: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.svg-small {
+  fill: var(--white2);
+  font-size: 11px;
+}
+
+.svg-tiny {
+  fill: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.svg-node {
+  fill: rgba(13,30,51,.94);
+  stroke: rgba(200,168,75,.62);
+  stroke-width: 1.5;
+}
+
+.svg-node-blue { stroke: rgba(74,143,212,.8); }
+.svg-node-green { stroke: rgba(76,175,125,.8); }
+.svg-node-red { stroke: rgba(217,85,85,.8); }
+.svg-boundary { fill: rgba(7,17,31,.42); stroke: rgba(200,168,75,.34); stroke-dasharray: 8 8; stroke-width: 1.4; }
+.svg-line { stroke: rgba(224,194,120,.78); stroke-width: 2; fill: none; }
+.svg-line-blue { stroke: rgba(74,143,212,.82); }
+.svg-line-green { stroke: rgba(76,175,125,.82); }
+.svg-line-muted { stroke: rgba(184,180,168,.45); }
 
 .tight-list {
   display: flex;
@@ -583,8 +704,26 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2. Software <em>Development</em></h1>
     <div class="g2 fill">
-      <div class="card placeholder"><strong>2.1 Requirements Analysis</strong><span>Requirements analysis content will be added here.</span></div>
-      <div class="card placeholder"><strong>2.1.1 User Requirements</strong><span>User requirements content will be added here.</span></div>
+      <div class="card info-card card-gold">
+        <strong>2.1 Requirements Analysis</strong>
+        <p>Hak-Bul is designed as a web-based legal information assistant for Turkish law. The main requirement is to transform a user's natural-language question into a cited, understandable, and non-advisory legal information response.</p>
+        <ul>
+          <li>Accept Turkish and English legal questions from registered users and guests.</li>
+          <li>Retrieve relevant legislation and court-decision chunks before generating an answer.</li>
+          <li>Show source summaries, legal category, confidence signals, and an informational warning.</li>
+          <li>Support document analysis, document comparison, templates, forum activity, and admin monitoring.</li>
+        </ul>
+      </div>
+      <div class="card info-card card-blue">
+        <strong>2.1.1 User Requirements</strong>
+        <p>The target user needs fast legal orientation without learning legal terminology or manually searching many official resources.</p>
+        <ul>
+          <li>Ask a legal question in everyday language and receive a clear answer.</li>
+          <li>Inspect which law article or Yargitay decision supports the response.</li>
+          <li>Continue conversations as a guest or authenticated user and export/share history.</li>
+          <li>Upload PDFs for analysis, compare two legal documents, and generate common legal drafts.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -593,8 +732,26 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.1.2 System <em>Requirements</em></h1>
     <div class="g2 fill">
-      <div class="card placeholder"><strong>Functional System Requirements</strong><span>Functional requirements will be added here.</span></div>
-      <div class="card placeholder"><strong>Non-Functional System Requirements</strong><span>Non-functional requirements will be added here.</span></div>
+      <div class="card info-card card-green">
+        <strong>Functional System Requirements</strong>
+        <ul>
+          <li>Run the RAG pipeline: category detection, query rewrite, retrieval, optional rerank, source filtering, and answer generation.</li>
+          <li>Provide REST and SSE endpoints for standard and streaming answers.</li>
+          <li>Manage JWT authentication, refresh token rotation, guest sessions, roles, and profile updates.</li>
+          <li>Persist chat history, feedback, shared conversations, forum content, and weak retrieval queries.</li>
+          <li>Expose admin analytics for users, categories, feedback, and low-confidence questions.</li>
+        </ul>
+      </div>
+      <div class="card info-card card-red">
+        <strong>Non-Functional System Requirements</strong>
+        <ul>
+          <li>Reliability: fallback to local legal corpus when Qdrant is unavailable.</li>
+          <li>Performance: stream generated tokens and keep the answer flow responsive for demos.</li>
+          <li>Security: HttpOnly cookies for refresh/guest sessions, bcrypt password hashing, and role checks.</li>
+          <li>Maintainability: separate routers, services, RAG modules, migrations, and frontend flow helpers.</li>
+          <li>Legal safety: every answer remains informational and avoids replacing professional legal advice.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -603,9 +760,31 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.2 Software <em>Process</em></h1>
     <div class="g3 fill">
-      <div class="card placeholder"><strong>Process Model</strong><span>Fill with process model.</span></div>
-      <div class="card placeholder"><strong>Workflow</strong><span>Fill with workflow details.</span></div>
-      <div class="card placeholder"><strong>Project Evidence</strong><span>Fill with sprint / commit / delivery evidence.</span></div>
+      <div class="card info-card process-step card-gold">
+        <div class="step-num">01</div>
+        <strong>Iterative Process Model</strong>
+        <p>The project followed an incremental approach: first a working RAG question-answer core, then authentication, history, document tools, templates, forum, admin screens, and test hardening.</p>
+        <div class="tech-stack-note">MVP first, then feature expansion</div>
+      </div>
+      <div class="card info-card process-step card-blue">
+        <div class="step-num">02</div>
+        <strong>Development Workflow</strong>
+        <ul>
+          <li>Define the user flow and backend contract.</li>
+          <li>Implement API/service logic and frontend pages.</li>
+          <li>Add contract tests around critical flows.</li>
+          <li>Document API, database, RAG behavior, and operational notes.</li>
+        </ul>
+      </div>
+      <div class="card info-card process-step card-green">
+        <div class="step-num">03</div>
+        <strong>Project Evidence</strong>
+        <ul>
+          <li>Backend pytest suite covers auth, chat, retrieval, documents, feedback, forum, and admin modules.</li>
+          <li>Frontend contract tests cover routing, auth session, chat UI, templates, profiles, forum, and admin flows.</li>
+          <li>Docker Compose defines PostgreSQL, migration, backend, and frontend services.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -614,9 +793,33 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.3 Architectural <em>Design</em></h1>
     <div class="g3 fill">
-      <div class="card placeholder"><strong>Layer / Module 1</strong><span>Fill architectural layer or module.</span></div>
-      <div class="card placeholder"><strong>Layer / Module 2</strong><span>Fill architectural layer or module.</span></div>
-      <div class="card placeholder"><strong>Layer / Module 3</strong><span>Fill architectural layer or module.</span></div>
+      <div class="card info-card card-blue">
+        <strong>Frontend Layer</strong>
+        <p>React 19 and Vite provide the single-page user interface. Pages are organized around chat, document analysis, comparison, templates, forum, profile, and admin views.</p>
+        <ul>
+          <li>Context providers manage language, theme, and authentication state.</li>
+          <li>API helpers centralize request behavior and token handling.</li>
+          <li>Flow tests protect important user journeys.</li>
+        </ul>
+      </div>
+      <div class="card info-card card-gold">
+        <strong>Backend and Service Layer</strong>
+        <p>FastAPI exposes REST and streaming endpoints. Routers delegate business rules to services and the RAG modules, keeping responsibilities separated.</p>
+        <ul>
+          <li>Routers: auth, chat, documents, templates, feedback, forum, admin.</li>
+          <li>Services: chat persistence, forum moderation, feedback, templates, documents, admin metrics.</li>
+          <li>RAG modules: categorizer, query rewriter, retriever, reranker, generator.</li>
+        </ul>
+      </div>
+      <div class="card info-card card-green">
+        <strong>Data and AI Layer</strong>
+        <p>PostgreSQL stores application data, Qdrant stores legal embeddings, and Groq provides LLM inference for query rewriting and answer generation.</p>
+        <ul>
+          <li>PostgreSQL and Alembic manage users, tokens, chat, feedback, forum, shares, and weak queries.</li>
+          <li>Qdrant indexes legal chunks with multilingual embeddings.</li>
+          <li>Local corpus fallback keeps retrieval usable during vector DB outages.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -624,35 +827,343 @@ p { color: var(--white2); font-size: 14px; line-height: 1.65; }
     <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.4 Context Diagram</div><div class="slide-page-num">10</div></div>
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.4 Context <em>Diagram</em></h1>
-    <div class="diagram-box"><span>Context diagram placeholder</span></div>
+    <div class="diagram-box">
+      <svg class="svg-diagram" viewBox="0 0 1100 500" role="img" aria-label="Hak-Bul context diagram">
+        <defs>
+          <marker id="arrow-context" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#e0c278"></path>
+          </marker>
+        </defs>
+        <text x="550" y="28" text-anchor="middle" class="svg-title">System Context</text>
+        <rect x="388" y="150" width="324" height="180" rx="16" class="svg-node"></rect>
+        <text x="550" y="214" text-anchor="middle" class="svg-label">Hak-Bul Web Application</text>
+        <text x="550" y="239" text-anchor="middle" class="svg-small">React UI + FastAPI API</text>
+        <text x="550" y="262" text-anchor="middle" class="svg-small">RAG-based Turkish legal assistant</text>
+
+        <rect x="72" y="70" width="220" height="78" rx="12" class="svg-node svg-node-blue"></rect>
+        <text x="182" y="102" text-anchor="middle" class="svg-label">Citizen / Guest</text>
+        <text x="182" y="124" text-anchor="middle" class="svg-small">Ask, read, upload, export</text>
+
+        <rect x="72" y="220" width="220" height="78" rx="12" class="svg-node svg-node-blue"></rect>
+        <text x="182" y="252" text-anchor="middle" class="svg-label">Registered User</text>
+        <text x="182" y="274" text-anchor="middle" class="svg-small">History, shares, feedback, forum</text>
+
+        <rect x="72" y="370" width="220" height="78" rx="12" class="svg-node svg-node-red"></rect>
+        <text x="182" y="402" text-anchor="middle" class="svg-label">Lawyer / Admin</text>
+        <text x="182" y="424" text-anchor="middle" class="svg-small">Moderation and analytics</text>
+
+        <rect x="808" y="60" width="220" height="74" rx="12" class="svg-node svg-node-green"></rect>
+        <text x="918" y="91" text-anchor="middle" class="svg-label">Groq API</text>
+        <text x="918" y="113" text-anchor="middle" class="svg-small">Rewrite and generation</text>
+
+        <rect x="808" y="174" width="220" height="74" rx="12" class="svg-node svg-node-green"></rect>
+        <text x="918" y="205" text-anchor="middle" class="svg-label">Qdrant Cloud</text>
+        <text x="918" y="227" text-anchor="middle" class="svg-small">Legal vector retrieval</text>
+
+        <rect x="808" y="288" width="220" height="74" rx="12" class="svg-node"></rect>
+        <text x="918" y="319" text-anchor="middle" class="svg-label">PostgreSQL</text>
+        <text x="918" y="341" text-anchor="middle" class="svg-small">Users, chat, forum, feedback</text>
+
+        <rect x="392" y="398" width="316" height="68" rx="12" class="svg-node svg-node-blue"></rect>
+        <text x="550" y="425" text-anchor="middle" class="svg-label">Legal Data Sources</text>
+        <text x="550" y="447" text-anchor="middle" class="svg-small">Mevzuat, Yargitay, local corpus</text>
+
+        <line x1="292" y1="109" x2="388" y2="194" class="svg-line svg-line-blue" marker-end="url(#arrow-context)"></line>
+        <line x1="292" y1="259" x2="388" y2="240" class="svg-line svg-line-blue" marker-end="url(#arrow-context)"></line>
+        <line x1="292" y1="409" x2="388" y2="288" class="svg-line svg-line-muted" marker-end="url(#arrow-context)"></line>
+        <line x1="712" y1="190" x2="808" y2="97" class="svg-line svg-line-green" marker-end="url(#arrow-context)"></line>
+        <line x1="712" y1="234" x2="808" y2="211" class="svg-line svg-line-green" marker-end="url(#arrow-context)"></line>
+        <line x1="712" y1="282" x2="808" y2="325" class="svg-line" marker-end="url(#arrow-context)"></line>
+        <line x1="550" y1="398" x2="550" y2="330" class="svg-line svg-line-blue" marker-end="url(#arrow-context)"></line>
+
+        <text x="346" y="178" text-anchor="middle" class="svg-tiny">HTTPS UI</text>
+        <text x="760" y="146" text-anchor="middle" class="svg-tiny">LLM calls</text>
+        <text x="755" y="250" text-anchor="middle" class="svg-tiny">top-k chunks</text>
+        <text x="746" y="320" text-anchor="middle" class="svg-tiny">state</text>
+      </svg>
+    </div>
   </section>
 
   <section class="slide">
     <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.5 Use Case Diagram</div><div class="slide-page-num">11</div></div>
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.5 Use Case <em>Diagram</em></h1>
-    <div class="diagram-box"><span>Use case diagram placeholder</span></div>
+    <div class="diagram-box">
+      <svg class="svg-diagram" viewBox="0 0 1100 500" role="img" aria-label="Hak-Bul use case diagram">
+        <defs>
+          <marker id="arrow-usecase" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#b8b4a8"></path>
+          </marker>
+        </defs>
+        <text x="550" y="28" text-anchor="middle" class="svg-title">Use Case Diagram</text>
+        <rect x="262" y="58" width="596" height="392" rx="18" class="svg-boundary"></rect>
+        <text x="560" y="84" text-anchor="middle" class="svg-tiny">Hak-Bul System Boundary</text>
+
+        <rect x="60" y="92" width="158" height="64" rx="12" class="svg-node svg-node-blue"></rect>
+        <text x="139" y="119" text-anchor="middle" class="svg-label">Guest</text>
+        <text x="139" y="140" text-anchor="middle" class="svg-small">Unregistered visitor</text>
+
+        <rect x="60" y="222" width="158" height="64" rx="12" class="svg-node svg-node-blue"></rect>
+        <text x="139" y="249" text-anchor="middle" class="svg-label">User</text>
+        <text x="139" y="270" text-anchor="middle" class="svg-small">Authenticated</text>
+
+        <rect x="890" y="110" width="158" height="64" rx="12" class="svg-node svg-node-red"></rect>
+        <text x="969" y="137" text-anchor="middle" class="svg-label">Lawyer</text>
+        <text x="969" y="158" text-anchor="middle" class="svg-small">Verified role</text>
+
+        <rect x="890" y="300" width="158" height="64" rx="12" class="svg-node svg-node-red"></rect>
+        <text x="969" y="327" text-anchor="middle" class="svg-label">Admin</text>
+        <text x="969" y="348" text-anchor="middle" class="svg-small">System operator</text>
+
+        <ellipse cx="408" cy="136" rx="104" ry="34" class="svg-node svg-node-green"></ellipse>
+        <text x="408" y="132" text-anchor="middle" class="svg-label">Ask Legal</text>
+        <text x="408" y="150" text-anchor="middle" class="svg-small">Question</text>
+
+        <ellipse cx="616" cy="136" rx="108" ry="34" class="svg-node svg-node-green"></ellipse>
+        <text x="616" y="132" text-anchor="middle" class="svg-label">View Cited</text>
+        <text x="616" y="150" text-anchor="middle" class="svg-small">Answer</text>
+
+        <ellipse cx="402" cy="230" rx="108" ry="34" class="svg-node svg-node-blue"></ellipse>
+        <text x="402" y="226" text-anchor="middle" class="svg-label">Analyze PDF</text>
+        <text x="402" y="244" text-anchor="middle" class="svg-small">Legal document</text>
+
+        <ellipse cx="620" cy="230" rx="116" ry="34" class="svg-node svg-node-blue"></ellipse>
+        <text x="620" y="226" text-anchor="middle" class="svg-label">Compare</text>
+        <text x="620" y="244" text-anchor="middle" class="svg-small">Two documents</text>
+
+        <ellipse cx="405" cy="324" rx="112" ry="34" class="svg-node"></ellipse>
+        <text x="405" y="320" text-anchor="middle" class="svg-label">Manage Chat</text>
+        <text x="405" y="338" text-anchor="middle" class="svg-small">Share and export</text>
+
+        <ellipse cx="624" cy="324" rx="116" ry="34" class="svg-node"></ellipse>
+        <text x="624" y="320" text-anchor="middle" class="svg-label">Generate</text>
+        <text x="624" y="338" text-anchor="middle" class="svg-small">Legal templates</text>
+
+        <ellipse cx="520" cy="410" rx="122" ry="34" class="svg-node svg-node-red"></ellipse>
+        <text x="520" y="406" text-anchor="middle" class="svg-label">Forum Q&amp;A</text>
+        <text x="520" y="424" text-anchor="middle" class="svg-small">Post, vote, verify</text>
+
+        <ellipse cx="744" cy="410" rx="96" ry="34" class="svg-node svg-node-red"></ellipse>
+        <text x="744" y="406" text-anchor="middle" class="svg-label">Admin</text>
+        <text x="744" y="424" text-anchor="middle" class="svg-small">Analytics</text>
+
+        <line x1="218" y1="124" x2="304" y2="136" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="218" y1="124" x2="512" y2="136" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="218" y1="254" x2="294" y2="230" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="218" y1="254" x2="512" y2="230" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="218" y1="254" x2="293" y2="324" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="218" y1="254" x2="510" y2="324" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="890" y1="142" x2="638" y2="410" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="890" y1="332" x2="840" y2="410" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+        <line x1="890" y1="332" x2="640" y2="410" class="svg-line svg-line-muted" marker-end="url(#arrow-usecase)"></line>
+      </svg>
+    </div>
   </section>
 
   <section class="slide">
     <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.6 Sequence Diagram</div><div class="slide-page-num">12</div></div>
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.6 Sequence <em>Diagram</em></h1>
-    <div class="diagram-box"><span>Sequence diagram placeholder</span></div>
+    <div class="diagram-box">
+      <svg class="svg-diagram" viewBox="0 0 1100 500" role="img" aria-label="Hak-Bul sequence diagram">
+        <defs>
+          <marker id="arrow-seq" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#e0c278"></path>
+          </marker>
+          <marker id="arrow-seq-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a8fd4"></path>
+          </marker>
+        </defs>
+        <text x="550" y="28" text-anchor="middle" class="svg-title">Streaming Question Flow</text>
+
+        <g>
+          <rect x="42" y="58" width="118" height="42" rx="10" class="svg-node svg-node-blue"></rect>
+          <text x="101" y="84" text-anchor="middle" class="svg-label">User</text>
+          <rect x="202" y="58" width="118" height="42" rx="10" class="svg-node svg-node-blue"></rect>
+          <text x="261" y="84" text-anchor="middle" class="svg-label">React UI</text>
+          <rect x="362" y="58" width="118" height="42" rx="10" class="svg-node"></rect>
+          <text x="421" y="84" text-anchor="middle" class="svg-label">FastAPI</text>
+          <rect x="522" y="58" width="118" height="42" rx="10" class="svg-node"></rect>
+          <text x="581" y="84" text-anchor="middle" class="svg-label">RAG</text>
+          <rect x="682" y="58" width="118" height="42" rx="10" class="svg-node svg-node-green"></rect>
+          <text x="741" y="84" text-anchor="middle" class="svg-label">Qdrant</text>
+          <rect x="842" y="58" width="118" height="42" rx="10" class="svg-node svg-node-green"></rect>
+          <text x="901" y="84" text-anchor="middle" class="svg-label">Groq</text>
+          <rect x="1002" y="58" width="80" height="42" rx="10" class="svg-node"></rect>
+          <text x="1042" y="84" text-anchor="middle" class="svg-label">DB</text>
+        </g>
+
+        <line x1="101" y1="100" x2="101" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
+        <line x1="261" y1="100" x2="261" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
+        <line x1="421" y1="100" x2="421" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
+        <line x1="581" y1="100" x2="581" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
+        <line x1="741" y1="100" x2="741" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
+        <line x1="901" y1="100" x2="901" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
+        <line x1="1042" y1="100" x2="1042" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
+
+        <line x1="101" y1="134" x2="261" y2="134" class="svg-line svg-line-blue" marker-end="url(#arrow-seq-blue)"></line>
+        <text x="181" y="126" text-anchor="middle" class="svg-small">enter question</text>
+        <line x1="261" y1="174" x2="421" y2="174" class="svg-line svg-line-blue" marker-end="url(#arrow-seq-blue)"></line>
+        <text x="341" y="166" text-anchor="middle" class="svg-small">POST /ask/stream</text>
+        <line x1="421" y1="214" x2="1042" y2="214" class="svg-line" marker-end="url(#arrow-seq)"></line>
+        <text x="732" y="206" text-anchor="middle" class="svg-small">resolve session, load conversation context</text>
+        <line x1="421" y1="254" x2="581" y2="254" class="svg-line" marker-end="url(#arrow-seq)"></line>
+        <text x="501" y="246" text-anchor="middle" class="svg-small">run pipeline</text>
+        <line x1="581" y1="294" x2="901" y2="294" class="svg-line svg-line-green" marker-end="url(#arrow-seq)"></line>
+        <text x="741" y="286" text-anchor="middle" class="svg-small">rewrite query</text>
+        <line x1="581" y1="334" x2="741" y2="334" class="svg-line svg-line-green" marker-end="url(#arrow-seq)"></line>
+        <text x="661" y="326" text-anchor="middle" class="svg-small">retrieve legal chunks</text>
+        <line x1="581" y1="374" x2="901" y2="374" class="svg-line svg-line-green" marker-end="url(#arrow-seq)"></line>
+        <text x="741" y="366" text-anchor="middle" class="svg-small">generate cited answer</text>
+        <line x1="421" y1="414" x2="261" y2="414" class="svg-line svg-line-blue" marker-end="url(#arrow-seq-blue)"></line>
+        <text x="341" y="406" text-anchor="middle" class="svg-small">meta + token events</text>
+        <line x1="421" y1="448" x2="1042" y2="448" class="svg-line" marker-end="url(#arrow-seq)"></line>
+        <text x="732" y="440" text-anchor="middle" class="svg-small">save user and assistant messages</text>
+      </svg>
+    </div>
   </section>
 
   <section class="slide">
     <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.7 Data Flow Diagram</div><div class="slide-page-num">13</div></div>
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.7 Data Flow <em>Diagram</em></h1>
-    <div class="diagram-box"><span>Data flow diagram placeholder</span></div>
+    <div class="diagram-box">
+      <svg class="svg-diagram" viewBox="0 0 1100 500" role="img" aria-label="Hak-Bul data flow diagram">
+        <defs>
+          <marker id="arrow-dfd" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#e0c278"></path>
+          </marker>
+        </defs>
+        <text x="550" y="28" text-anchor="middle" class="svg-title">Level 1 Data Flow</text>
+
+        <rect x="54" y="86" width="170" height="72" rx="12" class="svg-node svg-node-blue"></rect>
+        <text x="139" y="117" text-anchor="middle" class="svg-label">User</text>
+        <text x="139" y="139" text-anchor="middle" class="svg-small">Question, PDF, feedback</text>
+
+        <rect x="54" y="336" width="170" height="72" rx="12" class="svg-node svg-node-red"></rect>
+        <text x="139" y="367" text-anchor="middle" class="svg-label">Admin</text>
+        <text x="139" y="389" text-anchor="middle" class="svg-small">Stats and moderation</text>
+
+        <rect x="304" y="70" width="186" height="72" rx="12" class="svg-node"></rect>
+        <text x="397" y="101" text-anchor="middle" class="svg-label">1. Auth &amp; Session</text>
+        <text x="397" y="123" text-anchor="middle" class="svg-small">JWT, guest cookie, roles</text>
+
+        <rect x="304" y="188" width="186" height="72" rx="12" class="svg-node svg-node-green"></rect>
+        <text x="397" y="219" text-anchor="middle" class="svg-label">2. Question</text>
+        <text x="397" y="241" text-anchor="middle" class="svg-small">Validation and category</text>
+
+        <rect x="566" y="188" width="190" height="72" rx="12" class="svg-node svg-node-green"></rect>
+        <text x="661" y="219" text-anchor="middle" class="svg-label">3. Retrieval</text>
+        <text x="661" y="241" text-anchor="middle" class="svg-small">Search, filter, rerank</text>
+
+        <rect x="826" y="188" width="190" height="72" rx="12" class="svg-node svg-node-green"></rect>
+        <text x="921" y="219" text-anchor="middle" class="svg-label">4. Generation</text>
+        <text x="921" y="241" text-anchor="middle" class="svg-small">Cited answer and warning</text>
+
+        <rect x="304" y="336" width="186" height="72" rx="12" class="svg-node"></rect>
+        <text x="397" y="367" text-anchor="middle" class="svg-label">5. Feedback</text>
+        <text x="397" y="389" text-anchor="middle" class="svg-small">Votes, weak queries, stats</text>
+
+        <rect x="570" y="54" width="178" height="56" rx="10" class="svg-node"></rect>
+        <text x="659" y="79" text-anchor="middle" class="svg-label">PostgreSQL</text>
+        <text x="659" y="97" text-anchor="middle" class="svg-small">App state</text>
+
+        <rect x="574" y="336" width="178" height="56" rx="10" class="svg-node svg-node-blue"></rect>
+        <text x="663" y="361" text-anchor="middle" class="svg-label">Qdrant</text>
+        <text x="663" y="379" text-anchor="middle" class="svg-small">Legal vectors</text>
+
+        <rect x="826" y="336" width="190" height="56" rx="10" class="svg-node svg-node-blue"></rect>
+        <text x="921" y="361" text-anchor="middle" class="svg-label">Local Corpus</text>
+        <text x="921" y="379" text-anchor="middle" class="svg-small">Fallback law chunks</text>
+
+        <rect x="826" y="54" width="190" height="56" rx="10" class="svg-node svg-node-green"></rect>
+        <text x="921" y="79" text-anchor="middle" class="svg-label">Groq API</text>
+        <text x="921" y="97" text-anchor="middle" class="svg-small">Rewrite and LLM output</text>
+
+        <line x1="224" y1="122" x2="304" y2="106" class="svg-line svg-line-blue" marker-end="url(#arrow-dfd)"></line>
+        <line x1="224" y1="122" x2="304" y2="224" class="svg-line svg-line-blue" marker-end="url(#arrow-dfd)"></line>
+        <line x1="490" y1="106" x2="570" y2="82" class="svg-line" marker-end="url(#arrow-dfd)"></line>
+        <line x1="490" y1="224" x2="566" y2="224" class="svg-line svg-line-green" marker-end="url(#arrow-dfd)"></line>
+        <line x1="756" y1="224" x2="826" y2="224" class="svg-line svg-line-green" marker-end="url(#arrow-dfd)"></line>
+        <line x1="921" y1="188" x2="921" y2="110" class="svg-line svg-line-green" marker-end="url(#arrow-dfd)"></line>
+        <line x1="661" y1="260" x2="663" y2="336" class="svg-line svg-line-blue" marker-end="url(#arrow-dfd)"></line>
+        <line x1="756" y1="260" x2="872" y2="336" class="svg-line svg-line-blue" marker-end="url(#arrow-dfd)"></line>
+        <line x1="921" y1="260" x2="921" y2="308" class="svg-line svg-line-muted"></line>
+        <line x1="921" y1="308" x2="224" y2="122" class="svg-line svg-line-muted" marker-end="url(#arrow-dfd)"></line>
+        <line x1="224" y1="372" x2="304" y2="372" class="svg-line svg-line-muted" marker-end="url(#arrow-dfd)"></line>
+        <line x1="397" y1="336" x2="397" y2="260" class="svg-line svg-line-muted" marker-end="url(#arrow-dfd)"></line>
+        <line x1="490" y1="372" x2="570" y2="92" class="svg-line svg-line-muted" marker-end="url(#arrow-dfd)"></line>
+      </svg>
+    </div>
   </section>
 
   <section class="slide">
     <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">2.8 Behavioral Model</div><div class="slide-page-num">14</div></div>
     <div class="tag">2. Software Development</div>
     <h1 class="h1">2.8 Behavioral <em>Model</em></h1>
-    <div class="diagram-box"><span>Behavioral model placeholder</span></div>
+    <div class="diagram-box">
+      <svg class="svg-diagram" viewBox="0 0 1100 500" role="img" aria-label="Hak-Bul behavioral model">
+        <defs>
+          <marker id="arrow-state" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#e0c278"></path>
+          </marker>
+        </defs>
+        <text x="550" y="28" text-anchor="middle" class="svg-title">Question Lifecycle State Model</text>
+
+        <rect x="62" y="98" width="152" height="60" rx="30" class="svg-node svg-node-blue"></rect>
+        <text x="138" y="133" text-anchor="middle" class="svg-label">Idle</text>
+
+        <rect x="278" y="98" width="174" height="60" rx="12" class="svg-node"></rect>
+        <text x="365" y="123" text-anchor="middle" class="svg-label">Input Validation</text>
+        <text x="365" y="143" text-anchor="middle" class="svg-small">length, gibberish, language</text>
+
+        <rect x="516" y="98" width="174" height="60" rx="12" class="svg-node"></rect>
+        <text x="603" y="123" text-anchor="middle" class="svg-label">Category Detected</text>
+        <text x="603" y="143" text-anchor="middle" class="svg-small">14 legal categories</text>
+
+        <rect x="754" y="98" width="174" height="60" rx="12" class="svg-node svg-node-green"></rect>
+        <text x="841" y="123" text-anchor="middle" class="svg-label">Retrieval Ready</text>
+        <text x="841" y="143" text-anchor="middle" class="svg-small">rewrite, search, rerank</text>
+
+        <polygon points="842,220 926,282 842,344 758,282" class="svg-node svg-node-green"></polygon>
+        <text x="842" y="276" text-anchor="middle" class="svg-label">Enough</text>
+        <text x="842" y="296" text-anchor="middle" class="svg-label">confidence?</text>
+
+        <rect x="510" y="252" width="178" height="60" rx="12" class="svg-node svg-node-green"></rect>
+        <text x="599" y="277" text-anchor="middle" class="svg-label">Answer Generated</text>
+        <text x="599" y="297" text-anchor="middle" class="svg-small">citations + warning</text>
+
+        <rect x="282" y="252" width="170" height="60" rx="12" class="svg-node svg-node-blue"></rect>
+        <text x="367" y="277" text-anchor="middle" class="svg-label">Streamed to UI</text>
+        <text x="367" y="297" text-anchor="middle" class="svg-small">meta, tokens, done</text>
+
+        <rect x="74" y="252" width="158" height="60" rx="12" class="svg-node"></rect>
+        <text x="153" y="277" text-anchor="middle" class="svg-label">History Saved</text>
+        <text x="153" y="297" text-anchor="middle" class="svg-small">chat pair persisted</text>
+
+        <rect x="74" y="386" width="158" height="60" rx="12" class="svg-node"></rect>
+        <text x="153" y="411" text-anchor="middle" class="svg-label">Feedback Logged</text>
+        <text x="153" y="431" text-anchor="middle" class="svg-small">positive or negative</text>
+
+        <rect x="764" y="386" width="170" height="60" rx="12" class="svg-node svg-node-red"></rect>
+        <text x="849" y="411" text-anchor="middle" class="svg-label">Weak Query Logged</text>
+        <text x="849" y="431" text-anchor="middle" class="svg-small">admin review queue</text>
+
+        <line x1="214" y1="128" x2="278" y2="128" class="svg-line" marker-end="url(#arrow-state)"></line>
+        <line x1="452" y1="128" x2="516" y2="128" class="svg-line" marker-end="url(#arrow-state)"></line>
+        <line x1="690" y1="128" x2="754" y2="128" class="svg-line" marker-end="url(#arrow-state)"></line>
+        <line x1="841" y1="158" x2="841" y2="220" class="svg-line" marker-end="url(#arrow-state)"></line>
+        <line x1="758" y1="282" x2="688" y2="282" class="svg-line svg-line-green" marker-end="url(#arrow-state)"></line>
+        <text x="720" y="272" text-anchor="middle" class="svg-small">yes</text>
+        <line x1="510" y1="282" x2="452" y2="282" class="svg-line svg-line-blue" marker-end="url(#arrow-state)"></line>
+        <line x1="282" y1="282" x2="232" y2="282" class="svg-line" marker-end="url(#arrow-state)"></line>
+        <line x1="153" y1="312" x2="153" y2="386" class="svg-line" marker-end="url(#arrow-state)"></line>
+        <line x1="842" y1="344" x2="849" y2="386" class="svg-line svg-line-muted" marker-end="url(#arrow-state)"></line>
+        <text x="875" y="370" text-anchor="middle" class="svg-small">low score</text>
+        <path d="M 849 446 C 690 478, 250 478, 153 446" class="svg-line svg-line-muted" marker-end="url(#arrow-state)"></path>
+        <text x="505" y="470" text-anchor="middle" class="svg-small">learning signal for future improvements</text>
+      </svg>
+    </div>
   </section>
 
   <section class="slide">

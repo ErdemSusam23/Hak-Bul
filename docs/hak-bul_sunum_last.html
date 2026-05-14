@@ -681,6 +681,10 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
         <div class="mini-label">🔍 8-Step RAG Pipeline</div>
         <div style="font-size:28px; float:right; margin:-5px -5px 5px 15px;">🔄</div>
         <p>Query categorization (14 legal domains) → rewriting → dual-collection Qdrant retrieval → cross-encoder reranking → Llama generation. Category penalty suppresses off-topic results by <strong style="color:var(--gold);">50%</strong>.</p>
+        <div style="margin-top:12px;background:rgba(200,168,75,0.07);border-left:2px solid var(--gold);border-radius:0 6px 6px 0;padding:8px 12px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--gold);margin-bottom:5px;text-transform:uppercase;">Example</div>
+          <div style="font-size:14px;color:var(--white2);line-height:1.5;">"İşten çıkarıldım, tazminat hakkım var mı?"<br><span style="color:var(--muted);">→ category:</span> <span style="color:var(--gold);">İş Hukuku</span> <span style="color:var(--muted);">→ rewrite:</span> <span style="color:var(--white2);">"4857 İş Kanunu kıdem tazminatı koşulları"</span></div>
+        </div>
       </div>
       <div class="card card-blue">
         <div class="mini-label">📡 Real-Time SSE Streaming</div>
@@ -816,9 +820,10 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
         <strong>Data and AI Layer</strong>
         <p>PostgreSQL stores application data, Qdrant stores legal embeddings, and Groq provides LLM inference for query rewriting and answer generation.</p>
         <ul>
-          <li>PostgreSQL and Alembic manage users, tokens, chat, feedback, forum, shares, and weak queries.</li>
-          <li>Qdrant indexes legal chunks with multilingual embeddings.</li>
-          <li>Local corpus fallback keeps retrieval usable during vector DB outages.</li>
+          <li><strong style="color:var(--white);">Qdrant — dual-collection</strong>: court decisions and statute articles indexed separately, prioritized by query type.</li>
+          <li><strong style="color:var(--white);">Groq + Llama-3.3-70b</strong>: LPU architecture provides low-latency SSE streaming; strong Turkish language capability.</li>
+          <li><strong style="color:var(--white);">multilingual-e5-large</strong>: best open-source multilingual embedding for Turkish legal text; tested across all 14 legal categories.</li>
+          <li><strong style="color:var(--white);">bge-reranker-v2-m3</strong>: ~270MB CrossEncoder, runs on CPU, toggled via <code style="color:var(--gold);font-size:inherit;">RERANKER_ENABLED</code> flag.</li>
         </ul>
       </div>
     </div>
@@ -1160,7 +1165,8 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
         <line x1="282" y1="282" x2="232" y2="282" class="svg-line" marker-end="url(#arrow-state)"></line>
         <line x1="153" y1="312" x2="153" y2="386" class="svg-line" marker-end="url(#arrow-state)"></line>
         <line x1="842" y1="344" x2="849" y2="386" class="svg-line svg-line-muted" marker-end="url(#arrow-state)"></line>
-        <text x="875" y="370" text-anchor="middle" class="svg-small">low score</text>
+        <text x="912" y="368" text-anchor="middle" class="svg-small">low score</text>
+        <text x="912" y="380" text-anchor="middle" class="svg-small">(threshold: 0.65)</text>
         <path d="M 849 446 C 690 478, 250 478, 153 446" class="svg-line svg-line-muted" marker-end="url(#arrow-state)"></path>
         <text x="505" y="470" text-anchor="middle" class="svg-small">learning signal for future improvements</text>
       </svg>
@@ -1365,11 +1371,37 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
     <div class="slide-header"><div class="wordmark">Hak<span>-Bul</span></div><div class="slide-header-divider"></div><div class="slide-header-tag">4.1 Used Technologies</div><div class="slide-page-num">17</div></div>
     <div class="tag">4. Result</div>
     <h1 class="h1">4.1 Used <em>Technologies</em></h1>
-    <div class="g4 fill">
+    <div class="g3 fill">
       <div class="card card-gold"><div class="mini-label">Programming Languages</div><p>Python 3.11 powers the backend and RAG pipeline. JavaScript/JSX builds the frontend. SQL is used for relational persistence and migrations.</p></div>
       <div class="card card-blue"><div class="mini-label">Frameworks</div><p>FastAPI, SQLAlchemy, and Alembic form the API and database layer. React 19, Vite, Tailwind CSS, and ESLint support the user interface.</p></div>
       <div class="card card-green"><div class="mini-label">Databases / Retrieval</div><p>PostgreSQL stores application records. Qdrant performs vector search over legal chunks. Local JSON corpus fallback supports development and resilience.</p></div>
-      <div class="card card-red"><div class="mini-label">Security / AI</div><p>JWT access tokens, refresh rotation, HttpOnly cookies, and bcrypt protect accounts. Groq Llama models generate answers and rewrite queries.</p></div>
+      <div class="card card-red"><div class="mini-label">Security / AI</div><p>JWT access tokens, refresh rotation, HttpOnly cookies, and bcrypt protect accounts. Groq Llama-3.3-70b generates answers; multilingual-e5-large handles embeddings; bge-reranker-v2-m3 reranks results.</p></div>
+      <div class="card" style="border-color:var(--gold);grid-column:span 2;">
+        <div class="mini-label">📊 Retrieval Evaluation — 167 Test Questions · 14 Legal Categories</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:10px;">
+          <div style="text-align:center;background:rgba(200,168,75,0.08);border-radius:8px;padding:10px 6px;">
+            <div style="font-size:28px;font-weight:700;color:var(--gold);line-height:1;">81.4%</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px;">retrieval@5 (law)</div>
+          </div>
+          <div style="text-align:center;background:rgba(74,143,212,0.08);border-radius:8px;padding:10px 6px;">
+            <div style="font-size:28px;font-weight:700;color:var(--blue);line-height:1;">52.9%</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px;">retrieval@5 (article)</div>
+          </div>
+          <div style="text-align:center;background:rgba(76,175,125,0.08);border-radius:8px;padding:10px 6px;">
+            <div style="font-size:28px;font-weight:700;color:var(--green);line-height:1;">67% → 81.4%</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px;">Phase 1 → Phase 2</div>
+          </div>
+          <div style="text-align:center;background:rgba(200,168,75,0.05);border-radius:8px;padding:10px 6px;">
+            <div style="font-size:28px;font-weight:700;color:var(--white2);line-height:1;">85%+</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px;">target (corpus complete)</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+          <div style="font-size:13px;color:var(--white2);">🟢 <strong style="color:var(--green);">Best:</strong> Civil, Commercial, Social Security — 100% law accuracy</div>
+          <div style="font-size:13px;color:var(--white2);">🟡 <strong style="color:var(--gold);">Mid:</strong> Criminal, Consumer, IT Law — 83–92% law accuracy</div>
+          <div style="font-size:13px;color:var(--white2);">🔴 <strong style="color:var(--red);">Gap:</strong> Constitutional — 33.3% (missing statutes in corpus)</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1378,9 +1410,29 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
     <div class="tag">4. Result</div>
     <h1 class="h1">4.2 Conclusion and <em>Future Plans</em></h1>
     <div class="g3 fill">
-      <div class="card card-gold"><div class="mini-label">Conclusion</div><p>Hak-Bul delivers a source-backed legal assistant for Turkish law with chat, streaming answers, PDF analysis, document templates, forum workflows, and admin analytics.</p></div>
-      <div class="card card-blue"><div class="mini-label">Future Plan 1</div><p>Improve retrieval quality by expanding the legal corpus, tuning category penalties, enabling reranker workflows, and tracking objective retrieval metrics.</p></div>
-      <div class="card card-green"><div class="mini-label">Future Plan 2</div><p>Harden production with monitoring, retry and failover behavior, response caching, deployment smoke tests, and clearer operational dashboards.</p></div>
+      <div class="card card-gold"><div class="mini-label">Conclusion</div><p>Hak-Bul delivers a source-backed legal assistant for Turkish law with chat, streaming answers, PDF analysis, document templates, forum workflows, and admin analytics.</p>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:14px;color:var(--white2);">✅ 75,789 legal chunks indexed</div>
+          <div style="font-size:14px;color:var(--white2);">✅ retrieval@5 accuracy: <strong style="color:var(--gold);">81.4%</strong></div>
+          <div style="font-size:14px;color:var(--white2);">✅ 8-step RAG pipeline — demo ready</div>
+        </div>
+      </div>
+      <div class="card card-blue"><div class="mini-label">Future Plan 1 — Retrieval Quality</div>
+        <ul class="tight-list">
+          <li>Add 18 missing statutes (KVKK, FSEK, 5651, Constitutional Court laws, VUK) to reach <strong style="color:var(--blue);">85%+</strong> retrieval accuracy.</li>
+          <li>Optimize chunk size for VUK (tax law) — current granularity limits article-level retrieval.</li>
+          <li>Evaluate hybrid search: BM25 + vector for improved keyword-sensitive queries.</li>
+          <li>Leverage weak-query logs as a feedback loop for targeted corpus expansion.</li>
+        </ul>
+      </div>
+      <div class="card card-green"><div class="mini-label">Future Plan 2 — Production Hardening</div>
+        <ul class="tight-list">
+          <li>Add monitoring, retry logic, and failover behavior for Qdrant and Groq API outages.</li>
+          <li>Implement response caching for high-frequency legal queries.</li>
+          <li>Deployment smoke tests and operational dashboards for uptime visibility.</li>
+          <li>Enable reranker by default in production (<code style="color:var(--green);font-size:inherit;">RERANKER_ENABLED=true</code>) once latency benchmarks confirm acceptable response times.</li>
+        </ul>
+      </div>
     </div>
   </section>
 

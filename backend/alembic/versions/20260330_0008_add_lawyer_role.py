@@ -18,7 +18,8 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     bind = op.get_bind()
     if bind.dialect.name == "postgresql":
-        op.execute("ALTER TYPE userrole ADD VALUE IF NOT EXISTS 'lawyer'")
+        with op.get_context().autocommit_block():
+            op.execute("ALTER TYPE userrole ADD VALUE IF NOT EXISTS 'lawyer'")
 
 
 def downgrade() -> None:

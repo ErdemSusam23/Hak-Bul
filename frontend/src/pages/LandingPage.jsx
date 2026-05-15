@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react';
 import { Icon, Logo } from '../components/ui';
 import { useDil } from '../context/useDil';
-import { LANDING_CATEGORY_LABELS } from '../content/productContent';
+import { LANDING_CATEGORY_KEYS } from '../content/productContent';
 import { createNewsletterNotice } from '../utils/phase2Flow';
 
 export default function LandingPage({ onOpenAuth, setPage }) {
@@ -17,8 +17,46 @@ export default function LandingPage({ onOpenAuth, setPage }) {
   };
 
   const handleNewsletterSubmit = () => {
-    setNewsletterNotice(createNewsletterNotice(newsletterEmail));
+    setNewsletterNotice(createNewsletterNotice(newsletterEmail, {
+      required: t('newsletterEmailRequired'),
+      info: t('newsletterComingSoon'),
+    }));
   };
+
+  const featureCards = [
+    {
+      icon: 'message-circle',
+      kicker: '01',
+      title: t('landingFeatureLegalAnswersTitle'),
+      desc: t('landingFeatureLegalAnswersDesc'),
+    },
+    {
+      icon: 'file-search',
+      kicker: '02',
+      title: t('landingFeatureDocumentTitle'),
+      desc: t('landingFeatureDocumentDesc'),
+    },
+    {
+      icon: 'users',
+      kicker: '03',
+      title: t('landingFeatureForumTitle'),
+      desc: t('landingFeatureForumDesc'),
+    },
+  ];
+
+  const productLinks = [
+    t('navChat'),
+    t('navTemplates'),
+    t('navCompare'),
+    t('navForum'),
+  ];
+
+  const corporateLinks = [
+    t('footerAbout'),
+    t('footerKvkk'),
+    t('footerDisclosure'),
+    t('footerContact'),
+  ];
 
   return (
     <div className="bg-bg text-ink">
@@ -61,26 +99,7 @@ export default function LandingPage({ onOpenAuth, setPage }) {
 
       <section id="landing-nasil-calisir" className="max-w-6xl mx-auto px-6 pb-20">
         <div className="hairline-t pt-12 grid grid-cols-1 md:grid-cols-3 gap-0">
-          {[
-            {
-              icon: 'message-circle',
-              kicker: '01',
-              title: 'Kanun Dayanaklı Yanıtlar',
-              desc: 'Her cevap ilgili madde ve karar özetiyle birlikte gelir. Kaynaksız spekülasyon yok.',
-            },
-            {
-              icon: 'file-search',
-              kicker: '02',
-              title: 'Belge Analizi ve Karşılaştırma',
-              desc: 'İki sözleşmeyi yükleyin, Hak-Bul farklılıkları ve önemli hükümleri sizin için çıkarsın.',
-            },
-            {
-              icon: 'users',
-              kicker: '03',
-              title: 'Avukat Onaylı Forum',
-              desc: 'Topluluk yanıtlarını lisanslı avukatlar inceleyip onaylar. Altın rozetlere dikkat edin.',
-            },
-          ].map((feature, index) => (
+          {featureCards.map((feature, index) => (
             <div key={feature.kicker} className={`p-8 ${index < 2 ? 'md:border-r md:border-line ' : ''}`}>
               <div className="label mb-3">{feature.kicker}</div>
               <Icon name={feature.icon} size={22} className="text-accent" />
@@ -96,12 +115,12 @@ export default function LandingPage({ onOpenAuth, setPage }) {
       <section className="max-w-6xl mx-auto px-6 pb-20">
         <div className="flex items-end justify-between mb-6">
           <h2 className="font-display text-3xl" style={{ letterSpacing: '-0.02em' }}>{t('landingMetricAreas')}</h2>
-          <span className="text-xs text-ink-muted">her alanda binlerce emsal karar</span>
+          <span className="text-xs text-ink-muted">{t('landingAreasSubtitle')}</span>
         </div>
         <div className="flex flex-wrap gap-2">
-          {LANDING_CATEGORY_LABELS.map((label) => (
-            <button key={label} onClick={() => setPage('sohbet')} className="chip text-[13px] py-2 px-3.5">
-              {label}
+          {LANDING_CATEGORY_KEYS.map((key) => (
+            <button key={key} onClick={() => setPage('sohbet')} className="chip text-[13px] py-2 px-3.5">
+              {t(key)}
             </button>
           ))}
         </div>
@@ -112,31 +131,31 @@ export default function LandingPage({ onOpenAuth, setPage }) {
           <div className="col-span-12 md:col-span-5">
             <Logo size={20} />
             <p className="text-ink-muted text-sm mt-3 max-w-sm leading-relaxed">
-              Hak-Bul bilgi verir, hukuki tavsiye vermez. Ciddi hukuki konularda bir avukata danışmanız önerilir.
+              {t('footerDisclaimer')}
             </p>
           </div>
           <div className="col-span-6 md:col-span-2">
-            <div className="label mb-3">Ürün</div>
+            <div className="label mb-3">{t('footerProduct')}</div>
             <ul className="text-sm text-ink-muted space-y-2">
-              {['Sohbet', 'Taslak', 'Karşılaştır', 'Forum'].map((label) => (
+              {productLinks.map((label) => (
                 <li key={label}><a href="#" className="hover:text-ink">{label}</a></li>
               ))}
             </ul>
           </div>
           <div className="col-span-6 md:col-span-2">
-            <div className="label mb-3">Kurumsal</div>
+            <div className="label mb-3">{t('footerCorporate')}</div>
             <ul className="text-sm text-ink-muted space-y-2">
-              {['Hakkında', 'KVKK', 'Aydınlatma', 'İletişim'].map((label) => (
+              {corporateLinks.map((label) => (
                 <li key={label}><a href="#" className="hover:text-ink">{label}</a></li>
               ))}
             </ul>
           </div>
           <div className="col-span-12 md:col-span-3">
-            <div className="label mb-3">Bülten</div>
+            <div className="label mb-3">{t('footerNewsletter')}</div>
             <div className="flex gap-0 border border-line rounded-lg overflow-hidden">
               <input
                 className="flex-1 min-w-0 px-3 py-2 bg-transparent text-sm"
-                placeholder="E-posta"
+                placeholder={t('emailAddress')}
                 value={newsletterEmail}
                 onChange={(event) => {
                   setNewsletterEmail(event.target.value);
@@ -150,7 +169,7 @@ export default function LandingPage({ onOpenAuth, setPage }) {
                 style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}
                 onClick={handleNewsletterSubmit}
               >
-                Abone ol
+                {t('newsletterSubscribe')}
               </button>
             </div>
             {newsletterNotice && (
@@ -165,7 +184,7 @@ export default function LandingPage({ onOpenAuth, setPage }) {
         </div>
         <div className="hairline-t">
           <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-xs text-ink-muted">
-            <span>© 2026 Hak-Bul. Tüm hakları saklıdır.</span>
+            <span>{t('footerRights')}</span>
             <span className="font-mono">v2.0 · new-ui</span>
           </div>
         </div>

@@ -30,14 +30,29 @@ export function scoreToPercentage(skor) {
     return Math.max(0, Math.min(100, Math.round(numericScore * 100)));
 }
 
-export function scoreToBandLabel(skor) {
+export function scoreToBandLabel(skor, language = 'tr') {
     const yuzde = scoreToPercentage(skor);
+    const labels = language === 'en'
+        ? {
+            excellent: 'Excellent',
+            good: 'Good',
+            medium: 'Medium',
+            low: 'Low',
+            veryLow: 'Very low',
+        }
+        : {
+            excellent: 'Çok iyi',
+            good: 'İyi',
+            medium: 'Orta',
+            low: 'Düşük',
+            veryLow: 'Çok düşük',
+        };
 
-    if (yuzde >= 90) return 'Çok iyi';
-    if (yuzde >= 80) return 'İyi';
-    if (yuzde >= 70) return 'Orta';
-    if (yuzde >= 60) return 'Düşük';
-    return 'Çok düşük';
+    if (yuzde >= 90) return labels.excellent;
+    if (yuzde >= 80) return labels.good;
+    if (yuzde >= 70) return labels.medium;
+    if (yuzde >= 60) return labels.low;
+    return labels.veryLow;
 }
 
 export function normalizeConversationSearch(value = '') {

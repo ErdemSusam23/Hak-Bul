@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import KaynakKarti from './KaynakKarti';
 import FeedbackButonlari from './FeedbackButonlari';
 import { CHAT_TEXT_WRAP_STYLE } from '../utils/chatUi';
+import { useDil } from '../context/useDil';
 
 function SaatDamgasi({ zaman }) {
   if (!zaman) return null;
@@ -112,7 +113,7 @@ function KullaniciMesaji({ mesaj }) {
   );
 }
 
-function AsistanMesaji({ mesaj }) {
+function AsistanMesaji({ mesaj, t }) {
   const varKaynak = mesaj.kaynaklar && mesaj.kaynaklar.length > 0;
   const accentBorder = 'color-mix(in srgb, var(--accent) 22%, var(--line))';
 
@@ -186,12 +187,12 @@ function AsistanMesaji({ mesaj }) {
               <div className="flex items-center gap-2">
                 <div className="h-px flex-1" style={{ background: 'var(--line)' }} />
                 <span className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--ink-muted)' }}>
-                  {mesaj.kaynaklar.length} Hukuki Kaynak
+                  {t('chatLegalSourcesCount').replace('{count}', mesaj.kaynaklar.length)}
                 </span>
                 <div className="h-px flex-1" style={{ background: 'var(--line)' }} />
               </div>
               <p className="mt-1 text-[11px]" style={{ color: 'var(--ink-faint)' }}>
-                Kaynaklar sorunuzla ilgililik düzeyine göre sıralanmıştır.
+                {t('chatSourcesSorted')}
               </p>
             </div>
             {mesaj.kaynaklar.map((kaynak, index) => (
@@ -217,6 +218,7 @@ function AsistanMesaji({ mesaj }) {
 }
 
 export default function SohbetMesaji({ mesaj }) {
+  const { t } = useDil();
   const ref = useRef(null);
 
   useEffect(() => {
@@ -228,7 +230,7 @@ export default function SohbetMesaji({ mesaj }) {
       {mesaj.rol === 'kullanici' ? (
         <KullaniciMesaji mesaj={mesaj} />
       ) : (
-        <AsistanMesaji mesaj={mesaj} />
+        <AsistanMesaji mesaj={mesaj} t={t} />
       )}
     </div>
   );

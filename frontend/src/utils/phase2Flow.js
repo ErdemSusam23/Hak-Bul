@@ -3,17 +3,17 @@ export function buildSharedConversationUrl(origin, shareToken) {
   return `${normalizedOrigin}/#/shared/${shareToken}`;
 }
 
-export function createNewsletterNotice(email) {
+export function createNewsletterNotice(email, messages = {}) {
   if (!email?.trim()) {
     return {
       kind: 'error',
-      text: 'Bülten için e-posta adresi girin.',
+      text: messages.required || 'Bülten için e-posta adresi girin.',
     };
   }
 
   return {
     kind: 'info',
-    text: 'Bülten aboneliği yakında açılacak. Şimdilik bu özellik beklemede.',
+    text: messages.info || 'Bülten aboneliği yakında açılacak. Şimdilik bu özellik beklemede.',
   };
 }
 

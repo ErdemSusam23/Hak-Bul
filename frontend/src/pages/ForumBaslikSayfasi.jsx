@@ -3,6 +3,7 @@ import {
   ArrowLeft, Lock, Unlock, Trash2, CheckCircle, ThumbsUp, ThumbsDown, BadgeCheck,
 } from 'lucide-react';
 import { useAuth } from '../context/useAuth';
+import { useDil } from '../context/useDil';
 import {
   forumThreadDetayAPI,
   forumThreadSilAPI,
@@ -15,20 +16,42 @@ import {
 } from '../api/client';
 import { togglePendingAction } from '../utils/phase2Flow';
 
-function formatDate(iso) {
-  if (!iso) return '';
-  const normalized = iso.endsWith('Z') || iso.includes('+') ? iso : `${iso}Z`;
-  return new Date(normalized).toLocaleDateString('tr-TR');
+function formatText(template, values = {}) {
+  return Object.entries(values).reduce((text, [key, value]) => text.replace(`{${key}}`, String(value)), template);
 }
 
-function OyButonlari({ skor, onOy, disabled }) {
+function formatDate(iso, dil = 'tr') {
+  if (!iso) return '';
+  const normalized = iso.endsWith('Z') || iso.includes('+') ? iso : `${iso}Z`;
+  return new Date(normalized).toLocaleDateString(dil === 'en' ? 'en-US' : 'tr-TR');
+}
+
+const FORUM_CATEGORY_KEYS = {
+  Genel: 'forumCategoryGeneral',
+  'İş Hukuku': 'forumCategoryLabor',
+  'Medeni Hukuk': 'forumCategoryCivil',
+  'Ceza Hukuku': 'forumCategoryCriminal',
+  'Ticaret Hukuku': 'forumCategoryCommercial',
+  'Tüketici Hukuku': 'forumCategoryConsumer',
+  'Taşınmaz Mülk': 'forumCategoryRealEstate',
+  'İdare Hukuku': 'forumCategoryAdministrative',
+  'Vergi Hukuku': 'forumCategoryTax',
+  'Sosyal Güvenlik': 'forumCategorySocialSecurity',
+  'Bilişim Hukuku': 'forumCategoryTech',
+};
+
+function forumCategoryLabel(category, t) {
+  return t(FORUM_CATEGORY_KEYS[category] || category);
+}
+
+function OyButonlari({ skor, onOy, disabled, t }) {
   return (
     <div className="flex items-center gap-1">
       <button
         onClick={() => onOy(1)}
         disabled={disabled}
         className="p-1 rounded transition-colors hover:bg-green-500/10 text-ink-muted"
-        title="Beğen"
+        title={t('forumLike')}
       >
         <ThumbsUp size={14} />
       </button>
@@ -39,7 +62,7 @@ function OyButonlari({ skor, onOy, disabled }) {
         onClick={() => onOy(-1)}
         disabled={disabled}
         className="p-1 rounded transition-colors hover:bg-red-500/10 text-ink-muted"
-        title="Beğenme"
+        title={t('forumDislike')}
       >
         <ThumbsDown size={14} />
       </button>
@@ -49,6 +72,7 @@ function OyButonlari({ skor, onOy, disabled }) {
 
 export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
   const { kullanici } = useAuth();
+  const { dil, t } = useDil();
   const [detay, setDetay] = useState(null);
   const [yukleniyor, setYukleniyor] = useState(true);
   const [yanitMetin, setYanitMetin] = useState('');
@@ -68,11 +92,11 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
     } catch (error) {
       console.error('Thread yuklenemedi:', error);
       setDetay(null);
-      setHata('Başlık yüklenemedi.');
+      setHata(t('forumThreadLoadFailed'));
     } finally {
       setYukleniyor(false);
     }
-  }, [threadId]);
+  }, [threadId, t]);
 
   useEffect(() => {
     yukle();
@@ -82,18 +106,18 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
     if (!threadSilOnayli) {
       setThreadSilOnayli(true);
       setYanitSilOnayId(null);
-      toast?.('Başlığı silmek için tekrar tıklayın.', 'info');
+      toast?.(t('forumDeleteThreadClickAgain'), 'info');
       return;
     }
 
     try {
       await forumThreadSilAPI(threadId);
       setThreadSilOnayli(false);
-      toast?.('Başlık silindi.');
+      toast?.(t('forumThreadDeleted'));
       onGeri();
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Başlık silinemedi.');
-      toast?.('Başlık silinemedi.', 'error');
+      setHata(error.response?.data?.detail || t('forumThreadDeleteFailed'));
+      toast?.(t('forumThreadDeleteFailed'), 'error');
     }
   };
 
@@ -104,10 +128,10 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       setDetay((prev) => ({ ...prev, thread: guncellenen }));
       setThreadSilOnayli(false);
       setYanitSilOnayId(null);
-      toast?.(yeniDurum ? 'Başlık kilitlendi.' : 'Başlık yeniden açıldı.');
+      toast?.(yeniDurum ? t('forumThreadLocked') : t('forumThreadUnlocked'));
     } catch (error) {
-      setHata(error.response?.data?.detail || 'İşlem başarısız.');
-      toast?.('Başlık güncellenemedi.', 'error');
+      setHata(error.response?.data?.detail || t('forumActionFailed'));
+      toast?.(t('forumThreadUpdateFailed'), 'error');
     }
   };
 
@@ -122,9 +146,9 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       setYanitMetin('');
       setThreadSilOnayli(false);
       setYanitSilOnayId(null);
-      toast?.('Yanıt eklendi.');
+      toast?.(t('forumReplyAdded'));
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Yanıt gönderilemedi.');
+      setHata(error.response?.data?.detail || t('forumReplySendFailed'));
     } finally {
       setYanitGonderiliyor(false);
     }
@@ -134,7 +158,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
     if (yanitSilOnayId !== replyId) {
       setYanitSilOnayId(togglePendingAction(yanitSilOnayId, replyId));
       setThreadSilOnayli(false);
-      toast?.('Yanıtı silmek için tekrar tıklayın.', 'info');
+      toast?.(t('forumDeleteReplyClickAgain'), 'info');
       return;
     }
 
@@ -142,10 +166,10 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       await forumYanitSilAPI(replyId);
       setDetay((prev) => ({ ...prev, replies: prev.replies.filter((reply) => reply.id !== replyId) }));
       setYanitSilOnayId(null);
-      toast?.('Yanıt silindi.');
+      toast?.(t('forumReplyDeleted'));
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Yanıt silinemedi.');
-      toast?.('Yanıt silinemedi.', 'error');
+      setHata(error.response?.data?.detail || t('forumReplyDeleteFailed'));
+      toast?.(t('forumReplyDeleteFailed'), 'error');
     }
   };
 
@@ -156,10 +180,10 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
         ...prev,
         replies: prev.replies.map((reply) => (reply.id === replyId ? guncellenen : reply)),
       }));
-      toast?.(!mevcutDurum ? 'Yanıt onaylandı.' : 'Yanıt onayı kaldırıldı.');
+      toast?.(!mevcutDurum ? t('forumReplyVerified') : t('forumReplyUnverified'));
     } catch (error) {
-      setHata(error.response?.data?.detail || 'Islem basarisiz.');
-      toast?.('Yanıt doğrulanamadı.', 'error');
+      setHata(error.response?.data?.detail || t('forumActionFailed'));
+      toast?.(t('forumReplyVerifyFailed'), 'error');
     }
   };
 
@@ -170,7 +194,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       setDetay((prev) => ({ ...prev, thread: { ...prev.thread, vote_score: yeniSkor } }));
     } catch (error) {
       console.error('Oy gonderilemedi:', error);
-      toast?.('Oyunuz kaydedilemedi.', 'error');
+      toast?.(t('forumVoteFailed'), 'error');
     }
   };
 
@@ -184,14 +208,14 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       }));
     } catch (error) {
       console.error('Oy gonderilemedi:', error);
-      toast?.('Oyunuz kaydedilemedi.', 'error');
+      toast?.(t('forumVoteFailed'), 'error');
     }
   };
 
   if (yukleniyor) {
     return (
       <div className="flex-1 flex items-center justify-center">
-        <p className="text-sm text-ink-muted">Yükleniyor...</p>
+        <p className="text-sm text-ink-muted">{t('forumLoading')}</p>
       </div>
     );
   }
@@ -199,8 +223,8 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
   if (!detay) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center gap-3">
-        <p className="text-sm text-ink-muted">Başlık bulunamadı.</p>
-        <button onClick={onGeri} className="text-xs text-accent">← Geri dön</button>
+        <p className="text-sm text-ink-muted">{t('forumThreadNotFound')}</p>
+        <button onClick={onGeri} className="text-xs text-accent">← {t('forumBack')}</button>
       </div>
     );
   }
@@ -211,7 +235,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
   return (
     <div className="flex-1 flex flex-col min-h-0 p-6 overflow-y-auto">
       <button onClick={onGeri} className="flex items-center gap-1 text-sm mb-4 self-start text-ink-muted">
-        <ArrowLeft size={14} /> Forum'a dön
+        <ArrowLeft size={14} /> {t('forumBackToForum')}
       </button>
 
       {hata && (
@@ -225,28 +249,28 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: 'var(--accent-soft)', color: 'var(--accent)' }}>
-                {thread.category}
+                {forumCategoryLabel(thread.category, t)}
               </span>
               {thread.is_locked && (
                 <span className="flex items-center gap-1 text-xs text-ink-muted">
-                  <Lock size={12} /> Kilitli
+                  <Lock size={12} /> {t('forumLocked')}
                 </span>
               )}
             </div>
             <h1 className="text-lg font-bold text-ink">{thread.title}</h1>
             <p className="text-xs mt-1 text-ink-muted">
-              {thread.display_name} · {formatDate(thread.created_at)}
+              {thread.display_name} · {formatDate(thread.created_at, dil)}
             </p>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
-            <OyButonlari skor={thread.vote_score} onOy={handleThreadOy} disabled={!kullanici} />
+            <OyButonlari skor={thread.vote_score} onOy={handleThreadOy} disabled={!kullanici} t={t} />
             {isModerator && (
-              <button onClick={handleKilitle} className="p-1.5 rounded-lg text-ink-muted" title={thread.is_locked ? 'Kilidi Ac' : 'Kilitle'}>
+              <button onClick={handleKilitle} className="p-1.5 rounded-lg text-ink-muted" title={thread.is_locked ? t('forumUnlock') : t('forumLock')}>
                 {thread.is_locked ? <Unlock size={14} /> : <Lock size={14} />}
               </button>
             )}
             {(isOwner || isModerator) && (
-              <button onClick={handleThreadSil} className="p-1.5 rounded-lg hover:text-red-400 text-ink-muted" title={threadSilOnayli ? 'Silmeyi Onayla' : 'Sil'}>
+              <button onClick={handleThreadSil} className="p-1.5 rounded-lg hover:text-red-400 text-ink-muted" title={threadSilOnayli ? t('forumConfirmDelete') : t('forumDelete')}>
                 {threadSilOnayli ? <CheckCircle size={14} /> : <Trash2 size={14} />}
               </button>
             )}
@@ -256,7 +280,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
       </div>
 
       <h2 className="text-sm font-semibold mb-3 text-ink-muted">
-        {replies.length} Yanıt
+        {formatText(t('forumReplyCountTitle'), { count: replies.length })}
       </h2>
 
       <div className="flex flex-col gap-3 mb-6">
@@ -277,23 +301,23 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
                   <span className="text-xs font-medium text-ink-soft">{reply.display_name}</span>
                   {reply.user_role === 'lawyer' && (
                     <span className="flex items-center gap-0.5 text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa' }}>
-                      <BadgeCheck size={10} /> Avukat
+                      <BadgeCheck size={10} /> {t('forumLawyer')}
                     </span>
                   )}
                   {reply.is_verified && (
                     <span className="flex items-center gap-0.5 text-xs px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.15)', color: '#4ade80' }}>
-                      <CheckCircle size={10} /> Onaylı Cevap
+                      <CheckCircle size={10} /> {t('forumVerifiedAnswer')}
                     </span>
                   )}
                 </div>
                 <div className="flex items-center gap-1">
-                  <OyButonlari skor={reply.vote_score} onOy={(value) => handleReplyOy(reply.id, value)} disabled={!kullanici} />
+                  <OyButonlari skor={reply.vote_score} onOy={(value) => handleReplyOy(reply.id, value)} disabled={!kullanici} t={t} />
                   {isModerator && (
                     <button
                       onClick={() => handleYanitDogrula(reply.id, reply.is_verified)}
                       className="p-1 rounded"
                       style={{ color: reply.is_verified ? '#4ade80' : 'var(--ink-muted)' }}
-                      title={reply.is_verified ? 'Onayı Kaldır' : 'Onaylı İşaretle'}
+                      title={reply.is_verified ? t('forumUnverify') : t('forumVerify')}
                     >
                       <CheckCircle size={14} />
                     </button>
@@ -303,7 +327,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
                       onClick={() => handleYanitSil(reply.id)}
                       className="p-1 rounded hover:text-red-400"
                       style={{ color: deleteArmed ? 'var(--accent)' : 'var(--ink-muted)' }}
-                      title={deleteArmed ? 'Silmeyi Onayla' : 'Sil'}
+                      title={deleteArmed ? t('forumConfirmDelete') : t('forumDelete')}
                     >
                       {deleteArmed ? <CheckCircle size={14} /> : <Trash2 size={14} />}
                     </button>
@@ -312,7 +336,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
               </div>
               <p className="text-sm leading-relaxed whitespace-pre-wrap text-ink-soft">{reply.content}</p>
               <p className="text-xs mt-2 text-ink-faint">
-                {formatDate(reply.created_at)}
+                {formatDate(reply.created_at, dil)}
               </p>
             </div>
           );
@@ -324,7 +348,7 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
           <textarea
             className="w-full rounded-xl px-3 py-2 text-sm outline-none resize-none"
             style={{ background: 'var(--surface-muted)', color: 'var(--ink)', border: '1px solid var(--line)', minHeight: '80px' }}
-            placeholder="Yanıtınızı yazın..."
+            placeholder={t('forumReplyPlaceholder')}
             value={yanitMetin}
             onChange={(event) => setYanitMetin(event.target.value)}
             required
@@ -337,20 +361,20 @@ export default function ForumBaslikSayfasi({ threadId, onGeri, toast }) {
             className="btn btn-primary self-end"
             style={{ opacity: yanitGonderiliyor ? 0.7 : 1 }}
           >
-            {yanitGonderiliyor ? 'Gönderiliyor...' : 'Yanıtla'}
+            {yanitGonderiliyor ? t('forumReplying') : t('forumReplyButton')}
           </button>
         </form>
       )}
 
       {!kullanici && (
         <p className="text-sm text-center py-3 text-ink-muted">
-          Yanıt yazmak için giriş yapın.
+          {t('forumLoginToReply')}
         </p>
       )}
 
       {kullanici && thread.is_locked && (
         <p className="text-sm text-center py-3 text-ink-muted">
-          Bu başlık kilitli, yeni yanıt yazılamaz.
+          {t('forumLockedNoReply')}
         </p>
       )}
     </div>

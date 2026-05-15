@@ -1,10 +1,11 @@
 import { BookOpen, Gavel, ExternalLink, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { CHAT_TEXT_WRAP_STYLE, getKaynakPreviewText, scoreToBandLabel, scoreToPercentage } from '../utils/chatUi';
+import { useDil } from '../context/useDil';
 
 const KAYNAK_TURU_KONFIG = {
   kanun: {
-    etiket: 'Kanun',
+    etiketKey: 'sourceLaw',
     solSerit: 'var(--accent)',
     ikonArka: 'var(--accent-soft)',
     ikonRenk: 'var(--accent)',
@@ -16,7 +17,7 @@ const KAYNAK_TURU_KONFIG = {
     Ikon: BookOpen,
   },
   yargitay_karari: {
-    etiket: 'Yargıtay Kararı',
+    etiketKey: 'sourceCase',
     solSerit: 'var(--highlight)',
     ikonArka: 'color-mix(in srgb, var(--highlight) 18%, var(--surface))',
     ikonRenk: 'var(--highlight)',
@@ -28,7 +29,7 @@ const KAYNAK_TURU_KONFIG = {
     Ikon: Gavel,
   },
   yonetmelik: {
-    etiket: 'Yönetmelik',
+    etiketKey: 'sourceRegulation',
     solSerit: 'var(--success)',
     ikonArka: 'color-mix(in srgb, var(--success) 12%, var(--surface))',
     ikonRenk: 'var(--success)',
@@ -41,9 +42,9 @@ const KAYNAK_TURU_KONFIG = {
   },
 };
 
-function SkorCubugu({ skor }) {
+function SkorCubugu({ skor, dil, t }) {
   const yuzde = scoreToPercentage(skor);
-  const etiket = scoreToBandLabel(skor);
+  const etiket = scoreToBandLabel(skor, dil);
   let bgColor = 'var(--warn)';
   if (yuzde >= 85) bgColor = 'var(--success)';
   else if (yuzde >= 70) bgColor = 'var(--accent)';
@@ -57,13 +58,14 @@ function SkorCubugu({ skor }) {
         />
       </div>
       <span className="text-xs" style={{ color: 'var(--ink-muted)' }}>
-        Doğruluk: {etiket}
+        {t('sourceConfidence').replace('{label}', etiket)}
       </span>
     </div>
   );
 }
 
 export default function KaynakKarti({ kaynak }) {
+  const { dil, t } = useDil();
   const [acik, setAcik] = useState(false);
   const konfig = KAYNAK_TURU_KONFIG[kaynak.kaynak_turu] || KAYNAK_TURU_KONFIG.kanun;
   const { Ikon } = konfig;
@@ -115,7 +117,7 @@ export default function KaynakKarti({ kaynak }) {
                     style={{ color: 'var(--ink-muted)' }}
                     onMouseEnter={(event) => { event.currentTarget.style.color = konfig.ikonRenk; }}
                     onMouseLeave={(event) => { event.currentTarget.style.color = 'var(--ink-muted)'; }}
-                    title="mevzuat.gov.tr'de aç"
+                    title={t('sourceOpenTitle')}
                   >
                     <ExternalLink size={12} />
                   </button>
@@ -140,10 +142,10 @@ export default function KaynakKarti({ kaynak }) {
                   color: konfig.rozetMetin,
                 }}
               >
-                {konfig.etiket}
+                {t(konfig.etiketKey)}
               </span>
               <div className="flex-1">
-                <SkorCubugu skor={kaynak.skor} />
+                <SkorCubugu skor={kaynak.skor} dil={dil} t={t} />
               </div>
             </div>
           </div>
@@ -172,7 +174,7 @@ export default function KaynakKarti({ kaynak }) {
                 onMouseLeave={(event) => { event.currentTarget.style.color = 'var(--ink-muted)'; }}
               >
                 <ExternalLink size={11} />
-                Tam metni mevzuat.gov.tr'de görüntüle
+                {t('sourceOpenFullText')}
               </button>
             )}
           </div>

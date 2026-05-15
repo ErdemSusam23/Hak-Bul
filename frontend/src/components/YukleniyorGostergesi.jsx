@@ -1,18 +1,16 @@
 import { Scale } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useDil } from '../context/useDil';
 
-const MESAJLAR = [
-  'Kaynaklar taranıyor...',
-  'Kanun maddeleri aranıyor...',
-  'Yanıt oluşturuluyor...',
-];
+const MESAJ_ANAHTARLARI = ['chatScanningSources', 'chatSearchingLaws', 'chatGeneratingAnswer'];
 
 export default function YukleniyorGostergesi() {
+  const { t } = useDil();
   const [mesajIndex, setMesajIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMesajIndex((index) => (index + 1) % MESAJLAR.length);
+      setMesajIndex((index) => (index + 1) % MESAJ_ANAHTARLARI.length);
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -55,7 +53,7 @@ export default function YukleniyorGostergesi() {
             className="text-sm fade-in"
             style={{ color: 'var(--ink-soft)' }}
           >
-            {MESAJLAR[mesajIndex]}
+            {t(MESAJ_ANAHTARLARI[mesajIndex])}
           </span>
         </div>
       </div>

@@ -711,21 +711,21 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
     <div class="g2 fill">
       <div class="card info-card card-gold">
         <strong>2.1 Requirements Analysis</strong>
-        <p>Hak-Bul is designed as a web-based legal information assistant for Turkish law. The main requirement is to transform a user's natural-language question into a cited, understandable, and non-advisory legal information response.</p>
+        <p>Hak-Bul is designed as a web-based legal information assistant for Turkish law. The main requirement is to transform a user's natural-language question into a cited, understandable, non-advisory legal information response.</p>
         <ul>
           <li>Accept Turkish and English legal questions from registered users and guests.</li>
-          <li>Retrieve relevant legislation and court-decision chunks before generating an answer.</li>
-          <li>Show source summaries, legal category, confidence signals, and an informational warning.</li>
+          <li>Retrieve relevant legislation and court-decision excerpts before generating an answer.</li>
+          <li>Show source summaries, the legal category, confidence signals, and an informational warning.</li>
           <li>Support document analysis, document comparison, templates, forum activity, and admin monitoring.</li>
         </ul>
       </div>
       <div class="card info-card card-blue">
         <strong>2.1.1 User Requirements</strong>
-        <p>The target user needs fast legal orientation without learning legal terminology or manually searching many official resources.</p>
+        <p>Target users need fast legal orientation without learning legal terminology or manually searching many official resources.</p>
         <ul>
           <li>Ask a legal question in everyday language and receive a clear answer.</li>
-          <li>Inspect which law article or Yargitay decision supports the response.</li>
-          <li>Continue conversations as a guest or authenticated user and export/share history.</li>
+          <li>Inspect which law article or Yargıtay decision supports the response.</li>
+          <li>Continue conversations as a guest or authenticated user and export or share their history.</li>
           <li>Upload PDFs for analysis, compare two legal documents, and generate common legal drafts.</li>
         </ul>
       </div>
@@ -740,9 +740,9 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
       <div class="card info-card card-green">
         <strong>Functional System Requirements</strong>
         <ul>
-          <li>Run the RAG pipeline: category detection, query rewrite, retrieval, optional rerank, source filtering, and answer generation.</li>
+          <li>Run the RAG pipeline: category detection, query rewriting, retrieval, optional reranking, source filtering, and answer generation.</li>
           <li>Provide REST and SSE endpoints for standard and streaming answers.</li>
-          <li>Manage JWT authentication, refresh token rotation, guest sessions, roles, and profile updates.</li>
+          <li>Manage JWT authentication, refresh-token rotation, guest sessions, roles, and profile updates.</li>
           <li>Persist chat history, feedback, shared conversations, forum content, and weak retrieval queries.</li>
           <li>Expose admin analytics for users, categories, feedback, and low-confidence questions.</li>
         </ul>
@@ -750,11 +750,11 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
       <div class="card info-card card-red">
         <strong>Non-Functional System Requirements</strong>
         <ul>
-          <li>Reliability: fallback to local legal corpus when Qdrant is unavailable.</li>
+          <li>Reliability: fall back to the local legal corpus when Qdrant is unavailable.</li>
           <li>Performance: stream generated tokens and keep the answer flow responsive for demos.</li>
           <li>Security: HttpOnly cookies for refresh/guest sessions, bcrypt password hashing, and role checks.</li>
-          <li>Maintainability: separate routers, services, RAG modules, migrations, and frontend flow helpers.</li>
-          <li>Legal safety: every answer remains informational and avoids replacing professional legal advice.</li>
+          <li>Maintainability: keep routers, services, RAG modules, migrations, and frontend flow helpers separated.</li>
+          <li>Legal safety: every answer remains informational and does not replace professional legal advice.</li>
         </ul>
       </div>
     </div>
@@ -768,7 +768,7 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
       <div class="card info-card process-step card-gold">
         <div class="step-num">01</div>
         <strong>Iterative Process Model</strong>
-        <p>The project followed an incremental approach: first a working RAG question-answer core, then authentication, history, document tools, templates, forum, admin screens, and test hardening.</p>
+        <p>The project followed an incremental approach: first a working RAG question-answering core, then authentication, history, document tools, templates, forum, admin screens, and test hardening.</p>
         <div class="tech-stack-note">MVP first, then feature expansion</div>
       </div>
       <div class="card info-card process-step card-blue">
@@ -778,16 +778,16 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
           <li>Define the user flow and backend contract.</li>
           <li>Implement API/service logic and frontend pages.</li>
           <li>Add contract tests around critical flows.</li>
-          <li>Document API, database, RAG behavior, and operational notes.</li>
+          <li>Document the API, database schema, RAG behavior, and operational notes.</li>
         </ul>
       </div>
       <div class="card info-card process-step card-green">
         <div class="step-num">03</div>
         <strong>Project Evidence</strong>
         <ul>
-          <li>Backend pytest suite covers auth, chat, retrieval, documents, feedback, forum, and admin modules.</li>
-          <li>Frontend contract tests cover routing, auth session, chat UI, templates, profiles, forum, and admin flows.</li>
-          <li>Docker Compose defines PostgreSQL, migration, backend, and frontend services.</li>
+          <li>The backend pytest suite covers auth, chat, retrieval, documents, feedback, forum, and admin modules.</li>
+          <li>Frontend contract tests cover routing, authenticated sessions, chat UI, templates, profiles, forum, and admin flows.</li>
+          <li>Docker Compose defines PostgreSQL, migration runner, backend, and frontend services.</li>
         </ul>
       </div>
     </div>
@@ -800,7 +800,7 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
     <div class="g3 fill">
       <div class="card info-card card-blue">
         <strong>Frontend Layer</strong>
-        <p>React 19 and Vite provide the single-page user interface. Pages are organized around chat, document analysis, comparison, templates, forum, profile, and admin views.</p>
+        <p>React 19 and Vite power the single-page user interface. Pages are organized around chat, document analysis, comparison, templates, forum, profile, and admin views.</p>
         <ul>
           <li>Context providers manage language, theme, and authentication state.</li>
           <li>API helpers centralize request behavior and token handling.</li>
@@ -818,12 +818,12 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
       </div>
       <div class="card info-card card-green">
         <strong>Data and AI Layer</strong>
-        <p>PostgreSQL stores application data, Qdrant stores legal embeddings, and Groq provides LLM inference for query rewriting and answer generation.</p>
+        <p>PostgreSQL stores application data, Qdrant stores legal-text embeddings, and Groq provides LLM inference for query rewriting and answer generation.</p>
         <ul>
-          <li><strong style="color:var(--white);">Qdrant — dual-collection</strong>: court decisions and statute articles indexed separately, prioritized by query type.</li>
-          <li><strong style="color:var(--white);">Groq + Llama-3.3-70b</strong>: LPU architecture provides low-latency SSE streaming; strong Turkish language capability.</li>
-          <li><strong style="color:var(--white);">multilingual-e5-large</strong>: best open-source multilingual embedding for Turkish legal text; tested across all 14 legal categories.</li>
-          <li><strong style="color:var(--white);">bge-reranker-v2-m3</strong>: ~270MB CrossEncoder, runs on CPU, toggled via <code style="color:var(--gold);font-size:inherit;">RERANKER_ENABLED</code> flag.</li>
+          <li><strong style="color:var(--white);">Qdrant — dual collections</strong>: court decisions and statute articles are indexed separately and prioritized by query type.</li>
+          <li><strong style="color:var(--white);">Groq + Llama 3.3 70B</strong>: LPU architecture supports low-latency SSE streaming and strong Turkish language capability.</li>
+          <li><strong style="color:var(--white);">multilingual-e5-large</strong>: strong open-source multilingual embedding model for Turkish legal text; tested across all 14 legal categories.</li>
+          <li><strong style="color:var(--white);">bge-reranker-v2-m3</strong>: ~270 MB cross-encoder model; runs on CPU and is toggled via <code style="color:var(--gold);font-size:inherit;">RERANKER_ENABLED</code> flag.</li>
         </ul>
       </div>
     </div>
@@ -872,7 +872,7 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
 
         <rect x="392" y="398" width="316" height="68" rx="12" class="svg-node svg-node-blue"></rect>
         <text x="550" y="425" text-anchor="middle" class="svg-label">Legal Data Sources</text>
-        <text x="550" y="447" text-anchor="middle" class="svg-small">Mevzuat, Yargitay, local corpus</text>
+        <text x="550" y="447" text-anchor="middle" class="svg-small">Mevzuat, Yargıtay, local corpus</text>
 
         <line x1="292" y1="109" x2="388" y2="194" class="svg-line svg-line-blue" marker-end="url(#arrow-context)"></line>
         <line x1="292" y1="259" x2="388" y2="240" class="svg-line svg-line-blue" marker-end="url(#arrow-context)"></line>
@@ -1008,23 +1008,23 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
         <line x1="1042" y1="100" x2="1042" y2="452" class="svg-line-muted" stroke-dasharray="5 7"></line>
 
         <line x1="101" y1="134" x2="261" y2="134" class="svg-line svg-line-blue" marker-end="url(#arrow-seq-blue)"></line>
-        <text x="181" y="126" text-anchor="middle" class="svg-small">enter question</text>
+        <text x="181" y="126" text-anchor="middle" class="svg-small">Enter question</text>
         <line x1="261" y1="174" x2="421" y2="174" class="svg-line svg-line-blue" marker-end="url(#arrow-seq-blue)"></line>
         <text x="341" y="166" text-anchor="middle" class="svg-small">POST /ask/stream</text>
         <line x1="421" y1="214" x2="1042" y2="214" class="svg-line" marker-end="url(#arrow-seq)"></line>
-        <text x="732" y="206" text-anchor="middle" class="svg-small">resolve session, load conversation context</text>
+        <text x="732" y="206" text-anchor="middle" class="svg-small">Resolve session + load context</text>
         <line x1="421" y1="254" x2="581" y2="254" class="svg-line" marker-end="url(#arrow-seq)"></line>
-        <text x="501" y="246" text-anchor="middle" class="svg-small">run pipeline</text>
+        <text x="501" y="246" text-anchor="middle" class="svg-small">Run pipeline</text>
         <line x1="581" y1="294" x2="901" y2="294" class="svg-line svg-line-green" marker-end="url(#arrow-seq)"></line>
-        <text x="741" y="286" text-anchor="middle" class="svg-small">rewrite query</text>
+        <text x="741" y="286" text-anchor="middle" class="svg-small">Rewrite query</text>
         <line x1="581" y1="334" x2="741" y2="334" class="svg-line svg-line-green" marker-end="url(#arrow-seq)"></line>
-        <text x="661" y="326" text-anchor="middle" class="svg-small">retrieve legal chunks</text>
+        <text x="661" y="326" text-anchor="middle" class="svg-small">Retrieve legal chunks</text>
         <line x1="581" y1="374" x2="901" y2="374" class="svg-line svg-line-green" marker-end="url(#arrow-seq)"></line>
-        <text x="741" y="366" text-anchor="middle" class="svg-small">generate cited answer</text>
+        <text x="741" y="366" text-anchor="middle" class="svg-small">Generate cited answer</text>
         <line x1="421" y1="414" x2="261" y2="414" class="svg-line svg-line-blue" marker-end="url(#arrow-seq-blue)"></line>
-        <text x="341" y="406" text-anchor="middle" class="svg-small">meta + token events</text>
+        <text x="341" y="406" text-anchor="middle" class="svg-small">Metadata + token events</text>
         <line x1="421" y1="448" x2="1042" y2="448" class="svg-line" marker-end="url(#arrow-seq)"></line>
-        <text x="732" y="440" text-anchor="middle" class="svg-small">save user and assistant messages</text>
+        <text x="732" y="440" text-anchor="middle" class="svg-small">Save user + assistant messages</text>
       </svg>
     </div>
   </section>
@@ -1056,7 +1056,7 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
 
         <rect x="304" y="188" width="186" height="72" rx="12" class="svg-node svg-node-green"></rect>
         <text x="397" y="219" text-anchor="middle" class="svg-label">2. Question</text>
-        <text x="397" y="241" text-anchor="middle" class="svg-small">Validation and category</text>
+        <text x="397" y="241" text-anchor="middle" class="svg-small">Validation and categorization</text>
 
         <rect x="566" y="188" width="190" height="72" rx="12" class="svg-node svg-node-green"></rect>
         <text x="661" y="219" text-anchor="middle" class="svg-label">3. Retrieval</text>
@@ -1121,7 +1121,7 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
 
         <rect x="278" y="98" width="174" height="60" rx="12" class="svg-node"></rect>
         <text x="365" y="123" text-anchor="middle" class="svg-label">Input Validation</text>
-        <text x="365" y="143" text-anchor="middle" class="svg-small">length, gibberish, language</text>
+        <text x="365" y="143" text-anchor="middle" class="svg-small">length, noise, language</text>
 
         <rect x="516" y="98" width="174" height="60" rx="12" class="svg-node"></rect>
         <text x="603" y="123" text-anchor="middle" class="svg-label">Category Detected</text>
@@ -1141,11 +1141,11 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
 
         <rect x="282" y="252" width="170" height="60" rx="12" class="svg-node svg-node-blue"></rect>
         <text x="367" y="277" text-anchor="middle" class="svg-label">Streamed to UI</text>
-        <text x="367" y="297" text-anchor="middle" class="svg-small">meta, tokens, done</text>
+        <text x="367" y="297" text-anchor="middle" class="svg-small">metadata, tokens, done</text>
 
         <rect x="74" y="252" width="158" height="60" rx="12" class="svg-node"></rect>
         <text x="153" y="277" text-anchor="middle" class="svg-label">History Saved</text>
-        <text x="153" y="297" text-anchor="middle" class="svg-small">chat pair persisted</text>
+        <text x="153" y="297" text-anchor="middle" class="svg-small">message pair saved</text>
 
         <rect x="74" y="386" width="158" height="60" rx="12" class="svg-node"></rect>
         <text x="153" y="411" text-anchor="middle" class="svg-label">Feedback Logged</text>
@@ -1168,7 +1168,7 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
         <text x="912" y="368" text-anchor="middle" class="svg-small">low score</text>
         <text x="912" y="380" text-anchor="middle" class="svg-small">(threshold: 0.65)</text>
         <path d="M 849 446 C 690 478, 250 478, 153 446" class="svg-line svg-line-muted" marker-end="url(#arrow-state)"></path>
-        <text x="505" y="470" text-anchor="middle" class="svg-small">learning signal for future improvements</text>
+        <text x="505" y="470" text-anchor="middle" class="svg-small">Learning signal for future improvements</text>
       </svg>
     </div>
   </section>

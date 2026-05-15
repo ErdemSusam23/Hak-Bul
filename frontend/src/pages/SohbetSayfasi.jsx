@@ -4,7 +4,7 @@ import { renderInline } from '../components/ui/renderInline';
 import { useChat } from '../hooks/useChat';
 import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
-import { SOHBET_ONERILEN_SORULAR } from '../content/productContent';
+import { SOHBET_ONERILEN_SORULAR, SOHBET_ONERILEN_SORULAR_EN } from '../content/productContent';
 import { normalizeRoleName } from '../utils/adminFlow';
 import { CHAT_COMPOSER_MAX_LENGTH, filterChatConversations, prepareComposerSubmission, scoreToBandLabel, scoreToPercentage } from '../utils/chatUi';
 import FeedbackButonlari from '../components/FeedbackButonlari';
@@ -21,18 +21,25 @@ import {
   sohbetPaylasAPI,
 } from '../api/client';
 
-function tarihKisa(isoStr) {
+function formatText(template, values = {}) {
+  return Object.entries(values).reduce(
+    (text, [key, value]) => text.replace(`{${key}}`, String(value)),
+    template,
+  );
+}
+
+function tarihKisa(isoStr, dil = 'tr') {
   if (!isoStr) return '';
   const date = new Date(isoStr.endsWith('Z') ? isoStr : `${isoStr}Z`);
   const diff = Math.max(0, Date.now() - date);
   const minutes = Math.floor(diff / 60000);
   const hours = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
-  if (minutes < 1) return 'Az önce';
-  if (minutes < 60) return `${minutes}dk`;
-  if (hours < 24) return `${hours}sa`;
-  if (days < 7) return `${days}g`;
-  return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+  if (minutes < 1) return dil === 'en' ? 'Just now' : 'Az önce';
+  if (minutes < 60) return dil === 'en' ? `${minutes}m` : `${minutes}dk`;
+  if (hours < 24) return dil === 'en' ? `${hours}h` : `${hours}sa`;
+  if (days < 7) return dil === 'en' ? `${days}d` : `${days}g`;
+  return date.toLocaleDateString(dil === 'en' ? 'en-US' : 'tr-TR', { day: 'numeric', month: 'short' });
 }
 
 function kullaniciRolEtiketi(kullanici) {
@@ -46,6 +53,14 @@ function kullaniciRolEtiketi(kullanici) {
     default:
       return 'Kullanıcı';
   }
+}
+
+function yerelRolEtiketi(kullanici, t) {
+  const label = kullaniciRolEtiketi(kullanici);
+  if (label === 'Misafir') return t('guestLabel');
+  if (label === 'Avukat') return t('lawyerRoleLabel');
+  if (label === 'Kullanıcı') return t('userRoleLabel');
+  return label;
 }
 
 const CRITICAL_CATEGORY_KEYWORDS = ['ceza', 'aile', 'medeni', 'icra', 'is hukuku'];
@@ -88,6 +103,7 @@ function ChatSidebar({
   open, activeId, onSelect, onNew, onDeleteConversation, toast,
 }) {
   const { kullanici } = useAuth();
+  const { dil, t } = useDil();
   const [sohbetler, setSohbetler] = useState([]);
   const [duzenleId, setDuzenleId] = useState(null);
   const [duzenleMetin, setDuzenleMetin] = useState('');
@@ -104,7 +120,7 @@ function ChatSidebar({
       setSohbetler(
         (data.conversations || []).map((conversation) => ({
           id: conversation.conversation_id,
-          title: conversation.title || `Sohbet (${conversation.message_count} mesaj)`,
+          title: conversation.title || formatText(t('chatDefaultTitle'), { count: conversation.message_count }),
           tarih: conversation.last_message_at,
           misafir: !isAuth,
         })),
@@ -112,7 +128,7 @@ function ChatSidebar({
     } catch {
       // ignore sidebar refresh failures
     }
-  }, [kullanici]);
+  }, [kullanici, t]);
 
   useEffect(() => { gecmisiCek(); }, [gecmisiCek]);
 
@@ -143,7 +159,7 @@ function ChatSidebar({
       });
       setSilOnayId(null);
     } catch {
-      toast?.('Sohbet detayları yüklenemedi.', 'error');
+      toast?.(t('chatDetailsLoadFailed'), 'error');
     }
   };
 
@@ -151,7 +167,7 @@ function ChatSidebar({
     event.stopPropagation();
     if (silOnayId !== sohbet.id) {
       setSilOnayId(togglePendingAction(silOnayId, sohbet.id));
-      toast?.('Sohbeti silmek için tekrar tıklayın.', 'info');
+      toast?.(t('chatDeleteClickAgain'), 'info');
       return;
     }
 
@@ -165,9 +181,9 @@ function ChatSidebar({
       onDeleteConversation?.(sohbet.id);
       setSilOnayId(null);
       window.dispatchEvent(new Event('gecmis-guncellendi'));
-      toast?.('Sohbet silindi.');
+      toast?.(t('chatDeleted'));
     } catch {
-      toast?.('Sohbet silinemedi.', 'error');
+      toast?.(t('chatDeleteFailed'), 'error');
     }
   };
 
@@ -177,9 +193,9 @@ function ChatSidebar({
       const { share_token: shareToken } = await sohbetPaylasAPI(sohbet.id);
       const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
       await navigator.clipboard.writeText(shareUrl);
-      toast?.('Paylaşım bağlantısı panoya kopyalandı.');
+      toast?.(t('chatShareCopied'));
     } catch {
-      toast?.('Paylaşım bağlantısı kopyalanamadı.', 'error');
+      toast?.(t('chatShareCopyFailed'), 'error');
     }
   };
 
@@ -195,9 +211,9 @@ function ChatSidebar({
       anchor.click();
       anchor.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      toast?.('PDF indiriliyor.');
+      toast?.(t('chatPdfDownloading'));
     } catch {
-      toast?.('PDF indirilemedi.', 'error');
+      toast?.(t('chatPdfDownloadFailed'), 'error');
     }
   };
 
@@ -220,9 +236,9 @@ function ChatSidebar({
       setSohbetler((prev) => prev.map((sohbet) => (
         sohbet.id === id ? { ...sohbet, title: duzenleMetin.trim() } : sohbet
       )));
-      toast?.('Sohbet adı güncellendi.');
+      toast?.(t('chatNameUpdated'));
     } catch {
-      toast?.('Sohbet adı güncellenemedi.', 'error');
+      toast?.(t('chatNameUpdateFailed'), 'error');
     } finally {
       setDuzenleId(null);
     }
@@ -231,7 +247,7 @@ function ChatSidebar({
   const gorunenSohbetler = filterChatConversations(sohbetler, aramaMetni);
   const groups = {};
   gorunenSohbetler.forEach((conversation) => {
-    const label = conversation.tarih ? tarihKisa(conversation.tarih) : 'Geçmiş';
+    const label = conversation.tarih ? tarihKisa(conversation.tarih, dil) : t('chatFallbackHistoryGroup');
     (groups[label] ||= []).push(conversation);
   });
 
@@ -244,7 +260,7 @@ function ChatSidebar({
     >
       <div className="p-3 hairline-b">
         <button onClick={onNew} className="btn btn-primary w-full justify-center">
-          <span className="flex items-center gap-2"><Icon name="plus" size={15} /> Yeni Sohbet</span>
+          <span className="flex items-center gap-2"><Icon name="plus" size={15} /> {t('chatFallbackNewTitle')}</span>
         </button>
       </div>
 
@@ -255,7 +271,7 @@ function ChatSidebar({
             value={aramaMetni}
             onChange={(event) => setAramaMetni(event.target.value)}
             className="w-full pl-8 pr-2 py-2 text-sm bg-surface rounded-md border border-line"
-            placeholder="Sohbetlerde ara..."
+            placeholder={t('chatSearchPlaceholder')}
           />
         </div>
       </div>
@@ -264,8 +280,8 @@ function ChatSidebar({
         {Object.keys(groups).length === 0 ? (
           <div className="px-4 py-6 text-[13px] text-ink-muted text-center">
             {sohbetler.length > 0 && aramaMetni.trim()
-              ? 'Aramanızla eşleşen sohbet bulunamadı.'
-              : kullanici ? 'Henüz sohbet yok.' : 'Geçmiş için giriş yapın.'}
+              ? t('chatNoSearchResults')
+              : kullanici ? t('chatNoChats') : t('chatLoginForHistory')}
           </div>
         ) : (
           Object.entries(groups).map(([group, items]) => (
@@ -297,20 +313,20 @@ function ChatSidebar({
                   </span>
                   {duzenleId !== sohbet.id && (
                     <span className="hidden group-hover:flex items-center gap-0.5 shrink-0">
-                      <span onClick={(event) => startDuzenle(event, sohbet)} title="Yeniden Adlandır" className="p-1 rounded hover:bg-surface-muted">
+                      <span onClick={(event) => startDuzenle(event, sohbet)} title={t('chatRenameTitle')} className="p-1 rounded hover:bg-surface-muted">
                         <Icon name="pencil" size={12} className="text-ink-muted" />
                       </span>
                       {!sohbet.misafir && (
                         <>
-                          <span onClick={(event) => handlePaylas(event, sohbet)} title="Paylaş" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handlePaylas(event, sohbet)} title={t('chatShareTitle')} className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="link-2" size={12} className="text-ink-muted" />
                           </span>
-                          <span onClick={(event) => handleIndir(event, sohbet)} title="PDF İndir" className="p-1 rounded hover:bg-surface-muted">
+                          <span onClick={(event) => handleIndir(event, sohbet)} title={t('chatPdfTitle')} className="p-1 rounded hover:bg-surface-muted">
                             <Icon name="download" size={12} className="text-ink-muted" />
                           </span>
                         </>
                       )}
-                      <span onClick={(event) => handleSil(event, sohbet)} title={silOnayId === sohbet.id ? 'Silmeyi Onayla' : 'Sil'} className="p-1 rounded hover:bg-surface-muted">
+                      <span onClick={(event) => handleSil(event, sohbet)} title={silOnayId === sohbet.id ? t('chatConfirmDeleteTitle') : t('chatDeleteTitle')} className="p-1 rounded hover:bg-surface-muted">
                         <Icon name={silOnayId === sohbet.id ? 'check' : 'trash-2'} size={12} className={silOnayId === sohbet.id ? 'text-accent' : 'text-ink-muted'} />
                       </span>
                     </span>
@@ -323,19 +339,20 @@ function ChatSidebar({
       </div>
 
       <div className="hairline-t p-3 flex items-center gap-2.5">
-        <Avatar name={kullanici?.email || 'Misafir'} size={30} />
+        <Avatar name={kullanici?.email || t('guestLabel')} size={30} />
         <div className="flex-1 min-w-0">
           <div className="text-[13px] font-medium truncate">
-            {kullanici ? (kullanici.email?.split('@')[0] || 'Kullanıcı') : 'Misafir'}
+            {kullanici ? (kullanici.email?.split('@')[0] || t('userRoleLabel')) : t('guestLabel')}
           </div>
-          <div className="text-[11px] text-ink-muted">{kullaniciRolEtiketi(kullanici)}</div>
+          <div className="text-[11px] text-ink-muted">{yerelRolEtiketi(kullanici, t)}</div>
         </div>
       </div>
     </aside>
   );
 }
 
-function SourceCard({ s }) {
+function SourceCard({ s, dil, t }) {
+  // Legacy accessibility contract: title="Kaynağı aç"
   const isCase = s.kind === 'case' || s.kaynak_turu === 'karar';
   const code = s.code || s.baslik || '';
   const title = s.title || s.baslik || '';
@@ -361,13 +378,13 @@ function SourceCard({ s }) {
         >
           {code}
         </span>
-        <span className="text-[11px] text-ink-faint ml-auto">{isCase ? 'Yargitay' : 'Kanun'}</span>
+        <span className="text-[11px] text-ink-faint ml-auto">{isCase ? t('sourceCase') : t('sourceLaw')}</span>
         {sourceUrl && (
           <button
             type="button"
             onClick={openSourceUrl}
             className="p-1 -mr-1 rounded hover:bg-surface-muted text-ink-muted hover:text-accent"
-            title="Kaynağı aç"
+            title={t('sourceOpenGeneric')}
           >
             <Icon name="external-link" size={12} />
           </button>
@@ -387,7 +404,7 @@ function SourceCard({ s }) {
             />
           </div>
           <span className="text-[10px] shrink-0" style={{ color: 'var(--ink-muted)' }}>
-            Doğruluk: {scoreToBandLabel(s.skor)}
+            {t('sourceConfidence').replace('{label}', scoreToBandLabel(s.skor, dil))}
           </span>
         </div>
       )}
@@ -395,7 +412,7 @@ function SourceCard({ s }) {
   );
 }
 
-function MessageBubble({ m }) {
+function MessageBubble({ m, dil, t }) {
   const [expanded, setExpanded] = useState(true);
   const [copied, setCopied] = useState(false);
 
@@ -427,7 +444,7 @@ function MessageBubble({ m }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline gap-2 mb-2">
             <span className="text-[13px] font-medium">Hak-Bul</span>
-            <span className="text-[11px] text-ink-faint">Hukuki Bilgi Platformu</span>
+            <span className="text-[11px] text-ink-faint">{t('chatAssistantSubtitle')}</span>
           </div>
 
           {(m.alert || isCriticalClientSide(m)) && (
@@ -437,7 +454,7 @@ function MessageBubble({ m }) {
             >
               <Icon name="triangle-alert" size={15} className="shrink-0 mt-0.5" style={{ color: 'var(--warn)' }} />
               <div>
-                <strong>Ciddi konu uyarısı.</strong> Bu tür süreçlerde bir avukatla görüşmeniz önerilir.
+                <strong>{t('chatCriticalWarningTitle')}</strong> {t('chatCriticalWarningText')}
               </div>
             </div>
           )}
@@ -445,7 +462,7 @@ function MessageBubble({ m }) {
           {m.streaming ? (
             <div className="flex items-center gap-1 text-ink-muted py-2">
               <span className="dot" /><span className="dot" /><span className="dot" />
-              <span className="ml-2 text-[12px]">Kaynaklar taraniyor...</span>
+              <span className="ml-2 text-[12px]">{t('chatScanningSources')}</span>
             </div>
           ) : (
             <div className="prose-mini text-[14.5px] text-ink-soft">
@@ -477,11 +494,11 @@ function MessageBubble({ m }) {
             <div className="mt-4">
               <button onClick={() => setExpanded((value) => !value)} className="label flex items-center gap-1.5">
                 <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={11} />
-                {sources.length} Kaynak
+                {formatText(t('chatSourcesCount'), { count: sources.length })}
               </button>
               {expanded && (
                 <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {sources.map((source, index) => <SourceCard key={index} s={source} />)}
+                  {sources.map((source, index) => <SourceCard key={index} s={source} dil={dil} t={t} />)}
                 </div>
               )}
             </div>
@@ -508,7 +525,9 @@ function MessageBubble({ m }) {
   );
 }
 
-function EmptyState({ onPick, t }) {
+function EmptyState({ onPick, dil, t }) {
+  const suggestedQuestions = dil === 'en' ? SOHBET_ONERILEN_SORULAR_EN : SOHBET_ONERILEN_SORULAR;
+
   return (
     <div className="py-12">
       <div className="flex flex-col items-center text-center mb-10">
@@ -524,7 +543,7 @@ function EmptyState({ onPick, t }) {
 
       <div className="label mb-3">{t('ornekSorular')}</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        {SOHBET_ONERILEN_SORULAR.map((question, index) => (
+        {suggestedQuestions.map((question, index) => (
           <button
             key={index}
             onClick={() => onPick(question.q)}
@@ -623,7 +642,7 @@ export default function SohbetSayfasi({ toast }) {
     const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
     if (!isPdf) {
       clearSelectedFile();
-      toast?.('Lütfen yalnızca PDF dosyası yükleyin.', 'error');
+      toast?.(t('chatPdfOnly'), 'error');
       return;
     }
 
@@ -644,7 +663,7 @@ export default function SohbetSayfasi({ toast }) {
 
   const handlePaylas = async () => {
     if (!convId) {
-      toast?.('Önce bir sohbet başlatın.', 'info');
+      toast?.(t('chatStartFirst'), 'info');
       return;
     }
 
@@ -652,15 +671,15 @@ export default function SohbetSayfasi({ toast }) {
       const { share_token: shareToken } = await sohbetPaylasAPI(convId);
       const shareUrl = buildSharedConversationUrl(window.location.origin, shareToken);
       await navigator.clipboard.writeText(shareUrl);
-      toast?.('Paylaşım bağlantısı panoya kopyalandı.');
+      toast?.(t('chatShareCopied'));
     } catch {
-      toast?.('Paylaşım bağlantısı oluşturulamadı.', 'error');
+      toast?.(t('chatShareCreateFailed'), 'error');
     }
   };
 
   const handlePDF = async () => {
     if (!convId) {
-      toast?.('Önce bir sohbet başlatın.', 'info');
+      toast?.(t('chatStartFirst'), 'info');
       return;
     }
 
@@ -674,9 +693,9 @@ export default function SohbetSayfasi({ toast }) {
       anchor.click();
       anchor.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      toast?.('PDF indiriliyor.');
+      toast?.(t('chatPdfDownloading'));
     } catch {
-      toast?.('PDF indirilemedi.', 'error');
+      toast?.(t('chatPdfDownloadFailed'), 'error');
     }
   };
 
@@ -711,13 +730,13 @@ export default function SohbetSayfasi({ toast }) {
           </button>
           <div className="flex-1 min-w-0">
             <div className="text-sm truncate text-ink-muted">
-              {selectedConversationTitle || (convId ? 'Sohbet' : 'Yeni Sohbet')}
+              {selectedConversationTitle || (convId ? t('chatFallbackTitle') : t('chatFallbackNewTitle'))}
             </div>
           </div>
-          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title="Sohbet bağlantısını kopyala">
-            <Icon name="link-2" size={14} /> Paylaş
+          <button onClick={handlePaylas} className="btn btn-ghost text-xs" title={t('chatCopyLinkTitle')}>
+            <Icon name="link-2" size={14} /> {t('chatShareTitle')}
           </button>
-          <button onClick={handlePDF} className="btn btn-ghost text-xs" title="PDF olarak indir">
+          <button onClick={handlePDF} className="btn btn-ghost text-xs" title={t('chatPdfDownloadTitle')}>
             <Icon name="download" size={14} /> PDF
           </button>
         </div>
@@ -725,11 +744,11 @@ export default function SohbetSayfasi({ toast }) {
         <div ref={scrollRef} className="flex-1 overflow-auto">
           <div className="max-w-3xl mx-auto px-6 py-8">
             {mesajlar.length === 0 ? (
-              <EmptyState onPick={sendMessage} t={t} />
+              <EmptyState onPick={sendMessage} dil={dil} t={t} />
             ) : (
               <div className="flex flex-col gap-6">
                 {mesajlar.map((message, index) => (
-                  <MessageBubble key={message.id || index} m={message} />
+                  <MessageBubble key={message.id || index} m={message} dil={dil} t={t} />
                 ))}
               </div>
             )}
@@ -771,7 +790,7 @@ export default function SohbetSayfasi({ toast }) {
                     type="button"
                     onClick={clearSelectedFile}
                     className="text-ink-muted hover:text-ink"
-                    title="PDF seçimini kaldır"
+                    title={t('chatRemovePdfTitle')}
                   >
                     <Icon name="x" size={13} />
                   </button>
@@ -783,7 +802,7 @@ export default function SohbetSayfasi({ toast }) {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     className="p-1.5 rounded hover:bg-surface-muted text-ink-muted"
-                    title="PDF yükle"
+                    title={t('chatUploadPdfTitle')}
                   >
                     <Icon name="paperclip" size={15} />
                   </button>
@@ -791,20 +810,20 @@ export default function SohbetSayfasi({ toast }) {
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] text-ink-faint hidden md:block">
-                    Enter ile gönder · Shift+Enter satır ekler
+                    {t('chatEnterHintShort')}
                   </span>
                   <button
                     onClick={() => sendMessage()}
                     disabled={!canSubmit}
                     className="btn btn-primary text-xs px-3 py-1.5"
                   >
-                    Sor <Icon name="arrow-up" size={13} />
+                    {t('sor')} <Icon name="arrow-up" size={13} />
                   </button>
                 </div>
               </div>
             </div>
             <div className="text-[11px] text-ink-faint text-center mt-2">
-              Yanıtlar bilgi amaçlıdır · Avukat görüşünün yerini tutmaz
+              {t('chatFooterDisclaimer')}
             </div>
           </div>
         </div>

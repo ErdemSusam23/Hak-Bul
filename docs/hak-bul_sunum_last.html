@@ -1180,7 +1180,7 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
     <div class="g2 fill">
       <div class="card card-gold">
         <div class="mini-label">3.1 Key Tables</div>
-        <p>PostgreSQL (dev &amp; production) stores all relational application data across 9 tables managed via Alembic migrations.</p>
+        <p>PostgreSQL stores all relational application data across 9 tables managed via Alembic migrations.</p>
         <ul class="tight-list">
           <li><strong>Identity:</strong> users, refresh_tokens</li>
           <li><strong>Chat:</strong> chat_history, message_feedback, shared_conversations</li>
@@ -1327,21 +1327,21 @@ p { color: var(--white2); font-size: 18px; line-height: 1.42; }
         <text x="700" y="285" text-anchor="middle" fill="#c8a84b" font-size="8.5" opacity=".8">1:N</text>
 
         <!-- chat_history → message_feedback -->
-        <path d="M119,285 L119,347" fill="none" stroke="#4caf7d" stroke-width="1.1" opacity=".7" marker-end="url(#arr-g)"/>
-        <text x="133" y="319" fill="#4caf7d" font-size="8.5" opacity=".8">1:N</text>
+        <path d="M119,218 L119,285" fill="none" stroke="#4caf7d" stroke-width="1.1" opacity=".7" marker-end="url(#arr-g)"/>
+        <text x="124" y="255" fill="#4caf7d" font-size="8.5" opacity=".8">1:N</text>
 
         <!-- forum_threads → forum_replies -->
         <path d="M861,88 L861,155" fill="none" stroke="#4caf7d" stroke-width="1.1" opacity=".7" marker-end="url(#arr-g)"/>
         <text x="875" y="124" fill="#4caf7d" font-size="8.5" opacity=".8">1:N</text>
 
         <!-- forum_votes → forum_threads (polymorphic) -->
-        <path d="M861,290 C861,260 861,180 861,138" fill="none" stroke="#5a7088" stroke-width="1" opacity=".6" stroke-dasharray="4,2" marker-end="url(#arr-d)"/>
+        <path d="M772,310 C740,310 740,54 772,54" fill="none" stroke="#5a7088" stroke-width="1" opacity=".6" stroke-dasharray="4,2" marker-end="url(#arr-d)"/>
 
         <!-- forum_votes → forum_replies (polymorphic) -->
-        <path d="M880,290 C900,270 900,240 880,223" fill="none" stroke="#5a7088" stroke-width="1" opacity=".6" stroke-dasharray="4,2" marker-end="url(#arr-d)"/>
+        <path d="M950,290 C975,290 975,189 950,189" fill="none" stroke="#5a7088" stroke-width="1" opacity=".6" stroke-dasharray="4,2" marker-end="url(#arr-d)"/>
 
         <!-- polymorphic label -->
-        <text x="918" y="258" fill="#5a7088" font-size="8" font-style="italic">poly</text>
+        <text x="726" y="245" fill="#5a7088" font-size="8" font-style="italic">poly</text>
 
         <!-- RAG arrow: Qdrant → chat_history (dashed blue) -->
         <path d="M390,80 C300,80 250,100 208,165" fill="none" stroke="#4a8fd4" stroke-width="1" opacity=".5" stroke-dasharray="5,3" marker-end="url(#arr-b)"/>

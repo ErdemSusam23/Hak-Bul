@@ -1,6 +1,6 @@
 import { BookOpen, Gavel, ExternalLink, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { CHAT_TEXT_WRAP_STYLE, getKaynakPreviewText, scoreToBandLabel, scoreToPercentage } from '../utils/chatUi';
+import { CHAT_TEXT_WRAP_STYLE, getKaynakPreviewText, scoreToPercentage } from '../utils/chatUi';
 import { useDil } from '../context/useDil';
 
 const KAYNAK_TURU_KONFIG = {
@@ -42,9 +42,8 @@ const KAYNAK_TURU_KONFIG = {
   },
 };
 
-function SkorCubugu({ skor, dil, t }) {
+function SkorCubugu({ skor }) {
   const yuzde = scoreToPercentage(skor);
-  const etiket = scoreToBandLabel(skor, dil);
   let bgColor = 'var(--warn)';
   if (yuzde >= 85) bgColor = 'var(--success)';
   else if (yuzde >= 70) bgColor = 'var(--accent)';
@@ -57,15 +56,12 @@ function SkorCubugu({ skor, dil, t }) {
           style={{ width: `${yuzde}%`, background: bgColor }}
         />
       </div>
-      <span className="text-xs" style={{ color: 'var(--ink-muted)' }}>
-        {t('sourceConfidence').replace('{label}', etiket)}
-      </span>
     </div>
   );
 }
 
 export default function KaynakKarti({ kaynak }) {
-  const { dil, t } = useDil();
+  const { t } = useDil();
   const [acik, setAcik] = useState(false);
   const konfig = KAYNAK_TURU_KONFIG[kaynak.kaynak_turu] || KAYNAK_TURU_KONFIG.kanun;
   const { Ikon } = konfig;
@@ -145,7 +141,7 @@ export default function KaynakKarti({ kaynak }) {
                 {t(konfig.etiketKey)}
               </span>
               <div className="flex-1">
-                <SkorCubugu skor={kaynak.skor} dil={dil} t={t} />
+                <SkorCubugu skor={kaynak.skor} />
               </div>
             </div>
           </div>

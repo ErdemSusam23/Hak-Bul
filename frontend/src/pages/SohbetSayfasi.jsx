@@ -6,7 +6,7 @@ import { useAuth } from '../context/useAuth';
 import { useDil } from '../context/useDil';
 import { SOHBET_ONERILEN_SORULAR, SOHBET_ONERILEN_SORULAR_EN } from '../content/productContent';
 import { normalizeRoleName } from '../utils/adminFlow';
-import { CHAT_COMPOSER_MAX_LENGTH, filterChatConversations, prepareComposerSubmission, scoreToBandLabel, scoreToPercentage } from '../utils/chatUi';
+import { CHAT_COMPOSER_MAX_LENGTH, filterChatConversations, prepareComposerSubmission, scoreToPercentage } from '../utils/chatUi';
 import FeedbackButonlari from '../components/FeedbackButonlari';
 import { buildSharedConversationUrl, togglePendingAction } from '../utils/phase2Flow';
 import {
@@ -351,7 +351,7 @@ function ChatSidebar({
   );
 }
 
-function SourceCard({ s, dil, t }) {
+function SourceCard({ s, t }) {
   // Legacy accessibility contract: title="Kaynağı aç"
   const isCase = s.kind === 'case' || s.kaynak_turu === 'karar';
   const code = s.code || s.baslik || '';
@@ -403,16 +403,13 @@ function SourceCard({ s, dil, t }) {
               }}
             />
           </div>
-          <span className="text-[10px] shrink-0" style={{ color: 'var(--ink-muted)' }}>
-            {t('sourceConfidence').replace('{label}', scoreToBandLabel(s.skor, dil))}
-          </span>
         </div>
       )}
     </div>
   );
 }
 
-function MessageBubble({ m, dil, t }) {
+function MessageBubble({ m, t }) {
   const [expanded, setExpanded] = useState(true);
   const [copied, setCopied] = useState(false);
 
@@ -498,7 +495,7 @@ function MessageBubble({ m, dil, t }) {
               </button>
               {expanded && (
                 <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {sources.map((source, index) => <SourceCard key={index} s={source} dil={dil} t={t} />)}
+                  {sources.map((source, index) => <SourceCard key={index} s={source} t={t} />)}
                 </div>
               )}
             </div>
@@ -613,14 +610,14 @@ export default function SohbetSayfasi({ toast }) {
     }
   };
 
-  const handleNew = () => {
+  const handleNew = useCallback(() => {
     sohbetiTemizle();
     setConvId(null);
     setActiveId(null);
     setSelectedConversationTitle('');
     setInput('');
     clearSelectedFile();
-  };
+  }, [clearSelectedFile, sohbetiTemizle]);
 
   const handleSelect = (sohbet) => {
     mesajlariYukle(sohbet.mesajlar);
@@ -633,7 +630,7 @@ export default function SohbetSayfasi({ toast }) {
   const handleConversationDeleted = useCallback((deletedConversationId) => {
     if (deletedConversationId !== activeId) return;
     handleNew();
-  }, [activeId]);
+  }, [activeId, handleNew]);
 
   const handleFileSelect = (event) => {
     const [file] = Array.from(event.target.files || []);
@@ -748,7 +745,7 @@ export default function SohbetSayfasi({ toast }) {
             ) : (
               <div className="flex flex-col gap-6">
                 {mesajlar.map((message, index) => (
-                  <MessageBubble key={message.id || index} m={message} dil={dil} t={t} />
+                  <MessageBubble key={message.id || index} m={message} t={t} />
                 ))}
               </div>
             )}

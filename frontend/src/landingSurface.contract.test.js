@@ -19,6 +19,14 @@ test('LandingPage removes the KVKK trust badge and live example panel from the h
   assert.ok(!source.includes('Canlı örnek'), 'LandingPage should not keep the live example teaser panel');
 });
 
+test('LandingPage footer keeps only the product link column', async () => {
+  const source = await readSource('pages', 'LandingPage.jsx');
+
+  assert.ok(!source.includes('footerCorporate'), 'LandingPage footer should not render the company column');
+  assert.ok(!source.includes('footerNewsletter'), 'LandingPage footer should not render the newsletter column');
+  assert.ok(!source.includes('createNewsletterNotice'), 'LandingPage footer should not keep newsletter state wiring');
+});
+
 test('Auth modal no longer asks the user to accept KVKK copy during entry', async () => {
   const source = await readSource('App.jsx');
 

@@ -16,12 +16,12 @@ export const LANDING_CATEGORY_LABELS = [
 ];
 
 export const SOHBET_ONERILEN_SORULAR = [
-  { cat: 'Medeni Hukuk', q: 'Boşanma davası açmak istiyorum, hangi sebeplere dayanabilirim ve süreç nasıl başlar?' },
-  { cat: 'Medeni Hukuk', q: 'Mirasçılık belgesi nasıl alınır ve miras payımı göstermek için hangi hükme bakılır?' },
-  { cat: 'Medeni Hukuk', q: 'Vasiyetnameye hangi sebeplerle itiraz edebilir veya iptal davası açabilirim?' },
-  { cat: 'Ticaret Hukuku', q: 'Şirket kurmak istiyorum, kuruluş ve ticaret siciline tescil için hangi temel kurallara bakmalıyım?' },
-  { cat: 'Ticaret Hukuku', q: 'Tacir sayılmanın hukuki sonuçları nelerdir, basiretli davranma ve ticaret unvanı yükümlülüğü ne demektir?' },
-  { cat: 'Ticaret Hukuku', q: 'Anonim şirket genel kurul kararına karşı iptal davası açmak için kimler, hangi sürede dava açabilir?' },
+  { cat: 'Medeni Hukuk', q: 'Boşanma davasında velayet neye göre belirlenir?' },
+  { cat: 'Medeni Hukuk', q: 'Mirasçılık belgesi nasıl alınır?' },
+  { cat: 'Bilişim Hukuku', q: 'Elektronik imzayla imzalanan sözleşme geçerli midir?' },
+  { cat: 'Sosyal Güvenlik Hukuku', q: 'İş kazası geçirdim, SGK’ya bildirim süresi nedir?' },
+  { cat: 'Usul Hukuku', q: 'İlamsız icra takibine nasıl itiraz edebilirim?' },
+  { cat: 'Ticaret Hukuku', q: 'Rakibim yanıltıcı reklam yapıyor, haksız rekabet için ne yapabilirim?' },
 ];
 
 export const LANDING_CATEGORY_KEYS = [
@@ -42,10 +42,10 @@ export const LANDING_CATEGORY_KEYS = [
 ];
 
 export const SOHBET_ONERILEN_SORULAR_EN = [
-  { cat: 'Civil Law', q: 'I want to file for divorce. What legal grounds can I rely on, and how does the process begin?' },
-  { cat: 'Civil Law', q: 'How do I obtain a certificate of inheritance, and which rule shows my inheritance share?' },
-  { cat: 'Civil Law', q: 'On what grounds can I object to a will or file a case to annul it?' },
-  { cat: 'Commercial Law', q: 'I want to establish a company. Which basic rules apply to incorporation and trade registry registration?' },
-  { cat: 'Commercial Law', q: 'What are the legal consequences of being treated as a merchant, including prudent conduct and trade name obligations?' },
-  { cat: 'Commercial Law', q: 'Who can file an annulment action against a joint-stock company general assembly decision, and within what period?' },
+  { cat: 'Civil Law', q: 'How is custody determined in a divorce case?' },
+  { cat: 'Civil Law', q: 'How do I obtain a certificate of inheritance?' },
+  { cat: 'Technology Law', q: 'Is a contract signed with an electronic signature valid?' },
+  { cat: 'Social Security Law', q: 'I had a workplace accident. What is the SGK notification period?' },
+  { cat: 'Procedural Law', q: 'How can I object to a general enforcement proceeding?' },
+  { cat: 'Commercial Law', q: 'My competitor is running misleading ads. What can I do for unfair competition?' },
 ];

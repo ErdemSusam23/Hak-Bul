@@ -8,26 +8,26 @@ let mesajSayac = 0;
 const yeniId = () => `msg_${++mesajSayac}_${Date.now()}`;
 
 const MOCK_YANIT = {
-    yanit: `**4857 SayÄ±lÄ± Ä°ÅŸ Kanunu** kapsamÄ±nda kÄ±dem tazminatÄ± alabilmek iÃ§in iÅŸ sÃ¶zleÅŸmenizin asgari **1 yÄ±l** sÃ¼rmÃ¼ÅŸ olmasÄ± ve iÅŸveren tarafÄ±ndan haksÄ±z fesih gibi kanunda sayÄ±lan hallerden biriyle sona ermesi gerekmektedir.`,
+    yanit: `**4857 Sayılı İş Kanunu** kapsamında kıdem tazminatı alabilmek için iş sözleşmenizin asgari **1 yıl** sürmüş olması ve işveren tarafından haksız fesih gibi kanunda sayılan hallerden biriyle sona ermesi gerekmektedir.`,
     kaynaklar: [
-        { kaynak_turu: 'kanun', baslik: '4857 SayÄ±lÄ± Ä°ÅŸ Kanunu â€” Madde 17', metin_ozet: 'Belirsiz sÃ¼reli iÅŸ sÃ¶zleÅŸmelerinin feshinde bildirim ÅŸartÄ±.', skor: 0.94, url: null },
+        { kaynak_turu: 'kanun', baslik: '4857 Sayılı İş Kanunu - Madde 17', metin_ozet: 'Belirsiz süreli iş sözleşmelerinin feshinde bildirim şartı.', skor: 0.94, url: null },
     ],
-    kategori: 'Ä°ÅŸ Hukuku',
-    uyari: 'Bu yanÄ±t bilgi amaÃ§lÄ±dÄ±r ve hukuki tavsiye niteliÄŸi taÅŸÄ±maz.',
+    kategori: 'İş Hukuku',
+    uyari: 'Bu yanıt bilgi amaçlıdır ve hukuki tavsiye niteliği taşımaz.',
 };
 
 const CHAT_COPY = {
     tr: {
         minLength: 'Sorunuz en az 10 karakter olmalıdır. Lütfen daha ayrıntılı yazın.',
-        tooManyRequests: (retryAfter) => `â³ Ã‡ok fazla istek gÃ¶nderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`,
-        unavailable: 'ğŸ”§ Sunucu geÃ§ici olarak eriÅŸilemiyor. LÃ¼tfen 30 saniye sonra tekrar deneyin.',
-        generic: 'âš ï¸ YanÄ±t alÄ±namadÄ±. LÃ¼tfen baÄŸlantÄ±nÄ±zÄ± kontrol edip tekrar deneyin.',
+        tooManyRequests: (retryAfter) => `Çok fazla istek gönderildi. ${retryAfter ? `${retryAfter} saniye` : '1 dakika'} bekleyip tekrar deneyin.`,
+        unavailable: 'Sunucu geçici olarak erişilemiyor. Lütfen 30 saniye sonra tekrar deneyin.',
+        generic: 'Yanıt alınamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin.',
     },
     en: {
-        minLength: 'âš ï¸ Your question must be at least 10 characters long. Please provide a bit more detail.',
-        tooManyRequests: (retryAfter) => `â³ Too many requests were sent. Please wait ${retryAfter ? `${retryAfter} seconds` : '1 minute'} and try again.`,
-        unavailable: 'ğŸ”§ The server is temporarily unavailable. Please try again in 30 seconds.',
-        generic: 'âš ï¸ No response was received. Please check your connection and try again.',
+        minLength: 'Your question must be at least 10 characters long. Please provide a bit more detail.',
+        tooManyRequests: (retryAfter) => `Too many requests were sent. Please wait ${retryAfter ? `${retryAfter} seconds` : '1 minute'} and try again.`,
+        unavailable: 'The server is temporarily unavailable. Please try again in 30 seconds.',
+        generic: 'No response was received. Please check your connection and try again.',
     },
 };
 
@@ -80,7 +80,7 @@ export function useChat(language = 'tr') {
         setMesajlar((onceki) => [...onceki, kullaniciMesaj]);
         setYukleniyor(true);
 
-        // PDF analizi â€” streaming yok, normal POST
+        // PDF analizi - streaming yok, normal POST
         if (dosyaVar) {
             try {
                 const yanit = await dokumanAnalizAPI({
@@ -129,7 +129,7 @@ export function useChat(language = 'tr') {
         // SSE Streaming
         const streamMesajId = yeniId();
 
-        // Placeholder asistan mesajÄ± â€” boÅŸ, streaming baÅŸlayÄ±nca dolacak
+        // Placeholder asistan mesajı - boş, streaming başlayınca dolacak
         setMesajlar((onceki) => [
             ...onceki,
             {
@@ -252,20 +252,20 @@ export function useChat(language = 'tr') {
                     }
 
                     if (event.type === 'error') {
-                        throw new Error(event.detail || 'Streaming hatasÄ±');
+                        throw new Error(event.detail || 'Streaming hatası');
                     }
                 },
             });
         } catch (err) {
             if (err.name === 'AbortError') {
-                // KullanÄ±cÄ± iptal etti â€” mesajÄ± olduÄŸu gibi bÄ±rak
+                // Kullanıcı iptal etti - mesajı olduğu gibi bırak
                 setMesajlar((onceki) =>
                     onceki.map((m) =>
                         m.id === streamMesajId ? { ...m, streaming: false } : m
                     )
                 );
             } else {
-                // Streaming baÅŸlamÄ±ÅŸsa placeholder'Ä± hata mesajÄ±na dÃ¶nÃ¼ÅŸtÃ¼r
+                // Streaming başlamışsa placeholder'ı hata mesajına dönüştür
                 setMesajlar((onceki) =>
                     onceki.map((m) => {
                         if (m.id !== streamMesajId) return m;

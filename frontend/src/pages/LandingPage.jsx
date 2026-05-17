@@ -1,26 +1,15 @@
-﻿import { useState } from 'react';
 import { Icon, Logo } from '../components/ui';
 import { useDil } from '../context/useDil';
 import { LANDING_CATEGORY_KEYS } from '../content/productContent';
-import { createNewsletterNotice } from '../utils/phase2Flow';
 
 export default function LandingPage({ onOpenAuth, setPage }) {
   const { t } = useDil();
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [newsletterNotice, setNewsletterNotice] = useState(null);
 
   const scrollToHowItWorks = () => {
     document.getElementById('landing-nasil-calisir')?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
-  };
-
-  const handleNewsletterSubmit = () => {
-    setNewsletterNotice(createNewsletterNotice(newsletterEmail, {
-      required: t('newsletterEmailRequired'),
-      info: t('newsletterComingSoon'),
-    }));
   };
 
   const featureCards = [
@@ -49,13 +38,6 @@ export default function LandingPage({ onOpenAuth, setPage }) {
     t('navTemplates'),
     t('navCompare'),
     t('navForum'),
-  ];
-
-  const corporateLinks = [
-    t('footerAbout'),
-    t('footerKvkk'),
-    t('footerDisclosure'),
-    t('footerContact'),
   ];
 
   return (
@@ -127,59 +109,20 @@ export default function LandingPage({ onOpenAuth, setPage }) {
       </section>
 
       <footer className="hairline-t">
-        <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-5">
+        <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
             <Logo size={20} />
             <p className="text-ink-muted text-sm mt-3 max-w-sm leading-relaxed">
               {t('footerDisclaimer')}
             </p>
           </div>
-          <div className="col-span-6 md:col-span-2">
+          <div className="md:justify-self-end md:w-40">
             <div className="label mb-3">{t('footerProduct')}</div>
             <ul className="text-sm text-ink-muted space-y-2">
               {productLinks.map((label) => (
                 <li key={label}><a href="#" className="hover:text-ink">{label}</a></li>
               ))}
             </ul>
-          </div>
-          <div className="col-span-6 md:col-span-2">
-            <div className="label mb-3">{t('footerCorporate')}</div>
-            <ul className="text-sm text-ink-muted space-y-2">
-              {corporateLinks.map((label) => (
-                <li key={label}><a href="#" className="hover:text-ink">{label}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div className="col-span-12 md:col-span-3">
-            <div className="label mb-3">{t('footerNewsletter')}</div>
-            <div className="flex gap-0 border border-line rounded-lg overflow-hidden">
-              <input
-                className="flex-1 min-w-0 px-3 py-2 bg-transparent text-sm"
-                placeholder={t('emailAddress')}
-                value={newsletterEmail}
-                onChange={(event) => {
-                  setNewsletterEmail(event.target.value);
-                  if (newsletterNotice) {
-                    setNewsletterNotice(null);
-                  }
-                }}
-              />
-              <button
-                className="px-4 py-2 text-sm shrink-0 whitespace-nowrap font-medium"
-                style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}
-                onClick={handleNewsletterSubmit}
-              >
-                {t('newsletterSubscribe')}
-              </button>
-            </div>
-            {newsletterNotice && (
-              <p
-                className="mt-3 text-sm"
-                style={{ color: newsletterNotice.kind === 'error' ? 'var(--danger)' : 'var(--ink-muted)' }}
-              >
-                {newsletterNotice.text}
-              </p>
-            )}
           </div>
         </div>
         <div className="hairline-t">

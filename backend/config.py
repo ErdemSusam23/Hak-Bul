@@ -46,6 +46,7 @@ class Settings:
     STRICT_UPSTREAMS: bool = _as_bool("STRICT_UPSTREAMS", "false")
     ALLOW_LOCAL_RETRIEVAL_FALLBACK: bool = _as_bool("ALLOW_LOCAL_RETRIEVAL_FALLBACK", "true")
     RERANKER_ENABLED: bool = _as_bool("RERANKER_ENABLED", "false")
+    RERANKER_ALWAYS_ON: bool = _as_bool("RERANKER_ALWAYS_ON", "false")
     RERANKER_MODEL: str = os.environ.get("RERANKER_MODEL", "BAAI/bge-reranker-v2-m3")
     PERF_LOG_ENABLED: bool = _as_bool("HAKBUL_PERF_LOG", "false")
 

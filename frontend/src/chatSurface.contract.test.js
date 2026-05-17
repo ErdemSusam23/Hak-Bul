@@ -87,10 +87,12 @@ test('recommended chat questions use high-confidence law and article retrieval e
 
   assert.match(source, /Medeni Hukuk/, 'Recommended questions should include the top law-and-article retrieval category');
   assert.match(source, /Ticaret Hukuku/, 'Recommended questions should include the other top law-and-article retrieval category');
-  assert.ok(source.includes('Boşanma davası açmak istiyorum, hangi sebeplere dayanabilirim ve süreç nasıl başlar?'));
-  assert.ok(source.includes('Mirasçılık belgesi nasıl alınır ve miras payımı göstermek için hangi hükme bakılır?'));
-  assert.ok(source.includes('Şirket kurmak istiyorum, kuruluş ve ticaret siciline tescil için hangi temel kurallara bakmalıyım?'));
-  assert.ok(source.includes('Tacir sayılmanın hukuki sonuçları nelerdir, basiretli davranma ve ticaret unvanı yükümlülüğü ne demektir?'));
+  assert.ok(source.includes('Boşanma davasında velayet neye göre belirlenir?'));
+  assert.ok(source.includes('Mirasçılık belgesi nasıl alınır?'));
+  assert.ok(source.includes('Elektronik imzayla imzalanan sözleşme geçerli midir?'));
+  assert.ok(source.includes('İş kazası geçirdim, SGK’ya bildirim süresi nedir?'));
+  assert.ok(source.includes('İlamsız icra takibine nasıl itiraz edebilirim?'));
+  assert.ok(source.includes('Rakibim yanıltıcı reklam yapıyor, haksız rekabet için ne yapabilirim?'));
   assert.ok(!source.includes('Trafik cezasına itiraz nasıl yapılır?'));
   assert.ok(!source.includes('İhtarname örneğini nasıl hazırlayabilirim?'));
 });

@@ -73,8 +73,9 @@ app.include_router(forum_router)
 @app.on_event("startup")
 async def preload_models_on_startup():
     perf_logger.info(
-        "Runtime config | RERANKER_ENABLED=%s | RERANKER_MODEL=%s",
+        "Runtime config | RERANKER_ENABLED=%s | RERANKER_ALWAYS_ON=%s | RERANKER_MODEL=%s",
         settings.RERANKER_ENABLED,
+        settings.RERANKER_ALWAYS_ON,
         settings.RERANKER_MODEL,
     )
     start_retrieval_warmup()

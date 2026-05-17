@@ -196,6 +196,8 @@ def _score_of(chunk: dict) -> float:
 def _should_rerank(chunks: list[dict]) -> bool:
     if not settings.RERANKER_ENABLED or not chunks:
         return False
+    if settings.RERANKER_ALWAYS_ON:
+        return True
     return _score_of(chunks[0]) < settings.SCORE_THRESHOLD
 
 
